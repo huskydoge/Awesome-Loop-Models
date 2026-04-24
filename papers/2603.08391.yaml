@@ -1,0 +1,34 @@
+title: "Adaptive Loops and Memory in Transformers: Think Harder or Know More?"
+authors:
+  - "Markus Frey"
+  - "Behzad Shomali"
+  - "Ali Hamza Bashir"
+  - "David Berghaus"
+  - "Joachim Koehler"
+  - "Mehdi Ali"
+year: 2026
+published_date: '2026-03-09'
+added_date: '2026-04-20'
+venue: "arXiv"
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+  - "language-modeling"
+  - "reasoning"
+  - "efficiency"
+tags:
+  - "memory-banks"
+  - ACT
+focus_tags:
+  - "architecture"
+desc: "Introduces transformers with adaptive per-layer looping and gated memory banks, showing that combining learned halting with extra storage improves reasoning under matched parameter and FLOP budgets."
+links:
+  arxiv: https://arxiv.org/abs/2603.08391
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-20'

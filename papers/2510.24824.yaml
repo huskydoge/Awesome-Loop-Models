@@ -1,0 +1,41 @@
+title: Parallel Loop Transformer for Efficient Test-Time Computation Scaling
+authors:
+- Bohong Wu
+- Mengzhao Chen
+- Xiang Luo
+- Shen Yan
+- Qifan Yu
+- Fan Xia
+- Tianqi Zhang
+- Hongrui Zhan
+- Zheng Zhong
+- Xun Zhou
+- Siyuan Qiao
+- Xingyan Bin
+year: 2025
+published_date: '2025-10-28'
+added_date: '2026-04-21'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- parallel-loop
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+tags:
+- kv-cache-sharing
+focus_tags:
+- inference-algorithm
+desc: Introduces the Parallel Loop Transformer, which preserves looped-model accuracy
+  while reducing latency and memory through cross-loop parallelism and shared-loop
+  KV representations.
+links:
+  arxiv: https://arxiv.org/abs/2510.24824
+citations: 8
+citation_sources:
+  semantic_scholar: 8
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-22'

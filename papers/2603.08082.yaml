@@ -1,0 +1,34 @@
+title: Tiny Autoregressive Recursive Models
+authors:
+- Paulius Rauba
+- Claudio Fanconi
+- Mihaela van der Schaar
+year: 2026
+published_date: '2026-03-09'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- hierarchical-loop
+- flat-loop
+domain_tags:
+- algorithmic-reasoning
+- language-modeling
+tags:
+- TRM
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Studies autoregressive Tiny Recursive Models under compute-matched baselines, finding that simple two-step refinement helps on small algorithmic tasks while the full Autoregressive TRM shows no reliable gains.
+links:
+  arxiv: https://arxiv.org/abs/2603.08082
+  comment:
+  - label: Benhao's reading note
+    url: https://x.com/huskydogewoof/status/2032232642947494107?s=20
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-14'

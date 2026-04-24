@@ -1,0 +1,38 @@
+title: 'Implicit Language Models are RNNs: Balancing Parallelization and Expressivity'
+authors:
+- Mark Schöne
+- Babak Rahmani
+- Heiner Kremer
+- Fabian Falck
+- Hitesh Ballani
+- Jannes Gladrow
+year: 2025
+published_date: '2025-02-10'
+venue: ICML
+category: "designs"
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- implicit-ssm
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces implicit state-space language models that iterate a shared transition toward a fixed point, recovering RNN-like expressivity while retaining mostly parallel training.
+links:
+  arxiv: https://arxiv.org/abs/2502.07827
+  openreview: https://openreview.net/forum?id=5EbiopWH6e
+  github: https://github.com/microsoft/implicit_languagemodels
+citations: 19
+citation_sources:
+  semantic_scholar: 19
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+github_stars: 10
+star_sources:
+  github_api: 10
+star_source_best: github_api
+metrics_updated: '2026-04-17'

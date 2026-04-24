@@ -1,0 +1,30 @@
+title: "On the Looped Transformers Controversy"
+authors:
+  - "Chris Hayduk"
+year: 2026
+published_date: "2026-04-19"
+added_date: "2026-04-22"
+venue: "X Article"
+mechanism_tags:
+- flat-loop
+
+domain_tags:
+  - "language-modeling"
+  - "reasoning"
+  - "scaling"
+
+tags:
+  - "looped-transformer"
+  - "weight-tying"
+  - "mythos"
+
+focus_tags:
+  - "architecture"
+
+desc: >
+  Argues that benchmark patterns and serving-compute constraints make deterministic
+  weight-tied looping a plausible explanation for Claude Mythos-like gains, while
+  explicitly framing the claim as speculation rather than confirmation.
+
+links:
+  blog: "https://x.com/ChrisHayduk/status/2045947623572688943?s=20"

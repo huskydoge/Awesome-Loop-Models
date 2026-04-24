@@ -1,0 +1,37 @@
+title: Universal Transformers
+authors:
+- Mostafa Dehghani
+- Stephan Gouws
+- Oriol Vinyals
+- Jakob Uszkoreit
+- Łukasz Kaiser
+year: 2019
+published_date: '2018-07-10'
+venue: ICLR
+category: "designs"
+foundation: true
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- algorithmic-reasoning
+tags:
+- UT
+focus_tags:
+- architecture
+desc: Extends the standard Transformer with recurrent computation over depth via weight
+  tying, enabling Turing-complete computation and combining the parallelism of Transformers
+  with the inductive bias of RNNs.
+links:
+  arxiv: https://arxiv.org/abs/1807.03819
+  openreview: https://openreview.net/forum?id=HyzdRiR9Y7
+  comment:
+  - label: Reza Bayat reading list (#3)
+    url: https://x.com/reza_byt/status/2045168844658950392?s=20
+citations: 891
+citation_sources:
+  semantic_scholar: 891
+  openalex: 396
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-20'

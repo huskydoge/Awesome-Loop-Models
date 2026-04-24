@@ -1,0 +1,86 @@
+# Save as: papers/<arxiv-id>.yaml
+# For non-arXiv papers, use a stable slug such as papers/openreview-example.yaml
+# For long-form technical blog posts, use blogs/YYYY-MM-DD-shortname.yaml and blogs/_template.yaml.example instead.
+
+title: "Your Paper Title"
+authors:
+  - "First Author"
+  - "Second Author"
+year: 2026
+published_date: "2026-04-20"
+added_date: "2026-04-20"
+venue: "arXiv"
+
+category: "designs"
+foundation: false
+must_read: false
+
+# `must_read: true` is an optional maintainer-only flag.
+# If enabled, the README and browser prepend 🌟 before the paper title.
+# `submit.html` intentionally does not generate this field.
+
+# New canonical paper YAML uses one flat category and omits `category_path`.
+#
+# Blogs do not use these fields. Blog entries live in `blogs/*.yaml`
+# and stay in one flat Blogs section.
+#
+# Valid top-level categories:
+#   analysis      -> Theoretical and Mechanical Analysis
+#   designs       -> Architecture and Algorithm Designs
+#   applications  -> Applications Focused
+#
+# Foundation is a secondary badge rather than a separate top-level shelf.
+# Set `foundation: true` only for canonical anchor papers such as ACT,
+# Universal Transformers, or DEQ.
+#
+# The shelves are intentionally coarse:
+#   analysis -> theory, mechanism analysis, probing, diagnostics, formal understanding
+#   designs -> new architecture, algorithm, efficiency method, memory-compression method, or training/inference method
+#   applications -> concrete task/domain performance, e.g. robotics, VLA, multimodal, tabular, or graph data
+#
+# `published_date` is required for all papers. Use the source-paper
+# release date and keep it as a quoted `YYYY-MM-DD` string.
+# `added_date` is the repo intake date used by the daily feed /
+# Today-style filtering; when present, keep it as a quoted
+# `YYYY-MM-DD` string.
+
+mechanism_tags:
+  - "flat-loop"
+
+# Loop Mechanism (`mechanism_tags`) uses only loop-form tags:
+#   hierarchical-loop, flat-loop, parallel-loop, implicit-layer.
+
+domain_tags:
+  - "language-modeling"
+
+tags:
+  - "LoopLM"
+
+# `tags` are optional aliases / short identifiers kept in YAML / README metadata.
+# The interactive browser exposes `mechanism_tags`, `focus_tags`, and `domain_tags` as tag filters.
+
+focus_tags:
+  - "architecture"
+  - "inference-algorithm"
+
+# Valid focus_tags:
+#   objective-loss
+#   training-algorithm
+#   architecture
+#   data
+#   inference-algorithm
+
+desc: >
+  One concise sentence describing the paper's core contribution.
+
+links:
+  arxiv: "https://arxiv.org/abs/XXXX.XXXXX"
+  paper: ""
+  github: ""
+  hf: ""
+  openreview: ""
+  project: ""
+  comment:
+    - label: "Deep-dive thread"
+      url: "https://x.com/..."
+  twitter: ""

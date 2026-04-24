@@ -1,0 +1,25 @@
+title: 'ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates'
+authors:
+- Yunao Zheng
+- Xiaojie Wang
+- Lei Ren
+- Chen Wei
+year: 2026
+published_date: '2026-01-26'
+venue: ICLR
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- ChainGPT
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Introduces ChainGPT, a dual-reasoning recurrent-depth architecture that combines multi-substep state updates and state-guided sparse attention to move reasoning into latent computation, with adaptive stopping as a supporting mechanism.
+links:
+  openreview: https://openreview.net/forum?id=kdZbxizwGK
+  paper: https://openreview.net/pdf?id=kdZbxizwGK

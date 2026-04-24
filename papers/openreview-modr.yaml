@@ -1,0 +1,29 @@
+title: 'MoDr: Mixture-of-Depth-Recurrent Transformers for Test-Time Reasoning'
+authors:
+- Xiaojing Zhang
+- Haifeng Wu
+- Gang He
+- Jiyang Shen
+- Bochen Lyu
+- Zhanxing Zhu
+year: 2026
+published_date: '2026-01-26'
+venue: ICLR
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+tags:
+- MoDr
+- MoUT
+focus_tags:
+- architecture
+- inference-algorithm
+- training-algorithm
+desc: Introduces MoDr, which adds multi-branch routing to a depth-recurrent Transformer so looped models can explore solution paths more adaptively at test time.
+links:
+  openreview: https://openreview.net/forum?id=9Pba4rcQbE
+  paper: https://openreview.net/pdf?id=9Pba4rcQbE

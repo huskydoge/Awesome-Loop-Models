@@ -1,0 +1,29 @@
+title: A Deep Equilibrium Network for Hyperspectral Unmixing
+authors:
+- Chentong Wang
+- Jincheng Gao
+- Fei Zhu
+- Jie Chen
+year: 2026
+published_date: '2026-04-13'
+venue: arXiv
+category: "applications"
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- hyperspectral-imaging
+tags:
+- DEQ
+focus_tags:
+- architecture
+- training-algorithm
+desc: Recasts hyperspectral unmixing as a deep equilibrium model, replacing the reconstruction-gradient operator with a trainable convolutional update and solving for an implicit fixed point with constant-memory differentiation.
+links:
+  arxiv: https://arxiv.org/abs/2604.11279
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-17'

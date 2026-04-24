@@ -1,0 +1,29 @@
+title: Adaptive Computation Time for Recurrent Neural Networks
+authors:
+- Alex Graves
+year: 2016
+published_date: '2016-03-29'
+venue: arXiv
+category: "designs"
+foundation: true
+mechanism_tags:
+- flat-loop
+domain_tags:
+- sequence-modeling
+- efficiency
+tags:
+- ACT
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces ACT, allowing RNNs to learn how many computational steps to take
+  per input, laying the groundwork for dynamic-depth recurrent computation.
+links:
+  arxiv: https://arxiv.org/abs/1603.08983
+citations: 684
+citation_sources:
+  semantic_scholar: 684
+  openalex: 361
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-20'

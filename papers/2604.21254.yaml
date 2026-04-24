@@ -1,0 +1,33 @@
+title: Hyperloop Transformers
+authors:
+- Abbas Zeitoun
+- Lucas Torroba-Hennigen
+- Yoon Kim
+year: 2026
+published_date: '2026-04-23'
+added_date: '2026-04-24'
+venue: arXiv
+category: designs
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- memory-efficiency
+tags:
+- Hyperloop
+- looped-transformer
+- hyper-connections
+focus_tags:
+- architecture
+desc: Introduces Hyperloop Transformers, a parameter-efficient looped Transformer
+  that applies only a middle block recurrently and adds hyper-connections between
+  loops to improve memory-efficient language modeling.
+links:
+  arxiv: https://arxiv.org/abs/2604.21254
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-24'

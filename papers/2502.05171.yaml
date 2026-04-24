@@ -1,0 +1,46 @@
+title: 'Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach'
+authors:
+- Jonas Geiping
+- Sean McLeish
+- Neel Jain
+- John Kirchenbauer
+- Siddharth Singh
+- Brian R. Bartoldson
+- Bhavya Kailkhura
+- Abhinav Bhatele
+- Tom Goldstein
+year: 2025
+published_date: '2025-02-07'
+venue: NeurIPS
+must_read: true
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- Huginn
+focus_tags:
+- architecture
+desc: Presents Huginn, a recurrent-depth transformer (3.5B params) that iterates a
+  single block up to 64 times per token, achieving strong reasoning performance that
+  scales with additional test-time compute.
+links:
+  arxiv: https://arxiv.org/abs/2502.05171
+  hf: https://huggingface.co/tomg-group-umd/huginn-0125
+  github: https://github.com/seal-rg/recurrent-pretraining
+  comment:
+  - label: Reza Bayat reading list (#9)
+    url: https://x.com/reza_byt/status/2045168844658950392?s=20
+citations: 191
+citation_sources:
+  semantic_scholar: 191
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+github_stars: 872
+star_sources:
+  github_api: 872
+star_source_best: github_api
+metrics_updated: '2026-04-20'

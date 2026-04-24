@@ -1,0 +1,32 @@
+title: 'On Expressive Power of Looped Transformers: Theoretical Analysis and Enhancement
+  via Timestep Encoding'
+authors:
+- Kevin Xu
+- Issei Sato
+year: 2024
+published_date: '2024-10-02'
+added_date: '2026-04-21'
+venue: arXiv
+category: "analysis"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- theory
+tags:
+- looped-transformer
+- timestep-encoding
+focus_tags:
+- architecture
+desc: Analyzes the expressive power of looped transformers, derives approximation-rate
+  limits, and shows that timestep encoding improves their function-approximation behavior.
+links:
+  arxiv: https://arxiv.org/abs/2410.01405
+citations: 13
+citation_sources:
+  semantic_scholar: 13
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-22'

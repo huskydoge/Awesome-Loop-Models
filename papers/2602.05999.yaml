@@ -1,0 +1,30 @@
+title: On the Role of Iterative Computation in Reinforcement Learning
+authors:
+- Raj Ghugare
+- Michał Bortkiewicz
+- Alicja Ziarko
+- Benjamin Eysenbach
+year: 2026
+published_date: '2026-02-05'
+venue: arXiv
+category: "applications"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- rl-control
+tags:
+- compute-bounded-policy
+focus_tags:
+- architecture
+- inference-algorithm
+- training-algorithm
+desc: Formalizes compute-bounded RL policies and introduces a minimal variable-compute architecture, showing that extra iterative computation improves performance and longer-horizon generalization across 31 online and offline RL tasks.
+links:
+  arxiv: https://arxiv.org/abs/2602.05999
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-14'

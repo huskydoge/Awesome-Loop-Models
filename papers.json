@@ -1,0 +1,3126 @@
+{
+  "meta": {
+    "total": 57,
+    "paper_total": 54,
+    "blog_total": 3,
+    "generated": "2026-04-24T12:10:59.778004+00:00",
+    "generated_local_date": "2026-04-24",
+    "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
+    "foundation_label": "Foundation",
+    "blog_section_title": "Blogs",
+    "blog_section_desc": "Long-form technical posts, essays, and deep-dives about loop models. Blogs can carry Loop Mechanism / focus / domain tags but stay in a single flat section rather than the paper taxonomy."
+  },
+  "categories": {
+    "analysis": {
+      "id": "analysis",
+      "title": "Theoretical and Mechanical Analysis",
+      "icon": "🔬",
+      "desc": "Analytical papers whose main artifact is understanding loop models: theory, mechanism analysis, diagnostics, formal properties, or interpretability.",
+      "readme_intro": "Theoretical and Mechanical Analysis collects papers whose primary contribution is analysis: why loop models work, what formal properties they have, and what mechanisms they exhibit.",
+      "children": {}
+    },
+    "designs": {
+      "id": "designs",
+      "title": "Architecture and Algorithm Designs",
+      "icon": "🏗️",
+      "desc": "Papers that propose loop-model architectures or algorithms, often to improve performance, efficiency, training, inference, or memory use.",
+      "readme_intro": "Architecture and Algorithm Designs collects the constructive side of the field: new looped architectures, algorithms, recurrent computation graphs, and efficiency or memory-compression methods.",
+      "children": {}
+    },
+    "applications": {
+      "id": "applications",
+      "title": "Applications Focused",
+      "icon": "🧪",
+      "desc": "Papers whose main reader takeaway is evidence that loop models work in a specific external domain or task, such as robotics, VLA, multimodal, tabular, or graph data.",
+      "readme_intro": "Applications Focused collects papers centered on applying loop models to concrete domains or tasks, including robotics, VLA, multimodal settings, tabular data, graph data, and other non-core benchmarks.",
+      "children": {}
+    }
+  },
+  "mechanism_tags": [
+    "hierarchical-loop",
+    "flat-loop",
+    "parallel-loop",
+    "implicit-layer"
+  ],
+  "focus_tags": [
+    "objective-loss",
+    "training-algorithm",
+    "architecture",
+    "data",
+    "inference-algorithm"
+  ],
+  "papers": [
+    {
+      "title": "Neural GPUs Learn Algorithms",
+      "authors": "Łukasz Kaiser, Ilya Sutskever",
+      "year": 2016,
+      "published_date": "2015-11-25",
+      "venue": "ICLR",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "Neural GPU"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Introduces Neural GPUs, a recurrent convolutional architecture that learns parallel algorithms like addition and multiplication through repeated application of a shared convolutional recurrent block.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/1511.08228",
+        "alphaxiv": "https://www.alphaxiv.org/abs/1511.08228"
+      },
+      "citations": 390,
+      "citation_sources": {
+        "semantic_scholar": 390,
+        "openalex": 188,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "1511.08228",
+      "source_file": "1511.08228.yaml",
+      "source_path": "papers/1511.08228.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Łukasz Kaiser",
+        "Ilya Sutskever"
+      ],
+      "venueClass": "venue-iclr",
+      "arxiv_id": "1511.08228"
+    },
+    {
+      "title": "Adaptive Computation Time for Recurrent Neural Networks",
+      "authors": "Alex Graves",
+      "year": 2016,
+      "published_date": "2016-03-29",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": true,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "sequence-modeling",
+        "efficiency"
+      ],
+      "tags": [
+        "ACT"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces ACT, allowing RNNs to learn how many computational steps to take per input, laying the groundwork for dynamic-depth recurrent computation.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/1603.08983",
+        "alphaxiv": "https://www.alphaxiv.org/abs/1603.08983"
+      },
+      "citations": 684,
+      "citation_sources": {
+        "semantic_scholar": 684,
+        "openalex": 361,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "1603.08983",
+      "source_file": "1603.08983.yaml",
+      "source_path": "papers/1603.08983.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Alex Graves"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "1603.08983"
+    },
+    {
+      "title": "Universal Transformers",
+      "authors": "Mostafa Dehghani, Stephan Gouws, Oriol Vinyals, Jakob Uszkoreit, Łukasz Kaiser",
+      "year": 2019,
+      "published_date": "2018-07-10",
+      "venue": "ICLR",
+      "category": "designs",
+      "foundation": true,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "UT"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Extends the standard Transformer with recurrent computation over depth via weight tying, enabling Turing-complete computation and combining the parallelism of Transformers with the inductive bias of RNNs.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/1807.03819",
+        "openreview": "https://openreview.net/forum?id=HyzdRiR9Y7",
+        "alphaxiv": "https://www.alphaxiv.org/abs/1807.03819"
+      },
+      "citations": 891,
+      "citation_sources": {
+        "semantic_scholar": 891,
+        "openalex": 396,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "1807.03819",
+      "source_file": "1807.03819.yaml",
+      "source_path": "papers/1807.03819.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Mostafa Dehghani",
+        "Stephan Gouws",
+        "Oriol Vinyals",
+        "Jakob Uszkoreit",
+        "Łukasz Kaiser"
+      ],
+      "venueClass": "venue-iclr",
+      "arxiv_id": "1807.03819",
+      "community_comments": [
+        {
+          "label": "Reza Bayat reading list (#3)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Reza Bayat reading list (#3)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Deep Equilibrium Models",
+      "authors": "Shaojie Bai, J. Zico Kolter, Vladlen Koltun",
+      "year": 2019,
+      "published_date": "2019-09-03",
+      "venue": "NeurIPS",
+      "category": "designs",
+      "foundation": true,
+      "mechanism_tags": [
+        "implicit-layer"
+      ],
+      "tags": [
+        "DEQ"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Proposes to directly solve for the fixed point of an infinite-depth network, enabling implicit-depth models that are memory-efficient and theoretically equivalent to infinitely deep recurrent networks.",
+      "links": {
+        "paper": "https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html",
+        "github": "https://github.com/locuslab/deq"
+      },
+      "citations": 839,
+      "citation_sources": {
+        "semantic_scholar": 839,
+        "openalex": 246,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "github_stars": 797,
+      "star_sources": {
+        "github_api": 797
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-04-20",
+      "id": "1909.01377",
+      "source_file": "1909.01377.yaml",
+      "source_path": "papers/1909.01377.yaml",
+      "entry_type": "paper",
+      "domain_tags": [],
+      "authors_list": [
+        "Shaojie Bai",
+        "J. Zico Kolter",
+        "Vladlen Koltun"
+      ],
+      "venueClass": "venue-neurips",
+      "arxiv_id": "1909.01377"
+    },
+    {
+      "title": "Multiscale Deep Equilibrium Models",
+      "authors": "Shaojie Bai, Vladlen Koltun, J. Zico Kolter",
+      "year": 2020,
+      "published_date": "2020-06-15",
+      "venue": "NeurIPS",
+      "category": "designs",
+      "mechanism_tags": [
+        "implicit-layer",
+        "hierarchical-loop"
+      ],
+      "domain_tags": [
+        "vision"
+      ],
+      "tags": [
+        "MDEQ"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Extends DEQ to multiscale hierarchical representations, achieving competitive performance on large-scale vision tasks.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2006.08656",
+        "paper": "https://proceedings.neurips.cc/paper/2020/hash/75ebb3f7b5e8e9d6a7f7e4a4c4f7c2a0-Abstract.html",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2006.08656"
+      },
+      "citations": 246,
+      "citation_sources": {
+        "semantic_scholar": 246,
+        "openalex": 53,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2006.08656",
+      "source_file": "2006.08656.yaml",
+      "source_path": "papers/2006.08656.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Shaojie Bai",
+        "Vladlen Koltun",
+        "J. Zico Kolter"
+      ],
+      "venueClass": "venue-neurips",
+      "arxiv_id": "2006.08656"
+    },
+    {
+      "title": "On Training Implicit Models",
+      "authors": "Zhengyang Geng, Xin-Yu Zhang, Shaojie Bai, Yisen Wang, Zhouchen Lin",
+      "year": 2021,
+      "published_date": "2021-11-09",
+      "venue": "NeurIPS",
+      "category": "designs",
+      "domain_tags": [
+        "efficiency"
+      ],
+      "mechanism_tags": [
+        "implicit-layer"
+      ],
+      "tags": [
+        "DEQ",
+        "phantom-gradient"
+      ],
+      "focus_tags": [
+        "training-algorithm"
+      ],
+      "desc": "Proposes phantom gradient, a lightweight backpropagation estimator for implicit (infinite-depth) models that uses damped unrolling and a truncated Neumann series to speed backward passes while matching or surpassing exact-gradient baselines on large-scale tasks.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2111.05177",
+        "paper": "https://proceedings.neurips.cc/paper/2021/hash/b0083e1a03ff2a5b6a0a2c4e0b1c3f0a-Abstract.html",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2111.05177"
+      },
+      "citations": 94,
+      "citation_sources": {
+        "semantic_scholar": 94,
+        "openalex": 13,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2111.05177",
+      "source_file": "2111.05177.yaml",
+      "source_path": "papers/2111.05177.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Zhengyang Geng",
+        "Xin-Yu Zhang",
+        "Shaojie Bai",
+        "Yisen Wang",
+        "Zhouchen Lin"
+      ],
+      "venueClass": "venue-neurips",
+      "arxiv_id": "2111.05177"
+    },
+    {
+      "title": "A Generalist Neural Algorithmic Learner",
+      "authors": "Borja Ibarz, Vitaly Kurin, George Papamakarios, Kyriacos Nikiforou, Mehdi Bennani, Róbert Csordás, Andrew Dudzik, Matko Bošnjak, Alex Vitvitskyi, Yulia Rubanova, Andreea Deac, Beatrice Bevilacqua, Yaroslav Ganin, Charles Blundell, Petar Veličković",
+      "year": 2022,
+      "published_date": "2022-09-22",
+      "venue": "LoG",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "generalist-processor"
+      ],
+      "focus_tags": [
+        "architecture",
+        "data"
+      ],
+      "desc": "Presents a single GNN model trained on 30+ algorithms from the CLRS benchmark, demonstrating that a shared recurrent architecture can generalize across diverse algorithmic tasks.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2209.11142",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2209.11142"
+      },
+      "citations": 67,
+      "citation_sources": {
+        "semantic_scholar": 67,
+        "openalex": 7,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2209.11142",
+      "source_file": "2209.11142.yaml",
+      "source_path": "papers/2209.11142.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Borja Ibarz",
+        "Vitaly Kurin",
+        "George Papamakarios",
+        "Kyriacos Nikiforou",
+        "Mehdi Bennani",
+        "Róbert Csordás",
+        "Andrew Dudzik",
+        "Matko Bošnjak",
+        "Alex Vitvitskyi",
+        "Yulia Rubanova",
+        "Andreea Deac",
+        "Beatrice Bevilacqua",
+        "Yaroslav Ganin",
+        "Charles Blundell",
+        "Petar Veličković"
+      ],
+      "venueClass": "venue-log",
+      "arxiv_id": "2209.11142"
+    },
+    {
+      "title": "Looped Transformers as Programmable Computers",
+      "authors": "Angeliki Giannou, Shashank Rajput, Jy-yong Sohn, Kangwook Lee, Jason D. Lee, Dimitris Papailiopoulos",
+      "year": 2023,
+      "published_date": "2023-01-30",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "looped-transformer",
+        "programmable-computer"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Shows that a shallow looped transformer can emulate instruction-set computation and iterative algorithms such as SGD or matrix inversion, with the recurrence acting as a reusable program counter.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2301.13196",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2301.13196"
+      },
+      "citations": 167,
+      "citation_sources": {
+        "semantic_scholar": 167,
+        "openalex": 3,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-17",
+      "id": "2301.13196",
+      "source_file": "2301.13196.yaml",
+      "source_path": "papers/2301.13196.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Angeliki Giannou",
+        "Shashank Rajput",
+        "Jy-yong Sohn",
+        "Kangwook Lee",
+        "Jason D. Lee",
+        "Dimitris Papailiopoulos"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2301.13196",
+      "community_comments": [
+        {
+          "label": "Reza Bayat reading list (#4)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Reza Bayat reading list (#4)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ]
+    },
+    {
+      "title": "CoTFormer: A Chain-of-Thought Driven Architecture with Budget-Adaptive Computation Cost at Inference",
+      "authors": "Amirkeivan Mohtashami, Matteo Pagliardini, Martin Jaggi",
+      "year": 2023,
+      "published_date": "2023-10-16",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "CoTFormer"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Recasts chain-of-thought as recurrent depth inside a token-level transformer, using token-wise adaptive computation to spend extra iterations only where additional reasoning budget helps.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2310.10845",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2310.10845"
+      },
+      "citations": 8,
+      "citation_sources": {
+        "semantic_scholar": 8,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-17",
+      "id": "2310.10845",
+      "source_file": "2310.10845.yaml",
+      "source_path": "papers/2310.10845.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Amirkeivan Mohtashami",
+        "Matteo Pagliardini",
+        "Martin Jaggi"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2310.10845"
+    },
+    {
+      "title": "Looped Transformers are Better at Learning Learning Algorithms",
+      "authors": "Liu Yang, Kangwook Lee, Robert Nowak, Dimitris Papailiopoulos",
+      "year": 2024,
+      "published_date": "2023-11-21",
+      "venue": "ICLR",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "looped-transformer"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Proposes looped-transformer training for in-context data-fitting tasks, showing comparable performance to standard transformers with under 10% of the parameters by better matching iterative learning algorithms.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2311.12424",
+        "openreview": "https://openreview.net/forum?id=HHbRxoDTxE",
+        "github": "https://github.com/Leiay/looped_transformer",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2311.12424"
+      },
+      "citations": 79,
+      "citation_sources": {
+        "semantic_scholar": 79,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "github_stars": 41,
+      "star_sources": {
+        "github_api": 41
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-04-20",
+      "id": "2311.12424",
+      "source_file": "2311.12424.yaml",
+      "source_path": "papers/2311.12424.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Liu Yang",
+        "Kangwook Lee",
+        "Robert Nowak",
+        "Dimitris Papailiopoulos"
+      ],
+      "venueClass": "venue-iclr",
+      "arxiv_id": "2311.12424",
+      "community_comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2033023167044727049?s=20"
+        },
+        {
+          "label": "Reza Bayat reading list (#5)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2033023167044727049?s=20"
+        },
+        {
+          "label": "Reza Bayat reading list (#5)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ]
+    },
+    {
+      "title": "AlgoFormer: An Efficient Transformer Framework with Algorithmic Structures",
+      "authors": "Yihang Gao, Chuanyang Zheng, Enze Xie, Han Shi, Tianyang Hu, Yu Li, Michael K. Ng, Zhenguo Li, Zhaoqiang Liu",
+      "year": 2024,
+      "published_date": "2024-02-21",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "AlgoFormer"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Splits computation into pre-, loop-, and post-transformer stages, showing that structured recurrent depth can outperform standard and vanilla looped transformers on algorithmic and language tasks.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2402.13572",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2402.13572"
+      },
+      "citations": 8,
+      "citation_sources": {
+        "semantic_scholar": 8,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-17",
+      "id": "2402.13572",
+      "source_file": "2402.13572.yaml",
+      "source_path": "papers/2402.13572.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Yihang Gao",
+        "Chuanyang Zheng",
+        "Enze Xie",
+        "Han Shi",
+        "Tianyang Hu",
+        "Yu Li",
+        "Michael K. Ng",
+        "Zhenguo Li",
+        "Zhaoqiang Liu"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2402.13572"
+    },
+    {
+      "title": "MoEUT: Mixture-of-Experts Universal Transformers",
+      "authors": "Róbert Csordás, Kazuki Irie, Jürgen Schmidhuber, Christopher Potts, Christopher D. Manning",
+      "year": 2024,
+      "published_date": "2024-05-25",
+      "added_date": "2026-04-20",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop",
+        "hierarchical-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "MoEUT",
+        "UT",
+        "MoR"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Introduces MoEUT, a mixture-of-experts Universal Transformer that combines shared recurrent depth with expert routing to improve language modeling while using less compute and memory than comparable baselines.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2405.16039",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2405.16039"
+      },
+      "citations": 34,
+      "citation_sources": {
+        "semantic_scholar": 34,
+        "openalex": 1,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "2405.16039",
+      "source_file": "2405.16039.yaml",
+      "source_path": "papers/2405.16039.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Róbert Csordás",
+        "Kazuki Irie",
+        "Jürgen Schmidhuber",
+        "Christopher Potts",
+        "Christopher D. Manning"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2405.16039"
+    },
+    {
+      "title": "On Expressive Power of Looped Transformers: Theoretical Analysis and Enhancement via Timestep Encoding",
+      "authors": "Kevin Xu, Issei Sato",
+      "year": 2024,
+      "published_date": "2024-10-02",
+      "added_date": "2026-04-21",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "theory"
+      ],
+      "tags": [
+        "looped-transformer",
+        "timestep-encoding"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Analyzes the expressive power of looped transformers, derives approximation-rate limits, and shows that timestep encoding improves their function-approximation behavior.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2410.01405",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2410.01405"
+      },
+      "citations": 13,
+      "citation_sources": {
+        "semantic_scholar": 13,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-22",
+      "id": "2410.01405",
+      "source_file": "2410.01405.yaml",
+      "source_path": "papers/2410.01405.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Kevin Xu",
+        "Issei Sato"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2410.01405"
+    },
+    {
+      "title": "Relaxed Recursive Transformers: Effective Parameter Sharing with Layer-wise LoRA",
+      "authors": "Sangmin Bae, Adam Fisch, Hrayr Harutyunyan, Ziwei Ji, Seungyeon Kim, Tal Schuster",
+      "year": 2025,
+      "published_date": "2024-10-28",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "hierarchical-loop"
+      ],
+      "domain_tags": [
+        "language-modeling"
+      ],
+      "tags": [
+        "recursive-transformer",
+        "LoRA"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Presents Relaxed Recursive Transformers as a parameter-sharing conversion and uptraining recipe that turns pretrained LLMs into compact recursive models using layer tying and layer-wise LoRA while preserving performance and improving deployment efficiency.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2410.20672",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2410.20672"
+      },
+      "citations": 32,
+      "citation_sources": {
+        "semantic_scholar": 32,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "2410.20672",
+      "source_file": "2410.20672.yaml",
+      "source_path": "papers/2410.20672.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Sangmin Bae",
+        "Adam Fisch",
+        "Hrayr Harutyunyan",
+        "Ziwei Ji",
+        "Seungyeon Kim",
+        "Tal Schuster"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2410.20672",
+      "community_comments": [
+        {
+          "label": "Reza Bayat reading list (#11)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Reza Bayat reading list (#11)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach",
+      "authors": "Jonas Geiping, Sean McLeish, Neel Jain, John Kirchenbauer, Siddharth Singh, Brian R. Bartoldson, Bhavya Kailkhura, Abhinav Bhatele, Tom Goldstein",
+      "year": 2025,
+      "published_date": "2025-02-07",
+      "venue": "NeurIPS",
+      "must_read": true,
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "Huginn"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Presents Huginn, a recurrent-depth transformer (3.5B params) that iterates a single block up to 64 times per token, achieving strong reasoning performance that scales with additional test-time compute.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2502.05171",
+        "hf": "https://huggingface.co/tomg-group-umd/huginn-0125",
+        "github": "https://github.com/seal-rg/recurrent-pretraining",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2502.05171"
+      },
+      "citations": 191,
+      "citation_sources": {
+        "semantic_scholar": 191,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "github_stars": 872,
+      "star_sources": {
+        "github_api": 872
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-04-20",
+      "id": "2502.05171",
+      "source_file": "2502.05171.yaml",
+      "source_path": "papers/2502.05171.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Jonas Geiping",
+        "Sean McLeish",
+        "Neel Jain",
+        "John Kirchenbauer",
+        "Siddharth Singh",
+        "Brian R. Bartoldson",
+        "Bhavya Kailkhura",
+        "Abhinav Bhatele",
+        "Tom Goldstein"
+      ],
+      "venueClass": "venue-neurips",
+      "arxiv_id": "2502.05171",
+      "community_comments": [
+        {
+          "label": "Reza Bayat reading list (#9)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Reza Bayat reading list (#9)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Implicit Language Models are RNNs: Balancing Parallelization and Expressivity",
+      "authors": "Mark Schöne, Babak Rahmani, Heiner Kremer, Fabian Falck, Hitesh Ballani, Jannes Gladrow",
+      "year": 2025,
+      "published_date": "2025-02-10",
+      "venue": "ICML",
+      "category": "designs",
+      "mechanism_tags": [
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "implicit-ssm"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces implicit state-space language models that iterate a shared transition toward a fixed point, recovering RNN-like expressivity while retaining mostly parallel training.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2502.07827",
+        "openreview": "https://openreview.net/forum?id=5EbiopWH6e",
+        "github": "https://github.com/microsoft/implicit_languagemodels",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2502.07827"
+      },
+      "citations": 19,
+      "citation_sources": {
+        "semantic_scholar": 19,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "github_stars": 10,
+      "star_sources": {
+        "github_api": 10
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-04-17",
+      "id": "2502.07827",
+      "source_file": "2502.07827.yaml",
+      "source_path": "papers/2502.07827.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Mark Schöne",
+        "Babak Rahmani",
+        "Heiner Kremer",
+        "Fabian Falck",
+        "Hitesh Ballani",
+        "Jannes Gladrow"
+      ],
+      "venueClass": "venue-icml",
+      "arxiv_id": "2502.07827"
+    },
+    {
+      "title": "Reasoning with Latent Thoughts: On the Power of Looped Transformers",
+      "authors": "Nikunj Saunshi, Nishanth Dikkala, Zhiyuan Li, Sanjiv Kumar, Sashank J. Reddi",
+      "year": 2025,
+      "published_date": "2025-02-24",
+      "venue": "ICLR",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "latent-thoughts",
+        "looped-transformer"
+      ],
+      "focus_tags": [
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Studies looped transformers as reasoning models, showing effective-depth scaling, latent-thought simulation of chain-of-thought, and a looping-based regularizer that improves the reasoning-versus-memorization trade-off.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2502.17416",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2502.17416"
+      },
+      "citations": 108,
+      "citation_sources": {
+        "semantic_scholar": 108,
+        "openalex": 1,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-17",
+      "id": "2502.17416",
+      "source_file": "2502.17416.yaml",
+      "source_path": "papers/2502.17416.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Nikunj Saunshi",
+        "Nishanth Dikkala",
+        "Zhiyuan Li",
+        "Sanjiv Kumar",
+        "Sashank J. Reddi"
+      ],
+      "venueClass": "venue-iclr",
+      "arxiv_id": "2502.17416",
+      "community_comments": [
+        {
+          "label": "Reza Bayat reading list (#7)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Reza Bayat reading list (#7)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Hierarchical Reasoning Model",
+      "authors": "Guan Wang, Jin Li, Yuhao Sun, Xing Chen, Changling Liu, Yue Wu, Meng Lu, Sen Song, Yasin Abbasi Yadkori",
+      "year": 2025,
+      "published_date": "2025-06-26",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "hierarchical-loop",
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "HRM"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Proposes HRM, a brain-inspired recurrent architecture with two coupled modules at different timescales: a high-level module for abstract planning and a low-level module for detailed execution.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2506.21734",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2506.21734"
+      },
+      "citations": 78,
+      "citation_sources": {
+        "semantic_scholar": 78,
+        "openalex": 2,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "2506.21734",
+      "source_file": "2506.21734.yaml",
+      "source_path": "papers/2506.21734.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Guan Wang",
+        "Jin Li",
+        "Yuhao Sun",
+        "Xing Chen",
+        "Changling Liu",
+        "Yue Wu",
+        "Meng Lu",
+        "Sen Song",
+        "Yasin Abbasi Yadkori"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2506.21734"
+    },
+    {
+      "title": "Latent Chain-of-Thought? Decoding the Depth-Recurrent Transformer",
+      "authors": "Wenquan Lu, Yuechuan Yang, Kyle Lee, Yanshu Li, Enqi Liu",
+      "year": 2025,
+      "published_date": "2025-07-02",
+      "added_date": "2026-04-21",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "depth-recurrent",
+        "latent-cot"
+      ],
+      "focus_tags": [
+        "inference-algorithm"
+      ],
+      "desc": "Probes a depth-recurrent Transformer to test whether latent chain-of-thought structure emerges across recurrence steps, finding limited evidence and recurrence-depth-dependent interpretability effects.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2507.02199",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2507.02199"
+      },
+      "citations": 5,
+      "citation_sources": {
+        "semantic_scholar": 5,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-22",
+      "id": "2507.02199",
+      "source_file": "2507.02199.yaml",
+      "source_path": "papers/2507.02199.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Wenquan Lu",
+        "Yuechuan Yang",
+        "Kyle Lee",
+        "Yanshu Li",
+        "Enqi Liu"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2507.02199"
+    },
+    {
+      "title": "Skip a Layer or Loop it? Test-Time Depth Adaptation of Pretrained LLMs",
+      "authors": "Ziyue Li, Yang Li, Tianyi Zhou",
+      "year": 2025,
+      "published_date": "2025-07-10",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "CoLa"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Proposes Chain-of-Layers (CoLa), an inference-time search method that skips or repeats pretrained LLM layers per sample via MCTS to improve efficiency and reasoning accuracy.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2507.07996",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2507.07996"
+      },
+      "citations": 4,
+      "citation_sources": {
+        "semantic_scholar": 4,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2507.07996",
+      "source_file": "2507.07996.yaml",
+      "source_path": "papers/2507.07996.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Ziyue Li",
+        "Yang Li",
+        "Tianyi Zhou"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2507.07996",
+      "community_comments": [
+        {
+          "label": "X Comment",
+          "url": "https://x.com/huskydogewoof/status/2037024461145215106?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "X Comment",
+          "url": "https://x.com/huskydogewoof/status/2037024461145215106?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Mixture-of-Recursions: Learning Dynamic Recursive Depths for Adaptive Token-Level Computation",
+      "authors": "Sangmin Bae, Yujin Kim, Reza Bayat, Sungnyun Kim, Jiyoun Ha, Tal Schuster, Adam Fisch, Hrayr Harutyunyan, Ziwei Ji, Aaron Courville, Se-Young Yun",
+      "year": 2025,
+      "published_date": "2025-07-14",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "hierarchical-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "MoR"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm",
+        "training-algorithm"
+      ],
+      "desc": "Introduces Mixture-of-Recursions, a recursive transformer with token-level routing that adapts recursion depth and active-token attention so easy tokens exit early while hard tokens keep thinking.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2507.10524",
+        "github": "https://github.com/raymin0223/mixture_of_recursions",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2507.10524"
+      },
+      "citations": 47,
+      "citation_sources": {
+        "semantic_scholar": 47,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "github_stars": 564,
+      "star_sources": {
+        "github_api": 564
+      },
+      "star_source_best": "github_api",
+      "id": "2507.10524",
+      "source_file": "2507.10524.yaml",
+      "source_path": "papers/2507.10524.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Sangmin Bae",
+        "Yujin Kim",
+        "Reza Bayat",
+        "Sungnyun Kim",
+        "Jiyoun Ha",
+        "Tal Schuster",
+        "Adam Fisch",
+        "Hrayr Harutyunyan",
+        "Ziwei Ji",
+        "Aaron Courville",
+        "Se-Young Yun"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2507.10524",
+      "community_comments": [
+        {
+          "label": "Reza Bayat reading list (#12)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Reza Bayat reading list (#12)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Two-Scale Latent Dynamics for Recurrent-Depth Transformers",
+      "authors": "Francesco Pappone, Donato Crisostomi, Emanuele Rodolà",
+      "year": 2025,
+      "published_date": "2025-09-27",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "ACT"
+      ],
+      "focus_tags": [
+        "inference-algorithm"
+      ],
+      "desc": "Analyzes recurrent-depth transformers through a two-scale latent-dynamics lens, showing shrinking and increasingly orthogonal loop updates and deriving a second-order early-exit criterion that improves latency-quality trade-offs.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2509.23314",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2509.23314"
+      },
+      "citations": 1,
+      "citation_sources": {
+        "semantic_scholar": 1,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "2509.23314",
+      "source_file": "2509.23314.yaml",
+      "source_path": "papers/2509.23314.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Francesco Pappone",
+        "Donato Crisostomi",
+        "Emanuele Rodolà"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2509.23314"
+    },
+    {
+      "title": "Less is More: Recursive Reasoning with Tiny Networks",
+      "authors": "Alexia Jolicoeur-Martineau",
+      "year": 2025,
+      "published_date": "2025-10-06",
+      "added_date": "2026-04-20",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "hierarchical-loop",
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "reasoning"
+      ],
+      "tags": [
+        "TRM"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm",
+        "training-algorithm"
+      ],
+      "desc": "Proposes Tiny Recursive Model (TRM), a single tiny network that recursively refines latent state and answer over multiple improvement steps, outperforming HRM and many larger models on ARC-AGI-style reasoning tasks.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2510.04871",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2510.04871"
+      },
+      "citations": 4,
+      "citation_sources": {
+        "openalex": 4,
+        "opencitations": 0
+      },
+      "citation_source_best": "openalex",
+      "metrics_updated": "2026-04-21",
+      "id": "2510.04871",
+      "source_file": "2510.04871.yaml",
+      "source_path": "papers/2510.04871.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Alexia Jolicoeur-Martineau"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2510.04871"
+    },
+    {
+      "title": "Parallel Loop Transformer for Efficient Test-Time Computation Scaling",
+      "authors": "Bohong Wu, Mengzhao Chen, Xiang Luo, Shen Yan, Qifan Yu, Fan Xia, Tianqi Zhang, Hongrui Zhan, Zheng Zhong, Xun Zhou, Siyuan Qiao, Xingyan Bin",
+      "year": 2025,
+      "published_date": "2025-10-28",
+      "added_date": "2026-04-21",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "parallel-loop",
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "kv-cache-sharing"
+      ],
+      "focus_tags": [
+        "inference-algorithm"
+      ],
+      "desc": "Introduces the Parallel Loop Transformer, which preserves looped-model accuracy while reducing latency and memory through cross-loop parallelism and shared-loop KV representations.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2510.24824",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2510.24824"
+      },
+      "citations": 8,
+      "citation_sources": {
+        "semantic_scholar": 8,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-22",
+      "id": "2510.24824",
+      "source_file": "2510.24824.yaml",
+      "source_path": "papers/2510.24824.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Bohong Wu",
+        "Mengzhao Chen",
+        "Xiang Luo",
+        "Shen Yan",
+        "Qifan Yu",
+        "Fan Xia",
+        "Tianqi Zhang",
+        "Hongrui Zhan",
+        "Zheng Zhong",
+        "Xun Zhou",
+        "Siyuan Qiao",
+        "Xingyan Bin"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2510.24824"
+    },
+    {
+      "title": "Scaling Latent Reasoning via Looped Language Models",
+      "authors": "Rui-Jie Zhu, Zixuan Wang, Kai Hua, Tianyu Zhang, Ziniu Li, Haoran Que, Boyi Wei, Zixin Wen, Fan Yin, He Xing, Lu Li, Jiajun Shi, Kaijing Ma, Shanda Li, Taylor Kergan, Andrew Smith, Xingwei Qu, Mude Hui, Bohong Wu, Qiyang Min, Hongzhi Huang, Xun Zhou, Wei Ye, Jiaheng Liu, Jian Yang, Yunfeng Shi, Chenghua Lin, Enduo Zhao, Tianle Cai, Ge Zhang, Wenhao Huang, Yoshua Bengio, Jason Eshraghian",
+      "year": 2025,
+      "must_read": true,
+      "published_date": "2025-10-29",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "Ouro"
+      ],
+      "focus_tags": [
+        "objective-loss",
+        "architecture",
+        "data",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces Ouro, a family of pre-trained Looped Language Models (1.4B and 2.6B) that match the performance of 12B standard LLMs. Establishes loop depth as a third scaling axis beyond model size and data.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2510.25741",
+        "project": "https://ouro-llm.github.io/",
+        "hf": "https://huggingface.co/ByteDance/Ouro-1.4B",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2510.25741"
+      },
+      "citations": 34,
+      "citation_sources": {
+        "semantic_scholar": 34,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "2510.25741",
+      "source_file": "2510.25741.yaml",
+      "source_path": "papers/2510.25741.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Rui-Jie Zhu",
+        "Zixuan Wang",
+        "Kai Hua",
+        "Tianyu Zhang",
+        "Ziniu Li",
+        "Haoran Que",
+        "Boyi Wei",
+        "Zixin Wen",
+        "Fan Yin",
+        "He Xing",
+        "Lu Li",
+        "Jiajun Shi",
+        "Kaijing Ma",
+        "Shanda Li",
+        "Taylor Kergan",
+        "Andrew Smith",
+        "Xingwei Qu",
+        "Mude Hui",
+        "Bohong Wu",
+        "Qiyang Min",
+        "Hongzhi Huang",
+        "Xun Zhou",
+        "Wei Ye",
+        "Jiaheng Liu",
+        "Jian Yang",
+        "Yunfeng Shi",
+        "Chenghua Lin",
+        "Enduo Zhao",
+        "Tianle Cai",
+        "Ge Zhang",
+        "Wenhao Huang",
+        "Yoshua Bengio",
+        "Jason Eshraghian"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2510.25741",
+      "community_comments": [
+        {
+          "label": "Reza Bayat reading list (#10)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Reza Bayat reading list (#10)",
+          "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Universal Reasoning Model",
+      "authors": "Zitian Gao, Lynx Chen, Yihao Xiao, He Xing, Ran Tao, Haoming Luo, Joey Zhou, Bryan Dai",
+      "year": 2025,
+      "published_date": "2025-12-16",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "algorithmic-reasoning",
+        "reasoning"
+      ],
+      "tags": [
+        "URM"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Proposes URM, a Universal Transformer-based architecture with weight tying that beats standard transformers on reasoning benchmarks through iterative depth computation.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2512.14693",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2512.14693"
+      },
+      "citations": 2,
+      "citation_sources": {
+        "semantic_scholar": 2,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2512.14693",
+      "source_file": "2512.14693.yaml",
+      "source_path": "papers/2512.14693.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Zitian Gao",
+        "Lynx Chen",
+        "Yihao Xiao",
+        "He Xing",
+        "Ran Tao",
+        "Haoming Luo",
+        "Joey Zhou",
+        "Bryan Dai"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2512.14693"
+    },
+    {
+      "title": "Depth-Recurrent Attention Mixtures: Giving Latent Reasoning the Attention it Deserves",
+      "authors": "Jonas Knupp, Jan Hendrik Metzen, Jeremias Bohn, Georg Groh, Kristian Kersting",
+      "year": 2026,
+      "published_date": "2026-01-29",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "parallel-loop",
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "attention-mixture"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces a modular framework combining sequence attention and depth attention for recurrent-depth models, improving FLOP-, parameter-, and memory-efficiency simultaneously.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2601.21582",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2601.21582"
+      },
+      "citations": 2,
+      "citation_sources": {
+        "semantic_scholar": 2,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2601.21582",
+      "source_file": "2601.21582.yaml",
+      "source_path": "papers/2601.21582.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Jonas Knupp",
+        "Jan Hendrik Metzen",
+        "Jeremias Bohn",
+        "Georg Groh",
+        "Kristian Kersting"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2601.21582",
+      "community_comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2031585611262386670?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2031585611262386670?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Inverse Depth Scaling From Most Layers Being Similar",
+      "authors": "Yizhou Liu, Sara Kangaslahti, Ziming Liu, Jeff Gore",
+      "year": 2026,
+      "published_date": "2026-02-05",
+      "added_date": "2026-04-24",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "theory"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Analyzes LLMs and toy residual networks to show loss scales inversely with depth when many layers are functionally similar and primarily reduce error via ensemble averaging.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2602.05970",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2602.05970"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-24",
+      "id": "2602.05970",
+      "source_file": "2602.05970.yaml",
+      "source_path": "papers/2602.05970.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "tags": [],
+      "authors_list": [
+        "Yizhou Liu",
+        "Sara Kangaslahti",
+        "Ziming Liu",
+        "Jeff Gore"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2602.05970",
+      "community_comments": [
+        {
+          "label": "X Comment",
+          "url": "https://x.com/huskydogewoof/status/2034158020322574556?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "X Comment",
+          "url": "https://x.com/huskydogewoof/status/2034158020322574556?s=20"
+        }
+      ]
+    },
+    {
+      "title": "On the Role of Iterative Computation in Reinforcement Learning",
+      "authors": "Raj Ghugare, Michał Bortkiewicz, Alicja Ziarko, Benjamin Eysenbach",
+      "year": 2026,
+      "published_date": "2026-02-05",
+      "venue": "arXiv",
+      "category": "applications",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "rl-control"
+      ],
+      "tags": [
+        "compute-bounded-policy"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm",
+        "training-algorithm"
+      ],
+      "desc": "Formalizes compute-bounded RL policies and introduces a minimal variable-compute architecture, showing that extra iterative computation improves performance and longer-horizon generalization across 31 online and offline RL tasks.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2602.05999",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2602.05999"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2602.05999",
+      "source_file": "2602.05999.yaml",
+      "source_path": "papers/2602.05999.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Raj Ghugare",
+        "Michał Bortkiewicz",
+        "Alicja Ziarko",
+        "Benjamin Eysenbach"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2602.05999"
+    },
+    {
+      "title": "Recurrent-Depth VLA: Implicit Test-Time Compute Scaling of Vision-Language-Action Models via Latent Iterative Reasoning",
+      "authors": "Yalcin Tur, Jalal Naghiyev, Haoquan Fang, Wei-Chuan Tsai, Jiafei Duan, Dieter Fox, Ranjay Krishna",
+      "year": 2026,
+      "published_date": "2026-02-08",
+      "venue": "arXiv",
+      "category": "applications",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "robotics-vla"
+      ],
+      "tags": [
+        "RD-VLA"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces RD-VLA, a vision-language-action architecture with a weight-tied recurrent action head and adaptive stopping, enabling latent test-time compute scaling for robotics with constant memory footprint.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2602.07845",
+        "github": "https://github.com/rd-vla/rd-vla",
+        "project": "https://rd-vla.github.io/",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2602.07845"
+      },
+      "citations": 1,
+      "citation_sources": {
+        "semantic_scholar": 1,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "github_stars": 28,
+      "star_sources": {
+        "github_api": 28
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-04-14",
+      "id": "2602.07845",
+      "source_file": "2602.07845.yaml",
+      "source_path": "papers/2602.07845.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Yalcin Tur",
+        "Jalal Naghiyev",
+        "Haoquan Fang",
+        "Wei-Chuan Tsai",
+        "Jiafei Duan",
+        "Dieter Fox",
+        "Ranjay Krishna"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2602.07845"
+    },
+    {
+      "title": "Understanding Dynamic Compute Allocation in Recurrent Transformers",
+      "authors": "Ibraheem Muhammad Moosa, Suhas Lohit, Ye Wang, Moitreya Chatterjee, Wenpeng Yin",
+      "year": 2026,
+      "published_date": "2026-02-09",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "algorithmic-reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "ANIRA"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Proposes ANIRA, a recurrent Transformer framework for per-token variable-depth computation, and shows adaptive compute can align with token complexity while failing to extrapolate to longer algorithmic inputs.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2602.08864",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2602.08864"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2602.08864",
+      "source_file": "2602.08864.yaml",
+      "source_path": "papers/2602.08864.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Ibraheem Muhammad Moosa",
+        "Suhas Lohit",
+        "Ye Wang",
+        "Moitreya Chatterjee",
+        "Wenpeng Yin"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2602.08864",
+      "community_comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2031044736182616081?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2031044736182616081?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Looping Back to Move Forward: Recursive Transformers for Efficient and Flexible Large Multimodal Models",
+      "authors": "Ruihan Xu, Yuting Gao, Lan Wang, Jianing Li, Weihao Chen, Qingpei Guo, Ming Yang, Shiliang Zhang",
+      "year": 2026,
+      "published_date": "2026-02-09",
+      "added_date": "2026-04-20",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "hierarchical-loop"
+      ],
+      "domain_tags": [
+        "vision",
+        "efficiency"
+      ],
+      "tags": [
+        "RecursiveVLM",
+        "multimodal"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces RecursiveVLM, a recursive multimodal transformer with a recursive connector and monotonic recursion loss that enables on-demand extra refinement under varying compute budgets.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2602.09080",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2602.09080"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "2602.09080",
+      "source_file": "2602.09080.yaml",
+      "source_path": "papers/2602.09080.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Ruihan Xu",
+        "Yuting Gao",
+        "Lan Wang",
+        "Jianing Li",
+        "Weihao Chen",
+        "Qingpei Guo",
+        "Ming Yang",
+        "Shiliang Zhang"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2602.09080"
+    },
+    {
+      "title": "Prioritize the Process, Not Just the Outcome: Rewarding Latent Thought Trajectories Improves Reasoning in Looped Language Models",
+      "authors": "Jonathan Williams, Esin Tureci",
+      "year": 2026,
+      "published_date": "2026-02-11",
+      "added_date": "2026-04-20",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "RLTT",
+        "LoopLM"
+      ],
+      "focus_tags": [
+        "objective-loss",
+        "training-algorithm"
+      ],
+      "desc": "Introduces RLTT, a reinforcement-learning objective that assigns reward across the full latent thought trajectory of looped language models rather than only the final latent state.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2602.10520",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2602.10520"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "2602.10520",
+      "source_file": "2602.10520.yaml",
+      "source_path": "papers/2602.10520.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Jonathan Williams",
+        "Esin Tureci"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2602.10520"
+    },
+    {
+      "title": "LoopFormer: Elastic-Depth Looped Transformers for Latent Reasoning via Shortcut Modulation",
+      "authors": "Ahmadreza Jeddi, Marco Ciccone, Babak Taati",
+      "year": 2026,
+      "published_date": "2026-02-11",
+      "venue": "ICLR",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "LoopFormer",
+        "ACT"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces LoopFormer, trained on variable-length trajectories to enable budget-conditioned reasoning. Uses shortcut-consistency regularization to ensure stable internal trajectories across different loop depths.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2602.11451",
+        "github": "https://github.com/armenjeddi/loopformer",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2602.11451"
+      },
+      "citations": 1,
+      "citation_sources": {
+        "semantic_scholar": 1,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "github_stars": 13,
+      "star_sources": {
+        "github_api": 13
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-04-20",
+      "id": "2602.11451",
+      "source_file": "2602.11451.yaml",
+      "source_path": "papers/2602.11451.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Ahmadreza Jeddi",
+        "Marco Ciccone",
+        "Babak Taati"
+      ],
+      "venueClass": "venue-iclr",
+      "arxiv_id": "2602.11451"
+    },
+    {
+      "title": "SpiralFormer: Looped Transformers Can Learn Hierarchical Dependencies via Multi-Resolution Recursion",
+      "authors": "Chengting Yu, Xiaobo Shu, Yadao Wang, Yizhen Zhang, Haoyi Wu, You Wu, Rujiao Long, Ziheng Chen, Yuchi Xu, Wenbo Su, Bo Zheng",
+      "year": 2026,
+      "published_date": "2026-02-12",
+      "added_date": "2026-04-20",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "hierarchical-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "SpiralFormer",
+        "multi-resolution-recursion"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces SpiralFormer, a looped transformer that applies shared layers under a multi-resolution recursion schedule to learn hierarchical dependencies more efficiently than fixed-resolution recurrent baselines.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2602.11698",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2602.11698"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "2602.11698",
+      "source_file": "2602.11698.yaml",
+      "source_path": "papers/2602.11698.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Chengting Yu",
+        "Xiaobo Shu",
+        "Yadao Wang",
+        "Yizhen Zhang",
+        "Haoyi Wu",
+        "You Wu",
+        "Rujiao Long",
+        "Ziheng Chen",
+        "Yuchi Xu",
+        "Wenbo Su",
+        "Bo Zheng"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2602.11698"
+    },
+    {
+      "title": "AdaPonderLM: Gated Pondering Language Models with Token-Wise Adaptive Depth",
+      "authors": "Shixiang Song, He Li, Zitong Wang, Boyi Zeng, Feichen Song, Yixuan Wang, Zhiqin John Xu, Ziwei He, Zhouhan Lin",
+      "year": 2026,
+      "published_date": "2026-03-02",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "AdaPonderLM"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces AdaPonderLM, a self-supervised recurrent language model with token-wise halting gates and KV reuse, allocating more loop steps to hard tokens under a fixed compute budget.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2603.01914",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2603.01914"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-17",
+      "id": "2603.01914",
+      "source_file": "2603.01914.yaml",
+      "source_path": "papers/2603.01914.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Shixiang Song",
+        "He Li",
+        "Zitong Wang",
+        "Boyi Zeng",
+        "Feichen Song",
+        "Yixuan Wang",
+        "Zhiqin John Xu",
+        "Ziwei He",
+        "Zhouhan Lin"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2603.01914"
+    },
+    {
+      "title": "Mixture of Universal Experts: Scaling Virtual Width via Depth-Width Transformation",
+      "authors": "Yilong Chen, Naibin Gu, Junyuan Shang, Zhenyu Zhang, Yuchen Feng, Jiawei Sheng, Tingwen Liu, Shuohuan Wang, Yu Sun, Hua Wu, Haifeng Wang",
+      "year": 2026,
+      "published_date": "2026-03-05",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "efficiency"
+      ],
+      "tags": [
+        "MOUE"
+      ],
+      "focus_tags": [
+        "objective-loss",
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Proposes MOUE, which reuses a universal layer-agnostic expert pool across layers to transform depth into virtual width and improve MoE performance under fixed activation budgets.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2603.04971",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2603.04971"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2603.04971",
+      "source_file": "2603.04971.yaml",
+      "source_path": "papers/2603.04971.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Yilong Chen",
+        "Naibin Gu",
+        "Junyuan Shang",
+        "Zhenyu Zhang",
+        "Yuchen Feng",
+        "Jiawei Sheng",
+        "Tingwen Liu",
+        "Shuohuan Wang",
+        "Yu Sun",
+        "Hua Wu",
+        "Haifeng Wang"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2603.04971",
+      "community_comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2031847931993608673?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2031847931993608673?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Recursive Inference Machines for Neural Reasoning",
+      "authors": "Mieszko Komisarczyk, Saurabh Mathur, Maurice Kraus, Sriraam Natarajan, Kristian Kersting",
+      "year": 2026,
+      "published_date": "2026-03-05",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "hierarchical-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "RL"
+      ],
+      "tags": [
+        "RIM"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces Recursive Inference Machines, a recurrent reasoning framework that casts TRMs as a special case and improves ARC-AGI, Sudoku, and tabular classification by reweighting the history of loop states.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2603.05234",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2603.05234"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2603.05234",
+      "source_file": "2603.05234.yaml",
+      "source_path": "papers/2603.05234.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Mieszko Komisarczyk",
+        "Saurabh Mathur",
+        "Maurice Kraus",
+        "Sriraam Natarajan",
+        "Kristian Kersting"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2603.05234",
+      "community_comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2033283214664515642?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2033283214664515642?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Tiny Autoregressive Recursive Models",
+      "authors": "Paulius Rauba, Claudio Fanconi, Mihaela van der Schaar",
+      "year": 2026,
+      "published_date": "2026-03-09",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "hierarchical-loop",
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "algorithmic-reasoning",
+        "language-modeling"
+      ],
+      "tags": [
+        "TRM"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Studies autoregressive Tiny Recursive Models under compute-matched baselines, finding that simple two-step refinement helps on small algorithmic tasks while the full Autoregressive TRM shows no reliable gains.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2603.08082",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2603.08082"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2603.08082",
+      "source_file": "2603.08082.yaml",
+      "source_path": "papers/2603.08082.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Paulius Rauba",
+        "Claudio Fanconi",
+        "Mihaela van der Schaar"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2603.08082",
+      "community_comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2032232642947494107?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2032232642947494107?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Adaptive Loops and Memory in Transformers: Think Harder or Know More?",
+      "authors": "Markus Frey, Behzad Shomali, Ali Hamza Bashir, David Berghaus, Joachim Koehler, Mehdi Ali",
+      "year": 2026,
+      "published_date": "2026-03-09",
+      "added_date": "2026-04-20",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "memory-banks",
+        "ACT"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Introduces transformers with adaptive per-layer looping and gated memory banks, showing that combining learned halting with extra storage improves reasoning under matched parameter and FLOP budgets.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2603.08391",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2603.08391"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "2603.08391",
+      "source_file": "2603.08391.yaml",
+      "source_path": "papers/2603.08391.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Markus Frey",
+        "Behzad Shomali",
+        "Ali Hamza Bashir",
+        "David Berghaus",
+        "Joachim Koehler",
+        "Mehdi Ali"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2603.08391"
+    },
+    {
+      "title": "LoopRPT: Reinforcement Pre-Training for Looped Language Models",
+      "authors": "Guo Tang, Shixin Jiang, Heng Chang, Nuo Chen, Yuhan Li, Huiming Fan, Jia Li, Ming Liu, Bing Qin",
+      "year": 2026,
+      "published_date": "2026-03-20",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "RL"
+      ],
+      "tags": [
+        "LoopRPT",
+        "Ouro"
+      ],
+      "focus_tags": [
+        "objective-loss",
+        "training-algorithm"
+      ],
+      "desc": "Proposes LoopRPT, a reinforcement pre-training method for looped language models that assigns learning signals to latent iterations, improving accuracy-compute trade-offs and strengthening early-stage reasoning on Ouro.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2603.19714",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2603.19714"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-14",
+      "id": "2603.19714",
+      "source_file": "2603.19714.yaml",
+      "source_path": "papers/2603.19714.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Guo Tang",
+        "Shixin Jiang",
+        "Heng Chang",
+        "Nuo Chen",
+        "Yuhan Li",
+        "Huiming Fan",
+        "Jia Li",
+        "Ming Liu",
+        "Bing Qin"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2603.19714"
+    },
+    {
+      "title": "Thinking Deeper, Not Longer: Depth-Recurrent Transformers for Compositional Generalization",
+      "authors": "Hung-Hsuan Chen",
+      "year": 2026,
+      "published_date": "2026-03-23",
+      "added_date": "2026-04-21",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "compositional-reasoning"
+      ],
+      "tags": [
+        "depth-recurrent",
+        "compositional-generalization",
+        "silent-thinking"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces a depth-recurrent Transformer for compositional generalization, with silent thinking, LayerScale, and identity-biased recurrence enabling stable deep latent iteration.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2603.21676",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2603.21676"
+      },
+      "citations": 1,
+      "citation_sources": {
+        "semantic_scholar": 1,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-22",
+      "id": "2603.21676",
+      "source_file": "2603.21676.yaml",
+      "source_path": "papers/2603.21676.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Hung-Hsuan Chen"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2603.21676"
+    },
+    {
+      "title": "Loop, Think, & Generalize: Implicit Reasoning in Recurrent-Depth Transformers",
+      "authors": "Harsh Kohli, Srinivasan Parthasarathy, Huan Sun, Yuekun Yao",
+      "year": 2026,
+      "published_date": "2026-04-09",
+      "added_date": "2026-04-20",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop",
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "implicit-reasoning"
+      ],
+      "focus_tags": [
+        "inference-algorithm"
+      ],
+      "desc": "Studies implicit reasoning in recurrent-depth transformers, showing that iterating shared transformer layers can unlock systematic generalization and depth extrapolation while also exposing overthinking limits.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.07822",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.07822"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "2604.07822",
+      "source_file": "2604.07822.yaml",
+      "source_path": "papers/2604.07822.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Harsh Kohli",
+        "Srinivasan Parthasarathy",
+        "Huan Sun",
+        "Yuekun Yao"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.07822"
+    },
+    {
+      "title": "Relational Preference Encoding in Looped Transformer Internal States",
+      "authors": "Jan Kirin",
+      "year": 2026,
+      "published_date": "2026-04-10",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "alignment"
+      ],
+      "tags": [
+        "Ouro",
+        "preference-probing"
+      ],
+      "focus_tags": [
+        "training-algorithm",
+        "architecture"
+      ],
+      "desc": "Probes looped transformer hidden states during iterative refinement, showing that human-preference information is encoded primarily in relational differences between loop states rather than independent per-state scores.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.09870",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.09870"
+      },
+      "citations": 0,
+      "metrics_updated": "2026-04-17",
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "id": "2604.09870",
+      "source_file": "2604.09870.yaml",
+      "source_path": "papers/2604.09870.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Jan Kirin"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.09870"
+    },
+    {
+      "title": "A Deep Equilibrium Network for Hyperspectral Unmixing",
+      "authors": "Chentong Wang, Jincheng Gao, Fei Zhu, Jie Chen",
+      "year": 2026,
+      "published_date": "2026-04-13",
+      "venue": "arXiv",
+      "category": "applications",
+      "mechanism_tags": [
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "hyperspectral-imaging"
+      ],
+      "tags": [
+        "DEQ"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Recasts hyperspectral unmixing as a deep equilibrium model, replacing the reconstruction-gradient operator with a trainable convolutional update and solving for an implicit fixed point with constant-memory differentiation.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.11279",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.11279"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-17",
+      "id": "2604.11279",
+      "source_file": "2604.11279.yaml",
+      "source_path": "papers/2604.11279.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Chentong Wang",
+        "Jincheng Gao",
+        "Fei Zhu",
+        "Jie Chen"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.11279"
+    },
+    {
+      "title": "A Mechanistic Analysis of Looped Reasoning Language Models",
+      "authors": "Hugh Blayney, Álvaro Arroyo, Johan Obando-Ceron, Pablo Samuel Castro, Aaron Courville, Michael M. Bronstein, Xiaowen Dong",
+      "year": 2026,
+      "published_date": "2026-04-13",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "mechanistic-analysis"
+      ],
+      "focus_tags": [
+        "inference-algorithm"
+      ],
+      "desc": "Analyzes looped reasoning LLMs mechanistically, showing recurrent cycles converge to layer-specific fixed points and that feedforward-like inference stages repeat across latent recurrences.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.11791",
+        "twitter": "https://x.com/HughBlayney/status/2046558050882899995?s=20",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.11791"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-17",
+      "id": "2604.11791",
+      "source_file": "2604.11791.yaml",
+      "source_path": "papers/2604.11791.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Hugh Blayney",
+        "Álvaro Arroyo",
+        "Johan Obando-Ceron",
+        "Pablo Samuel Castro",
+        "Aaron Courville",
+        "Michael M. Bronstein",
+        "Xiaowen Dong"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.11791"
+    },
+    {
+      "title": "Parcae: Scaling Laws For Stable Looped Language Models",
+      "authors": "Hayden Prairie, Zachary Novack, Taylor Berg-Kirkpatrick, Daniel Y. Fu",
+      "year": 2026,
+      "published_date": "2026-04-14",
+      "venue": "arXiv",
+      "must_read": true,
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "Parcae",
+        "isoFLOPs"
+      ],
+      "focus_tags": [
+        "objective-loss",
+        "architecture"
+      ],
+      "desc": "Introduces Parcae, a stable looped language model that constrains injection spectral norms to prevent instability and studies isoFLOPs-style training- and test-time scaling laws for quality gains under fixed-parameter budgets.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.12946",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.12946"
+      },
+      "citations": 0,
+      "metrics_updated": "2026-04-17",
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "id": "2604.12946",
+      "source_file": "2604.12946.yaml",
+      "source_path": "papers/2604.12946.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Hayden Prairie",
+        "Zachary Novack",
+        "Taylor Berg-Kirkpatrick",
+        "Daniel Y. Fu"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.12946",
+      "community_comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2044609402553115070?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Benhao's reading note",
+          "url": "https://x.com/huskydogewoof/status/2044609402553115070?s=20"
+        }
+      ]
+    },
+    {
+      "title": "Hierarchical vs. Flat Iteration in Shared-Weight Transformers",
+      "authors": "Sang-Il Han",
+      "year": 2026,
+      "published_date": "2026-04-15",
+      "added_date": "2026-04-21",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop",
+        "hierarchical-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "scaling"
+      ],
+      "tags": [
+        "shared-weight-recurrence",
+        "hierarchical-recurrence",
+        "universal-transformer"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Empirically compares hierarchical shared-weight recurrence against flat shared-weight iteration and independent-layer stacking, revealing a persistent representational gap for the recurrent hierarchy.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.14442",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.14442"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-22",
+      "id": "2604.14442",
+      "source_file": "2604.14442.yaml",
+      "source_path": "papers/2604.14442.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Sang-Il Han"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.14442"
+    },
+    {
+      "title": "Stability and Generalization in Looped Transformers",
+      "authors": "Asher Labovich",
+      "year": 2026,
+      "published_date": "2026-04-16",
+      "added_date": "2026-04-20",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop",
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "theory"
+      ],
+      "tags": [
+        "looped-transformer",
+        "fixed-point-analysis"
+      ],
+      "focus_tags": [
+        "inference-algorithm"
+      ],
+      "desc": "Analyzes stability and generalization in looped transformers through a fixed-point framework, characterizing when recall and normalization yield reachable, input-dependent, and trainable loop dynamics.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.15259",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.15259"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-20",
+      "id": "2604.15259",
+      "source_file": "2604.15259.yaml",
+      "source_path": "papers/2604.15259.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Asher Labovich"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.15259"
+    },
+    {
+      "title": "LASER: Low-Rank Activation SVD for Efficient Recursion",
+      "authors": "Ege Çakar, Ketan Ali Raghu, Lia Zheng",
+      "year": 2026,
+      "published_date": "2026-04-19",
+      "added_date": "2026-04-21",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "hierarchical-loop"
+      ],
+      "domain_tags": [
+        "efficiency"
+      ],
+      "tags": [
+        "TRM",
+        "activation-compression"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Analyzes Tiny Recursive Model activation geometry during recursive unrolling and introduces LASER, a dynamic low-rank activation compression method that cuts recursive activation memory by ~60% without statistically significant accuracy loss.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.17224",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.17224"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-21",
+      "id": "2604.17224",
+      "source_file": "2604.17224.yaml",
+      "source_path": "papers/2604.17224.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Ege Çakar",
+        "Ketan Ali Raghu",
+        "Lia Zheng"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.17224"
+    },
+    {
+      "title": "How Much Is One Recurrence Worth? Iso-Depth Scaling Laws for Looped Language Models",
+      "authors": "Kristian Schwethelm, Daniel Rueckert, Georgios Kaissis",
+      "year": 2026,
+      "published_date": "2026-04-22",
+      "added_date": "2026-04-24",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "scaling",
+        "efficiency"
+      ],
+      "tags": [
+        "looped-llm",
+        "depth-scaling",
+        "scaling-laws",
+        "iso-depth"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Measures the parameter value of recurrence in looped language models with iso-depth scaling laws, estimating how extra recurrent passes trade off against unique depth and training compute.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.21106",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.21106"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-24",
+      "id": "2604.21106",
+      "source_file": "2604.21106.yaml",
+      "source_path": "papers/2604.21106.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Kristian Schwethelm",
+        "Daniel Rueckert",
+        "Georgios Kaissis"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.21106"
+    },
+    {
+      "title": "Hyperloop Transformers",
+      "authors": "Abbas Zeitoun, Lucas Torroba-Hennigen, Yoon Kim",
+      "year": 2026,
+      "published_date": "2026-04-23",
+      "added_date": "2026-04-24",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "efficiency",
+        "memory-efficiency"
+      ],
+      "tags": [
+        "Hyperloop",
+        "looped-transformer",
+        "hyper-connections"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Introduces Hyperloop Transformers, a parameter-efficient looped Transformer that applies only a middle block recurrently and adds hyper-connections between loops to improve memory-efficient language modeling.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.21254",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.21254"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-04-24",
+      "id": "2604.21254",
+      "source_file": "2604.21254.yaml",
+      "source_path": "papers/2604.21254.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Abbas Zeitoun",
+        "Lucas Torroba-Hennigen",
+        "Yoon Kim"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.21254"
+    },
+    {
+      "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
+      "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
+      "year": 2026,
+      "published_date": "2026-01-26",
+      "venue": "ICLR",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "ChainGPT"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces ChainGPT, a dual-reasoning recurrent-depth architecture that combines multi-substep state updates and state-guided sparse attention to move reasoning into latent computation, with adaptive stopping as a supporting mechanism.",
+      "links": {
+        "openreview": "https://openreview.net/forum?id=kdZbxizwGK",
+        "paper": "https://openreview.net/pdf?id=kdZbxizwGK"
+      },
+      "id": "openreview-chaingpt",
+      "source_file": "openreview-chaingpt.yaml",
+      "source_path": "papers/openreview-chaingpt.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Yunao Zheng",
+        "Xiaojie Wang",
+        "Lei Ren",
+        "Chen Wei"
+      ],
+      "venueClass": "venue-iclr"
+    },
+    {
+      "title": "MoDr: Mixture-of-Depth-Recurrent Transformers for Test-Time Reasoning",
+      "authors": "Xiaojing Zhang, Haifeng Wu, Gang He, Jiyang Shen, Bochen Lyu, Zhanxing Zhu",
+      "year": 2026,
+      "published_date": "2026-01-26",
+      "venue": "ICLR",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "MoDr",
+        "MoUT"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm",
+        "training-algorithm"
+      ],
+      "desc": "Introduces MoDr, which adds multi-branch routing to a depth-recurrent Transformer so looped models can explore solution paths more adaptively at test time.",
+      "links": {
+        "openreview": "https://openreview.net/forum?id=9Pba4rcQbE",
+        "paper": "https://openreview.net/pdf?id=9Pba4rcQbE"
+      },
+      "id": "openreview-modr",
+      "source_file": "openreview-modr.yaml",
+      "source_path": "papers/openreview-modr.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Xiaojing Zhang",
+        "Haifeng Wu",
+        "Gang He",
+        "Jiyang Shen",
+        "Bochen Lyu",
+        "Zhanxing Zhu"
+      ],
+      "venueClass": "venue-iclr"
+    }
+  ],
+  "blogs": [
+    {
+      "title": "Loop-Model FLOPs and Memory in an Ablation Chain",
+      "authors": "Benhao Huang",
+      "year": 2026,
+      "published_date": "2026-04-19",
+      "added_date": "2026-04-22",
+      "venue": "Personal Blog",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "FLOPs-efficiency",
+        "memory-efficiency",
+        "theory"
+      ],
+      "tags": [
+        "BPTT",
+        "detach",
+        "checkpointing"
+      ],
+      "focus_tags": [
+        "training-algorithm"
+      ],
+      "desc": "Builds a clean cost-ablation chain for loop-model training, comparing shared versus non-shared weights, per-step losses, detach, instant updates, internal truncation, and gradient checkpointing, then checks the resulting FLOPs and memory trade-offs with a toy benchmark.\n",
+      "links": {
+        "blog": "https://huskydoge.github.io/husky-blog/posts/recursive_models/loop-cost/"
+      },
+      "id": "2026-04-02-loop-cost",
+      "source_file": "2026-04-02-loop-cost.yaml",
+      "source_path": "blogs/2026-04-02-loop-cost.yaml",
+      "entry_type": "blog",
+      "authors_list": [
+        "Benhao Huang"
+      ],
+      "venueClass": "venue-other"
+    },
+    {
+      "title": "On the Looped Transformers Controversy",
+      "authors": "Chris Hayduk",
+      "year": 2026,
+      "published_date": "2026-04-19",
+      "added_date": "2026-04-22",
+      "venue": "X Article",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "scaling"
+      ],
+      "tags": [
+        "looped-transformer",
+        "weight-tying",
+        "mythos"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Argues that benchmark patterns and serving-compute constraints make deterministic weight-tied looping a plausible explanation for Claude Mythos-like gains, while explicitly framing the claim as speculation rather than confirmation.\n",
+      "links": {
+        "blog": "https://x.com/ChrisHayduk/status/2045947623572688943?s=20"
+      },
+      "id": "2026-04-19-looped-transformers-controversy",
+      "source_file": "2026-04-19-looped-transformers-controversy.yaml",
+      "source_path": "blogs/2026-04-19-looped-transformers-controversy.yaml",
+      "entry_type": "blog",
+      "authors_list": [
+        "Chris Hayduk"
+      ],
+      "venueClass": "venue-other"
+    },
+    {
+      "title": "Claude Mythos, Looped LLM, and the Depth Scaling Axis",
+      "authors": "Rui-Jie Zhu",
+      "year": 2026,
+      "published_date": "2026-04-21",
+      "added_date": "2026-04-21",
+      "venue": "X Article",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "scaling"
+      ],
+      "tags": [
+        "looped-llm",
+        "depth-scaling",
+        "mythos"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Analyzes why Claude Mythos-like gains suggest a depth-scaling axis for looped LLMs and discusses stability, inference efficiency, and iso-FLOPs constraints for scaling loop architectures.\n",
+      "links": {
+        "blog": "https://x.com/RidgerZhu/status/2046736781035618602"
+      },
+      "id": "2026-04-21-claude-mythos-looped-llm-depth-scaling-axis",
+      "source_file": "2026-04-21-claude-mythos-looped-llm-depth-scaling-axis.yaml",
+      "source_path": "blogs/2026-04-21-claude-mythos-looped-llm-depth-scaling-axis.yaml",
+      "entry_type": "blog",
+      "authors_list": [
+        "Rui-Jie Zhu"
+      ],
+      "venueClass": "venue-other"
+    }
+  ]
+}

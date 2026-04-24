@@ -1,0 +1,46 @@
+name: "🐛 Fix an Error"
+description: "Report a broken link, wrong metadata, or incorrect description"
+title: "[Fix] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping us keep the list accurate! Please describe the issue below.
+
+  - type: input
+    id: paper_title
+    attributes:
+      label: Paper Title
+      placeholder: "The title of the paper with the error"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: error_type
+    attributes:
+      label: Error Type
+      options:
+        - Broken link (arXiv / Code / OpenReview / Project)
+        - Wrong venue or year
+        - Incorrect authors
+        - Inaccurate description
+        - Wrong category
+        - Duplicate entry
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What is wrong?
+      placeholder: "Describe the current incorrect content and what it should be."
+    validations:
+      required: true
+
+  - type: textarea
+    id: fix
+    attributes:
+      label: Suggested Fix
+      placeholder: "Provide the correct information or link."

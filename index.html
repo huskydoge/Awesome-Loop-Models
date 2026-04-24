@@ -1,0 +1,3949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Awesome Loop Models</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ── Light theme (default) ── */
+    :root {
+      --bg: #ffffff;
+      --surface: #f6f8fa;
+      --surface2: #eaeef2;
+      --border: #d0d7de;
+      --accent: #0969da;
+      --accent2: #1a7f37;
+      --accent3: #8250df;
+      --accent4: #bc4c00;
+      --accent5: #cf222e;
+      --text: #1f2328;
+      --text-muted: #656d76;
+      --text-dim: #9198a1;
+      --tag-bg: #f0f6fc;
+      --tag-border: #d0d7de;
+      --search-bg: #ffffff;
+      --card-hover: #f0f6fc;
+      --scrollbar-thumb: rgba(31,35,40,0.16);
+      --scrollbar-thumb-hover: rgba(31,35,40,0.26);
+      --scrollbar-track: transparent;
+      --radius: 6px;
+      --radius-sm: 3px;
+      --font-display: "STIX Two Text", "Georgia", "Times New Roman", serif;
+    }
+
+    /* ── Dark theme (follows system) ── */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --surface: #161b22;
+        --surface2: #21262d;
+        --border: #30363d;
+        --accent: #58a6ff;
+        --accent2: #3fb950;
+        --accent3: #d2a8ff;
+        --accent4: #ffa657;
+        --accent5: #ff7b72;
+        --text: #e6edf3;
+        --text-muted: #8b949e;
+        --text-dim: #6e7681;
+        --tag-bg: #1f2937;
+        --tag-border: #374151;
+        --search-bg: #0d1117;
+        --card-hover: #1c2128;
+        --scrollbar-thumb: rgba(230,237,243,0.18);
+        --scrollbar-thumb-hover: rgba(230,237,243,0.30);
+        --scrollbar-track: transparent;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    body,
+    main,
+    .sidebar,
+    .mobile-directory-body,
+    .paper-table-shell {
+      scrollbar-width: thin;
+      scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    }
+
+    body::-webkit-scrollbar,
+    main::-webkit-scrollbar,
+    .sidebar::-webkit-scrollbar,
+    .mobile-directory-body::-webkit-scrollbar,
+    .paper-table-shell::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    body::-webkit-scrollbar-track,
+    main::-webkit-scrollbar-track,
+    .sidebar::-webkit-scrollbar-track,
+    .mobile-directory-body::-webkit-scrollbar-track,
+    .paper-table-shell::-webkit-scrollbar-track {
+      background: var(--scrollbar-track);
+    }
+
+    body::-webkit-scrollbar-thumb,
+    main::-webkit-scrollbar-thumb,
+    .sidebar::-webkit-scrollbar-thumb,
+    .mobile-directory-body::-webkit-scrollbar-thumb,
+    .paper-table-shell::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+
+    body::-webkit-scrollbar-thumb:hover,
+    main::-webkit-scrollbar-thumb:hover,
+    .sidebar::-webkit-scrollbar-thumb:hover,
+    .mobile-directory-body::-webkit-scrollbar-thumb:hover,
+    .paper-table-shell::-webkit-scrollbar-thumb:hover {
+      background: var(--scrollbar-thumb-hover);
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 32px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      flex-shrink: 0;
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .filter-sidebar-toggle-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 12px;
+    }
+
+    .filter-sidebar-toggle {
+      width: min(560px, 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--search-bg);
+      color: var(--text);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.15s ease, transform 0.12s ease;
+    }
+
+    .filter-sidebar-toggle:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .filter-sidebar-toggle-meta {
+      color: var(--text-dim);
+      font-size: 11.5px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .filter-sidebar {
+      width: min(920px, 100%);
+      margin: 10px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0 28px 0 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      max-height: none;
+      overflow: visible;
+      position: relative;
+    }
+
+    .filter-sidebar[hidden] {
+      display: none;
+    }
+
+    .filter-sidebar-header {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 2;
+    }
+
+    .filter-sidebar-header > div {
+      display: none;
+    }
+
+    .filter-sidebar-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .filter-sidebar-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .filter-sidebar-close {
+      width: 22px;
+      height: 22px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+    }
+
+    .filter-sidebar-close:hover {
+      color: var(--accent);
+      background: rgba(88,166,255,0.06);
+    }
+
+    .filter-sidebar-body {
+      display: grid;
+      gap: 8px;
+      min-height: 0;
+      overflow-y: visible;
+      padding: 2px 2px 0 2px;
+    }
+
+    body.filter-sidebar-open header {
+      padding-top: 12px;
+      padding-bottom: 14px;
+    }
+
+    body.filter-sidebar-open h1,
+    body.filter-sidebar-open .header-sub,
+    body.filter-sidebar-open .header-actions,
+    body.filter-sidebar-open .filter-sidebar-toggle-row,
+    body.filter-sidebar-open .daily-watch-countdown {
+      display: none;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .header-sub {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 18px;
+      max-width: 1080px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid;
+      transition: opacity 0.15s;
+    }
+    .badge:hover { opacity: 0.8; }
+    .badge-blue { background: rgba(88,166,255,0.1); border-color: rgba(88,166,255,0.3); color: var(--accent); }
+    .badge-green { background: rgba(63,185,80,0.1); border-color: rgba(63,185,80,0.3); color: var(--accent2); }
+    .badge-purple { background: rgba(210,168,255,0.1); border-color: rgba(210,168,255,0.3); color: var(--accent3); }
+
+    .scope-scale {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 auto 20px;
+      max-width: 820px;
+    }
+
+    .scope-node {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .scope-node.scope-active {
+      color: var(--accent);
+      border-color: rgba(88,166,255,0.35);
+      background: rgba(88,166,255,0.08);
+    }
+
+    .scope-arrow {
+      color: var(--text-dim);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* ── Search ── */
+    .search-wrap {
+      position: relative;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      pointer-events: none;
+    }
+
+    #search {
+      width: 100%;
+      padding: 10px 96px 10px 40px;
+      background: var(--search-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    #search:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(88,166,255,0.15);
+    }
+
+    #search::placeholder { color: var(--text-dim); }
+
+    .search-count {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      min-width: 70px;
+      padding-left: 14px;
+      text-align: right;
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-dim);
+      background: linear-gradient(90deg, transparent, var(--search-bg) 18px);
+      pointer-events: none;
+    }
+
+    /* ── Layout ── */
+    .layout {
+      display: flex;
+      align-items: stretch;
+      max-width: 1200px;
+      width: min(1200px, 100%);
+      margin: 0 auto;
+      padding: 24px 16px;
+      gap: 24px;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 292px;
+      flex-shrink: 0;
+      align-self: stretch;
+      position: sticky;
+      top: 24px;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      padding: 18px 16px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: linear-gradient(180deg, var(--surface), var(--bg));
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+      scrollbar-width: thin;
+    }
+
+    .sidebar-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .sidebar-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .category-disclaimer {
+      margin-bottom: 18px;
+      padding: 11px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(9,105,218,0.04), transparent), var(--surface);
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .category-disclaimer strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .tree-node {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .tree-node.tree-hidden {
+      display: none;
+    }
+
+    .tree-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tree-toggle,
+    .tree-spacer {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tree-toggle {
+      border: 0;
+      background: transparent;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: transform 0.18s ease, color 0.18s ease;
+      padding: 0;
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .tree-toggle:hover {
+      color: var(--accent);
+    }
+
+    .tree-node:not(.is-open) > .tree-row .tree-toggle {
+      transform: rotate(-90deg);
+    }
+
+    .tree-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 4px 0 4px 2px;
+      border: 0;
+      border-radius: 0;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.18s ease;
+    }
+
+    .tree-link:hover {
+      color: var(--accent);
+    }
+
+    .tree-link.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .tree-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      min-width: 0;
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+
+    .tree-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 28px;
+      padding: 2px 8px;
+      border-radius: 8px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 11px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .tree-children {
+      display: none;
+      margin-left: 7px;
+      padding-left: 10px;
+      border-left: 1px solid rgba(9,105,218,0.14);
+    }
+
+    .tree-node.is-open > .tree-children {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* ── Main ── */
+    main {
+      flex: 1;
+      min-width: 0;
+      min-height: 0;
+      height: 100%;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    /* ── Category Section ── */
+    .category {
+      margin-bottom: 42px;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: linear-gradient(180deg, var(--surface), rgba(255,255,255,0));
+    }
+
+    .category-icon {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      background: rgba(9,105,218,0.08);
+      font-size: 18px;
+    }
+
+    .category-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .category-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .category-count {
+      margin-left: auto;
+      font-size: 11.5px;
+      color: var(--text-dim);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 10px;
+    }
+
+    .category-body {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .category-node {
+      margin-left: calc(var(--depth, 0) * 14px);
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background:
+        linear-gradient(180deg, rgba(9,105,218,0.02), transparent),
+        var(--surface);
+    }
+
+    .category-node-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .category-node-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .category-node-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    .category-node-count {
+      margin-left: auto;
+      font-size: 10.5px;
+      color: var(--text-dim);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px 8px;
+      white-space: nowrap;
+    }
+
+    .category-node-body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ── Paper Card ── */
+    .papers-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .paper-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+      cursor: default;
+    }
+
+    .paper-card:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .paper-card.hidden { display: none; }
+
+    .paper-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .paper-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .paper-title-link {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+      text-decoration-line: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 2px;
+    }
+
+    .paper-title-link:hover {
+      color: var(--accent);
+      text-decoration-color: currentColor;
+    }
+
+    .must-read-marker {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .foundation-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(130,80,223,0.28);
+      background: rgba(130,80,223,0.08);
+      color: var(--accent3);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .paper-venue {
+      flex-shrink: 0;
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .venue-neurips { background: rgba(88,166,255,0.15); color: #0550ae; }
+    .venue-iclr    { background: rgba(130,80,223,0.12); color: #6e40c9; }
+    .venue-icml    { background: rgba(26,127,55,0.12); color: #1a7f37; }
+    .venue-acl     { background: rgba(188,76,0,0.12); color: #bc4c00; }
+    .venue-colm    { background: rgba(207,34,46,0.12); color: #cf222e; }
+    .venue-log     { background: rgba(188,76,0,0.12); color: #bc4c00; }
+    .venue-arxiv   { background: rgba(101,109,118,0.12); color: #656d76; }
+    .venue-other   { background: rgba(101,109,118,0.12); color: #656d76; }
+
+    @media (prefers-color-scheme: dark) {
+      .venue-neurips { background: rgba(88,166,255,0.15); color: #79c0ff; }
+      .venue-iclr    { background: rgba(210,168,255,0.15); color: #d2a8ff; }
+      .venue-icml    { background: rgba(63,185,80,0.15); color: #56d364; }
+      .venue-acl     { background: rgba(255,166,87,0.15); color: #ffa657; }
+      .venue-colm    { background: rgba(255,123,114,0.15); color: #ff7b72; }
+      .venue-log     { background: rgba(255,166,87,0.15); color: #ffa657; }
+      .venue-arxiv   { background: rgba(139,148,158,0.15); color: #8b949e; }
+      .venue-other   { background: rgba(139,148,158,0.15); color: #8b949e; }
+    }
+
+    .paper-meta {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .paper-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .paper-tag,
+    .tag-filter-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      max-width: 100%;
+      padding: 2px 7px;
+      border: 1px solid var(--tag-border);
+      border-radius: 8px;
+      background: var(--tag-bg);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.3;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      font-family: inherit;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.12s ease, border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+
+    .tag-filter-chip-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      padding: 0 5px;
+      border-radius: 999px;
+      background: rgba(9,105,218,0.12);
+      color: inherit;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.5;
+      flex-shrink: 0;
+    }
+
+    .paper-tag {
+      appearance: none;
+    }
+
+    .paper-tag:hover,
+    .tag-filter-chip:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+
+    .paper-tag-mechanism,
+    .tag-filter-chip[data-tag-group="mechanism"] {
+      color: var(--accent3);
+      border-color: rgba(130,80,223,0.24);
+      background: rgba(130,80,223,0.08);
+    }
+
+    .paper-tag-domain,
+    .tag-filter-chip[data-tag-group="domain"] {
+      color: var(--text-muted);
+      background: transparent;
+    }
+
+    .paper-tag-focus,
+    .tag-filter-chip[data-tag-group="focus"] {
+      color: var(--accent2);
+      border-color: rgba(63,185,80,0.28);
+      background: rgba(63,185,80,0.08);
+    }
+
+    .paper-tag.is-active,
+    .tag-filter-chip.is-active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .paper-tag[data-tag-group="mechanism"].is-active,
+    .tag-filter-chip[data-tag-group="mechanism"].is-active {
+      background: var(--accent3);
+      border-color: var(--accent3);
+      color: #ffffff;
+    }
+
+    .paper-tag[data-tag-group="focus"].is-active,
+    .tag-filter-chip[data-tag-group="focus"].is-active {
+      background: var(--accent2);
+      border-color: var(--accent2);
+      color: #ffffff;
+    }
+
+    .paper-tag[data-tag-group="domain"].is-active,
+    .tag-filter-chip[data-tag-group="domain"].is-active {
+      background: var(--surface2);
+      border-color: var(--text-muted);
+      color: var(--text);
+    }
+
+    .paper-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+
+    .paper-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid;
+      transition: background 0.15s, opacity 0.15s;
+    }
+
+    .link-btn:hover { opacity: 0.8; }
+
+    .link-arxiv     { background: rgba(207,34,46,0.07); border-color: rgba(207,34,46,0.25); color: #cf222e; }
+    .link-alphaxiv  { background: rgba(15,118,110,0.08); border-color: rgba(15,118,110,0.25); color: #0f766e; }
+    .link-paper     { background: rgba(9,105,218,0.07); border-color: rgba(9,105,218,0.25); color: #0969da; }
+    .link-github    { background: rgba(101,109,118,0.07); border-color: rgba(101,109,118,0.25); color: #656d76; }
+    .link-hf        { background: rgba(188,76,0,0.07); border-color: rgba(188,76,0,0.25); color: #bc4c00; }
+    .link-openreview{ background: rgba(130,80,223,0.07); border-color: rgba(130,80,223,0.25); color: #6e40c9; }
+    .link-project   { background: rgba(26,127,55,0.07); border-color: rgba(26,127,55,0.25); color: #1a7f37; }
+    .link-comment   { background: rgba(193,132,1,0.09); border-color: rgba(193,132,1,0.30); color: #9a6700; }
+    .link-twitter   { background: rgba(9,105,218,0.07); border-color: rgba(9,105,218,0.25); color: #0969da; }
+
+    @media (prefers-color-scheme: dark) {
+      .link-arxiv     { background: rgba(255,123,114,0.08); border-color: rgba(255,123,114,0.3); color: #ff7b72; }
+      .link-alphaxiv  { background: rgba(45,212,191,0.1); border-color: rgba(45,212,191,0.35); color: #5eead4; }
+      .link-paper     { background: rgba(88,166,255,0.08); border-color: rgba(88,166,255,0.3); color: #79c0ff; }
+      .link-github    { background: rgba(139,148,158,0.08); border-color: rgba(139,148,158,0.3); color: #8b949e; }
+      .link-hf        { background: rgba(255,166,87,0.08); border-color: rgba(255,166,87,0.3); color: #ffa657; }
+      .link-openreview{ background: rgba(210,168,255,0.08); border-color: rgba(210,168,255,0.3); color: #d2a8ff; }
+      .link-project   { background: rgba(63,185,80,0.08); border-color: rgba(63,185,80,0.3); color: #56d364; }
+      .link-comment   { background: rgba(255,212,59,0.11); border-color: rgba(255,212,59,0.35); color: #e3b341; }
+      .link-twitter   { background: rgba(88,166,255,0.08); border-color: rgba(88,166,255,0.3); color: #79c0ff; }
+    }
+
+    .community-comments {
+      position: relative;
+      display: inline-block;
+    }
+
+    .community-comments > summary {
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .community-comments > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .community-comments-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 220px;
+      max-width: 320px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 30;
+    }
+
+    .community-comment-item {
+      display: block;
+      padding: 6px 8px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: 11px;
+      color: var(--text);
+      border: 1px solid transparent;
+    }
+
+    .community-comment-item:hover {
+      background: var(--surface2);
+      border-color: var(--border);
+      color: var(--accent);
+    }
+
+    /* ── No Results ── */
+    #no-results {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+
+    #no-results .no-results-icon { font-size: 40px; margin-bottom: 12px; }
+    #no-results p { font-size: 14px; }
+
+    /* ── Contribution CTAs ── */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0 auto 20px;
+    }
+
+    .contribute-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(26,127,55,0.3);
+      background: rgba(26,127,55,0.08);
+      color: var(--accent2);
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .contribute-btn svg {
+      flex: none;
+    }
+
+    .github-btn {
+      border-color: rgba(130,80,223,0.28);
+      background: rgba(130,80,223,0.08);
+      color: var(--accent3);
+    }
+
+    .contribute-btn:hover { opacity: 0.82; transform: translateY(-1px); }
+
+    .daily-watch-countdown {
+      position: absolute;
+      top: -1px;
+      right: 32px;
+      width: 236px;
+      margin: 0;
+      padding: 15px 13px 11px;
+      border: 1px solid var(--border);
+      border-top: 0;
+      border-radius: 0 0 10px 10px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.34), transparent 32%),
+        linear-gradient(180deg, rgba(9,105,218,0.06), transparent),
+        var(--surface);
+      box-shadow: 0 14px 24px rgba(15, 23, 42, 0.10);
+      text-align: center;
+      transform: rotate(1.2deg);
+      transform-origin: 50% 0;
+      z-index: 1;
+    }
+
+    .daily-watch-countdown::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 28px;
+      right: 28px;
+      height: 7px;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      pointer-events: none;
+    }
+
+    .daily-watch-countdown::after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 14px;
+      right: 14px;
+      border-top: 1px dashed rgba(101,109,118,0.32);
+      pointer-events: none;
+    }
+
+    .daily-watch-countdown-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 3px;
+    }
+
+    .daily-watch-countdown-value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 3px;
+    }
+
+    .daily-watch-countdown-meta {
+      font-size: 10.5px;
+      line-height: 1.4;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 1080px) {
+      .daily-watch-countdown {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: min(560px, 100%);
+        margin: 0 auto 18px;
+        border-top: 1px solid var(--border);
+        border-radius: 10px;
+        transform: none;
+      }
+    }
+
+    /* ── Sidebar contribute link ── */
+    .sidebar-contribute {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sidebar-contribute a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--accent2);
+      border: 1px solid rgba(26,127,55,0.3);
+      background: rgba(26,127,55,0.06);
+      transition: opacity 0.15s;
+    }
+
+    .sidebar-contribute a:hover { opacity: 0.8; }
+
+    @media (prefers-color-scheme: dark) {
+      .contribute-btn {
+        color: #3fb950;
+        border-color: rgba(63,185,80,0.3);
+        background: rgba(63,185,80,0.08);
+      }
+      .github-btn {
+        color: #d2a8ff;
+        border-color: rgba(210,168,255,0.28);
+        background: rgba(210,168,255,0.08);
+      }
+      .sidebar-contribute a {
+        color: #3fb950;
+        border-color: rgba(63,185,80,0.3);
+        background: rgba(63,185,80,0.06);
+      }
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 28px;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-height: 820px) {
+      header {
+        padding: 20px 24px 16px;
+      }
+      .header-sub {
+        margin-bottom: 12px;
+      }
+      .header-actions {
+        margin-bottom: 12px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        height: auto;
+        min-height: 100vh;
+        overflow: auto;
+      }
+      header {
+        position: static;
+        padding: 14px 12px 12px;
+      }
+      .filter-sidebar {
+        width: 100%;
+        border-radius: 12px;
+      }
+      .layout {
+        padding: 12px;
+        gap: 14px;
+        flex: 0 0 auto;
+        min-height: auto;
+        overflow: visible;
+      }
+      main {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        overscroll-behavior: auto;
+      }
+      .sidebar { display: none; }
+      .header-inner { max-width: 100%; }
+      h1 {
+        font-size: 18px;
+        gap: 6px;
+        margin-bottom: 4px;
+      }
+      .header-sub {
+        max-width: 100%;
+        white-space: normal;
+        font-size: 12px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+      }
+      .header-actions {
+        gap: 6px;
+        margin: 0 auto 10px;
+      }
+      .contribute-btn {
+        padding: 6px 10px;
+        font-size: 11.5px;
+      }
+      .search-wrap {
+        max-width: 100%;
+      }
+      #search {
+        padding: 9px 86px 9px 38px;
+        font-size: 13px;
+      }
+      .search-count {
+        font-size: 10.5px;
+      }
+      .controls-bar {
+        margin-top: 8px;
+        gap: 8px;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 2px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .controls-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .sort-bar,
+      .date-filter-bar,
+      .quick-filter-bar,
+      .view-toggle-bar {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        flex-shrink: 0;
+      }
+      .sort-label,
+      .date-filter-label,
+      .date-sep {
+        flex-shrink: 0;
+      }
+      .date-input {
+        width: 140px;
+        min-height: 32px;
+      }
+      .sort-btn, .date-clear-btn, .tag-filter-toggle {
+        min-height: 32px;
+      }
+      .tag-filter-shell {
+        margin-top: 8px;
+      }
+      .tag-filter-toggle,
+      .tag-filter-panel {
+        width: 100%;
+        min-width: 0;
+      }
+      .tag-filter-toggle {
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+      .tag-filter-panel {
+        padding: 12px;
+      }
+      .mobile-directory {
+        display: block;
+        margin-bottom: 14px;
+      }
+      .category-disclaimer {
+        margin-bottom: 12px;
+        padding: 10px 11px;
+        font-size: 11.5px;
+        line-height: 1.5;
+      }
+      .category-header {
+        padding: 16px;
+      }
+      .category-count {
+        display: none;
+      }
+      .category-node {
+        margin-left: 0;
+        padding: 14px;
+      }
+    }
+
+    /* ── Highlight ── */
+    mark {
+      background: rgba(255,166,87,0.3);
+      color: #7d4e00;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      mark {
+        background: rgba(255,166,87,0.25);
+        color: var(--accent4);
+      }
+    }
+
+    /* ── Controls Bar (sort + year filter) ── */
+    .controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px 14px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .sort-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .sort-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+    .sort-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 11px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .sort-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .sort-btn.active { background: var(--accent); border-color: var(--accent); color: #ffffff; }
+    @media (prefers-color-scheme: dark) { .sort-btn.active { color: #0d1117; } }
+    .table-sort-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .table-sort-btn {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      white-space: inherit;
+    }
+    .table-sort-btn:hover {
+      background: transparent;
+      border-color: transparent;
+      color: var(--accent);
+    }
+    .table-sort-btn.active {
+      background: transparent;
+      border-color: transparent;
+      color: var(--accent);
+    }
+    .table-sort-direction-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-dim);
+      font: inherit;
+      font-size: 11px;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .table-sort-direction-btn:hover {
+      color: var(--accent);
+      background: rgba(88,166,255,0.08);
+    }
+    .table-sort-direction-btn.is-active {
+      color: var(--accent);
+    }
+    .table-sort-direction-btn[data-direction="none"] {
+      opacity: 0.65;
+    }
+
+    /* ── Publication Date Filter ── */
+    .date-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .date-filter-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+    .date-input {
+      width: 148px;
+      padding: 5px 8px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--search-bg);
+      color: var(--text);
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .date-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(88,166,255,0.15);
+    }
+    .date-sep {
+      color: var(--text-dim);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .date-clear-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 11.5px;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .date-clear-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .quick-filter-bar,
+    .view-toggle-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Tag Filter ── */
+    .tag-filter-shell {
+      margin-top: 12px;
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+    }
+
+    .tag-filter-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-width: min(760px, 100%);
+      max-width: 920px;
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.15s ease, transform 0.12s ease;
+    }
+
+    .tag-filter-toggle:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .tag-filter-toggle-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-dim);
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+
+    .tag-filter-caret {
+      transition: transform 0.18s ease;
+    }
+
+    .tag-filter-toggle[aria-expanded="true"] .tag-filter-caret {
+      transform: rotate(180deg);
+    }
+
+    .tag-filter-panel {
+      width: min(920px, 100%);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--surface), var(--bg));
+      padding: 14px 15px;
+    }
+
+    .tag-filter-panel[hidden] {
+      display: none;
+    }
+
+    .filter-sidebar-controls {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+      align-items: center;
+      justify-items: stretch;
+      gap: 8px 20px;
+      margin-top: 0;
+      width: 100%;
+    }
+
+    .filter-sidebar-controls > div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      flex-wrap: wrap;
+      min-width: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .filter-sidebar-controls .sort-bar,
+    .filter-sidebar-controls .date-filter-bar,
+    .filter-sidebar-controls .quick-filter-bar,
+    .filter-sidebar-controls .view-toggle-bar {
+      justify-content: flex-start;
+    }
+
+    .filter-sidebar-tag-shell {
+      margin-top: 2px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+      justify-items: start;
+      gap: 8px;
+    }
+
+    .filter-sidebar-tag-shell .tag-filter-toggle,
+    .filter-sidebar-tag-shell .tag-filter-panel {
+      min-width: 0;
+      max-width: none;
+      width: 100%;
+    }
+
+    .filter-sidebar-tag-shell .tag-filter-toggle {
+      width: auto;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      justify-content: flex-start;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .filter-sidebar-tag-shell .tag-filter-toggle:hover {
+      border-color: transparent;
+      transform: none;
+      color: var(--accent);
+    }
+
+    .filter-sidebar-tag-shell .tag-filter-panel {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      padding: 4px 0 0;
+    }
+
+    .filter-sidebar-controls .sort-label,
+    .filter-sidebar-controls .date-filter-label {
+      font-size: 11.5px;
+    }
+
+    .filter-sidebar-controls .sort-btn,
+    .filter-sidebar-controls .date-clear-btn {
+      padding: 3px 9px;
+      font-size: 11.2px;
+      line-height: 1.35;
+    }
+
+    .filter-sidebar-controls .date-input {
+      width: 134px;
+      padding: 4px 8px;
+      font-size: 11.5px;
+    }
+
+    .tag-filter-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .tag-filter-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .tag-filter-groups {
+      display: grid;
+      gap: 14px;
+    }
+
+    .tag-filter-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .tag-filter-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .tag-filter-chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .controls-bar {
+        margin-top: 8px;
+        gap: 8px;
+      }
+      .date-input {
+        width: 136px;
+        min-height: 34px;
+      }
+      .sort-btn, .date-clear-btn, .tag-filter-toggle {
+        min-height: 34px;
+      }
+      .tag-filter-toggle,
+      .tag-filter-panel {
+        width: 100%;
+      }
+      .category-header {
+        padding: 16px;
+      }
+      .category-count {
+        display: none;
+      }
+      .category-node {
+        margin-left: 0;
+        padding: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 17px;
+      }
+      .header-sub {
+        font-size: 11px;
+        margin-bottom: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .header-actions {
+        margin-bottom: 8px;
+      }
+      .contribute-btn {
+        padding: 5px 9px;
+        font-size: 11px;
+      }
+      .sort-bar, .date-filter-bar {
+        gap: 6px;
+      }
+      .quick-filter-bar,
+      .view-toggle-bar {
+        gap: 6px;
+      }
+      .sort-btn {
+        padding: 4px 9px;
+        font-size: 11px;
+      }
+      .date-input { width: 132px; }
+      .mobile-directory-toggle {
+        padding: 12px 14px;
+      }
+      .mobile-directory-hint {
+        font-size: 10px;
+      }
+    }
+
+    .mobile-directory {
+      display: none;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .mobile-directory-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .mobile-directory-hint {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .mobile-directory-body {
+      display: none;
+      padding: 0 14px 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .mobile-directory.is-open .mobile-directory-body {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-directory {
+        display: block;
+      }
+    }
+
+    .layout.table-view-active {
+      max-width: 1440px;
+      width: min(1440px, 100%);
+    }
+
+    .layout.table-view-active .sidebar {
+      display: none;
+    }
+
+    .layout.table-view-active main {
+      width: 100%;
+    }
+
+    .table-view-shell {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--surface), var(--bg));
+      overflow: hidden;
+    }
+
+    .table-view-shell[hidden] {
+      display: none;
+    }
+
+    .table-view-scroll {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .papers-table {
+      width: 100%;
+      min-width: 1180px;
+      border-collapse: collapse;
+    }
+
+    .papers-table th,
+    .papers-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .papers-table th {
+      background: var(--surface);
+      color: var(--text-dim);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .paper-table-row {
+      cursor: pointer;
+      transition: background 0.15s ease;
+      outline: none;
+    }
+
+    .paper-table-row:hover {
+      background: var(--card-hover);
+    }
+
+    .paper-table-row.is-expanded {
+      background: rgba(88,166,255,0.06);
+    }
+
+    .paper-table-row:focus-visible {
+      box-shadow: inset 0 0 0 2px rgba(88,166,255,0.32);
+    }
+
+    .paper-table-title-cell {
+      min-width: 320px;
+    }
+
+    .paper-table-title-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .paper-table-disclosure {
+      width: 100%;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .paper-table-disclosure:focus-visible {
+      outline: 2px solid rgba(88,166,255,0.32);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .paper-table-title-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .paper-table-caret {
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--text-dim);
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .paper-table-meta-cell {
+      font-size: 12px;
+      color: var(--text-muted);
+      min-width: 150px;
+      line-height: 1.5;
+    }
+
+    .paper-table-links-cell {
+      min-width: 210px;
+    }
+
+    .paper-table-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .paper-table-links .link-btn {
+      padding: 2px 7px;
+      font-size: 10.5px;
+      line-height: 1.3;
+    }
+
+    .paper-table-number {
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .paper-table-empty-value {
+      color: var(--text-dim);
+    }
+
+    .paper-table-detail-row[hidden] {
+      display: none;
+    }
+
+    .paper-table-detail-row td {
+      padding: 0;
+    }
+
+    .paper-table-detail {
+      display: grid;
+      gap: 12px;
+      padding: 16px 18px 18px 38px;
+      background:
+        linear-gradient(180deg, rgba(88,166,255,0.05), transparent),
+        var(--surface);
+    }
+
+    .paper-table-detail-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .paper-table-detail-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .paper-table-detail-block {
+      display: grid;
+      gap: 5px;
+    }
+
+    .paper-table-detail-label {
+      color: var(--accent);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .paper-table-detail-text {
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .paper-table-detail .paper-links {
+      margin-top: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .layout.table-view-active {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .paper-table-detail {
+        padding: 14px;
+      }
+    }
+
+    /* ── Paper Metrics (citations + stars) ── */
+    .paper-metrics {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .metric-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 10px;
+      border: 1px solid;
+    }
+    .metric-citations {
+      background: rgba(9,105,218,0.07);
+      border-color: rgba(9,105,218,0.2);
+      color: #0969da;
+    }
+    .metric-stars {
+      background: rgba(154,103,0,0.07);
+      border-color: rgba(154,103,0,0.2);
+      color: #7d4e00;
+    }
+    @media (prefers-color-scheme: dark) {
+      .metric-citations { background: rgba(88,166,255,0.08); border-color: rgba(88,166,255,0.25); color: #79c0ff; }
+      .metric-stars { background: rgba(255,212,0,0.08); border-color: rgba(255,212,0,0.25); color: #e3b341; }
+    }
+
+    /* ── Mobile compact viewport overrides ── */
+    @media (max-height: 820px) {
+      header {
+        padding: 20px 24px 16px;
+      }
+      .header-sub {
+        margin-bottom: 12px;
+      }
+      .header-actions {
+        margin-bottom: 12px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        height: auto;
+        min-height: 100vh;
+        overflow: auto;
+      }
+      header {
+        position: static;
+        padding: 14px 12px 12px;
+      }
+      .filter-sidebar {
+        width: 100%;
+        border-radius: 12px;
+      }
+      .layout {
+        padding: 12px;
+        gap: 14px;
+        flex: 0 0 auto;
+        min-height: auto;
+        overflow: visible;
+      }
+      main {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        overscroll-behavior: auto;
+      }
+      .sidebar { display: none; }
+      .header-inner { max-width: 100%; }
+      h1 {
+        font-size: 18px;
+        gap: 6px;
+        margin-bottom: 4px;
+      }
+      .header-sub {
+        max-width: 100%;
+        white-space: normal;
+        font-size: 12px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+      }
+      .header-actions {
+        gap: 6px;
+        margin: 0 auto 10px;
+      }
+      .contribute-btn {
+        padding: 6px 10px;
+        font-size: 11.5px;
+      }
+      .search-wrap {
+        max-width: 100%;
+      }
+      #search {
+        padding: 9px 86px 9px 38px;
+        font-size: 13px;
+      }
+      .search-count {
+        font-size: 10.5px;
+      }
+      .controls-bar {
+        margin-top: 8px;
+        gap: 8px;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 2px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .controls-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .sort-bar,
+      .date-filter-bar,
+      .quick-filter-bar,
+      .view-toggle-bar {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        flex-shrink: 0;
+      }
+      .sort-label,
+      .date-filter-label,
+      .date-sep {
+        flex-shrink: 0;
+      }
+      .date-input {
+        width: 140px;
+        min-height: 32px;
+      }
+      .sort-btn, .date-clear-btn, .tag-filter-toggle {
+        min-height: 32px;
+      }
+      .tag-filter-shell {
+        margin-top: 8px;
+      }
+      .tag-filter-toggle,
+      .tag-filter-panel {
+        width: 100%;
+        min-width: 0;
+      }
+      .tag-filter-toggle {
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+      .tag-filter-panel {
+        padding: 12px;
+      }
+      .mobile-directory {
+        display: block;
+        margin-bottom: 12px;
+      }
+      .category-disclaimer {
+        display: none;
+      }
+      .category-header {
+        padding: 12px 14px;
+        margin-bottom: 12px;
+      }
+      .category-desc,
+      .category-node-desc {
+        display: none;
+      }
+      .category-count,
+      .category-node-count {
+        display: none;
+      }
+      .category-node {
+        margin-left: 0;
+        padding: 12px;
+      }
+      .category-node-header {
+        margin-bottom: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 17px;
+      }
+      .header-sub {
+        font-size: 11px;
+        margin-bottom: 8px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .header-actions {
+        margin-bottom: 8px;
+      }
+      .contribute-btn {
+        padding: 5px 9px;
+        font-size: 11px;
+      }
+      .sort-label,
+      .date-filter-label {
+        display: none;
+      }
+      .sort-bar, .date-filter-bar,
+      .quick-filter-bar, .view-toggle-bar {
+        gap: 6px;
+      }
+      .sort-btn {
+        padding: 4px 9px;
+        font-size: 11px;
+      }
+      .date-input { width: 132px; }
+      .mobile-directory-toggle {
+        padding: 10px 12px;
+      }
+      .mobile-directory-hint {
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body.filter-sidebar-open header {
+        padding: 12px;
+      }
+
+      body.filter-sidebar-open .search-wrap {
+        margin-bottom: 8px;
+      }
+
+      .filter-sidebar {
+        width: 100%;
+        padding: 10px;
+      }
+
+      .filter-sidebar-header {
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .filter-sidebar-close {
+        width: 32px;
+        height: 32px;
+        flex: 0 0 32px;
+      }
+
+      .filter-sidebar-body {
+        gap: 10px;
+      }
+
+      .filter-sidebar-controls {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        overflow-x: visible;
+      }
+
+      .filter-sidebar-controls > div,
+      .filter-sidebar-controls .sort-bar,
+      .filter-sidebar-controls .date-filter-bar,
+      .filter-sidebar-controls .quick-filter-bar,
+      .filter-sidebar-controls .view-toggle-bar {
+        width: 100%;
+        flex-wrap: wrap;
+      }
+
+      .filter-sidebar-controls .date-input {
+        flex: 1 1 128px;
+        width: auto;
+        min-width: 0;
+      }
+
+      .filter-sidebar-tag-shell {
+        width: 100%;
+      }
+
+      .tag-filter-chip-list {
+        gap: 6px;
+      }
+
+      .tag-chip {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .filter-sidebar-header {
+        padding-bottom: 6px;
+      }
+
+      .filter-sidebar-subtitle {
+        display: none;
+      }
+
+      .filter-sidebar-controls .date-input {
+        flex-basis: 118px;
+      }
+
+      .filter-sidebar-controls .sort-btn,
+      .filter-sidebar-controls .date-clear-btn {
+        padding: 4px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>
+      <span>🔁</span>
+      Awesome Loop Models
+    </h1>
+    <p class="header-sub">
+      A curated list of papers and selected technical blogs on Loop Models.
+    </p>
+    <div class="header-actions">
+      <a class="contribute-btn github-btn"
+         id="header-github-link"
+         href="#"
+         target="_blank">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+      <a class="contribute-btn"
+         href="submit.html">📄 Submit</a>
+    </div>
+    <div class="daily-watch-countdown" id="daily-watch-countdown">
+      <div class="daily-watch-countdown-label">Today papers refresh</div>
+      <div class="daily-watch-countdown-value" id="daily-watch-countdown-value" aria-live="polite">Calculating…</div>
+      <div class="daily-watch-countdown-meta" id="daily-watch-countdown-meta">20:05 ET Sunday–Thursday · about 5 minutes after arXiv's daily announcement.</div>
+    </div>
+    <div class="search-wrap">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+        <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+      </svg>
+      <input type="text" id="search" placeholder="Search papers or blogs by title, author, venue, keyword…" autocomplete="off" />
+      <span class="search-count" id="search-count"></span>
+    </div>
+    <div class="filter-sidebar-toggle-row">
+      <button type="button" class="filter-sidebar-toggle" id="filter-sidebar-toggle" aria-expanded="false" aria-controls="filter-sidebar-panel">
+        <span>Filters</span>
+        <span class="filter-sidebar-toggle-meta" id="filter-sidebar-summary">Sort, date, tags</span>
+      </button>
+    </div>
+    <aside class="filter-sidebar" id="filter-sidebar-panel" aria-hidden="true" hidden>
+      <div class="filter-sidebar-header">
+        <div>
+          <div class="filter-sidebar-title">Filters</div>
+          <div class="filter-sidebar-subtitle">Sort, publication date, watch toggles, view mode, and tags.</div>
+        </div>
+        <button type="button" class="filter-sidebar-close" id="filter-sidebar-close" aria-label="Close filters">✕</button>
+      </div>
+      <div class="filter-sidebar-body">
+        <div class="controls-bar filter-sidebar-controls">
+          <div class="sort-bar">
+            <span class="sort-label">Sort by:</span>
+            <button class="sort-btn" data-sort="default" onclick="setSort('default')">Curated</button>
+            <button class="sort-btn" data-sort="citations" onclick="setSort('citations')">&#128218; Citations</button>
+            <button class="sort-btn" data-sort="stars" onclick="setSort('stars')">&#11088; GitHub Stars</button>
+            <button class="sort-btn active" data-sort="date" onclick="setSort('date')">&#128197; Date</button>
+          </div>
+          <div class="date-filter-bar">
+            <span class="date-filter-label">Publication date:</span>
+            <input type="date" id="publication-date-start" class="date-input" placeholder="Start" />
+            <span class="date-sep">→</span>
+            <input type="date" id="publication-date-end" class="date-input" placeholder="End" />
+            <button type="button" id="publication-date-clear" class="date-clear-btn">Clear</button>
+          </div>
+          <div class="quick-filter-bar">
+            <span class="sort-label">Watch:</span>
+            <button type="button" class="sort-btn" id="accepted-only-toggle" aria-pressed="false" onclick="toggleAcceptedOnly()">Accepted only</button>
+            <button type="button" class="sort-btn" id="today-only-toggle" aria-pressed="false" onclick="toggleTodayOnly()">Today</button>
+            <button type="button" class="sort-btn" id="has-code-toggle" aria-pressed="false" onclick="toggleHasCodeOnly()">w/ code</button>
+            <button type="button" class="sort-btn" id="has-comments-toggle" aria-pressed="false" onclick="toggleHasCommentsOnly()">w/ comments</button>
+          </div>
+          <div class="view-toggle-bar">
+            <span class="sort-label">View:</span>
+            <button type="button" class="sort-btn active" id="view-category-toggle" data-view="category" aria-pressed="true" onclick="setView('category')">Category view</button>
+            <button type="button" class="sort-btn" id="view-table-toggle" data-view="table" aria-pressed="false" onclick="setView('table')">Table view</button>
+          </div>
+        </div>
+        <div class="tag-filter-shell filter-sidebar-tag-shell">
+          <button type="button" class="tag-filter-toggle" id="tag-filter-toggle" aria-expanded="false" aria-controls="tag-filter-panel">
+            <span>Tags filter</span>
+            <span class="tag-filter-toggle-meta">
+              <span id="tag-filter-summary">hidden</span>
+              <span class="tag-filter-caret">⌄</span>
+            </span>
+          </button>
+          <div class="tag-filter-panel" id="tag-filter-panel" hidden>
+            <div class="tag-filter-head">
+              <div class="tag-filter-hint">Click tags to filter. Click an active tag again to clear it. Multiple selected tags use AND.</div>
+            </div>
+            <div class="tag-filter-groups" id="tag-filter-groups"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-title">Browse the Collection</div>
+    <p class="sidebar-subtitle">Browse paper categories plus the flat Blogs section.</p>
+    <div class="sidebar-nav" id="sidebar-nav">
+      <!-- dynamically populated -->
+    </div>
+    <div class="sidebar-contribute">
+      <a href="submit.html">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        📄 Submit 
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main id="main">
+
+    <div class="category-disclaimer" id="category-disclaimer">
+      <strong>Classification note.</strong> The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure.
+    </div>
+
+    <div class="mobile-directory" id="mobile-directory">
+      <button type="button" class="mobile-directory-toggle" id="mobile-directory-toggle" aria-expanded="false">
+        <span>Browse Sections</span>
+        <span class="mobile-directory-hint">tap to expand</span>
+      </button>
+      <div class="mobile-directory-body" id="mobile-directory-tree"></div>
+    </div>
+
+    <!-- Sections rendered dynamically by JS -->
+    <div id="sections-container"></div>
+
+    <div class="table-view-shell" id="table-view-shell" hidden>
+      <div class="table-view-scroll">
+        <table class="papers-table" aria-label="Table view of loop-model resources">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col"><div class="table-sort-header"><button type="button" class="sort-btn table-sort-btn" data-sort="date" onclick="setSort('date')">Date</button><button type="button" class="table-sort-direction-btn" data-sort="date" data-direction="desc" onclick="toggleSortDirection('date')" aria-label="Toggle Date sort direction" aria-pressed="false">↕</button></div></th>
+              <th scope="col">Venue</th>
+              <th scope="col">Links</th>
+              <th scope="col">Focus</th>
+              <th scope="col">Domains</th>
+              <th scope="col"><div class="table-sort-header"><button type="button" class="sort-btn table-sort-btn" data-sort="citations" onclick="setSort('citations')">Citations</button><button type="button" class="table-sort-direction-btn" data-sort="citations" data-direction="desc" onclick="toggleSortDirection('citations')" aria-label="Toggle Citations sort direction" aria-pressed="false">↕</button></div></th>
+              <th scope="col"><div class="table-sort-header"><button type="button" class="sort-btn table-sort-btn" data-sort="stars" onclick="setSort('stars')">Stars</button><button type="button" class="table-sort-direction-btn" data-sort="stars" data-direction="desc" onclick="toggleSortDirection('stars')" aria-label="Toggle Stars sort direction" aria-pressed="false">↕</button></div></th>
+            </tr>
+          </thead>
+          <tbody id="papers-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="no-results" style="display:none">
+      <div class="no-results-icon">🔍</div>
+      <p>No resources found matching "<span id="no-results-query"></span>"</p>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  Maintained by <a href="https://github.com/huskydoge">huskydoge</a> ·
+  <a id="footer-github-link" href="#">View on GitHub</a> ·
+  <a id="footer-contributing-link" href="#">Contributing Guide</a> ·
+  Last updated April 2026
+</footer>
+
+<script src="assets/repo-meta.js?v=2"></script>
+<script src="assets/daily-watch-countdown.js"></script>
+<script>
+// ── App ────────────────────────────────────────────────────────────────────────────
+
+const REPO_META = window.REPO_META;
+
+function initializeRepoLinks() {
+  const repoBase = REPO_META.getGitHubRepoBase();
+  const contributingUrl = REPO_META.getGitHubBlobUrl('CONTRIBUTING.md');
+  const headerLink = document.getElementById('header-github-link');
+  const footerLink = document.getElementById('footer-github-link');
+  const footerContributingLink = document.getElementById('footer-contributing-link');
+  if (headerLink) headerLink.href = repoBase;
+  if (footerLink) footerLink.href = repoBase;
+  if (footerContributingLink) footerContributingLink.href = contributingUrl;
+}
+
+initializeRepoLinks();
+if (window.DAILY_WATCH_COUNTDOWN) {
+  DAILY_WATCH_COUNTDOWN.updateDailyWatchCountdown();
+  DAILY_WATCH_COUNTDOWN.startDailyWatchCountdown();
+}
+
+// ── Link Config ──────────────────────────────────────────────────────────────
+// ── Link Config ──────────────────────────────────────────────────────────────
+const LINK_CONFIG = {
+  blog:        { label: "Blog",        cls: "link-paper",      icon: "📝" },
+  arxiv:       { label: "arXiv",       cls: "link-arxiv",      icon: "📄" },
+  alphaxiv:    { label: "AlphaXiv",    cls: "link-alphaxiv",   icon: "🧠" },
+  paper:       { label: "Paper",       cls: "link-paper",      icon: "📰" },
+  github:      { label: "Code",        cls: "link-github",     icon: "💻" },
+  hf:          { label: "HuggingFace", cls: "link-hf",         icon: "🤗" },
+  openreview:  { label: "OpenReview",  cls: "link-openreview", icon: "🔍" },
+  project:     { label: "Project",     cls: "link-project",    icon: "🌐" },
+  comment:     { label: "Community Comment", cls: "link-comment", icon: "💬" },
+  twitter:     { label: "Twitter",     cls: "link-twitter",    icon: "🐦" },
+};
+
+function escapeHtml(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function highlightQuery(str, query) {
+  if (!query || !str) return String(str || '');
+  const re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+  return String(str).replace(re, '<mark>$1</mark>');
+}
+
+function renderLink(type, url, labelOverride) {
+  const cfg = LINK_CONFIG[type] || { label: type, cls: 'link-paper', icon: '🔗' };
+  const label = labelOverride || cfg.label;
+  return '<a class="link-btn ' + cfg.cls + '" href="' + url + '" target="_blank" rel="noopener">' + cfg.icon + ' ' + label + '</a>';
+}
+
+function getPrimaryPaperUrl(paper) {
+  if (!paper || !paper.links) return '';
+  return paper.links.blog || paper.links.arxiv || paper.links.paper || paper.links.openreview || paper.links.project || paper.links.github || paper.links.hf || paper.links.twitter || '';
+}
+
+function getCommunityComments(paper) {
+  const communityCommentsRaw = paper.community_comments || paper.comments || [];
+  return communityCommentsRaw
+    .map(function(comment) {
+      if (!comment) return null;
+      if (typeof comment === 'string') return { label: '', url: comment };
+      return comment;
+    })
+    .filter(function(comment) { return comment && comment.url; });
+}
+
+function renderCommunityCommentsHtml(paper) {
+  const communityComments = getCommunityComments(paper);
+  if (communityComments.length === 0) return '';
+  const items = communityComments.map(function(comment, idx) {
+    const label = comment.label || ('Comment ' + (idx + 1));
+    return '<a class="community-comment-item" href="' + comment.url + '" target="_blank" rel="noopener">' + escapeHtml(label) + '</a>';
+  }).join('');
+  return '<details class="community-comments">'
+    + '<summary class="link-btn link-comment">&#128172; Community Comments (' + communityComments.length + ')</summary>'
+    + '<div class="community-comments-menu">' + items + '</div>'
+    + '</details>';
+}
+
+function renderPaperLinksHtml(paper) {
+  const linksHtml = Object.entries(paper.links || {})
+    .filter(function(entry) { return entry[1]; })
+    .map(function(entry) {
+      return renderLink(entry[0], entry[1]);
+    }).join('');
+  return linksHtml + renderCommunityCommentsHtml(paper);
+}
+
+function renderCompactPaperLinksHtml(paper) {
+  const linksHtml = Object.entries(paper.links || {})
+    .filter(function(entry) { return entry[1]; })
+    .map(function(entry) {
+      return renderLink(entry[0], entry[1]);
+    }).join('');
+  return linksHtml ? '<div class="paper-table-links">' + linksHtml + '</div>' : '<span class="paper-table-empty-value">—</span>';
+}
+
+function formatMetricCount(value) {
+  if (value == null) return '';
+  return value >= 1000 ? (value / 1000).toFixed(1) + 'k' : String(value);
+}
+
+function renderMetricsHtml(paper) {
+  const parts = [];
+  if (paper.citations != null) {
+    parts.push('<span class="metric-badge metric-citations">&#128218; ' + formatMetricCount(paper.citations) + ' citations</span>');
+  }
+  if (paper.github_stars != null) {
+    parts.push('<span class="metric-badge metric-stars">&#11088; ' + formatMetricCount(paper.github_stars) + ' stars</span>');
+  }
+  return parts.length ? '<div class="paper-metrics">' + parts.join('') + '</div>' : '';
+}
+
+function getBrowserTodayString() {
+  const today = new Date();
+  return today.getFullYear()
+    + '-' + String(today.getMonth() + 1).padStart(2, '0')
+    + '-' + String(today.getDate()).padStart(2, '0');
+}
+
+function getRepoTodayString() {
+  return REPO_TODAY || getBrowserTodayString();
+}
+
+function formatTableText(value) {
+  return value ? escapeHtml(value) : '<span class="paper-table-empty-value">—</span>';
+}
+
+function formatTableNumber(value) {
+  return value != null ? escapeHtml(formatMetricCount(value)) : '<span class="paper-table-empty-value">—</span>';
+}
+
+function getPaperDisplayDate(paper) {
+  const publishedDate = typeof paper.published_date === 'string' ? paper.published_date.trim() : '';
+  return /^\d{4}-\d{2}-\d{2}$/.test(publishedDate)
+    ? publishedDate
+    : (paper.year ? String(paper.year) : '');
+}
+
+function getPaperSortDateValue(paper) {
+  const publishedDate = typeof paper.published_date === 'string' ? paper.published_date.trim() : '';
+  return /^\d{4}-\d{2}-\d{2}$/.test(publishedDate)
+    ? publishedDate
+    : (paper.year ? String(paper.year) : '');
+}
+
+function isDirectionalSort(sortKey) {
+  return sortKey === 'date' || sortKey === 'citations' || sortKey === 'stars';
+}
+
+function getSortDirection(sortKey) {
+  return SORT_DIRECTIONS[sortKey] || 'desc';
+}
+
+function compareMetricValues(aValue, bValue, direction) {
+  const aMissing = aValue == null;
+  const bMissing = bValue == null;
+  if (aMissing && bMissing) return 0;
+  if (aMissing) return 1;
+  if (bMissing) return -1;
+  return direction === 'asc' ? aValue - bValue : bValue - aValue;
+}
+
+function comparePapersByDate(a, b, direction) {
+  const aDate = getPaperSortDateValue(a);
+  const bDate = getPaperSortDateValue(b);
+  if (!aDate && !bDate) return (a.title || '').localeCompare(b.title || '');
+  if (!aDate) return 1;
+  if (!bDate) return -1;
+  const dateDiff = direction === 'asc'
+    ? aDate.localeCompare(bDate)
+    : bDate.localeCompare(aDate);
+  if (dateDiff !== 0) return dateDiff;
+  return (a.title || '').localeCompare(b.title || '');
+}
+
+function comparePapersByDateDesc(a, b) {
+  return comparePapersByDate(a, b, 'desc');
+}
+
+function updateSortButtons() {
+  document.querySelectorAll('.sort-btn[data-sort]').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.sort === CURRENT_SORT);
+  });
+  document.querySelectorAll('.table-sort-direction-btn[data-sort]').forEach(function(btn) {
+    const sortKey = btn.dataset.sort;
+    const isActive = sortKey === CURRENT_SORT;
+    const direction = getSortDirection(sortKey);
+    btn.classList.toggle('is-active', isActive);
+    btn.dataset.direction = isActive ? direction : 'none';
+    btn.textContent = isActive ? (direction === 'asc' ? '↑' : '↓') : '↕';
+    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+}
+
+function renderTableRow(paper, query) {
+  const expanded = EXPANDED_TABLE_ROWS.has(paper.id);
+  const paperId = escapeHtml(paper.id || '');
+  const detailRowId = 'paper-table-detail-' + paperId;
+  const mustReadMarkerHtml = paper.must_read ? '<span class="must-read-marker" aria-label="Must read">🌟</span>' : '';
+  const foundationBadgeHtml = paper.foundation ? '<span class="foundation-badge">Foundation</span>' : '';
+  const paperDisplayDate = getPaperDisplayDate(paper);
+  const detailMetaParts = [];
+  if (paper.venue || paperDisplayDate) {
+    detailMetaParts.push('<span class="paper-table-detail-pill">'
+      + escapeHtml([paper.venue || '', paperDisplayDate || ''].filter(Boolean).join(' · '))
+      + '</span>');
+  }
+  if (paper._categoryTrailLabel) {
+    detailMetaParts.push('<span class="paper-table-detail-pill">' + escapeHtml(paper._categoryTrailLabel) + '</span>');
+  }
+  if (paper._addedDate) {
+    detailMetaParts.push('<span class="paper-table-detail-pill">Added ' + escapeHtml(paper._addedDate) + '</span>');
+  }
+  const detailLinksHtml = renderPaperLinksHtml(paper);
+  const compactLinksHtml = renderCompactPaperLinksHtml(paper);
+  const detailHtml = '<div class="paper-table-detail">'
+    + (detailMetaParts.length ? '<div class="paper-table-detail-meta">' + detailMetaParts.join('') + '</div>' : '')
+    + (paper._authorsText ? '<section class="paper-table-detail-block"><div class="paper-table-detail-label">Authors</div><div class="paper-table-detail-text">' + highlightQuery(paper._authorsText, query) + '</div></section>' : '')
+    + (paper.desc ? '<section class="paper-table-detail-block"><div class="paper-table-detail-label">TL;DR</div><div class="paper-table-detail-text">' + highlightQuery(paper.desc, query) + '</div></section>' : '')
+    + (detailLinksHtml ? '<section class="paper-table-detail-block"><div class="paper-table-detail-label">Links</div><div class="paper-links">' + detailLinksHtml + '</div></section>' : '')
+    + '</div>';
+
+  return '<tr class="paper-table-row' + (expanded ? ' is-expanded' : '') + '" data-paper-id="' + paperId + '">'
+    + '<td class="paper-table-title-cell"><button type="button" class="paper-table-disclosure" data-paper-id="' + paperId + '" aria-expanded="' + (expanded ? 'true' : 'false') + '" aria-controls="' + detailRowId + '"><span class="paper-table-title-wrap"><span class="paper-table-caret">' + (expanded ? '⌄' : '▸') + '</span><span class="paper-table-title-text">' + mustReadMarkerHtml + '<span>' + highlightQuery(paper.title, query) + '</span>' + foundationBadgeHtml + '</span></span></button></td>'
+    + '<td class="paper-table-number">' + formatTableText(getPaperDisplayDate(paper)) + '</td>'
+    + '<td><span class="paper-venue ' + (paper.venueClass || 'venue-arxiv') + '">' + escapeHtml(paper.venue || '—') + '</span></td>'
+    + '<td class="paper-table-links-cell">' + compactLinksHtml + '</td>'
+    + '<td class="paper-table-meta-cell">' + formatTableText(paper._focusLabel) + '</td>'
+    + '<td class="paper-table-meta-cell">' + formatTableText(paper._domainLabel) + '</td>'
+    + '<td class="paper-table-number">' + formatTableNumber(paper.citations) + '</td>'
+    + '<td class="paper-table-number">' + formatTableNumber(paper.github_stars) + '</td>'
+    + '</tr>'
+    + '<tr class="paper-table-detail-row' + (expanded ? ' is-open' : '') + '" id="' + detailRowId + '" data-paper-id="' + paperId + '" aria-hidden="' + (expanded ? 'false' : 'true') + '"' + (expanded ? '' : ' hidden') + '>'
+    + '<td colspan="8">' + detailHtml + '</td>'
+    + '</tr>';
+}
+
+function renderTableView(query, papers) {
+  const body = document.getElementById('papers-table-body');
+  if (!body) return;
+  body.innerHTML = papers.map(function(paper) { return renderTableRow(paper, query); }).join('');
+}
+
+// ── Render a single paper card ────────────────────────────────────────────────
+function renderCard(paper, query) {
+  query = query || '';
+  const authorsStr = paper._authorsText || '';
+  const linksHtml = renderPaperLinksHtml(paper);
+  const paperDisplayDate = getPaperDisplayDate(paper);
+  const authorsMetaText = authorsStr && paperDisplayDate
+    ? authorsStr + ' · ' + paperDisplayDate
+    : (authorsStr || paperDisplayDate);
+  const titleUrl = getPrimaryPaperUrl(paper);
+  const mustReadMarkerHtml = paper.must_read ? '<span class="must-read-marker" aria-label="Must read">🌟</span>' : '';
+  const foundationBadgeHtml = paper.foundation ? '<span class="foundation-badge">Foundation</span>' : '';
+  const titleTextHtml = titleUrl
+    ? '<a class="paper-title-link" href="' + escapeHtml(titleUrl) + '" target="_blank" rel="noopener">' + highlightQuery(paper.title, query) + '</a>'
+    : highlightQuery(paper.title, query);
+  const titleHtml = mustReadMarkerHtml + titleTextHtml + foundationBadgeHtml;
+  const authorsHtml = authorsStr
+    ? '<div class="paper-meta">' + highlightQuery(authorsMetaText, query) + '</div>'
+    : '<div class="paper-meta">' + paperDisplayDate + '</div>';
+
+  function visibleEntries(entries) {
+    return entries.filter(function(entry) {
+      return !titleLower.includes((entry.displayLabel || entry.label).toLowerCase());
+    });
+  }
+
+  function renderTag(entry, extraClass) {
+    const classes = ['paper-tag'];
+    if (extraClass) classes.push(extraClass);
+    if (ACTIVE_TAG_FILTERS.has(entry.key)) classes.push('is-active');
+    return '<button type="button" class="' + classes.join(' ') + '" data-tag-key="' + escapeHtml(entry.key) + '" data-tag-group="' + escapeHtml(entry.group) + '">' + escapeHtml(entry.displayLabel || entry.label) + '</button>';
+  }
+
+  const tagEntries = Array.isArray(paper._tagEntries) ? paper._tagEntries : getPaperTagEntries(paper);
+  const allTags = tagEntries.map(function(entry) { return entry.label; });
+  const titleLower = (paper.title || '').toLowerCase();
+  const displayMechanismEntries = visibleEntries(tagEntries.filter(function(entry) { return entry.group === 'mechanism'; }));
+  const displayFocusEntries = visibleEntries(tagEntries.filter(function(entry) { return entry.group === 'focus'; }));
+  const displayDomainEntries = visibleEntries(tagEntries.filter(function(entry) { return entry.group === 'domain'; }));
+  const tagsHtml = (displayMechanismEntries.length || displayFocusEntries.length || displayDomainEntries.length)
+    ? '<div class="paper-tags">'
+      + displayMechanismEntries.map(function(entry) { return renderTag(entry, 'paper-tag-mechanism'); }).join('')
+      + displayFocusEntries.map(function(entry) { return renderTag(entry, 'paper-tag-focus'); }).join('')
+      + displayDomainEntries.map(function(entry) { return renderTag(entry, 'paper-tag-domain'); }).join('')
+      + '</div>'
+    : '';
+
+  return '<div class="paper-card"'
+    + ' data-id="' + (paper.id || '') + '"'
+    + ' data-title="' + (paper.title || '').toLowerCase() + '"'
+    + ' data-authors="' + authorsStr.toLowerCase() + '"'
+    + ' data-venue="' + (paper.venue || '').toLowerCase() + '"'
+    + ' data-desc="' + (paper.desc || '').toLowerCase() + '"'
+    + ' data-tags="' + allTags.join(' ').toLowerCase() + '"'
+    + ' data-citations="' + (paper.citations != null ? paper.citations : -1) + '"'
+    + ' data-stars="' + (paper.github_stars != null ? paper.github_stars : -1) + '"'
+    + ' data-year="' + (paper.year || 0) + '">'
+    + '<div class="paper-top">'
+    + '<div class="paper-title">' + titleHtml + '</div>'
+    + '<span class="paper-venue ' + (paper.venueClass || 'venue-arxiv') + '">' + paper.venue + '</span>'
+    + '</div>'
+    + authorsHtml
+    + renderMetricsHtml(paper)
+    + tagsHtml
+    + (paper.desc ? '<div class="paper-desc">' + highlightQuery(paper.desc, query) + '</div>' : '')
+    + '<div class="paper-links">' + linksHtml + '</div>'
+    + '</div>';
+}
+
+// ── State & Category Tree ────────────────────────────────────────────────────
+let CURRENT_SORT = 'date';
+let SORT_DIRECTIONS = {
+  date: 'desc',
+  citations: 'desc',
+  stars: 'desc'
+};
+let ALL_PAPERS = [];
+let ALL_BLOGS = [];
+let ALL_RESOURCES = [];
+let CATEGORIES = {};
+let BLOG_SECTION_META = { title: 'Blogs', desc: '' };
+let DIRECT_PAPERS_BY_NODE = {};
+let NODE_COUNTS = {};
+let SECTION_OBSERVER = null;
+let ACTIVE_TAG_FILTERS = new Set();
+let TAG_FILTER_GROUPS = [];
+let TAG_FILTER_LOOKUP = {};
+let TAG_FILTER_OPEN = false;
+let ACCEPTED_ONLY = false;
+let TODAY_ONLY = false;
+let HAS_CODE_ONLY = false;
+let HAS_COMMENTS_ONLY = false;
+let CURRENT_VIEW = 'category';
+let FILTER_SIDEBAR_OPEN = false;
+let EXPANDED_TABLE_ROWS = new Set();
+let REPO_TODAY = '';
+
+const TAG_GROUP_LABELS = {
+  mechanism: 'Loop Mechanism',
+  focus: 'Focus Tags',
+  domain: 'Domain Tags'
+};
+
+const FOCUS_TAG_ORDER = [
+  'objective-loss',
+  'training-algorithm',
+  'architecture',
+  'data',
+  'inference-algorithm'
+];
+
+function normalizeTagList(raw) {
+  return (raw || [])
+    .map(function(tag) { return String(tag || '').trim(); })
+    .filter(Boolean);
+}
+
+function uniqueTagList(tags) {
+  return tags.filter(function(tag, idx) {
+    const tagLower = tag.toLowerCase();
+    return tags.findIndex(function(other) { return other.toLowerCase() === tagLower; }) === idx;
+  });
+}
+
+function buildTagEntry(group, label) {
+  return {
+    group: group,
+    label: label,
+    displayLabel: label,
+    key: group + '::' + label.toLowerCase(),
+    searchLabel: label.toLowerCase()
+  };
+}
+
+function getPaperTagEntries(paper) {
+  const mechanismTags = uniqueTagList(normalizeTagList(paper.mechanism_tags)).map(function(tag) {
+    return buildTagEntry('mechanism', tag);
+  });
+  const focusTags = uniqueTagList(normalizeTagList(paper.focus_tags)).filter(function(tag) {
+    return !mechanismTags.some(function(mechanismTag) { return mechanismTag.label.toLowerCase() === tag.toLowerCase(); });
+  }).map(function(tag) {
+    return buildTagEntry('focus', tag);
+  });
+  const domainTags = uniqueTagList(normalizeTagList(paper.domain_tags)).filter(function(tag) {
+    return !mechanismTags.some(function(mechanismTag) { return mechanismTag.label.toLowerCase() === tag.toLowerCase(); })
+      && !focusTags.some(function(focusTag) { return focusTag.label.toLowerCase() === tag.toLowerCase(); });
+  }).map(function(tag) {
+    return buildTagEntry('domain', tag);
+  });
+  return mechanismTags.concat(focusTags, domainTags);
+}
+
+function getCategoryTrailTitles(pathParts) {
+  if (!pathParts.length) return [];
+  let current = CATEGORIES[pathParts[0]];
+  const titles = [];
+  if (!current) return pathParts.slice();
+  titles.push(current.title || pathParts[0]);
+  for (let idx = 1; idx < pathParts.length; idx++) {
+    const segment = pathParts[idx];
+    current = current && current.children ? current.children[segment] : null;
+    titles.push((current && current.title) || segment.replace(/_/g, ' '));
+  }
+  return titles;
+}
+
+function getPaperCategoryLabels(paper) {
+  if (paper.entry_type === 'blog') {
+    const blogLabel = BLOG_SECTION_META.title || 'Blogs';
+    return { category: blogLabel, trail: blogLabel };
+  }
+  const titles = getCategoryTrailTitles(getPaperPath(paper));
+  const category = titles[0] || '';
+  return { category: category, trail: category };
+}
+
+function preparePaperRecord(paper) {
+  const authors = Array.isArray(paper.authors_list) && paper.authors_list.length
+    ? paper.authors_list.join(', ')
+    : (Array.isArray(paper.authors) ? paper.authors.join(', ') : String(paper.authors || ''));
+  const tagEntries = getPaperTagEntries(paper);
+  const categoryLabels = getPaperCategoryLabels(paper);
+  paper.entry_type = paper.entry_type || 'paper';
+  paper._authorsText = authors;
+  paper._tagEntries = tagEntries;
+  paper._tagKeySet = new Set(tagEntries.map(function(entry) { return entry.key; }));
+  paper._categoryLabel = categoryLabels.category;
+  paper._categoryTrailLabel = categoryLabels.trail;
+  paper._mechanismLabel = normalizeTagList(paper.mechanism_tags).join(' · ');
+  paper._focusLabel = normalizeTagList(paper.focus_tags).join(' · ');
+  paper._domainLabel = normalizeTagList(paper.domain_tags).join(' · ');
+  paper._addedDate = typeof paper.added_date === 'string' ? paper.added_date.trim() : '';
+  paper._searchText = [
+    paper.title || '',
+    authors,
+    paper.venue || '',
+    paper.desc || '',
+    tagEntries.map(function(entry) { return entry.label; }).join(' '),
+    paper._categoryTrailLabel,
+    paper._mechanismLabel,
+    paper._focusLabel,
+    paper._domainLabel,
+    paper._addedDate
+  ].join(' ').toLowerCase();
+  return paper;
+}
+
+function sortGroupTags(groupId, tags) {
+  return tags.slice().sort(function(a, b) {
+    const countDiff = b.count - a.count;
+    if (countDiff !== 0) return countDiff;
+
+    if (groupId === 'focus') {
+      const aIdx = FOCUS_TAG_ORDER.indexOf(a.label);
+      const bIdx = FOCUS_TAG_ORDER.indexOf(b.label);
+      const aRank = aIdx === -1 ? Number.MAX_SAFE_INTEGER : aIdx;
+      const bRank = bIdx === -1 ? Number.MAX_SAFE_INTEGER : bIdx;
+      if (aRank !== bRank) return aRank - bRank;
+    }
+
+    return a.label.localeCompare(b.label);
+  });
+}
+
+function buildTagFilterGroups(papers) {
+  const grouped = {
+    mechanism: new Map(),
+    focus: new Map(),
+    domain: new Map()
+  };
+
+  papers.forEach(function(paper) {
+    const seen = new Set();
+    (paper._tagEntries || []).forEach(function(entry) {
+      if (seen.has(entry.key)) return;
+      seen.add(entry.key);
+      if (!grouped[entry.group].has(entry.key)) {
+        grouped[entry.group].set(entry.key, {
+          key: entry.key,
+          label: entry.label,
+          displayLabel: entry.displayLabel,
+          group: entry.group,
+          count: 0
+        });
+      }
+      grouped[entry.group].get(entry.key).count += 1;
+    });
+  });
+
+  TAG_FILTER_LOOKUP = {};
+
+  return Object.keys(TAG_GROUP_LABELS).map(function(groupId) {
+    const tags = sortGroupTags(groupId, Array.from(grouped[groupId].values()));
+    tags.forEach(function(tag) {
+      TAG_FILTER_LOOKUP[tag.key] = tag;
+    });
+    return {
+      id: groupId,
+      title: TAG_GROUP_LABELS[groupId],
+      tags: tags
+    };
+  }).filter(function(group) {
+    return group.tags.length > 0;
+  });
+}
+
+function paperMatchesQuery(paper, query) {
+  if (!query) return true;
+  return (paper._searchText || '').includes(query);
+}
+
+function paperMatchesTagFilters(paper) {
+  if (ACTIVE_TAG_FILTERS.size === 0) return true;
+  return Array.from(ACTIVE_TAG_FILTERS).every(function(tagKey) {
+    return paper._tagKeySet && paper._tagKeySet.has(tagKey);
+  });
+}
+
+function formatActiveTagSummary() {
+  if (ACTIVE_TAG_FILTERS.size === 0) return TAG_FILTER_OPEN ? '0 active' : 'hidden';
+  return ACTIVE_TAG_FILTERS.size + ' active';
+}
+
+function setTagFilterOpen(isOpen) {
+  TAG_FILTER_OPEN = Boolean(isOpen);
+  updateTagFilterUI();
+}
+
+function toggleTagFilter(tagKey) {
+  if (!tagKey) return;
+  if (ACTIVE_TAG_FILTERS.has(tagKey)) {
+    ACTIVE_TAG_FILTERS.delete(tagKey);
+  } else {
+    ACTIVE_TAG_FILTERS.add(tagKey);
+  }
+  updateTagFilterUI();
+  doSearch(document.getElementById('search').value || '');
+}
+
+function renderTagFilterGroups() {
+  const container = document.getElementById('tag-filter-groups');
+  if (!container) return;
+  container.innerHTML = TAG_FILTER_GROUPS.map(function(group) {
+    return '<section class="tag-filter-group">'
+      + '<div class="tag-filter-group-title">' + group.title + '</div>'
+      + '<div class="tag-filter-chip-list">'
+      + group.tags.map(function(tag) {
+        const activeClass = ACTIVE_TAG_FILTERS.has(tag.key) ? ' is-active' : '';
+        return '<button type="button" class="tag-filter-chip' + activeClass + '" data-tag-key="' + tag.key + '" data-tag-group="' + tag.group + '">'
+          + '<span class="tag-filter-chip-label">' + tag.displayLabel + '</span>'
+          + '<span class="tag-filter-chip-count">' + tag.count + '</span>'
+          + '</button>';
+      }).join('')
+      + '</div>'
+      + '</section>';
+  }).join('');
+}
+
+function updateTagFilterUI() {
+  const toggle = document.getElementById('tag-filter-toggle');
+  const panel = document.getElementById('tag-filter-panel');
+  const summary = document.getElementById('tag-filter-summary');
+  if (!toggle || !panel || !summary) return;
+  toggle.setAttribute('aria-expanded', TAG_FILTER_OPEN ? 'true' : 'false');
+  panel.hidden = !TAG_FILTER_OPEN;
+  summary.textContent = formatActiveTagSummary();
+  renderTagFilterGroups();
+  updateFilterSidebarSummary();
+}
+
+function getPaperPath(paper) {
+  if (paper.entry_type === 'blog') return [];
+  return [paper.category || "designs"];
+}
+
+function getNodeKey(pathParts) {
+  return pathParts.join("/");
+}
+
+function getSectionId(pathParts) {
+  return "section-" + pathParts.join("__");
+}
+
+function getNodeCount(pathParts) {
+  return NODE_COUNTS[getNodeKey(pathParts)] || 0;
+}
+
+function getDirectPapers(pathParts) {
+  return DIRECT_PAPERS_BY_NODE[getNodeKey(pathParts)] || [];
+}
+
+function buildCategoryIndex() {
+  DIRECT_PAPERS_BY_NODE = {};
+  NODE_COUNTS = {};
+
+  ALL_PAPERS.forEach(function(paper) {
+    const path = getPaperPath(paper);
+    const exactKey = getNodeKey(path);
+    if (!DIRECT_PAPERS_BY_NODE[exactKey]) DIRECT_PAPERS_BY_NODE[exactKey] = [];
+    DIRECT_PAPERS_BY_NODE[exactKey].push(paper);
+
+    for (let depth = 1; depth <= path.length; depth++) {
+      const key = getNodeKey(path.slice(0, depth));
+      NODE_COUNTS[key] = (NODE_COUNTS[key] || 0) + 1;
+    }
+  });
+}
+
+function normalizeDateInputValue(raw) {
+  const value = String(raw || "").trim();
+  return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
+}
+
+function getPublicationDateFilter() {
+  const startRaw = normalizeDateInputValue(document.getElementById("publication-date-start").value);
+  const endRaw = normalizeDateInputValue(document.getElementById("publication-date-end").value);
+  let start = startRaw;
+  let end = endRaw;
+  if (start && end && start > end) {
+    start = endRaw;
+    end = startRaw;
+  }
+  return {
+    start: start,
+    end: end,
+    active: Boolean(start || end)
+  };
+}
+
+function getPaperPublicationDateValue(paper) {
+  const publishedDate = typeof paper.published_date === 'string' ? paper.published_date.trim() : '';
+  if (/^\d{4}-\d{2}-\d{2}$/.test(publishedDate)) return publishedDate;
+  const year = Number.parseInt(paper.year, 10);
+  return Number.isFinite(year) ? String(year) + '-01-01' : null;
+}
+
+function matchPublicationDate(paper, publicationDateFilter) {
+  if (!publicationDateFilter.active) return true;
+  const publicationDate = getPaperPublicationDateValue(paper);
+  if (!publicationDate) return false;
+  if (publicationDateFilter.start && publicationDate < publicationDateFilter.start) return false;
+  if (publicationDateFilter.end && publicationDate > publicationDateFilter.end) return false;
+  return true;
+}
+
+function matchAcceptedOnly(paper) {
+  return !ACCEPTED_ONLY || (paper.entry_type !== 'blog' && paper.venue !== 'arXiv');
+}
+
+function matchTodayOnly(paper) {
+  return !TODAY_ONLY || (getPaperPublicationDateValue(paper) === getRepoTodayString());
+}
+
+function matchHasCodeOnly(paper) {
+  return !HAS_CODE_ONLY || Boolean((paper.links && (paper.links.github || paper.links.hf)));
+}
+
+function paperHasCommunityComments(paper) {
+  const comments = paper.community_comments || paper.comments || [];
+  return Array.isArray(comments) ? comments.length > 0 : Boolean(comments);
+}
+
+function matchHasCommentsOnly(paper) {
+  return !HAS_COMMENTS_ONLY || paperHasCommunityComments(paper);
+}
+
+function paperMatchesActiveFilters(paper, query, publicationDateFilter) {
+  return matchPublicationDate(paper, publicationDateFilter)
+    && paperMatchesTagFilters(paper)
+    && paperMatchesQuery(paper, query)
+    && matchAcceptedOnly(paper)
+    && matchTodayOnly(paper)
+    && matchHasCodeOnly(paper)
+    && matchHasCommentsOnly(paper);
+}
+
+function getFilteredPapers(query, publicationDateFilter) {
+  return ALL_RESOURCES.filter(function(paper) {
+    return paperMatchesActiveFilters(paper, query, publicationDateFilter);
+  });
+}
+
+function getFilterSidebarActiveCount() {
+  const publicationDateFilter = getPublicationDateFilter();
+  let count = ACTIVE_TAG_FILTERS.size;
+  if (publicationDateFilter.active) count += 1;
+  if (ACCEPTED_ONLY) count += 1;
+  if (TODAY_ONLY) count += 1;
+  if (HAS_CODE_ONLY) count += 1;
+  if (HAS_COMMENTS_ONLY) count += 1;
+  if (CURRENT_VIEW !== 'category') count += 1;
+  if (CURRENT_SORT !== 'date') count += 1;
+  return count;
+}
+
+function updateFilterSidebarSummary() {
+  const summary = document.getElementById('filter-sidebar-summary');
+  if (!summary) return;
+  const activeCount = getFilterSidebarActiveCount();
+  summary.textContent = activeCount ? activeCount + ' active' : 'Sort, date, tags';
+}
+
+function setFilterSidebarOpen(isOpen) {
+  FILTER_SIDEBAR_OPEN = Boolean(isOpen);
+  const toggle = document.getElementById('filter-sidebar-toggle');
+  const panel = document.getElementById('filter-sidebar-panel');
+  document.body.classList.toggle('filter-sidebar-open', isOpen);
+  if (toggle) toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  if (panel) {
+    panel.hidden = !isOpen;
+    panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+  }
+  updateFilterSidebarSummary();
+}
+
+function initFilterSidebarControls() {
+  const toggle = document.getElementById('filter-sidebar-toggle');
+  const closeButton = document.getElementById('filter-sidebar-close');
+  if (!toggle) return;
+
+  toggle.addEventListener('click', function() {
+    setFilterSidebarOpen(!FILTER_SIDEBAR_OPEN);
+  });
+
+  if (closeButton) {
+    closeButton.addEventListener('click', function() {
+      setFilterSidebarOpen(false);
+    });
+  }
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && FILTER_SIDEBAR_OPEN) {
+      setFilterSidebarOpen(false);
+    }
+  });
+
+  setFilterSidebarOpen(false);
+}
+
+function rerenderCurrentResults() {
+  doSearch(document.getElementById('search').value || '');
+}
+
+function setToggleButtonState(id, isActive) {
+  const button = document.getElementById(id);
+  if (!button) return;
+  button.classList.toggle('active', Boolean(isActive));
+  button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+}
+
+function updateQuickFilterButtons() {
+  setToggleButtonState('accepted-only-toggle', ACCEPTED_ONLY);
+  setToggleButtonState('today-only-toggle', TODAY_ONLY);
+  setToggleButtonState('has-code-toggle', HAS_CODE_ONLY);
+  setToggleButtonState('has-comments-toggle', HAS_COMMENTS_ONLY);
+  updateFilterSidebarSummary();
+}
+
+function updateViewToggleButtons() {
+  setToggleButtonState('view-category-toggle', CURRENT_VIEW === 'category');
+  setToggleButtonState('view-table-toggle', CURRENT_VIEW === 'table');
+  updateFilterSidebarSummary();
+}
+
+function applyViewMode() {
+  const layout = document.querySelector('.layout');
+  const sectionsContainer = document.getElementById('sections-container');
+  const tableShell = document.getElementById('table-view-shell');
+  const disclaimer = document.getElementById('category-disclaimer');
+  const mobileDirectory = document.getElementById('mobile-directory');
+  const isTableView = CURRENT_VIEW === 'table';
+
+  if (layout) layout.classList.toggle('table-view-active', isTableView);
+  if (sectionsContainer) sectionsContainer.hidden = isTableView;
+  if (tableShell) tableShell.hidden = !isTableView;
+  if (disclaimer) disclaimer.hidden = isTableView;
+  if (mobileDirectory) mobileDirectory.hidden = isTableView;
+}
+
+function toggleAcceptedOnly() {
+  ACCEPTED_ONLY = !ACCEPTED_ONLY;
+  updateQuickFilterButtons();
+  rerenderCurrentResults();
+}
+
+function toggleTodayOnly() {
+  TODAY_ONLY = !TODAY_ONLY;
+  updateQuickFilterButtons();
+  rerenderCurrentResults();
+}
+
+function toggleHasCodeOnly() {
+  HAS_CODE_ONLY = !HAS_CODE_ONLY;
+  updateQuickFilterButtons();
+  rerenderCurrentResults();
+}
+
+function toggleHasCommentsOnly() {
+  HAS_COMMENTS_ONLY = !HAS_COMMENTS_ONLY;
+  updateQuickFilterButtons();
+  rerenderCurrentResults();
+}
+
+function setView(view) {
+  CURRENT_VIEW = view === 'table' ? 'table' : 'category';
+  updateViewToggleButtons();
+  applyViewMode();
+  rerenderCurrentResults();
+}
+
+function toggleTableRow(paperId) {
+  if (!paperId) return;
+  if (EXPANDED_TABLE_ROWS.has(paperId)) {
+    EXPANDED_TABLE_ROWS.delete(paperId);
+  } else {
+    EXPANDED_TABLE_ROWS.add(paperId);
+  }
+
+  const expanded = EXPANDED_TABLE_ROWS.has(paperId);
+  const summaryRow = document.querySelector('.paper-table-row[data-paper-id="' + paperId + '"]');
+  const detailRow = document.querySelector('.paper-table-detail-row[data-paper-id="' + paperId + '"]');
+  if (summaryRow) {
+    summaryRow.classList.toggle('is-expanded', expanded);
+    const disclosureButton = summaryRow.querySelector('.paper-table-disclosure');
+    if (disclosureButton) disclosureButton.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    const caret = summaryRow.querySelector('.paper-table-caret');
+    if (caret) caret.textContent = expanded ? '⌄' : '▸';
+  }
+  if (detailRow) {
+    detailRow.hidden = !expanded;
+    detailRow.classList.toggle('is-open', expanded);
+    detailRow.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+  }
+}
+
+function getActiveFilterLabel(query, publicationDateFilter) {
+  const labels = [];
+  const rawQuery = (document.getElementById('search').value || '').trim();
+  if (rawQuery) labels.push(rawQuery);
+  if (ACTIVE_TAG_FILTERS.size) {
+    labels.push('tags: ' + Array.from(ACTIVE_TAG_FILTERS).map(function(tagKey) {
+      return (TAG_FILTER_LOOKUP[tagKey] && TAG_FILTER_LOOKUP[tagKey].displayLabel) || tagKey;
+    }).join(' ∧ '));
+  }
+  if (publicationDateFilter.active) {
+    if (publicationDateFilter.start && publicationDateFilter.end) {
+      labels.push('published ' + publicationDateFilter.start + ' → ' + publicationDateFilter.end);
+    } else if (publicationDateFilter.start) {
+      labels.push('published >= ' + publicationDateFilter.start);
+    } else if (publicationDateFilter.end) {
+      labels.push('published <= ' + publicationDateFilter.end);
+    }
+  }
+  if (ACCEPTED_ONLY) labels.push('accepted only');
+  if (TODAY_ONLY) labels.push('today');
+  if (HAS_CODE_ONLY) labels.push('w/ code');
+  if (HAS_COMMENTS_ONLY) labels.push('w/ comments');
+  if (labels.length === 0 && query) labels.push(query);
+  return labels.join(' + ');
+}
+
+function sortPapers(papers, sortKey) {
+  const direction = getSortDirection(sortKey);
+  if (sortKey === 'default') {
+    return papers.slice().sort(function(a, b) {
+      const foundationDiff = Number(Boolean(b.foundation)) - Number(Boolean(a.foundation));
+      if (foundationDiff !== 0) return foundationDiff;
+      return comparePapersByDateDesc(a, b);
+    });
+  }
+  return papers.slice().sort(function(a, b) {
+    if (sortKey === 'citations') {
+      const metricDiff = compareMetricValues(a.citations, b.citations, direction);
+      if (metricDiff !== 0) return metricDiff;
+      return comparePapersByDateDesc(a, b);
+    }
+    if (sortKey === 'stars') {
+      const metricDiff = compareMetricValues(a.github_stars, b.github_stars, direction);
+      if (metricDiff !== 0) return metricDiff;
+      return comparePapersByDateDesc(a, b);
+    }
+    if (sortKey === 'date' || sortKey === 'year') {
+      return comparePapersByDate(a, b, direction);
+    }
+    return 0;
+  });
+}
+
+function setSort(key) {
+  CURRENT_SORT = key;
+  renderAllGrids((document.getElementById('search').value || '').trim().toLowerCase());
+}
+
+function toggleSortDirection(sortKey) {
+  if (!isDirectionalSort(sortKey)) return;
+  if (CURRENT_SORT === sortKey) {
+    SORT_DIRECTIONS[sortKey] = getSortDirection(sortKey) === 'asc' ? 'desc' : 'asc';
+  }
+  CURRENT_SORT = sortKey;
+  renderAllGrids((document.getElementById('search').value || '').trim().toLowerCase());
+}
+
+function syncSectionVisibility() {
+  Array.from(document.querySelectorAll(".category, .category-node"))
+    .sort(function(a, b) {
+      return Number(b.dataset.depth || 0) - Number(a.dataset.depth || 0);
+    })
+    .forEach(function(section) {
+      const visible = section.querySelectorAll(".paper-card").length > 0;
+      section.style.display = visible ? "" : "none";
+    });
+}
+
+function syncTreeVisibility(hasActiveFilter) {
+  Array.from(document.querySelectorAll(".tree-node"))
+    .sort(function(a, b) {
+      return Number(b.dataset.depth || 0) - Number(a.dataset.depth || 0);
+    })
+    .forEach(function(node) {
+      const target = document.getElementById(node.dataset.section);
+      const visible = Boolean(target) && target.style.display !== "none";
+      node.classList.toggle("tree-hidden", !visible);
+      if (hasActiveFilter && visible && node.querySelector(".tree-children")) {
+        node.classList.add("is-open");
+        const toggle = node.querySelector(".tree-toggle");
+        if (toggle) toggle.setAttribute("aria-expanded", "true");
+      }
+    });
+}
+
+function buildFilteredNodeCounts(filteredPapers) {
+  const counts = {};
+  let blogCount = 0;
+
+  filteredPapers.forEach(function(paper) {
+    if (paper.entry_type === 'blog') {
+      blogCount += 1;
+      return;
+    }
+
+    const path = getPaperPath(paper);
+    for (let depth = 1; depth <= path.length; depth++) {
+      const key = getNodeKey(path.slice(0, depth));
+      counts[key] = (counts[key] || 0) + 1;
+    }
+  });
+
+  counts.blogs = blogCount;
+  return counts;
+}
+
+function updateFirstCountInSection(section, selector, count) {
+  if (!section) return;
+  const header = section.firstElementChild;
+  const countEl = header ? header.querySelector(selector) : null;
+  if (countEl) countEl.textContent = String(count || 0);
+}
+
+function syncDynamicCounts(filteredPapers) {
+  const counts = buildFilteredNodeCounts(filteredPapers);
+
+  document.querySelectorAll('.category[data-node-key], .category-node[data-node-key]').forEach(function(section) {
+    const key = section.dataset.nodeKey || '';
+    const count = counts[key] || 0;
+    updateFirstCountInSection(section, '.category-count, .category-node-count', count);
+  });
+
+  document.querySelectorAll('.tree-node[data-node-key]').forEach(function(node) {
+    const key = node.dataset.nodeKey || '';
+    const countEl = node.querySelector('.tree-row > .tree-link .tree-count');
+    if (countEl) countEl.textContent = String(counts[key] || 0);
+  });
+}
+
+function renderAllGrids(q) {
+  const query = (q || '').trim().toLowerCase();
+  const publicationDateFilter = getPublicationDateFilter();
+  updateSortButtons();
+  const filteredPapers = sortPapers(getFilteredPapers(query, publicationDateFilter), CURRENT_SORT);
+  const filteredPaperIds = new Set(filteredPapers.map(function(paper) { return paper.id; }));
+
+  document.querySelectorAll('.papers-grid[data-node-key]').forEach(function(grid) {
+    const nodeKey = grid.dataset.nodeKey || '';
+    const papers = sortPapers((DIRECT_PAPERS_BY_NODE[nodeKey] || []).filter(function(paper) {
+      return filteredPaperIds.has(paper.id);
+    }), CURRENT_SORT);
+    grid.innerHTML = papers.map(function(paper) { return renderCard(paper, query); }).join('');
+  });
+
+  const blogsGrid = document.getElementById('blogs-grid');
+  if (blogsGrid) {
+    const blogs = sortPapers(ALL_BLOGS.filter(function(blog) {
+      return filteredPaperIds.has(blog.id);
+    }), CURRENT_SORT);
+    blogsGrid.innerHTML = blogs.map(function(blog) { return renderCard(blog, query); }).join('');
+  }
+
+  renderTableView(query, filteredPapers);
+  syncDynamicCounts(filteredPapers);
+
+  const hasQuery = Boolean(query);
+  const hasActiveFilter = hasQuery || publicationDateFilter.active || ACTIVE_TAG_FILTERS.size > 0 || ACCEPTED_ONLY || TODAY_ONLY || HAS_CODE_ONLY || HAS_COMMENTS_ONLY;
+  const total = filteredPapers.length;
+  const searchCount = document.getElementById('search-count');
+  if (searchCount) {
+    searchCount.textContent = total + ' result' + (total !== 1 ? 's' : '');
+  }
+
+  const noRes = document.getElementById('no-results');
+  if (noRes) {
+    noRes.style.display = total === 0 ? 'block' : 'none';
+  }
+  if (total === 0) {
+    document.getElementById('no-results-query').textContent = getActiveFilterLabel(query, publicationDateFilter) || 'the current filters';
+  }
+
+  if (!hasActiveFilter) {
+    document.querySelectorAll('.category, .category-node').forEach(function(section) {
+      section.style.display = '';
+    });
+    document.querySelectorAll('.tree-node').forEach(function(node) {
+      node.classList.remove('tree-hidden');
+    });
+  } else {
+    syncSectionVisibility();
+    syncTreeVisibility(CURRENT_VIEW === 'category');
+  }
+
+  updateFilterSidebarSummary();
+  applyViewMode();
+}
+
+function createTreeNode(node, pathParts, depth) {
+  const count = getNodeCount(pathParts);
+  if (!count) return null;
+
+  const sectionId = getSectionId(pathParts);
+  const nodeKey = getNodeKey(pathParts);
+  const childNodes = Object.entries(node.children || {})
+    .map(function(entry) {
+      return createTreeNode(entry[1], pathParts.concat(entry[0]), depth + 1);
+    })
+    .filter(Boolean);
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "tree-node" + (childNodes.length && depth < 2 ? " is-open" : "");
+  wrapper.dataset.depth = String(depth);
+  wrapper.dataset.section = sectionId;
+  wrapper.dataset.nodeKey = nodeKey;
+
+  const row = document.createElement("div");
+  row.className = "tree-row";
+
+  if (childNodes.length) {
+    const toggle = document.createElement("button");
+    toggle.className = "tree-toggle";
+    toggle.type = "button";
+    toggle.setAttribute("aria-expanded", depth < 2 ? "true" : "false");
+    toggle.innerHTML = "⌄";
+    row.appendChild(toggle);
+  } else {
+    const spacer = document.createElement("span");
+    spacer.className = "tree-spacer";
+    row.appendChild(spacer);
+  }
+
+  const link = document.createElement("a");
+  link.className = "tree-link";
+  link.href = "#" + sectionId;
+  link.dataset.section = sectionId;
+  link.innerHTML =
+    '<span class="tree-label"><span>' + node.title + '</span></span>' +
+    '<span class="tree-count">' + count + '</span>';
+  row.appendChild(link);
+  wrapper.appendChild(row);
+
+  if (childNodes.length) {
+    const children = document.createElement("div");
+    children.className = "tree-children";
+    childNodes.forEach(function(child) { children.appendChild(child); });
+    wrapper.appendChild(children);
+  }
+
+  return wrapper;
+}
+
+function createBlogTreeNode() {
+  if (!ALL_BLOGS.length) return null;
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'tree-node';
+  wrapper.dataset.depth = '0';
+  wrapper.dataset.section = 'section-blogs';
+  wrapper.dataset.nodeKey = 'blogs';
+
+  const row = document.createElement('div');
+  row.className = 'tree-row';
+
+  const spacer = document.createElement('span');
+  spacer.className = 'tree-spacer';
+  row.appendChild(spacer);
+
+  const link = document.createElement('a');
+  link.className = 'tree-link';
+  link.href = '#section-blogs';
+  link.dataset.section = 'section-blogs';
+  link.innerHTML =
+    '<span class="tree-label"><span>' + (BLOG_SECTION_META.title || 'Blogs') + '</span></span>' +
+    '<span class="tree-count">' + ALL_BLOGS.length + '</span>';
+  row.appendChild(link);
+  wrapper.appendChild(row);
+  return wrapper;
+}
+
+function createCategorySection(node, pathParts, depth) {
+  const count = getNodeCount(pathParts);
+  if (!count) return null;
+
+  const isTopLevel = depth === 0;
+  const section = document.createElement("section");
+  section.className = isTopLevel ? "category" : "category-node";
+  section.id = getSectionId(pathParts);
+  section.dataset.depth = String(depth);
+  section.dataset.nodeKey = getNodeKey(pathParts);
+  section.style.setProperty("--depth", String(Math.max(depth - 1, 0)));
+
+  if (isTopLevel) {
+    section.innerHTML =
+      '<div class="category-header">'
+      + '<span class="category-icon">' + (node.icon || "•") + '</span>'
+      + '<div>'
+      + '<div class="category-title">' + node.title + '</div>'
+      + '<div class="category-desc">' + (node.desc || "") + '</div>'
+      + '</div>'
+      + '<span class="category-count">' + count + '</span>'
+      + '</div>';
+  } else {
+    section.innerHTML =
+      '<div class="category-node-header">'
+      + '<div>'
+      + '<div class="category-node-title">' + node.title + '</div>'
+      + (node.desc ? '<div class="category-node-desc">' + node.desc + '</div>' : '')
+      + '</div>'
+      + '<span class="category-node-count">' + count + '</span>'
+      + '</div>';
+  }
+
+  const body = document.createElement("div");
+  body.className = isTopLevel ? "category-body" : "category-node-body";
+
+  Object.entries(node.children || {}).forEach(function(entry) {
+    const childSection = createCategorySection(entry[1], pathParts.concat(entry[0]), depth + 1);
+    if (childSection) body.appendChild(childSection);
+  });
+
+  const directPapers = sortPapers(getDirectPapers(pathParts), CURRENT_SORT);
+  if (directPapers.length) {
+    const grid = document.createElement("div");
+    grid.className = "papers-grid";
+    grid.dataset.nodeKey = getNodeKey(pathParts);
+    grid.id = "grid-" + pathParts.join("__");
+    grid.innerHTML = directPapers.map(function(paper) { return renderCard(paper); }).join("");
+    body.appendChild(grid);
+  }
+
+  section.appendChild(body);
+  return section;
+}
+
+function createBlogSection() {
+  if (!ALL_BLOGS.length) return null;
+
+  const section = document.createElement('section');
+  section.className = 'category';
+  section.id = 'section-blogs';
+  section.dataset.depth = '0';
+  section.dataset.nodeKey = 'blogs';
+  section.innerHTML =
+    '<div class="category-header">'
+    + '<span class="category-icon">✍️</span>'
+    + '<div>'
+    + '<div class="category-title">' + (BLOG_SECTION_META.title || 'Blogs') + '</div>'
+    + '<div class="category-desc">' + (BLOG_SECTION_META.desc || 'Long-form technical posts, essays, and deep-dives about loop models.') + '</div>'
+    + '</div>'
+    + '<span class="category-count">' + ALL_BLOGS.length + '</span>'
+    + '</div>';
+
+  const body = document.createElement('div');
+  body.className = 'category-body';
+
+  const grid = document.createElement('div');
+  grid.className = 'papers-grid';
+  grid.id = 'blogs-grid';
+  grid.innerHTML = sortPapers(ALL_BLOGS, CURRENT_SORT).map(function(blog) { return renderCard(blog); }).join('');
+  body.appendChild(grid);
+
+  section.appendChild(body);
+  return section;
+}
+
+function renderTreeInto(container) {
+  if (!container) return;
+  container.innerHTML = "";
+  Object.entries(CATEGORIES).forEach(function(entry) {
+    const catId = entry[0];
+    const treeNode = createTreeNode(entry[1], [catId], 0);
+    if (treeNode) container.appendChild(treeNode);
+  });
+  const blogTreeNode = createBlogTreeNode();
+  if (blogTreeNode) container.appendChild(blogTreeNode);
+}
+
+// ── Build DOM from papers.json data ──────────────────────────────────────────
+function buildDOM(data) {
+  REPO_TODAY = (data.meta && data.meta.generated_local_date) || '';
+  CATEGORIES = data.categories || {};
+  BLOG_SECTION_META = {
+    title: (data.meta && data.meta.blog_section_title) || 'Blogs',
+    desc: (data.meta && data.meta.blog_section_desc) || ''
+  };
+  ALL_PAPERS = (data.papers || []).map(preparePaperRecord);
+  ALL_BLOGS = (data.blogs || []).map(preparePaperRecord);
+  ALL_RESOURCES = ALL_PAPERS.concat(ALL_BLOGS);
+  TAG_FILTER_GROUPS = buildTagFilterGroups(ALL_RESOURCES);
+  buildCategoryIndex();
+
+  const disclaimer = (data.meta && data.meta.category_disclaimer) || '';
+  const disclaimerEl = document.getElementById('category-disclaimer');
+  if (disclaimerEl && disclaimer) {
+    disclaimerEl.innerHTML = '<strong>Classification note.</strong> ' + disclaimer;
+  }
+
+  const container = document.getElementById("sections-container");
+  container.innerHTML = "";
+
+  Object.entries(CATEGORIES).forEach(function(entry) {
+    const catId = entry[0];
+    const section = createCategorySection(entry[1], [catId], 0);
+    if (section) container.appendChild(section);
+  });
+
+  const blogSection = createBlogSection();
+  if (blogSection) container.appendChild(blogSection);
+
+  renderTreeInto(document.getElementById("sidebar-nav"));
+  renderTreeInto(document.getElementById("mobile-directory-tree"));
+  initFilterSidebarControls();
+  initSearch();
+  initPublicationDateFilter();
+  initTagFilterControls();
+  initPaperTagInteractions();
+  initTableInteractions();
+  initTreeInteractions();
+  initScrollObserver();
+  updateQuickFilterButtons();
+  updateViewToggleButtons();
+  applyViewMode();
+  doSearch(document.getElementById("search").value || "");
+}
+
+// ── Search ────────────────────────────────────────────────────────────────────
+function doSearch(query) {
+  renderAllGrids(query.trim().toLowerCase());
+}
+
+function initSearch() {
+  const searchEl = document.getElementById("search");
+  let debounce;
+  searchEl.addEventListener("input", function(e) {
+    clearTimeout(debounce);
+    debounce = setTimeout(function() { doSearch(e.target.value); }, 150);
+  });
+}
+
+function initPublicationDateFilter() {
+  const startEl = document.getElementById("publication-date-start");
+  const endEl = document.getElementById("publication-date-end");
+  const clearEl = document.getElementById("publication-date-clear");
+  if (!startEl || !endEl) return;
+
+  let debounce;
+  function applyFilter() {
+    clearTimeout(debounce);
+    debounce = setTimeout(function() {
+      doSearch(document.getElementById("search").value || "");
+    }, 120);
+  }
+
+  startEl.addEventListener("input", applyFilter);
+  endEl.addEventListener("input", applyFilter);
+  if (clearEl) {
+    clearEl.addEventListener("click", function() {
+      startEl.value = "";
+      endEl.value = "";
+      doSearch(document.getElementById("search").value || "");
+    });
+  }
+}
+
+function initTagFilterControls() {
+  const toggle = document.getElementById('tag-filter-toggle');
+  const groups = document.getElementById('tag-filter-groups');
+  if (!toggle || !groups) return;
+
+  updateTagFilterUI();
+
+  toggle.addEventListener('click', function() {
+    setTagFilterOpen(!TAG_FILTER_OPEN);
+  });
+
+  groups.addEventListener('click', function(event) {
+    const chip = event.target.closest('.tag-filter-chip[data-tag-key]');
+    if (!chip) return;
+    toggleTagFilter(chip.dataset.tagKey);
+  });
+}
+
+function initPaperTagInteractions() {
+  const container = document.getElementById('sections-container');
+  if (!container) return;
+
+  container.addEventListener('click', function(event) {
+    const chip = event.target.closest('.paper-tag[data-tag-key]');
+    if (!chip) return;
+    event.preventDefault();
+    setFilterSidebarOpen(true);
+    setTagFilterOpen(true);
+    toggleTagFilter(chip.dataset.tagKey);
+  });
+}
+
+function initTableInteractions() {
+  const tableBody = document.getElementById('papers-table-body');
+  if (!tableBody) return;
+
+  tableBody.addEventListener('click', function(event) {
+    const disclosureButton = event.target.closest('.paper-table-disclosure[data-paper-id]');
+    if (disclosureButton) {
+      toggleTableRow(disclosureButton.dataset.paperId);
+      return;
+    }
+    if (event.target.closest('a, button, summary, input, select, textarea')) return;
+    const row = event.target.closest('.paper-table-row[data-paper-id]');
+    if (!row) return;
+    toggleTableRow(row.dataset.paperId);
+  });
+
+  tableBody.addEventListener('keydown', function(event) {
+    if (event.target.closest('a, button, summary, input, select, textarea')) return;
+    const row = event.target.closest('.paper-table-row[data-paper-id]');
+    if (!row) return;
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleTableRow(row.dataset.paperId);
+    }
+  });
+}
+
+function activateTreeLinks(sectionId) {
+  document.querySelectorAll(".tree-link").forEach(function(link) {
+    link.classList.toggle("active", link.dataset.section === sectionId);
+  });
+}
+
+function scrollToSection(sectionId) {
+  const target = document.getElementById(sectionId);
+  if (!target) return;
+
+  if (window.innerWidth <= 768) {
+    const offsetTop = target.getBoundingClientRect().top + window.scrollY - 12;
+    window.scrollTo({ top: offsetTop, behavior: "smooth" });
+    return;
+  }
+
+  const scrollRoot = document.getElementById("main");
+  if (!scrollRoot) return;
+
+  const offsetTop = target.getBoundingClientRect().top
+    - scrollRoot.getBoundingClientRect().top
+    + scrollRoot.scrollTop
+    - 14;
+
+  scrollRoot.scrollTo({ top: offsetTop, behavior: "smooth" });
+}
+
+function initTreeInteractions() {
+  document.querySelectorAll(".tree-toggle").forEach(function(toggle) {
+    toggle.addEventListener("click", function() {
+      const node = toggle.closest(".tree-node");
+      const isOpen = node.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+
+  document.querySelectorAll(".tree-link").forEach(function(link) {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      const sectionId = link.dataset.section;
+      const node = link.closest(".tree-node");
+      if (node) {
+        node.classList.add("is-open");
+        const toggle = node.querySelector(".tree-toggle");
+        if (toggle) toggle.setAttribute("aria-expanded", "true");
+      }
+      activateTreeLinks(sectionId);
+      scrollToSection(sectionId);
+
+      const mobileDirectory = document.getElementById("mobile-directory");
+      const mobileToggle = document.getElementById("mobile-directory-toggle");
+      if (mobileDirectory && mobileToggle && window.innerWidth <= 768) {
+        mobileDirectory.classList.remove("is-open");
+        mobileToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+
+  const mobileDirectory = document.getElementById("mobile-directory");
+  const mobileToggle = document.getElementById("mobile-directory-toggle");
+  if (mobileDirectory && mobileToggle) {
+    mobileToggle.addEventListener("click", function() {
+      const isOpen = mobileDirectory.classList.toggle("is-open");
+      mobileToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+}
+
+function initScrollObserver() {
+  if (SECTION_OBSERVER) SECTION_OBSERVER.disconnect();
+
+  const scrollRoot = document.getElementById("main");
+  SECTION_OBSERVER = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        activateTreeLinks(entry.target.id);
+      }
+    });
+  }, { root: scrollRoot, rootMargin: "-18% 0px -68% 0px" });
+
+  document.querySelectorAll(".category, .category-node").forEach(function(section) {
+    SECTION_OBSERVER.observe(section);
+  });
+}
+
+// ── Bootstrap: fetch papers.json ─────────────────────────────────────────────
+fetch("papers.json")
+  .then(function(r) { return r.json(); })
+  .then(function(data) { buildDOM(data); })
+  .catch(function(err) {
+    console.error("Failed to load papers.json:", err);
+    document.getElementById("sections-container").innerHTML =
+      "<p style=\"color:var(--accent5);padding:20px\">Failed to load resource data. Please refresh or check the console.</p>";
+  });
+
+</script>
+</body>
+</html>

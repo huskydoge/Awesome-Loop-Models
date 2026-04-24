@@ -1,0 +1,37 @@
+title: 'LoopRPT: Reinforcement Pre-Training for Looped Language Models'
+authors:
+- Guo Tang
+- Shixin Jiang
+- Heng Chang
+- Nuo Chen
+- Yuhan Li
+- Huiming Fan
+- Jia Li
+- Ming Liu
+- Bing Qin
+year: 2026
+published_date: '2026-03-20'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- RL
+tags:
+- LoopRPT
+- Ouro
+focus_tags:
+- objective-loss
+- training-algorithm
+desc: Proposes LoopRPT, a reinforcement pre-training method for looped language models that assigns learning signals to latent iterations, improving accuracy-compute trade-offs and strengthening early-stage reasoning on Ouro.
+links:
+  arxiv: https://arxiv.org/abs/2603.19714
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-14'

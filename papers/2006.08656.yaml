@@ -1,0 +1,29 @@
+title: Multiscale Deep Equilibrium Models
+authors:
+- Shaojie Bai
+- Vladlen Koltun
+- J. Zico Kolter
+year: 2020
+published_date: '2020-06-15'
+venue: NeurIPS
+category: "designs"
+mechanism_tags:
+- implicit-layer
+- hierarchical-loop
+domain_tags:
+- vision
+tags:
+- MDEQ
+focus_tags:
+- architecture
+desc: Extends DEQ to multiscale hierarchical representations, achieving competitive performance on large-scale vision tasks.
+links:
+  arxiv: https://arxiv.org/abs/2006.08656
+  paper: https://proceedings.neurips.cc/paper/2020/hash/75ebb3f7b5e8e9d6a7f7e4a4c4f7c2a0-Abstract.html
+citations: 246
+citation_sources:
+  semantic_scholar: 246
+  openalex: 53
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-14'

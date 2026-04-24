@@ -1,0 +1,36 @@
+title: "Looping Back to Move Forward: Recursive Transformers for Efficient and Flexible Large Multimodal Models"
+authors:
+  - "Ruihan Xu"
+  - "Yuting Gao"
+  - "Lan Wang"
+  - "Jianing Li"
+  - "Weihao Chen"
+  - "Qingpei Guo"
+  - "Ming Yang"
+  - "Shiliang Zhang"
+year: 2026
+published_date: '2026-02-09'
+added_date: '2026-04-20'
+venue: "arXiv"
+category: "designs"
+mechanism_tags:
+- hierarchical-loop
+domain_tags:
+  - "vision"
+  - efficiency
+tags:
+  - "RecursiveVLM"
+  - "multimodal"
+focus_tags:
+  - "architecture"
+  - "inference-algorithm"
+desc: "Introduces RecursiveVLM, a recursive multimodal transformer with a recursive connector and monotonic recursion loss that enables on-demand extra refinement under varying compute budgets."
+links:
+  arxiv: https://arxiv.org/abs/2602.09080
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-20'

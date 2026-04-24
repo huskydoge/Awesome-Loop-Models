@@ -1,0 +1,39 @@
+title: "SpiralFormer: Looped Transformers Can Learn Hierarchical Dependencies via Multi-Resolution Recursion"
+authors:
+  - "Chengting Yu"
+  - "Xiaobo Shu"
+  - "Yadao Wang"
+  - "Yizhen Zhang"
+  - "Haoyi Wu"
+  - "You Wu"
+  - "Rujiao Long"
+  - "Ziheng Chen"
+  - "Yuchi Xu"
+  - "Wenbo Su"
+  - "Bo Zheng"
+year: 2026
+published_date: '2026-02-12'
+added_date: '2026-04-20'
+venue: "arXiv"
+category: "designs"
+mechanism_tags:
+- hierarchical-loop
+domain_tags:
+  - "language-modeling"
+  - "reasoning"
+tags:
+  - "SpiralFormer"
+  - "multi-resolution-recursion"
+focus_tags:
+  - "architecture"
+  - "inference-algorithm"
+desc: "Introduces SpiralFormer, a looped transformer that applies shared layers under a multi-resolution recursion schedule to learn hierarchical dependencies more efficiently than fixed-resolution recurrent baselines."
+links:
+  arxiv: https://arxiv.org/abs/2602.11698
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-20'

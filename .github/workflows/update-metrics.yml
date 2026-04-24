@@ -1,0 +1,55 @@
+name: Update paper metrics
+
+on:
+  schedule:
+    - cron: "17 5 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: update-paper-metrics
+  cancel-in-progress: false
+
+jobs:
+  update-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Require Semantic Scholar API key
+        env:
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+        run: |
+          if [ -z "${SEMANTIC_SCHOLAR_API_KEY}" ]; then
+            echo "Missing repository secret: SEMANTIC_SCHOLAR_API_KEY" >&2
+            exit 1
+          fi
+
+      - name: Fetch citation counts and GitHub stars
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+        run: python3 scripts/fetch_metrics.py
+
+      - name: Rebuild generated outputs
+        run: python3 scripts/build.py
+
+      - name: Commit updated metrics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add papers
+          git add -f papers.json README.md TAGS.md
+          git diff --cached --quiet || git commit -m "chore: update paper metrics"
+          git push

@@ -1,0 +1,31 @@
+title: "Loop-Model FLOPs and Memory in an Ablation Chain"
+authors:
+  - "Benhao Huang"
+year: 2026
+published_date: "2026-04-19"
+added_date: "2026-04-22"
+venue: "Personal Blog"
+mechanism_tags:
+- flat-loop
+
+domain_tags:
+  - "FLOPs-efficiency"
+  - "memory-efficiency"
+  - "theory"
+
+tags:
+  - "BPTT"
+  - "detach"
+  - "checkpointing"
+
+focus_tags:
+  - "training-algorithm"
+
+desc: >
+  Builds a clean cost-ablation chain for loop-model training, comparing
+  shared versus non-shared weights, per-step losses, detach, instant
+  updates, internal truncation, and gradient checkpointing, then checks the
+  resulting FLOPs and memory trade-offs with a toy benchmark.
+
+links:
+  blog: "https://huskydoge.github.io/husky-blog/posts/recursive_models/loop-cost/"

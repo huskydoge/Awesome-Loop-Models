@@ -1,0 +1,28 @@
+title: "Claude Mythos, Looped LLM, and the Depth Scaling Axis"
+authors:
+  - "Rui-Jie Zhu"
+year: 2026
+published_date: "2026-04-21"
+added_date: "2026-04-21"
+venue: "X Article"
+mechanism_tags:
+  - "flat-loop"
+
+domain_tags:
+  - "language-modeling"
+  - "reasoning"
+  - "scaling"
+
+tags:
+  - "looped-llm"
+  - "depth-scaling"
+  - "mythos"
+
+focus_tags:
+  - "architecture"
+
+desc: >
+  Analyzes why Claude Mythos-like gains suggest a depth-scaling axis for looped LLMs and discusses stability, inference efficiency, and iso-FLOPs constraints for scaling loop architectures.
+
+links:
+  blog: "https://x.com/RidgerZhu/status/2046736781035618602"

@@ -1,0 +1,42 @@
+title: Looped Transformers are Better at Learning Learning Algorithms
+authors:
+- Liu Yang
+- Kangwook Lee
+- Robert Nowak
+- Dimitris Papailiopoulos
+year: 2024
+published_date: '2023-11-21'
+venue: ICLR
+category: "analysis"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- algorithmic-reasoning
+tags:
+- looped-transformer
+focus_tags:
+- architecture
+- training-algorithm
+desc: Proposes looped-transformer training for in-context data-fitting tasks, showing
+  comparable performance to standard transformers with under 10% of the parameters
+  by better matching iterative learning algorithms.
+links:
+  arxiv: https://arxiv.org/abs/2311.12424
+  openreview: https://openreview.net/forum?id=HHbRxoDTxE
+  github: https://github.com/Leiay/looped_transformer
+  comment:
+  - label: Benhao's reading note
+    url: https://x.com/huskydogewoof/status/2033023167044727049?s=20
+  - label: Reza Bayat reading list (#5)
+    url: https://x.com/reza_byt/status/2045168844658950392?s=20
+citations: 79
+citation_sources:
+  semantic_scholar: 79
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+github_stars: 41
+star_sources:
+  github_api: 41
+star_source_best: github_api
+metrics_updated: '2026-04-20'

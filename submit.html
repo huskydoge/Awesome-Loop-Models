@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit to Awesome Loop Models</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f6f8fa;
+      --surface-2: #eef2f6;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --muted: #656d76;
+      --accent: #0969da;
+      --accent-2: #1a7f37;
+      --warning: #9a6700;
+      --danger: #cf222e;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --space-1: 8px;
+      --space-2: 12px;
+      --space-3: 16px;
+      --space-4: 20px;
+      --space-5: 28px;
+      --max-width: 1220px;
+      --font-display: "STIX Two Text", "Georgia", "Times New Roman", serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --surface: #161b22;
+        --surface-2: #1c2128;
+        --border: #30363d;
+        --text: #e6edf3;
+        --muted: #8b949e;
+        --accent: #58a6ff;
+        --accent-2: #3fb950;
+        --warning: #e3b341;
+        --danger: #ff7b72;
+        --shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background:
+        linear-gradient(180deg, var(--surface) 0, var(--bg) 360px);
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.95em;
+    }
+
+    .hero {
+      border-bottom: 1px solid var(--border);
+      background: transparent;
+      padding: 36px 20px 24px;
+    }
+
+    .hero-inner,
+    .shell {
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-family: var(--font-display);
+      font-size: clamp(30px, 4vw, 42px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-bottom: 10px;
+      padding: 4px 10px;
+      border: 1px solid rgba(9, 105, 218, 0.22);
+      border-radius: 999px;
+      background: rgba(88, 166, 255, 0.08);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-sub {
+      max-width: 960px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .shell {
+      padding: var(--space-5) 0 42px;
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+      padding: var(--space-5);
+      display: grid;
+      gap: var(--space-4);
+      align-content: start;
+    }
+
+    .panel h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .panel > h3,
+    .panel > p {
+      margin: 0;
+    }
+
+    .panel > h3 {
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .panel p,
+    .panel li,
+    .panel label {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .workflow-list {
+      margin: var(--space-2) 0 0 20px;
+      padding: 0;
+    }
+
+    .wizard-grid {
+      display: grid;
+      gap: var(--space-3);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: var(--space-3);
+    }
+
+    .wizard-step,
+    .scope-callout {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      padding: var(--space-3);
+    }
+
+    .wizard-step-kicker {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .wizard-step h3,
+    .scope-callout h3 {
+      margin: 6px 0 8px;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .wizard-step p,
+    .scope-callout p,
+    .scope-callout li {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .scope-callout {
+      margin-top: var(--space-3);
+      border-color: rgba(9, 105, 218, 0.24);
+      background: linear-gradient(180deg, rgba(88, 166, 255, 0.08), var(--bg));
+    }
+
+    .scope-callout .workflow-list {
+      margin-top: var(--space-2);
+    }
+
+    .status {
+      margin-top: var(--space-3);
+      padding: var(--space-2) 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status.is-success { color: var(--accent-2); border-color: rgba(63,185,80,0.3); }
+    .status.is-warning { color: var(--warning); }
+    .status.is-danger { color: var(--danger); border-color: rgba(255,123,114,0.28); }
+
+    .grid {
+      display: grid;
+      gap: var(--space-4);
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+
+    .tag-pickers {
+      display: grid;
+      gap: var(--space-3);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: start;
+    }
+
+    .snippet-stack,
+    .submission-form {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .tag-picker,
+    .field {
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .tag-picker {
+      min-width: 0;
+    }
+
+    .field.is-required .field-label::after {
+      content: ' *';
+      color: var(--danger);
+      font-weight: 800;
+    }
+
+    .field.is-invalid .field-label,
+    .field.is-invalid .field-note {
+      color: var(--danger);
+    }
+
+    .field.is-invalid .field-input,
+    .field.is-invalid .field-select,
+    .field.is-invalid .field-textarea {
+      border-color: var(--danger);
+      background: rgba(207, 34, 46, 0.04);
+      box-shadow: 0 0 0 1px rgba(207, 34, 46, 0.12);
+    }
+
+    .field.is-invalid .datebox-btn {
+      border-color: var(--danger);
+      color: var(--danger);
+      background: rgba(207, 34, 46, 0.04);
+      box-shadow: 0 0 0 1px rgba(207, 34, 46, 0.12);
+    }
+
+    .tag-picker-head,
+    .field-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .tag-picker-title,
+    .field-label,
+    .preview-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .tag-picker-note,
+    .helper-note,
+    .field-note,
+    .muted,
+    .preview-note {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .tag-picker-search,
+    .field-input,
+    .field-select,
+    .field-textarea,
+    .snippet-box {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .tag-picker-search,
+    .field-input,
+    .field-select {
+      padding: 10px 12px;
+    }
+
+    .datebox {
+      display: flex;
+      align-items: stretch;
+      gap: var(--space-2);
+      position: relative;
+    }
+
+    .datebox .field-input {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .datebox-btn {
+      flex: 0 0 auto;
+      min-width: 64px;
+      padding-inline: 12px;
+    }
+
+    .datebox-native {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .field-textarea,
+    .snippet-box {
+      min-height: 120px;
+      resize: vertical;
+      padding: 12px;
+      font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .snippet-box.is-compact,
+    .field-textarea.is-compact {
+      min-height: 86px;
+    }
+
+    .tag-picker-search:focus,
+    .field-input:focus,
+    .field-select:focus,
+    .field-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.14);
+    }
+
+    .tag-picker-menu {
+      max-height: 260px;
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      padding: 6px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .tag-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: transparent;
+      color: var(--text);
+      padding: 8px 10px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .tag-option:hover,
+    .tag-option.is-selected {
+      border-color: var(--accent);
+      background: rgba(88, 166, 255, 0.08);
+    }
+
+    .tag-option-count {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      font-size: 12px;
+    }
+
+    .tag-selected-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 18px;
+    }
+
+    .tag-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--bg);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .tag-chip button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 0;
+      font-size: 12px;
+    }
+
+    .empty-note {
+      color: var(--muted);
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    .resource-kind-toggle,
+    .action-row,
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .tag-picker-actions {
+      margin-block: var(--space-4);
+    }
+
+    .kind-toggle-btn,
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-1);
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .kind-toggle-btn.is-active,
+    .btn-primary {
+      border-color: rgba(9,105,218,0.35);
+      background: rgba(88,166,255,0.1);
+      color: var(--accent);
+    }
+
+    .btn-success {
+      border-color: rgba(63,185,80,0.34);
+      background: rgba(63,185,80,0.08);
+      color: var(--accent-2);
+    }
+
+    .btn:hover,
+    .kind-toggle-btn:hover {
+      opacity: 0.94;
+      text-decoration: none;
+    }
+
+    .btn:disabled,
+    .kind-toggle-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: var(--space-3);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .field-span-2 {
+      grid-column: span 2;
+    }
+
+    .kind-only[hidden] {
+      display: none !important;
+    }
+
+    .preview-box {
+      border: 0;
+      border-top: 1px solid var(--border);
+      border-radius: 0;
+      background: none;
+      padding: var(--space-4) 0 0;
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .preview-meta {
+      display: grid;
+      gap: var(--space-2);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .github-branch-callout {
+      border: 0;
+      border-left: 3px solid rgba(9, 105, 218, 0.28);
+      border-radius: 0;
+      background: none;
+      padding: 0 0 0 var(--space-3);
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .github-branch-callout .workflow-list {
+      margin-top: 0;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    @media (max-width: 980px) {
+      .grid,
+      .tag-pickers,
+      .preview-meta,
+      .form-grid,
+      .wizard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field-span-2 {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 24px 12px 18px;
+      }
+
+      .hero-inner,
+      .shell {
+        width: min(100% - 24px, var(--max-width));
+      }
+
+      h1 {
+        font-size: clamp(26px, 9vw, 34px);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-sub {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .hero-links {
+        gap: 8px;
+      }
+
+      .hero-link {
+        flex: 1 1 100%;
+        justify-content: center;
+        padding: 9px 10px;
+        font-size: 12.5px;
+      }
+
+      .shell {
+        padding: 20px 0 32px;
+        gap: var(--space-3);
+      }
+
+      .panel {
+        padding: var(--space-3);
+        border-radius: var(--radius-sm);
+      }
+
+      .wizard-step {
+        padding: 14px;
+      }
+
+      .kind-toggle {
+        width: 100%;
+      }
+
+      .kind-toggle-btn {
+        flex: 1 1 0;
+      }
+
+      input,
+      select,
+      textarea {
+        font-size: 16px;
+      }
+
+      .tag-picker-menu {
+        max-height: 260px;
+      }
+
+      .tag-chip,
+      .tag-option,
+      .pill {
+        max-width: 100%;
+      }
+
+      .preview-card pre {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+
+      .action-row {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Structured PR helper</div>
+      <h1>Submit to Awesome Loop Models</h1>
+      <p class="hero-sub">
+        Fill the metadata once, reuse existing Loop Mechanism / focus / domain tags, review the generated YAML, then copy the path and YAML into your own fork / branch for the final pull request step.
+      </p>
+      <div class="hero-links">
+        <a class="hero-link" href="index.html">← Back to the browser</a>
+        <a class="hero-link" id="hero-tags-link" href="#">Open TAGS.md</a>
+        <a class="hero-link" id="hero-contributing-link" href="#">Read CONTRIBUTING.md</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="panel">
+      <h2>PR Submission Wizard</h2>
+      <div class="wizard-grid">
+        <article class="wizard-step">
+          <div class="wizard-step-kicker">Step 1</div>
+          <h3>Pick what you are submitting</h3>
+          <p>Choose Paper or Blog first. Papers must fit the loop-model taxonomy. Blogs stay in the flat Blogs section.</p>
+        </article>
+        <article class="wizard-step">
+          <div class="wizard-step-kicker">Step 2</div>
+          <h3>Fill metadata once</h3>
+          <p>Reuse existing Loop Mechanism / focus / domain tags, add alias tags manually if needed, then review the generated path and YAML before leaving this page.</p>
+        </article>
+        <article class="wizard-step">
+          <div class="wizard-step-kicker">Step 3</div>
+          <h3>Fork on GitHub and finish the PR</h3>
+          <p>Copy the generated path and YAML, fork the repository on GitHub, create a branch in your fork, add the file at that path, then open a pull request back to this repo.</p>
+        </article>
+      </div>
+      <div class="status" id="status-box">Loading existing tags and filenames from papers.json…</div>
+    </section>
+
+    <section class="grid">
+      <section class="panel">
+        <h2>Generate YAML and prepare your fork / PR</h2>
+        <p>
+          The form below generates the final YAML file path and content. GitHub does not provide a public no-auth link that can automatically fork this repo and create the file in your account, so the final step is manual: fork the repo, create a branch in your fork, create the file at the generated path, paste the YAML, and open a pull request.
+        </p>
+
+        <div class="resource-kind-toggle" id="resource-kind-toggle">
+          <button class="kind-toggle-btn is-active" id="kind-paper-btn" type="button" onclick="setResourceKind('paper')" aria-pressed="true">Paper</button>
+          <button class="kind-toggle-btn" id="kind-blog-btn" type="button" onclick="setResourceKind('blog')" aria-pressed="false">Blog</button>
+        </div>
+
+        <p class="helper-note" id="kind-helper">
+          Paper submissions need a taxonomy category. Blog submissions stay in the flat Blogs section and use filenames of the form <code>blogs/YYYY-MM-DD-shortname.yaml</code>.
+        </p>
+
+        <form id="submission-form" class="submission-form" novalidate>
+          <div class="form-grid">
+            <label class="field field-span-2">
+              <span class="field-label" id="resource-title-label">Paper Title</span>
+              <input class="field-input" id="resource-title-input" type="text" required placeholder="e.g. Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach" />
+              <span class="field-note" id="resource-title-note">Used in the YAML title field and for shortname fallback if needed.</span>
+            </label>
+
+            <label class="field field-span-2">
+              <span class="field-label">Authors</span>
+              <textarea class="field-textarea is-compact" id="authors-input" required placeholder="One author per line, or comma-separated on one line."></textarea>
+              <span class="field-note">The YAML generator will normalize this into an authors list.</span>
+            </label>
+
+            <label class="field">
+              <span class="field-label">published_date</span>
+              <div class="datebox">
+                <input class="field-input" id="published-date-input" type="text" required placeholder="YYYY-MM-DD" inputmode="numeric" autocapitalize="off" spellcheck="false" />
+                <button class="btn datebox-btn" id="published-date-picker-btn" type="button" aria-label="Open calendar" title="Open calendar">Pick</button>
+                <input id="published-date-native-input" type="date" class="datebox-native" tabindex="-1" aria-hidden="true" />
+              </div>
+              <span class="field-note">Use the calendar button or type plain <code>YYYY-MM-DD</code>. For blogs, the same date becomes the filename prefix.</span>
+            </label>
+
+            <label class="field">
+              <span class="field-label" id="venue-label">Venue / Source</span>
+              <input class="field-input" id="venue-input" type="text" required placeholder="e.g. NeurIPS 2025, arXiv, X Article, Lab Blog" />
+            </label>
+
+            <label class="field">
+              <span class="field-label">shortname (optional)</span>
+              <input class="field-input" id="shortname-input" type="text" placeholder="e.g. looplm-depth-scaling" />
+              <span class="field-note">If omitted, the page will derive a slug from the title. For non-arXiv papers, this becomes the filename.</span>
+            </label>
+
+            <label class="field">
+              <span class="field-label" id="primary-link-label">arXiv / Paper Link</span>
+              <input class="field-input" id="primary-link-input" type="url" required placeholder="https://arxiv.org/abs/XXXX.XXXXX" />
+            </label>
+
+            <label class="field kind-only" id="paper-code-field">
+              <span class="field-label">Code Link (optional)</span>
+              <input class="field-input" id="code-input" type="url" placeholder="https://github.com/..." />
+            </label>
+
+            <label class="field kind-only" id="paper-openreview-field">
+              <span class="field-label">OpenReview Link (optional)</span>
+              <input class="field-input" id="openreview-input" type="url" placeholder="https://openreview.net/forum?id=..." />
+            </label>
+
+            <label class="field">
+              <span class="field-label" id="project-label">Project Page (optional)</span>
+              <input class="field-input" id="project-input" type="url" placeholder="https://..." />
+            </label>
+
+            <label class="field kind-only" id="blog-github-field" hidden>
+              <span class="field-label">Related GitHub Link (optional)</span>
+              <input class="field-input" id="github-input" type="url" placeholder="https://github.com/..." />
+            </label>
+
+            <label class="field kind-only field-span-2" id="paper-category-field">
+              <span class="field-label">Paper Category</span>
+              <select class="field-select" id="category-select"></select>
+              <span class="field-note">Choose one of the three flat paper categories. If none fits, explain the taxonomy proposal in the PR message instead of adding a YAML path field.</span>
+            </label>
+
+            <label class="field field-span-2 kind-only" id="blog-twitter-field" hidden>
+              <span class="field-label">Related Discussion / Thread Link (optional)</span>
+              <input class="field-input" id="twitter-input" type="url" placeholder="https://x.com/..." />
+            </label>
+
+            <label class="field field-span-2">
+              <span class="field-label" id="description-label">One-line Description</span>
+              <textarea class="field-textarea is-compact" id="description-input" required placeholder="Proposes X, which achieves Y by doing Z."></textarea>
+              <span class="field-note" id="description-note">This becomes the YAML <code>desc</code> field.</span>
+            </label>
+          </div>
+        </form>
+
+        <h3>Searchable tag picker</h3>
+        <p>
+          After filling the core paper / blog fields above, reuse existing Loop Mechanism / focus / domain tags here and add alias tags manually only if needed. GitHub pull requests do not support structured form fields, so this page keeps the structured tag inputs local before handing you off to the manual fork / branch / PR flow.
+        </p>
+
+        <div class="tag-pickers">
+          <div class="tag-picker" id="mechanism-picker"></div>
+          <div class="tag-picker" id="focus-picker"></div>
+          <div class="tag-picker" id="domain-picker"></div>
+        </div>
+
+        <div class="action-row tag-picker-actions">
+          <button class="btn" id="copy-tag-block-btn" type="button">Copy tag block</button>
+          <button class="btn" id="clear-tags-btn" type="button">Clear selected tags</button>
+        </div>
+
+        <label class="field">
+          <span class="field-label">Additional Domain Tags (optional)</span>
+          <input class="field-input" id="domain-tags-manual-input" type="text" placeholder="e.g. math-reasoning, multimodal-agents" />
+          <span class="field-note">Comma-separated open-ended domain labels. Reuse picker values when possible.</span>
+        </label>
+
+        <div class="tag-picker">
+          <div class="tag-picker-head">
+            <div class="tag-picker-title">Alias tags</div>
+            <div class="tag-picker-note">Manual fill-in only. The current alias inventory is not shown here.</div>
+          </div>
+          <input class="field-input" id="alias-tags-manual-input" type="text" placeholder="e.g. LoopLM, UT, DEQ" />
+        </div>
+
+        <p class="helper-note">Loop Mechanism and focus tags are controlled vocabularies. If this submission needs a taxonomy or tag-vocabulary change, describe the proposal in the PR message instead of inventing YAML values here.</p>
+
+        <div class="preview-box">
+          <div class="preview-title">Generated target path</div>
+          <input class="field-input" id="target-path-output" type="text" readonly value="# Fill the required fields above to generate a file path." />
+          <div class="preview-meta">
+            <label class="field">
+              <span class="field-label">Extracted arXiv ID</span>
+              <input class="field-input" id="extracted-arxiv-id-output" type="text" readonly value="# None yet" />
+            </label>
+            <label class="field">
+              <span class="field-label">Effective shortname</span>
+              <input class="field-input" id="effective-shortname-output" type="text" readonly value="# None yet" />
+            </label>
+            <label class="field">
+              <span class="field-label">Path status</span>
+              <input class="field-input" id="path-status-output" type="text" readonly value="# Waiting for required fields" />
+            </label>
+          </div>
+          <div class="preview-note">Duplicate detection runs against the current YAML inventory from <code>papers.json</code>.</div>
+        </div>
+
+        <div class="preview-box">
+          <div class="preview-title">Generated YAML</div>
+          <textarea class="snippet-box" id="yaml-preview-output" readonly># Fill the required fields above to generate YAML.</textarea>
+        </div>
+          <div class="preview-title">GitHub fork / PR handoff</div>
+          <textarea class="snippet-box is-compact" id="github-repo-url-output" readonly># Upstream GitHub repo URL will appear here.</textarea>
+          <div class="preview-note">Fork this upstream repo first. Then create the generated file path inside your own fork and paste the YAML shown above.</div>
+          <div class="github-branch-callout">
+            <div class="preview-title">Manual GitHub step</div>
+            <ol class="workflow-list">
+              <li>Copy the generated target path and generated YAML from this page.</li>
+              <li>Open the upstream GitHub repo and fork it to your own account.</li>
+              <li>In your fork, create a branch and add a new file at the generated path.</li>
+              <li>Paste the YAML, commit it to your branch, then open a pull request back to this repo. If you need a taxonomy or tag-vocabulary change, describe the proposal in the PR message.</li>
+            </ol>
+          </div>
+          <div class="action-row">
+            <button class="btn btn-success" id="open-github-repo-btn" type="button">Open GitHub repo (fork first)</button>
+            <button class="btn" id="copy-target-path-btn" type="button">Copy target path</button>
+            <button class="btn" id="copy-yaml-btn" type="button">Copy YAML</button>
+            <button class="btn" id="reset-form-btn" type="button">Reset form</button>
+          </div>
+      </section>
+    </section>
+
+    <noscript>
+      <section class="panel">
+        <h2>JavaScript required for YAML generation</h2>
+        <p>
+          Without JavaScript, use <a href="https://github.com/huskydoge/Awesome-Loop-Models/blob/main/TAGS.md">TAGS.md</a> manually and prepare the YAML by hand. Then fork the repo on GitHub, create a branch in your fork, create the file under <code>papers/</code> or <code>blogs/</code>, paste the YAML, and open a pull request.
+        </p>
+      </section>
+    </noscript>
+  </main>
+
+  <script src="assets/repo-meta.js?v=2"></script>
+  <script>
+    const REPO_META = window.REPO_META;
+    const GITHUB_REPO_BASE = REPO_META.getGitHubRepoBase();
+    const GITHUB_TAGS_URL = REPO_META.getGitHubBlobUrl('TAGS.md');
+    const GITHUB_CONTRIBUTING_URL = REPO_META.getGitHubBlobUrl('CONTRIBUTING.md');
+
+    function initializeDocLinks() {
+      const tagsLink = document.getElementById('hero-tags-link');
+      const contributingLink = document.getElementById('hero-contributing-link');
+      if (tagsLink) tagsLink.href = GITHUB_TAGS_URL;
+      if (contributingLink) contributingLink.href = GITHUB_CONTRIBUTING_URL;
+    }
+
+    // Paper category labels stay aligned with the repo taxonomy.
+    const PAPER_CATEGORY_OPTIONS = [
+      { label: 'Theoretical and Mechanical Analysis', category: 'analysis' },
+      { label: 'Architecture and Algorithm Designs', category: 'designs' },
+      { label: 'Applications Focused', category: 'applications' }
+    ];
+
+    const PAPER_CATEGORY_LOOKUP = Object.fromEntries(PAPER_CATEGORY_OPTIONS.map(function(option) {
+      return [option.label, option];
+    }));
+
+    const FALLBACK_MECHANISM_TAGS = [
+      'hierarchical-loop',
+      'flat-loop',
+      'parallel-loop',
+      'implicit-layer'
+    ];
+
+    const FALLBACK_FOCUS_TAGS = [
+      'objective-loss',
+      'training-algorithm',
+      'architecture',
+      'data',
+      'inference-algorithm'
+    ];
+
+    // Suggested-but-not-yet-observed domain tags belong in the frontend only.
+    const SUGGESTED_DOMAIN_TAGS = [
+      'efficient-loop'
+    ];
+
+    const STATE = {
+      formKind: 'paper',
+      options: {
+        mechanism: [],
+        focus: [],
+        domain: []
+      },
+      selected: {
+        mechanism: new Set(),
+        focus: new Set(),
+        domain: new Set()
+      },
+      search: {
+        mechanism: '',
+        focus: '',
+        domain: ''
+      },
+      existingPaths: new Set()
+    };
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function setStatus(text, tone) {
+      const box = document.getElementById('status-box');
+      if (!box) return;
+      box.textContent = text;
+      box.className = 'status' + (tone ? ' is-' + tone : '');
+    }
+
+    function sortCountedEntries(counterMap) {
+      return Array.from(counterMap.entries())
+        .sort(function(a, b) {
+          const countDiff = b[1] - a[1];
+          if (countDiff !== 0) return countDiff;
+          return a[0].localeCompare(b[0]);
+        })
+        .map(function(entry) {
+          return { label: entry[0], count: entry[1] };
+        });
+    }
+
+    function getSortedSelected(group) {
+      return Array.from(STATE.selected[group]).sort(function(a, b) {
+        return a.localeCompare(b);
+      });
+    }
+
+    function getFieldValue(group) {
+      const selected = getSortedSelected(group);
+      const manual = group === 'domain'
+        ? normalizeCommaSeparatedTags(getTrimmedValue('domain-tags-manual-input'))
+        : [];
+      const merged = mergeNormalizedTagLists(selected, manual);
+      return merged.length ? merged.join(', ') : '';
+    }
+
+    function getTrimmedValue(id) {
+      const element = document.getElementById(id);
+      return element ? element.value.trim() : '';
+    }
+
+    function normalizeSingleLineText(value) {
+      return String(value || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function normalizeCommaSeparatedTags(rawValue) {
+      const seen = new Set();
+      return String(rawValue || '')
+        .split(',')
+        .map(function(value) { return value.trim(); })
+        .filter(function(value) {
+          if (!value) return false;
+          const key = value.toLowerCase();
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+    }
+
+    function mergeNormalizedTagLists() {
+      const seen = new Set();
+      return Array.from(arguments)
+        .flat()
+        .map(function(value) { return String(value || '').trim(); })
+        .filter(function(value) {
+          if (!value) return false;
+          const key = value.toLowerCase();
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+    }
+
+    function getAliasFieldValue() {
+      return normalizeCommaSeparatedTags(getTrimmedValue('alias-tags-manual-input')).join(', ');
+    }
+
+    function normalizeAuthors(rawValue) {
+      const normalized = String(rawValue || '').replace(/\r/g, '\n');
+      const roughParts = normalized.split(/\n|;/).flatMap(function(part) {
+        return part.split(',');
+      });
+      const authors = roughParts
+        .map(function(author) { return author.trim(); })
+        .filter(Boolean);
+      return authors.length ? authors : [];
+    }
+
+    function slugifyFilenamePart(value) {
+      return String(value || '')
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .replace(/-{2,}/g, '-');
+    }
+
+    function isIsoDateString(value) {
+      const match = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (!match) return false;
+      const year = Number(match[1]);
+      const month = Number(match[2]);
+      const day = Number(match[3]);
+      const date = new Date(Date.UTC(year, month - 1, day));
+      return date.getUTCFullYear() === year
+        && date.getUTCMonth() === month - 1
+        && date.getUTCDate() === day;
+    }
+
+    function syncPublishedDateNativeInput() {
+      const textInput = document.getElementById('published-date-input');
+      const nativeInput = document.getElementById('published-date-native-input');
+      if (!textInput || !nativeInput) return;
+      const value = String(textInput.value || '').trim();
+      nativeInput.value = isIsoDateString(value) ? value : '';
+    }
+
+    function syncPublishedDateTextInput() {
+      const textInput = document.getElementById('published-date-input');
+      const nativeInput = document.getElementById('published-date-native-input');
+      if (!textInput || !nativeInput || !nativeInput.value) return;
+      textInput.value = nativeInput.value;
+    }
+
+    function openPublishedDatePicker() {
+      const nativeInput = document.getElementById('published-date-native-input');
+      if (!nativeInput) return;
+      syncPublishedDateNativeInput();
+      if (typeof nativeInput.showPicker === 'function') {
+        nativeInput.showPicker();
+        return;
+      }
+      nativeInput.focus({ preventScroll: true });
+      nativeInput.click();
+    }
+
+    function extractArxivId(url) {
+      const match = String(url || '').match(/arxiv\.org\/(?:abs|pdf)\/([0-9]{4}\.[0-9]{4,5})(?:v\d+)?/i);
+      return match ? match[1] : '';
+    }
+
+    function looksLikeOpenReview(url) {
+      return /openreview\.net/i.test(String(url || ''));
+    }
+
+    function yamlQuote(value) {
+      return JSON.stringify(String(value));
+    }
+
+    function renderYamlStringList(lines, key, items) {
+      if (!items.length) return;
+      lines.push(key + ':');
+      items.forEach(function(item) {
+        lines.push('  - ' + yamlQuote(item));
+      });
+    }
+
+    function buildSnippet() {
+      const lines = [];
+      const mechanism = getFieldValue('mechanism');
+      const focus = getFieldValue('focus');
+      const domain = getFieldValue('domain');
+      const alias = getAliasFieldValue();
+
+      if (mechanism) lines.push('mechanism_tags: ' + mechanism);
+      if (focus) lines.push('focus_tags: ' + focus);
+      if (domain) lines.push('domain_tags: ' + domain);
+      if (alias) lines.push('tags: ' + alias);
+
+      return lines.length
+        ? lines.join('\n')
+        : '# No tags selected yet. You can still continue without tags.';
+    }
+
+    function updateTagOutputs() {
+      updateGeneratedOutputs();
+    }
+
+    function syncRequiredFieldStates() {
+      document.querySelectorAll('#submission-form .field').forEach(function(field) {
+        const control = field.querySelector('input, textarea, select');
+        if (!control) return;
+
+        const isHidden = field.hidden || control.closest('[hidden]') !== null;
+        const isRequired = !isHidden && Boolean(control.required);
+        let isInvalid = false;
+
+        if (isRequired) {
+          const value = String(control.value || '').trim();
+          isInvalid = !value;
+          if (!isInvalid && control.id === 'published-date-input') {
+            isInvalid = !isIsoDateString(value);
+          }
+        }
+
+        field.classList.toggle('is-required', isRequired);
+        field.classList.toggle('is-invalid', isInvalid);
+
+        if (isRequired) {
+          control.setAttribute('aria-required', 'true');
+        } else {
+          control.removeAttribute('aria-required');
+        }
+        control.setAttribute('aria-invalid', isInvalid ? 'true' : 'false');
+      });
+    }
+
+    function toggleTag(group, label) {
+      const selected = STATE.selected[group];
+      if (selected.has(label)) {
+        selected.delete(label);
+      } else {
+        selected.add(label);
+      }
+      renderPicker(group);
+      updateTagOutputs();
+    }
+
+    function clearAllTags() {
+      STATE.selected.mechanism.clear();
+      STATE.selected.focus.clear();
+      STATE.selected.domain.clear();
+      const aliasInput = document.getElementById('alias-tags-manual-input');
+      const domainManualInput = document.getElementById('domain-tags-manual-input');
+      if (aliasInput) aliasInput.value = '';
+      if (domainManualInput) domainManualInput.value = '';
+      renderPicker('mechanism');
+      renderPicker('focus');
+      renderPicker('domain');
+      updateTagOutputs();
+    }
+
+    function getPickerMeta(group) {
+      return {
+        mechanism: {
+          title: 'Loop Mechanism',
+          note: 'Browser-facing loop-form tags: hierarchical-loop, flat-loop, parallel-loop, or implicit-layer.',
+          placeholder: 'Search loop mechanism…'
+        },
+        focus: {
+          title: 'Focus Tags',
+          note: 'Controlled vocabulary used directly by the build.',
+          placeholder: 'Search focus tags…'
+        },
+        domain: {
+          title: 'Domain Tags',
+          note: 'Browser-facing domain labels already used in the repo, plus suggested additions such as efficient-loop.',
+          placeholder: 'Search domain tags…'
+        }
+      }[group];
+    }
+
+    function getVisiblePickerOptions(group) {
+      const query = STATE.search[group].trim().toLowerCase();
+      return STATE.options[group].filter(function(item) {
+        return !query || item.label.toLowerCase().includes(query);
+      }).slice(0, 60);
+    }
+
+    function renderSelectedTagsHtml(group) {
+      const selected = STATE.selected[group];
+      return selected.size
+        ? getSortedSelected(group).map(function(label) {
+            return ''
+              + '<span class="tag-chip">'
+              + escapeHtml(label)
+              + '<button type="button" data-remove-tag="' + escapeHtml(label) + '" aria-label="Remove ' + escapeHtml(label) + '">✕</button>'
+              + '</span>';
+          }).join('')
+        : '<span class="empty-note">No tags selected yet.</span>';
+    }
+
+    function renderPickerMenuHtml(group) {
+      const selected = STATE.selected[group];
+      const visible = getVisiblePickerOptions(group);
+      return visible.length
+        ? visible.map(function(item) {
+            const selectedClass = selected.has(item.label) ? ' is-selected' : '';
+            return ''
+              + '<button type="button" class="tag-option' + selectedClass + '" data-tag-value="' + escapeHtml(item.label) + '">'
+              + '  <span>' + escapeHtml(item.label) + '</span>'
+              + '  <span class="tag-option-count">' + item.count + '</span>'
+              + '</button>';
+          }).join('')
+        : '<div class="empty-note">No matching tags.</div>';
+    }
+
+    function bindPickerMenuEvents(root, group) {
+      root.querySelectorAll('[data-tag-value]').forEach(function(button) {
+        button.addEventListener('click', function() {
+          toggleTag(group, button.dataset.tagValue);
+          STATE.search[group] = '';
+          renderPicker(group);
+        });
+      });
+    }
+
+    function refreshPickerMenu(group) {
+      const root = document.getElementById(group + '-picker');
+      if (!root) return;
+      const menu = root.querySelector('.tag-picker-menu');
+      if (!menu) return;
+      menu.innerHTML = renderPickerMenuHtml(group);
+      bindPickerMenuEvents(root, group);
+    }
+
+    function renderPicker(group) {
+      const root = document.getElementById(group + '-picker');
+      if (!root) return;
+
+      const meta = getPickerMeta(group);
+      const selected = STATE.selected[group];
+
+      root.innerHTML = ''
+        + '<div class="tag-picker-head">'
+        + '  <div class="tag-picker-title">' + escapeHtml(meta.title) + '</div>'
+        + '  <div class="tag-picker-note">' + selected.size + ' selected</div>'
+        + '</div>'
+        + '<input class="tag-picker-search" type="text" value="' + escapeHtml(STATE.search[group]) + '" placeholder="' + escapeHtml(meta.placeholder) + '" aria-label="' + escapeHtml(meta.title) + '" />'
+        + '<div class="tag-picker-note">' + escapeHtml(meta.note) + '</div>'
+        + '<div class="tag-selected-list">'
+        + renderSelectedTagsHtml(group)
+        + '</div>'
+        + '<div class="tag-picker-menu">'
+        + renderPickerMenuHtml(group)
+        + '</div>';
+
+      const searchInput = root.querySelector('.tag-picker-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', function(event) {
+          STATE.search[group] = event.target.value;
+          refreshPickerMenu(group);
+        });
+      }
+
+      bindPickerMenuEvents(root, group);
+
+      root.querySelectorAll('[data-remove-tag]').forEach(function(button) {
+        button.addEventListener('click', function() {
+          toggleTag(group, button.dataset.removeTag);
+        });
+      });
+    }
+
+    function populatePaperCategoryOptions() {
+      const select = document.getElementById('category-select');
+      if (!select) return;
+
+      const currentValue = select.value;
+      select.innerHTML = '';
+
+      const placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.textContent = 'Choose the closest current paper category…';
+      placeholder.disabled = true;
+      placeholder.selected = !currentValue;
+      select.appendChild(placeholder);
+
+      PAPER_CATEGORY_OPTIONS.forEach(function(optionConfig) {
+        const option = document.createElement('option');
+        option.value = optionConfig.label;
+        option.textContent = optionConfig.label;
+        if (optionConfig.label === currentValue) option.selected = true;
+        select.appendChild(option);
+      });
+    }
+
+    function setResourceKind(kind) {
+      if (kind !== 'paper' && kind !== 'blog') return;
+      STATE.formKind = kind;
+
+      const isPaper = kind === 'paper';
+      const categorySelect = document.getElementById('category-select');
+
+      document.getElementById('kind-paper-btn').classList.toggle('is-active', isPaper);
+      document.getElementById('kind-blog-btn').classList.toggle('is-active', !isPaper);
+      document.getElementById('kind-paper-btn').setAttribute('aria-pressed', String(isPaper));
+      document.getElementById('kind-blog-btn').setAttribute('aria-pressed', String(!isPaper));
+
+      document.getElementById('paper-category-field').hidden = !isPaper;
+      document.getElementById('paper-code-field').hidden = !isPaper;
+      document.getElementById('paper-openreview-field').hidden = !isPaper;
+      document.getElementById('blog-github-field').hidden = isPaper;
+      document.getElementById('blog-twitter-field').hidden = isPaper;
+      categorySelect.required = false;
+
+      document.getElementById('kind-helper').innerHTML = isPaper
+        ? 'Paper submissions use <code>papers/&lt;arxiv_id&gt;.yaml</code> when possible, otherwise <code>papers/&lt;shortname&gt;.yaml</code>.'
+        : 'Blog submissions stay in the flat Blogs section and use filenames of the form <code>blogs/YYYY-MM-DD-shortname.yaml</code>.';
+
+      document.getElementById('resource-title-label').textContent = isPaper ? 'Paper Title' : 'Blog Title';
+      document.getElementById('resource-title-note').textContent = isPaper
+        ? 'Used in the YAML title field. If the link is non-arXiv and no shortname is given, the title slug becomes the filename.'
+        : 'Used in the YAML title field. If no shortname is given, the title slug becomes the filename suffix.';
+      document.getElementById('venue-label').textContent = isPaper ? 'Venue' : 'Source / Venue';
+      document.getElementById('primary-link-label').textContent = isPaper ? 'arXiv / Paper Link' : 'Blog Link';
+      document.getElementById('project-label').textContent = isPaper ? 'Project Page (optional)' : 'Related Project Page (optional)';
+      document.getElementById('description-note').textContent = isPaper
+        ? 'This becomes the YAML desc field for the paper entry.'
+        : 'This becomes the YAML desc field for the blog entry.';
+      document.getElementById('description-input').placeholder = isPaper
+        ? 'Proposes X, which achieves Y by doing Z.'
+        : 'Analyzes X and explains why Y matters for loop models.';
+
+      updateGeneratedOutputs();
+    }
+
+    function collectSubmissionValues() {
+      return {
+        kind: STATE.formKind,
+        title: normalizeSingleLineText(getTrimmedValue('resource-title-input')),
+        authors: normalizeAuthors(getTrimmedValue('authors-input')),
+        publishedDate: getTrimmedValue('published-date-input'),
+        venue: normalizeSingleLineText(getTrimmedValue('venue-input')),
+        shortname: slugifyFilenamePart(getTrimmedValue('shortname-input')),
+        primaryLink: getTrimmedValue('primary-link-input'),
+        code: getTrimmedValue('code-input'),
+        openreview: getTrimmedValue('openreview-input'),
+        project: getTrimmedValue('project-input'),
+        github: getTrimmedValue('github-input'),
+        twitter: getTrimmedValue('twitter-input'),
+        categoryLabel: getTrimmedValue('category-select'),
+        description: normalizeSingleLineText(getTrimmedValue('description-input')),
+        mechanismTags: normalizeCommaSeparatedTags(getFieldValue('mechanism')),
+        focusTags: normalizeCommaSeparatedTags(getFieldValue('focus')),
+        domainTags: normalizeCommaSeparatedTags(getFieldValue('domain')),
+        aliasTags: normalizeCommaSeparatedTags(getAliasFieldValue())
+      };
+    }
+
+    function getCategoryConfig(values) {
+      return PAPER_CATEGORY_LOOKUP[values.categoryLabel] || null;
+    }
+
+    function getResolvedCategory(values) {
+      const categoryConfig = getCategoryConfig(values);
+      return categoryConfig ? {
+        category: categoryConfig.category,
+        foundation: Boolean(categoryConfig.foundation)
+      } : null;
+    }
+
+    function computeShortname(values) {
+      if (values.shortname) return values.shortname;
+      return slugifyFilenamePart(values.title);
+    }
+
+    function buildTargetPath(values) {
+      if (!values.title || !isIsoDateString(values.publishedDate)) return '';
+
+      if (values.kind === 'paper') {
+        const arxivId = extractArxivId(values.primaryLink);
+        const shortname = arxivId || computeShortname(values);
+        return shortname ? 'papers/' + shortname + '.yaml' : '';
+      }
+
+      const shortname = computeShortname(values);
+      return shortname ? 'blogs/' + values.publishedDate + '-' + shortname + '.yaml' : '';
+    }
+
+    function targetFileExists(targetPath) {
+      return Boolean(targetPath) && STATE.existingPaths.has(targetPath);
+    }
+
+    function buildPrimaryPaperLinks(values) {
+      const links = [];
+      if (extractArxivId(values.primaryLink)) {
+        links.push(['arxiv', values.primaryLink]);
+      } else if (looksLikeOpenReview(values.primaryLink)) {
+        links.push(['openreview', values.primaryLink]);
+      } else {
+        links.push(['paper', values.primaryLink]);
+      }
+      if (values.code) links.push(['github', values.code]);
+      if (values.openreview && !looksLikeOpenReview(values.primaryLink)) links.push(['openreview', values.openreview]);
+      if (values.project) links.push(['project', values.project]);
+      return links;
+    }
+
+    function buildPaperYaml(values) {
+      const resolvedCategory = getResolvedCategory(values);
+      if (!resolvedCategory) {
+        return '# Choose one of the canonical paper categories before generating YAML.';
+      }
+
+      const lines = [];
+      lines.push('title: ' + yamlQuote(values.title));
+      renderYamlStringList(lines, 'authors', values.authors);
+      lines.push('year: ' + Number(values.publishedDate.slice(0, 4)));
+      lines.push('published_date: ' + yamlQuote(values.publishedDate));
+      lines.push('venue: ' + yamlQuote(values.venue));
+      lines.push('category: ' + yamlQuote(resolvedCategory.category));
+      if (resolvedCategory.foundation) {
+        lines.push('foundation: true');
+      }
+      renderYamlStringList(lines, 'mechanism_tags', values.mechanismTags);
+      renderYamlStringList(lines, 'domain_tags', values.domainTags);
+      renderYamlStringList(lines, 'tags', values.aliasTags);
+      renderYamlStringList(lines, 'focus_tags', values.focusTags);
+      lines.push('desc: ' + yamlQuote(values.description));
+      lines.push('links:');
+      buildPrimaryPaperLinks(values).forEach(function(entry) {
+        lines.push('  ' + entry[0] + ': ' + yamlQuote(entry[1]));
+      });
+      return lines.join('\n');
+    }
+
+    function buildBlogYaml(values) {
+      const lines = [];
+      lines.push('title: ' + yamlQuote(values.title));
+      renderYamlStringList(lines, 'authors', values.authors);
+      lines.push('year: ' + Number(values.publishedDate.slice(0, 4)));
+      lines.push('published_date: ' + yamlQuote(values.publishedDate));
+      lines.push('venue: ' + yamlQuote(values.venue));
+      renderYamlStringList(lines, 'mechanism_tags', values.mechanismTags);
+      renderYamlStringList(lines, 'domain_tags', values.domainTags);
+      renderYamlStringList(lines, 'tags', values.aliasTags);
+      renderYamlStringList(lines, 'focus_tags', values.focusTags);
+      lines.push('desc: ' + yamlQuote(values.description));
+      lines.push('links:');
+      lines.push('  blog: ' + yamlQuote(values.primaryLink));
+      if (values.github) lines.push('  github: ' + yamlQuote(values.github));
+      if (values.project) lines.push('  project: ' + yamlQuote(values.project));
+      if (values.twitter) lines.push('  twitter: ' + yamlQuote(values.twitter));
+      return lines.join('\n');
+    }
+
+    function buildYamlPreview(values) {
+      return values.kind === 'paper' ? buildPaperYaml(values) : buildBlogYaml(values);
+    }
+
+    function getValidationError(values) {
+      if (!values.title) return 'Please enter a title.';
+      if (!values.authors.length) return 'Please enter at least one author.';
+      if (!values.publishedDate || !isIsoDateString(values.publishedDate)) return 'Please enter published_date as YYYY-MM-DD.';
+      if (!values.venue) return 'Please enter a venue / source.';
+      if (!values.primaryLink) return 'Please enter the primary link.';
+      if (!values.description) return 'Please enter the one-line description.';
+      if (!computeShortname(values)) return 'Could not derive a valid shortname from the current inputs.';
+      if (values.kind === 'paper' && !getResolvedCategory(values)) {
+        return 'Please choose one of the canonical paper categories.';
+      }
+      return '';
+    }
+
+    function setActionDisabled(disabled) {
+      document.getElementById('copy-target-path-btn').disabled = disabled;
+      document.getElementById('copy-yaml-btn').disabled = disabled;
+    }
+
+    function updateGeneratedOutputs() {
+      syncPublishedDateNativeInput();
+      const values = collectSubmissionValues();
+      syncRequiredFieldStates();
+      const targetPath = buildTargetPath(values);
+      const yamlPreview = buildYamlPreview(values);
+      const validationError = getValidationError(values);
+      const duplicate = targetFileExists(targetPath);
+      const arxivId = extractArxivId(values.primaryLink);
+      const effectiveShortname = computeShortname(values);
+
+      document.getElementById('target-path-output').value = targetPath || '# Fill the required fields above to generate a file path.';
+      document.getElementById('extracted-arxiv-id-output').value = arxivId || '# None';
+      document.getElementById('effective-shortname-output').value = effectiveShortname || '# None';
+      document.getElementById('github-repo-url-output').value = GITHUB_REPO_BASE;
+      document.getElementById('yaml-preview-output').value = validationError && !targetPath
+        ? '# Fill the required fields above to generate YAML.'
+        : yamlPreview;
+
+      if (duplicate) {
+        document.getElementById('path-status-output').value = 'Duplicate path — choose a different shortname';
+        setStatus('The generated target path already exists: ' + targetPath + '. Adjust the shortname or choose a different resource.', 'danger');
+        setActionDisabled(true);
+        return;
+      }
+
+      if (validationError) {
+        document.getElementById('path-status-output').value = 'Waiting for required fields';
+        setStatus(validationError, 'warning');
+        setActionDisabled(true);
+        return;
+      }
+
+      document.getElementById('path-status-output').value = 'Ready to copy into your fork';
+      setStatus('Generated the YAML. Next: copy the target path and YAML, fork the repo on GitHub, create a branch in your fork, add the file, and open a pull request.', 'success');
+      setActionDisabled(false);
+    }
+
+    async function copyTextValue(text, successMessage) {
+      try {
+        await navigator.clipboard.writeText(text);
+        setStatus(successMessage, 'success');
+        return true;
+      } catch (error) {
+        setStatus('Could not copy automatically. Copy the value manually from the preview box.', 'warning');
+        return false;
+      }
+    }
+
+    async function copyTagBlock() {
+      return copyTextValue(buildSnippet(), 'Copied the generated tag block.');
+    }
+
+    async function copyYamlPreview() {
+      const yamlPreview = document.getElementById('yaml-preview-output').value;
+      if (yamlPreview.startsWith('# ')) {
+        setStatus('Fill the required fields first so the YAML can be generated.', 'warning');
+        return false;
+      }
+      return copyTextValue(yamlPreview, 'Copied the generated YAML.');
+    }
+
+    async function copyTargetPath() {
+      const form = document.getElementById('submission-form');
+      if (form && !form.reportValidity()) {
+        return false;
+      }
+
+      const values = collectSubmissionValues();
+      const validationError = getValidationError(values);
+      const targetPath = buildTargetPath(values);
+      if (validationError || !targetPath || targetFileExists(targetPath)) {
+        updateGeneratedOutputs();
+        setStatus('Fill the required fields and resolve any duplicate path before copying the target path.', 'warning');
+        return false;
+      }
+
+      document.getElementById('target-path-output').value = targetPath;
+      return copyTextValue(targetPath, 'Copied the generated target path.');
+    }
+
+    function openGitHubRepoForFork() {
+      window.open(GITHUB_REPO_BASE, '_blank', 'noopener');
+
+      const targetPath = document.getElementById('target-path-output').value;
+      if (targetPath && !targetPath.startsWith('# ')) {
+        setStatus('Opened the upstream GitHub repo. Fork it to your account, create a branch in your fork, then add ' + targetPath + ' with the generated YAML.', 'success');
+        return;
+      }
+
+      setStatus('Opened the upstream GitHub repo. Fork it to your account, then come back here to copy the generated path and YAML into your fork.', 'success');
+    }
+
+    function resetSubmissionForm() {
+      const form = document.getElementById('submission-form');
+      if (form) form.reset();
+      clearAllTags();
+      populatePaperCategoryOptions();
+      setResourceKind('paper');
+      document.getElementById('yaml-preview-output').value = '# Fill the required fields above to generate YAML.';
+      document.getElementById('target-path-output').value = '# Fill the required fields above to generate a file path.';
+      document.getElementById('extracted-arxiv-id-output').value = '# None yet';
+      document.getElementById('effective-shortname-output').value = '# None yet';
+      document.getElementById('path-status-output').value = '# Waiting for required fields';
+      document.getElementById('github-repo-url-output').value = GITHUB_REPO_BASE;
+      setActionDisabled(true);
+      setStatus('Reset the form and cleared all selected tags.', 'warning');
+    }
+
+    function wireForm() {
+      document.getElementById('copy-tag-block-btn').addEventListener('click', copyTagBlock);
+      document.getElementById('clear-tags-btn').addEventListener('click', function() {
+        clearAllTags();
+        setStatus('Cleared selected tags.', 'warning');
+      });
+      document.getElementById('copy-target-path-btn').addEventListener('click', copyTargetPath);
+      document.getElementById('copy-yaml-btn').addEventListener('click', copyYamlPreview);
+      document.getElementById('open-github-repo-btn').addEventListener('click', openGitHubRepoForFork);
+      document.getElementById('reset-form-btn').addEventListener('click', resetSubmissionForm);
+      document.getElementById('alias-tags-manual-input').addEventListener('input', updateTagOutputs);
+      document.getElementById('alias-tags-manual-input').addEventListener('change', updateTagOutputs);
+      document.getElementById('domain-tags-manual-input').addEventListener('input', updateTagOutputs);
+      document.getElementById('domain-tags-manual-input').addEventListener('change', updateTagOutputs);
+      document.getElementById('published-date-picker-btn').addEventListener('click', openPublishedDatePicker);
+      document.getElementById('published-date-input').addEventListener('input', syncPublishedDateNativeInput);
+      document.getElementById('published-date-input').addEventListener('change', syncPublishedDateNativeInput);
+      document.getElementById('published-date-native-input').addEventListener('input', syncPublishedDateTextInput);
+      document.getElementById('published-date-native-input').addEventListener('change', syncPublishedDateTextInput);
+
+      document.querySelectorAll('#submission-form input, #submission-form textarea, #submission-form select').forEach(function(element) {
+        element.addEventListener('input', updateGeneratedOutputs);
+        element.addEventListener('change', updateGeneratedOutputs);
+      });
+    }
+
+    function deriveFallbackSourcePath(entry) {
+      if (entry.source_path) return entry.source_path;
+      if (entry.entry_type === 'blog') return 'blogs/' + entry.id + '.yaml';
+      return 'papers/' + entry.id + '.yaml';
+    }
+
+    async function loadTagData() {
+      try {
+        const response = await fetch('papers.json');
+        if (!response.ok) throw new Error('Failed to load papers.json');
+        const data = await response.json();
+        const entries = (data.papers || []).concat(data.blogs || []);
+        const mechanismCounter = new Map();
+        const focusCounter = new Map();
+        const domainCounter = new Map();
+
+        (data.mechanism_tags || FALLBACK_MECHANISM_TAGS).forEach(function(tag) {
+          mechanismCounter.set(tag, 0);
+        });
+        (data.focus_tags || FALLBACK_FOCUS_TAGS).forEach(function(tag) {
+          focusCounter.set(tag, 0);
+        });
+        SUGGESTED_DOMAIN_TAGS.forEach(function(tag) {
+          domainCounter.set(tag, 0);
+        });
+
+        entries.forEach(function(entry) {
+          STATE.existingPaths.add(deriveFallbackSourcePath(entry));
+          (entry.mechanism_tags || []).forEach(function(tag) {
+            mechanismCounter.set(tag, (mechanismCounter.get(tag) || 0) + 1);
+          });
+          (entry.focus_tags || []).forEach(function(tag) {
+            focusCounter.set(tag, (focusCounter.get(tag) || 0) + 1);
+          });
+          (entry.domain_tags || []).forEach(function(tag) {
+            domainCounter.set(tag, (domainCounter.get(tag) || 0) + 1);
+          });
+        });
+
+        STATE.options.mechanism = sortCountedEntries(mechanismCounter);
+        STATE.options.focus = sortCountedEntries(focusCounter);
+        STATE.options.domain = sortCountedEntries(domainCounter);
+        renderPicker('mechanism');
+        renderPicker('focus');
+        renderPicker('domain');
+        updateTagOutputs();
+        setStatus('Loaded existing tags and filenames from papers.json. Fill the form to generate a YAML draft, then copy the path and YAML into your fork for the PR flow.', 'success');
+      } catch (error) {
+        STATE.options.mechanism = FALLBACK_MECHANISM_TAGS.map(function(tag) {
+          return { label: tag, count: 0 };
+        });
+        STATE.options.focus = FALLBACK_FOCUS_TAGS.map(function(tag) {
+          return { label: tag, count: 0 };
+        });
+        STATE.options.domain = SUGGESTED_DOMAIN_TAGS.map(function(tag) {
+          return { label: tag, count: 0 };
+        });
+        renderPicker('mechanism');
+        renderPicker('focus');
+        renderPicker('domain');
+        updateTagOutputs();
+        setStatus('Could not load papers.json. Mechanism and focus tags still work, domain tags fall back to seeded suggestions, and duplicate filename checks are unavailable in this mode.', 'warning');
+      }
+    }
+
+    initializeDocLinks();
+    populatePaperCategoryOptions();
+    renderPicker('mechanism');
+    renderPicker('focus');
+    renderPicker('domain');
+    setActionDisabled(true);
+    updateTagOutputs();
+    setResourceKind('paper');
+    wireForm();
+    loadTagData();
+  </script>
+</body>
+</html>

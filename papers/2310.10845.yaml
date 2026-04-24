@@ -1,0 +1,29 @@
+title: 'CoTFormer: A Chain-of-Thought Driven Architecture with Budget-Adaptive Computation Cost at Inference'
+authors:
+- Amirkeivan Mohtashami
+- Matteo Pagliardini
+- Martin Jaggi
+year: 2023
+published_date: '2023-10-16'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- CoTFormer
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Recasts chain-of-thought as recurrent depth inside a token-level transformer, using token-wise adaptive computation to spend extra iterations only where additional reasoning budget helps.
+links:
+  arxiv: https://arxiv.org/abs/2310.10845
+citations: 8
+citation_sources:
+  semantic_scholar: 8
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-17'

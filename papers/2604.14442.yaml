@@ -1,0 +1,32 @@
+title: Hierarchical vs. Flat Iteration in Shared-Weight Transformers
+authors:
+- Sang-Il Han
+year: 2026
+published_date: '2026-04-15'
+added_date: '2026-04-21'
+venue: arXiv
+category: "analysis"
+mechanism_tags:
+- flat-loop
+- hierarchical-loop
+domain_tags:
+- language-modeling
+- scaling
+tags:
+- shared-weight-recurrence
+- hierarchical-recurrence
+- universal-transformer
+focus_tags:
+- architecture
+desc: Empirically compares hierarchical shared-weight recurrence against flat shared-weight
+  iteration and independent-layer stacking, revealing a persistent representational
+  gap for the recurrent hierarchy.
+links:
+  arxiv: https://arxiv.org/abs/2604.14442
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-22'

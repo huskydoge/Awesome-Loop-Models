@@ -1,0 +1,33 @@
+title: Latent Chain-of-Thought? Decoding the Depth-Recurrent Transformer
+authors:
+- Wenquan Lu
+- Yuechuan Yang
+- Kyle Lee
+- Yanshu Li
+- Enqi Liu
+year: 2025
+published_date: '2025-07-02'
+added_date: '2026-04-21'
+venue: arXiv
+category: "analysis"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- depth-recurrent
+- latent-cot
+focus_tags:
+- inference-algorithm
+desc: Probes a depth-recurrent Transformer to test whether latent chain-of-thought
+  structure emerges across recurrence steps, finding limited evidence and recurrence-depth-dependent
+  interpretability effects.
+links:
+  arxiv: https://arxiv.org/abs/2507.02199
+citations: 5
+citation_sources:
+  semantic_scholar: 5
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-22'

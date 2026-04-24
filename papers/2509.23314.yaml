@@ -1,0 +1,28 @@
+title: Two-Scale Latent Dynamics for Recurrent-Depth Transformers
+authors:
+- Francesco Pappone
+- Donato Crisostomi
+- Emanuele Rodolà
+year: 2025
+published_date: '2025-09-27'
+venue: arXiv
+category: "analysis"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- ACT
+focus_tags:
+- inference-algorithm
+desc: Analyzes recurrent-depth transformers through a two-scale latent-dynamics lens, showing shrinking and increasingly orthogonal loop updates and deriving a second-order early-exit criterion that improves latency-quality trade-offs.
+links:
+  arxiv: https://arxiv.org/abs/2509.23314
+citations: 1
+citation_sources:
+  semantic_scholar: 1
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-20'

@@ -1,0 +1,41 @@
+title: 'Mixture of Universal Experts: Scaling Virtual Width via Depth-Width Transformation'
+authors:
+- Yilong Chen
+- Naibin Gu
+- Junyuan Shang
+- Zhenyu Zhang
+- Yuchen Feng
+- Jiawei Sheng
+- Tingwen Liu
+- Shuohuan Wang
+- Yu Sun
+- Hua Wu
+- Haifeng Wang
+year: 2026
+published_date: '2026-03-05'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+tags:
+- MOUE
+focus_tags:
+- objective-loss
+- architecture
+- inference-algorithm
+desc: Proposes MOUE, which reuses a universal layer-agnostic expert pool across layers to transform depth into virtual width and improve MoE performance under fixed activation budgets.
+links:
+  arxiv: https://arxiv.org/abs/2603.04971
+  comment:
+  - label: Benhao's reading note
+    url: https://x.com/huskydogewoof/status/2031847931993608673?s=20
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-14'

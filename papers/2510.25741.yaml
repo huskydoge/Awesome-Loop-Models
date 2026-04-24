@@ -1,0 +1,69 @@
+title: Scaling Latent Reasoning via Looped Language Models
+authors:
+- Rui-Jie Zhu
+- Zixuan Wang
+- Kai Hua
+- Tianyu Zhang
+- Ziniu Li
+- Haoran Que
+- Boyi Wei
+- Zixin Wen
+- Fan Yin
+- He Xing
+- Lu Li
+- Jiajun Shi
+- Kaijing Ma
+- Shanda Li
+- Taylor Kergan
+- Andrew Smith
+- Xingwei Qu
+- Mude Hui
+- Bohong Wu
+- Qiyang Min
+- Hongzhi Huang
+- Xun Zhou
+- Wei Ye
+- Jiaheng Liu
+- Jian Yang
+- Yunfeng Shi
+- Chenghua Lin
+- Enduo Zhao
+- Tianle Cai
+- Ge Zhang
+- Wenhao Huang
+- Yoshua Bengio
+- Jason Eshraghian
+year: 2025
+must_read: true
+published_date: '2025-10-29'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- Ouro
+focus_tags:
+- objective-loss
+- architecture
+- data
+- training-algorithm
+- inference-algorithm
+desc: Introduces Ouro, a family of pre-trained Looped Language Models (1.4B and 2.6B)
+  that match the performance of 12B standard LLMs. Establishes loop depth as a third
+  scaling axis beyond model size and data.
+links:
+  arxiv: https://arxiv.org/abs/2510.25741
+  project: https://ouro-llm.github.io/
+  hf: https://huggingface.co/ByteDance/Ouro-1.4B
+  comment:
+  - label: Reza Bayat reading list (#10)
+    url: https://x.com/reza_byt/status/2045168844658950392?s=20
+citations: 34
+citation_sources:
+  semantic_scholar: 34
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-20'

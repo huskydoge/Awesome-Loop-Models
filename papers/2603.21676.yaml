@@ -1,0 +1,32 @@
+title: 'Thinking Deeper, Not Longer: Depth-Recurrent Transformers for Compositional Generalization'
+authors:
+- Hung-Hsuan Chen
+year: 2026
+published_date: '2026-03-23'
+added_date: '2026-04-21'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- compositional-reasoning
+tags:
+- depth-recurrent
+- compositional-generalization
+- silent-thinking
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces a depth-recurrent Transformer for compositional generalization, with
+  silent thinking, LayerScale, and identity-biased recurrence enabling stable deep
+  latent iteration.
+links:
+  arxiv: https://arxiv.org/abs/2603.21676
+citations: 1
+citation_sources:
+  semantic_scholar: 1
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-22'

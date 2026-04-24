@@ -1,0 +1,31 @@
+title: On Training Implicit Models
+authors:
+- Zhengyang Geng
+- Xin-Yu Zhang
+- Shaojie Bai
+- Yisen Wang
+- Zhouchen Lin
+year: 2021
+published_date: '2021-11-09'
+venue: NeurIPS
+category: "designs"
+domain_tags:
+- efficiency
+mechanism_tags:
+- implicit-layer
+tags:
+- DEQ
+- phantom-gradient
+focus_tags:
+- training-algorithm
+desc: Proposes phantom gradient, a lightweight backpropagation estimator for implicit (infinite-depth) models that uses damped unrolling and a truncated Neumann series to speed backward passes while matching or surpassing exact-gradient baselines on large-scale tasks.
+links:
+  arxiv: https://arxiv.org/abs/2111.05177
+  paper: https://proceedings.neurips.cc/paper/2021/hash/b0083e1a03ff2a5b6a0a2c4e0b1c3f0a-Abstract.html
+citations: 94
+citation_sources:
+  semantic_scholar: 94
+  openalex: 13
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-14'

@@ -1,0 +1,30 @@
+title: 'Less is More: Recursive Reasoning with Tiny Networks'
+authors:
+- Alexia Jolicoeur-Martineau
+year: 2025
+published_date: '2025-10-06'
+added_date: '2026-04-20'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- hierarchical-loop
+- flat-loop
+domain_tags:
+- reasoning
+tags:
+- TRM
+focus_tags:
+- architecture
+- inference-algorithm
+- training-algorithm
+desc: Proposes Tiny Recursive Model (TRM), a single tiny network that recursively
+  refines latent state and answer over multiple improvement steps, outperforming HRM
+  and many larger models on ARC-AGI-style reasoning tasks.
+links:
+  arxiv: https://arxiv.org/abs/2510.04871
+citations: 4
+citation_sources:
+  openalex: 4
+  opencitations: 0
+citation_source_best: openalex
+metrics_updated: '2026-04-21'

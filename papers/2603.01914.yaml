@@ -1,0 +1,37 @@
+title: 'AdaPonderLM: Gated Pondering Language Models with Token-Wise Adaptive Depth'
+authors:
+- Shixiang Song
+- He Li
+- Zitong Wang
+- Boyi Zeng
+- Feichen Song
+- Yixuan Wang
+- Zhiqin John Xu
+- Ziwei He
+- Zhouhan Lin
+year: 2026
+published_date: '2026-03-02'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+tags:
+- AdaPonderLM
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Introduces AdaPonderLM, a self-supervised recurrent language model with token-wise halting gates and KV reuse, allocating more loop steps to hard tokens under a fixed compute budget.
+links:
+  arxiv: https://arxiv.org/abs/2603.01914
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-17'

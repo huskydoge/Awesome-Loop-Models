@@ -1,0 +1,32 @@
+title: Skip a Layer or Loop it? Test-Time Depth Adaptation of Pretrained LLMs
+authors:
+- Ziyue Li
+- Yang Li
+- Tianyi Zhou
+year: 2025
+published_date: '2025-07-10'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- CoLa
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Proposes Chain-of-Layers (CoLa), an inference-time search method that skips or repeats pretrained LLM layers per sample via MCTS to improve efficiency and reasoning accuracy.
+links:
+  arxiv: https://arxiv.org/abs/2507.07996
+  comment:
+  - label: X Comment
+    url: https://x.com/huskydogewoof/status/2037024461145215106?s=20
+citations: 4
+citation_sources:
+  semantic_scholar: 4
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-14'

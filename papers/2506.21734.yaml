@@ -1,0 +1,38 @@
+title: Hierarchical Reasoning Model
+authors:
+- Guan Wang
+- Jin Li
+- Yuhao Sun
+- Xing Chen
+- Changling Liu
+- Yue Wu
+- Meng Lu
+- Sen Song
+- Yasin Abbasi Yadkori
+year: 2025
+published_date: '2025-06-26'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- hierarchical-loop
+- flat-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+tags:
+- HRM
+focus_tags:
+- architecture
+- training-algorithm
+desc: 'Proposes HRM, a brain-inspired recurrent architecture with two coupled modules
+  at different timescales: a high-level module for abstract planning and a low-level
+  module for detailed execution.'
+links:
+  arxiv: https://arxiv.org/abs/2506.21734
+citations: 78
+citation_sources:
+  semantic_scholar: 78
+  openalex: 2
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-20'

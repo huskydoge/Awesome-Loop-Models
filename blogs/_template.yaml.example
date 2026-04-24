@@ -1,0 +1,61 @@
+# Save as: blogs/YYYY-MM-DD-shortname.yaml
+# Use this for substantive long-form technical posts about loop models.
+# Blogs are taggable, but they live in one flat section and do not use the paper taxonomy.
+
+title: "Your Blog Title"
+authors:
+  - "Author Name"
+year: 2026
+published_date: "2026-04-21"
+added_date: "2026-04-21"
+venue: "X Article"
+
+# Good venue examples:
+#   X Article
+#   Lab Blog
+#   Substack
+#   Personal Blog
+
+mechanism_tags:
+  - "flat-loop"
+
+domain_tags:
+  - "language-modeling"
+
+tags:
+  - "depth-scaling"
+
+# Loop Mechanism (`mechanism_tags`) uses only loop-form tags:
+#   hierarchical-loop, flat-loop, parallel-loop, implicit-layer.
+# `tags` are optional aliases / short identifiers kept in YAML / README metadata.
+# The interactive browser exposes Loop Mechanism (`mechanism_tags`), `focus_tags`, and `domain_tags` as tag filters.
+
+focus_tags:
+  - "architecture"
+
+# Valid focus_tags:
+#   objective-loss
+#   training-algorithm
+#   architecture
+#   data
+#   inference-algorithm
+
+desc: >
+  One concise sentence describing the post's technical value.
+
+links:
+  blog: "https://example.com/post"
+  github: ""
+  project: ""
+  twitter: ""
+  comment:
+    - label: "Follow-up discussion"
+      url: "https://x.com/..."
+
+# Notes:
+# - `links.blog` is required for blogs.
+# - `published_date` is required for all blogs. Use the original release date
+#   and keep it as a quoted `YYYY-MM-DD` string.
+# - `added_date` is the repo intake date used by the daily feed / Today-style
+#   filtering; when present, keep it as a quoted `YYYY-MM-DD` string.
+# - Blogs do not use `category`, `category_path`, or `foundation`.

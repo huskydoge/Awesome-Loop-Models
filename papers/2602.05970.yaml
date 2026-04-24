@@ -1,0 +1,33 @@
+title: Inverse Depth Scaling From Most Layers Being Similar
+authors:
+- Yizhou Liu
+- Sara Kangaslahti
+- Ziming Liu
+- Jeff Gore
+year: 2026
+published_date: '2026-02-05'
+added_date: '2026-04-24'
+venue: arXiv
+category: analysis
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- theory
+focus_tags:
+- architecture
+desc: Analyzes LLMs and toy residual networks to show loss scales inversely with depth
+  when many layers are functionally similar and primarily reduce error via ensemble
+  averaging.
+links:
+  arxiv: https://arxiv.org/abs/2602.05970
+  comment:
+  - label: X Comment
+    url: https://x.com/huskydogewoof/status/2034158020322574556?s=20
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-24'

@@ -1,0 +1,35 @@
+title: Understanding Dynamic Compute Allocation in Recurrent Transformers
+authors:
+- Ibraheem Muhammad Moosa
+- Suhas Lohit
+- Ye Wang
+- Moitreya Chatterjee
+- Wenpeng Yin
+year: 2026
+published_date: '2026-02-09'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- algorithmic-reasoning
+- efficiency
+tags:
+- ANIRA
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Proposes ANIRA, a recurrent Transformer framework for per-token variable-depth computation, and shows adaptive compute can align with token complexity while failing to extrapolate to longer algorithmic inputs.
+links:
+  arxiv: https://arxiv.org/abs/2602.08864
+  comment:
+  - label: Benhao's reading note
+    url: https://x.com/huskydogewoof/status/2031044736182616081?s=20
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-14'

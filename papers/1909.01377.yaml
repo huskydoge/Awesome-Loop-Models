@@ -1,0 +1,35 @@
+title: Deep Equilibrium Models
+authors:
+- Shaojie Bai
+- J. Zico Kolter
+- Vladlen Koltun
+year: 2019
+published_date: '2019-09-03'
+venue: NeurIPS
+category: "designs"
+foundation: true
+mechanism_tags:
+- implicit-layer
+tags:
+- DEQ
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Proposes to directly solve for the fixed point of an infinite-depth network,
+  enabling implicit-depth models that are memory-efficient and theoretically equivalent
+  to infinitely deep recurrent networks.
+links:
+  paper: https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html
+  github: https://github.com/locuslab/deq
+citations: 839
+citation_sources:
+  semantic_scholar: 839
+  openalex: 246
+  opencitations: 0
+citation_source_best: semantic_scholar
+github_stars: 797
+star_sources:
+  github_api: 797
+star_source_best: github_api
+metrics_updated: '2026-04-20'

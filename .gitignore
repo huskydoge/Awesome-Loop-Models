@@ -1,0 +1,9 @@
+README.md
+papers.json
+*.lh
+.env
+.env.*
+!.env.example
+__pycache__
+.cache/
+.venv/

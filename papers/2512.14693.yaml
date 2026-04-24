@@ -1,0 +1,34 @@
+title: Universal Reasoning Model
+authors:
+- Zitian Gao
+- Lynx Chen
+- Yihao Xiao
+- He Xing
+- Ran Tao
+- Haoming Luo
+- Joey Zhou
+- Bryan Dai
+year: 2025
+published_date: '2025-12-16'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- flat-loop
+domain_tags:
+- algorithmic-reasoning
+- reasoning
+tags:
+- URM
+focus_tags:
+- architecture
+- training-algorithm
+desc: Proposes URM, a Universal Transformer-based architecture with weight tying that beats standard transformers on reasoning benchmarks through iterative depth computation.
+links:
+  arxiv: https://arxiv.org/abs/2512.14693
+citations: 2
+citation_sources:
+  semantic_scholar: 2
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-14'

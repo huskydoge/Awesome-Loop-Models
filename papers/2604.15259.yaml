@@ -1,0 +1,29 @@
+title: "Stability and Generalization in Looped Transformers"
+authors:
+  - "Asher Labovich"
+year: 2026
+published_date: '2026-04-16'
+added_date: '2026-04-20'
+venue: "arXiv"
+category: "analysis"
+mechanism_tags:
+- flat-loop
+- implicit-layer
+domain_tags:
+  - "reasoning"
+  - "theory"
+tags:
+  - "looped-transformer"
+  - "fixed-point-analysis"
+focus_tags:
+  - "inference-algorithm"
+desc: "Analyzes stability and generalization in looped transformers through a fixed-point framework, characterizing when recall and normalization yield reachable, input-dependent, and trainable loop dynamics."
+links:
+  arxiv: https://arxiv.org/abs/2604.15259
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-20'

@@ -1,0 +1,49 @@
+title: 'Mixture-of-Recursions: Learning Dynamic Recursive Depths for Adaptive Token-Level
+  Computation'
+authors:
+- Sangmin Bae
+- Yujin Kim
+- Reza Bayat
+- Sungnyun Kim
+- Jiyoun Ha
+- Tal Schuster
+- Adam Fisch
+- Hrayr Harutyunyan
+- Ziwei Ji
+- Aaron Courville
+- Se-Young Yun
+year: 2025
+published_date: '2025-07-14'
+venue: arXiv
+category: "designs"
+mechanism_tags:
+- hierarchical-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+tags:
+- MoR
+focus_tags:
+- architecture
+- inference-algorithm
+- training-algorithm
+desc: Introduces Mixture-of-Recursions, a recursive transformer with token-level routing
+  that adapts recursion depth and active-token attention so easy tokens exit early
+  while hard tokens keep thinking.
+links:
+  arxiv: https://arxiv.org/abs/2507.10524
+  github: https://github.com/raymin0223/mixture_of_recursions
+  comment:
+  - label: Reza Bayat reading list (#12)
+    url: https://x.com/reza_byt/status/2045168844658950392?s=20
+citations: 47
+citation_sources:
+  semantic_scholar: 47
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-04-20'
+github_stars: 564
+star_sources:
+  github_api: 564
+star_source_best: github_api
