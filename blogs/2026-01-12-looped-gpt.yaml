@@ -1,0 +1,32 @@
+title: "Looped-GPT: Looping During Pre-training improves Generalization"
+authors:
+  - "Sunny Sanyal"
+year: 2026
+published_date: "2026-01-12"
+added_date: "2026-04-24"
+venue: "Personal Blog"
+mechanism_tags:
+  - "flat-loop"
+
+domain_tags:
+  - "language-modeling"
+  - "scaling"
+  - "efficiency"
+
+tags:
+  - "looped-gpt"
+  - "reverse-residual"
+  - "BPTD"
+
+focus_tags:
+  - "architecture"
+  - "training-algorithm"
+
+desc: >
+  Introduces Looped-GPT, a reverse-residual depth-recurrent GPT variant, and
+  reports pre-training experiments where looped models improve generalization
+  under matched parameter, token, and fixed-FLOPs settings.
+
+links:
+  blog: "https://sanyalsunny111.github.io/posts/2026-01-15-post1-looped-gpt/"
+  github: "https://github.com/sanyalsunny111/Looped-GPT"
