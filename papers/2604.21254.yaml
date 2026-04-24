@@ -25,6 +25,9 @@ desc: Introduces Hyperloop Transformers, a parameter-efficient looped Transforme
   loops to improve memory-efficient language modeling.
 links:
   arxiv: https://arxiv.org/abs/2604.21254
+  comment:
+  - label: Turing Posts
+    url: https://x.com/TheTuringPost/status/2047720038342476187?s=20
 citations: 0
 citation_sources:
   semantic_scholar: 0

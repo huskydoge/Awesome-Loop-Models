@@ -1,9 +1,9 @@
 {
   "meta": {
-    "total": 58,
+    "total": 59,
     "paper_total": 55,
-    "blog_total": 3,
-    "generated": "2026-04-24T14:06:06.540283+00:00",
+    "blog_total": 4,
+    "generated": "2026-04-24T21:45:57.596495+00:00",
     "generated_local_date": "2026-04-24",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -2987,7 +2987,19 @@
         "Yoon Kim"
       ],
       "venueClass": "venue-arxiv",
-      "arxiv_id": "2604.21254"
+      "arxiv_id": "2604.21254",
+      "community_comments": [
+        {
+          "label": "Turing Posts",
+          "url": "https://x.com/TheTuringPost/status/2047720038342476187?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Turing Posts",
+          "url": "https://x.com/TheTuringPost/status/2047720038342476187?s=20"
+        }
+      ]
     },
     {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
@@ -3075,6 +3087,44 @@
     }
   ],
   "blogs": [
+    {
+      "title": "Looped-GPT: Looping During Pre-training improves Generalization",
+      "authors": "Sunny Sanyal",
+      "year": 2026,
+      "published_date": "2026-01-12",
+      "added_date": "2026-04-24",
+      "venue": "Personal Blog",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "scaling",
+        "efficiency"
+      ],
+      "tags": [
+        "looped-gpt",
+        "reverse-residual",
+        "BPTD"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Introduces Looped-GPT, a reverse-residual depth-recurrent GPT variant, and reports pre-training experiments where looped models improve generalization under matched parameter, token, and fixed-FLOPs settings.\n",
+      "links": {
+        "blog": "https://sanyalsunny111.github.io/posts/2026-01-15-post1-looped-gpt/",
+        "github": "https://github.com/sanyalsunny111/Looped-GPT"
+      },
+      "id": "2026-01-12-looped-gpt",
+      "source_file": "2026-01-12-looped-gpt.yaml",
+      "source_path": "blogs/2026-01-12-looped-gpt.yaml",
+      "entry_type": "blog",
+      "authors_list": [
+        "Sunny Sanyal"
+      ],
+      "venueClass": "venue-other"
+    },
     {
       "title": "Loop-Model FLOPs and Memory in an Ablation Chain",
       "authors": "Benhao Huang",

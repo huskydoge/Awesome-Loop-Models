@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (12)
-- `flat-loop` (46)
+- `flat-loop` (47)
 - `parallel-loop` (2)
 - `implicit-layer` (8)
 
@@ -27,8 +27,8 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (5)
-- `training-algorithm` (25)
-- `architecture` (47)
+- `training-algorithm` (26)
+- `architecture` (48)
 - `data` (2)
 - `inference-algorithm` (32)
 
@@ -36,11 +36,11 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `language-modeling` (38)
+- `language-modeling` (39)
 - `reasoning` (33)
-- `efficiency` (17)
+- `efficiency` (18)
 - `algorithmic-reasoning` (10)
-- `scaling` (4)
+- `scaling` (5)
 - `theory` (4)
 - `memory-efficiency` (2)
 - `RL` (2)
@@ -75,6 +75,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `AlgoFormer` (1)
 - `ANIRA` (1)
 - `attention-mixture` (1)
+- `BPTD` (1)
 - `BPTT` (1)
 - `ChainGPT` (1)
 - `checkpointing` (1)
@@ -97,6 +98,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `kv-cache-sharing` (1)
 - `latent-cot` (1)
 - `latent-thoughts` (1)
+- `looped-gpt` (1)
 - `LoopFormer` (1)
 - `LoopLM` (1)
 - `LoopRPT` (1)
@@ -117,6 +119,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `RD-VLA` (1)
 - `recursive-transformer` (1)
 - `RecursiveVLM` (1)
+- `reverse-residual` (1)
 - `RIM` (1)
 - `RLTT` (1)
 - `scaling-laws` (1)

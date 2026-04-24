@@ -3,28 +3,8 @@ name: Build generated repo artifacts
 on:
   push:
     branches: [main]
-    paths:
-      - "papers/**"
-      - "blogs/**"
-      - "scripts/build.py"
-      - "scripts/fetch_metrics.py"
-      - "scripts/README_HEADER.md"
-      - "scripts/README_FOOTER.md"
-      - "submit.html"
-      - "tests/**"
-      - ".github/workflows/**"
   pull_request:
     branches: [main]
-    paths:
-      - "papers/**"
-      - "blogs/**"
-      - "scripts/build.py"
-      - "scripts/fetch_metrics.py"
-      - "scripts/README_HEADER.md"
-      - "scripts/README_FOOTER.md"
-      - "submit.html"
-      - "tests/**"
-      - ".github/workflows/**"
   workflow_dispatch:
 
 jobs:
@@ -32,10 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: read
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -55,11 +38,106 @@ jobs:
           print(f"Validated {len(papers)} paper YAML files and {len(blogs)} blog YAML files")
           EOF
 
-      - name: Run unit tests
-        run: python3 -m unittest discover -s tests -t . -p 'test_*.py'
+      - name: Check new free-form tags need review
+        if: ${{ github.event_name == 'pull_request' && !contains(github.event.pull_request.labels.*.name, 'allow-new-tags') }}
+        run: |
+          git fetch --no-tags --prune --depth=1 origin "+refs/heads/${GITHUB_BASE_REF}:refs/remotes/origin/${GITHUB_BASE_REF}"
+          python3 - << 'EOF'
+          import os
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          import yaml
+
+          REVIEW_LABEL = "allow-new-tags"
+          BASE_REF = f"origin/{os.environ['GITHUB_BASE_REF']}"
+          FREE_FORM_TAG_FIELDS = ("domain_tags", "tags")
+
+          def add_tag_values(tags, value):
+              if value is None:
+                  return
+              values = [value] if isinstance(value, str) else value
+              if not isinstance(values, list):
+                  return
+              for item in values:
+                  if isinstance(item, str) and item.strip():
+                      tags.add(item.strip())
+
+          def collect_from_data(data):
+              collected = {field: set() for field in FREE_FORM_TAG_FIELDS}
+              if not isinstance(data, dict):
+                  return collected
+              for field in FREE_FORM_TAG_FIELDS:
+                  add_tag_values(collected[field], data.get(field))
+              return collected
+
+          def merge_tags(target, source):
+              for field in FREE_FORM_TAG_FIELDS:
+                  target[field].update(source[field])
+
+          def collect_worktree_tags():
+              collected = {field: set() for field in FREE_FORM_TAG_FIELDS}
+              for root in ("papers", "blogs"):
+                  for path in sorted(Path(root).glob("*.yaml")):
+                      if path.name.startswith("_"):
+                          continue
+                      data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+                      merge_tags(collected, collect_from_data(data))
+              return collected
+
+          def collect_git_tags(ref):
+              collected = {field: set() for field in FREE_FORM_TAG_FIELDS}
+              result = subprocess.run(
+                  ["git", "ls-tree", "-r", "--name-only", ref, "papers", "blogs"],
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              for filename in result.stdout.splitlines():
+                  path = Path(filename)
+                  if path.suffix != ".yaml" or path.name.startswith("_"):
+                      continue
+                  blob = subprocess.run(
+                      ["git", "show", f"{ref}:{filename}"],
+                      check=True,
+                      capture_output=True,
+                      text=True,
+                  )
+                  data = yaml.safe_load(blob.stdout) or {}
+                  merge_tags(collected, collect_from_data(data))
+              return collected
+
+          base_tags = collect_git_tags(BASE_REF)
+          current_tags = collect_worktree_tags()
+          new_tags = {
+              field: sorted(current_tags[field] - base_tags[field])
+              for field in FREE_FORM_TAG_FIELDS
+          }
+          if any(new_tags.values()):
+              print("::error::This PR introduces new free-form tags.")
+              print(f"Maintainer review is required. If the new tags are intentional, add the `{REVIEW_LABEL}` label and rerun CI.")
+              for field, values in new_tags.items():
+                  if values:
+                      print(f"{field}: {', '.join(values)}")
+              sys.exit(1)
+
+          print("No new free-form tags detected.")
+          EOF
 
       - name: Build papers.json, README.md, and TAGS.md
         run: python3 scripts/build.py
+
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -t . -p 'test_*.py'
+
+      - name: Check generated files are committed
+        if: github.event_name == 'pull_request'
+        run: |
+          if ! git diff --exit-code -- README.md TAGS.md papers.json; then
+            echo "::error::Generated files are out of date. Run python3 scripts/build.py and commit README.md, TAGS.md, and papers.json."
+            exit 1
+          fi
 
       - name: Commit generated files (on push to main only)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
