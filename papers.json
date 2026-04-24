@@ -1,9 +1,9 @@
 {
   "meta": {
-    "total": 57,
-    "paper_total": 54,
+    "total": 58,
+    "paper_total": 55,
     "blog_total": 3,
-    "generated": "2026-04-24T12:10:59.778004+00:00",
+    "generated": "2026-04-24T13:59:23.197698+00:00",
     "generated_local_date": "2026-04-24",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -1474,6 +1474,67 @@
           "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
         }
       ]
+    },
+    {
+      "title": "Think-at-Hard: Selective Latent Iterations to Improve Reasoning Language Models",
+      "authors": "Tianyu Fu, Yichen You, Zekai Chen, Guohao Dai, Huazhong Yang, Yu Wang",
+      "year": 2025,
+      "published_date": "2025-11-11",
+      "added_date": "2026-04-24",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "Think-at-Hard",
+        "TaH",
+        "LoRA",
+        "adaptive-latent-iteration"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces Think-at-Hard, a dynamic latent-thinking method that uses a learned decider to apply extra recurrent latent iterations only to hard tokens, with LoRA refiners and duo-causal attention across iteration depth.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2511.08577",
+        "github": "https://github.com/thu-nics/TaH",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2511.08577"
+      },
+      "citations": 8,
+      "citation_sources": {
+        "semantic_scholar": 8,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "github_stars": 68,
+      "star_sources": {
+        "github_api": 68
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-04-24",
+      "id": "2511.08577",
+      "source_file": "2511.08577.yaml",
+      "source_path": "papers/2511.08577.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Tianyu Fu",
+        "Yichen You",
+        "Zekai Chen",
+        "Guohao Dai",
+        "Huazhong Yang",
+        "Yu Wang"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2511.08577"
     },
     {
       "title": "Universal Reasoning Model",

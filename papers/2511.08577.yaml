@@ -1,0 +1,44 @@
+title: 'Think-at-Hard: Selective Latent Iterations to Improve Reasoning Language Models'
+authors:
+- Tianyu Fu
+- Yichen You
+- Zekai Chen
+- Guohao Dai
+- Huazhong Yang
+- Yu Wang
+year: 2025
+published_date: '2025-11-11'
+added_date: '2026-04-24'
+venue: arXiv
+category: designs
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+tags:
+- Think-at-Hard
+- TaH
+- LoRA
+- adaptive-latent-iteration
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces Think-at-Hard, a dynamic latent-thinking method that uses a learned
+  decider to apply extra recurrent latent iterations only to hard tokens, with LoRA
+  refiners and duo-causal attention across iteration depth.
+links:
+  arxiv: https://arxiv.org/abs/2511.08577
+  github: https://github.com/thu-nics/TaH
+citations: 8
+citation_sources:
+  semantic_scholar: 8
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+github_stars: 68
+star_sources:
+  github_api: 68
+star_source_best: github_api
+metrics_updated: '2026-04-24'

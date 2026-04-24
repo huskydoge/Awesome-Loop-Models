@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (12)
-- `flat-loop` (45)
+- `flat-loop` (46)
 - `parallel-loop` (2)
 - `implicit-layer` (8)
 
@@ -28,17 +28,17 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 - `objective-loss` (5)
 - `training-algorithm` (25)
-- `architecture` (46)
+- `architecture` (47)
 - `data` (2)
-- `inference-algorithm` (31)
+- `inference-algorithm` (32)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `language-modeling` (37)
-- `reasoning` (32)
-- `efficiency` (16)
+- `language-modeling` (38)
+- `reasoning` (33)
+- `efficiency` (17)
 - `algorithmic-reasoning` (10)
 - `scaling` (4)
 - `theory` (4)
@@ -65,11 +65,13 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `depth-recurrent` (2)
 - `depth-scaling` (2)
 - `looped-llm` (2)
+- `LoRA` (2)
 - `MoR` (2)
 - `mythos` (2)
 - `UT` (2)
 - `activation-compression` (1)
 - `AdaPonderLM` (1)
+- `adaptive-latent-iteration` (1)
 - `AlgoFormer` (1)
 - `ANIRA` (1)
 - `attention-mixture` (1)
@@ -98,7 +100,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `LoopFormer` (1)
 - `LoopLM` (1)
 - `LoopRPT` (1)
-- `LoRA` (1)
 - `MDEQ` (1)
 - `mechanistic-analysis` (1)
 - `memory-banks` (1)
@@ -122,6 +123,8 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `shared-weight-recurrence` (1)
 - `silent-thinking` (1)
 - `SpiralFormer` (1)
+- `TaH` (1)
+- `Think-at-Hard` (1)
 - `timestep-encoding` (1)
 - `universal-transformer` (1)
 - `URM` (1)
