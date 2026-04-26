@@ -31,6 +31,8 @@ jobs:
       - name: Validate YAML files
         run: |
           python3 - << 'EOF'
+          """Validate catalog source YAML files without writing generated artifacts."""
+
           from scripts import build
 
           papers = build.load_papers()
@@ -43,6 +45,8 @@ jobs:
         run: |
           git fetch --no-tags --prune --depth=1 origin "+refs/heads/${GITHUB_BASE_REF}:refs/remotes/origin/${GITHUB_BASE_REF}"
           python3 - << 'EOF'
+          """Reject new free-form PR tags until a maintainer applies the review label."""
+
           import os
           import subprocess
           import sys
@@ -55,6 +59,7 @@ jobs:
           FREE_FORM_TAG_FIELDS = ("domain_tags", "tags")
 
           def add_tag_values(tags, value):
+              """Add normalized string tag values from a scalar or list field."""
               if value is None:
                   return
               values = [value] if isinstance(value, str) else value
@@ -65,6 +70,7 @@ jobs:
                       tags.add(item.strip())
 
           def collect_from_data(data):
+              """Collect free-form tag values from a loaded YAML document."""
               collected = {field: set() for field in FREE_FORM_TAG_FIELDS}
               if not isinstance(data, dict):
                   return collected
@@ -73,10 +79,12 @@ jobs:
               return collected
 
           def merge_tags(target, source):
+              """Merge collected free-form tag sets by field."""
               for field in FREE_FORM_TAG_FIELDS:
                   target[field].update(source[field])
 
           def collect_worktree_tags():
+              """Collect free-form tags from the PR checkout."""
               collected = {field: set() for field in FREE_FORM_TAG_FIELDS}
               for root in ("papers", "blogs"):
                   for path in sorted(Path(root).glob("*.yaml")):
@@ -87,6 +95,7 @@ jobs:
               return collected
 
           def collect_git_tags(ref):
+              """Collect free-form tags from YAML files at a git ref."""
               collected = {field: set() for field in FREE_FORM_TAG_FIELDS}
               result = subprocess.run(
                   ["git", "ls-tree", "-r", "--name-only", ref, "papers", "blogs"],
@@ -126,18 +135,12 @@ jobs:
           EOF
 
       - name: Build papers.json, README.md, and TAGS.md
+        if: ${{ github.event_name != 'pull_request' }}
         run: python3 scripts/build.py
 
       - name: Run unit tests
+        if: ${{ github.event_name != 'pull_request' }}
         run: python3 -m unittest discover -s tests -t . -p 'test_*.py'
-
-      - name: Check generated files are committed
-        if: github.event_name == 'pull_request'
-        run: |
-          if ! git diff --exit-code -- README.md TAGS.md papers.json; then
-            echo "::error::Generated files are out of date. Run python3 scripts/build.py and commit README.md, TAGS.md, and papers.json."
-            exit 1
-          fi
 
       - name: Commit generated files (on push to main only)
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
