@@ -1,9 +1,9 @@
 {
   "meta": {
-    "total": 59,
-    "paper_total": 55,
+    "total": 60,
+    "paper_total": 56,
     "blog_total": 4,
-    "generated": "2026-04-26T15:31:49.972963+00:00",
+    "generated": "2026-04-26T15:37:23.375819+00:00",
     "generated_local_date": "2026-04-26",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -1474,6 +1474,53 @@
           "url": "https://x.com/reza_byt/status/2045168844658950392?s=20"
         }
       ]
+    },
+    {
+      "title": "Teaching Pretrained Language Models to Think Deeper with Retrofitted Recurrence",
+      "authors": "Sean McLeish, Ang Li, John Kirchenbauer, Dayal Singh Kalra, Brian R. Bartoldson, Bhavya Kailkhura, Avi Schwarzschild, Jonas Geiping, Tom Goldstein, Micah Goldblum",
+      "year": 2025,
+      "published_date": "2025-11-10",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "efficiency",
+        "language-modeling",
+        "reasoning"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "A framework for retrofitting pretrained feedforward language models with depth recurrence, improving training efficiency for depth-recurrent models and enabling greater FLOP efficiency than comparable feedforward models.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2511.07384",
+        "github": "https://github.com/mcleish7/retrofitting-recurrence",
+        "hf": "https://huggingface.co/collections/tomg-group-umd/retrofitting-recurrence",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2511.07384"
+      },
+      "id": "2511.07384",
+      "source_file": "2511.07384.yaml",
+      "source_path": "papers/2511.07384.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "tags": [],
+      "authors_list": [
+        "Sean McLeish",
+        "Ang Li",
+        "John Kirchenbauer",
+        "Dayal Singh Kalra",
+        "Brian R. Bartoldson",
+        "Bhavya Kailkhura",
+        "Avi Schwarzschild",
+        "Jonas Geiping",
+        "Tom Goldstein",
+        "Micah Goldblum"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2511.07384"
     },
     {
       "title": "Think-at-Hard: Selective Latent Iterations to Improve Reasoning Language Models",
