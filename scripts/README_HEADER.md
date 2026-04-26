@@ -22,6 +22,12 @@ A curated list of papers and selected long-form technical blogs on **Loop Models
 
 ---
 
+## News
+
+- **2026-04-24** — Awesome Loop Models is released. [Announcement](https://x.com/huskydogewoof/status/2047655947942744285)
+
+---
+
 ## What Counts as a Loop Model?
 
 This repository uses a strict definition:
