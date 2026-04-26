@@ -1,0 +1,30 @@
+title: "Teaching Pretrained Language Models to Think Deeper with Retrofitted Recurrence"
+authors:
+  - "Sean McLeish"
+  - "Ang Li"
+  - "John Kirchenbauer"
+  - "Dayal Singh Kalra"
+  - "Brian R. Bartoldson"
+  - "Bhavya Kailkhura"
+  - "Avi Schwarzschild"
+  - "Jonas Geiping"
+  - "Tom Goldstein"
+  - Micah Goldblum
+year: 2025
+published_date: "2025-11-10"
+venue: "arXiv"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "efficiency"
+  - "language-modeling"
+  - "reasoning"
+focus_tags:
+  - "architecture"
+  - "training-algorithm"
+desc: "A framework for retrofitting pretrained feedforward language models with depth recurrence, improving training efficiency for depth-recurrent models and enabling greater FLOP efficiency than comparable feedforward models."
+links:
+  arxiv: "https://arxiv.org/abs/2511.07384"
+  github: "https://github.com/mcleish7/retrofitting-recurrence"
+  hf: "https://huggingface.co/collections/tomg-group-umd/retrofitting-recurrence"
