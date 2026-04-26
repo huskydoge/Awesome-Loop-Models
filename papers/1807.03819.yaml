@@ -8,7 +8,7 @@ authors:
 year: 2019
 published_date: '2018-07-10'
 venue: ICLR
-category: "designs"
+category: designs
 foundation: true
 mechanism_tags:
 - flat-loop
@@ -28,10 +28,10 @@ links:
   comment:
   - label: Reza Bayat reading list (#3)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20
-citations: 891
+citations: 895
 citation_sources:
-  semantic_scholar: 891
+  semantic_scholar: 895
   openalex: 396
-  opencitations: 0
+  opencitations: 3
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-20'
+metrics_updated: '2026-04-26'

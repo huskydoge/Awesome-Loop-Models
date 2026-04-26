@@ -8,7 +8,7 @@ year: 2026
 published_date: '2026-04-14'
 venue: arXiv
 must_read: true
-category: "designs"
+category: designs
 mechanism_tags:
 - flat-loop
 domain_tags:
@@ -21,17 +21,17 @@ focus_tags:
 - objective-loss
 - architecture
 desc: Introduces Parcae, a stable looped language model that constrains injection
-  spectral norms to prevent instability and studies isoFLOPs-style training- and
-  test-time scaling laws for quality gains under fixed-parameter budgets.
+  spectral norms to prevent instability and studies isoFLOPs-style training- and test-time
+  scaling laws for quality gains under fixed-parameter budgets.
 links:
   arxiv: https://arxiv.org/abs/2604.12946
   comment:
   - label: Benhao's reading note
     url: https://x.com/huskydogewoof/status/2044609402553115070?s=20
-citations: 0
-metrics_updated: '2026-04-17'
+citations: 2
+metrics_updated: '2026-04-26'
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 2
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar

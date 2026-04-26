@@ -1,30 +1,43 @@
-title: "Teaching Pretrained Language Models to Think Deeper with Retrofitted Recurrence"
+title: Teaching Pretrained Language Models to Think Deeper with Retrofitted Recurrence
 authors:
-  - "Sean McLeish"
-  - "Ang Li"
-  - "John Kirchenbauer"
-  - "Dayal Singh Kalra"
-  - "Brian R. Bartoldson"
-  - "Bhavya Kailkhura"
-  - "Avi Schwarzschild"
-  - "Jonas Geiping"
-  - "Tom Goldstein"
-  - Micah Goldblum
+- Sean McLeish
+- Ang Li
+- John Kirchenbauer
+- Dayal Singh Kalra
+- Brian R. Bartoldson
+- Bhavya Kailkhura
+- Avi Schwarzschild
+- Jonas Geiping
+- Tom Goldstein
+- Micah Goldblum
 year: 2025
-published_date: "2025-11-10"
-venue: "arXiv"
-category: "designs"
+published_date: '2025-11-10'
+venue: arXiv
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "efficiency"
-  - "language-modeling"
-  - "reasoning"
+- efficiency
+- language-modeling
+- reasoning
 focus_tags:
-  - "architecture"
-  - "training-algorithm"
-desc: "A framework for retrofitting pretrained feedforward language models with depth recurrence, improving training efficiency for depth-recurrent models and enabling greater FLOP efficiency than comparable feedforward models."
+- architecture
+- training-algorithm
+desc: A framework for retrofitting pretrained feedforward language models with depth
+  recurrence, improving training efficiency for depth-recurrent models and enabling
+  greater FLOP efficiency than comparable feedforward models.
 links:
-  arxiv: "https://arxiv.org/abs/2511.07384"
-  github: "https://github.com/mcleish7/retrofitting-recurrence"
-  hf: "https://huggingface.co/collections/tomg-group-umd/retrofitting-recurrence"
+  arxiv: https://arxiv.org/abs/2511.07384
+  github: https://github.com/mcleish7/retrofitting-recurrence
+  hf: https://huggingface.co/collections/tomg-group-umd/retrofitting-recurrence
+citations: 13
+citation_sources:
+  semantic_scholar: 13
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+github_stars: 61
+star_sources:
+  github_api: 61
+star_source_best: github_api
+metrics_updated: '2026-04-26'

@@ -10,7 +10,7 @@ authors:
 year: 2025
 published_date: '2024-10-28'
 venue: arXiv
-category: "designs"
+category: designs
 mechanism_tags:
 - hierarchical-loop
 domain_tags:
@@ -21,16 +21,19 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
-desc: Presents Relaxed Recursive Transformers as a parameter-sharing conversion and uptraining recipe that turns pretrained LLMs into compact recursive models using layer tying and layer-wise LoRA while preserving performance and improving deployment efficiency.
+desc: Presents Relaxed Recursive Transformers as a parameter-sharing conversion and
+  uptraining recipe that turns pretrained LLMs into compact recursive models using
+  layer tying and layer-wise LoRA while preserving performance and improving deployment
+  efficiency.
 links:
   arxiv: https://arxiv.org/abs/2410.20672
   comment:
   - label: Reza Bayat reading list (#11)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20
-citations: 32
+citations: 33
 citation_sources:
-  semantic_scholar: 32
+  semantic_scholar: 33
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-20'
+metrics_updated: '2026-04-26'

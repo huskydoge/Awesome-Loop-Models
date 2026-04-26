@@ -9,7 +9,7 @@ authors:
 year: 2023
 published_date: '2023-01-30'
 venue: arXiv
-category: "analysis"
+category: analysis
 mechanism_tags:
 - flat-loop
 domain_tags:
@@ -20,16 +20,18 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
-desc: Shows that a shallow looped transformer can emulate instruction-set computation and iterative algorithms such as SGD or matrix inversion, with the recurrence acting as a reusable program counter.
+desc: Shows that a shallow looped transformer can emulate instruction-set computation
+  and iterative algorithms such as SGD or matrix inversion, with the recurrence acting
+  as a reusable program counter.
 links:
   arxiv: https://arxiv.org/abs/2301.13196
   comment:
   - label: Reza Bayat reading list (#4)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20
-citations: 167
+citations: 173
 citation_sources:
-  semantic_scholar: 167
+  semantic_scholar: 173
   openalex: 3
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-17'
+metrics_updated: '2026-04-26'

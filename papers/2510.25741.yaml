@@ -37,7 +37,7 @@ year: 2025
 must_read: true
 published_date: '2025-10-29'
 venue: arXiv
-category: "designs"
+category: designs
 mechanism_tags:
 - flat-loop
 domain_tags:
@@ -61,9 +61,9 @@ links:
   comment:
   - label: Reza Bayat reading list (#10)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20
-citations: 34
+citations: 43
 citation_sources:
-  semantic_scholar: 34
+  semantic_scholar: 43
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-20'
+metrics_updated: '2026-04-26'

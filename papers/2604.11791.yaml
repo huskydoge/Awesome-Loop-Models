@@ -10,7 +10,7 @@ authors:
 year: 2026
 published_date: '2026-04-13'
 venue: arXiv
-category: "analysis"
+category: analysis
 mechanism_tags:
 - implicit-layer
 domain_tags:
@@ -20,14 +20,16 @@ tags:
 - mechanistic-analysis
 focus_tags:
 - inference-algorithm
-desc: Analyzes looped reasoning LLMs mechanistically, showing recurrent cycles converge to layer-specific fixed points and that feedforward-like inference stages repeat across latent recurrences.
+desc: Analyzes looped reasoning LLMs mechanistically, showing recurrent cycles converge
+  to layer-specific fixed points and that feedforward-like inference stages repeat
+  across latent recurrences.
 links:
   arxiv: https://arxiv.org/abs/2604.11791
   twitter: https://x.com/HughBlayney/status/2046558050882899995?s=20
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-17'
+metrics_updated: '2026-04-26'

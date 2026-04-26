@@ -5,7 +5,7 @@ authors:
 year: 2016
 published_date: '2015-11-25'
 venue: ICLR
-category: "designs"
+category: designs
 mechanism_tags:
 - flat-loop
 domain_tags:
@@ -15,15 +15,15 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
-desc: Introduces Neural GPUs, a recurrent convolutional architecture that learns
-  parallel algorithms like addition and multiplication through repeated application
-  of a shared convolutional recurrent block.
+desc: Introduces Neural GPUs, a recurrent convolutional architecture that learns parallel
+  algorithms like addition and multiplication through repeated application of a shared
+  convolutional recurrent block.
 links:
   arxiv: https://arxiv.org/abs/1511.08228
 citations: 390
 citation_sources:
   semantic_scholar: 390
   openalex: 188
-  opencitations: 0
+  opencitations: 1
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-14'
+metrics_updated: '2026-04-26'

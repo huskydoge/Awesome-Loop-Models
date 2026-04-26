@@ -8,7 +8,7 @@ authors:
 year: 2025
 published_date: '2025-02-24'
 venue: ICLR
-category: "analysis"
+category: analysis
 mechanism_tags:
 - flat-loop
 domain_tags:
@@ -20,16 +20,18 @@ tags:
 focus_tags:
 - training-algorithm
 - inference-algorithm
-desc: Studies looped transformers as reasoning models, showing effective-depth scaling, latent-thought simulation of chain-of-thought, and a looping-based regularizer that improves the reasoning-versus-memorization trade-off.
+desc: Studies looped transformers as reasoning models, showing effective-depth scaling,
+  latent-thought simulation of chain-of-thought, and a looping-based regularizer that
+  improves the reasoning-versus-memorization trade-off.
 links:
   arxiv: https://arxiv.org/abs/2502.17416
   comment:
   - label: Reza Bayat reading list (#7)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20
-citations: 108
+citations: 115
 citation_sources:
-  semantic_scholar: 108
+  semantic_scholar: 115
   openalex: 1
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-17'
+metrics_updated: '2026-04-26'

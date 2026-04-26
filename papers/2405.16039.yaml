@@ -9,7 +9,7 @@ year: 2024
 published_date: '2024-05-25'
 added_date: '2026-04-20'
 venue: arXiv
-category: "designs"
+category: designs
 mechanism_tags:
 - flat-loop
 - hierarchical-loop
@@ -29,10 +29,10 @@ desc: Introduces MoEUT, a mixture-of-experts Universal Transformer that combines
   compute and memory than comparable baselines.
 links:
   arxiv: https://arxiv.org/abs/2405.16039
-citations: 34
+citations: 35
 citation_sources:
-  semantic_scholar: 34
+  semantic_scholar: 35
   openalex: 1
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-20'
+metrics_updated: '2026-04-26'

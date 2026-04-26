@@ -12,7 +12,7 @@ authors:
 year: 2025
 published_date: '2025-06-26'
 venue: arXiv
-category: "designs"
+category: designs
 mechanism_tags:
 - hierarchical-loop
 - flat-loop
@@ -29,10 +29,10 @@ desc: 'Proposes HRM, a brain-inspired recurrent architecture with two coupled mo
   module for detailed execution.'
 links:
   arxiv: https://arxiv.org/abs/2506.21734
-citations: 78
+citations: 80
 citation_sources:
-  semantic_scholar: 78
+  semantic_scholar: 80
   openalex: 2
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-20'
+metrics_updated: '2026-04-26'

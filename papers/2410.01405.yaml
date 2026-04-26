@@ -7,7 +7,7 @@ year: 2024
 published_date: '2024-10-02'
 added_date: '2026-04-21'
 venue: arXiv
-category: "analysis"
+category: analysis
 mechanism_tags:
 - flat-loop
 domain_tags:
@@ -23,10 +23,10 @@ desc: Analyzes the expressive power of looped transformers, derives approximatio
   limits, and shows that timestep encoding improves their function-approximation behavior.
 links:
   arxiv: https://arxiv.org/abs/2410.01405
-citations: 13
+citations: 15
 citation_sources:
-  semantic_scholar: 13
+  semantic_scholar: 15
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-22'
+metrics_updated: '2026-04-26'

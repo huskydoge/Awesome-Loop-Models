@@ -1,31 +1,33 @@
-title: "Loop, Think, & Generalize: Implicit Reasoning in Recurrent-Depth Transformers"
+title: 'Loop, Think, & Generalize: Implicit Reasoning in Recurrent-Depth Transformers'
 authors:
-  - "Harsh Kohli"
-  - "Srinivasan Parthasarathy"
-  - "Huan Sun"
-  - "Yuekun Yao"
+- Harsh Kohli
+- Srinivasan Parthasarathy
+- Huan Sun
+- Yuekun Yao
 year: 2026
 published_date: '2026-04-09'
 added_date: '2026-04-20'
-venue: "arXiv"
-category: "analysis"
+venue: arXiv
+category: analysis
 mechanism_tags:
 - flat-loop
 - implicit-layer
 domain_tags:
-  - "language-modeling"
-  - "reasoning"
+- language-modeling
+- reasoning
 tags:
-  - "implicit-reasoning"
+- implicit-reasoning
 focus_tags:
-  - "inference-algorithm"
-desc: "Studies implicit reasoning in recurrent-depth transformers, showing that iterating shared transformer layers can unlock systematic generalization and depth extrapolation while also exposing overthinking limits."
+- inference-algorithm
+desc: Studies implicit reasoning in recurrent-depth transformers, showing that iterating
+  shared transformer layers can unlock systematic generalization and depth extrapolation
+  while also exposing overthinking limits.
 links:
   arxiv: https://arxiv.org/abs/2604.07822
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-20'
+metrics_updated: '2026-04-26'
