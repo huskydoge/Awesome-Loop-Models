@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (12)
-- `flat-loop` (48)
+- `flat-loop` (49)
 - `parallel-loop` (2)
 - `implicit-layer` (8)
 
@@ -27,19 +27,19 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (5)
-- `training-algorithm` (27)
-- `architecture` (49)
+- `training-algorithm` (28)
+- `architecture` (50)
 - `data` (2)
-- `inference-algorithm` (32)
+- `inference-algorithm` (33)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
 - `language-modeling` (40)
-- `reasoning` (34)
+- `reasoning` (35)
 - `efficiency` (19)
-- `algorithmic-reasoning` (10)
+- `algorithmic-reasoning` (11)
 - `scaling` (5)
 - `theory` (4)
 - `memory-efficiency` (2)
@@ -57,17 +57,18 @@ Observed browser-facing domain tags currently used across the repo.
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (7)
+- `looped-transformer` (8)
 - `ACT` (4)
+- `TRM` (4)
 - `DEQ` (3)
 - `Ouro` (3)
-- `TRM` (3)
 - `depth-recurrent` (2)
 - `depth-scaling` (2)
 - `looped-llm` (2)
 - `LoRA` (2)
 - `MoR` (2)
 - `mythos` (2)
+- `recursive-transformer` (2)
 - `UT` (2)
 - `activation-compression` (1)
 - `AdaPonderLM` (1)
@@ -84,6 +85,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `compute-bounded-policy` (1)
 - `CoTFormer` (1)
 - `detach` (1)
+- `DRM` (1)
 - `fixed-point-analysis` (1)
 - `generalist-processor` (1)
 - `hierarchical-recurrence` (1)
@@ -117,7 +119,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `preference-probing` (1)
 - `programmable-computer` (1)
 - `RD-VLA` (1)
-- `recursive-transformer` (1)
 - `RecursiveVLM` (1)
 - `reverse-residual` (1)
 - `RIM` (1)
