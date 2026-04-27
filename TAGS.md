@@ -85,7 +85,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `compute-bounded-policy` (1)
 - `CoTFormer` (1)
 - `detach` (1)
-- `DRM` (1)
 - `fixed-point-analysis` (1)
 - `generalist-processor` (1)
 - `hierarchical-recurrence` (1)
