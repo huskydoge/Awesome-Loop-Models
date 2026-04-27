@@ -3,7 +3,7 @@
     "total": 61,
     "paper_total": 57,
     "blog_total": 4,
-    "generated": "2026-04-27T01:14:29.116150+00:00",
+    "generated": "2026-04-27T06:14:10.825028+00:00",
     "generated_local_date": "2026-04-27",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -122,14 +122,14 @@
         "arxiv": "https://arxiv.org/abs/1603.08983",
         "alphaxiv": "https://www.alphaxiv.org/abs/1603.08983"
       },
-      "citations": 689,
+      "citations": 690,
       "citation_sources": {
-        "semantic_scholar": 689,
+        "semantic_scholar": 690,
         "openalex": 361,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-04-27",
       "id": "1603.08983",
       "source_file": "1603.08983.yaml",
       "source_path": "papers/1603.08983.yaml",
