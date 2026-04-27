@@ -1,0 +1,44 @@
+title: 'One Step Forward and K Steps Back: Better Reasoning with Denoising Recursion Models'
+authors:
+- Chris Cameron
+- Wangzheng Wang
+- Nikita Ivanov
+- Nikita Ivanov
+- Ashmita Bhattacharyya
+- Didier Chételat
+- Yingxue Zhang
+year: 2026
+published_date: '2026-04-20'
+added_date: '2026-04-26'
+venue: arXiv
+category: designs
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+tags:
+- TRM
+- looped-transformer
+- recursive-transformer
+focus_tags:
+- training-algorithm
+- inference-algorithm
+- architecture
+desc: Introduces Denoising Recursion Models, a looped-transformer training method
+  that corrupts targets and trains recursive refinement over multiple steps, improving
+  ARC-AGI reasoning over TRM.
+links:
+  arxiv: https://arxiv.org/abs/2604.18839
+  github: https://github.com/wwwwwwwwz/DenoisingRecursionModels
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+github_stars: 1
+star_sources:
+  github_api: 1
+star_source_best: github_api
+metrics_updated: '2026-04-27'

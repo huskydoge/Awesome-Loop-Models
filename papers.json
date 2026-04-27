@@ -1,9 +1,9 @@
 {
   "meta": {
-    "total": 60,
-    "paper_total": 56,
+    "total": 61,
+    "paper_total": 57,
     "blog_total": 4,
-    "generated": "2026-04-26T15:55:14.524256+00:00",
+    "generated": "2026-04-27T00:32:53.773926+00:00",
     "generated_local_date": "2026-04-26",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -2949,6 +2949,66 @@
       ],
       "venueClass": "venue-arxiv",
       "arxiv_id": "2604.17224"
+    },
+    {
+      "title": "One Step Forward and K Steps Back: Better Reasoning with Denoising Recursion Models",
+      "authors": "Chris Cameron, Wangzheng Wang, Nikita Ivanov, Ashmita Bhattacharyya, Didier Chételat, Yingxue Zhang",
+      "year": 2026,
+      "published_date": "2026-04-20",
+      "added_date": "2026-04-26",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "TRM",
+        "looped-transformer",
+        "recursive-transformer"
+      ],
+      "focus_tags": [
+        "training-algorithm",
+        "inference-algorithm",
+        "architecture"
+      ],
+      "desc": "Introduces Denoising Recursion Models, a looped-transformer training method that corrupts targets and trains recursive refinement over multiple steps, improving ARC-AGI reasoning over TRM.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.18839",
+        "github": "https://github.com/wwwwwwwwz/DenoisingRecursionModels",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.18839"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "github_stars": 1,
+      "star_sources": {
+        "github_api": 1
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-04-27",
+      "id": "2604.18839",
+      "source_file": "2604.18839.yaml",
+      "source_path": "papers/2604.18839.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Chris Cameron",
+        "Wangzheng Wang",
+        "Nikita Ivanov",
+        "Ashmita Bhattacharyya",
+        "Didier Chételat",
+        "Yingxue Zhang"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.18839"
     },
     {
       "title": "How Much Is One Recurrence Worth? Iso-Depth Scaling Laws for Looped Language Models",
