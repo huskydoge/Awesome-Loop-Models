@@ -26,10 +26,10 @@ desc: Proposes URM, a Universal Transformer-based architecture with weight tying
   beats standard transformers on reasoning benchmarks through iterative depth computation.
 links:
   arxiv: https://arxiv.org/abs/2512.14693
-citations: 3
+citations: 4
 citation_sources:
-  semantic_scholar: 3
+  semantic_scholar: 4
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-26'
+metrics_updated: '2026-04-29'

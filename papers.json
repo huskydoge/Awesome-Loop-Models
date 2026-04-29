@@ -1,14 +1,18 @@
 {
   "meta": {
-    "total": 61,
-    "paper_total": 57,
+    "total": 62,
+    "paper_total": 58,
     "blog_total": 4,
-    "generated": "2026-04-27T06:14:10.825028+00:00",
-    "generated_local_date": "2026-04-27",
+    "briefing_total": 1,
+    "latest_briefing_date": "2026-04-28",
+    "generated": "2026-04-29T17:51:35.062813+00:00",
+    "generated_local_date": "2026-04-29",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
-    "blog_section_desc": "Long-form technical posts, essays, and deep-dives about loop models. Blogs can carry Loop Mechanism / focus / domain tags but stay in a single flat section rather than the paper taxonomy."
+    "blog_section_desc": "Long-form technical posts, essays, and deep-dives about loop models. Blogs can carry Loop Mechanism / focus / domain tags but stay in a single flat section rather than the paper taxonomy.",
+    "briefing_section_title": "Daily Briefing",
+    "briefing_section_desc": "Reader-facing daily research briefings: notable loop-model papers, watchlist candidates, and concise inclusion rationale."
   },
   "categories": {
     "analysis": {
@@ -122,14 +126,14 @@
         "arxiv": "https://arxiv.org/abs/1603.08983",
         "alphaxiv": "https://www.alphaxiv.org/abs/1603.08983"
       },
-      "citations": 690,
+      "citations": 691,
       "citation_sources": {
-        "semantic_scholar": 690,
+        "semantic_scholar": 691,
         "openalex": 361,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-27",
+      "metrics_updated": "2026-04-29",
       "id": "1603.08983",
       "source_file": "1603.08983.yaml",
       "source_path": "papers/1603.08983.yaml",
@@ -167,14 +171,14 @@
         "openreview": "https://openreview.net/forum?id=HyzdRiR9Y7",
         "alphaxiv": "https://www.alphaxiv.org/abs/1807.03819"
       },
-      "citations": 895,
+      "citations": 897,
       "citation_sources": {
-        "semantic_scholar": 895,
+        "semantic_scholar": 897,
         "openalex": 396,
         "opencitations": 3
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-04-29",
       "id": "1807.03819",
       "source_file": "1807.03819.yaml",
       "source_path": "papers/1807.03819.yaml",
@@ -225,9 +229,9 @@
         "paper": "https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html",
         "github": "https://github.com/locuslab/deq"
       },
-      "citations": 841,
+      "citations": 843,
       "citation_sources": {
-        "semantic_scholar": 841,
+        "semantic_scholar": 843,
         "openalex": 246,
         "opencitations": 0
       },
@@ -237,7 +241,7 @@
         "github_api": 797
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-04-29",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -672,14 +676,14 @@
         "arxiv": "https://arxiv.org/abs/2405.16039",
         "alphaxiv": "https://www.alphaxiv.org/abs/2405.16039"
       },
-      "citations": 35,
+      "citations": 36,
       "citation_sources": {
-        "semantic_scholar": 35,
+        "semantic_scholar": 36,
         "openalex": 1,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-04-29",
       "id": "2405.16039",
       "source_file": "2405.16039.yaml",
       "source_path": "papers/2405.16039.yaml",
@@ -833,19 +837,19 @@
         "github": "https://github.com/seal-rg/recurrent-pretraining",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.05171"
       },
-      "citations": 199,
+      "citations": 202,
       "citation_sources": {
-        "semantic_scholar": 199,
+        "semantic_scholar": 202,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 875,
+      "github_stars": 878,
       "star_sources": {
-        "github_api": 875
+        "github_api": 878
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-04-29",
       "id": "2502.05171",
       "source_file": "2502.05171.yaml",
       "source_path": "papers/2502.05171.yaml",
@@ -961,14 +965,14 @@
         "arxiv": "https://arxiv.org/abs/2502.17416",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.17416"
       },
-      "citations": 115,
+      "citations": 116,
       "citation_sources": {
-        "semantic_scholar": 115,
+        "semantic_scholar": 116,
         "openalex": 1,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-04-29",
       "id": "2502.17416",
       "source_file": "2502.17416.yaml",
       "source_path": "papers/2502.17416.yaml",
@@ -1023,14 +1027,14 @@
         "arxiv": "https://arxiv.org/abs/2506.21734",
         "alphaxiv": "https://www.alphaxiv.org/abs/2506.21734"
       },
-      "citations": 80,
+      "citations": 82,
       "citation_sources": {
-        "semantic_scholar": 80,
+        "semantic_scholar": 82,
         "openalex": 2,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-04-29",
       "id": "2506.21734",
       "source_file": "2506.21734.yaml",
       "source_path": "papers/2506.21734.yaml",
@@ -1187,16 +1191,16 @@
         "github": "https://github.com/raymin0223/mixture_of_recursions",
         "alphaxiv": "https://www.alphaxiv.org/abs/2507.10524"
       },
-      "citations": 50,
+      "citations": 51,
       "citation_sources": {
-        "semantic_scholar": 50,
+        "semantic_scholar": 51,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-26",
-      "github_stars": 568,
+      "metrics_updated": "2026-04-29",
+      "github_stars": 569,
       "star_sources": {
-        "github_api": 568
+        "github_api": 569
       },
       "star_source_best": "github_api",
       "id": "2507.10524",
@@ -1413,13 +1417,13 @@
         "hf": "https://huggingface.co/ByteDance/Ouro-1.4B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2510.25741"
       },
-      "citations": 43,
+      "citations": 45,
       "citation_sources": {
-        "semantic_scholar": 43,
+        "semantic_scholar": 45,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-04-29",
       "id": "2510.25741",
       "source_file": "2510.25741.yaml",
       "source_path": "papers/2510.25741.yaml",
@@ -1622,14 +1626,14 @@
         "arxiv": "https://arxiv.org/abs/2512.14693",
         "alphaxiv": "https://www.alphaxiv.org/abs/2512.14693"
       },
-      "citations": 3,
+      "citations": 4,
       "citation_sources": {
-        "semantic_scholar": 3,
+        "semantic_scholar": 4,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-04-29",
       "id": "2512.14693",
       "source_file": "2512.14693.yaml",
       "source_path": "papers/2512.14693.yaml",
@@ -2069,19 +2073,19 @@
         "github": "https://github.com/armenjeddi/loopformer",
         "alphaxiv": "https://www.alphaxiv.org/abs/2602.11451"
       },
-      "citations": 2,
+      "citations": 3,
       "citation_sources": {
-        "semantic_scholar": 2,
+        "semantic_scholar": 3,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 15,
+      "github_stars": 18,
       "star_sources": {
-        "github_api": 15
+        "github_api": 18
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-04-29",
       "id": "2602.11451",
       "source_file": "2602.11451.yaml",
       "source_path": "papers/2602.11451.yaml",
@@ -2123,14 +2127,14 @@
         "arxiv": "https://arxiv.org/abs/2602.11698",
         "alphaxiv": "https://www.alphaxiv.org/abs/2602.11698"
       },
-      "citations": 0,
+      "citations": 1,
       "citation_sources": {
-        "semantic_scholar": 0,
+        "semantic_scholar": 1,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-20",
+      "metrics_updated": "2026-04-29",
       "id": "2602.11698",
       "source_file": "2602.11698.yaml",
       "source_path": "papers/2602.11698.yaml",
@@ -2477,14 +2481,14 @@
         "arxiv": "https://arxiv.org/abs/2603.19714",
         "alphaxiv": "https://www.alphaxiv.org/abs/2603.19714"
       },
-      "citations": 0,
+      "citations": 1,
       "citation_sources": {
-        "semantic_scholar": 0,
+        "semantic_scholar": 1,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-14",
+      "metrics_updated": "2026-04-29",
       "id": "2603.19714",
       "source_file": "2603.19714.yaml",
       "source_path": "papers/2603.19714.yaml",
@@ -3040,14 +3044,14 @@
         "arxiv": "https://arxiv.org/abs/2604.21106",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.21106"
       },
-      "citations": 0,
+      "citations": 1,
       "citation_sources": {
-        "semantic_scholar": 0,
+        "semantic_scholar": 1,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-04-29",
       "id": "2604.21106",
       "source_file": "2604.21106.yaml",
       "source_path": "papers/2604.21106.yaml",
@@ -3122,6 +3126,61 @@
           "url": "https://x.com/TheTuringPost/status/2047720038342476187?s=20"
         }
       ]
+    },
+    {
+      "title": "Universal Transformers Need Memory: Depth-State Trade-offs in Adaptive Recursive Reasoning",
+      "authors": "Grigory Sapunov",
+      "year": 2026,
+      "published_date": "2026-04-23",
+      "added_date": "2026-04-29",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "UT",
+        "ACT",
+        "memory-tokens",
+        "adaptive-computation-time"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Studies a single-block Universal Transformer with ACT on Sudoku-Extreme, showing that learned memory tokens are necessary for non-trivial recursive-depth reasoning and that ACT initialization can trap the model in shallow computation.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.21999",
+        "github": "https://github.com/che-shr-cat/utm-jax",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.21999"
+      },
+      "citations": 0,
+      "github_stars": 7,
+      "star_sources": {
+        "github_api": 7
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-04-29",
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "id": "2604.21999",
+      "source_file": "2604.21999.yaml",
+      "source_path": "papers/2604.21999.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Grigory Sapunov"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.21999"
     },
     {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
@@ -3354,6 +3413,47 @@
         "Rui-Jie Zhu"
       ],
       "venueClass": "venue-other"
+    }
+  ],
+  "briefings": [
+    {
+      "date": "2026-04-28",
+      "title": "Daily Loop-Model Briefing — 2026-04-28",
+      "status": "included",
+      "summary": "One new paper is especially relevant for loop-model readers: Universal Transformers Need Memory studies a single Universal Transformer block reused across adaptive depth, with learned memory tokens as the working state.",
+      "highlights": [
+        "Main signal: the paper turns recurrent depth into an ablation story about memory capacity, halting initialization, and ponder-step efficiency.",
+        "Reader takeaway: depth reuse alone is not enough; the recurrent block needs an explicit state channel to solve harder combinatorial reasoning tasks.",
+        "Triage outcome: one in-scope paper is now included in the collection, while three related papers remain watchlist or near-miss references."
+      ],
+      "candidates": [
+        {
+          "id": "2604.21999",
+          "title": "Universal Transformers Need Memory: Depth-State Trade-offs in Adaptive Recursive Reasoning",
+          "verdict": "included — shared Universal Transformer block with ACT and learned memory tokens",
+          "url": "https://arxiv.org/abs/2604.21999"
+        },
+        {
+          "id": "2604.25917",
+          "title": "Recursive Multi-Agent Systems",
+          "verdict": "watchlist — recursion is over an agent system rather than clearly one reused learned operator",
+          "url": "https://arxiv.org/abs/2604.25917"
+        },
+        {
+          "id": "2604.17121",
+          "title": "The Topological Trouble With Transformers",
+          "verdict": "near-miss — argues for recurrence and state tracking, but appears more position/taxonomy than a loop-model result",
+          "url": "https://arxiv.org/abs/2604.17121"
+        },
+        {
+          "id": "2604.25166",
+          "title": "Training Transformers as a Universal Computer",
+          "verdict": "likely out of scope — universal computation result for a standard transformer, not obviously recurrent/shared-depth inference",
+          "url": "https://arxiv.org/abs/2604.25166"
+        }
+      ],
+      "content": "# Daily Loop-Model Briefing — 2026-04-28\n\n## Best signal today\n\nThe strongest reader-facing pick is **Universal Transformers Need Memory**. It studies a single-block Universal Transformer with Adaptive Computation Time on Sudoku-Extreme and asks a clean loop-model question: when the same block is reused across depth, what state must persist between iterations?\n\nThe useful takeaway is not just “more depth helps.” The paper reports that memory tokens are necessary for non-trivial performance, that too many memory tokens can dilute attention, and that ACT initialization can trap the model in shallow computation unless training starts from a deeper halting bias.\n\n## Why it matters\n\nFor this repo, the paper is interesting because it treats recurrent depth as a design surface with measurable trade-offs:\n\n- memory tokens provide the working state for repeated computation;\n- adaptive halting changes both reliability and compute cost;\n- attention heads specialize across recursive depth into memory reading, constraint propagation, and integration roles.\n\nThat makes it a useful analysis-shelf addition: the paper is mainly an empirical ablation of the state channel, halting dynamics, and ponder-step trade-offs in a flat loop model.\n\n## Watchlist\n\nThree nearby papers are worth knowing about, but should not be mixed into the main collection without stronger evidence of same-operator reuse:\n\n- **Recursive Multi-Agent Systems** uses recursion at the system/agent-collaboration level, which may be useful context but is not obviously a single learned operator reused inside one prediction.\n- **The Topological Trouble With Transformers** is a conceptual argument for recurrence and state tracking; it may be a useful analysis reference, but it is not clearly an empirical loop-model paper.\n- **Training Transformers as a Universal Computer** studies standard transformers as program executors; include only if a full read reveals recurrent/shared-depth inference that is central to the method.",
+      "source_path": "briefings/2026/04/2026-04-28.md"
     }
   ]
 }

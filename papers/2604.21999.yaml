@@ -1,4 +1,5 @@
-title: 'Universal Transformers Need Memory: Depth-State Trade-offs in Adaptive Recursive Reasoning'
+title: 'Universal Transformers Need Memory: Depth-State Trade-offs in Adaptive Recursive
+  Reasoning'
 authors:
 - Grigory Sapunov
 year: 2026
@@ -19,9 +20,9 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
-desc: Studies a single-block Universal Transformer with ACT on Sudoku-Extreme,
-  showing that learned memory tokens are necessary for non-trivial recursive-depth
-  reasoning and that ACT initialization can trap the model in shallow computation.
+desc: Studies a single-block Universal Transformer with ACT on Sudoku-Extreme, showing
+  that learned memory tokens are necessary for non-trivial recursive-depth reasoning
+  and that ACT initialization can trap the model in shallow computation.
 links:
   arxiv: https://arxiv.org/abs/2604.21999
   github: https://github.com/che-shr-cat/utm-jax
@@ -31,3 +32,8 @@ star_sources:
   github_api: 7
 star_source_best: github_api
 metrics_updated: '2026-04-29'
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
