@@ -28,6 +28,7 @@ TAXONOMY_PATH = REPO_ROOT / "TAXONOMY.md"
 TAGS_PATH = REPO_ROOT / "TAGS.md"
 PAPER_TEMPLATE_PATH = REPO_ROOT / "papers" / "_template.yaml.example"
 BLOG_TEMPLATE_PATH = REPO_ROOT / "blogs" / "_template.yaml.example"
+BRIEFINGS_DIR = REPO_ROOT / "briefings"
 FAVICON_PATH = REPO_ROOT / "assets" / "favicon.png"
 
 
@@ -173,6 +174,73 @@ class BuildTaxonomyTests(unittest.TestCase):
             build.normalize_optional_date_string("2026-02-31", "added_date", "paper.yaml")
 
 
+class DailyBriefingBuildTests(unittest.TestCase):
+    def test_load_briefings_reads_year_month_daily_markdown_with_frontmatter(self):
+        with TemporaryDirectory() as tmpdir:
+            briefings_dir = Path(tmpdir) / "briefings"
+            briefing_path = briefings_dir / "2026" / "04" / "2026-04-28.md"
+            briefing_path.parent.mkdir(parents=True)
+            briefing_path.write_text(
+                "---\n"
+                "title: Daily Loop-Model Briefing — 2026-04-28\n"
+                "date: 2026-04-28\n"
+                "status: watchlist\n"
+                "run_id: internal_cron_id_that_should_not_be_exported\n"
+                "summary: One strong loop-model candidate is ready for readers.\n"
+                "highlights:\n"
+                "  - Reader-facing takeaway about memory tokens.\n"
+                "  - Watchlist keeps near-misses separate.\n"
+                "candidates:\n"
+                "  - id: '2604.21999'\n"
+                "    title: Universal Transformers Need Memory\n"
+                "    verdict: strong candidate\n"
+                "    url: https://arxiv.org/abs/2604.21999\n"
+                "---\n\n"
+                "# Daily Loop-Model Briefing — 2026-04-28\n\n"
+                "Reader notes live here.\n",
+                encoding="utf-8",
+            )
+
+            with patch.object(build, "BRIEFINGS_DIR", briefings_dir):
+                briefings = build.load_briefings()
+
+        self.assertEqual(len(briefings), 1)
+        briefing = briefings[0]
+        self.assertEqual(briefing["date"], "2026-04-28")
+        self.assertEqual(briefing["title"], "Daily Loop-Model Briefing — 2026-04-28")
+        self.assertEqual(briefing["status"], "watchlist")
+        self.assertEqual(briefing["source_path"], "briefings/2026/04/2026-04-28.md")
+        self.assertIn("Reader notes live here.", briefing["content"])
+        self.assertEqual(briefing["highlights"][0], "Reader-facing takeaway about memory tokens.")
+        self.assertEqual(briefing["candidates"][0]["id"], "2604.21999")
+        self.assertNotIn("run_id", briefing)
+
+    def test_build_json_includes_briefings_and_latest_date(self):
+        with TemporaryDirectory() as tmpdir:
+            json_out = Path(tmpdir) / "papers.json"
+            briefings = [
+                {"date": "2026-04-28", "title": "Today", "source_path": "briefings/2026/04/2026-04-28.md"},
+                {"date": "2026-04-27", "title": "Yesterday", "source_path": "briefings/2026/04/2026-04-27.md"},
+            ]
+            with patch.object(build, "JSON_OUT", json_out):
+                build.build_json([], [], briefings)
+            payload = json.loads(json_out.read_text(encoding="utf-8"))
+
+        self.assertEqual(payload["meta"]["briefing_total"], 2)
+        self.assertEqual(payload["meta"]["latest_briefing_date"], "2026-04-28")
+        self.assertEqual(payload["meta"]["briefing_section_title"], "Daily Briefing")
+        self.assertEqual(payload["briefings"][0]["date"], "2026-04-28")
+
+    def test_repo_briefings_use_year_month_daily_paths(self):
+        paths = sorted(path for path in BRIEFINGS_DIR.glob("*/*/*.md") if not path.name.startswith("_"))
+        self.assertIn(BRIEFINGS_DIR / "2026" / "04" / "2026-04-28.md", paths)
+        for path in paths:
+            with self.subTest(path=path):
+                self.assertRegex(path.name, r"^\d{4}-\d{2}-\d{2}\.md$")
+                self.assertEqual(path.parent.name, path.stem[5:7])
+                self.assertEqual(path.parent.parent.name, path.stem[:4])
+
+
 class TagFilterUiTests(unittest.TestCase):
     def test_date_sort_is_default_active_sort(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -293,12 +361,59 @@ class TagFilterUiTests(unittest.TestCase):
     def test_blogs_section_support_exists_in_frontend(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("let ALL_BLOGS = [];", html)
-        self.assertIn("let ALL_RESOURCES = [];", html)
-        self.assertIn("function createBlogSection()", html)
         self.assertIn("function createBlogTreeNode()", html)
         self.assertIn("BLOG_SECTION_META", html)
         self.assertIn("section-blogs", html)
         self.assertIn("blogs-grid", html)
+
+    def test_daily_briefing_notice_exists_in_frontend(self):
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        self.assertIn("let ALL_BRIEFINGS = [];", html)
+        self.assertIn('<aside class="daily-briefing-notice"', html)
+        self.assertIn('id="daily-briefing-notice"', html)
+        self.assertIn('id="daily-briefing-notice-summary"', html)
+        self.assertIn('id="daily-briefing-notice-candidates"', html)
+        self.assertIn('id="daily-briefing-notice-compact"', html)
+        self.assertIn('id="daily-briefing-notice-new-papers"', html)
+        self.assertIn('id="daily-briefing-notice-toggle"', html)
+        self.assertIn('id="daily-briefing-notice-detail"', html)
+        self.assertIn('aria-controls="daily-briefing-notice-detail"', html)
+        self.assertIn('Details ↓', html)
+        self.assertIn('New today:', html)
+        self.assertIn('daily-briefing-notice-paper-link', html)
+        self.assertIn("function renderDailyBriefingNoticeCandidate(candidate)", html)
+        self.assertIn("function isDailyBriefingNewPaper(candidate)", html)
+        self.assertIn("function renderDailyBriefingCompactPaper(candidate)", html)
+        self.assertIn("function setDailyBriefingNoticeExpanded(expanded)", html)
+        self.assertIn("function updateDailyBriefingNotice()", html)
+        self.assertIn("ALL_BRIEFINGS = data.briefings || [];", html)
+        self.assertIn("updateDailyBriefingNotice();", html)
+        self.assertIn(".daily-briefing-notice {\n      left: 32px;", html)
+        self.assertIn(".daily-watch-countdown {\n      right: 32px;", html)
+        self.assertIn("transform: none;", html)
+        self.assertNotIn("transform: rotate(-1.2deg)", html)
+        self.assertNotIn("transform: rotate(1.2deg)", html)
+        self.assertIn(".header-inner > .search-wrap { order: 4; }", html)
+        self.assertIn(".header-inner > .daily-briefing-notice { order: 6; }", html)
+        self.assertIn(".header-inner > .daily-watch-countdown { order: 7; }", html)
+        self.assertIn("max-height: min(42vh, 320px);", html)
+        self.assertIn("max-height: 220px;", html)
+        self.assertIn(".daily-briefing-notice-detail::-webkit-scrollbar", html)
+        self.assertIn("width: 2px;", html)
+        self.assertNotIn("width: 4px;", html)
+        self.assertIn("scrollbar-color: var(--scrollbar-thumb) transparent;", html)
+        self.assertIn("daily-briefing-notice-source", html)
+        self.assertIn("source md ↗", html)
+        self.assertIn("body.filter-sidebar-open .daily-briefing-notice", html)
+        self.assertNotIn('<a class="daily-briefing-notice"', html)
+        self.assertNotIn("daily-briefing-notice-cta", html)
+        self.assertNotIn("Read ↗", html)
+        self.assertNotIn("function createDailyBriefingTreeNode()", html)
+        self.assertNotIn("function createDailyBriefingSection()", html)
+        self.assertNotIn("daily-briefing-card", html)
+        self.assertNotIn("section-daily-briefing", html)
+        self.assertNotIn("daily-briefing-notes", html)
+        self.assertNotIn("<summary>Notes</summary>", html)
 
     def test_category_section_counts_render_as_numbers_only(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -1315,7 +1430,7 @@ class ContributionWorkflowTests(unittest.TestCase):
         meta = self.load_repo_meta()
         js = REPO_META_JS_PATH.read_text(encoding="utf-8")
         self.assertEqual(meta["github_owner"], "huskydoge")
-        self.assertEqual(meta["default_repo_name"], "Awesome-Loop-Models-Private")
+        self.assertEqual(meta["default_repo_name"], "Awesome-Loop-Models")
         self.assertEqual(meta["public_repo_name"], "Awesome-Loop-Models")
         self.assertTrue(ISSUE_TEMPLATE_CONFIG_TEMPLATE_PATH.exists())
         self.assertIn(f'githubOwner: {json.dumps(meta["github_owner"])}', js)

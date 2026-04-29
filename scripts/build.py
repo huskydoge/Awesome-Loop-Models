@@ -25,6 +25,7 @@ import yaml
 REPO_ROOT = Path(__file__).parent.parent
 PAPERS_DIR = REPO_ROOT / "papers"
 BLOGS_DIR = REPO_ROOT / "blogs"
+BRIEFINGS_DIR = REPO_ROOT / "briefings"
 JSON_OUT = REPO_ROOT / "papers.json"
 README_OUT = REPO_ROOT / "README.md"
 TAGS_OUT = REPO_ROOT / "TAGS.md"
@@ -61,6 +62,11 @@ CATEGORY_DISCLAIMER = (
 )
 FOUNDATION_LABEL = "Foundation"
 BLOG_SECTION_TITLE = "Blogs"
+DAILY_BRIEFING_SECTION_TITLE = "Daily Briefing"
+DAILY_BRIEFING_SECTION_DESC = (
+    "Reader-facing daily research briefings: notable loop-model papers, watchlist candidates, "
+    "and concise inclusion rationale."
+)
 BLOG_SECTION_DESC = (
     "Long-form technical posts, essays, and deep-dives about loop models. Blogs can carry Loop Mechanism / focus / domain tags but stay in a "
     "single flat section rather than the paper taxonomy."
@@ -680,27 +686,126 @@ def load_blogs() -> list[dict]:
     return blogs
 
 
-def build_json(papers: list[dict], blogs: list[dict]) -> None:
+def split_markdown_frontmatter(text: str, source: str) -> tuple[dict, str]:
+    """Return YAML frontmatter metadata and the Markdown body for a briefing file."""
+    if not text.startswith("---\n"):
+        return {}, text
+    end = text.find("\n---", 4)
+    if end == -1:
+        raise ValueError(f"{source}: frontmatter starts with --- but has no closing ---")
+    frontmatter_text = text[4:end].strip()
+    body_start = end + len("\n---")
+    if text[body_start:body_start + 2] == "\r\n":
+        body_start += 2
+    elif text[body_start:body_start + 1] == "\n":
+        body_start += 1
+    metadata = yaml.safe_load(frontmatter_text) or {}
+    if not isinstance(metadata, dict):
+        raise ValueError(f"{source}: frontmatter must be a mapping")
+    return metadata, text[body_start:].strip()
+
+
+def normalize_briefing_date(raw_value: object, source: str) -> str:
+    """Normalize the required briefing date from YAML or string input."""
+    if raw_value is None or raw_value == "":
+        raise ValueError(f"{source}: missing required date")
+    if isinstance(raw_value, datetime):
+        value = raw_value.date().isoformat()
+    elif isinstance(raw_value, date):
+        value = raw_value.isoformat()
+    else:
+        value = str(raw_value).strip()
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+        raise ValueError(f"{source}: invalid date {value!r}; expected YYYY-MM-DD")
+    try:
+        return date.fromisoformat(value).isoformat()
+    except ValueError as exc:
+        raise ValueError(f"{source}: invalid date {value!r}; expected YYYY-MM-DD") from exc
+
+
+def normalize_briefing_candidates(raw_candidates: object, source: str) -> list[dict]:
+    """Normalize optional candidate rows from a daily briefing frontmatter block."""
+    if raw_candidates is None:
+        return []
+    if not isinstance(raw_candidates, list):
+        raise ValueError(f"{source}: candidates must be a list")
+    candidates = []
+    for idx, raw_candidate in enumerate(raw_candidates, start=1):
+        if not isinstance(raw_candidate, dict):
+            raise ValueError(f"{source}: candidates[{idx}] must be a mapping")
+        candidate = {
+            str(key): str(value).strip()
+            for key, value in raw_candidate.items()
+            if value is not None and str(value).strip()
+        }
+        if candidate:
+            candidates.append(candidate)
+    return candidates
+
+
+def load_briefings() -> list[dict]:
+    """Load daily Markdown briefings stored as briefings/YYYY/MM/YYYY-MM-DD.md."""
+    if not BRIEFINGS_DIR.exists():
+        return []
+
+    briefings = []
+    for markdown_file in sorted(BRIEFINGS_DIR.glob("*/*/*.md")):
+        if markdown_file.name.startswith("_"):
+            continue
+        try:
+            source_path = markdown_file.relative_to(REPO_ROOT).as_posix()
+        except ValueError:
+            source_path = markdown_file.relative_to(BRIEFINGS_DIR.parent).as_posix()
+        metadata, body = split_markdown_frontmatter(markdown_file.read_text(encoding="utf-8"), source_path)
+        briefing_date = normalize_briefing_date(metadata.get("date") or markdown_file.stem, source_path)
+        expected_relative_path = f"briefings/{briefing_date[:4]}/{briefing_date[5:7]}/{briefing_date}.md"
+        if source_path != expected_relative_path:
+            raise ValueError(f"{source_path}: expected path {expected_relative_path}")
+
+        highlights = normalize_str_list(metadata.get("highlights", []))
+        candidates = normalize_briefing_candidates(metadata.get("candidates", []), source_path)
+        briefing = {
+            "date": briefing_date,
+            "title": str(metadata.get("title") or f"Daily Loop-Model Watch — {briefing_date}").strip(),
+            "status": str(metadata.get("status") or "ok").strip(),
+            "summary": str(metadata.get("summary") or "").strip(),
+            "highlights": highlights,
+            "candidates": candidates,
+            "content": body,
+            "source_path": source_path,
+        }
+        briefings.append(briefing)
+
+    return sorted(briefings, key=lambda item: item["date"], reverse=True)
+
+
+def build_json(papers: list[dict], blogs: list[dict], briefings: list[dict] | None = None) -> None:
+    briefings = sorted(briefings or [], key=lambda item: item.get("date", ""), reverse=True)
     payload = {
         "meta": {
             "total": len(papers) + len(blogs),
             "paper_total": len(papers),
             "blog_total": len(blogs),
+            "briefing_total": len(briefings),
+            "latest_briefing_date": briefings[0]["date"] if briefings else None,
             "generated": datetime.now(timezone.utc).isoformat(),
             "generated_local_date": datetime.now().astimezone().date().isoformat(),
             "category_disclaimer": CATEGORY_DISCLAIMER,
             "foundation_label": FOUNDATION_LABEL,
             "blog_section_title": BLOG_SECTION_TITLE,
             "blog_section_desc": BLOG_SECTION_DESC,
+            "briefing_section_title": DAILY_BRIEFING_SECTION_TITLE,
+            "briefing_section_desc": DAILY_BRIEFING_SECTION_DESC,
         },
         "categories": CATEGORIES,
         "mechanism_tags": list(VALID_MECHANISM_TAGS),
         "focus_tags": list(VALID_FOCUS_TAGS),
         "papers": papers,
         "blogs": blogs,
+        "briefings": briefings,
     }
     JSON_OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"✓ papers.json  — {len(papers)} papers, {len(blogs)} blogs")
+    print(f"✓ papers.json  — {len(papers)} papers, {len(blogs)} blogs, {len(briefings)} briefings")
 
 
 def render_tags_reference_text(papers: list[dict], blogs: list[dict]) -> str:
@@ -1047,7 +1152,8 @@ def build() -> None:
     repo_meta = load_repo_meta()
     papers = load_papers()
     blogs = load_blogs()
-    build_json(papers, blogs)
+    briefings = load_briefings()
+    build_json(papers, blogs, briefings)
     build_readme(papers, blogs, repo_meta)
     build_tags_reference(papers, blogs)
     build_repo_meta_js(repo_meta)

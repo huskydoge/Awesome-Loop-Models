@@ -1,6 +1,6 @@
 window.REPO_META = {
   githubOwner: "huskydoge",
-  defaultRepoName: "Awesome-Loop-Models-Private",
+  defaultRepoName: "Awesome-Loop-Models",
   publicRepoName: "Awesome-Loop-Models",
   publicPagesBase: "https://huskydoge.github.io/Awesome-Loop-Models",
   inferRepoNameFromLocation(locationLike = window.location) {

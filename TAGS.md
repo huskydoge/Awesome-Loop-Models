@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (12)
-- `flat-loop` (49)
+- `flat-loop` (50)
 - `parallel-loop` (2)
 - `implicit-layer` (8)
 
@@ -28,18 +28,18 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 - `objective-loss` (5)
 - `training-algorithm` (28)
-- `architecture` (50)
+- `architecture` (51)
 - `data` (2)
-- `inference-algorithm` (33)
+- `inference-algorithm` (34)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
 - `language-modeling` (40)
-- `reasoning` (35)
+- `reasoning` (36)
 - `efficiency` (19)
-- `algorithmic-reasoning` (11)
+- `algorithmic-reasoning` (12)
 - `scaling` (5)
 - `theory` (4)
 - `memory-efficiency` (2)
@@ -58,10 +58,11 @@ Observed browser-facing domain tags currently used across the repo.
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
 - `looped-transformer` (8)
-- `ACT` (4)
+- `ACT` (5)
 - `TRM` (4)
 - `DEQ` (3)
 - `Ouro` (3)
+- `UT` (3)
 - `depth-recurrent` (2)
 - `depth-scaling` (2)
 - `looped-llm` (2)
@@ -69,9 +70,9 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `MoR` (2)
 - `mythos` (2)
 - `recursive-transformer` (2)
-- `UT` (2)
 - `activation-compression` (1)
 - `AdaPonderLM` (1)
+- `adaptive-computation-time` (1)
 - `adaptive-latent-iteration` (1)
 - `AlgoFormer` (1)
 - `ANIRA` (1)
@@ -106,6 +107,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `MDEQ` (1)
 - `mechanistic-analysis` (1)
 - `memory-banks` (1)
+- `memory-tokens` (1)
 - `MoDr` (1)
 - `MoEUT` (1)
 - `MOUE` (1)

@@ -257,6 +257,7 @@
     body.filter-sidebar-open .header-sub,
     body.filter-sidebar-open .header-actions,
     body.filter-sidebar-open .filter-sidebar-toggle-row,
+    body.filter-sidebar-open .daily-briefing-notice,
     body.filter-sidebar-open .daily-watch-countdown {
       display: none;
     }
@@ -1045,13 +1046,11 @@
 
     .contribute-btn:hover { opacity: 0.82; transform: translateY(-1px); }
 
+    .daily-briefing-notice,
     .daily-watch-countdown {
       position: absolute;
       top: -1px;
-      right: 32px;
-      width: 236px;
       margin: 0;
-      padding: 15px 13px 11px;
       border: 1px solid var(--border);
       border-top: 0;
       border-radius: 0 0 10px 10px;
@@ -1060,12 +1059,230 @@
         linear-gradient(180deg, rgba(9,105,218,0.06), transparent),
         var(--surface);
       box-shadow: 0 14px 24px rgba(15, 23, 42, 0.10);
-      text-align: center;
-      transform: rotate(1.2deg);
-      transform-origin: 50% 0;
+      transform: none;
       z-index: 1;
     }
 
+    .daily-briefing-notice[hidden] {
+      display: none;
+    }
+
+    .daily-briefing-notice {
+      left: 32px;
+      width: min(360px, calc(50vw - 64px));
+      max-height: none;
+      overflow: visible;
+      padding: 15px 14px 13px;
+      color: var(--text);
+      text-align: left;
+    }
+
+    .daily-briefing-notice-detail {
+      max-height: min(42vh, 320px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding-top: 8px;
+      margin-top: 8px;
+      border-top: 1px dashed rgba(101,109,118,0.24);
+      scrollbar-width: thin;
+      scrollbar-color: var(--scrollbar-thumb) transparent;
+    }
+
+    .daily-briefing-notice-detail::-webkit-scrollbar {
+      width: 2px;
+      height: 2px;
+    }
+
+    .daily-briefing-notice-detail::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .daily-briefing-notice-detail::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb);
+      border-radius: 999px;
+    }
+
+    .daily-briefing-notice-detail::-webkit-scrollbar-thumb:hover {
+      background: var(--scrollbar-thumb-hover);
+    }
+
+    .daily-briefing-notice-label,
+    .daily-watch-countdown-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 3px;
+    }
+
+    .daily-briefing-notice-title,
+    .daily-watch-countdown-value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .daily-briefing-notice-title {
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .daily-briefing-notice-compact {
+      margin: 7px 0 6px;
+      color: var(--text-muted);
+      font-size: 11.5px;
+      line-height: 1.4;
+    }
+
+    .daily-briefing-notice-new-papers {
+      display: grid;
+      gap: 4px;
+      margin: 0 0 8px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .daily-briefing-notice-new-papers li {
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .daily-briefing-notice-paper-link {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .daily-briefing-notice-paper-link:hover {
+      text-decoration: underline;
+    }
+
+    .daily-briefing-notice-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin-top: 2px;
+      padding: 4px 8px;
+      border: 1px solid rgba(9,105,218,0.22);
+      border-radius: 999px;
+      background: rgba(9,105,218,0.06);
+      color: var(--accent);
+      font-size: 10.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .daily-briefing-notice-toggle:hover {
+      border-color: rgba(9,105,218,0.38);
+      background: rgba(9,105,218,0.10);
+    }
+
+    .daily-briefing-notice.is-expanded .daily-briefing-notice-toggle {
+      background: rgba(9,105,218,0.12);
+    }
+
+    .daily-briefing-notice-summary {
+      margin: 8px 0 8px;
+      color: var(--text-muted);
+      font-size: 11.5px;
+      line-height: 1.45;
+    }
+
+    .daily-briefing-notice-highlights {
+      display: grid;
+      gap: 4px;
+      margin: 0 0 8px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .daily-briefing-notice-highlights li {
+      color: var(--text-muted);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .daily-briefing-notice-highlights li::before {
+      content: "•";
+      color: var(--accent);
+      margin-right: 5px;
+    }
+
+    .daily-briefing-notice-candidates {
+      display: grid;
+      gap: 5px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(101,109,118,0.18);
+    }
+
+    .daily-briefing-notice-candidate {
+      display: grid;
+      gap: 1px;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+
+    .daily-briefing-notice-candidate a {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .daily-briefing-notice-candidate a:hover {
+      text-decoration: underline;
+    }
+
+    .daily-briefing-notice-candidate-verdict {
+      color: var(--text-muted);
+    }
+
+    .daily-briefing-notice-links {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-start;
+      margin-top: 9px;
+      padding-top: 7px;
+      border-top: 1px dashed rgba(101,109,118,0.24);
+    }
+
+    .daily-briefing-notice-source {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .daily-briefing-notice-source:hover {
+      text-decoration: underline;
+    }
+
+    .daily-briefing-notice-meta,
+    .daily-watch-countdown-meta {
+      font-size: 10.5px;
+      line-height: 1.4;
+      color: var(--text-muted);
+    }
+
+    .daily-briefing-notice-meta {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .daily-watch-countdown {
+      right: 32px;
+      width: 236px;
+      padding: 15px 13px 11px;
+      text-align: center;
+    }
+
+    .daily-briefing-notice::before,
     .daily-watch-countdown::before {
       content: "";
       position: absolute;
@@ -1078,6 +1295,7 @@
       pointer-events: none;
     }
 
+    .daily-briefing-notice::after,
     .daily-watch-countdown::after {
       content: "";
       position: absolute;
@@ -1112,14 +1330,24 @@
     }
 
     @media (max-width: 1080px) {
+      .daily-briefing-notice,
       .daily-watch-countdown {
         position: relative;
         top: auto;
+        left: auto;
         right: auto;
         width: min(560px, 100%);
-        margin: 0 auto 18px;
+        margin: 0 auto 12px;
         border-top: 1px solid var(--border);
         border-radius: 10px;
+        transform: none;
+      }
+
+      .daily-watch-countdown {
+        margin-bottom: 18px;
+      }
+
+      .daily-briefing-notice:hover {
         transform: none;
       }
     }
@@ -2161,6 +2389,47 @@
       .tag-filter-panel {
         padding: 12px;
       }
+      .header-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .header-inner > h1 { order: 1; }
+      .header-inner > .header-sub { order: 2; }
+      .header-inner > .header-actions { order: 3; }
+      .header-inner > .search-wrap { order: 4; }
+      .header-inner > .filter-sidebar-toggle-row { order: 5; }
+      .header-inner > .daily-briefing-notice { order: 6; }
+      .header-inner > .daily-watch-countdown { order: 7; }
+      .header-inner > .filter-sidebar { order: 8; }
+      .daily-briefing-notice,
+      .daily-watch-countdown {
+        width: 100%;
+        max-width: none;
+        margin: 10px 0 0;
+        box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+      }
+      .daily-briefing-notice {
+        padding: 12px;
+      }
+      .daily-briefing-notice-detail {
+        max-height: min(42vh, 320px);
+      }
+      .daily-watch-countdown {
+        padding: 11px 12px 10px;
+      }
+      .daily-briefing-notice-title {
+        font-size: 14px;
+        line-height: 1.25;
+      }
+      .daily-briefing-notice-summary {
+        margin: 7px 0;
+        font-size: 11px;
+        line-height: 1.4;
+      }
+      .daily-briefing-notice-candidates {
+        gap: 4px;
+      }
       .mobile-directory {
         display: block;
         margin-bottom: 12px;
@@ -2309,6 +2578,26 @@
       .filter-sidebar-controls .date-clear-btn {
         padding: 4px 8px;
       }
+      .daily-briefing-notice {
+        padding: 10px;
+      }
+      .daily-briefing-notice-detail {
+        max-height: 220px;
+      }
+      .daily-watch-countdown {
+        padding: 10px;
+      }
+      .daily-briefing-notice-label,
+      .daily-watch-countdown-label {
+        font-size: 9px;
+      }
+      .daily-briefing-notice-title,
+      .daily-watch-countdown-value {
+        font-size: 13px;
+      }
+      .daily-briefing-notice-candidate {
+        font-size: 10.5px;
+      }
     }
   </style>
 </head>
@@ -2334,6 +2623,29 @@
       <a class="contribute-btn"
          href="submit.html">📄 Submit</a>
     </div>
+    <aside class="daily-briefing-notice"
+       id="daily-briefing-notice"
+       aria-label="Latest Daily Briefing"
+       hidden>
+      <div class="daily-briefing-notice-label">Daily report</div>
+      <div class="daily-briefing-notice-title" id="daily-briefing-notice-title">Today’s loop-model report</div>
+      <div class="daily-briefing-notice-meta">
+        <span id="daily-briefing-notice-date">—</span>
+      </div>
+      <p class="daily-briefing-notice-compact" id="daily-briefing-notice-compact">Checking today’s briefing…</p>
+      <ul class="daily-briefing-notice-new-papers" id="daily-briefing-notice-new-papers"></ul>
+      <button type="button"
+              class="daily-briefing-notice-toggle"
+              id="daily-briefing-notice-toggle"
+              aria-expanded="false"
+              aria-controls="daily-briefing-notice-detail">Details ↓</button>
+      <div class="daily-briefing-notice-detail" id="daily-briefing-notice-detail" hidden>
+        <p class="daily-briefing-notice-summary" id="daily-briefing-notice-summary"></p>
+        <ul class="daily-briefing-notice-highlights" id="daily-briefing-notice-highlights"></ul>
+        <div class="daily-briefing-notice-candidates" id="daily-briefing-notice-candidates"></div>
+        <div class="daily-briefing-notice-links" id="daily-briefing-notice-links"></div>
+      </div>
+    </aside>
     <div class="daily-watch-countdown" id="daily-watch-countdown">
       <div class="daily-watch-countdown-label">Today papers refresh</div>
       <div class="daily-watch-countdown-value" id="daily-watch-countdown-value" aria-live="polite">Calculating…</div>
@@ -2809,9 +3121,11 @@ let SORT_DIRECTIONS = {
 };
 let ALL_PAPERS = [];
 let ALL_BLOGS = [];
+let ALL_BRIEFINGS = [];
 let ALL_RESOURCES = [];
 let CATEGORIES = {};
 let BLOG_SECTION_META = { title: 'Blogs', desc: '' };
+let DAILY_BRIEFING_SECTION_META = { title: 'Daily Briefing', desc: '' };
 let DIRECT_PAPERS_BY_NODE = {};
 let NODE_COUNTS = {};
 let SECTION_OBSERVER = null;
@@ -3605,6 +3919,125 @@ function createBlogTreeNode() {
   return wrapper;
 }
 
+function renderDailyBriefingNoticeCandidate(candidate) {
+  const id = escapeHtml(candidate.id || 'paper');
+  const title = escapeHtml(candidate.title || 'Untitled candidate');
+  const verdict = escapeHtml(candidate.verdict || 'watchlist');
+  const label = id + ' · ' + title;
+  const titleHtml = candidate.url
+    ? '<a href="' + escapeHtml(candidate.url) + '" target="_blank" rel="noopener">' + label + '</a>'
+    : '<span>' + label + '</span>';
+  return '<div class="daily-briefing-notice-candidate">'
+    + titleHtml
+    + '<span class="daily-briefing-notice-candidate-verdict">' + verdict + '</span>'
+    + '</div>';
+}
+
+function isDailyBriefingNewPaper(candidate) {
+  const verdict = String((candidate && candidate.verdict) || '').toLowerCase();
+  if (!verdict) return false;
+  const negativeSignals = ['watchlist', 'near-miss', 'near miss', 'out of scope', 'borderline'];
+  const positiveSignals = ['strong candidate', 'high-confidence', 'high confidence', 'in-scope', 'in scope', 'included'];
+  return positiveSignals.some(function(signal) { return verdict.includes(signal); })
+    && !negativeSignals.some(function(signal) { return verdict.includes(signal); });
+}
+
+function getDailyBriefingNewPapers(briefing) {
+  const candidates = Array.isArray(briefing && briefing.candidates) ? briefing.candidates : [];
+  return candidates.filter(isDailyBriefingNewPaper);
+}
+
+function renderDailyBriefingCompactPaper(candidate) {
+  const title = escapeHtml(candidate.title || candidate.id || 'Untitled paper');
+  const href = candidate.url ? escapeHtml(candidate.url) : '';
+  const titleHtml = href
+    ? '<a class="daily-briefing-notice-paper-link" href="' + href + '" target="_blank" rel="noopener">' + title + '</a>'
+    : '<span>' + title + '</span>';
+  return '<li>' + titleHtml + '</li>';
+}
+
+function setDailyBriefingNoticeExpanded(expanded) {
+  const notice = document.getElementById('daily-briefing-notice');
+  const detailEl = document.getElementById('daily-briefing-notice-detail');
+  const toggleEl = document.getElementById('daily-briefing-notice-toggle');
+  if (!notice || !detailEl || !toggleEl) return;
+  notice.classList.toggle('is-expanded', expanded);
+  detailEl.hidden = !expanded;
+  toggleEl.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  toggleEl.textContent = expanded ? 'Hide details ↑' : 'Details ↓';
+}
+
+function bindDailyBriefingNoticeToggle() {
+  const toggleEl = document.getElementById('daily-briefing-notice-toggle');
+  if (!toggleEl || toggleEl.dataset.bound === 'true') return;
+  toggleEl.dataset.bound = 'true';
+  toggleEl.addEventListener('click', function() {
+    setDailyBriefingNoticeExpanded(toggleEl.getAttribute('aria-expanded') !== 'true');
+  });
+}
+
+function updateDailyBriefingNotice() {
+  const notice = document.getElementById('daily-briefing-notice');
+  if (!notice) return;
+
+  const latest = ALL_BRIEFINGS[0];
+  if (!latest) {
+    notice.hidden = true;
+    return;
+  }
+
+  const sourcePath = latest.source_path || '';
+  const sourceUrl = sourcePath && REPO_META ? REPO_META.getGitHubBlobUrl(sourcePath) : '';
+  const titleEl = document.getElementById('daily-briefing-notice-title');
+  const dateEl = document.getElementById('daily-briefing-notice-date');
+  const compactEl = document.getElementById('daily-briefing-notice-compact');
+  const newPapersEl = document.getElementById('daily-briefing-notice-new-papers');
+  const summaryEl = document.getElementById('daily-briefing-notice-summary');
+  const highlightsEl = document.getElementById('daily-briefing-notice-highlights');
+  const candidatesEl = document.getElementById('daily-briefing-notice-candidates');
+  const linksEl = document.getElementById('daily-briefing-notice-links');
+  const statusText = latest.status ? ' · ' + latest.status : '';
+  const newPapers = getDailyBriefingNewPapers(latest);
+
+  if (titleEl) titleEl.textContent = 'Today’s loop-model report';
+  if (dateEl) dateEl.textContent = (latest.date || 'latest') + statusText;
+  if (compactEl) {
+    compactEl.textContent = newPapers.length
+      ? 'New today: ' + newPapers.length + ' in-scope loop-model paper' + (newPapers.length === 1 ? '' : 's') + '.'
+      : 'New today: no in-scope loop-model papers.';
+  }
+  if (newPapersEl) {
+    newPapersEl.innerHTML = newPapers.map(renderDailyBriefingCompactPaper).join('');
+    newPapersEl.hidden = newPapers.length === 0;
+  }
+  if (summaryEl) summaryEl.textContent = latest.summary || '';
+
+  if (highlightsEl) {
+    const highlights = Array.isArray(latest.highlights) ? latest.highlights.slice(0, 2) : [];
+    highlightsEl.innerHTML = highlights.map(function(item) {
+      return '<li>' + escapeHtml(item) + '</li>';
+    }).join('');
+    highlightsEl.hidden = highlights.length === 0;
+  }
+
+  if (candidatesEl) {
+    const candidates = Array.isArray(latest.candidates) ? latest.candidates : [];
+    candidatesEl.innerHTML = candidates.map(renderDailyBriefingNoticeCandidate).join('');
+    candidatesEl.hidden = candidates.length === 0;
+  }
+
+  if (linksEl) {
+    linksEl.innerHTML = sourceUrl
+      ? '<a class="daily-briefing-notice-source" href="' + escapeHtml(sourceUrl) + '" target="_blank" rel="noopener">source md ↗</a>'
+      : '';
+    linksEl.hidden = !sourceUrl;
+  }
+
+  bindDailyBriefingNoticeToggle();
+  setDailyBriefingNoticeExpanded(false);
+  notice.hidden = false;
+}
+
 function createCategorySection(node, pathParts, depth) {
   const count = getNodeCount(pathParts);
   if (!count) return null;
@@ -3711,8 +4144,14 @@ function buildDOM(data) {
     title: (data.meta && data.meta.blog_section_title) || 'Blogs',
     desc: (data.meta && data.meta.blog_section_desc) || ''
   };
+  DAILY_BRIEFING_SECTION_META = {
+    title: (data.meta && data.meta.briefing_section_title) || 'Daily Briefing',
+    desc: (data.meta && data.meta.briefing_section_desc) || ''
+  };
   ALL_PAPERS = (data.papers || []).map(preparePaperRecord);
   ALL_BLOGS = (data.blogs || []).map(preparePaperRecord);
+  ALL_BRIEFINGS = data.briefings || [];
+  updateDailyBriefingNotice();
   ALL_RESOURCES = ALL_PAPERS.concat(ALL_BLOGS);
   TAG_FILTER_GROUPS = buildTagFilterGroups(ALL_RESOURCES);
   buildCategoryIndex();
