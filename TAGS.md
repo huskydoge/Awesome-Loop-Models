@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (12)
-- `flat-loop` (50)
+- `flat-loop` (51)
 - `parallel-loop` (2)
 - `implicit-layer` (8)
 
@@ -28,9 +28,9 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 - `objective-loss` (5)
 - `training-algorithm` (28)
-- `architecture` (51)
+- `architecture` (52)
 - `data` (2)
-- `inference-algorithm` (34)
+- `inference-algorithm` (35)
 
 ## domain_tags
 
@@ -39,9 +39,9 @@ Observed browser-facing domain tags currently used across the repo.
 - `language-modeling` (40)
 - `reasoning` (36)
 - `efficiency` (19)
-- `algorithmic-reasoning` (12)
+- `algorithmic-reasoning` (13)
 - `scaling` (5)
-- `theory` (4)
+- `theory` (5)
 - `memory-efficiency` (2)
 - `RL` (2)
 - `vision` (2)
@@ -84,10 +84,12 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `CoLa` (1)
 - `compositional-generalization` (1)
 - `compute-bounded-policy` (1)
+- `convergence` (1)
 - `CoTFormer` (1)
 - `detach` (1)
 - `fixed-point-analysis` (1)
 - `generalist-processor` (1)
+- `halting` (1)
 - `hierarchical-recurrence` (1)
 - `HRM` (1)
 - `Huginn` (1)
@@ -122,6 +124,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `RD-VLA` (1)
 - `RecursiveVLM` (1)
 - `reverse-residual` (1)
+- `RGNN` (1)
 - `RIM` (1)
 - `RLTT` (1)
 - `scaling-laws` (1)

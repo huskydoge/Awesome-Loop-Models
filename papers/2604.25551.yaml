@@ -1,0 +1,31 @@
+title: On Halting vs Converging in Recurrent Graph Neural Networks
+authors:
+- Jeroen Bollen
+- Stijn Vansummeren
+year: 2026
+published_date: '2026-04-28'
+added_date: '2026-04-30'
+venue: arXiv
+category: analysis
+mechanism_tags:
+- flat-loop
+domain_tags:
+- theory
+- algorithmic-reasoning
+tags:
+- RGNN
+- halting
+- convergence
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Analyzes recurrent graph neural networks that repeatedly apply message passing
+  until convergence or halting, proving expressiveness relationships between converging,
+  output-converging, and halting RGNN variants.
+links:
+  arxiv: https://arxiv.org/abs/2604.25551
+citations: 0
+metrics_updated: '2026-04-30'
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
