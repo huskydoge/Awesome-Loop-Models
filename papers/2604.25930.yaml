@@ -1,0 +1,33 @@
+title: 'Associative-State Universal Transformers: Sparse Retrieval Meets Structured
+  Recurrence'
+authors:
+- Liu Xiao
+year: 2026
+published_date: '2026-04-01'
+added_date: '2026-04-30'
+venue: arXiv
+category: designs
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- algorithmic-reasoning
+- efficiency
+tags:
+- UT
+- universal-transformer
+- looped-transformer
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces UniMatrix, a Universal Transformer-style family that reuses a shared
+  recurrent block across depth and combines compact recurrent state with sparse slot
+  routing and pointer-logit fusion for language modeling and associative recall.
+links:
+  arxiv: https://arxiv.org/abs/2604.25930
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-05-01'
