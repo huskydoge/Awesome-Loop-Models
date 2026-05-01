@@ -5,8 +5,8 @@
     "blog_total": 4,
     "briefing_total": 2,
     "latest_briefing_date": "2026-04-30",
-    "generated": "2026-05-01T02:41:24.440898+00:00",
-    "generated_local_date": "2026-04-30",
+    "generated": "2026-05-01T03:03:45.451681+00:00",
+    "generated_local_date": "2026-05-01",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -171,14 +171,14 @@
         "openreview": "https://openreview.net/forum?id=HyzdRiR9Y7",
         "alphaxiv": "https://www.alphaxiv.org/abs/1807.03819"
       },
-      "citations": 896,
+      "citations": 897,
       "citation_sources": {
-        "semantic_scholar": 896,
+        "semantic_scholar": 897,
         "openalex": 396,
         "opencitations": 3
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-30",
+      "metrics_updated": "2026-05-01",
       "id": "1807.03819",
       "source_file": "1807.03819.yaml",
       "source_path": "papers/1807.03819.yaml",
@@ -229,9 +229,9 @@
         "paper": "https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html",
         "github": "https://github.com/locuslab/deq"
       },
-      "citations": 843,
+      "citations": 842,
       "citation_sources": {
-        "semantic_scholar": 843,
+        "semantic_scholar": 842,
         "openalex": 246,
         "opencitations": 0
       },
@@ -241,7 +241,7 @@
         "github_api": 797
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-04-29",
+      "metrics_updated": "2026-05-01",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -1197,10 +1197,10 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-29",
-      "github_stars": 569,
+      "metrics_updated": "2026-05-01",
+      "github_stars": 570,
       "star_sources": {
-        "github_api": 569
+        "github_api": 570
       },
       "star_source_best": "github_api",
       "id": "2507.10524",
@@ -1566,12 +1566,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 61,
+      "github_stars": 63,
       "star_sources": {
-        "github_api": 61
+        "github_api": 63
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-05-01",
       "id": "2511.07384",
       "source_file": "2511.07384.yaml",
       "source_path": "papers/2511.07384.yaml",
@@ -1625,9 +1625,9 @@
         "github": "https://github.com/thu-nics/TaH",
         "alphaxiv": "https://www.alphaxiv.org/abs/2511.08577"
       },
-      "citations": 8,
+      "citations": 9,
       "citation_sources": {
-        "semantic_scholar": 8,
+        "semantic_scholar": 9,
         "openalex": 0,
         "opencitations": 0
       },
@@ -1637,7 +1637,7 @@
         "github_api": 69
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-04-26",
+      "metrics_updated": "2026-05-01",
       "id": "2511.08577",
       "source_file": "2511.08577.yaml",
       "source_path": "papers/2511.08577.yaml",
@@ -3266,9 +3266,10 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.25551"
       },
       "citations": 0,
-      "metrics_updated": "2026-04-30",
+      "metrics_updated": "2026-05-01",
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",

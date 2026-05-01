@@ -31,9 +31,9 @@ desc: Introduces Think-at-Hard, a dynamic latent-thinking method that uses a lea
 links:
   arxiv: https://arxiv.org/abs/2511.08577
   github: https://github.com/thu-nics/TaH
-citations: 8
+citations: 9
 citation_sources:
-  semantic_scholar: 8
+  semantic_scholar: 9
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
@@ -41,4 +41,4 @@ github_stars: 69
 star_sources:
   github_api: 69
 star_source_best: github_api
-metrics_updated: '2026-04-26'
+metrics_updated: '2026-05-01'

@@ -25,8 +25,9 @@ desc: Analyzes recurrent graph neural networks that repeatedly apply message pas
 links:
   arxiv: https://arxiv.org/abs/2604.25551
 citations: 0
-metrics_updated: '2026-04-30'
+metrics_updated: '2026-05-01'
 citation_sources:
   semantic_scholar: 0
+  openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
