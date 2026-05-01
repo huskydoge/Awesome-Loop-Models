@@ -1,0 +1,40 @@
+title: 'Coevolutionary Continuous Discrete Diffusion: Make Your Diffusion Language
+  Model a Latent Reasoner'
+authors:
+- Cai Zhou
+- Chenxiao Yang
+- Yi Hu
+- Chenyu Wang
+- Chubin Zhang
+- Muhan Zhang
+- Lester Mackey
+- Tommi Jaakkola
+- Stephen Bates
+- Dinghuai Zhang
+year: 2025
+published_date: '2025-10-03'
+added_date: '2026-04-30'
+venue: arXiv
+category: designs
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Proposes Coevolutionary Continuous Discrete Diffusion, a joint continuous-discrete
+  diffusion language model that repeatedly denoises latent and token states with one
+  time-conditioned model, linking diffusion sampling to latent reasoning and looped-transformer
+  expressivity.
+links:
+  arxiv: https://arxiv.org/abs/2510.03206
+citations: 11
+metrics_updated: '2026-05-01'
+citation_sources:
+  semantic_scholar: 11
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar

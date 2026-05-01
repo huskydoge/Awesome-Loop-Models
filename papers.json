@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 63,
-    "paper_total": 59,
+    "total": 64,
+    "paper_total": 60,
     "blog_total": 4,
     "briefing_total": 2,
     "latest_briefing_date": "2026-04-30",
-    "generated": "2026-04-30T04:56:47.466798+00:00",
+    "generated": "2026-05-01T02:41:24.440898+00:00",
     "generated_local_date": "2026-04-30",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -1281,6 +1281,60 @@
       ],
       "venueClass": "venue-arxiv",
       "arxiv_id": "2509.23314"
+    },
+    {
+      "title": "Coevolutionary Continuous Discrete Diffusion: Make Your Diffusion Language Model a Latent Reasoner",
+      "authors": "Cai Zhou, Chenxiao Yang, Yi Hu, Chenyu Wang, Chubin Zhang, Muhan Zhang, Lester Mackey, Tommi Jaakkola, Stephen Bates, Dinghuai Zhang",
+      "year": 2025,
+      "published_date": "2025-10-03",
+      "added_date": "2026-04-30",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Proposes Coevolutionary Continuous Discrete Diffusion, a joint continuous-discrete diffusion language model that repeatedly denoises latent and token states with one time-conditioned model, linking diffusion sampling to latent reasoning and looped-transformer expressivity.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2510.03206",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2510.03206"
+      },
+      "citations": 11,
+      "metrics_updated": "2026-05-01",
+      "citation_sources": {
+        "semantic_scholar": 11,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "id": "2510.03206",
+      "source_file": "2510.03206.yaml",
+      "source_path": "papers/2510.03206.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "tags": [],
+      "authors_list": [
+        "Cai Zhou",
+        "Chenxiao Yang",
+        "Yi Hu",
+        "Chenyu Wang",
+        "Chubin Zhang",
+        "Muhan Zhang",
+        "Lester Mackey",
+        "Tommi Jaakkola",
+        "Stephen Bates",
+        "Dinghuai Zhang"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2510.03206"
     },
     {
       "title": "Less is More: Recursive Reasoning with Tiny Networks",
@@ -3468,12 +3522,12 @@
       "date": "2026-04-30",
       "title": "Daily Loop-Model Briefing — 2026-04-30",
       "status": "included",
-      "summary": "One in-scope analysis paper was added: a theory paper on halting versus convergence in recurrent graph neural networks.",
+      "summary": "Two in-scope papers are tracked for today: a theory paper on halting versus convergence in recurrent graph neural networks, plus a diffusion-language-model paper connecting iterative denoising, continuous latents, and looped-transformer expressivity.",
       "highlights": [
-        "One new loop-model paper was added to the collection.",
-        "The paper studies repeated message-passing operators inside a single recurrent graph-neural forward process.",
-        "The main contribution is an expressiveness comparison between converging, output-converging, and halting RGNNs.",
-        "Two adjacent recursive-reasoning papers remain useful watchlist items but are not included here."
+        "Two loop-model papers are now attached to today’s collection update.",
+        "The recurrent-GNN paper studies repeated message-passing operators inside a single graph-neural prediction process.",
+        "The CCDD paper frames diffusion language modeling as repeated joint denoising over continuous latent and discrete token states, with an explicit comparison to looped transformers.",
+        "A Universal-Transformer pilot remains on the watchlist, but is not included as a paper entry until its empirical evidence is stronger."
       ],
       "candidates": [
         {
@@ -3481,6 +3535,18 @@
           "title": "On Halting vs Converging in Recurrent Graph Neural Networks",
           "url": "https://arxiv.org/abs/2604.25551",
           "verdict": "included — recurrent message passing with convergence and halting criteria"
+        },
+        {
+          "id": "2510.03206",
+          "title": "Coevolutionary Continuous Discrete Diffusion: Make Your Diffusion Language Model a Latent Reasoner",
+          "url": "https://arxiv.org/abs/2510.03206",
+          "verdict": "included — a repeated denoising model over joint continuous and discrete language states, with theory relating continuous diffusion to looped-transformer rollouts"
+        },
+        {
+          "id": "2604.25930",
+          "title": "Associative-State Universal Transformers: Sparse Retrieval Meets Structured Recurrence",
+          "url": "https://arxiv.org/abs/2604.25930",
+          "verdict": "watchlist — in-scope Universal-Transformer-style recurrence, but currently kept out of the collection because the evidence is still pilot-level"
         },
         {
           "id": "2604.25917",
@@ -3495,7 +3561,7 @@
           "verdict": "near-miss — diffusion-latent recursion is adjacent but not a clean loop-model architecture under the repo rule"
         }
       ],
-      "content": "Today’s in-scope addition is **On Halting vs Converging in Recurrent Graph Neural Networks**. The paper is a theory-oriented analysis of recurrent graph neural networks, where message passing is iterated until a convergence or halting condition is met.\n\nIt fits the collection because the computation reuses the learned graph update/message-passing operator repeatedly within one prediction process. The main value is not a new large-scale language-model result, but a clean comparison of stopping semantics: global convergence, output-level convergence, and per-vertex halting.\n\nThe key reader takeaway is that halting and convergence are not just engineering choices. They change how recurrent computation synchronizes across nodes, and the paper’s traffic-light construction shows how locally halting vertices can still coordinate enough to recover expressiveness guarantees.\n\nThe nearby recursive multi-agent and multimodal diffusion-latent papers are worth watching, but they stay outside the main collection for now because their recursion is framed at the system or diffusion-process level rather than as a reused learned layer/block inside a single forward computation.",
+      "content": "Today’s collection update has two in-scope additions. **On Halting vs Converging in Recurrent Graph Neural Networks** is a theory-oriented paper about recurrent graph neural networks, where message passing is iterated until a convergence or halting condition is met. **Coevolutionary Continuous Discrete Diffusion** adds a language-modeling design angle: one time-conditioned model repeatedly denoises both continuous latent representations and discrete token states.\n\nThe recurrent-GNN paper fits because the computation reuses the learned graph update/message-passing operator repeatedly within one prediction process. Its main value is a clean comparison of stopping semantics: global convergence, output-level convergence, and per-vertex halting.\n\nThe CCDD paper fits because diffusion sampling is an iterative inference process: the same denoising network is reapplied across timesteps to refine an internal state. The paper is especially relevant to this collection because it explicitly proves that a continuous diffusion sampler can simulate looped-transformer rollouts, then uses joint continuous-discrete denoising to make the latent-reasoning path more trainable for language modeling.\n\nThe associative-state Universal Transformer paper remains worth watching, but it is not included as a paper entry today. It appears related to shared-depth recurrence, yet the current evidence is closer to a small pilot than a solid architecture result, so it belongs in the watchlist rather than the main collection for now.",
       "source_path": "briefings/2026/04/2026-04-30.md"
     },
     {
