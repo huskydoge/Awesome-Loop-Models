@@ -3,9 +3,9 @@
     "total": 63,
     "paper_total": 59,
     "blog_total": 4,
-    "briefing_total": 1,
-    "latest_briefing_date": "2026-04-28",
-    "generated": "2026-05-01T02:05:22.872169+00:00",
+    "briefing_total": 2,
+    "latest_briefing_date": "2026-04-30",
+    "generated": "2026-05-01T02:06:11.197921+00:00",
     "generated_local_date": "2026-04-30",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -3464,6 +3464,40 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-04-30",
+      "title": "Daily Loop-Model Briefing — 2026-04-30",
+      "status": "included",
+      "summary": "One in-scope analysis paper was added: a theory paper on halting versus convergence in recurrent graph neural networks.",
+      "highlights": [
+        "One new loop-model paper was added to the collection.",
+        "The paper studies repeated message-passing operators inside a single recurrent graph-neural forward process.",
+        "The main contribution is an expressiveness comparison between converging, output-converging, and halting RGNNs.",
+        "Two adjacent recursive-reasoning papers remain useful watchlist items but are not included here."
+      ],
+      "candidates": [
+        {
+          "id": "2604.25551",
+          "title": "On Halting vs Converging in Recurrent Graph Neural Networks",
+          "url": "https://arxiv.org/abs/2604.25551",
+          "verdict": "included — recurrent message passing with convergence and halting criteria"
+        },
+        {
+          "id": "2604.25917",
+          "title": "Recursive Multi-Agent Systems",
+          "url": "https://arxiv.org/abs/2604.25917",
+          "verdict": "near-miss — system-level multi-agent recursion rather than a reused learned operator inside one prediction"
+        },
+        {
+          "id": "2604.25299",
+          "title": "The Thinking Pixel: Recursive Sparse Reasoning in Multimodal Diffusion Latents",
+          "url": "https://arxiv.org/abs/2604.25299",
+          "verdict": "near-miss — diffusion-latent recursion is adjacent but not a clean loop-model architecture under the repo rule"
+        }
+      ],
+      "content": "Today’s in-scope addition is **On Halting vs Converging in Recurrent Graph Neural Networks**. The paper is a theory-oriented analysis of recurrent graph neural networks, where message passing is iterated until a convergence or halting condition is met.\n\nIt fits the collection because the computation reuses the learned graph update/message-passing operator repeatedly within one prediction process. The main value is not a new large-scale language-model result, but a clean comparison of stopping semantics: global convergence, output-level convergence, and per-vertex halting.\n\nThe key reader takeaway is that halting and convergence are not just engineering choices. They change how recurrent computation synchronizes across nodes, and the paper’s traffic-light construction shows how locally halting vertices can still coordinate enough to recover expressiveness guarantees.\n\nThe nearby recursive multi-agent and multimodal diffusion-latent papers are worth watching, but they stay outside the main collection for now because their recursion is framed at the system or diffusion-process level rather than as a reused learned layer/block inside a single forward computation.",
+      "source_path": "briefings/2026/04/2026-04-30.md"
+    },
     {
       "date": "2026-04-28",
       "title": "Daily Loop-Model Briefing — 2026-04-28",
