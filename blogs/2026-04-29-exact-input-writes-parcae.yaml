@@ -1,0 +1,32 @@
+title: "Exact Input Writes Improve Stable Looped Language Models"
+authors:
+  - "Benhao Huang"
+year: 2026
+published_date: "2026-04-29"
+added_date: "2026-05-03"
+venue: "Personal Blog"
+mechanism_tags:
+  - "flat-loop"
+
+domain_tags:
+  - "language-modeling"
+  - "theory"
+
+tags:
+  - "Parcae"
+  - "Exact-ZOH"
+  - "looped-transformer"
+
+focus_tags:
+  - "architecture"
+  - "training-algorithm"
+
+desc: >
+  Proposes replacing Parcae's Euler input-write gain with the exact zero-order-hold
+  gain, then reports matched 140M looped-language-model controls where Exact-ZOH
+  lowers validation loss under both short-budget probes and an 11.2B-token
+  paper-style run.
+
+links:
+  blog: "https://huskydoge.github.io/husky-blog/posts/recursive_models/improve-parcae/"
+  github: "https://github.com/huskydoge/parcae-zoh-exact"

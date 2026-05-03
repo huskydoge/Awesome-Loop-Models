@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (12)
-- `flat-loop` (52)
+- `flat-loop` (53)
 - `parallel-loop` (2)
 - `implicit-layer` (8)
 
@@ -27,8 +27,8 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (5)
-- `training-algorithm` (29)
-- `architecture` (53)
+- `training-algorithm` (30)
+- `architecture` (54)
 - `data` (2)
 - `inference-algorithm` (36)
 
@@ -36,12 +36,12 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `language-modeling` (41)
+- `language-modeling` (42)
 - `reasoning` (37)
 - `efficiency` (19)
 - `algorithmic-reasoning` (13)
+- `theory` (6)
 - `scaling` (5)
-- `theory` (5)
 - `memory-efficiency` (2)
 - `RL` (2)
 - `vision` (2)
@@ -57,7 +57,7 @@ Observed browser-facing domain tags currently used across the repo.
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (8)
+- `looped-transformer` (9)
 - `ACT` (5)
 - `TRM` (4)
 - `DEQ` (3)
@@ -69,6 +69,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `LoRA` (2)
 - `MoR` (2)
 - `mythos` (2)
+- `Parcae` (2)
 - `recursive-transformer` (2)
 - `activation-compression` (1)
 - `AdaPonderLM` (1)
@@ -87,6 +88,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `convergence` (1)
 - `CoTFormer` (1)
 - `detach` (1)
+- `Exact-ZOH` (1)
 - `fixed-point-analysis` (1)
 - `generalist-processor` (1)
 - `halting` (1)
@@ -117,7 +119,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `multi-resolution-recursion` (1)
 - `multimodal` (1)
 - `Neural GPU` (1)
-- `Parcae` (1)
 - `phantom-gradient` (1)
 - `preference-probing` (1)
 - `programmable-computer` (1)
