@@ -1,38 +1,46 @@
-title: "ELT: Elastic Looped Transformers for Visual Generation"
+title: 'ELT: Elastic Looped Transformers for Visual Generation'
 authors:
-  - "Sahil Goyal"
-  - "Swayam Agrawal"
-  - "Gautham Govind Anil"
-  - "Prateek Jain"
-  - "Sujoy Paul"
-  - "Aditya Kusupati"
+- Sahil Goyal
+- Swayam Agrawal
+- Gautham Govind Anil
+- Prateek Jain
+- Sujoy Paul
+- Aditya Kusupati
 year: 2026
-published_date: "2026-04-10"
-added_date: "2026-05-03"
-venue: "arXiv"
-category: "designs"
+published_date: '2026-04-10'
+added_date: '2026-05-03'
+venue: arXiv
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "vision"
-  - "efficiency"
+- vision
+- efficiency
 tags:
-  - "ELT"
-  - "looped-transformer"
-  - "ILSD"
+- ELT
+- looped-transformer
+- ILSD
 focus_tags:
-  - "architecture"
-  - "training-algorithm"
-  - "inference-algorithm"
-desc: >
-  Introduces Elastic Looped Transformers for image and video generation, using
-  weight-shared recurrent transformer blocks plus Intra-Loop Self Distillation
-  to support any-time inference with dynamic quality-compute trade-offs from a
-  single training run.
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: 'Introduces Elastic Looped Transformers for image and video generation, using
+  weight-shared recurrent transformer blocks plus Intra-Loop Self Distillation to
+  support any-time inference with dynamic quality-compute trade-offs from a single
+  training run.
+
+  '
 links:
-  arxiv: "https://arxiv.org/abs/2604.09168"
+  arxiv: https://arxiv.org/abs/2604.09168
   comment:
-    - label: "Tweet by Grigory Sapunov"
-      url: "https://x.com/che_shr_cat/status/2050923533199376595?s=20"
-    - label: "Grigory Sapunov's reading notes"
-      url: "https://arxiviq.substack.com/p/elt-elastic-looped-transformers-for"
+  - label: Tweet by Grigory Sapunov
+    url: https://x.com/che_shr_cat/status/2050923533199376595?s=20
+  - label: Grigory Sapunov's reading notes
+    url: https://arxiviq.substack.com/p/elt-elastic-looped-transformers-for
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-05-03'
