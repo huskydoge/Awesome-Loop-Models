@@ -1,0 +1,33 @@
+title: "Adaptive Computation Time (ACT) in Neural Networks [3/3]"
+authors:
+  - "Grigory Sapunov"
+year: 2020
+published_date: "2020-01-07"
+added_date: "2026-05-03"
+venue: "Medium"
+mechanism_tags:
+  - "flat-loop"
+
+domain_tags:
+  - "language-modeling"
+  - "algorithmic-reasoning"
+  - "efficiency"
+
+tags:
+  - "ACT"
+  - "UT"
+  - "adaptive-computation-time"
+  - "universal-transformer"
+
+focus_tags:
+  - "architecture"
+  - "inference-algorithm"
+
+desc: >
+  Reviews Adaptive Computation Time in transformer-style models, focusing on
+  Universal Transformers with dynamic per-position halting, adaptive attention
+  span, and ALBERT-style cross-layer parameter sharing as related forms of
+  adaptive or repeated computation.
+
+links:
+  blog: "https://moocaholic.medium.com/adaptive-computation-time-act-in-neural-networks-3-3-99452b2eff18"
