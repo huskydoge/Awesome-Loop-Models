@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 64,
+    "total": 65,
     "paper_total": 60,
-    "blog_total": 4,
+    "blog_total": 5,
     "briefing_total": 2,
     "latest_briefing_date": "2026-04-30",
-    "generated": "2026-05-01T03:03:45.451681+00:00",
-    "generated_local_date": "2026-05-01",
+    "generated": "2026-05-03T19:00:00.879597+00:00",
+    "generated_local_date": "2026-05-03",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -126,14 +126,14 @@
         "arxiv": "https://arxiv.org/abs/1603.08983",
         "alphaxiv": "https://www.alphaxiv.org/abs/1603.08983"
       },
-      "citations": 691,
+      "citations": 692,
       "citation_sources": {
-        "semantic_scholar": 691,
+        "semantic_scholar": 692,
         "openalex": 361,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-04-29",
+      "metrics_updated": "2026-05-03",
       "id": "1603.08983",
       "source_file": "1603.08983.yaml",
       "source_path": "papers/1603.08983.yaml",
@@ -171,14 +171,14 @@
         "openreview": "https://openreview.net/forum?id=HyzdRiR9Y7",
         "alphaxiv": "https://www.alphaxiv.org/abs/1807.03819"
       },
-      "citations": 897,
+      "citations": 898,
       "citation_sources": {
-        "semantic_scholar": 897,
+        "semantic_scholar": 898,
         "openalex": 396,
         "opencitations": 3
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-01",
+      "metrics_updated": "2026-05-03",
       "id": "1807.03819",
       "source_file": "1807.03819.yaml",
       "source_path": "papers/1807.03819.yaml",
@@ -229,9 +229,9 @@
         "paper": "https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html",
         "github": "https://github.com/locuslab/deq"
       },
-      "citations": 842,
+      "citations": 844,
       "citation_sources": {
-        "semantic_scholar": 842,
+        "semantic_scholar": 844,
         "openalex": 246,
         "opencitations": 0
       },
@@ -241,7 +241,7 @@
         "github_api": 797
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-01",
+      "metrics_updated": "2026-05-03",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -837,19 +837,19 @@
         "github": "https://github.com/seal-rg/recurrent-pretraining",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.05171"
       },
-      "citations": 202,
+      "citations": 203,
       "citation_sources": {
-        "semantic_scholar": 202,
+        "semantic_scholar": 203,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 879,
+      "github_stars": 881,
       "star_sources": {
-        "github_api": 879
+        "github_api": 881
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-04-30",
+      "metrics_updated": "2026-05-03",
       "id": "2502.05171",
       "source_file": "2502.05171.yaml",
       "source_path": "papers/2502.05171.yaml",
@@ -1197,10 +1197,10 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-01",
-      "github_stars": 570,
+      "metrics_updated": "2026-05-03",
+      "github_stars": 571,
       "star_sources": {
-        "github_api": 570
+        "github_api": 571
       },
       "star_source_best": "github_api",
       "id": "2507.10524",
@@ -3213,12 +3213,12 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.21999"
       },
       "citations": 0,
-      "github_stars": 8,
+      "github_stars": 9,
       "star_sources": {
-        "github_api": 8
+        "github_api": 9
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-04-30",
+      "metrics_updated": "2026-05-03",
       "citation_sources": {
         "semantic_scholar": 0,
         "openalex": 0,
@@ -3514,6 +3514,43 @@
       "entry_type": "blog",
       "authors_list": [
         "Rui-Jie Zhu"
+      ],
+      "venueClass": "venue-other"
+    },
+    {
+      "title": "Exact Input Writes Improve Stable Looped Language Models",
+      "authors": "Benhao Huang",
+      "year": 2026,
+      "published_date": "2026-04-29",
+      "added_date": "2026-05-03",
+      "venue": "Personal Blog",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "theory"
+      ],
+      "tags": [
+        "Parcae",
+        "Exact-ZOH",
+        "looped-transformer"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Proposes replacing Parcae's Euler input-write gain with the exact zero-order-hold gain, then reports matched 140M looped-language-model controls where Exact-ZOH lowers validation loss under both short-budget probes and an 11.2B-token paper-style run.\n",
+      "links": {
+        "blog": "https://huskydoge.github.io/husky-blog/posts/recursive_models/improve-parcae/",
+        "github": "https://github.com/huskydoge/parcae-zoh-exact"
+      },
+      "id": "2026-04-29-exact-input-writes-parcae",
+      "source_file": "2026-04-29-exact-input-writes-parcae.yaml",
+      "source_path": "blogs/2026-04-29-exact-input-writes-parcae.yaml",
+      "entry_type": "blog",
+      "authors_list": [
+        "Benhao Huang"
       ],
       "venueClass": "venue-other"
     }
