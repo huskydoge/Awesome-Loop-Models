@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 65,
-    "paper_total": 60,
+    "total": 66,
+    "paper_total": 61,
     "blog_total": 5,
     "briefing_total": 2,
     "latest_briefing_date": "2026-04-30",
-    "generated": "2026-05-03T19:00:00.879597+00:00",
+    "generated": "2026-05-03T19:45:28.717112+00:00",
     "generated_local_date": "2026-05-03",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -2658,6 +2658,80 @@
       ],
       "venueClass": "venue-arxiv",
       "arxiv_id": "2604.07822"
+    },
+    {
+      "title": "ELT: Elastic Looped Transformers for Visual Generation",
+      "authors": "Sahil Goyal, Swayam Agrawal, Gautham Govind Anil, Prateek Jain, Sujoy Paul, Aditya Kusupati",
+      "year": 2026,
+      "published_date": "2026-04-10",
+      "added_date": "2026-05-03",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "vision",
+        "efficiency"
+      ],
+      "tags": [
+        "ELT",
+        "looped-transformer",
+        "ILSD"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces Elastic Looped Transformers for image and video generation, using weight-shared recurrent transformer blocks plus Intra-Loop Self Distillation to support any-time inference with dynamic quality-compute trade-offs from a single training run.\n",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2604.09168",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2604.09168"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-05-03",
+      "id": "2604.09168",
+      "source_file": "2604.09168.yaml",
+      "source_path": "papers/2604.09168.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Sahil Goyal",
+        "Swayam Agrawal",
+        "Gautham Govind Anil",
+        "Prateek Jain",
+        "Sujoy Paul",
+        "Aditya Kusupati"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2604.09168",
+      "community_comments": [
+        {
+          "label": "Tweet by Grigory Sapunov",
+          "url": "https://x.com/che_shr_cat/status/2050923533199376595?s=20"
+        },
+        {
+          "label": "Grigory Sapunov's reading notes",
+          "url": "https://arxiviq.substack.com/p/elt-elastic-looped-transformers-for"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Tweet by Grigory Sapunov",
+          "url": "https://x.com/che_shr_cat/status/2050923533199376595?s=20"
+        },
+        {
+          "label": "Grigory Sapunov's reading notes",
+          "url": "https://arxiviq.substack.com/p/elt-elastic-looped-transformers-for"
+        }
+      ]
     },
     {
       "title": "Relational Preference Encoding in Looped Transformer Internal States",
