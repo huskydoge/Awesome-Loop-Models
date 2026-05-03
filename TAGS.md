@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (12)
-- `flat-loop` (53)
+- `flat-loop` (54)
 - `parallel-loop` (2)
 - `implicit-layer` (8)
 
@@ -27,10 +27,10 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (5)
-- `training-algorithm` (30)
-- `architecture` (54)
+- `training-algorithm` (31)
+- `architecture` (55)
 - `data` (2)
-- `inference-algorithm` (36)
+- `inference-algorithm` (37)
 
 ## domain_tags
 
@@ -38,13 +38,13 @@ Observed browser-facing domain tags currently used across the repo.
 
 - `language-modeling` (42)
 - `reasoning` (37)
-- `efficiency` (19)
+- `efficiency` (20)
 - `algorithmic-reasoning` (13)
 - `theory` (6)
 - `scaling` (5)
+- `vision` (3)
 - `memory-efficiency` (2)
 - `RL` (2)
-- `vision` (2)
 - `alignment` (1)
 - `compositional-reasoning` (1)
 - `FLOPs-efficiency` (1)
@@ -57,7 +57,7 @@ Observed browser-facing domain tags currently used across the repo.
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (9)
+- `looped-transformer` (10)
 - `ACT` (5)
 - `TRM` (4)
 - `DEQ` (3)
@@ -88,6 +88,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `convergence` (1)
 - `CoTFormer` (1)
 - `detach` (1)
+- `ELT` (1)
 - `Exact-ZOH` (1)
 - `fixed-point-analysis` (1)
 - `generalist-processor` (1)
@@ -97,6 +98,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `Huginn` (1)
 - `hyper-connections` (1)
 - `Hyperloop` (1)
+- `ILSD` (1)
 - `implicit-reasoning` (1)
 - `implicit-ssm` (1)
 - `iso-depth` (1)
