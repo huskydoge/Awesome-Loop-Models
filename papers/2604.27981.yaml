@@ -9,7 +9,7 @@ year: 2026
 published_date: '2026-04-30'
 added_date: '2026-05-03'
 venue: arXiv
-category: designs
+category: "applications"
 mechanism_tags:
 - flat-loop
 domain_tags:
@@ -18,9 +18,9 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
-desc: Introduces an all-MLP time-series forecasting framework whose iterative refinement
-  module repeatedly applies a shared-parameter residual mixer stack, deepening computation
-  without adding distinct parameters.
+desc: Applies a shared-parameter iterative refinement module inside an all-MLP
+  multivariate time-series forecasting system, using the loop-model pattern for a
+  concrete forecasting application.
 links:
   arxiv: https://arxiv.org/abs/2604.27981
 citations: 0

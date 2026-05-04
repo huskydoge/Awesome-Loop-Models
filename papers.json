@@ -5,7 +5,7 @@
     "blog_total": 6,
     "briefing_total": 3,
     "latest_briefing_date": "2026-05-03",
-    "generated": "2026-05-04T00:14:23.287643+00:00",
+    "generated": "2026-05-04T01:33:24.437572+00:00",
     "generated_local_date": "2026-05-03",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -3366,7 +3366,7 @@
       "published_date": "2026-04-30",
       "added_date": "2026-05-03",
       "venue": "arXiv",
-      "category": "designs",
+      "category": "applications",
       "mechanism_tags": [
         "flat-loop"
       ],
@@ -3378,7 +3378,7 @@
         "architecture",
         "inference-algorithm"
       ],
-      "desc": "Introduces an all-MLP time-series forecasting framework whose iterative refinement module repeatedly applies a shared-parameter residual mixer stack, deepening computation without adding distinct parameters.",
+      "desc": "Applies a shared-parameter iterative refinement module inside an all-MLP multivariate time-series forecasting system, using the loop-model pattern for a concrete forecasting application.",
       "links": {
         "arxiv": "https://arxiv.org/abs/2604.27981",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.27981"
@@ -3719,10 +3719,10 @@
       "date": "2026-05-03",
       "title": "Daily Loop-Model Briefing — 2026-05-03",
       "status": "included",
-      "summary": "One in-scope paper is tracked today: ITS-Mina uses iterative refinement by repeatedly applying a shared-parameter residual mixer stack inside an all-MLP time-series forecasting model.",
+      "summary": "One in-scope paper is tracked today: ITS-Mina applies iterative refinement by repeatedly applying a shared-parameter residual mixer stack inside an all-MLP multivariate time-series forecasting system.",
       "highlights": [
         "Main signal: ITS-Mina explicitly reuses the same residual mixer stack across refinement steps within one forecasting model computation.",
-        "Reader takeaway: the paper is a domain-specialized loop-model design for multivariate time-series forecasting, with the loop used to increase effective depth without multiplying distinct parameters.",
+        "Reader takeaway: this is best treated as an application-focused loop-model paper for multivariate time-series forecasting, with the loop used to improve domain/task performance.",
         "Triage outcome: one paper is included; nearby implicit-layer or shared-parameter false positives are left out because they do not clearly reuse a learned internal operator as the repo defines loop models."
       ],
       "candidates": [
@@ -3745,7 +3745,7 @@
           "verdict": "not included — “shared parameters” refers to federated-learning update sharing, not repeated layer reuse inside one prediction"
         }
       ],
-      "content": "# Daily Loop-Model Briefing — 2026-05-03\n\n## Best signal today\n\nThe strongest in-scope paper today is **ITS-Mina**. It is a multivariate time-series forecasting architecture built around an iterative refinement mechanism: the model progressively improves temporal representations by repeatedly applying a **shared-parameter residual mixer stack**.\n\nThat phrase is the important scope signal. The repeated computation is not an external agent loop, repeated prompting, or a second full-model call. It is a reused learned internal module inside the model’s own forecasting computation, so it matches the repository definition of a loop model.\n\n## Why it matters\n\nITS-Mina is useful for readers because it shows the loop-model pattern outside language modeling and classic Universal-Transformer/DEQ settings:\n\n- the shared residual mixer stack increases effective depth without multiplying the number of distinct parameters;\n- external attention is used to capture cross-sample/global dependencies at linear computational complexity;\n- Harris Hawks Optimization is used for automatic dropout-rate tuning, so the paper combines looped architecture with a practical model-selection recipe.\n\nThe authors report state-of-the-art or competitive results on six widely used multivariate forecasting benchmarks against eleven baselines. Because the main contribution is a new domain-specialized architecture, it is best filed under **Architecture and Algorithm Designs** with sequence-modeling and efficiency domain tags.\n\n## Near-misses\n\nTwo screened items are left out. **Physics-Guided Dimension Reduction for Simulation-Free Operator Learning of Stiff Differential-Algebraic Systems** uses an implicit Newton layer and cascaded implicit layers, but its abstract emphasizes a differentiable physical constraint solve rather than reuse of a learned internal block as the model’s loop. **Privacy-Preserving Federated Learning via Differential Privacy and Homomorphic Encryption for Cardiovascular Disease Risk Modeling** mentions shared parameters only in the federated-learning sense, so it is outside the repo’s architectural scope.",
+      "content": "# Daily Loop-Model Briefing — 2026-05-03\n\n## Best signal today\n\nThe strongest in-scope paper today is **ITS-Mina**. It is a multivariate time-series forecasting architecture built around an iterative refinement mechanism: the model progressively improves temporal representations by repeatedly applying a **shared-parameter residual mixer stack**.\n\nThat phrase is the important scope signal. The repeated computation is not an external agent loop, repeated prompting, or a second full-model call. It is a reused learned internal module inside the model’s own forecasting computation, so it matches the repository definition of a loop model.\n\n## Why it matters\n\nITS-Mina is useful for readers because it shows the loop-model pattern as an application technique for multivariate time-series forecasting, outside language modeling and classic Universal-Transformer/DEQ settings:\n\n- the shared residual mixer stack increases effective depth without multiplying the number of distinct parameters;\n- external attention is used to capture cross-sample/global dependencies at linear computational complexity;\n- Harris Hawks Optimization is used for automatic dropout-rate tuning, so the paper combines looped architecture with a practical model-selection recipe.\n\nThe authors report state-of-the-art or competitive results on six widely used multivariate forecasting benchmarks against eleven baselines. Because the main reader takeaway is domain/task performance in a concrete forecasting setting, it is best filed under **Applications Focused** with sequence-modeling and efficiency domain tags.\n\n## Near-misses\n\nTwo screened items are left out. **Physics-Guided Dimension Reduction for Simulation-Free Operator Learning of Stiff Differential-Algebraic Systems** uses an implicit Newton layer and cascaded implicit layers, but its abstract emphasizes a differentiable physical constraint solve rather than reuse of a learned internal block as the model’s loop. **Privacy-Preserving Federated Learning via Differential Privacy and Homomorphic Encryption for Cardiovascular Disease Risk Modeling** mentions shared parameters only in the federated-learning sense, so it is outside the repo’s architectural scope.",
       "source_path": "briefings/2026/05/2026-05-03.md"
     },
     {
