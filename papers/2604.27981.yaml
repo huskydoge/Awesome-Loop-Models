@@ -1,0 +1,32 @@
+title: 'ITS-Mina: A Harris Hawks Optimization-Based All-MLP Framework with Iterative
+  Refinement and External Attention for Multivariate Time Series Forecasting'
+authors:
+- Pourya Zamanvaziri
+- Amirhossein Sadr
+- Aida Pakniyat
+- Dara Rahmati
+year: 2026
+published_date: '2026-04-30'
+added_date: '2026-05-03'
+venue: arXiv
+category: designs
+mechanism_tags:
+- flat-loop
+domain_tags:
+- sequence-modeling
+- efficiency
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces an all-MLP time-series forecasting framework whose iterative refinement
+  module repeatedly applies a shared-parameter residual mixer stack, deepening computation
+  without adding distinct parameters.
+links:
+  arxiv: https://arxiv.org/abs/2604.27981
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-05-04'
