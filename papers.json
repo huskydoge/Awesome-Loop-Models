@@ -3,9 +3,9 @@
     "total": 68,
     "paper_total": 62,
     "blog_total": 6,
-    "briefing_total": 3,
-    "latest_briefing_date": "2026-05-03",
-    "generated": "2026-05-04T06:21:42.356430+00:00",
+    "briefing_total": 4,
+    "latest_briefing_date": "2026-05-04",
+    "generated": "2026-05-05T00:12:49.882963+00:00",
     "generated_local_date": "2026-05-04",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -3715,6 +3715,46 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-05-04",
+      "title": "Daily Loop-Model Briefing — 2026-05-04",
+      "status": "watchlist",
+      "summary": "No new high-confidence paper was added today. The strongest signal was State Stream Transformer (SST) V2, which is useful context for latent-state recurrence, but it remains outside the main collection until the loop can be shown as reused internal computation within one forward process rather than state carried between decoder forward passes or token positions.",
+      "highlights": [
+        "No new paper was added to the main collection.",
+        "SST V2 is worth watching because it adds an FFN-driven nonlinear state stream to each decoder layer and reports optional latent deliberation before token emission.",
+        "It is not included today because the paper describes the state stream as flowing between decoder forward passes and across positions, which is closer to latent/state-stream recurrence or repeated decoder passes than a clean within-forward reused block.",
+        "Three other fresh latent-reasoning papers were checked and left out because they optimize latent traces, future-aware queries, or VLA reasoning policies without clearly reusing a learned layer/operator inside one prediction."
+      ],
+      "candidates": [
+        {
+          "id": "2605.00206",
+          "title": "State Stream Transformer (SST) V2: Parallel Training of Nonlinear Recurrence for Latent Space Reasoning",
+          "url": "https://arxiv.org/abs/2605.00206",
+          "verdict": "watchlist — adjacent latent-state recurrence, but not added because the mechanism appears to stream state between decoder forward passes or positions rather than clearly reuse a block within one forward process"
+        },
+        {
+          "id": "2605.00078",
+          "title": "Being-H0.7: A Latent World-Action Model from Egocentric Videos",
+          "url": "https://arxiv.org/abs/2605.00078",
+          "verdict": "near-miss — future-aware latent queries for VLA policies, not an explicit same-operator loop inside one forward process"
+        },
+        {
+          "id": "2604.28192",
+          "title": "LaST-R1: Reinforcing Action via Adaptive Physical Latent Reasoning for VLA Models",
+          "url": "https://arxiv.org/abs/2604.28192",
+          "verdict": "near-miss — adaptive latent Chain-of-Thought/RL for VLA control, but no clear reused internal learned operator in the abstract"
+        },
+        {
+          "id": "2604.27998",
+          "title": "Latent-GRPO: Group Relative Policy Optimization for Latent Reasoning",
+          "url": "https://arxiv.org/abs/2604.27998",
+          "verdict": "near-miss — reinforcement-learning method for latent reasoning paths rather than a loop-model architecture"
+        }
+      ],
+      "content": "# Daily Loop-Model Briefing — 2026-05-04\n\n## Outcome\n\nNo new paper was added to the main collection today. The watch found several fresh papers around latent reasoning, but none crossed the repository’s strict boundary: for one prediction, a learned internal layer, block, module, or operator should be reused within the model’s forward process.\n\n## Strongest watchlist signal\n\n**State Stream Transformer (SST) V2** is the most relevant item to watch. The paper introduces a state stream at each decoder layer, produced through an FFN-driven nonlinear recurrence and blended horizontally through the sequence. It also reports optional latent deliberation before emitting a token, with a claimed +15.15 point gain over a fine-tuning-matched baseline on GPQA-Diamond and a 46% reduction of the baseline’s remaining GSM8K errors.\n\nThe reason it stays out of the paper list for now is the architectural boundary. The abstract and HTML describe state flowing between decoder forward passes and positions, with extra inference passes used for per-token deliberation. That is adjacent to looped transformers, but it reads more like latent state carried across decoder invocations or repeated forward passes than a clean reused internal block within one forward process. A deeper read could change this if the authors specify a same-forward operator reuse mechanism that is central to the model.\n\n## Other near-misses\n\n- **Being-H0.7** uses learnable latent queries and future-informed training for VLA policies. It is useful context for latent world/action modeling, but the abstract does not describe repeated reuse of a learned operator inside one prediction.\n- **LaST-R1** optimizes adaptive physical latent Chain-of-Thought for VLA control. It is a latent-reasoning/control paper, but not clearly a loop-model architecture under the repo rule.\n- **Latent-GRPO** improves reinforcement learning over latent reasoning paths. It targets the optimization of latent traces rather than a recurrent-depth, DEQ, or shared-operator model.",
+      "source_path": "briefings/2026/05/2026-05-04.md"
+    },
     {
       "date": "2026-05-03",
       "title": "Daily Loop-Model Briefing — 2026-05-03",
