@@ -9,7 +9,7 @@ year: 2025
 published_date: '2025-07-02'
 added_date: '2026-04-21'
 venue: arXiv
-category: "analysis"
+category: analysis
 mechanism_tags:
 - flat-loop
 domain_tags:
@@ -25,9 +25,9 @@ desc: Probes a depth-recurrent Transformer to test whether latent chain-of-thoug
   interpretability effects.
 links:
   arxiv: https://arxiv.org/abs/2507.02199
-citations: 5
+citations: 6
 citation_sources:
-  semantic_scholar: 5
+  semantic_scholar: 6
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-22'
+metrics_updated: '2026-05-08'

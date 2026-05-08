@@ -1,4 +1,5 @@
-title: 'Is One Layer Enough? Understanding Inference Dynamics in Tabular Foundation Models'
+title: Is One Layer Enough? Understanding Inference Dynamics in Tabular Foundation
+  Models
 authors:
 - Amir Rezaei Balef
 - Mykhailo Koshil
@@ -16,15 +17,16 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
-desc: Analyzes layerwise inference dynamics in tabular foundation models and uses the
-  observed depth redundancy to build a looped single-layer model that preserves comparable
-  performance with about 20% of the original parameters.
+desc: Analyzes layerwise inference dynamics in tabular foundation models and uses
+  the observed depth redundancy to build a looped single-layer model that preserves
+  comparable performance with about 20% of the original parameters.
 links:
   arxiv: https://arxiv.org/abs/2605.06510
   github: https://github.com/amirbalef/is_one_layer_enough
 citations: 0
 citation_sources:
   semantic_scholar: 0
+  opencitations: 0
 citation_source_best: semantic_scholar
 github_stars: 1
 star_sources:

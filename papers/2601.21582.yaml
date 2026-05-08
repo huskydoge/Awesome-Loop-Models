@@ -1,4 +1,5 @@
-title: 'Depth-Recurrent Attention Mixtures: Giving Latent Reasoning the Attention it Deserves'
+title: 'Depth-Recurrent Attention Mixtures: Giving Latent Reasoning the Attention
+  it Deserves'
 authors:
 - Jonas Knupp
 - Jan Hendrik Metzen
@@ -8,7 +9,7 @@ authors:
 year: 2026
 published_date: '2026-01-29'
 venue: arXiv
-category: "designs"
+category: designs
 mechanism_tags:
 - parallel-loop
 - flat-loop
@@ -21,16 +22,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
-desc: Introduces a modular framework combining sequence attention and depth attention for recurrent-depth models, improving FLOP-, parameter-, and memory-efficiency simultaneously.
+desc: Introduces a modular framework combining sequence attention and depth attention
+  for recurrent-depth models, improving FLOP-, parameter-, and memory-efficiency simultaneously.
 links:
   arxiv: https://arxiv.org/abs/2601.21582
   comment:
   - label: Benhao's reading note
     url: https://x.com/huskydogewoof/status/2031585611262386670?s=20
-citations: 2
+citations: 3
 citation_sources:
-  semantic_scholar: 2
+  semantic_scholar: 3
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-14'
+metrics_updated: '2026-05-08'

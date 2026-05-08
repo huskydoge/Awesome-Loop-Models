@@ -25,10 +25,10 @@ links:
   comment:
   - label: X Comment
     url: https://x.com/huskydogewoof/status/2037024461145215106?s=20
-citations: 5
+citations: 6
 citation_sources:
-  semantic_scholar: 5
+  semantic_scholar: 6
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-26'
+metrics_updated: '2026-05-08'

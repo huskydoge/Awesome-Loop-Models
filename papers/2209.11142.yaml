@@ -18,7 +18,7 @@ authors:
 year: 2022
 published_date: '2022-09-22'
 venue: LoG
-category: "designs"
+category: designs
 mechanism_tags:
 - flat-loop
 domain_tags:
@@ -28,13 +28,15 @@ tags:
 focus_tags:
 - architecture
 - data
-desc: Presents a single GNN model trained on 30+ algorithms from the CLRS benchmark, demonstrating that a shared recurrent architecture can generalize across diverse algorithmic tasks.
+desc: Presents a single GNN model trained on 30+ algorithms from the CLRS benchmark,
+  demonstrating that a shared recurrent architecture can generalize across diverse
+  algorithmic tasks.
 links:
   arxiv: https://arxiv.org/abs/2209.11142
-citations: 67
+citations: 68
 citation_sources:
-  semantic_scholar: 67
+  semantic_scholar: 68
   openalex: 7
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-14'
+metrics_updated: '2026-05-08'

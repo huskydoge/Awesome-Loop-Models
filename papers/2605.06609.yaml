@@ -1,4 +1,5 @@
-title: 'Transformers Efficiently Perform In-Context Logistic Regression via Normalized Gradient Descent'
+title: Transformers Efficiently Perform In-Context Logistic Regression via Normalized
+  Gradient Descent
 authors:
 - Chenyang Zhang
 - Yuan Cao
@@ -24,5 +25,6 @@ links:
 citations: 0
 citation_sources:
   semantic_scholar: 0
+  opencitations: 0
 citation_source_best: semantic_scholar
 metrics_updated: '2026-05-08'
