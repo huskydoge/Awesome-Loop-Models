@@ -1,0 +1,33 @@
+title: 'Is One Layer Enough? Understanding Inference Dynamics in Tabular Foundation Models'
+authors:
+- Amir Rezaei Balef
+- Mykhailo Koshil
+- Katharina Eggensperger
+year: 2026
+published_date: '2026-05-07'
+added_date: '2026-05-08'
+venue: ICML
+category: analysis
+mechanism_tags:
+- flat-loop
+domain_tags:
+- tabular-data
+- reasoning
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Analyzes layerwise inference dynamics in tabular foundation models and uses the
+  observed depth redundancy to build a looped single-layer model that preserves comparable
+  performance with about 20% of the original parameters.
+links:
+  arxiv: https://arxiv.org/abs/2605.06510
+  github: https://github.com/amirbalef/is_one_layer_enough
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+citation_source_best: semantic_scholar
+github_stars: 1
+star_sources:
+  github_api: 1
+star_source_best: github_api
+metrics_updated: '2026-05-08'
