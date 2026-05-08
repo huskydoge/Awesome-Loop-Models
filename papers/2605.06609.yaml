@@ -1,0 +1,28 @@
+title: 'Transformers Efficiently Perform In-Context Logistic Regression via Normalized Gradient Descent'
+authors:
+- Chenyang Zhang
+- Yuan Cao
+year: 2026
+published_date: '2026-05-07'
+added_date: '2026-05-08'
+venue: arXiv
+category: analysis
+mechanism_tags:
+- flat-loop
+domain_tags:
+- theory
+- reasoning
+focus_tags:
+- architecture
+- inference-algorithm
+- training-algorithm
+desc: Proves that softmax transformers can implement in-context logistic regression
+  by treating layers as normalized-gradient-descent steps, then trains one self-attention
+  layer and applies it recurrently as a looped model with convergence and OOD guarantees.
+links:
+  arxiv: https://arxiv.org/abs/2605.06609
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-05-08'
