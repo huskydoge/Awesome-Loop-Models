@@ -18,9 +18,9 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (12)
-- `flat-loop` (59)
+- `flat-loop` (60)
 - `parallel-loop` (2)
-- `implicit-layer` (8)
+- `implicit-layer` (9)
 
 ## focus_tags
 
@@ -28,9 +28,9 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 - `objective-loss` (5)
 - `training-algorithm` (33)
-- `architecture` (60)
+- `architecture` (61)
 - `data` (2)
-- `inference-algorithm` (41)
+- `inference-algorithm` (42)
 
 ## domain_tags
 
@@ -39,8 +39,8 @@ Observed browser-facing domain tags currently used across the repo.
 - `language-modeling` (44)
 - `reasoning` (40)
 - `efficiency` (23)
-- `algorithmic-reasoning` (14)
-- `theory` (7)
+- `algorithmic-reasoning` (15)
+- `theory` (8)
 - `scaling` (5)
 - `memory-efficiency` (3)
 - `vision` (3)
@@ -65,6 +65,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `DEQ` (3)
 - `Ouro` (3)
 - `adaptive-computation-time` (2)
+- `convergence` (2)
 - `depth-recurrent` (2)
 - `depth-scaling` (2)
 - `looped-llm` (2)
@@ -74,6 +75,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `Parcae` (2)
 - `recursive-transformer` (2)
 - `universal-transformer` (2)
+- `weight-tying` (2)
 - `activation-compression` (1)
 - `AdaPonderLM` (1)
 - `adaptive-latent-iteration` (1)
@@ -87,7 +89,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `CoLa` (1)
 - `compositional-generalization` (1)
 - `compute-bounded-policy` (1)
-- `convergence` (1)
 - `CoTFormer` (1)
 - `detach` (1)
 - `ELT` (1)
@@ -141,4 +142,3 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `Think-at-Hard` (1)
 - `timestep-encoding` (1)
 - `URM` (1)
-- `weight-tying` (1)
