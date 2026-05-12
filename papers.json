@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 70,
-    "paper_total": 64,
+    "total": 71,
+    "paper_total": 65,
     "blog_total": 6,
-    "briefing_total": 5,
-    "latest_briefing_date": "2026-05-07",
-    "generated": "2026-05-11T06:29:36.647555+00:00",
+    "briefing_total": 6,
+    "latest_briefing_date": "2026-05-11",
+    "generated": "2026-05-12T00:12:22.306169+00:00",
     "generated_local_date": "2026-05-11",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -3505,6 +3505,59 @@
       "arxiv_id": "2605.06609"
     },
     {
+      "title": "Memory-Efficient Looped Transformer: Decoupling Compute from Memory in Looped Language Models",
+      "authors": "Victor Conchello Vendrell, Arnau Padres Masdemont, Niccolò Grillo, Jordi Ros-Giralt, Arash Behboodi, Fabio Valerio Massoli",
+      "year": 2026,
+      "published_date": "2026-05-08",
+      "added_date": "2026-05-11",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "memory-efficiency",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "tags": [
+        "looped-transformer",
+        "looped-llm"
+      ],
+      "desc": "Introduces MELT, a looped transformer variant that shares a single per-layer KV cache across reasoning loops and updates it with a learnable gate, decoupling loop depth from memory growth for Ouro/LoopLM-style recurrent LLMs.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.07721",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.07721"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-05-12",
+      "id": "2605.07721",
+      "source_file": "2605.07721.yaml",
+      "source_path": "papers/2605.07721.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Victor Conchello Vendrell",
+        "Arnau Padres Masdemont",
+        "Niccolò Grillo",
+        "Jordi Ros-Giralt",
+        "Arash Behboodi",
+        "Fabio Valerio Massoli"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.07721"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -3813,6 +3866,46 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-05-11",
+      "title": "Daily Loop-Model Briefing — 2026-05-11",
+      "status": "added",
+      "summary": "One verified May 8 arXiv paper was added: MELT, a memory-efficient looped transformer that shares and updates a per-layer KV cache across reasoning loops. CEM, LaTER, and recurrent state-tracking papers were checked but left out because their abstracts do not clearly cross the repo's same-forward reused-operator boundary.",
+      "highlights": [
+        "Added one high-confidence, exact-page-verified May 8 paper to the main collection.",
+        "MELT keeps the loop-model mechanism explicit by reusing looped transformer computation while making the KV cache constant-size across reasoning depth.",
+        "The main empirical claim is practical memory scaling: MELT fine-tuned from Ouro-style parameters preserves looped-LLM performance while using memory closer to standard LLMs than to full Ouro-style caches.",
+        "CEM, LaTER, and recurrent state-tracking items remain outside the main list unless the paper text shows same-forward reuse of a learned internal block rather than energy-inspired parameterization, repeated latent rollouts, or ordinary sequence-time recurrence."
+      ],
+      "candidates": [
+        {
+          "id": "2605.07721",
+          "title": "Memory-Efficient Looped Transformer: Decoupling Compute from Memory in Looped Language Models",
+          "url": "https://arxiv.org/abs/2605.07721",
+          "verdict": "included — explicit looped transformer architecture with a shared per-layer KV cache updated across reasoning loops"
+        },
+        {
+          "id": "2605.07588",
+          "title": "Revisiting Transformer Layer Parameterization Through Causal Energy Minimization",
+          "url": "https://arxiv.org/abs/2605.07588",
+          "verdict": "near-miss — energy-based layer-parameterization analysis with weight-tied components and recursive updates, but the abstract does not clearly establish a looped same-forward shared operator"
+        },
+        {
+          "id": "2605.07315",
+          "title": "LaTER: Efficient Test-Time Reasoning via Latent Exploration and Explicit Verification",
+          "url": "https://arxiv.org/abs/2605.07315",
+          "verdict": "near-miss — latent-state rollout and KV-cache preservation look adjacent, but the abstract reads as test-time latent feedback rather than internal reused-layer loop modeling"
+        },
+        {
+          "id": "2605.07755",
+          "title": "Rethinking State Tracking in Recurrent Models Through Error Control Dynamics",
+          "url": "https://arxiv.org/abs/2605.07755",
+          "verdict": "near-miss — useful recurrent-model theory, but focused on ordinary sequence-time recurrence in SSMs and linear attention rather than depth-reused loop-model blocks"
+        }
+      ],
+      "content": "# Daily Loop-Model Briefing — 2026-05-11\n\n## Outcome\n\nOne recent arXiv paper was added to the main collection. It is a direct looped-language-model architecture paper and was verified on its exact arXiv abstract page.\n\n## Added to the collection\n\n### Memory-Efficient Looped Transformer: Decoupling Compute from Memory in Looped Language Models\n\nMELT targets a concrete bottleneck in recurrent-depth / looped LLMs: if each reasoning loop keeps a standard KV cache, memory grows with loop depth. The paper proposes a looped transformer architecture that keeps a single KV cache per layer and updates it across reasoning loops with a learnable gate, then trains the model with a two-phase chunk-wise post-training recipe from a LoopLM/Ouro-style starting point.\n\nWhy it is in scope: the paper is explicitly about looped language models, where internal representations are iteratively updated over repeated loop steps within one prediction. The new contribution is a loop-model design that changes how cache state is shared across those repeated loops, so it fits the flat-loop mechanism and belongs under Architecture and Algorithm Designs.\n\nMain reader takeaway: the abstract reports that MELT models fine-tuned from pretrained Ouro parameters outperform standard LLMs of comparable size while keeping memory comparable to those standard LLMs and much smaller than Ouro-style loop caches. This makes it a practical memory-efficiency design for scaling loop depth.\n\n## Checked but not added\n\n- **Revisiting Transformer Layer Parameterization Through Causal Energy Minimization** introduces an energy-based lens for transformer layer parameterization and mentions weight-tied MHA, shared projections, and recursive updates. The abstract is adjacent, but it does not clearly say the model reuses the same learned layer/block/operator repeatedly within one forward process, so it stays out for now.\n- **LaTER** performs latent exploration before explicit verification and preserves latent KV cache state, but the abstract reads as test-time latent rollout / feedback around an existing LLM rather than a clean same-forward reused internal block.\n- **Rethinking State Tracking in Recurrent Models Through Error Control Dynamics** is a theory paper about recurrent sequence/state-tracking dynamics in affine recurrent networks, SSMs, and linear attention. Under this repo's scope rule, ordinary sequence-time recurrence is not enough by itself.",
+      "source_path": "briefings/2026/05/2026-05-11.md"
+    },
     {
       "date": "2026-05-07",
       "title": "Daily Loop-Model Briefing — 2026-05-07",

@@ -1,0 +1,38 @@
+title: 'Memory-Efficient Looped Transformer: Decoupling Compute from Memory in Looped
+  Language Models'
+authors:
+- Victor Conchello Vendrell
+- Arnau Padres Masdemont
+- Niccolò Grillo
+- Jordi Ros-Giralt
+- Arash Behboodi
+- Fabio Valerio Massoli
+year: 2026
+published_date: '2026-05-08'
+added_date: '2026-05-11'
+venue: arXiv
+category: designs
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- memory-efficiency
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+tags:
+- looped-transformer
+- looped-llm
+desc: Introduces MELT, a looped transformer variant that shares a single per-layer
+  KV cache across reasoning loops and updates it with a learnable gate, decoupling
+  loop depth from memory growth for Ouro/LoopLM-style recurrent LLMs.
+links:
+  arxiv: https://arxiv.org/abs/2605.07721
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-05-12'
