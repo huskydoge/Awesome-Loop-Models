@@ -16,6 +16,8 @@ mechanism_tags:
 domain_tags:
 - language-modeling
 - reasoning
+- efficiency
+- memory-efficiency
 tags:
 - MELT
 focus_tags:
