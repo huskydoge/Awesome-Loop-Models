@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 71,
-    "paper_total": 65,
+    "total": 72,
+    "paper_total": 66,
     "blog_total": 6,
     "briefing_total": 6,
     "latest_briefing_date": "2026-05-11",
-    "generated": "2026-05-12T00:58:08.228809+00:00",
-    "generated_local_date": "2026-05-12",
+    "generated": "2026-05-12T03:17:15.722964+00:00",
+    "generated_local_date": "2026-05-11",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -3505,6 +3505,54 @@
       "arxiv_id": "2605.06609"
     },
     {
+      "title": "Bifurcation Models: Learning Set-Valued Solution Maps with Weight-Tied Dynamics",
+      "authors": "Caleb Jore, Jialin Liu",
+      "year": 2026,
+      "published_date": "2026-05-08",
+      "added_date": "2026-05-11",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop",
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "theory",
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "weight-tying",
+        "convergence"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Studies weight-tied dynamics for set-valued solution maps, proving that regular equilibrium dynamics can represent multiple branches while repeated shared-operator iterations discover multiple valid equilibria on Ising and Allen-Cahn tasks.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.07277",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.07277"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-05-12",
+      "id": "2605.07277",
+      "source_file": "2605.07277.yaml",
+      "source_path": "papers/2605.07277.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Caleb Jore",
+        "Jialin Liu"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.07277"
+    },
+    {
       "title": "Memory-Efficient Looped Transformer: Decoupling Compute from Memory in Looped Language Models",
       "authors": "Victor Conchello Vendrell, Arnau Padres Masdemont, Niccolò Grillo, Jordi Ros-Giralt, Arash Behboodi, Fabio Valerio Massoli",
       "year": 2026,
@@ -3867,12 +3915,12 @@
       "date": "2026-05-11",
       "title": "Daily Loop-Model Briefing — 2026-05-11",
       "status": "added",
-      "summary": "One verified May 8 arXiv paper was added: MELT, a memory-efficient looped transformer that shares and updates a per-layer KV cache across reasoning loops. CEM, LaTER, and recurrent state-tracking papers were checked but left out because their abstracts do not clearly cross the repo's same-forward reused-operator boundary.",
+      "summary": "Two verified May 8 arXiv papers are now in the collection: MELT, a memory-efficient looped transformer that shares and updates a per-layer KV cache across reasoning loops, and Bifurcation Models, a weight-tied dynamical-system analysis for set-valued solution maps. CEM, LaTER, optical-flow test-time scaling, and recurrent state-tracking papers were checked but left out because they do not clearly cross the repo's same-forward reused-operator boundary.",
       "highlights": [
-        "Added one high-confidence, exact-page-verified May 8 paper to the main collection.",
+        "Added two high-confidence, exact-page-verified May 8 papers to the main collection.",
         "MELT keeps the loop-model mechanism explicit by reusing looped transformer computation while making the KV cache constant-size across reasoning depth.",
-        "The main empirical claim is practical memory scaling: MELT fine-tuned from Ouro-style parameters preserves looped-LLM performance while using memory closer to standard LLMs than to full Ouro-style caches.",
-        "CEM, LaTER, and recurrent state-tracking items remain outside the main list unless the paper text shows same-forward reuse of a learned internal block rather than energy-inspired parameterization, repeated latent rollouts, or ordinary sequence-time recurrence."
+        "Bifurcation Models explicitly iterates a shared learned operator and studies the stable equilibria of those weight-tied dynamics as a representation for multi-solution problems.",
+        "CEM, LaTER, dense optical-flow refinement, and recurrent state-tracking items remain outside the main list unless the paper text shows same-forward reuse of a learned internal block rather than energy-inspired parameterization, repeated latent rollouts, external refinement, or ordinary sequence-time recurrence."
       ],
       "candidates": [
         {
@@ -3880,6 +3928,12 @@
           "title": "Memory-Efficient Looped Transformer: Decoupling Compute from Memory in Looped Language Models",
           "url": "https://arxiv.org/abs/2605.07721",
           "verdict": "included — explicit looped transformer architecture with a shared per-layer KV cache updated across reasoning loops"
+        },
+        {
+          "id": "2605.07277",
+          "title": "Bifurcation Models: Learning Set-Valued Solution Maps with Weight-Tied Dynamics",
+          "url": "https://arxiv.org/abs/2605.07277",
+          "verdict": "included — explicitly defines repeated weight-tied dynamics with the same learned operator reused at every iteration until stable equilibria"
         },
         {
           "id": "2605.07588",
@@ -3898,9 +3952,15 @@
           "title": "Rethinking State Tracking in Recurrent Models Through Error Control Dynamics",
           "url": "https://arxiv.org/abs/2605.07755",
           "verdict": "near-miss — useful recurrent-model theory, but focused on ordinary sequence-time recurrence in SSMs and linear attention rather than depth-reused loop-model blocks"
+        },
+        {
+          "id": "2605.08000",
+          "title": "Rethinking Dense Optical Flow without Test-Time Scaling",
+          "url": "https://arxiv.org/abs/2605.08000",
+          "verdict": "near-miss — explicitly avoids recurrent updates and iterative refinement by estimating dense optical flow in a single forward pass"
         }
       ],
-      "content": "# Daily Loop-Model Briefing — 2026-05-11\n\n## Outcome\n\nOne recent arXiv paper was added to the main collection. It is a direct looped-language-model architecture paper and was verified on its exact arXiv abstract page.\n\n## Added to the collection\n\n### Memory-Efficient Looped Transformer: Decoupling Compute from Memory in Looped Language Models\n\nMELT targets a concrete bottleneck in recurrent-depth / looped LLMs: if each reasoning loop keeps a standard KV cache, memory grows with loop depth. The paper proposes a looped transformer architecture that keeps a single KV cache per layer and updates it across reasoning loops with a learnable gate, then trains the model with a two-phase chunk-wise post-training recipe from a LoopLM/Ouro-style starting point.\n\nWhy it is in scope: the paper is explicitly about looped language models, where internal representations are iteratively updated over repeated loop steps within one prediction. The new contribution is a loop-model design that changes how cache state is shared across those repeated loops, so it fits the flat-loop mechanism and belongs under Architecture and Algorithm Designs.\n\nMain reader takeaway: the abstract reports that MELT models fine-tuned from pretrained Ouro parameters outperform standard LLMs of comparable size while keeping memory comparable to those standard LLMs and much smaller than Ouro-style loop caches. This makes it a practical memory-efficiency design for scaling loop depth.\n\n## Checked but not added\n\n- **Revisiting Transformer Layer Parameterization Through Causal Energy Minimization** introduces an energy-based lens for transformer layer parameterization and mentions weight-tied MHA, shared projections, and recursive updates. The abstract is adjacent, but it does not clearly say the model reuses the same learned layer/block/operator repeatedly within one forward process, so it stays out for now.\n- **LaTER** performs latent exploration before explicit verification and preserves latent KV cache state, but the abstract reads as test-time latent rollout / feedback around an existing LLM rather than a clean same-forward reused internal block.\n- **Rethinking State Tracking in Recurrent Models Through Error Control Dynamics** is a theory paper about recurrent sequence/state-tracking dynamics in affine recurrent networks, SSMs, and linear attention. Under this repo's scope rule, ordinary sequence-time recurrence is not enough by itself.",
+      "content": "# Daily Loop-Model Briefing — 2026-05-11\n\n## Outcome\n\nTwo recent arXiv papers are now in the main collection. Both were verified on their exact arXiv abstract pages and both make the shared-operator loop explicit rather than relying on generic “iterative” wording.\n\n## Added to the collection\n\n### Memory-Efficient Looped Transformer: Decoupling Compute from Memory in Looped Language Models\n\nMELT targets a concrete bottleneck in recurrent-depth / looped LLMs: if each reasoning loop keeps a standard KV cache, memory grows with loop depth. The paper proposes a looped transformer architecture that keeps a single KV cache per layer and updates it across reasoning loops with a learnable gate, then trains the model with a two-phase chunk-wise post-training recipe from a LoopLM/Ouro-style starting point.\n\nWhy it is in scope: the paper is explicitly about looped language models, where internal representations are iteratively updated over repeated loop steps within one prediction. The new contribution is a loop-model design that changes how cache state is shared across those repeated loops, so it fits the flat-loop mechanism and belongs under Architecture and Algorithm Designs.\n\nMain reader takeaway: the abstract reports that MELT models fine-tuned from pretrained Ouro parameters outperform standard LLMs of comparable size while keeping memory comparable to those standard LLMs and much smaller than Ouro-style loop caches. This makes it a practical memory-efficiency design for scaling loop depth.\n\n### Bifurcation Models: Learning Set-Valued Solution Maps with Weight-Tied Dynamics\n\nThis paper studies multi-solution scientific and combinatorial problems through weight-tied parameterized dynamics. Its mechanism is explicit in the HTML version: starting from an initial state, the model iterates `y_{t+1} = g_θ(y_t, x)`, where the same learned parameters are reused at every iteration, and different initializations can converge to different stable equilibria.\n\nWhy it is in scope: the learned operator is reused repeatedly within the model computation, and the paper’s theory is about the resulting equilibrium / attractor structure. It fits the flat-loop plus implicit-layer mechanisms and is categorized as analysis because the main reader takeaway is formal understanding of what weight-tied equilibrium dynamics can represent.\n\nMain reader takeaway: the abstract reports representation results for broad set-valued maps with locally Lipschitz branches, argues that induced selectors are almost everywhere regular while manual selectors can be arbitrarily irregular, and shows on frustrated Ising and Allen-Cahn tasks that the dynamics can discover multiple valid equilibria without branch labels.\n\n## Checked but not added\n\n- **Revisiting Transformer Layer Parameterization Through Causal Energy Minimization** introduces an energy-based lens for transformer layer parameterization and mentions weight-tied MHA, shared projections, and recursive updates. The abstract is adjacent, but it does not clearly say the model reuses the same learned layer/block/operator repeatedly within one forward process, so it stays out for now.\n- **LaTER** performs latent exploration before explicit verification and preserves latent KV cache state, but the abstract reads as test-time latent rollout / feedback around an existing LLM rather than a clean same-forward reused internal block.\n- **Rethinking State Tracking in Recurrent Models Through Error Control Dynamics** is a theory paper about recurrent sequence/state-tracking dynamics in affine recurrent networks, SSMs, and linear attention. Under this repo's scope rule, ordinary sequence-time recurrence is not enough by itself.\n- **Rethinking Dense Optical Flow without Test-Time Scaling** is useful contrast for the feed because it explicitly argues against iterative refinement and recurrent updates, estimating optical flow in a single forward pass instead.",
       "source_path": "briefings/2026/05/2026-05-11.md"
     },
     {

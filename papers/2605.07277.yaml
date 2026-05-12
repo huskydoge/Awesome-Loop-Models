@@ -1,0 +1,32 @@
+title: 'Bifurcation Models: Learning Set-Valued Solution Maps with Weight-Tied Dynamics'
+authors:
+- Caleb Jore
+- Jialin Liu
+year: 2026
+published_date: '2026-05-08'
+added_date: '2026-05-11'
+venue: arXiv
+category: analysis
+mechanism_tags:
+- flat-loop
+- implicit-layer
+domain_tags:
+- theory
+- algorithmic-reasoning
+tags:
+- weight-tying
+- convergence
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Studies weight-tied dynamics for set-valued solution maps, proving that regular
+  equilibrium dynamics can represent multiple branches while repeated shared-operator
+  iterations discover multiple valid equilibria on Ising and Allen-Cahn tasks.
+links:
+  arxiv: https://arxiv.org/abs/2605.07277
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-05-12'
