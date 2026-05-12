@@ -21,10 +21,10 @@ desc: Extends DEQ to multiscale hierarchical representations, achieving competit
 links:
   arxiv: https://arxiv.org/abs/2006.08656
   paper: https://proceedings.neurips.cc/paper/2020/hash/75ebb3f7b5e8e9d6a7f7e4a4c4f7c2a0-Abstract.html
-citations: 248
+citations: 249
 citation_sources:
-  semantic_scholar: 248
+  semantic_scholar: 249
   openalex: 53
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-05-11'
+metrics_updated: '2026-05-12'
