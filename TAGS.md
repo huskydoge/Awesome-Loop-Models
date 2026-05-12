@@ -30,7 +30,7 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 - `training-algorithm` (33)
 - `architecture` (60)
 - `data` (2)
-- `inference-algorithm` (42)
+- `inference-algorithm` (41)
 
 ## domain_tags
 
@@ -38,12 +38,12 @@ Observed browser-facing domain tags currently used across the repo.
 
 - `language-modeling` (44)
 - `reasoning` (40)
-- `efficiency` (23)
+- `efficiency` (22)
 - `algorithmic-reasoning` (14)
 - `theory` (7)
 - `scaling` (5)
-- `memory-efficiency` (3)
 - `vision` (3)
+- `memory-efficiency` (2)
 - `RL` (2)
 - `sequence-modeling` (2)
 - `alignment` (1)
@@ -58,16 +58,16 @@ Observed browser-facing domain tags currently used across the repo.
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (11)
+- `looped-transformer` (10)
 - `ACT` (6)
 - `TRM` (4)
 - `UT` (4)
 - `DEQ` (3)
-- `looped-llm` (3)
 - `Ouro` (3)
 - `adaptive-computation-time` (2)
 - `depth-recurrent` (2)
 - `depth-scaling` (2)
+- `looped-llm` (2)
 - `LoRA` (2)
 - `MoR` (2)
 - `mythos` (2)
@@ -114,6 +114,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `LoopRPT` (1)
 - `MDEQ` (1)
 - `mechanistic-analysis` (1)
+- `MELT` (1)
 - `memory-banks` (1)
 - `memory-tokens` (1)
 - `MoDr` (1)

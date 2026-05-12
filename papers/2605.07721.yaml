@@ -1,25 +1,33 @@
-title: "Memory-Efficient Looped Transformer: Decoupling Compute from Memory in Looped Language Models"
+title: 'Memory-Efficient Looped Transformer: Decoupling Compute from Memory in Looped
+  Language Models'
 authors:
-- "Victor Conchello Vendrell"
-- "Arnau Padres Masdemont"
-- "Niccolò Grillo"
-- "Jordi Ros-Giralt"
-- "Arash Behboodi"
-- "Fabio Valerio Massoli"
+- Victor Conchello Vendrell
+- Arnau Padres Masdemont
+- Niccolò Grillo
+- Jordi Ros-Giralt
+- Arash Behboodi
+- Fabio Valerio Massoli
 year: 2026
-published_date: "2026-05-08"
-venue: "arXiv"
-category: "designs"
+published_date: '2026-05-08'
+venue: arXiv
+category: designs
 mechanism_tags:
-- "flat-loop"
+- flat-loop
 domain_tags:
-- "language-modeling"
-- "reasoning"
+- language-modeling
+- reasoning
 tags:
-- "MELT"
+- MELT
 focus_tags:
-- "architecture"
-- "training-algorithm"
-desc: "Memory-Efficient Looped Transformer enables constant‑memory iterative reasoning by sharing a single KV cache across loops, achieving strong performance without the linear memory scaling of prior looped LLMs."
+- architecture
+- training-algorithm
+desc: Memory-Efficient Looped Transformer enables constant‑memory iterative reasoning
+  by sharing a single KV cache across loops, achieving strong performance without
+  the linear memory scaling of prior looped LLMs.
 links:
-  arxiv: "https://arxiv.org/abs/2605.07721"
+  arxiv: https://arxiv.org/abs/2605.07721
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-05-12'
