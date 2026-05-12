@@ -20,6 +20,6 @@ tags:
 focus_tags:
 - "architecture"
 - "training-algorithm"
-desc: "Memory-Efficient Looped Transformer enables constant‑memory iterative reasoning by sharing and single KV cache across loops, achieving strong performance without the linear memory scaling of prior looped LLMs."
+desc: "Memory-Efficient Looped Transformer enables constant‑memory iterative reasoning by sharing a single KV cache across loops, achieving strong performance without the linear memory scaling of prior looped LLMs."
 links:
   arxiv: "https://arxiv.org/abs/2605.07721"
