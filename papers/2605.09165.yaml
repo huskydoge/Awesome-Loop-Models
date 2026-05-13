@@ -1,0 +1,33 @@
+title: Sparse Layers are Critical to Scaling Looped Language Models
+authors:
+- Ryan Lee
+- Jacob Biloki
+- Edward J. Hu
+- Jonathan May
+year: 2026
+published_date: '2026-05-09'
+added_date: '2026-05-12'
+venue: arXiv
+category: designs
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- scaling
+- efficiency
+tags:
+- looped-transformer
+- looped-llm
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Shows that MoE-style sparse layers can make looped language models scale better
+  than dense looped transformers, with routing divergence across repeated shared layers
+  recovering expressivity and loop boundaries serving as effective early-exit points.
+links:
+  arxiv: https://arxiv.org/abs/2605.09165
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-05-13'

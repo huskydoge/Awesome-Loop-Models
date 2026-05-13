@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 72,
-    "paper_total": 66,
+    "total": 75,
+    "paper_total": 69,
     "blog_total": 6,
-    "briefing_total": 6,
-    "latest_briefing_date": "2026-05-11",
-    "generated": "2026-05-12T07:44:30.648175+00:00",
-    "generated_local_date": "2026-05-12",
+    "briefing_total": 7,
+    "latest_briefing_date": "2026-05-12",
+    "generated": "2026-05-13T14:28:12.418969+00:00",
+    "generated_local_date": "2026-05-13",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -3604,6 +3604,158 @@
       "arxiv_id": "2605.07721"
     },
     {
+      "title": "Sparse Layers are Critical to Scaling Looped Language Models",
+      "authors": "Ryan Lee, Jacob Biloki, Edward J. Hu, Jonathan May",
+      "year": 2026,
+      "published_date": "2026-05-09",
+      "added_date": "2026-05-12",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "scaling",
+        "efficiency"
+      ],
+      "tags": [
+        "looped-transformer",
+        "looped-llm"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Shows that MoE-style sparse layers can make looped language models scale better than dense looped transformers, with routing divergence across repeated shared layers recovering expressivity and loop boundaries serving as effective early-exit points.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.09165",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.09165"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-05-13",
+      "id": "2605.09165",
+      "source_file": "2605.09165.yaml",
+      "source_path": "papers/2605.09165.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Ryan Lee",
+        "Jacob Biloki",
+        "Edward J. Hu",
+        "Jonathan May"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.09165"
+    },
+    {
+      "title": "Quantum Injection Pathways for Implicit Graph Neural Networks",
+      "authors": "Pengyuan Xu, Tristan Zaborniak, Luis F. Rivera, Hausi A. Müller",
+      "year": 2026,
+      "published_date": "2026-05-09",
+      "added_date": "2026-05-12",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "theory",
+        "efficiency"
+      ],
+      "tags": [
+        "DEQ"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Formulates quantum-signal injection pathways for graph deep-equilibrium models, comparing fixed, state-dependent, and backbone-dependent coupling inside the fixed-point operator with contraction guarantees and graph-classification experiments.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.09226",
+        "github": "https://github.com/cxMoonGlade/QIP_IGNN",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.09226"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "github_stars": 1,
+      "star_sources": {
+        "github_api": 1
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-05-13",
+      "id": "2605.09226",
+      "source_file": "2605.09226.yaml",
+      "source_path": "papers/2605.09226.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Pengyuan Xu",
+        "Tristan Zaborniak",
+        "Luis F. Rivera",
+        "Hausi A. Müller"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.09226"
+    },
+    {
+      "title": "Solve the Loop: Attractor Models for Language and Reasoning",
+      "authors": "Jacob Fein-Ashley, Paria Rashidinejad",
+      "year": 2026,
+      "published_date": "2026-05-12",
+      "added_date": "2026-05-12",
+      "venue": "arXiv",
+      "category": "designs",
+      "mechanism_tags": [
+        "flat-loop",
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "scaling",
+        "efficiency"
+      ],
+      "tags": [
+        "looped-transformer",
+        "looped-llm"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces Attractor Models, where a backbone proposes output embeddings and an attractor module iteratively solves a fixed point with implicit differentiation, improving looped language modeling and small-model reasoning while allowing adaptive convergence-depth inference.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.12466",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.12466"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-05-13",
+      "id": "2605.12466",
+      "source_file": "2605.12466.yaml",
+      "source_path": "papers/2605.12466.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Jacob Fein-Ashley",
+        "Paria Rashidinejad"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.12466"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -3912,6 +4064,59 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-05-12",
+      "title": "Daily Loop-Model Briefing — 2026-05-12",
+      "status": "added",
+      "summary": "Three verified recent arXiv papers were added: Attractor Models for looped language/reasoning computation, sparse/MoE scaling for looped language models, and quantum injection pathways for graph deep-equilibrium models. Several same-day latent-reasoning, single-layer recurrent, and diffusion/flow papers were checked but kept out because their abstracts do not clearly satisfy the repo's same-forward reused-operator rule.",
+      "highlights": [
+        "Added three high-confidence, exact-page-verified recent arXiv papers to the main collection.",
+        "Attractor Models make the loop explicit through a fixed-point attractor module trained by implicit differentiation, with adaptive convergence-depth inference.",
+        "Sparse looped LMs show a concrete scaling route: sparse expert routing diverges across repeated passes through shared layers, and loop boundaries become useful early-exit points.",
+        "Quantum Injection Pathways keeps DEQ computation central by placing quantum signals inside graph fixed-point operators and proving contraction conditions for the variants.",
+        "Latent visual reasoning and latent CoT papers remain watchlist items unless they clearly reuse a learned layer/block/operator inside one forward process rather than feeding hidden states into repeated full-model passes."
+      ],
+      "candidates": [
+        {
+          "id": "2605.12466",
+          "title": "Solve the Loop: Attractor Models for Language and Reasoning",
+          "url": "https://arxiv.org/abs/2605.12466",
+          "verdict": "included — fixed-point attractor module refines output embeddings with implicit differentiation and adaptive solver iterations"
+        },
+        {
+          "id": "2605.09165",
+          "title": "Sparse Layers are Critical to Scaling Looped Language Models",
+          "url": "https://arxiv.org/abs/2605.09165",
+          "verdict": "included — looped LMs repeat transformer layers through depth, and the paper studies sparse expert routing plus early exits at those loop boundaries"
+        },
+        {
+          "id": "2605.09226",
+          "title": "Quantum Injection Pathways for Implicit Graph Neural Networks",
+          "url": "https://arxiv.org/abs/2605.09226",
+          "verdict": "included — graph DEQ variants put quantum signals inside the fixed-point operator and analyze the resulting contraction / solver behavior"
+        },
+        {
+          "id": "2605.11262",
+          "title": "Latent Chain-of-Thought Improves Structured-Data Transformers",
+          "url": "https://arxiv.org/abs/2605.11262",
+          "verdict": "near-miss — promising structured-data latent CoT paper, but the main mechanism reads as repeated full structured-transformer passes with feedback tokens rather than a clean main-list loop-model architecture"
+        },
+        {
+          "id": "2605.10643",
+          "title": "A Single-Layer Model Can Do Language Modeling",
+          "url": "https://arxiv.org/abs/2605.10643",
+          "verdict": "near-miss — uses a single recurrent block over token/time steps, which is ordinary sequence-time recurrence rather than depth reuse inside one prediction forward process"
+        },
+        {
+          "id": "2605.10938",
+          "title": "ELF: Embedded Language Flows",
+          "url": "https://arxiv.org/abs/2605.10938",
+          "verdict": "near-miss — continuous diffusion/flow language modeling is adjacent but outside this repo's loop-model boundary"
+        }
+      ],
+      "content": "# Daily Loop-Model Briefing — 2026-05-12\n\n## Outcome\n\nThree recent arXiv papers were added to the main collection. Each was verified on its exact arXiv abstract page and each makes the reused-operator loop central rather than relying on generic “iterative” language.\n\n## Added to the collection\n\n### Solve the Loop: Attractor Models for Language and Reasoning\n\nAttractor Models start from a looped-transformer motivation but move the recurrent computation into an attractor module. A backbone first proposes output embeddings, then the attractor module solves for a fixed point; gradients are obtained through implicit differentiation, so effective depth can grow without storing all unrolled states.\n\nWhy it is in scope: the paper is explicitly about replacing fixed-depth recurrence with a repeated fixed-point solve over a learned attractor operator for one prediction. It fits both flat-loop and implicit-layer mechanisms and belongs under Architecture and Algorithm Designs because the central contribution is a new loop-model architecture.\n\nMain reader takeaway: the abstract reports Pareto improvements over standard Transformers and stable looped models for language modeling, including up to 46.6% perplexity improvement and up to 19.7% downstream accuracy improvement, plus small-model reasoning results such as 91.4% on Sudoku-Extreme and 93.1% on Maze-Hard.\n\n### Sparse Layers are Critical to Scaling Looped Language Models\n\nThis paper studies why dense looped language models can scale worse than standard transformers and shows that sparse MoE layers change the picture. Because the same looped layers are revisited, different experts can be routed on different passes through shared layers, increasing effective expressivity without adding a unique parameter set per depth.\n\nWhy it is in scope: looped language models repeat transformer layers through depth within one prediction, and this paper directly analyzes how sparse layers and early exits behave at those loop boundaries. It is categorized as Architecture and Algorithm Designs because it gives a concrete scaling recipe for looped LMs.\n\nMain reader takeaway: the abstract reports that Looped-MoE models scale better than dense looped models and can beat standard transformers at scale, while loop boundaries provide stronger early-exit points because they use the same layers that produce the final output.\n\n### Quantum Injection Pathways for Implicit Graph Neural Networks\n\nThis paper extends graph deep-equilibrium models by comparing where a quantum signal enters the fixed-point computation. The variants hold the quantum signal fixed, recompute it from the current iterate, or recompute it from the classical backbone output; the paper then derives contraction conditions and compares solver behavior on graph-classification benchmarks.\n\nWhy it is in scope: DEQs define their output as the fixed point of a learned operator, so the repeated fixed-point solve is central rather than incidental. This paper keeps that implicit-layer mechanism at the center and studies how new signal pathways affect the looped graph operator.\n\nMain reader takeaway: the abstract reports that independent quantum injection gives the best test accuracy on NCI1, PROTEINS, and MUTAG while requiring fewer forward-solver iterations than the classical equilibrium baseline and dependent quantum variants.\n\n## Checked but not added\n\n- **Latent Chain-of-Thought Improves Structured-Data Transformers** is close to the repo boundary and worth watching: it studies latent CoT, depth, looping, and a looped-transformer baseline for structured data. The proposed recurrent CoT mechanism, however, is described as processing the structured-data transformer again after appending feedback tokens, so it reads more like repeated full-model passes than a canonical main-list loop-model architecture.\n- **A Single-Layer Model Can Do Language Modeling** proposes a recurrent language model with one state vector revisited at every token step. That is interesting recurrent sequence modeling, but ordinary sequence-time recurrence is outside the repo's depth-reuse scope by itself.\n- **ELF: Embedded Language Flows** is a strong adjacent language-generation paper, but diffusion/flow iterative generation is explicitly outside the main loop-model boundary unless it connects directly to reused internal layers inside one model forward process.\n- A same-day visual-latent-reasoning cluster — including **Fill the GAP**, **SCOLAR**, and **UniVLR** — was also checked. These papers focus on latent visual tokens, alignment, and compact reasoning workspaces around multimodal LLMs; they stay on the watchlist unless a clearer same-forward reused learned block appears in the paper text.",
+      "source_path": "briefings/2026/05/2026-05-12.md"
+    },
     {
       "date": "2026-05-11",
       "title": "Daily Loop-Model Briefing — 2026-05-11",
