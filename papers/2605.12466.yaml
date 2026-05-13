@@ -1,0 +1,35 @@
+title: 'Solve the Loop: Attractor Models for Language and Reasoning'
+authors:
+- Jacob Fein-Ashley
+- Paria Rashidinejad
+year: 2026
+published_date: '2026-05-12'
+added_date: '2026-05-12'
+venue: arXiv
+category: designs
+mechanism_tags:
+- flat-loop
+- implicit-layer
+domain_tags:
+- language-modeling
+- reasoning
+- scaling
+- efficiency
+tags:
+- looped-transformer
+- looped-llm
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Introduces Attractor Models, where a backbone proposes output embeddings and
+  an attractor module iteratively solves a fixed point with implicit differentiation,
+  improving looped language modeling and small-model reasoning while allowing adaptive
+  convergence-depth inference.
+links:
+  arxiv: https://arxiv.org/abs/2605.12466
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-05-13'

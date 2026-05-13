@@ -1,0 +1,36 @@
+title: Quantum Injection Pathways for Implicit Graph Neural Networks
+authors:
+- Pengyuan Xu
+- Tristan Zaborniak
+- Luis F. Rivera
+- Hausi A. Müller
+year: 2026
+published_date: '2026-05-09'
+added_date: '2026-05-12'
+venue: arXiv
+category: designs
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- theory
+- efficiency
+tags:
+- DEQ
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Formulates quantum-signal injection pathways for graph deep-equilibrium models,
+  comparing fixed, state-dependent, and backbone-dependent coupling inside the fixed-point
+  operator with contraction guarantees and graph-classification experiments.
+links:
+  arxiv: https://arxiv.org/abs/2605.09226
+  github: https://github.com/cxMoonGlade/QIP_IGNN
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+github_stars: 1
+star_sources:
+  github_api: 1
+star_source_best: github_api
+metrics_updated: '2026-05-13'
