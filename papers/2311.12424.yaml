@@ -29,9 +29,9 @@ links:
     url: https://x.com/huskydogewoof/status/2033023167044727049?s=20
   - label: Reza Bayat reading list (#5)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20
-citations: 82
+citations: 83
 citation_sources:
-  semantic_scholar: 82
+  semantic_scholar: 83
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
@@ -39,4 +39,4 @@ github_stars: 43
 star_sources:
   github_api: 43
 star_source_best: github_api
-metrics_updated: '2026-05-08'
+metrics_updated: '2026-05-13'
