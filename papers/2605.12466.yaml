@@ -30,6 +30,7 @@ links:
   arxiv: https://arxiv.org/abs/2605.12466
 citations: 0
 citation_sources:
+  openalex: 0
   opencitations: 0
-citation_source_best: opencitations
-metrics_updated: '2026-05-13'
+citation_source_best: openalex
+metrics_updated: '2026-05-14'
