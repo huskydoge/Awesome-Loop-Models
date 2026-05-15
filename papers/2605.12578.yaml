@@ -1,0 +1,34 @@
+title: Recurrent Transformer-Based Near- and Far-Field THz Wideband Channel Estimation
+  for UM-MIMO
+authors:
+- Dmitry Artemasov
+- Alexander Shmatok
+- Kirill Andreev
+- Alexey Frolov
+- Manjesh K. Hanawal
+- Nikola Zlatanov
+year: 2026
+published_date: '2026-05-12'
+added_date: '2026-05-14'
+venue: arXiv
+category: applications
+mechanism_tags:
+- flat-loop
+domain_tags:
+- wireless-communications
+- sequence-modeling
+- efficiency
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Applies a block-recurrent transformer to hybrid near/far-field THz UM-MIMO channel
+  estimation, training one state-memory transformer block once and iteratively reusing
+  it to improve narrowband and wideband NMSE.
+links:
+  arxiv: https://arxiv.org/abs/2605.12578
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-05-15'
