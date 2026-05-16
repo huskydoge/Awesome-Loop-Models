@@ -5,7 +5,7 @@
     "blog_total": 6,
     "briefing_total": 8,
     "latest_briefing_date": "2026-05-14",
-    "generated": "2026-05-16T05:08:17.290364+00:00",
+    "generated": "2026-05-16T22:33:22.653931+00:00",
     "generated_local_date": "2026-05-16",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -660,7 +660,8 @@
       "domain_tags": [
         "language-modeling",
         "reasoning",
-        "efficiency"
+        "efficiency",
+        "MoE"
       ],
       "tags": [
         "MoEUT",
@@ -2277,7 +2278,8 @@
       ],
       "domain_tags": [
         "language-modeling",
-        "efficiency"
+        "efficiency",
+        "MoE"
       ],
       "tags": [
         "MOUE"
@@ -3619,7 +3621,8 @@
       "domain_tags": [
         "language-modeling",
         "scaling",
-        "efficiency"
+        "efficiency",
+        "MoE"
       ],
       "tags": [
         "looped-transformer",
@@ -3861,7 +3864,8 @@
       "domain_tags": [
         "language-modeling",
         "reasoning",
-        "efficiency"
+        "efficiency",
+        "MoE"
       ],
       "tags": [
         "MoDr",
