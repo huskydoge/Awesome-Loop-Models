@@ -53,7 +53,6 @@ Observed browser-facing domain tags currently used across the repo.
 - `rl-control` (1)
 - `robotics-vla` (1)
 - `tabular-data` (1)
-- `wireless-communications` (1)
 
 ## tags
 
