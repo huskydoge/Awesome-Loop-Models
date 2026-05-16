@@ -42,6 +42,7 @@ Observed browser-facing domain tags currently used across the repo.
 - `algorithmic-reasoning` (15)
 - `theory` (9)
 - `scaling` (7)
+- `MoE` (4)
 - `memory-efficiency` (3)
 - `vision` (3)
 - `RL` (2)

@@ -17,6 +17,7 @@ domain_tags:
 - language-modeling
 - reasoning
 - efficiency
+- MoE
 tags:
 - MoEUT
 - UT

@@ -15,6 +15,7 @@ domain_tags:
 - language-modeling
 - scaling
 - efficiency
+- MoE
 tags:
 - looped-transformer
 - looped-llm
