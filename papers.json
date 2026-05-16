@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 75,
-    "paper_total": 69,
+    "total": 76,
+    "paper_total": 70,
     "blog_total": 6,
     "briefing_total": 8,
     "latest_briefing_date": "2026-05-14",
-    "generated": "2026-05-14T21:14:40.912400+00:00",
-    "generated_local_date": "2026-05-14",
+    "generated": "2026-05-16T05:08:17.290364+00:00",
+    "generated_local_date": "2026-05-16",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -3761,6 +3761,54 @@
       "arxiv_id": "2605.12466"
     },
     {
+      "title": "Recurrent Transformer-Based Near- and Far-Field THz Wideband Channel Estimation for UM-MIMO",
+      "authors": "Dmitry Artemasov, Alexander Shmatok, Kirill Andreev, Alexey Frolov, Manjesh K. Hanawal, Nikola Zlatanov",
+      "year": 2026,
+      "published_date": "2026-05-12",
+      "added_date": "2026-05-14",
+      "venue": "arXiv",
+      "category": "applications",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "sequence-modeling",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Applies a block-recurrent transformer to hybrid near/far-field THz UM-MIMO channel estimation, training one state-memory transformer block once and iteratively reusing it to improve narrowband and wideband NMSE.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.12578",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.12578"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-05-15",
+      "id": "2605.12578",
+      "source_file": "2605.12578.yaml",
+      "source_path": "papers/2605.12578.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "tags": [],
+      "authors_list": [
+        "Dmitry Artemasov",
+        "Alexander Shmatok",
+        "Kirill Andreev",
+        "Alexey Frolov",
+        "Manjesh K. Hanawal",
+        "Nikola Zlatanov"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.12578"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -4072,15 +4120,21 @@
     {
       "date": "2026-05-14",
       "title": "Daily Loop-Model Briefing — 2026-05-14",
-      "status": "watchlist",
-      "summary": "No new paper was added to the main collection. A same-day inverse-problem paper and several recent cache/forward-refinement papers were checked on exact arXiv pages, but they remain watchlist or near-miss items because they do not clearly satisfy the repo's same-forward reused learned layer/block/operator rule.",
+      "status": "included",
+      "summary": "One very recent application paper was added to the main collection: a block-recurrent transformer for THz UM-MIMO channel estimation that trains one state-memory transformer block once and reuses it iteratively. Same-day exact-page checks still left several loop/latent/closed-loop hits on the watchlist because they do not clearly reuse a learned internal block within one forward process.",
       "highlights": [
-        "No main-list addition: the same-day exact-match hit uses a learned reverse operator inside an external iterative inverse-problem solver, which is adjacent but not a canonical loop-model architecture.",
-        "KV-Fold is a useful cache-recurrence watchlist item, but it repeatedly invokes a frozen transformer over chunks rather than reusing an internal block within one forward process.",
-        "Inline Critic and VECA both refine or propagate information during a forward computation, yet their abstracts do not state weight-tied, recurrent-depth, or fixed-point reuse of a learned operator.",
-        "Older backlog note: Visual Implicit Autoregressive Modeling looks high-confidence for implicit-layer scope, but it was submitted on 2026-05-02 and is kept out of this daily intake for separate backfill review."
+        "Included: Recurrent Transformer-Based Near- and Far-Field THz Wideband Channel Estimation for UM-MIMO explicitly trains a single transformer block with state memory and applies it iteratively for hybrid-field channel estimation.",
+        "Main result: the paper reports about 5 dB NMSE gain in narrowband and 7.5 dB in wideband settings over state-of-the-art channel-estimation baselines.",
+        "Not added: same-day loop/closed-loop hits in economics, visual generation, driving, and human/agent-in-the-loop systems use external solver, agent, planning, or workflow loops rather than a reused internal learned operator.",
+        "Older backlog note: Visual Implicit Autoregressive Modeling remains a high-confidence implicit-layer backfill candidate, but it was submitted on 2026-05-02 and is left for separate historical review."
       ],
       "candidates": [
+        {
+          "id": "2605.12578",
+          "title": "Recurrent Transformer-Based Near- and Far-Field THz Wideband Channel Estimation for UM-MIMO",
+          "url": "https://arxiv.org/abs/2605.12578",
+          "verdict": "included — one state-memory transformer block is trained once and iteratively reused for near/far-field THz UM-MIMO channel estimation"
+        },
         {
           "id": "2605.13068",
           "title": "Local Inverse Geometry Can Be Amortized",
@@ -4106,13 +4160,25 @@
           "verdict": "near-miss — learned core tokens are propagated across layers and enable elastic inference, but this is state propagation rather than explicit shared-block or fixed-point reuse"
         },
         {
+          "id": "2605.15198",
+          "title": "ATLAS: Agentic or Latent Visual Reasoning? One Word is Enough for Both",
+          "url": "https://arxiv.org/abs/2605.15198",
+          "verdict": "near-miss — functional tokens internalize visual operations, but the abstract emphasizes token-level reasoning without architectural recurrence or same-block reuse"
+        },
+        {
+          "id": "2605.14493",
+          "title": "Deep Learning for Solving and Estimating Dynamic Models in Economics and Finance",
+          "url": "https://arxiv.org/abs/2605.14493",
+          "verdict": "near-miss — Deep Equilibrium Nets here embed economics equilibrium conditions into losses rather than making a DEQ-style reused learned fixed-point layer central"
+        },
+        {
           "id": "2605.01220",
           "title": "Visual Implicit Autoregressive Modeling",
           "url": "https://arxiv.org/abs/2605.01220",
           "verdict": "backlog candidate — explicit implicit equilibrium layer with fixed-point iterations, but older than the current daily new-paper window and should be handled in a separate backfill review"
         }
       ],
-      "content": "# Daily Loop-Model Briefing — 2026-05-14\n\n## Outcome\n\nNo new paper was added to the main collection. The same-day strict-keyword sweep found one close inverse-problem paper, and the exact-phrase sweep also surfaced several recent cache, latent-state, and forward-refinement papers. Each was checked on its exact arXiv abstract page before being kept out of the main list.\n\n## Watchlist and near-misses\n\n### Local Inverse Geometry Can Be Amortized\n\nThis is the strongest same-day adjacent hit. It learns a reusable reverse operator inside Deceptron and deploys it in D-IPG, an iterative inverse-problem solver. The loop is real: each solver step maps a residual-corrected measurement proposal back to latent space and updates the current estimate.\n\nWhy it was not added: the repeated computation is framed as an external solver trajectory for inverse problems, not as a learned layer/block/operator reused inside one model forward process. That makes it useful watchlist material, but not a conservative main-list addition under the repo's strict loop-model definition.\n\n### KV-Fold: One-Step KV-Cache Recurrence for Long-Context Inference\n\nKV-Fold treats the KV cache as an accumulator over sequence chunks. A frozen transformer processes each new chunk conditioned on the accumulated cache, appends new keys and values, and passes the enlarged cache forward. The reported behavior is stable across long chains and preserves needle-in-a-haystack retrieval up to 128K tokens.\n\nWhy it was not added: the recurrence is implemented as repeated chunk-level forward passes through a frozen model. It is relevant to cache recurrence and long-context systems, but the abstract does not make a same-forward reused internal learned block central.\n\n### Inline Critic Steers Image Editing\n\nInline Critic adds a learnable token that critiques a frozen image-editing model at intermediate layers and steers subsequent hidden states during the ongoing forward pass. This is a useful example of within-forward refinement rather than post-hoc correction after full generation.\n\nWhy it was not added: the mechanism is an intervention token over ordinary model depth, not an explicit looped, weight-tied, recurrent-depth, or fixed-point operator.\n\n### Elastic Attention Cores for Scalable Vision Transformers\n\nVECA uses learned core tokens as a communication interface between patches, propagating those cores across layers and allowing compute/accuracy trade-offs along the core axis.\n\nWhy it was not added: the paper propagates learned state across layers, but the abstract does not claim reuse of the same learned layer, block, or operator. It is an adjacent efficient-attention design, not a strict loop model.\n\n## Backlog note\n\n**Visual Implicit Autoregressive Modeling** (`2605.01220`) looks much more clearly in scope because it embeds an implicit equilibrium layer and exposes a fixed-point iteration knob at inference. It was submitted on 2026-05-02, so it is kept out of this daily intake rather than mixed into the same-day watch. It is worth a separate backfill review if the maintainer wants to add older missed papers.",
+      "content": "# Daily Loop-Model Briefing — 2026-05-14\n\n## Outcome\n\nOne very recent paper was added to the main collection: **Recurrent Transformer-Based Near- and Far-Field THz Wideband Channel Estimation for UM-MIMO** (`2605.12578`). The key inclusion evidence is unusually explicit for an application paper: the authors train **one transformer block with state memory** and then **iteratively apply** that block for hybrid near/far-field channel estimation.\n\n## Included paper\n\n### Recurrent Transformer-Based Near- and Far-Field THz Wideband Channel Estimation for UM-MIMO\n\nThis paper targets THz ultra-massive MIMO channel estimation, where users may occupy both near-field and far-field propagation regimes and hybrid beamforming limits digital-chain observations. The proposed model is a block-recurrent transformer: instead of stacking many independent transformer blocks, it trains a single state-memory transformer block once and applies it repeatedly during estimation.\n\nWhy it was added: the abstract clearly states same-operator reuse — \"a single transformer block equipped with state memory can be trained once and then iteratively applied\" — satisfying the repository's strict loop-model rule. The paper is classified as an **Applications Focused** entry because the main reader takeaway is a concrete wireless channel-estimation use case, with reported gains of about **5 dB NMSE** in narrowband and **7.5 dB NMSE** in wideband scenarios over state-of-the-art baselines.\n\n## Watchlist and near-misses\n\n### Local Inverse Geometry Can Be Amortized\n\nThis remains the strongest same-day adjacent hit. It learns a reusable reverse operator inside Deceptron and deploys it in D-IPG, an iterative inverse-problem solver. The loop is real: each solver step maps a residual-corrected measurement proposal back to latent space and updates the current estimate.\n\nWhy it was not added: the repeated computation is framed as an external solver trajectory for inverse problems, not as a learned layer/block/operator reused inside one model forward process. That makes it useful watchlist material, but not a conservative main-list addition under the repo's strict loop-model definition.\n\n### KV-Fold: One-Step KV-Cache Recurrence for Long-Context Inference\n\nKV-Fold treats the KV cache as an accumulator over sequence chunks. A frozen transformer processes each new chunk conditioned on the accumulated cache, appends new keys and values, and passes the enlarged cache forward. The reported behavior is stable across long chains and preserves needle-in-a-haystack retrieval up to 128K tokens.\n\nWhy it was not added: the recurrence is implemented as repeated chunk-level forward passes through a frozen model. It is relevant to cache recurrence and long-context systems, but the abstract does not make a same-forward reused internal learned block central.\n\n### Inline Critic Steers Image Editing\n\nInline Critic adds a learnable token that critiques a frozen image-editing model at intermediate layers and steers subsequent hidden states during the ongoing forward pass. This is a useful example of within-forward refinement rather than post-hoc correction after full generation.\n\nWhy it was not added: the mechanism is an intervention token over ordinary model depth, not an explicit looped, weight-tied, recurrent-depth, or fixed-point operator.\n\n### Elastic Attention Cores for Scalable Vision Transformers\n\nVECA uses learned core tokens as a communication interface between patches, propagating those cores across layers and allowing compute/accuracy trade-offs along the core axis.\n\nWhy it was not added: the paper propagates learned state across layers, but the abstract does not claim reuse of the same learned layer, block, or operator. It is an adjacent efficient-attention design, not a strict loop model.\n\n### ATLAS: Agentic or Latent Visual Reasoning? One Word is Enough for Both\n\nATLAS introduces functional tokens that serve both as agentic operations and latent visual reasoning units, preserving compatibility with standard SFT/RL training.\n\nWhy it was not added: the abstract describes token-level operations and latent reasoning, but not repeated reuse of a learned internal layer, block, or fixed-point operator within one forward process.\n\n### Deep Learning for Solving and Estimating Dynamic Models in Economics and Finance\n\nThis same-day exact-phrase hit mentions \"Deep Equilibrium Nets,\" but in the context of embedding economics equilibrium conditions into neural-network loss functions.\n\nWhy it was not added: the relevant equilibrium is an economics/modeling constraint, not a DEQ-style implicit layer or shared learned operator repeatedly applied to reach a neural fixed point.\n\n## Backlog note\n\n**Visual Implicit Autoregressive Modeling** (`2605.01220`) still looks much more clearly in scope because it embeds an implicit equilibrium layer and exposes a fixed-point iteration knob at inference. It was submitted on 2026-05-02, so it is kept out of this daily intake rather than mixed into the same-day watch. It is worth a separate backfill review if the maintainer wants to add older missed papers.",
       "source_path": "briefings/2026/05/2026-05-14.md"
     },
     {
