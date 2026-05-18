@@ -27,11 +27,12 @@ links:
   github: https://github.com/cxMoonGlade/QIP_IGNN
 citations: 0
 citation_sources:
+  semantic_scholar: 0
   openalex: 0
   opencitations: 0
-citation_source_best: openalex
+citation_source_best: semantic_scholar
 github_stars: 1
 star_sources:
   github_api: 1
 star_source_best: github_api
-metrics_updated: '2026-05-13'
+metrics_updated: '2026-05-18'

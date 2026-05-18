@@ -1,30 +1,33 @@
-title: "Prioritize the Process, Not Just the Outcome: Rewarding Latent Thought Trajectories Improves Reasoning in Looped Language Models"
+title: 'Prioritize the Process, Not Just the Outcome: Rewarding Latent Thought Trajectories
+  Improves Reasoning in Looped Language Models'
 authors:
-  - "Jonathan Williams"
-  - "Esin Tureci"
+- Jonathan Williams
+- Esin Tureci
 year: 2026
 published_date: '2026-02-11'
 added_date: '2026-04-20'
-venue: "arXiv"
-category: "designs"
+venue: arXiv
+category: designs
 mechanism_tags:
 - flat-loop
 domain_tags:
-  - "language-modeling"
-  - "reasoning"
+- language-modeling
+- reasoning
 tags:
-  - "RLTT"
-  - "LoopLM"
+- RLTT
+- LoopLM
 focus_tags:
-  - "objective-loss"
-  - "training-algorithm"
-desc: "Introduces RLTT, a reinforcement-learning objective that assigns reward across the full latent thought trajectory of looped language models rather than only the final latent state."
+- objective-loss
+- training-algorithm
+desc: Introduces RLTT, a reinforcement-learning objective that assigns reward across
+  the full latent thought trajectory of looped language models rather than only the
+  final latent state.
 links:
   arxiv: https://arxiv.org/abs/2602.10520
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-04-20'
+metrics_updated: '2026-05-18'
