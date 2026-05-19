@@ -5,8 +5,8 @@
     "blog_total": 6,
     "briefing_total": 9,
     "latest_briefing_date": "2026-05-18",
-    "generated": "2026-05-19T01:33:48.211989+00:00",
-    "generated_local_date": "2026-05-18",
+    "generated": "2026-05-19T17:14:51.239971+00:00",
+    "generated_local_date": "2026-05-19",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -79,14 +79,14 @@
         "arxiv": "https://arxiv.org/abs/1511.08228",
         "alphaxiv": "https://www.alphaxiv.org/abs/1511.08228"
       },
-      "citations": 391,
+      "citations": 392,
       "citation_sources": {
-        "semantic_scholar": 391,
+        "semantic_scholar": 392,
         "openalex": 188,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-19",
       "id": "1511.08228",
       "source_file": "1511.08228.yaml",
       "source_path": "papers/1511.08228.yaml",
@@ -236,12 +236,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 797,
+      "github_stars": 798,
       "star_sources": {
-        "github_api": 797
+        "github_api": 798
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-19",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -1911,12 +1911,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 32,
+      "github_stars": 33,
       "star_sources": {
-        "github_api": 32
+        "github_api": 33
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-19",
       "id": "2602.07845",
       "source_file": "2602.07845.yaml",
       "source_path": "papers/2602.07845.yaml",
@@ -2135,12 +2135,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 21,
+      "github_stars": 22,
       "star_sources": {
-        "github_api": 21
+        "github_api": 22
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-19",
       "id": "2602.11451",
       "source_file": "2602.11451.yaml",
       "source_path": "papers/2602.11451.yaml",
@@ -3845,9 +3845,10 @@
       },
       "citations": 0,
       "citation_sources": {
+        "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "opencitations",
+      "citation_source_best": "openalex",
       "metrics_updated": "2026-05-19",
       "id": "2605.16048",
       "source_file": "2605.16048.yaml",
