@@ -1,0 +1,33 @@
+title: 'One Model, Two Roles: Emergent Specialization in a Shared Recurrent Transformer'
+authors:
+- Jucheng Shen
+- Barbara Su
+- Anastasios Kyrillidis
+year: 2026
+published_date: '2026-05-18'
+added_date: '2026-05-19'
+venue: arXiv
+category: analysis
+mechanism_tags:
+- flat-loop
+- hierarchical-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+tags:
+- looped-transformer
+- shared-weight-recurrence
+- mechanistic-analysis
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Analyzes Asymmetric Input Recurrence, a two-state shared-weight recurrent Transformer
+  where the same model updates L/H states, showing that state identity and input-injection
+  asymmetry induce distinct proposal-vs-uncertainty roles on Sudoku-Extreme and Maze.
+links:
+  arxiv: https://arxiv.org/abs/2605.17811
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-05-20'

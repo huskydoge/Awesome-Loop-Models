@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 77,
-    "paper_total": 71,
+    "total": 79,
+    "paper_total": 73,
     "blog_total": 6,
-    "briefing_total": 9,
-    "latest_briefing_date": "2026-05-18",
-    "generated": "2026-05-19T17:14:51.239971+00:00",
+    "briefing_total": 10,
+    "latest_briefing_date": "2026-05-19",
+    "generated": "2026-05-20T00:23:23.995625+00:00",
     "generated_local_date": "2026-05-19",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -3865,6 +3865,103 @@
       "arxiv_id": "2605.16048"
     },
     {
+      "title": "One Model, Two Roles: Emergent Specialization in a Shared Recurrent Transformer",
+      "authors": "Jucheng Shen, Barbara Su, Anastasios Kyrillidis",
+      "year": 2026,
+      "published_date": "2026-05-18",
+      "added_date": "2026-05-19",
+      "venue": "arXiv",
+      "category": "analysis",
+      "mechanism_tags": [
+        "flat-loop",
+        "hierarchical-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "looped-transformer",
+        "shared-weight-recurrence",
+        "mechanistic-analysis"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Analyzes Asymmetric Input Recurrence, a two-state shared-weight recurrent Transformer where the same model updates L/H states, showing that state identity and input-injection asymmetry induce distinct proposal-vs-uncertainty roles on Sudoku-Extreme and Maze.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.17811",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.17811"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-05-20",
+      "id": "2605.17811",
+      "source_file": "2605.17811.yaml",
+      "source_path": "papers/2605.17811.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Jucheng Shen",
+        "Barbara Su",
+        "Anastasios Kyrillidis"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.17811"
+    },
+    {
+      "title": "PERL: Parameter Efficient Reasoning in CLIP Latent Space",
+      "authors": "Simone Carnemolla, Salvatore Calcagno, Daniela Giordano, Concetto Spampinato, Matteo Pennisi",
+      "year": 2026,
+      "published_date": "2026-05-18",
+      "added_date": "2026-05-19",
+      "venue": "arXiv",
+      "category": "applications",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "vision",
+        "reasoning",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces PERL, a few-shot CLIP adaptation framework that reuses a compact shared reasoning module across latent refinement steps, improving base-to-novel, transfer, and OOD results with about 6K trainable parameters.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.18464",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.18464"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-05-20",
+      "id": "2605.18464",
+      "source_file": "2605.18464.yaml",
+      "source_path": "papers/2605.18464.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "tags": [],
+      "authors_list": [
+        "Simone Carnemolla",
+        "Salvatore Calcagno",
+        "Daniela Giordano",
+        "Concetto Spampinato",
+        "Matteo Pennisi"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.18464"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -4174,6 +4271,58 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-05-19",
+      "title": "Daily Loop-Model Briefing — 2026-05-19",
+      "status": "added",
+      "summary": "Two newly announced high-confidence loop-model papers were added: one analyzes role specialization inside a shared recurrent Transformer, and one applies a recurrently reused latent reasoning module to parameter-efficient CLIP adaptation. Several same-day latent, shared-weight, and closed-loop papers were kept out because they do not clearly reuse a learned internal operator as a loop-model forward process.",
+      "highlights": [
+        "Included: One Model, Two Roles studies Asymmetric Input Recurrence, where the same Transformer model is reused for L/H updates, and analyzes how state identity induces distinct roles inside the shared recurrent block.",
+        "Included: PERL augments frozen CLIP with a compact shared reasoning module applied recurrently across latent refinement steps, making the loop mechanism explicit while targeting few-shot vision-language adaptation.",
+        "Not added: latent-token and shared-weight near-misses were useful signals, but either used latent tokens without a reused internal block or shared encoders across streams/scales without a clear recurrent refinement loop.",
+        "Backlog note: targeted searches again surfaced older high-confidence recursive-transformer papers such as LoopQ; these remain separate backfill candidates rather than daily additions."
+      ],
+      "candidates": [
+        {
+          "id": "2605.17811",
+          "title": "One Model, Two Roles: Emergent Specialization in a Shared Recurrent Transformer",
+          "url": "https://arxiv.org/abs/2605.17811",
+          "verdict": "included — the abstract explicitly states that the same Transformer model is reused for both L/H updates in a two-state recurrent reasoning architecture"
+        },
+        {
+          "id": "2605.18464",
+          "title": "PERL: Parameter Efficient Reasoning in CLIP Latent Space",
+          "url": "https://arxiv.org/abs/2605.18464",
+          "verdict": "included — PERL uses a compact shared reasoning module applied recurrently across latent refinement steps inside the CLIP adaptation forward process"
+        },
+        {
+          "id": "2605.18641",
+          "title": "Leveraging Latent Visual Reasoning in Silence",
+          "url": "https://arxiv.org/abs/2605.18641",
+          "verdict": "near-miss — latent tokens shape training and visual grounding, but the abstract does not specify repeated reuse of a learned internal block/operator"
+        },
+        {
+          "id": "2605.18328",
+          "title": "CineMatte: Background Matting for Virtual Production and Beyond",
+          "url": "https://arxiv.org/abs/2605.18328",
+          "verdict": "near-miss — the shared weights are Siamese encoders for input/background streams, not a recurrent or fixed-point refinement loop"
+        },
+        {
+          "id": "2605.17582",
+          "title": "Scale-Equivariant Generative Forecasting: Weight-Tied Dilated Convolutions, Wavelet Scattering Inputs, and Spectral-Consistency Training for Self-Similar Time Series",
+          "url": "https://arxiv.org/abs/2605.17582",
+          "verdict": "watchlist — weight tying across dilation levels is adjacent, but the abstract does not clearly present an iterative same-operator refinement loop"
+        },
+        {
+          "id": "2605.16343",
+          "title": "LoopQ: Quantization for Recursive Transformers",
+          "url": "https://arxiv.org/abs/2605.16343",
+          "verdict": "backlog candidate — clearly in scope, but submitted on 2026-05-08 and left for a separate historical/backfill review"
+        }
+      ],
+      "content": "# Daily Loop-Model Briefing — 2026-05-19\n\n## Outcome\n\nTwo high-confidence papers from the 2026-05-19 watch were added to the main collection:\n\n1. **One Model, Two Roles: Emergent Specialization in a Shared Recurrent Transformer** (`2605.17811`)\n2. **PERL: Parameter Efficient Reasoning in CLIP Latent Space** (`2605.18464`)\n\nBoth papers make the reused-operator evidence explicit in the abstract. The first studies a shared-weight recurrent Transformer reused for two update roles in Asymmetric Input Recurrence. The second applies a compact shared reasoning module recurrently across latent refinement steps for CLIP adaptation.\n\n## Added to the collection\n\n### One Model, Two Roles: Emergent Specialization in a Shared Recurrent Transformer\n\nThis paper asks whether a single shared recurrent Transformer can develop different internal functions without splitting into separate modules. It studies Asymmetric Input Recurrence (AIR), a two-state reasoning architecture where the same Transformer model is reused for both L- and H-state updates, with input injection distinguishing the update types.\n\nWhy it is in scope: the abstract explicitly says the same Transformer model is reused for both updates inside a recurrent reasoning architecture. The contribution is mechanistic analysis of what roles emerge across loop states, so it belongs in the analysis category.\n\nMain reader takeaway: decoded rollouts, freezing experiments, ablations, and attention analysis suggest that state identity signals can induce stable role specialization inside shared-parameter recurrent Transformers. In the reported Sudoku-Extreme and Maze settings, H-like states behave more like committed proposal states, while L-like states retain more local uncertainty and shifting intermediate structure.\n\n### PERL: Parameter Efficient Reasoning in CLIP Latent Space\n\nPERL explores whether CLIP adaptation can come from iterative latent reasoning rather than simply adding more trainable parameters. It keeps CLIP frozen and adds a compact shared reasoning module that is applied recurrently across refinement steps, generating a latent reasoning token at each step and injecting it into an intermediate encoder layer.\n\nWhy it is in scope: the repeated computation is not an external agent loop or repeated full-model prompting. The abstract identifies a shared reasoning module reused across latent refinement steps within the adaptation model.\n\nMain reader takeaway: across 15 base-to-novel, transfer, and out-of-distribution benchmarks, PERL reports the best parameter-performance trade-off among compared few-shot adaptation methods, using about 6K trainable parameters while keeping competitive transfer and novel-class accuracy.\n\n## Checked but not added\n\n### Leveraging Latent Visual Reasoning in Silence\n\nThis paper is relevant to latent visual reasoning, but its abstract focuses on whether latent tokens help training and post-training behavior. It does not state that a learned internal layer, block, or operator is reused repeatedly within one forward process, so it remains outside the strict paper-list scope.\n\n### CineMatte: Background Matting for Virtual Production and Beyond\n\nCineMatte uses a Siamese frozen DINOv3 ViT with shared weights to encode an input frame and background separately. That is weight sharing across two streams, not a looped/recurrent refinement process, so it was not added.\n\n### Scale-Equivariant Generative Forecasting\n\nThe paper ties convolutional kernel weights across dilation levels for self-similar time series and is adjacent to weight-tied architecture design. It was kept as a watchlist item because the abstract does not clearly show a same learned operator repeatedly refining an internal state in the loop-model sense.\n\n## Backlog note\n\nTargeted searches again surfaced older, likely in-scope recursive-transformer work such as **LoopQ: Quantization for Recursive Transformers** (`2605.16343`). Since it was submitted on 2026-05-08 and was already called out as backlog in the prior briefing, it remains a separate backfill candidate rather than part of this daily intake.",
+      "source_path": "briefings/2026/05/2026-05-19.md"
+    },
     {
       "date": "2026-05-18",
       "title": "Daily Loop-Model Briefing — 2026-05-18",

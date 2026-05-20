@@ -17,8 +17,8 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
-- `hierarchical-loop` (12)
-- `flat-loop` (64)
+- `hierarchical-loop` (13)
+- `flat-loop` (66)
 - `parallel-loop` (2)
 - `implicit-layer` (11)
 
@@ -27,25 +27,25 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (5)
-- `training-algorithm` (34)
-- `architecture` (66)
+- `training-algorithm` (35)
+- `architecture` (68)
 - `data` (2)
-- `inference-algorithm` (47)
+- `inference-algorithm` (49)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
 - `language-modeling` (46)
-- `reasoning` (41)
-- `efficiency` (28)
-- `algorithmic-reasoning` (15)
+- `reasoning` (43)
+- `efficiency` (29)
+- `algorithmic-reasoning` (16)
 - `theory` (9)
 - `scaling` (8)
 - `MoE` (4)
 - `sequence-modeling` (4)
+- `vision` (4)
 - `memory-efficiency` (3)
-- `vision` (3)
 - `RL` (2)
 - `alignment` (1)
 - `compositional-reasoning` (1)
@@ -59,7 +59,7 @@ Observed browser-facing domain tags currently used across the repo.
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (12)
+- `looped-transformer` (13)
 - `ACT` (6)
 - `DEQ` (4)
 - `looped-llm` (4)
@@ -67,15 +67,16 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `UT` (4)
 - `depth-recurrent` (3)
 - `Ouro` (3)
+- `shared-weight-recurrence` (3)
 - `adaptive-computation-time` (2)
 - `convergence` (2)
 - `depth-scaling` (2)
 - `LoRA` (2)
+- `mechanistic-analysis` (2)
 - `MoR` (2)
 - `mythos` (2)
 - `Parcae` (2)
 - `recursive-transformer` (2)
-- `shared-weight-recurrence` (2)
 - `universal-transformer` (2)
 - `weight-tying` (2)
 - `activation-compression` (1)
@@ -116,7 +117,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `LoopLM` (1)
 - `LoopRPT` (1)
 - `MDEQ` (1)
-- `mechanistic-analysis` (1)
 - `MELT` (1)
 - `memory-banks` (1)
 - `memory-tokens` (1)
