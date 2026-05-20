@@ -1,0 +1,32 @@
+title: 'PERL: Parameter Efficient Reasoning in CLIP Latent Space'
+authors:
+- Simone Carnemolla
+- Salvatore Calcagno
+- Daniela Giordano
+- Concetto Spampinato
+- Matteo Pennisi
+year: 2026
+published_date: '2026-05-18'
+added_date: '2026-05-19'
+venue: arXiv
+category: applications
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- reasoning
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Introduces PERL, a few-shot CLIP adaptation framework that reuses a compact
+  shared reasoning module across latent refinement steps, improving base-to-novel,
+  transfer, and OOD results with about 6K trainable parameters.
+links:
+  arxiv: https://arxiv.org/abs/2605.18464
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-05-20'
