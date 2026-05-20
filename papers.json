@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 79,
-    "paper_total": 73,
+    "total": 80,
+    "paper_total": 74,
     "blog_total": 6,
     "briefing_total": 10,
     "latest_briefing_date": "2026-05-19",
-    "generated": "2026-05-20T00:33:17.717787+00:00",
+    "generated": "2026-05-20T10:26:02.394694+00:00",
     "generated_local_date": "2026-05-20",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -1198,10 +1198,10 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-18",
-      "github_stars": 571,
+      "metrics_updated": "2026-05-20",
+      "github_stars": 572,
       "star_sources": {
-        "github_api": 571
+        "github_api": 572
       },
       "star_source_best": "github_api",
       "id": "2507.10524",
@@ -3122,9 +3122,9 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 3,
+      "github_stars": 4,
       "star_sources": {
-        "github_api": 3
+        "github_api": 4
       },
       "star_source_best": "github_api",
       "metrics_updated": "2026-05-20",
@@ -3845,11 +3845,12 @@
       },
       "citations": 0,
       "citation_sources": {
+        "semantic_scholar": 0,
         "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "openalex",
-      "metrics_updated": "2026-05-19",
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-05-20",
       "id": "2605.16048",
       "source_file": "2605.16048.yaml",
       "source_path": "papers/2605.16048.yaml",
@@ -3960,6 +3961,65 @@
       ],
       "venueClass": "venue-arxiv",
       "arxiv_id": "2605.18464"
+    },
+    {
+      "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
+      "authors": "Guan Wang, Changling Liu, Chenyu Wang, Cai Zhou, Yuhao Sun, Yifei Wu, Shuai Zhen, Luca Scimeca, Yasin Abbasi Yadkori",
+      "year": 2026,
+      "published_date": "2026-05-18",
+      "added_date": "2026-05-20",
+      "venue": "Preprint",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "hierarchical-loop",
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "HRM",
+        "HRM-Text",
+        "PrefixLM"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "objective-loss",
+        "data"
+      ],
+      "desc": "Introduces HRM-Text, a 1B Hierarchical Recurrent Model language model that combines dual-timescale recurrent Transformer modules with MagicNorm, warmup deep credit assignment, PrefixLM masking, and task-completion pretraining for efficient training from 40B unique tokens.",
+      "links": {
+        "paper": "https://sapientinc.github.io/HRM-Text/assets/HRM_Text.pdf",
+        "project": "https://sapientinc.github.io/HRM-Text/",
+        "github": "https://github.com/sapientinc/HRM-Text",
+        "hf": "https://huggingface.co/sapientinc/HRM-Text-1B"
+      },
+      "github_stars": 476,
+      "star_sources": {
+        "github_api": 476
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-05-20",
+      "id": "hrm-text",
+      "source_file": "hrm-text.yaml",
+      "source_path": "papers/hrm-text.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Guan Wang",
+        "Changling Liu",
+        "Chenyu Wang",
+        "Cai Zhou",
+        "Yuhao Sun",
+        "Yifei Wu",
+        "Shuai Zhen",
+        "Luca Scimeca",
+        "Yasin Abbasi Yadkori"
+      ],
+      "venueClass": "venue-arxiv"
     },
     {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",

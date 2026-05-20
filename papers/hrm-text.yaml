@@ -31,12 +31,17 @@ focus_tags:
 - training-algorithm
 - objective-loss
 - data
-desc: Introduces HRM-Text, a 1B Hierarchical Recurrent Model language model that
-  combines dual-timescale recurrent Transformer modules with MagicNorm, warmup deep
-  credit assignment, PrefixLM masking, and task-completion pretraining for efficient
-  training from 40B unique tokens.
+desc: Introduces HRM-Text, a 1B Hierarchical Recurrent Model language model that combines
+  dual-timescale recurrent Transformer modules with MagicNorm, warmup deep credit
+  assignment, PrefixLM masking, and task-completion pretraining for efficient training
+  from 40B unique tokens.
 links:
   paper: https://sapientinc.github.io/HRM-Text/assets/HRM_Text.pdf
   project: https://sapientinc.github.io/HRM-Text/
   github: https://github.com/sapientinc/HRM-Text
   hf: https://huggingface.co/sapientinc/HRM-Text-1B
+github_stars: 476
+star_sources:
+  github_api: 476
+star_source_best: github_api
+metrics_updated: '2026-05-20'

@@ -17,8 +17,8 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
-- `hierarchical-loop` (13)
-- `flat-loop` (66)
+- `hierarchical-loop` (14)
+- `flat-loop` (67)
 - `parallel-loop` (2)
 - `implicit-layer` (11)
 
@@ -26,19 +26,19 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
-- `objective-loss` (5)
-- `training-algorithm` (35)
-- `architecture` (68)
-- `data` (2)
+- `objective-loss` (6)
+- `training-algorithm` (36)
+- `architecture` (69)
+- `data` (3)
 - `inference-algorithm` (49)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `language-modeling` (46)
-- `reasoning` (43)
-- `efficiency` (29)
+- `language-modeling` (47)
+- `reasoning` (44)
+- `efficiency` (30)
 - `algorithmic-reasoning` (16)
 - `theory` (9)
 - `scaling` (8)
@@ -71,6 +71,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `adaptive-computation-time` (2)
 - `convergence` (2)
 - `depth-scaling` (2)
+- `HRM` (2)
 - `LoRA` (2)
 - `mechanistic-analysis` (2)
 - `MoR` (2)
@@ -100,7 +101,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `generalist-processor` (1)
 - `halting` (1)
 - `hierarchical-recurrence` (1)
-- `HRM` (1)
+- `HRM-Text` (1)
 - `Huginn` (1)
 - `hyper-connections` (1)
 - `Hyperloop` (1)
@@ -129,6 +130,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `Neural GPU` (1)
 - `phantom-gradient` (1)
 - `preference-probing` (1)
+- `PrefixLM` (1)
 - `programmable-computer` (1)
 - `RD-VLA` (1)
 - `RecursiveVLM` (1)
