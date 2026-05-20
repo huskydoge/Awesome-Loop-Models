@@ -5,8 +5,8 @@
     "blog_total": 6,
     "briefing_total": 10,
     "latest_briefing_date": "2026-05-19",
-    "generated": "2026-05-20T00:23:23.995625+00:00",
-    "generated_local_date": "2026-05-19",
+    "generated": "2026-05-20T00:33:17.717787+00:00",
+    "generated_local_date": "2026-05-20",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -229,9 +229,9 @@
         "paper": "https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html",
         "github": "https://github.com/locuslab/deq"
       },
-      "citations": 869,
+      "citations": 870,
       "citation_sources": {
-        "semantic_scholar": 869,
+        "semantic_scholar": 870,
         "openalex": 246,
         "opencitations": 0
       },
@@ -241,7 +241,7 @@
         "github_api": 798
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-19",
+      "metrics_updated": "2026-05-20",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -3122,12 +3122,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 2,
+      "github_stars": 3,
       "star_sources": {
-        "github_api": 2
+        "github_api": 3
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-20",
       "id": "2604.18839",
       "source_file": "2604.18839.yaml",
       "source_path": "papers/2604.18839.yaml",
