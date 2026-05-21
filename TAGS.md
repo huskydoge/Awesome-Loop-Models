@@ -17,29 +17,29 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
-- `hierarchical-loop` (14)
-- `flat-loop` (67)
-- `parallel-loop` (2)
+- `hierarchical-loop` (15)
+- `flat-loop` (69)
+- `parallel-loop` (4)
 - `implicit-layer` (11)
 
 ## focus_tags
 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
-- `objective-loss` (6)
-- `training-algorithm` (36)
-- `architecture` (69)
+- `objective-loss` (7)
+- `training-algorithm` (37)
+- `architecture` (70)
 - `data` (3)
-- `inference-algorithm` (49)
+- `inference-algorithm` (51)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
 - `language-modeling` (47)
-- `reasoning` (44)
-- `efficiency` (30)
-- `algorithmic-reasoning` (16)
+- `reasoning` (46)
+- `efficiency` (31)
+- `algorithmic-reasoning` (18)
 - `theory` (9)
 - `scaling` (8)
 - `MoE` (4)
@@ -61,9 +61,9 @@ Observed alias tags currently used across the repo. These do not appear as brows
 
 - `looped-transformer` (13)
 - `ACT` (6)
+- `TRM` (5)
 - `DEQ` (4)
 - `looped-llm` (4)
-- `TRM` (4)
 - `UT` (4)
 - `depth-recurrent` (3)
 - `Ouro` (3)
@@ -99,6 +99,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `Exact-ZOH` (1)
 - `fixed-point-analysis` (1)
 - `generalist-processor` (1)
+- `GRAM` (1)
 - `halting` (1)
 - `hierarchical-recurrence` (1)
 - `HRM-Text` (1)
@@ -113,6 +114,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `kv-cache-sharing` (1)
 - `latent-cot` (1)
 - `latent-thoughts` (1)
+- `latent-trajectories` (1)
 - `looped-gpt` (1)
 - `LoopFormer` (1)
 - `LoopLM` (1)
@@ -132,7 +134,9 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `preference-probing` (1)
 - `PrefixLM` (1)
 - `programmable-computer` (1)
+- `PTRM` (1)
 - `RD-VLA` (1)
+- `recursive-reasoning` (1)
 - `RecursiveVLM` (1)
 - `reverse-residual` (1)
 - `RGNN` (1)
@@ -141,6 +145,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `scaling-laws` (1)
 - `silent-thinking` (1)
 - `SpiralFormer` (1)
+- `stochastic-rollouts` (1)
 - `TaH` (1)
 - `Think-at-Hard` (1)
 - `timestep-encoding` (1)

@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 80,
-    "paper_total": 74,
+    "total": 82,
+    "paper_total": 76,
     "blog_total": 6,
     "briefing_total": 10,
     "latest_briefing_date": "2026-05-19",
-    "generated": "2026-05-20T10:26:02.394694+00:00",
-    "generated_local_date": "2026-05-20",
+    "generated": "2026-05-21T00:42:21.255377+00:00",
+    "generated_local_date": "2026-05-21",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -171,14 +171,14 @@
         "openreview": "https://openreview.net/forum?id=HyzdRiR9Y7",
         "alphaxiv": "https://www.alphaxiv.org/abs/1807.03819"
       },
-      "citations": 920,
+      "citations": 921,
       "citation_sources": {
-        "semantic_scholar": 920,
+        "semantic_scholar": 921,
         "openalex": 396,
         "opencitations": 3
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-21",
       "id": "1807.03819",
       "source_file": "1807.03819.yaml",
       "source_path": "papers/1807.03819.yaml",
@@ -838,19 +838,19 @@
         "github": "https://github.com/seal-rg/recurrent-pretraining",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.05171"
       },
-      "citations": 218,
+      "citations": 219,
       "citation_sources": {
-        "semantic_scholar": 218,
+        "semantic_scholar": 219,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 885,
+      "github_stars": 886,
       "star_sources": {
-        "github_api": 885
+        "github_api": 886
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-21",
       "id": "2502.05171",
       "source_file": "2502.05171.yaml",
       "source_path": "papers/2502.05171.yaml",
@@ -966,14 +966,14 @@
         "arxiv": "https://arxiv.org/abs/2502.17416",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.17416"
       },
-      "citations": 123,
+      "citations": 124,
       "citation_sources": {
-        "semantic_scholar": 123,
+        "semantic_scholar": 124,
         "openalex": 1,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-21",
       "id": "2502.17416",
       "source_file": "2502.17416.yaml",
       "source_path": "papers/2502.17416.yaml",
@@ -1262,14 +1262,14 @@
         "arxiv": "https://arxiv.org/abs/2509.23314",
         "alphaxiv": "https://www.alphaxiv.org/abs/2509.23314"
       },
-      "citations": 3,
+      "citations": 4,
       "citation_sources": {
-        "semantic_scholar": 3,
+        "semantic_scholar": 4,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-21",
       "id": "2509.23314",
       "source_file": "2509.23314.yaml",
       "source_path": "papers/2509.23314.yaml",
@@ -1472,13 +1472,13 @@
         "hf": "https://huggingface.co/ByteDance/Ouro-1.4B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2510.25741"
       },
-      "citations": 55,
+      "citations": 56,
       "citation_sources": {
-        "semantic_scholar": 55,
+        "semantic_scholar": 56,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-21",
       "id": "2510.25741",
       "source_file": "2510.25741.yaml",
       "source_path": "papers/2510.25741.yaml",
@@ -2854,14 +2854,14 @@
         "twitter": "https://x.com/HughBlayney/status/2046558050882899995?s=20",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.11791"
       },
-      "citations": 4,
+      "citations": 5,
       "citation_sources": {
-        "semantic_scholar": 4,
+        "semantic_scholar": 5,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-21",
       "id": "2604.11791",
       "source_file": "2604.11791.yaml",
       "source_path": "papers/2604.11791.yaml",
@@ -2907,10 +2907,10 @@
         "arxiv": "https://arxiv.org/abs/2604.12946",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.12946"
       },
-      "citations": 7,
-      "metrics_updated": "2026-05-18",
+      "citations": 8,
+      "metrics_updated": "2026-05-21",
       "citation_sources": {
-        "semantic_scholar": 7,
+        "semantic_scholar": 8,
         "openalex": 0,
         "opencitations": 0
       },
@@ -3122,12 +3122,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 4,
+      "github_stars": 5,
       "star_sources": {
-        "github_api": 4
+        "github_api": 5
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-20",
+      "metrics_updated": "2026-05-21",
       "id": "2604.18839",
       "source_file": "2604.18839.yaml",
       "source_path": "papers/2604.18839.yaml",
@@ -3897,10 +3897,11 @@
       },
       "citations": 0,
       "citation_sources": {
+        "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "opencitations",
-      "metrics_updated": "2026-05-20",
+      "citation_source_best": "openalex",
+      "metrics_updated": "2026-05-21",
       "id": "2605.17811",
       "source_file": "2605.17811.yaml",
       "source_path": "papers/2605.17811.yaml",
@@ -3942,10 +3943,11 @@
       },
       "citations": 0,
       "citation_sources": {
+        "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "opencitations",
-      "metrics_updated": "2026-05-20",
+      "citation_source_best": "openalex",
+      "metrics_updated": "2026-05-21",
       "id": "2605.18464",
       "source_file": "2605.18464.yaml",
       "source_path": "papers/2605.18464.yaml",
@@ -3961,6 +3963,111 @@
       ],
       "venueClass": "venue-arxiv",
       "arxiv_id": "2605.18464"
+    },
+    {
+      "title": "Generative Recursive Reasoning",
+      "authors": "Junyeob Baek, Mingyu Jo, Minsu Kim, Mengye Ren, Yoshua Bengio, Sungjin Ahn",
+      "year": 2026,
+      "published_date": "2026-05-19",
+      "added_date": "2026-05-21",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop",
+        "parallel-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning"
+      ],
+      "tags": [
+        "GRAM",
+        "recursive-reasoning",
+        "latent-trajectories"
+      ],
+      "focus_tags": [
+        "architecture",
+        "objective-loss",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces GRAM, a probabilistic recursive-reasoning framework that models reasoning as stochastic latent trajectories, enabling multi-hypothesis computation, variational training, and inference-time scaling through depth and parallel sampling.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.19376",
+        "project": "https://ahn-ml.github.io/gram-website/",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.19376"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-05-21",
+      "id": "2605.19376",
+      "source_file": "2605.19376.yaml",
+      "source_path": "papers/2605.19376.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Junyeob Baek",
+        "Mingyu Jo",
+        "Minsu Kim",
+        "Mengye Ren",
+        "Yoshua Bengio",
+        "Sungjin Ahn"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.19376"
+    },
+    {
+      "title": "Probabilistic Tiny Recursive Model",
+      "authors": "Amin Sghaier, Ali Parviz, Alexia Jolicoeur-Martineau",
+      "year": 2026,
+      "published_date": "2026-05-19",
+      "added_date": "2026-05-21",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "hierarchical-loop",
+        "flat-loop",
+        "parallel-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning",
+        "efficiency"
+      ],
+      "tags": [
+        "TRM",
+        "PTRM",
+        "stochastic-rollouts"
+      ],
+      "focus_tags": [
+        "inference-algorithm"
+      ],
+      "desc": "Introduces PTRM, an inference-time scaling framework for Tiny Recursive Models that injects Gaussian noise into recursive latent updates, runs parallel trajectories, and selects the final answer with the model's Q head without retraining.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.19943",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.19943"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-05-21",
+      "id": "2605.19943",
+      "source_file": "2605.19943.yaml",
+      "source_path": "papers/2605.19943.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Amin Sghaier",
+        "Ali Parviz",
+        "Alexia Jolicoeur-Martineau"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.19943"
     },
     {
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
@@ -3998,12 +4105,12 @@
         "github": "https://github.com/sapientinc/HRM-Text",
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B"
       },
-      "github_stars": 476,
+      "github_stars": 567,
       "star_sources": {
-        "github_api": 476
+        "github_api": 567
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-20",
+      "metrics_updated": "2026-05-21",
       "id": "hrm-text",
       "source_file": "hrm-text.yaml",
       "source_path": "papers/hrm-text.yaml",
