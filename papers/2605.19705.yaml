@@ -1,0 +1,32 @@
+title: 'i-DEQ: A stable inertial deep equilibrium model for image restoration'
+authors:
+- Antonin Clerc
+- Marien Renaud
+- Baudouin Denis De Seneville
+- Nicolas Papadakis
+year: 2026
+published_date: '2026-05-19'
+added_date: '2026-05-20'
+venue: arXiv
+category: applications
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- vision
+- efficiency
+tags:
+- DEQ
+focus_tags:
+- architecture
+- inference-algorithm
+- training-algorithm
+desc: Introduces i-DEQ, an inertial deep-equilibrium image-restoration model that
+  learns explicit nonconvex regularization and uses momentum in fixed-point iterations,
+  improving stability and robustness while roughly halving DEQ inference time.
+links:
+  arxiv: https://arxiv.org/abs/2605.19705
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-05-21'

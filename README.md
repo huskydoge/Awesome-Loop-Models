@@ -749,6 +749,15 @@ Architecture and Algorithm Designs collects the constructive side of the field: 
 Applications Focused collects papers centered on applying loop models to concrete domains or tasks, including robotics, VLA, multimodal settings, tabular data, graph data, and other non-core benchmarks.
 
 - <details>
+  <summary>[05/19/2026] <strong>i-DEQ: A stable inertial deep equilibrium model for image restoration</strong> <a href="https://arxiv.org/abs/2605.19705"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2605.19705-b31b1b.svg"></a> <a href="https://www.alphaxiv.org/abs/2605.19705"><img alt="AlphaXiv" src="https://img.shields.io/badge/AlphaXiv-2605.19705-7c3aed.svg"></a></summary>
+  <div><strong>Authors:</strong> Antonin Clerc, Marien Renaud, Baudouin Denis De Seneville, Nicolas Papadakis · 2026</div>
+  <div><strong>Loop Mechanism:</strong> implicit-layer</div>
+  <div><strong>Focus:</strong> architecture · inference-algorithm · training-algorithm</div>
+  <div><strong>Domains:</strong> vision · efficiency</div>
+  <div><strong>TL;DR:</strong> Introduces i-DEQ, an inertial deep-equilibrium image-restoration model that learns explicit nonconvex regularization and uses momentum in fixed-point iterations, improving stability and robustness while roughly halving DEQ inference time.</div>
+  </details>
+
+- <details>
   <summary>[05/18/2026] <strong>PERL: Parameter Efficient Reasoning in CLIP Latent Space</strong> <a href="https://arxiv.org/abs/2605.18464"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2605.18464-b31b1b.svg"></a> <a href="https://www.alphaxiv.org/abs/2605.18464"><img alt="AlphaXiv" src="https://img.shields.io/badge/AlphaXiv-2605.18464-7c3aed.svg"></a></summary>
   <div><strong>Authors:</strong> Simone Carnemolla, Salvatore Calcagno, Daniela Giordano, Concetto Spampinato, Matteo Pennisi · 2026</div>
   <div><strong>Loop Mechanism:</strong> flat-loop</div>
