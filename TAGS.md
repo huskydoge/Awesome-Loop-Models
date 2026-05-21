@@ -20,17 +20,17 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 - `hierarchical-loop` (15)
 - `flat-loop` (69)
 - `parallel-loop` (4)
-- `implicit-layer` (11)
+- `implicit-layer` (12)
 
 ## focus_tags
 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (7)
-- `training-algorithm` (37)
-- `architecture` (70)
+- `training-algorithm` (38)
+- `architecture` (71)
 - `data` (3)
-- `inference-algorithm` (51)
+- `inference-algorithm` (52)
 
 ## domain_tags
 
@@ -38,7 +38,7 @@ Observed browser-facing domain tags currently used across the repo.
 
 - `language-modeling` (47)
 - `reasoning` (46)
-- `efficiency` (31)
+- `efficiency` (32)
 - `algorithmic-reasoning` (18)
 - `theory` (9)
 - `scaling` (8)
@@ -61,8 +61,8 @@ Observed alias tags currently used across the repo. These do not appear as brows
 
 - `looped-transformer` (13)
 - `ACT` (6)
+- `DEQ` (5)
 - `TRM` (5)
-- `DEQ` (4)
 - `looped-llm` (4)
 - `UT` (4)
 - `depth-recurrent` (3)

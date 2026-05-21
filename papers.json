@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 82,
-    "paper_total": 76,
+    "total": 83,
+    "paper_total": 77,
     "blog_total": 6,
-    "briefing_total": 10,
-    "latest_briefing_date": "2026-05-19",
-    "generated": "2026-05-21T00:42:21.255377+00:00",
+    "briefing_total": 11,
+    "latest_briefing_date": "2026-05-20",
+    "generated": "2026-05-21T00:47:25.181809+00:00",
     "generated_local_date": "2026-05-21",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -4018,6 +4018,54 @@
       ],
       "venueClass": "venue-arxiv",
       "arxiv_id": "2605.19376"
+    },
+    {
+      "title": "i-DEQ: A stable inertial deep equilibrium model for image restoration",
+      "authors": "Antonin Clerc, Marien Renaud, Baudouin Denis De Seneville, Nicolas Papadakis",
+      "year": 2026,
+      "published_date": "2026-05-19",
+      "added_date": "2026-05-20",
+      "venue": "arXiv",
+      "category": "applications",
+      "mechanism_tags": [
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "vision",
+        "efficiency"
+      ],
+      "tags": [
+        "DEQ"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm",
+        "training-algorithm"
+      ],
+      "desc": "Introduces i-DEQ, an inertial deep-equilibrium image-restoration model that learns explicit nonconvex regularization and uses momentum in fixed-point iterations, improving stability and robustness while roughly halving DEQ inference time.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.19705",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.19705"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-05-21",
+      "id": "2605.19705",
+      "source_file": "2605.19705.yaml",
+      "source_path": "papers/2605.19705.yaml",
+      "entry_type": "paper",
+      "foundation": false,
+      "authors_list": [
+        "Antonin Clerc",
+        "Marien Renaud",
+        "Baudouin Denis De Seneville",
+        "Nicolas Papadakis"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.19705"
     },
     {
       "title": "Probabilistic Tiny Recursive Model",
