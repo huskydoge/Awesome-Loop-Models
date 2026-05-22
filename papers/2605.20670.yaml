@@ -1,0 +1,39 @@
+title: 'LT2: Linear-Time Looped Transformers'
+authors:
+- Chunyuan Deng
+- Yizhe Zhang
+- Rui-Jie Zhu
+- Yuanyuan Xu
+- Jiarui Liu
+- T. S. Eugene Ng
+- Hanjie Chen
+year: 2026
+published_date: '2026-05-20'
+added_date: '2026-05-21'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+- scaling
+tags:
+- looped-transformer
+- looped-llm
+- Ouro
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces LT2, a looped-transformer family that replaces quadratic attention
+  with linear or sparse attention so repeated loop steps refine memory and expand
+  receptive field while keeping inference more scalable.
+links:
+  arxiv: https://arxiv.org/abs/2605.20670
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-05-22'

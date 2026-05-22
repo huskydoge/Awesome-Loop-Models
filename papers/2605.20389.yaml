@@ -1,0 +1,29 @@
+title: Nonlocal operator learning for fMRI encoding and decoding tasks
+authors:
+- Andreas Kramer
+- Saugat Acharya
+- Alice Giola
+- Emanuele Zappala
+year: 2026
+published_date: '2026-05-19'
+added_date: '2026-05-21'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- sequence-modeling
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Applies a latent neural integral-operator model to fMRI encoding and decoding,
+  using fixed-point iterations in an auxiliary latent space before downstream classification
+  or stimulus prediction.
+links:
+  arxiv: https://arxiv.org/abs/2605.20389
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-05-22'

@@ -1,0 +1,33 @@
+title: Interaction Locality in Hierarchical Recursive Reasoning
+authors:
+- Yosuke Miyanishi
+- Tetsuro Morimura
+year: 2026
+published_date: '2026-05-20'
+added_date: '2026-05-21'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- hierarchical-loop
+- flat-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+tags:
+- HRM
+- TRM
+- mechanistic-analysis
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Proposes interaction locality as a mechanistic measurement framework for HRM
+  and TRM, showing how repeated recursive updates accumulate local writes into broader
+  solution structure on grid reasoning benchmarks.
+links:
+  arxiv: https://arxiv.org/abs/2605.20784
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-05-22'

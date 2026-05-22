@@ -17,10 +17,10 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
-- `hierarchical-loop` (15)
-- `flat-loop` (69)
+- `hierarchical-loop` (16)
+- `flat-loop` (72)
 - `parallel-loop` (4)
-- `implicit-layer` (12)
+- `implicit-layer` (14)
 
 ## focus_tags
 
@@ -28,23 +28,23 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 - `objective-loss` (7)
 - `training-algorithm` (38)
-- `architecture` (71)
+- `architecture` (75)
 - `data` (3)
-- `inference-algorithm` (52)
+- `inference-algorithm` (56)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `language-modeling` (47)
-- `reasoning` (46)
-- `efficiency` (32)
-- `algorithmic-reasoning` (18)
+- `reasoning` (49)
+- `language-modeling` (48)
+- `efficiency` (33)
+- `algorithmic-reasoning` (20)
+- `scaling` (10)
 - `theory` (9)
-- `scaling` (8)
+- `sequence-modeling` (5)
 - `vision` (5)
 - `MoE` (4)
-- `sequence-modeling` (4)
 - `memory-efficiency` (3)
 - `RL` (2)
 - `alignment` (1)
@@ -59,21 +59,22 @@ Observed browser-facing domain tags currently used across the repo.
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (13)
+- `looped-transformer` (14)
 - `ACT` (6)
+- `TRM` (6)
 - `DEQ` (5)
-- `TRM` (5)
-- `looped-llm` (4)
+- `looped-llm` (5)
+- `Ouro` (4)
 - `UT` (4)
+- `convergence` (3)
 - `depth-recurrent` (3)
-- `Ouro` (3)
+- `HRM` (3)
+- `mechanistic-analysis` (3)
 - `shared-weight-recurrence` (3)
 - `adaptive-computation-time` (2)
-- `convergence` (2)
+- `adaptive-latent-iteration` (2)
 - `depth-scaling` (2)
-- `HRM` (2)
 - `LoRA` (2)
-- `mechanistic-analysis` (2)
 - `MoR` (2)
 - `mythos` (2)
 - `Parcae` (2)
@@ -82,7 +83,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `weight-tying` (2)
 - `activation-compression` (1)
 - `AdaPonderLM` (1)
-- `adaptive-latent-iteration` (1)
 - `AlgoFormer` (1)
 - `ANIRA` (1)
 - `attention-mixture` (1)

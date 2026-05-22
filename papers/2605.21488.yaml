@@ -1,0 +1,34 @@
+title: 'Equilibrium Reasoners: Learning Attractors Enables Scalable Reasoning'
+authors:
+- Benhao Huang
+- Zhengyang Geng
+- Zico Kolter
+year: 2026
+published_date: '2026-05-20'
+added_date: '2026-05-21'
+venue: ICML
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+- implicit-layer
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+- scaling
+tags:
+- adaptive-latent-iteration
+- convergence
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Formalizes Equilibrium Reasoners as learned latent dynamical systems whose repeated
+  update rule converges toward task-conditioned attractors, enabling depth and breadth
+  test-time scaling for reasoning.
+links:
+  arxiv: https://arxiv.org/abs/2605.21488
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-05-22'
