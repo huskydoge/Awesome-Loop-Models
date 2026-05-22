@@ -1,4 +1,4 @@
-title: 'Generative Recursive Reasoning'
+title: Generative Recursive Reasoning
 authors:
 - Junyeob Baek
 - Mingyu Jo
@@ -27,14 +27,15 @@ focus_tags:
 - objective-loss
 - training-algorithm
 - inference-algorithm
-desc: Introduces GRAM, a probabilistic recursive-reasoning framework that models
-  reasoning as stochastic latent trajectories, enabling multi-hypothesis computation,
-  variational training, and inference-time scaling through depth and parallel sampling.
+desc: Introduces GRAM, a probabilistic recursive-reasoning framework that models reasoning
+  as stochastic latent trajectories, enabling multi-hypothesis computation, variational
+  training, and inference-time scaling through depth and parallel sampling.
 links:
   arxiv: https://arxiv.org/abs/2605.19376
   project: https://ahn-ml.github.io/gram-website/
 citations: 0
 citation_sources:
+  openalex: 0
   opencitations: 0
-citation_source_best: opencitations
-metrics_updated: '2026-05-21'
+citation_source_best: openalex
+metrics_updated: '2026-05-22'

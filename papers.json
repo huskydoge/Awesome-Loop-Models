@@ -5,8 +5,8 @@
     "blog_total": 6,
     "briefing_total": 12,
     "latest_briefing_date": "2026-05-21",
-    "generated": "2026-05-22T00:18:51.742188+00:00",
-    "generated_local_date": "2026-05-21",
+    "generated": "2026-05-22T03:32:40.382728+00:00",
+    "generated_local_date": "2026-05-22",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -126,14 +126,14 @@
         "arxiv": "https://arxiv.org/abs/1603.08983",
         "alphaxiv": "https://www.alphaxiv.org/abs/1603.08983"
       },
-      "citations": 714,
+      "citations": 715,
       "citation_sources": {
-        "semantic_scholar": 714,
+        "semantic_scholar": 715,
         "openalex": 361,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-22",
       "id": "1603.08983",
       "source_file": "1603.08983.yaml",
       "source_path": "papers/1603.08983.yaml",
@@ -229,9 +229,9 @@
         "paper": "https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html",
         "github": "https://github.com/locuslab/deq"
       },
-      "citations": 870,
+      "citations": 871,
       "citation_sources": {
-        "semantic_scholar": 870,
+        "semantic_scholar": 871,
         "openalex": 246,
         "opencitations": 0
       },
@@ -241,7 +241,7 @@
         "github_api": 798
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-20",
+      "metrics_updated": "2026-05-22",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -552,12 +552,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 43,
+      "github_stars": 44,
       "star_sources": {
-        "github_api": 43
+        "github_api": 44
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-05-22",
       "id": "2311.12424",
       "source_file": "2311.12424.yaml",
       "source_path": "papers/2311.12424.yaml",
@@ -4000,10 +4000,11 @@
       },
       "citations": 0,
       "citation_sources": {
+        "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "opencitations",
-      "metrics_updated": "2026-05-21",
+      "citation_source_best": "openalex",
+      "metrics_updated": "2026-05-22",
       "id": "2605.19376",
       "source_file": "2605.19376.yaml",
       "source_path": "papers/2605.19376.yaml",
@@ -4049,10 +4050,11 @@
       },
       "citations": 0,
       "citation_sources": {
+        "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "opencitations",
-      "metrics_updated": "2026-05-21",
+      "citation_source_best": "openalex",
+      "metrics_updated": "2026-05-22",
       "id": "2605.19705",
       "source_file": "2605.19705.yaml",
       "source_path": "papers/2605.19705.yaml",
@@ -4101,10 +4103,11 @@
       },
       "citations": 0,
       "citation_sources": {
+        "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "opencitations",
-      "metrics_updated": "2026-05-21",
+      "citation_source_best": "openalex",
+      "metrics_updated": "2026-05-22",
       "id": "2605.19943",
       "source_file": "2605.19943.yaml",
       "source_path": "papers/2605.19943.yaml",
@@ -4348,12 +4351,12 @@
         "github": "https://github.com/sapientinc/HRM-Text",
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B"
       },
-      "github_stars": 567,
+      "github_stars": 631,
       "star_sources": {
-        "github_api": 567
+        "github_api": 631
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-05-21",
+      "metrics_updated": "2026-05-22",
       "id": "hrm-text",
       "source_file": "hrm-text.yaml",
       "source_path": "papers/hrm-text.yaml",
