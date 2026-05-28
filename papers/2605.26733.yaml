@@ -37,6 +37,7 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2605.26733
 citations: 0
 citation_sources:
+  semantic_scholar: 0
   opencitations: 0
-citation_source_best: opencitations
+citation_source_best: semantic_scholar
 metrics_updated: '2026-05-28'
