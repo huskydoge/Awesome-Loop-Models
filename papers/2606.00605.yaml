@@ -1,0 +1,34 @@
+title: Looped Transformers with Layer Normalization Provably Learn the Power Method
+authors:
+- Lyumin Wu
+- Chenyang Zhang
+- Yuan Cao
+year: 2026
+published_date: '2026-05-30'
+added_date: '2026-06-02'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- theory
+- algorithmic-reasoning
+tags:
+- looped-transformer
+- shared-weight-recurrence
+focus_tags:
+- architecture
+- training-algorithm
+desc: Proves that a looped linear transformer with layer normalization, trained only
+  for principal component prediction, converges to a solution implementing the power
+  method, with each self-attention layer performing one power iteration.
+links:
+  arxiv: https://arxiv.org/abs/2606.00605
+  alphaxiv: https://www.alphaxiv.org/abs/2606.00605
+citations: 0
+metrics_updated: '2026-06-03'
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar

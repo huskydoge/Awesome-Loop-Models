@@ -18,32 +18,32 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (16)
-- `flat-loop` (77)
+- `flat-loop` (81)
 - `parallel-loop` (4)
-- `implicit-layer` (14)
+- `implicit-layer` (15)
 
 ## focus_tags
 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (7)
-- `training-algorithm` (42)
-- `architecture` (79)
+- `training-algorithm` (45)
+- `architecture` (84)
 - `data` (3)
-- `inference-algorithm` (61)
+- `inference-algorithm` (64)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
+- `language-modeling` (55)
 - `reasoning` (54)
-- `language-modeling` (53)
-- `efficiency` (37)
-- `algorithmic-reasoning` (20)
-- `scaling` (15)
-- `theory` (10)
+- `efficiency` (41)
+- `algorithmic-reasoning` (21)
+- `scaling` (16)
+- `theory` (11)
+- `vision` (8)
 - `sequence-modeling` (5)
-- `vision` (5)
 - `MoE` (4)
 - `memory-efficiency` (3)
 - `RL` (2)
@@ -59,27 +59,28 @@ Observed browser-facing domain tags currently used across the repo.
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (17)
+- `looped-transformer` (20)
 - `ACT` (6)
+- `DEQ` (6)
 - `TRM` (6)
-- `DEQ` (5)
 - `looped-llm` (5)
+- `shared-weight-recurrence` (5)
 - `Ouro` (4)
+- `recursive-transformer` (4)
 - `UT` (4)
 - `convergence` (3)
 - `depth-recurrent` (3)
+- `depth-scaling` (3)
 - `HRM` (3)
 - `mechanistic-analysis` (3)
-- `shared-weight-recurrence` (3)
 - `adaptive-computation-time` (2)
 - `adaptive-latent-iteration` (2)
-- `depth-scaling` (2)
+- `hyper-connections` (2)
 - `LoopLM` (2)
 - `LoRA` (2)
 - `MoR` (2)
 - `mythos` (2)
 - `Parcae` (2)
-- `recursive-transformer` (2)
 - `universal-transformer` (2)
 - `weight-tying` (2)
 - `activation-compression` (1)
@@ -106,7 +107,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `hierarchical-recurrence` (1)
 - `HRM-Text` (1)
 - `Huginn` (1)
-- `hyper-connections` (1)
 - `Hyperloop` (1)
 - `ILSD` (1)
 - `implicit-reasoning` (1)
