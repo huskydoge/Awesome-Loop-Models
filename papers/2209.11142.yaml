@@ -33,10 +33,10 @@ desc: Presents a single GNN model trained on 30+ algorithms from the CLRS benchm
   algorithmic tasks.
 links:
   arxiv: https://arxiv.org/abs/2209.11142
-citations: 69
+citations: 71
 citation_sources:
-  semantic_scholar: 69
+  semantic_scholar: 71
   openalex: 7
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-05-18'
+metrics_updated: '2026-06-03'
