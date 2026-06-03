@@ -1,0 +1,38 @@
+title: Fixed-Point Masked Generative Modeling
+authors:
+- Andrea Miele
+- Yiming Qin
+- Alba Carballo-Castro
+- Justin Deschenaux
+- Pascal Frossard
+year: 2026
+published_date: '2026-05-29'
+added_date: '2026-06-02'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- language-modeling
+- vision
+- efficiency
+tags:
+- DEQ
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Replaces part of a masked generative model denoiser with a fixed-point solver
+  over shared attention layers, using consistency training and solver-state reuse
+  to adapt depth with fewer parameters.
+links:
+  arxiv: https://arxiv.org/abs/2605.31215
+  alphaxiv: https://www.alphaxiv.org/abs/2605.31215
+citations: 0
+metrics_updated: '2026-06-03'
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar

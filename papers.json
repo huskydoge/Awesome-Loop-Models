@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 93,
-    "paper_total": 87,
+    "total": 97,
+    "paper_total": 91,
     "blog_total": 6,
     "briefing_total": 15,
-    "latest_briefing_date": "2026-06-01",
-    "generated": "2026-06-02T01:53:29.810689+00:00",
-    "generated_local_date": "2026-06-01",
+    "latest_briefing_date": "2026-06-02",
+    "generated": "2026-06-03T21:22:25.530265+00:00",
+    "generated_local_date": "2026-06-03",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -79,14 +79,14 @@
         "arxiv": "https://arxiv.org/abs/1511.08228",
         "alphaxiv": "https://www.alphaxiv.org/abs/1511.08228"
       },
-      "citations": 393,
+      "citations": 394,
       "citation_sources": {
-        "semantic_scholar": 393,
+        "semantic_scholar": 394,
         "openalex": 188,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-28",
+      "metrics_updated": "2026-06-03",
       "id": "1511.08228",
       "source_file": "1511.08228.yaml",
       "source_path": "papers/1511.08228.yaml",
@@ -126,14 +126,14 @@
         "arxiv": "https://arxiv.org/abs/1603.08983",
         "alphaxiv": "https://www.alphaxiv.org/abs/1603.08983"
       },
-      "citations": 739,
+      "citations": 745,
       "citation_sources": {
-        "semantic_scholar": 739,
+        "semantic_scholar": 745,
         "openalex": 361,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "1603.08983",
       "source_file": "1603.08983.yaml",
       "source_path": "papers/1603.08983.yaml",
@@ -171,14 +171,14 @@
         "openreview": "https://openreview.net/forum?id=HyzdRiR9Y7",
         "alphaxiv": "https://www.alphaxiv.org/abs/1807.03819"
       },
-      "citations": 938,
+      "citations": 941,
       "citation_sources": {
-        "semantic_scholar": 938,
+        "semantic_scholar": 941,
         "openalex": 396,
         "opencitations": 3
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "1807.03819",
       "source_file": "1807.03819.yaml",
       "source_path": "papers/1807.03819.yaml",
@@ -229,19 +229,19 @@
         "paper": "https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html",
         "github": "https://github.com/locuslab/deq"
       },
-      "citations": 887,
+      "citations": 891,
       "citation_sources": {
-        "semantic_scholar": 887,
+        "semantic_scholar": 891,
         "openalex": 246,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 801,
+      "github_stars": 802,
       "star_sources": {
-        "github_api": 801
+        "github_api": 802
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -376,14 +376,14 @@
         "arxiv": "https://arxiv.org/abs/2209.11142",
         "alphaxiv": "https://www.alphaxiv.org/abs/2209.11142"
       },
-      "citations": 69,
+      "citations": 71,
       "citation_sources": {
-        "semantic_scholar": 69,
+        "semantic_scholar": 71,
         "openalex": 7,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-06-03",
       "id": "2209.11142",
       "source_file": "2209.11142.yaml",
       "source_path": "papers/2209.11142.yaml",
@@ -435,14 +435,14 @@
         "arxiv": "https://arxiv.org/abs/2301.13196",
         "alphaxiv": "https://www.alphaxiv.org/abs/2301.13196"
       },
-      "citations": 199,
+      "citations": 201,
       "citation_sources": {
-        "semantic_scholar": 199,
+        "semantic_scholar": 201,
         "openalex": 3,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2301.13196",
       "source_file": "2301.13196.yaml",
       "source_path": "papers/2301.13196.yaml",
@@ -774,14 +774,14 @@
         "arxiv": "https://arxiv.org/abs/2410.20672",
         "alphaxiv": "https://www.alphaxiv.org/abs/2410.20672"
       },
-      "citations": 43,
+      "citations": 44,
       "citation_sources": {
-        "semantic_scholar": 43,
+        "semantic_scholar": 44,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2410.20672",
       "source_file": "2410.20672.yaml",
       "source_path": "papers/2410.20672.yaml",
@@ -838,9 +838,9 @@
         "github": "https://github.com/seal-rg/recurrent-pretraining",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.05171"
       },
-      "citations": 244,
+      "citations": 248,
       "citation_sources": {
-        "semantic_scholar": 244,
+        "semantic_scholar": 248,
         "openalex": 0,
         "opencitations": 0
       },
@@ -850,7 +850,7 @@
         "github_api": 889
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2502.05171",
       "source_file": "2502.05171.yaml",
       "source_path": "papers/2502.05171.yaml",
@@ -966,14 +966,14 @@
         "arxiv": "https://arxiv.org/abs/2502.17416",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.17416"
       },
-      "citations": 140,
+      "citations": 141,
       "citation_sources": {
-        "semantic_scholar": 140,
+        "semantic_scholar": 141,
         "openalex": 1,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2502.17416",
       "source_file": "2502.17416.yaml",
       "source_path": "papers/2502.17416.yaml",
@@ -1028,14 +1028,14 @@
         "arxiv": "https://arxiv.org/abs/2506.21734",
         "alphaxiv": "https://www.alphaxiv.org/abs/2506.21734"
       },
-      "citations": 106,
+      "citations": 107,
       "citation_sources": {
-        "semantic_scholar": 106,
+        "semantic_scholar": 107,
         "openalex": 2,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2506.21734",
       "source_file": "2506.21734.yaml",
       "source_path": "papers/2506.21734.yaml",
@@ -1082,13 +1082,13 @@
         "arxiv": "https://arxiv.org/abs/2507.02199",
         "alphaxiv": "https://www.alphaxiv.org/abs/2507.02199"
       },
-      "citations": 9,
+      "citations": 10,
       "citation_sources": {
-        "semantic_scholar": 9,
+        "semantic_scholar": 10,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2507.02199",
       "source_file": "2507.02199.yaml",
       "source_path": "papers/2507.02199.yaml",
@@ -1192,13 +1192,13 @@
         "github": "https://github.com/raymin0223/mixture_of_recursions",
         "alphaxiv": "https://www.alphaxiv.org/abs/2507.10524"
       },
-      "citations": 74,
+      "citations": 76,
       "citation_sources": {
-        "semantic_scholar": 74,
+        "semantic_scholar": 76,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "github_stars": 574,
       "star_sources": {
         "github_api": 574
@@ -1411,13 +1411,13 @@
         "arxiv": "https://arxiv.org/abs/2510.24824",
         "alphaxiv": "https://www.alphaxiv.org/abs/2510.24824"
       },
-      "citations": 12,
+      "citations": 13,
       "citation_sources": {
-        "semantic_scholar": 12,
+        "semantic_scholar": 13,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-28",
+      "metrics_updated": "2026-06-03",
       "id": "2510.24824",
       "source_file": "2510.24824.yaml",
       "source_path": "papers/2510.24824.yaml",
@@ -1472,13 +1472,13 @@
         "hf": "https://huggingface.co/ByteDance/Ouro-1.4B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2510.25741"
       },
-      "citations": 71,
+      "citations": 73,
       "citation_sources": {
-        "semantic_scholar": 71,
+        "semantic_scholar": 73,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2510.25741",
       "source_file": "2510.25741.yaml",
       "source_path": "papers/2510.25741.yaml",
@@ -1560,9 +1560,9 @@
         "hf": "https://huggingface.co/collections/tomg-group-umd/retrofitting-recurrence",
         "alphaxiv": "https://www.alphaxiv.org/abs/2511.07384"
       },
-      "citations": 20,
+      "citations": 21,
       "citation_sources": {
-        "semantic_scholar": 20,
+        "semantic_scholar": 21,
         "openalex": 0,
         "opencitations": 0
       },
@@ -1572,7 +1572,7 @@
         "github_api": 65
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2511.07384",
       "source_file": "2511.07384.yaml",
       "source_path": "papers/2511.07384.yaml",
@@ -1793,14 +1793,14 @@
         "arxiv": "https://arxiv.org/abs/2602.05970",
         "alphaxiv": "https://www.alphaxiv.org/abs/2602.05970"
       },
-      "citations": 1,
+      "citations": 2,
       "citation_sources": {
-        "semantic_scholar": 1,
+        "semantic_scholar": 2,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-28",
+      "metrics_updated": "2026-06-03",
       "id": "2602.05970",
       "source_file": "2602.05970.yaml",
       "source_path": "papers/2602.05970.yaml",
@@ -1911,12 +1911,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 34,
+      "github_stars": 36,
       "star_sources": {
-        "github_api": 34
+        "github_api": 36
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2602.07845",
       "source_file": "2602.07845.yaml",
       "source_path": "papers/2602.07845.yaml",
@@ -2128,9 +2128,9 @@
         "github": "https://github.com/armenjeddi/loopformer",
         "alphaxiv": "https://www.alphaxiv.org/abs/2602.11451"
       },
-      "citations": 13,
+      "citations": 15,
       "citation_sources": {
-        "semantic_scholar": 13,
+        "semantic_scholar": 15,
         "openalex": 0,
         "opencitations": 0
       },
@@ -2140,7 +2140,7 @@
         "github_api": 23
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2602.11451",
       "source_file": "2602.11451.yaml",
       "source_path": "papers/2602.11451.yaml",
@@ -2182,14 +2182,14 @@
         "arxiv": "https://arxiv.org/abs/2602.11698",
         "alphaxiv": "https://www.alphaxiv.org/abs/2602.11698"
       },
-      "citations": 3,
+      "citations": 5,
       "citation_sources": {
-        "semantic_scholar": 3,
+        "semantic_scholar": 5,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2602.11698",
       "source_file": "2602.11698.yaml",
       "source_path": "papers/2602.11698.yaml",
@@ -2593,14 +2593,14 @@
         "arxiv": "https://arxiv.org/abs/2603.21676",
         "alphaxiv": "https://www.alphaxiv.org/abs/2603.21676"
       },
-      "citations": 3,
+      "citations": 4,
       "citation_sources": {
-        "semantic_scholar": 3,
+        "semantic_scholar": 4,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "id": "2603.21676",
       "source_file": "2603.21676.yaml",
       "source_path": "papers/2603.21676.yaml",
@@ -2639,14 +2639,14 @@
         "arxiv": "https://arxiv.org/abs/2604.07822",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.07822"
       },
-      "citations": 5,
+      "citations": 6,
       "citation_sources": {
-        "semantic_scholar": 5,
+        "semantic_scholar": 6,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-28",
+      "metrics_updated": "2026-06-03",
       "id": "2604.07822",
       "source_file": "2604.07822.yaml",
       "source_path": "papers/2604.07822.yaml",
@@ -2907,10 +2907,10 @@
         "arxiv": "https://arxiv.org/abs/2604.12946",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.12946"
       },
-      "citations": 15,
-      "metrics_updated": "2026-05-28",
+      "citations": 19,
+      "metrics_updated": "2026-06-03",
       "citation_sources": {
-        "semantic_scholar": 15,
+        "semantic_scholar": 19,
         "openalex": 0,
         "opencitations": 0
       },
@@ -2970,14 +2970,14 @@
         "arxiv": "https://arxiv.org/abs/2604.14442",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.14442"
       },
-      "citations": 1,
+      "citations": 2,
       "citation_sources": {
-        "semantic_scholar": 1,
+        "semantic_scholar": 2,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-18",
+      "metrics_updated": "2026-06-03",
       "id": "2604.14442",
       "source_file": "2604.14442.yaml",
       "source_path": "papers/2604.14442.yaml",
@@ -3174,14 +3174,14 @@
         "arxiv": "https://arxiv.org/abs/2604.21106",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.21106"
       },
-      "citations": 4,
+      "citations": 6,
       "citation_sources": {
-        "semantic_scholar": 4,
+        "semantic_scholar": 6,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-28",
+      "metrics_updated": "2026-06-03",
       "id": "2604.21106",
       "source_file": "2604.21106.yaml",
       "source_path": "papers/2604.21106.yaml",
@@ -3224,14 +3224,14 @@
         "arxiv": "https://arxiv.org/abs/2604.21254",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.21254"
       },
-      "citations": 5,
+      "citations": 6,
       "citation_sources": {
-        "semantic_scholar": 5,
+        "semantic_scholar": 6,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-05-28",
+      "metrics_updated": "2026-06-03",
       "id": "2604.21254",
       "source_file": "2604.21254.yaml",
       "source_path": "papers/2604.21254.yaml",
@@ -4607,11 +4607,173 @@
       "arxiv_id": "2605.26733"
     },
     {
-      "title": "Chain-of-Thought and Compressed Looped Transformers: A Memory-Budget Separation",
-      "authors": "Haozhou Zhang",
+      "title": "Déjà View: Looping Transformers for Multi-View 3D Reconstruction",
+      "authors": "Alessandro Burzio, Tobias Fischer, Sven Elflein, Qunjie Zhou, Riccardo de Lutio, Jiawei Ren, Jiahui Huang, Shengyu Huang, Marc Pollefeys, Laura Leal-Taixé, Zan Gojcic, Haithem Turki",
+      "year": 2026,
+      "published_date": "2026-05-28",
+      "added_date": "2026-06-02",
+      "venue": "arXiv",
+      "category": "applications",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "vision",
+        "efficiency"
+      ],
+      "tags": [
+        "looped-transformer",
+        "recursive-transformer"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Applies a single looped transformer block recurrently to per-view features for a variable number of refinement steps in multi-view 3D reconstruction, exposing loop count as an inference-time compute knob.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.30215",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.30215"
+      },
+      "citations": 0,
+      "metrics_updated": "2026-06-03",
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "id": "2605.30215",
+      "source_file": "2605.30215.yaml",
+      "source_path": "papers/2605.30215.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Alessandro Burzio",
+        "Tobias Fischer",
+        "Sven Elflein",
+        "Qunjie Zhou",
+        "Riccardo de Lutio",
+        "Jiawei Ren",
+        "Jiahui Huang",
+        "Shengyu Huang",
+        "Marc Pollefeys",
+        "Laura Leal-Taixé",
+        "Zan Gojcic",
+        "Haithem Turki"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.30215"
+    },
+    {
+      "title": "Fixed-Point Masked Generative Modeling",
+      "authors": "Andrea Miele, Yiming Qin, Alba Carballo-Castro, Justin Deschenaux, Pascal Frossard",
       "year": 2026,
       "published_date": "2026-05-29",
-      "added_date": "2026-06-01",
+      "added_date": "2026-06-02",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "vision",
+        "efficiency"
+      ],
+      "tags": [
+        "DEQ"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Replaces part of a masked generative model denoiser with a fixed-point solver over shared attention layers, using consistency training and solver-state reuse to adapt depth with fewer parameters.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2605.31215",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2605.31215"
+      },
+      "citations": 0,
+      "metrics_updated": "2026-06-03",
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "id": "2605.31215",
+      "source_file": "2605.31215.yaml",
+      "source_path": "papers/2605.31215.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Andrea Miele",
+        "Yiming Qin",
+        "Alba Carballo-Castro",
+        "Justin Deschenaux",
+        "Pascal Frossard"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2605.31215"
+    },
+    {
+      "title": "Recursive Vision Transformer with Dynamic Depth and Width Adjustment for Resource-Efficient Image Semantic Communication",
+      "authors": "Zhilong Zhang, Xinhui Zhang, Gongyu Jin, Sihua Wang, Danpu Liu, Changchuan Yin",
+      "year": 2026,
+      "published_date": "2026-05-27",
+      "added_date": "2026-06-02",
+      "venue": "arXiv",
+      "category": "applications",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "vision",
+        "efficiency"
+      ],
+      "tags": [
+        "recursive-transformer",
+        "depth-scaling"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Uses a recursive ViT structure to iteratively refine semantic features for image semantic communication while dynamically adjusting recursive depth and width under image and channel conditions.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2606.00114",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2606.00114"
+      },
+      "citations": 0,
+      "metrics_updated": "2026-06-03",
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "id": "2606.00114",
+      "source_file": "2606.00114.yaml",
+      "source_path": "papers/2606.00114.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Zhilong Zhang",
+        "Xinhui Zhang",
+        "Gongyu Jin",
+        "Sihua Wang",
+        "Danpu Liu",
+        "Changchuan Yin"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2606.00114"
+    },
+    {
+      "title": "Looped Transformers with Layer Normalization Provably Learn the Power Method",
+      "authors": "Lyumin Wu, Chenyang Zhang, Yuan Cao",
+      "year": 2026,
+      "published_date": "2026-05-30",
+      "added_date": "2026-06-02",
       "venue": "arXiv",
       "category": "analysis",
       "foundation": false,
@@ -4619,33 +4781,90 @@
         "flat-loop"
       ],
       "domain_tags": [
-        "language-modeling",
-        "reasoning",
         "theory",
-        "memory-efficiency"
+        "algorithmic-reasoning"
       ],
       "tags": [
-        "looped-transformer"
+        "looped-transformer",
+        "shared-weight-recurrence"
       ],
       "focus_tags": [
         "architecture",
-        "inference-algorithm"
+        "training-algorithm"
       ],
-      "desc": "Compares chain-of-thought scratchpads with compressed looped Transformers, arguing that looped hidden-state recurrence is bounded by its persistent memory budget even when more recurrent computation is applied.",
+      "desc": "Proves that a looped linear transformer with layer normalization, trained only for principal component prediction, converges to a solution implementing the power method, with each self-attention layer performing one power iteration.",
       "links": {
-        "arxiv": "https://arxiv.org/abs/2605.30757",
-        "alphaxiv": "https://www.alphaxiv.org/abs/2605.30757"
+        "arxiv": "https://arxiv.org/abs/2606.00605",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2606.00605"
       },
       "citations": 0,
-      "id": "2605.30757",
-      "source_file": "2605.30757.yaml",
-      "source_path": "papers/2605.30757.yaml",
+      "metrics_updated": "2026-06-03",
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "id": "2606.00605",
+      "source_file": "2606.00605.yaml",
+      "source_path": "papers/2606.00605.yaml",
       "entry_type": "paper",
       "authors_list": [
-        "Haozhou Zhang"
+        "Lyumin Wu",
+        "Chenyang Zhang",
+        "Yuan Cao"
       ],
       "venueClass": "venue-arxiv",
-      "arxiv_id": "2605.30757"
+      "arxiv_id": "2606.00605"
+    },
+    {
+      "title": "CART: Context-Anchored Recurrent Transformer -- A Parameter-Efficient Architecture with Learned Stability",
+      "authors": "Chad A. Capps",
+      "year": 2026,
+      "published_date": "2026-05-31",
+      "added_date": "2026-06-02",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "efficiency",
+        "scaling"
+      ],
+      "tags": [
+        "looped-transformer",
+        "shared-weight-recurrence",
+        "hyper-connections"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Introduces a compact language model that reuses a single shared transformer core across depth while anchoring recurrence to precomputed key-value tensors and reports a mostly negative parameter-parity result against dense baselines.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2606.01495",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2606.01495"
+      },
+      "citations": 0,
+      "metrics_updated": "2026-06-03",
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "id": "2606.01495",
+      "source_file": "2606.01495.yaml",
+      "source_path": "papers/2606.01495.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Chad A. Capps"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2606.01495"
     },
     {
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
@@ -4683,12 +4902,12 @@
         "github": "https://github.com/sapientinc/HRM-Text",
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B"
       },
-      "github_stars": 978,
+      "github_stars": 1014,
       "star_sources": {
-        "github_api": 978
+        "github_api": 1014
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-01",
+      "metrics_updated": "2026-06-03",
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0
@@ -5022,37 +5241,14 @@
   ],
   "briefings": [
     {
-      "date": "2026-06-01",
-      "title": "Daily Loop-Model Briefing — 2026-06-01",
-      "status": "added",
-      "summary": "One loop-model analysis paper was added: a memory-budget separation between chain-of-thought scratchpads and compressed looped Transformers.",
-      "highlights": [
-        "Included: Chain-of-Thought and Compressed Looped Transformers studies what recurrent hidden-state loops can and cannot remember compared with token scratchpads.",
-        "Near miss: Reasoning in Memory uses fixed memory-token blocks and answer refinement, but the abstract does not establish reused learned internal blocks within a single forward process.",
-        "Near miss: AdaState introduces recurrence into streaming video generation through adaptive diffusion state and KV-cache transitions, which stays outside the repo's strict loop-model scope."
-      ],
-      "candidates": [
-        {
-          "id": "2605.30757",
-          "title": "Chain-of-Thought and Compressed Looped Transformers: A Memory-Budget Separation",
-          "url": "https://arxiv.org/abs/2605.30757",
-          "verdict": "included — the paper is directly about looped Transformers and analyzes limits of compressed recurrent hidden-state loops"
-        },
-        {
-          "id": "2605.30343",
-          "title": "Unlocking the Working Memory of Large Language Models for Latent Reasoning",
-          "url": "https://arxiv.org/abs/2605.30343",
-          "verdict": "near miss — memory blocks are fixed special-token sequences, not explicit reuse of a learned internal layer/block/operator"
-        },
-        {
-          "id": "2605.30349",
-          "title": "AdaState: Self-Evolving Anchors for Streaming Video Generation",
-          "url": "https://arxiv.org/abs/2605.30349",
-          "verdict": "not added — the recurrence is a diffusion-video adaptive state/KV-cache transition rather than central learned block reuse in the repo sense"
-        }
-      ],
-      "content": "# Daily Loop-Model Briefing — 2026-06-01\n\n## Outcome\n\nOne paper was added to the collection. It is a theory-oriented analysis paper about the memory limits of compressed looped Transformers compared with chain-of-thought scratchpads.\n\n## Added to the collection\n\n### Chain-of-Thought and Compressed Looped Transformers: A Memory-Budget Separation\n\nThis paper compares two ways a fixed model can spend extra test-time computation: external chain-of-thought tokens and internal looped Transformer recurrence. Its core claim is that these mechanisms differ in what they remember. Chain-of-thought can grow a token scratchpad, while a compressed looped Transformer carries only a bounded recurrent hidden state.\n\nWhy it was added: the paper is directly about looped Transformers and analyzes recurrent hidden activations as the model's persistent mutable memory. It belongs in analysis because the main contribution is a memory-budget separation, not a new looped architecture.\n\nMain reader takeaway: running a compressed loop for more steps adds computation, but does not by itself create an expanding scratchpad. The paper argues that this matters for reasoning tasks whose working-memory demand exceeds the loop's persistent state budget.\n\n## Checked but not added\n\n- **Unlocking the Working Memory of Large Language Models for Latent Reasoning** (`2605.30343`) remains adjacent but outside the strict collection scope. RiM uses fixed memory-token blocks and final-answer refinement, but the abstract does not make reused learned internal layers or blocks central.\n- **AdaState: Self-Evolving Anchors for Streaming Video Generation** (`2605.30349`) introduces a recurrent adaptive state for streaming video generation. It was not added because the recurrence is tied to diffusion-video state and KV-cache transitions rather than reused learned block/operator recurrence in the loop-model sense.",
-      "source_path": "briefings/2026/06/2026-06-01.md"
+      "date": "2026-06-02",
+      "title": "Daily Loop-Model Watch — 2026-06-02",
+      "status": "ok",
+      "summary": "",
+      "highlights": [],
+      "candidates": [],
+      "content": "# Daily Loop-Model Briefing — 2026-06-02\n\n## Outcome\n\nFive papers were added to the collection. The day is unusually broad: one paper gives theory for looped linear transformers with layer normalization, two papers put explicit transformer-block reuse into language or multimodal generative systems, and two papers apply recursive transformer depth to computer vision systems.\n\n## Added to the collection\n\n### Looped Transformers with Layer Normalization Provably Learn the Power Method\n\nThis paper studies principal component prediction as a controlled setting for understanding what a looped transformer learns. The main result is a proof that a looped linear transformer with layer normalization, trained by gradient descent for the prediction task rather than by direct algorithm supervision, converges to a solution that implements the power method.\n\nWhy it was added: the paper directly analyzes looped transformers, with self-attention layers reused as power-iteration steps inside the model computation. It belongs in analysis because the main contribution is a theoretical account of training dynamics and layer normalization.\n\nMain reader takeaway: layer normalization is not treated as incidental; the authors prove a gap between looped transformers with and without it for exactly learning the power-method mechanism.\n\n### CART: Context-Anchored Recurrent Transformer\n\nCART reuses one shared transformer core multiple times across depth while anchoring the recurrent core to key-value tensors computed once by a prelude. The paper is valuable partly because its result is negative: under the reported recipe, CART does not beat dense baselines at parameter parity, and several recurrent-core mechanisms appear vestigial in ablations.\n\nWhy it was added: even with the negative result, the architecture is explicitly a depth-recurrent transformer that reuses a learned shared core within one model forward process. It belongs in designs because it proposes and evaluates a concrete looped language-model architecture.\n\nMain reader takeaway: weight sharing and recurrent-depth machinery need careful validation; this paper is useful evidence about where a plausible recurrent transformer recipe fails.\n\n### Déjà View: Looping Transformers for Multi-View 3D Reconstruction\n\nDéjàView turns decoder-depth refinement in multi-view 3D reconstruction into an explicit loop. A single looped transformer block is applied recurrently to per-view features for K refinement steps, making the number of loops an inference-time compute knob.\n\nWhy it was added: the central mechanism is reuse of one learned transformer block across refinement steps. It belongs in applications because the looped model is tested as a practical architecture for multi-view 3D reconstruction.\n\nMain reader takeaway: the authors report that the looped block matches or outperforms substantially larger feed-forward baselines across five reconstruction benchmarks while using fewer parameters and comparable or lower compute.\n\n### Fixed-Point Masked Generative Modeling\n\nThis paper converts part of masked generative model denoisers into a fixed-point module over shared attention layers. The method combines fixed-point denoising with cross-step consistency and reuse of previous solver states, so masked generation can adapt computation depth instead of allocating a fixed denoiser budget everywhere.\n\nWhy it was added: masked generation alone would not qualify for this repository, but the central model change is an implicit layer over shared learned attention layers. It belongs in designs because it gives a concrete training-to-inference framework for fixed-point masked generation.\n\nMain reader takeaway: the abstract reports fewer parameters, lower training time and VRAM, and better low-budget generation quality on both OpenWebText and ImageNette.\n\n### Recursive Vision Transformer with Dynamic Depth and Width Adjustment\n\nThis paper introduces a recursive ViT for image semantic communication. The model iteratively refines semantic features and uses dynamic depth, dynamic width, and joint width-depth optimization to adapt computation to image content and channel conditions.\n\nWhy it was added: the recursive structure is used to reuse learned transformer computation for iterative feature refinement while reducing parameter count. It belongs in applications because the looped transformer mechanism is deployed for resource-efficient image semantic communication.\n\nMain reader takeaway: the reported system reduces parameter count by 48.7 percent and improves reconstruction quality over baselines at comparable compute.\n\n## Checked but not added\n\n- **Fixed Universal Transformers** (`2605.31423`) is a theory paper about fixed transformers simulating other transformers through input embeddings. It does not center on reusing a learned internal layer, block, module, or operator within one forward process.\n- **PRISM: Progressive Reasoning through Iterative Slot Memory for Vision** (`2605.30942`) is adjacent because it uses recurrent multi-scale organize-recall-refine processing, but the abstract does not make explicit learned layer or block reuse central enough for the strict scope.\n- **Latent Recurrent Transformer** (`2605.26797`) remains not added. Its recurrence carries a high-level source-layer hidden state across token positions while preserving ordinary depth and KV-cache flow, so it is closer to sequence-time recurrent memory than same-forward depth reuse.\n",
+      "source_path": "briefings/2026/06/2026-06-02.md"
     },
     {
       "date": "2026-05-27",
