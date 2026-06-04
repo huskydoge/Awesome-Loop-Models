@@ -3,9 +3,9 @@
     "total": 98,
     "paper_total": 92,
     "blog_total": 6,
-    "briefing_total": 16,
-    "latest_briefing_date": "2026-06-02",
-    "generated": "2026-06-03T21:24:59.967009+00:00",
+    "briefing_total": 17,
+    "latest_briefing_date": "2026-06-03",
+    "generated": "2026-06-04T00:11:48.025952+00:00",
     "generated_local_date": "2026-06-03",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -5288,6 +5288,45 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-06-03",
+      "title": "Daily Loop-Model Briefing - 2026-06-03",
+      "status": "checked",
+      "summary": "No new paper was added; the strongest same-day signal was neural algorithmic graph reasoning, but it does not expose a reused learned loop module in the abstract.",
+      "highlights": [
+        "No additions: the recent arXiv sweep did not find a verified, non-duplicate paper with explicit same-forward learned layer/block/operator reuse.",
+        "Near miss: Contrastive Neural Algorithmic Reasoning for Graph Coloring is algorithmic and graph-based, but the abstract describes contrastive GNN encoders rather than a reused neural processor.",
+        "Near miss: Language Models Need Sleep reappeared as a new arXiv submission, but its recurrence is continual self-modification and consolidation rather than looped internal computation."
+      ],
+      "candidates": [
+        {
+          "id": "2606.03923",
+          "title": "Contrastive Neural Algorithmic Reasoning for Graph Coloring",
+          "url": "https://arxiv.org/abs/2606.03923",
+          "verdict": "near miss - algorithmic graph reasoning, but no explicit reused learned layer/block/operator loop in the abstract"
+        },
+        {
+          "id": "2606.03979",
+          "title": "Language Models Need Sleep: Learning to Self-Modify and Consolidate Memories",
+          "url": "https://arxiv.org/abs/2606.03979",
+          "verdict": "not added - self-modification and memory consolidation are outside the strict same-forward loop-model scope"
+        },
+        {
+          "id": "2606.03159",
+          "title": "NVIDIA OmniDreams: Real-Time Generative World Model for Closed-Loop Autonomous Vehicle Simulation",
+          "url": "https://arxiv.org/abs/2606.03159",
+          "verdict": "not added - closed-loop simulation and autoregressive video generation do not by themselves imply reused internal learned-module recurrence"
+        },
+        {
+          "id": "2606.02436",
+          "title": "Geometry-Aware Implicit Memory for Video World Models",
+          "url": "https://arxiv.org/abs/2606.02436",
+          "verdict": "not added - compact memory tokens are useful, but the abstract does not establish an implicit layer or fixed-point learned operator"
+        }
+      ],
+      "content": "# Daily Loop-Model Briefing - 2026-06-03\n\n## Outcome\n\nNo paper was added to the collection today. The recent arXiv sweep found several adjacent papers with tempting keywords, but none of the verified abstracts clearly described a learned layer, block, module, or operator being reused within one model forward process.\n\nThe strongest signal was a neural algorithmic reasoning paper for graph coloring. It is relevant to algorithmic generalization, but the abstract frames the method as contrastive training of GNN encoders rather than a shared neural processor or recurrent learned operator.\n\n## Checked but not added\n\n- **Contrastive Neural Algorithmic Reasoning for Graph Coloring** (`2606.03923`) studies approximate graph coloring with contrastive GNN encoders and analyzes the learned embedding geometry. It was not added because the verified abstract does not make reused internal learned-module recurrence central.\n- **Language Models Need Sleep: Learning to Self-Modify and Consolidate Memories** (`2606.03979`) is about continual learning, distillation into larger models, and self-improvement through generated curricula. It remains outside scope because the loop is a training/consolidation process across model states, not a same-forward reused learned block.\n- **NVIDIA OmniDreams: Real-Time Generative World Model for Closed-Loop Autonomous Vehicle Simulation** (`2606.03159`) uses the phrase closed-loop for policy-simulator interaction and autoregressive video generation. That is an environment feedback loop, not a looped internal model architecture.\n- **Geometry-Aware Implicit Memory for Video World Models** (`2606.02436`) compresses history into memory tokens with a transformer encoder and a geometry head. Despite the word implicit, the abstract describes compact memory conditioning rather than a deep-equilibrium, fixed-point, or shared-operator implicit layer.\n\n## Reader takeaway\n\nToday's near-misses are useful reminders that this collection is not a catch-all for recurrence, memory, or iterative reasoning. The inclusion bar remains explicit reuse of learned internal computation inside one forward process.",
+      "source_path": "briefings/2026/06/2026-06-03.md"
+    },
     {
       "date": "2026-06-02",
       "title": "Daily Loop-Model Watch — 2026-06-02",
