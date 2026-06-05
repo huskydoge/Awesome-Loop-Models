@@ -1,0 +1,35 @@
+title: 'LoopMoE: Unifying Iterative Computation with Mixture-of-Experts for Language
+  Modeling'
+authors:
+- Wenkai Chen
+- Tianshu Li
+- Wenyong Huang
+- Yichun Yin
+- Lifeng Shang
+- Chengwei Qin
+year: 2026
+published_date: '2026-06-03'
+added_date: '2026-06-04'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- scaling
+tags:
+- looped-transformer
+- looped-llm
+- MoE
+focus_tags:
+- architecture
+- training-algorithm
+desc: Introduces LoopMoE, a looped mixture-of-experts language model that combines
+  sparse routing with iterative weight-shared computation through iteration-conditioned
+  modulation and capacity balancing.
+links:
+  arxiv: https://arxiv.org/abs/2606.04438
+  alphaxiv: https://www.alphaxiv.org/abs/2606.04438
+citations: 0

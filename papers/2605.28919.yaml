@@ -1,0 +1,29 @@
+title: 'CosmicFish-HRM: Adaptive Reasoning via Hierarchical Recurrent Mechanisms
+  in Compact Language Models'
+authors:
+- Venkat Akhil Lakkapragada
+year: 2026
+published_date: '2026-05-27'
+added_date: '2026-06-04'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- hierarchical-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+tags:
+- HRM
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Explores a compact autoregressive language model with a Hierarchical Reasoning
+  Module that iterates through high-level and low-level reasoning cycles and learns
+  input-dependent halting behavior for adaptive reasoning depth.
+links:
+  arxiv: https://arxiv.org/abs/2605.28919
+  alphaxiv: https://www.alphaxiv.org/abs/2605.28919
+  github: https://github.com/MistyozAI/CosmicFish-HRM
+citations: 0

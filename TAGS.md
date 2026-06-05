@@ -17,8 +17,8 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
-- `hierarchical-loop` (16)
-- `flat-loop` (82)
+- `hierarchical-loop` (17)
+- `flat-loop` (84)
 - `parallel-loop` (4)
 - `implicit-layer` (15)
 
@@ -27,20 +27,20 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (7)
-- `training-algorithm` (45)
-- `architecture` (85)
+- `training-algorithm` (46)
+- `architecture` (88)
 - `data` (3)
-- `inference-algorithm` (65)
+- `inference-algorithm` (67)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `language-modeling` (56)
-- `reasoning` (55)
-- `efficiency` (41)
+- `language-modeling` (58)
+- `reasoning` (56)
+- `efficiency` (44)
 - `algorithmic-reasoning` (21)
-- `scaling` (16)
+- `scaling` (18)
 - `theory` (12)
 - `vision` (8)
 - `sequence-modeling` (5)
@@ -53,25 +53,26 @@ Observed browser-facing domain tags currently used across the repo.
 - `hyperspectral-imaging` (1)
 - `rl-control` (1)
 - `robotics-vla` (1)
+- `speech-recognition` (1)
 - `tabular-data` (1)
 
 ## tags
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (21)
+- `looped-transformer` (23)
 - `ACT` (6)
 - `DEQ` (6)
+- `looped-llm` (6)
 - `TRM` (6)
-- `looped-llm` (5)
 - `shared-weight-recurrence` (5)
+- `HRM` (4)
 - `Ouro` (4)
 - `recursive-transformer` (4)
 - `UT` (4)
 - `convergence` (3)
 - `depth-recurrent` (3)
 - `depth-scaling` (3)
-- `HRM` (3)
 - `mechanistic-analysis` (3)
 - `adaptive-computation-time` (2)
 - `adaptive-latent-iteration` (2)
@@ -81,6 +82,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `MoR` (2)
 - `mythos` (2)
 - `Parcae` (2)
+- `test-time-compute` (2)
 - `universal-transformer` (2)
 - `weight-tying` (2)
 - `activation-compression` (1)
@@ -130,6 +132,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `memory-banks` (1)
 - `memory-tokens` (1)
 - `MoDr` (1)
+- `MoE` (1)
 - `MoEUT` (1)
 - `MOUE` (1)
 - `MoUT` (1)
@@ -156,7 +159,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `STARS` (1)
 - `stochastic-rollouts` (1)
 - `TaH` (1)
-- `test-time-compute` (1)
 - `Think-at-Hard` (1)
 - `timestep-encoding` (1)
 - `training-free-looping` (1)
