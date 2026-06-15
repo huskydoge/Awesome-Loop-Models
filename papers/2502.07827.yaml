@@ -9,7 +9,7 @@ authors:
 year: 2025
 published_date: '2025-02-10'
 venue: ICML
-category: "designs"
+category: designs
 mechanism_tags:
 - implicit-layer
 domain_tags:
@@ -20,14 +20,16 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
-desc: Introduces implicit state-space language models that iterate a shared transition toward a fixed point, recovering RNN-like expressivity while retaining mostly parallel training.
+desc: Introduces implicit state-space language models that iterate a shared transition
+  toward a fixed point, recovering RNN-like expressivity while retaining mostly parallel
+  training.
 links:
   arxiv: https://arxiv.org/abs/2502.07827
   openreview: https://openreview.net/forum?id=5EbiopWH6e
   github: https://github.com/microsoft/implicit_languagemodels
-citations: 19
+citations: 20
 citation_sources:
-  semantic_scholar: 19
+  semantic_scholar: 20
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
@@ -35,4 +37,4 @@ github_stars: 10
 star_sources:
   github_api: 10
 star_source_best: github_api
-metrics_updated: '2026-04-17'
+metrics_updated: '2026-06-15'
