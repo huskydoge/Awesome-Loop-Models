@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (19)
-- `flat-loop` (87)
+- `flat-loop` (88)
 - `parallel-loop` (5)
 - `implicit-layer` (16)
 
@@ -28,7 +28,7 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 - `objective-loss` (7)
 - `training-algorithm` (48)
-- `architecture` (94)
+- `architecture` (95)
 - `data` (3)
 - `inference-algorithm` (72)
 
@@ -36,11 +36,11 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 Observed browser-facing domain tags currently used across the repo.
 
+- `language-modeling` (60)
 - `reasoning` (60)
-- `language-modeling` (59)
-- `efficiency` (47)
+- `efficiency` (48)
 - `algorithmic-reasoning` (23)
-- `scaling` (19)
+- `scaling` (20)
 - `theory` (12)
 - `vision` (9)
 - `sequence-modeling` (5)
@@ -81,6 +81,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `hyper-connections` (2)
 - `LoopLM` (2)
 - `LoRA` (2)
+- `MoE` (2)
 - `MoR` (2)
 - `mythos` (2)
 - `Parcae` (2)
@@ -132,7 +133,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `memory-banks` (1)
 - `memory-tokens` (1)
 - `MoDr` (1)
-- `MoE` (1)
 - `MoEUT` (1)
 - `MOUE` (1)
 - `MoUT` (1)

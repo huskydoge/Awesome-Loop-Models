@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 107,
-    "paper_total": 100,
+    "total": 108,
+    "paper_total": 101,
     "blog_total": 7,
-    "briefing_total": 19,
-    "latest_briefing_date": "2026-06-15",
-    "generated": "2026-06-16T01:16:19.367555+00:00",
+    "briefing_total": 20,
+    "latest_briefing_date": "2026-06-16",
+    "generated": "2026-06-17T00:09:54.730505+00:00",
     "generated_local_date": "2026-06-16",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -5108,6 +5108,46 @@
       "arxiv_id": "2606.14498"
     },
     {
+      "title": "Tying the Loop -- Tied Expert Layers in Mixture-of-Experts Language Models",
+      "authors": "Martin Jaggi",
+      "year": 2026,
+      "published_date": "2026-06-15",
+      "added_date": "2026-06-16",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "efficiency",
+        "scaling"
+      ],
+      "tags": [
+        "MoE"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Introduces Expert Tying, an MoE language-model architecture that reuses expert parameters across consecutive Transformer layers while keeping independent routing and attention, cutting expert memory by nearly 2x with little perplexity or downstream degradation.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2606.16825",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2606.16825",
+        "github": "https://github.com/epfml/looped-moe"
+      },
+      "citations": 0,
+      "id": "2606.16825",
+      "source_file": "2606.16825.yaml",
+      "source_path": "papers/2606.16825.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Martin Jaggi"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2606.16825"
+    },
+    {
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
       "authors": "Guan Wang, Changling Liu, Chenyu Wang, Cai Zhou, Yuhao Sun, Yifei Wu, Shuai Zhen, Luca Scimeca, Yasin Abbasi Yadkori",
       "year": 2026,
@@ -5516,6 +5556,16 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-06-16",
+      "title": "Daily Loop-Model Watch — 2026-06-16",
+      "status": "ok",
+      "summary": "",
+      "highlights": [],
+      "candidates": [],
+      "content": "# Daily Loop-Model Briefing — 2026-06-16\n\n## Outcome\n\nOne paper was added to the collection. It is a compact architecture paper rather than a new recurrent-depth reasoning benchmark: the key loop-model signal is parameter reuse inside the model, with MoE expert weights shared across adjacent Transformer layers while each layer keeps its own routing and attention.\n\n## Added to the collection\n\n### Tying the Loop -- Tied Expert Layers in Mixture-of-Experts Language Models\n\nThe paper introduces Expert Tying for MoE language models. Standard MoE LMs spend most of their parameter memory on expert MLPs, and this work ties those expert parameters across consecutive Transformer layers. The tied layers still have independent layer-wise routing and attention, so the design does not collapse the full stack into one repeated block; instead, it selectively reuses the expert submodules that dominate memory.\n\nWhy it was added: the repository scope includes weight-tied internal modules reused within one forward process. This paper explicitly shares learned expert parameters across consecutive Transformer layers, and the paper title and code release frame the method as looped MoE.\n\nMain reader takeaway: this is a narrow but useful loop-model design point. It suggests that loop-style parameter reuse can be applied to the expensive MoE expert path without forcing every layer component to be shared. The reported result is roughly a 2x expert-memory reduction with little degradation in perplexity or downstream quality across OLMoE, Qwen3, and DeepSeek-style MoE settings.\n\n## Checked but not added\n\n- **Attention is Just Another Name for Coupling?: A Fast-Slow ODE Perspective on Hierarchical Pretraining** (`2606.16730`) is relevant to hierarchical and timescale-separated architectures, but the abstract describes a fast standard attention path plus a slower pooled attention subsystem rather than a clearly reused learned module within depth.\n- **Filtered Conformal Ellipsoids for Graph-Native Time Series** (`2606.17014`) mentions learned recurrent filters, but the recurrence is sequence-time forecasting machinery rather than looped depth or same-forward reused internal operators.\n- **Kairos: A Native World Model Stack for Physical AI** (`2606.16533`) includes hybrid temporal attention and persistent world-model state, but the abstract does not establish the strict same-forward shared-layer/module recurrence needed for intake.\n",
+      "source_path": "briefings/2026/06/2026-06-16.md"
+    },
     {
       "date": "2026-06-15",
       "title": "Daily Loop-Model Watch — 2026-06-15",

@@ -1,0 +1,28 @@
+title: Tying the Loop -- Tied Expert Layers in Mixture-of-Experts Language Models
+authors:
+- Martin Jaggi
+year: 2026
+published_date: '2026-06-15'
+added_date: '2026-06-16'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- scaling
+tags:
+- MoE
+focus_tags:
+- architecture
+desc: Introduces Expert Tying, an MoE language-model architecture that reuses expert
+  parameters across consecutive Transformer layers while keeping independent routing
+  and attention, cutting expert memory by nearly 2x with little perplexity or downstream
+  degradation.
+links:
+  arxiv: https://arxiv.org/abs/2606.16825
+  alphaxiv: https://www.alphaxiv.org/abs/2606.16825
+  github: https://github.com/epfml/looped-moe
+citations: 0
