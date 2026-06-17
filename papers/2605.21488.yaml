@@ -28,6 +28,9 @@ desc: Formalizes Equilibrium Reasoners as learned latent dynamical systems whose
 links:
   arxiv: https://arxiv.org/abs/2605.21488
   github: https://github.com/locuslab/eqr
+  comment:
+  - label: Benhao's announcement thread
+    url: https://x.com/huskydogewoof/status/2057641657580064941?s=20
 citations: 0
 citation_sources:
   semantic_scholar: 0

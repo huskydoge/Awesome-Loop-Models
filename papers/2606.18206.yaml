@@ -1,0 +1,43 @@
+title: 'Fixed-Point Reasoners: Stable and Adaptive Deep Looped Transformers'
+authors:
+- Sajad Movahedi
+- Vera Milovanović
+- Shlomo Libo Feigin
+- Alexander Theus
+- Thomas Hofmann
+- Valentina Boeva
+- T. Konstantin Rusch
+- Antonio Orvieto
+year: 2026
+published_date: '2026-06-16'
+added_date: '2026-06-17'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+- implicit-layer
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+- adaptive-compute
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces FPRM, a Transformer-based Fixed-Point Reasoning Model that repeatedly
+  applies a looped reasoning block and uses fixed-point convergence as an end-to-end
+  halting signal, adapting test-time compute to task difficulty on Sudoku, Maze, state-tracking,
+  and ARC-AGI benchmarks.
+links:
+  arxiv: https://arxiv.org/abs/2606.18206
+  alphaxiv: https://www.alphaxiv.org/abs/2606.18206
+  github: https://github.com/nilskiKonjIzDunava/fprm
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+github_stars: 0
+star_sources:
+  github_api: 0
+star_source_best: github_api
+metrics_updated: '2026-06-17'

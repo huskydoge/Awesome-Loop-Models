@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 108,
-    "paper_total": 101,
+    "total": 109,
+    "paper_total": 102,
     "blog_total": 7,
-    "briefing_total": 20,
-    "latest_briefing_date": "2026-06-16",
-    "generated": "2026-06-17T04:39:19.246764+00:00",
+    "briefing_total": 21,
+    "latest_briefing_date": "2026-06-17",
+    "generated": "2026-06-17T20:56:43.582256+00:00",
     "generated_local_date": "2026-06-17",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -4443,7 +4443,19 @@
         "Zico Kolter"
       ],
       "venueClass": "venue-icml",
-      "arxiv_id": "2605.21488"
+      "arxiv_id": "2605.21488",
+      "community_comments": [
+        {
+          "label": "Benhao's announcement thread",
+          "url": "https://x.com/huskydogewoof/status/2057641657580064941?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Benhao's announcement thread",
+          "url": "https://x.com/huskydogewoof/status/2057641657580064941?s=20"
+        }
+      ]
     },
     {
       "title": "Training-Free Looped Transformers",
@@ -5321,6 +5333,63 @@
       "arxiv_id": "2606.14498"
     },
     {
+      "title": "Fixed-Point Reasoners: Stable and Adaptive Deep Looped Transformers",
+      "authors": "Sajad Movahedi, Vera Milovanović, Shlomo Libo Feigin, Alexander Theus, Thomas Hofmann, Valentina Boeva, T. Konstantin Rusch, Antonio Orvieto",
+      "year": 2026,
+      "published_date": "2026-06-16",
+      "added_date": "2026-06-17",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop",
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning",
+        "adaptive-compute"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces FPRM, a Transformer-based Fixed-Point Reasoning Model that repeatedly applies a looped reasoning block and uses fixed-point convergence as an end-to-end halting signal, adapting test-time compute to task difficulty on Sudoku, Maze, state-tracking, and ARC-AGI benchmarks.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2606.18206",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2606.18206",
+        "github": "https://github.com/nilskiKonjIzDunava/fprm"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "github_stars": 0,
+      "star_sources": {
+        "github_api": 0
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-06-17",
+      "id": "2606.18206",
+      "source_file": "2606.18206.yaml",
+      "source_path": "papers/2606.18206.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Sajad Movahedi",
+        "Vera Milovanović",
+        "Shlomo Libo Feigin",
+        "Alexander Theus",
+        "Thomas Hofmann",
+        "Valentina Boeva",
+        "T. Konstantin Rusch",
+        "Antonio Orvieto"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2606.18206"
+    },
+    {
       "title": "Looped World Models",
       "authors": "Hongyuan Adam Lu, Z. L. Victor Wei, Qun Zhang, Jinrui Zeng, Bowen Cao, Lingwei Meng, Mocheng Li, Zezhong Wang, Haonan Yin, Naifu Xue, Minyu Chen, Cenyuan Zhang, Zefan Zhang, Hao Wei, Jiawei Zhou, Haoran Xu, Hao Yang, Ronglai Zuo, Tongda Xu, Yonghao Li, Jian Chen, Hebin Wang, Zeyu Gao, Yang Li, Wei Zhao, Qimin Zhong, Siqi Liu, Yumeng Zhang, Leyan Cui, Zhangyu Wang, Wai Lam",
       "year": 2026,
@@ -5806,6 +5875,32 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-06-17",
+      "title": "Daily Loop-Model Briefing — 2026-06-17",
+      "status": "added",
+      "summary": "Fixed-Point Reasoners was added as a high-confidence looped Transformer design paper, and the Equilibrium Reasoners entry was updated with its announcement thread.",
+      "highlights": [
+        "Fixed-Point Reasoners turns convergence of a looped Transformer block into an end-to-end adaptive halting signal.",
+        "Equilibrium Reasoners now includes Benhao Huang's announcement thread as a reader-facing community comment."
+      ],
+      "candidates": [
+        {
+          "id": "2606.18206",
+          "title": "Fixed-Point Reasoners: Stable and Adaptive Deep Looped Transformers",
+          "verdict": "added",
+          "url": "https://arxiv.org/abs/2606.18206"
+        },
+        {
+          "id": "2605.21488",
+          "title": "Equilibrium Reasoners: Learning Attractors Enables Scalable Reasoning",
+          "verdict": "updated links",
+          "url": "https://arxiv.org/abs/2605.21488"
+        }
+      ],
+      "content": "# Daily Loop-Model Briefing — 2026-06-17\n\n## Outcome\n\nOne high-confidence paper was added to the collection, and one existing entry was updated with a reader-facing announcement thread. The new addition is **Fixed-Point Reasoners** (`2606.18206`), a looped Transformer design paper that makes convergence itself the adaptive halting signal.\n\n## Added to the collection\n\n### Fixed-Point Reasoners: Stable and Adaptive Deep Looped Transformers\n\nFixed-Point Reasoners addresses a core problem for looped reasoning models: increasing effective depth can improve compositional reasoning, but long recurrent unrolls can destabilize signal propagation and make halting difficult. The paper proposes FPRM, a Transformer-based Fixed-Point Reasoning Model, using pre-norm layers and residual scaling to support stable looped computation.\n\nWhy it was added: the abstract explicitly describes a looped architecture and uses fixed-point convergence as an end-to-end halting mechanism. This is same-forward reuse of a learned Transformer reasoning block, not repeated full-model calls or generic iterative prompting.\n\nMain reader takeaway: FPRM treats test-time compute as an adaptive loop depth selected by convergence. The paper reports effectiveness on Sudoku, Maze, state-tracking, and ARC-AGI benchmarks, making it a direct architecture/design addition for looped reasoning.\n\n## Updated links\n\n### Equilibrium Reasoners: Learning Attractors Enables Scalable Reasoning\n\nThe existing Equilibrium Reasoners entry now links Benhao Huang's announcement thread. This helps readers connect the paper's core idea, task-conditioned neural attractors, with the author's short public summary and headline benchmark claims.",
+      "source_path": "briefings/2026/06/2026-06-17.md"
+    },
     {
       "date": "2026-06-16",
       "title": "Daily Loop-Model Watch — 2026-06-16",
