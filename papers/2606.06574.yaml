@@ -27,8 +27,10 @@ desc: Learns input-specific programs over pretrained LLM layers, allowing layers
 links:
   arxiv: https://arxiv.org/abs/2606.06574
   alphaxiv: https://www.alphaxiv.org/abs/2606.06574
-citations: 0
+citations: 1
 citation_sources:
+  semantic_scholar: 1
   openalex: 0
-citation_source_best: openalex
-metrics_updated: '2026-06-16'
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-06-17'

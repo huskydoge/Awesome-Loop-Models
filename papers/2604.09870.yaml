@@ -21,8 +21,10 @@ desc: Probes looped transformer hidden states during iterative refinement, showi
   between loop states rather than independent per-state scores.
 links:
   arxiv: https://arxiv.org/abs/2604.09870
-citations: 0
-metrics_updated: '2026-06-16'
+citations: 1
+metrics_updated: '2026-06-17'
 citation_sources:
+  semantic_scholar: 1
   openalex: 0
-citation_source_best: openalex
+  opencitations: 0
+citation_source_best: semantic_scholar

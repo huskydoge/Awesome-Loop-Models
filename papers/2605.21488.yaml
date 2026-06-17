@@ -30,9 +30,11 @@ links:
   github: https://github.com/locuslab/eqr
 citations: 0
 citation_sources:
+  semantic_scholar: 0
   openalex: 0
-citation_source_best: openalex
-metrics_updated: '2026-06-16'
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-06-17'
 github_stars: 39
 star_sources:
   github_api: 39

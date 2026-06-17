@@ -29,6 +29,8 @@ links:
     url: https://x.com/huskydogewoof/status/2033283214664515642?s=20
 citations: 0
 citation_sources:
+  semantic_scholar: 0
   openalex: 0
-citation_source_best: openalex
-metrics_updated: '2026-06-16'
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-06-17'

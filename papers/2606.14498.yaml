@@ -21,11 +21,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
-desc: Introduces HamEvo, a fixed-point neural operator for Kohn-Sham Hamiltonian
-  prediction that learns a single-step self-consistent update and returns the converged
-  Hamiltonian as the learned operator's fixed point, improving electronic-structure
-  prediction accuracy and transfer.
+desc: Introduces HamEvo, a fixed-point neural operator for Kohn-Sham Hamiltonian prediction
+  that learns a single-step self-consistent update and returns the converged Hamiltonian
+  as the learned operator's fixed point, improving electronic-structure prediction
+  accuracy and transfer.
 links:
   arxiv: https://arxiv.org/abs/2606.14498
   alphaxiv: https://www.alphaxiv.org/abs/2606.14498
 citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-06-17'

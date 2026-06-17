@@ -23,8 +23,10 @@ desc: Analyzes the expressive power of looped transformers, derives approximatio
   limits, and shows that timestep encoding improves their function-approximation behavior.
 links:
   arxiv: https://arxiv.org/abs/2410.01405
-citations: 0
+citations: 21
 citation_sources:
+  semantic_scholar: 21
   openalex: 0
-citation_source_best: openalex
-metrics_updated: '2026-06-16'
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-06-17'

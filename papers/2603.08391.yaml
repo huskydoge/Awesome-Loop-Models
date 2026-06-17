@@ -27,8 +27,10 @@ desc: Introduces transformers with adaptive per-layer looping and gated memory b
   matched parameter and FLOP budgets.
 links:
   arxiv: https://arxiv.org/abs/2603.08391
-citations: 0
+citations: 3
 citation_sources:
+  semantic_scholar: 3
   openalex: 0
-citation_source_best: openalex
-metrics_updated: '2026-06-16'
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-06-17'

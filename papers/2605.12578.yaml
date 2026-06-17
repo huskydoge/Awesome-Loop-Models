@@ -26,4 +26,8 @@ desc: Applies a block-recurrent transformer to hybrid near/far-field THz UM-MIMO
 links:
   arxiv: https://arxiv.org/abs/2605.12578
 citations: 0
-metrics_updated: '2026-06-16'
+metrics_updated: '2026-06-17'
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar

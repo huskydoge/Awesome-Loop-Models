@@ -20,8 +20,10 @@ desc: Introduces ACT, allowing RNNs to learn how many computational steps to tak
   per input, laying the groundwork for dynamic-depth recurrent computation.
 links:
   arxiv: https://arxiv.org/abs/1603.08983
-citations: 361
+citations: 756
 citation_sources:
+  semantic_scholar: 756
   openalex: 361
-citation_source_best: openalex
-metrics_updated: '2026-06-16'
+  opencitations: 1
+citation_source_best: semantic_scholar
+metrics_updated: '2026-06-17'
