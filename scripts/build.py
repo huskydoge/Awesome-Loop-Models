@@ -33,7 +33,6 @@ HEADER_FILE = Path(__file__).parent / "README_HEADER.md"
 FOOTER_FILE = Path(__file__).parent / "README_FOOTER.md"
 REPO_META_FILE = REPO_ROOT / "repo_meta.json"
 REPO_META_JS_OUT = REPO_ROOT / "assets" / "repo-meta.js"
-PAPER_GROWTH_SVG_OUT = REPO_ROOT / "assets" / "cumulative-papers-by-added-date.svg"
 ISSUE_TEMPLATE_CONFIG_TEMPLATE_FILE = REPO_ROOT / ".github" / "ISSUE_TEMPLATE" / "config.template.yml"
 ISSUE_TEMPLATE_CONFIG_OUT = REPO_ROOT / ".github" / "ISSUE_TEMPLATE" / "config.yml"
 
@@ -85,14 +84,6 @@ LINK_BADGES = {
     "openreview": ("OpenReview", "8E44AD"),
     "project": ("Website", "blue"),
     "twitter": ("Twitter", "1d9bf0"),
-}
-
-PAPER_GROWTH_ANNOTATIONS = {
-    "2605.21488": "EqR",
-    "2606.18208": "LoopWM",
-    "2606.18206": "FPRM",
-    "2606.18023": "LoopCoder-v2",
-    "2606.18524": "Residual scaling",
 }
 
 
@@ -149,175 +140,6 @@ def render_issue_template_config(meta: dict) -> str:
 
 def build_issue_template_config(meta: dict) -> None:
     ISSUE_TEMPLATE_CONFIG_OUT.write_text(render_issue_template_config(meta), encoding="utf-8")
-
-
-def _svg_text(x: float, y: float, text: str, **attrs: object) -> str:
-    """Render escaped SVG text with optional attributes."""
-    attr_text = " ".join(f'{key.replace("_", "-")}="{escape(str(value))}"' for key, value in attrs.items())
-    if attr_text:
-        attr_text = " " + attr_text
-    return f'<text x="{x:.1f}" y="{y:.1f}"{attr_text}>{escape(text)}</text>'
-
-
-def _paper_growth_series(papers: list[dict]) -> tuple[int, list[tuple[date, int, int]]]:
-    """Return legacy baseline plus daily cumulative paper counts by added_date."""
-    legacy_count = sum(1 for paper in papers if not paper.get("added_date"))
-    daily_counts: Counter[date] = Counter()
-    for paper in papers:
-        added_date = paper.get("added_date")
-        if added_date:
-            daily_counts[date.fromisoformat(str(added_date))] += 1
-
-    total = legacy_count
-    series: list[tuple[date, int, int]] = []
-    for day in sorted(daily_counts):
-        total += daily_counts[day]
-        series.append((day, total, daily_counts[day]))
-    return legacy_count, series
-
-
-def _scale_paper_growth_points(
-    series: list[tuple[date, int, int]], width: int, height: int, margin: dict[str, int]
-) -> tuple[list[tuple[float, float, date, int, int]], int, int]:
-    """Scale dated cumulative totals into SVG coordinates."""
-    if not series:
-        raise ValueError("No papers with added_date were found; cannot render growth plot")
-
-    min_x = series[0][0].toordinal()
-    max_x = series[-1][0].toordinal()
-    if min_x == max_x:
-        max_x += 1
-
-    max_y = max(total for _, total, _ in series)
-    min_y = min(total for _, total, _ in series)
-    y_pad = max(3, round((max_y - min_y) * 0.1))
-    y_floor = max(0, min_y - y_pad)
-    y_ceil = max_y + y_pad
-    plot_w = width - margin["left"] - margin["right"]
-    plot_h = height - margin["top"] - margin["bottom"]
-
-    points = []
-    for day, total, daily_count in series:
-        x = margin["left"] + (day.toordinal() - min_x) / (max_x - min_x) * plot_w
-        y = margin["top"] + (y_ceil - total) / (y_ceil - y_floor) * plot_h
-        points.append((x, y, day, total, daily_count))
-    return points, y_floor, y_ceil
-
-
-def render_paper_growth_svg(papers: list[dict]) -> str:
-    """Render a standalone SVG chart of cumulative paper count by intake date."""
-    width, height = 1100, 620
-    margin = {"left": 82, "right": 44, "top": 86, "bottom": 86}
-    legacy_count, series = _paper_growth_series(papers)
-    points, y_floor, y_ceil = _scale_paper_growth_points(series, width, height, margin)
-    plot_left, plot_right = margin["left"], width - margin["right"]
-    plot_top, plot_bottom = margin["top"], height - margin["bottom"]
-    line_points = " ".join(f"{x:.1f},{y:.1f}" for x, y, *_ in points)
-    area_points = f"{plot_left:.1f},{plot_bottom:.1f} {line_points} {plot_right:.1f},{plot_bottom:.1f}"
-    papers_by_id = {paper.get("id"): paper for paper in papers}
-    points_by_date = {day: (x, y, total) for x, y, day, total, _ in points}
-
-    elements = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">',
-        '<title id="title">Awesome Loop Models paper-count growth</title>',
-        '<desc id="desc">Cumulative repository paper count by added_date with legacy baseline and selected paper annotations.</desc>',
-        '<rect width="100%" height="100%" fill="#fbfaf7"/>',
-        _svg_text(64, 42, "Awesome Loop Models: paper-count growth", font_size=24, font_weight=700, fill="#1f2933"),
-        _svg_text(
-            64,
-            66,
-            f"Cumulative papers by added_date; {legacy_count} legacy entries without added_date are counted as baseline.",
-            font_size=13,
-            fill="#52606d",
-        ),
-        f'<rect x="{plot_left}" y="{plot_top}" width="{plot_right - plot_left}" height="{plot_bottom - plot_top}" fill="#ffffff" stroke="#d9e2ec"/>',
-    ]
-
-    for i in range(6):
-        value = round(y_floor + (y_ceil - y_floor) * i / 5)
-        y = plot_top + (y_ceil - value) / (y_ceil - y_floor) * (plot_bottom - plot_top)
-        elements.append(f'<line x1="{plot_left}" y1="{y:.1f}" x2="{plot_right}" y2="{y:.1f}" stroke="#edf2f7"/>')
-        elements.append(_svg_text(66, y + 4, str(value), text_anchor="end", font_size=12, fill="#52606d"))
-
-    tick_dates = [series[0][0], series[len(series) // 3][0], series[(2 * len(series)) // 3][0], series[-1][0]]
-    for day in dict.fromkeys(tick_dates):
-        x = points_by_date[day][0]
-        elements.append(f'<line x1="{x:.1f}" y1="{plot_bottom}" x2="{x:.1f}" y2="{plot_bottom + 6}" stroke="#9fb3c8"/>')
-        elements.append(_svg_text(x, plot_bottom + 24, day.strftime("%b %d"), text_anchor="middle", font_size=12, fill="#52606d"))
-
-    elements.extend(
-        [
-            f'<polygon points="{area_points}" fill="#cce8f4" opacity="0.65"/>',
-            f'<polyline points="{line_points}" fill="none" stroke="#227c9d" stroke-width="3.5" stroke-linejoin="round"/>',
-        ]
-    )
-
-    for x, y, _day, _total, daily_count in points:
-        radius = 3.5 + min(daily_count, 6) * 0.8
-        elements.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius:.1f}" fill="#1f7a8c" stroke="#ffffff" stroke-width="1.5"/>')
-
-    first_x, first_y, *_ = points[0]
-    elements.append(f'<line x1="{first_x:.1f}" y1="{first_y - 38:.1f}" x2="{first_x:.1f}" y2="{first_y - 6:.1f}" stroke="#b7791f"/>')
-    elements.append(_svg_text(first_x + 10, first_y - 42, "Legacy anchors: ACT / UT / DEQ", font_size=12, fill="#8a5a12", font_weight=700))
-
-    annotation_offsets = {
-        "2605.21488": (-40, -44),
-        "2606.18208": (-150, -54),
-        "2606.18206": (-130, 42),
-        "2606.18023": (-28, 70),
-        "2606.18524": (-260, 26),
-    }
-    for paper_id, label in PAPER_GROWTH_ANNOTATIONS.items():
-        paper = papers_by_id.get(paper_id)
-        if not paper or not paper.get("added_date"):
-            continue
-        day = date.fromisoformat(str(paper["added_date"]))
-        if day not in points_by_date:
-            continue
-        x, y, total = points_by_date[day]
-        dx, dy = annotation_offsets[paper_id]
-        label_x, label_y = x + dx, y + dy
-        label_width = max(76, len(label) * 8.3)
-        elements.append(f'<line x1="{x:.1f}" y1="{y:.1f}" x2="{label_x:.1f}" y2="{label_y - 12:.1f}" stroke="#dd6b20" stroke-width="1.2"/>')
-        elements.append(
-            f'<rect x="{label_x - 8:.1f}" y="{label_y - 27:.1f}" width="{label_width:.1f}" height="24" rx="4" fill="#fff7ed" stroke="#fdba74"/>'
-        )
-        elements.append(_svg_text(label_x, label_y - 10, f"{label} ({total})", font_size=12, fill="#9a3412", font_weight=700))
-
-    latest_day, latest_total, _ = series[-1]
-    elements.append(
-        _svg_text(
-            plot_right - 4,
-            plot_top - 18,
-            f"{latest_total} papers on {latest_day.isoformat()}",
-            text_anchor="end",
-            font_size=14,
-            fill="#1f2933",
-            font_weight=700,
-        )
-    )
-    elements.append(_svg_text((plot_left + plot_right) / 2, height - 26, "Repository intake date", text_anchor="middle", font_size=13, fill="#1f2933", font_weight=700))
-    elements.append(
-        _svg_text(
-            24,
-            (plot_top + plot_bottom) / 2,
-            "Cumulative papers",
-            text_anchor="middle",
-            font_size=13,
-            fill="#1f2933",
-            font_weight=700,
-            transform=f"rotate(-90 24 {(plot_top + plot_bottom) / 2:.1f})",
-        )
-    )
-    elements.append("</svg>")
-    return "\n".join(elements) + "\n"
-
-
-def build_paper_growth_svg(papers: list[dict]) -> None:
-    """Write the generated cumulative paper-count SVG asset."""
-    PAPER_GROWTH_SVG_OUT.write_text(render_paper_growth_svg(papers), encoding="utf-8")
-    print(f"✓ {PAPER_GROWTH_SVG_OUT.relative_to(REPO_ROOT)} — cumulative paper-count growth")
-
 
 VENUE_CLASSES = {
     "NeurIPS": "venue-neurips",
@@ -1334,7 +1156,6 @@ def build() -> None:
     build_json(papers, blogs, briefings)
     build_readme(papers, blogs, repo_meta)
     build_tags_reference(papers, blogs)
-    build_paper_growth_svg(papers)
     build_repo_meta_js(repo_meta)
     build_issue_template_config(repo_meta)
 

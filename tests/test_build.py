@@ -1149,23 +1149,6 @@ class LoadPapersRegressionTests(unittest.TestCase):
         self.assertEqual(len(papers), 1)
         self.assertTrue(papers[0].get("must_read"))
 
-    def test_paper_growth_svg_counts_legacy_baseline_and_added_dates(self):
-        papers = [
-            {"id": "1603.08983", "title": "ACT"},
-            {"id": "2605.21488", "title": "EqR", "added_date": "2026-05-21"},
-            {"id": "2606.18206", "title": "FPRM", "added_date": "2026-06-17"},
-            {"id": "2606.18023", "title": "LoopCoder-v2", "added_date": "2026-06-17"},
-        ]
-
-        legacy_count, series = build._paper_growth_series(papers)
-        svg = build.render_paper_growth_svg(papers)
-
-        self.assertEqual(legacy_count, 1)
-        self.assertEqual(series[-1], (build.date.fromisoformat("2026-06-17"), 4, 2))
-        self.assertIn("1 legacy entries without added_date", svg)
-        self.assertIn("4 papers on 2026-06-17", svg)
-        self.assertIn("FPRM (4)", svg)
-
 
 class LoadBlogsRegressionTests(unittest.TestCase):
     def test_load_blogs_requires_links_blog(self):
