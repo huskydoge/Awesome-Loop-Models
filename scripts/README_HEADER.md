@@ -44,12 +44,6 @@ This repo therefore includes papers that focus on loop models themselves, their 
 
 > Only the **rightmost end** of this scale is in scope for the main paper list.
 
-## Repository Growth
-
-<p align="center">
-  <img src="assets/cumulative-papers-by-added-date.svg" alt="Cumulative paper count in Awesome Loop Models over time" width="100%" />
-</p>
-
 ## How the Repository Is Organized
 
 The public browsing layer uses exactly three flat paper categories:
