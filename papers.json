@@ -5,7 +5,7 @@
     "blog_total": 7,
     "briefing_total": 23,
     "latest_briefing_date": "2026-06-21",
-    "generated": "2026-06-22T04:03:21.008558+00:00",
+    "generated": "2026-06-22T07:05:47.494627+00:00",
     "generated_local_date": "2026-06-22",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -1633,12 +1633,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 72,
+      "github_stars": 73,
       "star_sources": {
-        "github_api": 72
+        "github_api": 73
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-22",
       "id": "2511.08577",
       "source_file": "2511.08577.yaml",
       "source_path": "papers/2511.08577.yaml",
@@ -5664,9 +5664,9 @@
         "github": "https://github.com/sapientinc/HRM-Text",
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B"
       },
-      "github_stars": 1493,
+      "github_stars": 1496,
       "star_sources": {
-        "github_api": 1493
+        "github_api": 1496
       },
       "star_source_best": "github_api",
       "metrics_updated": "2026-06-22",
