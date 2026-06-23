@@ -3,9 +3,9 @@
     "total": 112,
     "paper_total": 105,
     "blog_total": 7,
-    "briefing_total": 23,
-    "latest_briefing_date": "2026-06-21",
-    "generated": "2026-06-22T07:05:47.494627+00:00",
+    "briefing_total": 24,
+    "latest_briefing_date": "2026-06-22",
+    "generated": "2026-06-23T03:21:03.305985+00:00",
     "generated_local_date": "2026-06-22",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -6041,6 +6041,39 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-06-22",
+      "title": "Daily Loop-Model Briefing - 2026-06-22",
+      "status": "watchlist",
+      "summary": "No new high-confidence loop-model paper was added; the strongest fresh signals were CoT algorithm simulation, a broad integral-transform architecture, and feedback-trained flows, all outside the strict reused-module boundary.",
+      "highlights": [
+        "CoT algorithm simulation is useful theory context, but its loop is output reasoning tokens rather than reused internal layers.",
+        "ITNet unifies recurrence, attention, and convolution under an integral-transform view, but it is not a depth-reused or fixed-point loop-model intake.",
+        "FlowBender trains a feedback-aware conditional flow, but the loop is a generative refinement/control procedure rather than an in-forward reused learned module."
+      ],
+      "candidates": [
+        {
+          "id": "2606.19697",
+          "title": "Efficiently Representing Algorithms With Chain-of-Thought Transformers",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2606.19697"
+        },
+        {
+          "id": "2606.19538",
+          "title": "ITNet: A Learnable Integral Transform That Subsumes Convolution, Attention, and Recurrence",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2606.19538"
+        },
+        {
+          "id": "2606.20404",
+          "title": "FlowBender: Feedback-Aware Training for Self-Correcting Conditional Flows",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2606.20404"
+        }
+      ],
+      "content": "# Daily Loop-Model Briefing - 2026-06-22\n\n## Outcome\n\nNo new paper was added to the main collection today. The latest arXiv listings still stop at the Friday, June 19 announcement, and the strongest fresh signals were adjacent rather than in scope: theory about Chain-of-Thought computation, a broad architecture that can express recurrence, and feedback-aware conditional flows.\n\n## Strongest watchlist signals\n\n### Efficiently Representing Algorithms With Chain-of-Thought Transformers\n\nThis paper asks whether Chain-of-Thought Transformers can simulate Word RAM algorithms efficiently, rather than only Turing machines. It also studies continuous CoT and a hybrid setting with Transformer layers above a recurrent linear-RNN layer.\n\nWhy it was not added: the central compute loop is the generated reasoning trace or a theory construction around CoT simulation. The abstract does not present a looped, weight-tied, fixed-point, or reused internal learned block as the model mechanism to collect.\n\n### ITNet: A Learnable Integral Transform That Subsumes Convolution, Attention, and Recurrence\n\nITNet proposes a learnable integral-transform architecture whose kernel can express convolution, self-attention, and autoregressive recurrence as special cases. The result is a broad unifying operator view with shared components across modalities.\n\nWhy it was not added: recurrence is discussed as an expressible special case, not as a same-forward recurrent-depth or implicit-layer mechanism. The paper is interesting architecture theory, but it does not cross the repo's conservative reused-module intake boundary.\n\n### FlowBender: Feedback-Aware Training for Self-Correcting Conditional Flows\n\nFlowBender trains conditional diffusion and flow models to consume their own alignment error during refinement. It uses look-ahead estimates and task-specific deviations to correct generation under image-to-image, restoration, and texturing constraints.\n\nWhy it was not added: the feedback loop is a conditional flow or diffusion-style refinement procedure. The repository excludes diffusion or energy-style iterative inference unless the paper's central contribution is a reused learned internal loop-model operator.\n\n## Already covered\n\n### Recurrent neural networks approximate continuous functions\n\nThis remains the clearest strict-scope signal in the Friday batch: a single fixed-weight recurrent network can improve approximation accuracy by running longer. It is already in the collection, so no duplicate entry was added today.",
+      "source_path": "briefings/2026/06/2026-06-22.md"
+    },
     {
       "date": "2026-06-21",
       "title": "Daily Loop-Model Briefing — 2026-06-21",
