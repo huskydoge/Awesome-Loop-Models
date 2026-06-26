@@ -16,6 +16,7 @@ mechanism_tags:
 domain_tags:
 - reasoning
 - efficiency
+- hardware-aware
 focus_tags:
 - inference-algorithm
 - architecture

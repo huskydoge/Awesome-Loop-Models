@@ -53,6 +53,7 @@ Observed browser-facing domain tags currently used across the repo.
 - `compositional-reasoning` (1)
 - `FLOPs-efficiency` (1)
 - `graph-data` (1)
+- `hardware-aware` (1)
 - `hyperspectral-imaging` (1)
 - `rl-control` (1)
 - `speech-recognition` (1)
