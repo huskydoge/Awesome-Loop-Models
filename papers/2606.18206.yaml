@@ -34,9 +34,10 @@ links:
   github: https://github.com/nilskiKonjIzDunava/fprm
 citations: 0
 citation_sources:
+  semantic_scholar: 0
   openalex: 0
   opencitations: 0
-citation_source_best: openalex
+citation_source_best: semantic_scholar
 github_stars: 14
 star_sources:
   github_api: 14

@@ -33,10 +33,10 @@ desc: Introduces SpiralFormer, a looped transformer that applies shared layers u
   than fixed-resolution recurrent baselines.
 links:
   arxiv: https://arxiv.org/abs/2602.11698
-citations: 7
+citations: 8
 citation_sources:
-  semantic_scholar: 7
+  semantic_scholar: 8
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-06-18'
+metrics_updated: '2026-06-29'
