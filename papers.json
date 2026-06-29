@@ -5,8 +5,8 @@
     "blog_total": 7,
     "briefing_total": 27,
     "latest_briefing_date": "2026-06-28",
-    "generated": "2026-06-29T03:19:56.779705+00:00",
-    "generated_local_date": "2026-06-28",
+    "generated": "2026-06-29T03:39:35.050428+00:00",
+    "generated_local_date": "2026-06-29",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -126,14 +126,14 @@
         "arxiv": "https://arxiv.org/abs/1603.08983",
         "alphaxiv": "https://www.alphaxiv.org/abs/1603.08983"
       },
-      "citations": 757,
+      "citations": 758,
       "citation_sources": {
-        "semantic_scholar": 757,
+        "semantic_scholar": 758,
         "openalex": 361,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-06-29",
       "id": "1603.08983",
       "source_file": "1603.08983.yaml",
       "source_path": "papers/1603.08983.yaml",
@@ -229,9 +229,9 @@
         "paper": "https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html",
         "github": "https://github.com/locuslab/deq"
       },
-      "citations": 905,
+      "citations": 907,
       "citation_sources": {
-        "semantic_scholar": 905,
+        "semantic_scholar": 907,
         "openalex": 246,
         "opencitations": 0
       },
@@ -241,7 +241,7 @@
         "github_api": 804
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-22",
+      "metrics_updated": "2026-06-29",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -1193,10 +1193,10 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2507.10524"
       },
       "citations": 82,
-      "metrics_updated": "2026-06-24",
-      "github_stars": 578,
+      "metrics_updated": "2026-06-29",
+      "github_stars": 580,
       "star_sources": {
-        "github_api": 578
+        "github_api": 580
       },
       "star_source_best": "github_api",
       "citation_sources": {
@@ -4427,10 +4427,10 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
-      "github_stars": 39,
+      "metrics_updated": "2026-06-29",
+      "github_stars": 40,
       "star_sources": {
-        "github_api": 39
+        "github_api": 40
       },
       "star_source_best": "github_api",
       "id": "2605.21488",
@@ -5434,12 +5434,12 @@
         "opencitations": 0
       },
       "citation_source_best": "openalex",
-      "github_stars": 13,
+      "github_stars": 14,
       "star_sources": {
-        "github_api": 13
+        "github_api": 14
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-25",
+      "metrics_updated": "2026-06-29",
       "id": "2606.18206",
       "source_file": "2606.18206.yaml",
       "source_path": "papers/2606.18206.yaml",
@@ -5711,12 +5711,12 @@
         "github": "https://github.com/sapientinc/HRM-Text",
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B"
       },
-      "github_stars": 1549,
+      "github_stars": 1588,
       "star_sources": {
-        "github_api": 1549
+        "github_api": 1588
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-25",
+      "metrics_updated": "2026-06-29",
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0
