@@ -1,4 +1,4 @@
-title: 'Stabilizing Extrapolation in Looped Transformers via Learned Stochastic Stopping'
+title: Stabilizing Extrapolation in Looped Transformers via Learned Stochastic Stopping
 authors:
 - Hsun-Yu Kuo
 - El Mahdi Chayti
@@ -31,3 +31,7 @@ links:
   arxiv: https://arxiv.org/abs/2606.29983
   alphaxiv: https://www.alphaxiv.org/abs/2606.29983
 citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-06-30'
