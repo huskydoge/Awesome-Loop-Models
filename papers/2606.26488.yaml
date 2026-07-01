@@ -1,0 +1,34 @@
+title: What Survives When You Compress a Recursive Reasoner for the Edge?
+authors:
+- Pearse Jim
+- Steven Kolawole
+- Opegbemi Matthias Busoye
+- Glory Bagai
+- Virginia Smith
+year: 2026
+published_date: '2026-06-25'
+added_date: '2026-06-25'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- efficiency
+- hardware-aware
+focus_tags:
+- inference-algorithm
+- architecture
+desc: Analyzes compression of recursive reasoning models that repeatedly update latent
+  state, showing how quantization and pruning can preserve local predictions while
+  destroying global reasoning trajectories and how calibrated INT4 recovers them for
+  edge deployment.
+links:
+  arxiv: https://arxiv.org/abs/2606.26488
+  alphaxiv: https://www.alphaxiv.org/abs/2606.26488
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-06-26'

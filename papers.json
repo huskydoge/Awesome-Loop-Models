@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 116,
-    "paper_total": 109,
+    "total": 117,
+    "paper_total": 110,
     "blog_total": 7,
-    "briefing_total": 29,
+    "briefing_total": 30,
     "latest_briefing_date": "2026-06-30",
-    "generated": "2026-07-01T03:27:16.144251+00:00",
-    "generated_local_date": "2026-07-01",
+    "generated": "2026-07-01T03:32:46.283586+00:00",
+    "generated_local_date": "2026-06-30",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -5682,6 +5682,53 @@
       "arxiv_id": "2606.22462"
     },
     {
+      "title": "What Survives When You Compress a Recursive Reasoner for the Edge?",
+      "authors": "Pearse Jim, Steven Kolawole, Opegbemi Matthias Busoye, Glory Bagai, Virginia Smith",
+      "year": 2026,
+      "published_date": "2026-06-25",
+      "added_date": "2026-06-25",
+      "venue": "arXiv",
+      "category": "analysis",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "efficiency",
+        "hardware-aware"
+      ],
+      "focus_tags": [
+        "inference-algorithm",
+        "architecture"
+      ],
+      "desc": "Analyzes compression of recursive reasoning models that repeatedly update latent state, showing how quantization and pruning can preserve local predictions while destroying global reasoning trajectories and how calibrated INT4 recovers them for edge deployment.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2606.26488",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2606.26488"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-06-26",
+      "id": "2606.26488",
+      "source_file": "2606.26488.yaml",
+      "source_path": "papers/2606.26488.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Pearse Jim",
+        "Steven Kolawole",
+        "Opegbemi Matthias Busoye",
+        "Glory Bagai",
+        "Virginia Smith"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2606.26488"
+    },
+    {
       "title": "Stabilizing Extrapolation in Looped Transformers via Learned Stochastic Stopping",
       "authors": "Hsun-Yu Kuo, El Mahdi Chayti, Patrik Reizinger, Wieland Brendel, Martin Jaggi",
       "year": 2026,
@@ -6302,6 +6349,57 @@
       ],
       "content": "# Daily Loop-Model Briefing - 2026-06-28\n\n## Outcome\n\nNo paper crossed the strict collection boundary today. Recent arXiv listings contained several papers with loop, recurrent, predictive-coding, and latent-reasoning language, but none clearly made a learned layer, block, module, or fixed-point operator get reused within one model forward process.\n\nThe prior strict-scope recursive-reasoner compression paper (`2606.26488`) is already covered by the existing June 25 review branch, so it was not duplicated here.\n\n## Checked but not added\n\n- **Accelerating Hierarchical Sparse Predictive Coding with Hybrid Amortized Inference** (`2606.27802`) is the closest technical near-miss. It studies hierarchical sparse predictive coding and compares ISTA, MFISTA, a LISTA-style amortized encoder, and hybrid corrective refinement. That is relevant to iterative latent inference, but the loop in the abstract is an optimization/inference procedure over a fixed sparse energy rather than a learned block or module reused as model depth.\n- **Intuition-Guided Latent Reasoning for LLM-Based Recommendation** (`2606.27684`) proposes an intuition embedding that initializes latent preference reasoning for recommendation. The paper is adjacent to continuous latent reasoning, but the abstract emphasizes starting-point alignment and recommendation-specific guidance, not recurrent reuse of an internal learned operator.\n- **The Context-Ready Transformer** (`2606.27538`) introduces a recurrent architecture around a Transformer block and correction network. The recurrence is tied to left-to-right sequence context and cached previous-position outputs; the abstract does not present recurrent depth or same-forward reuse of a shared block as the collection's target mechanism.\n- **Semantic Early-Stopping for Iterative LLM Agent Loops** (`2606.27009`) is a clean example of an excluded agent/workflow loop. It stops Writer/Critic-style multi-agent drafting loops based on semantic convergence, but repeated external LLM calls are outside the repo scope.",
       "source_path": "briefings/2026/06/2026-06-28.md"
+    },
+    {
+      "date": "2026-06-25",
+      "title": "Daily Loop-Model Briefing - 2026-06-25",
+      "status": "added",
+      "summary": "One recursive-reasoner compression paper was added; several fresh recurrent or iterative papers stayed outside scope because their loops are sequence-time memory, solver refinement, agent workflow, or external model calls.",
+      "highlights": [
+        "Recursive reasoners are now being studied as deployable systems, not only as architecture proposals.",
+        "The added paper focuses on how compression perturbs repeated latent-state trajectories, which is directly relevant to loop-model reliability.",
+        "New recurrent-memory and robotic test-time-scaling papers were checked, but their recurrence is not the same strict reused-depth mechanism tracked by this collection."
+      ],
+      "candidates": [
+        {
+          "id": "2606.26488",
+          "title": "What Survives When You Compress a Recursive Reasoner for the Edge?",
+          "verdict": "added",
+          "url": "https://arxiv.org/abs/2606.26488"
+        },
+        {
+          "id": "2606.27229",
+          "title": "CARVE: Content-Aware Recurrent with Value Efficiency for Chunk-Parallel Linear Attention",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2606.27229"
+        },
+        {
+          "id": "2606.26560",
+          "title": "Erase-then-Delta Attention: Decoupling Erase and Write Addresses in Delta-Rule Linear Attention",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2606.26560"
+        },
+        {
+          "id": "2606.27354",
+          "title": "Error-Conditioned Neural Solvers",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2606.27354"
+        },
+        {
+          "id": "2606.27268",
+          "title": "E-TTS: A New Embodied Test-Time Scaling Framework for Robotic Manipulation",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2606.27268"
+        },
+        {
+          "id": "2606.27374",
+          "title": "World Action Models Enable Continual Imitation Learning with Recurrent Generative Replays",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2606.27374"
+        }
+      ],
+      "content": "# Daily Loop-Model Briefing - 2026-06-25\n\n## Outcome\n\nOne new paper was added to the collection. It is not a new looped architecture proposal, but it directly studies what happens when recursive reasoning models are compressed for edge deployment. The key loop-model issue is trajectory preservation: recursive models repeatedly update a latent state, so small compression errors can compound across reasoning cycles and break global task success even when local predictions still look acceptable.\n\n## Added\n\n### What Survives When You Compress a Recursive Reasoner for the Edge? (`2606.26488`)\n\nThis paper asks how recursive reasoning models behave under deployment-oriented compression. The authors test precision sweeps, pruning, distillation, linear attention, calibrated INT4, and edge memory constraints across structured tasks and recursive architectures.\n\nWhy it was added: the subject is explicitly recursive reasoning models that solve structured tasks by repeatedly updating a latent state. The paper studies the failure mode that matters for loop models: whether the recurrent reasoning trajectory survives compression. It belongs in analysis because the main contribution is diagnostic and deployment-oriented rather than a new base architecture.\n\nMain reader takeaway: naive compression can preserve cell-level/local accuracy while collapsing puzzle-exact/global reasoning to zero. Carry-trajectory fidelity is introduced as a label-free signal for whether the compressed model still follows the full-precision reasoning path, and calibrated INT4 is reported to recover the failure without retraining.\n\n## Checked but not added\n\n- **CARVE: Content-Aware Recurrent with Value Efficiency for Chunk-Parallel Linear Attention** (`2606.27229`) improves recurrent sequence memory for delta-rule linear attention. It is useful adjacent work, but the recurrence is over token/state memory in a sequence model rather than reused depth within one forward reasoning process.\n- **Erase-then-Delta Attention: Decoupling Erase and Write Addresses in Delta-Rule Linear Attention** (`2606.26560`) adds a learned erase direction to recurrent memory updates. It is again sequence-memory architecture, not a looped internal block or fixed-point/recurrent-depth model.\n- **Error-Conditioned Neural Solvers** (`2606.27354`) iteratively corrects PDE predictions by feeding residual fields back into a learned solver. The learned update policy is interesting, but the abstract frames it as solver iteration for PDE surrogates rather than the loop-model families this repo tracks.\n- **E-TTS: A New Embodied Test-Time Scaling Framework for Robotic Manipulation** (`2606.27268`) uses history-aware iterative refinement with vision-language verifiers. The loop is a modular test-time framework around candidate sampling and verification, not reuse of a learned internal module inside one model forward pass.\n- **World Action Models Enable Continual Imitation Learning with Recurrent Generative Replays** (`2606.27374`) recursively queries a world-action model to synthesize replay trajectories. That is repeated external model querying for continual learning, outside the strict same-forward reused-module boundary.",
+      "source_path": "briefings/2026/06/2026-06-25.md"
     },
     {
       "date": "2026-06-24",
