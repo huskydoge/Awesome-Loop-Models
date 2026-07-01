@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 114,
-    "paper_total": 107,
+    "total": 117,
+    "paper_total": 110,
     "blog_total": 7,
-    "briefing_total": 27,
-    "latest_briefing_date": "2026-06-25",
-    "generated": "2026-06-26T03:32:32.964383+00:00",
-    "generated_local_date": "2026-06-25",
+    "briefing_total": 30,
+    "latest_briefing_date": "2026-06-30",
+    "generated": "2026-07-01T03:32:46.283586+00:00",
+    "generated_local_date": "2026-06-30",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -79,14 +79,14 @@
         "arxiv": "https://arxiv.org/abs/1511.08228",
         "alphaxiv": "https://www.alphaxiv.org/abs/1511.08228"
       },
-      "citations": 394,
+      "citations": 396,
       "citation_sources": {
-        "semantic_scholar": 394,
+        "semantic_scholar": 396,
         "openalex": 188,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "1511.08228",
       "source_file": "1511.08228.yaml",
       "source_path": "papers/1511.08228.yaml",
@@ -126,14 +126,14 @@
         "arxiv": "https://arxiv.org/abs/1603.08983",
         "alphaxiv": "https://www.alphaxiv.org/abs/1603.08983"
       },
-      "citations": 757,
+      "citations": 769,
       "citation_sources": {
-        "semantic_scholar": 757,
+        "semantic_scholar": 769,
         "openalex": 361,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-07-01",
       "id": "1603.08983",
       "source_file": "1603.08983.yaml",
       "source_path": "papers/1603.08983.yaml",
@@ -171,14 +171,14 @@
         "openreview": "https://openreview.net/forum?id=HyzdRiR9Y7",
         "alphaxiv": "https://www.alphaxiv.org/abs/1807.03819"
       },
-      "citations": 949,
+      "citations": 961,
       "citation_sources": {
-        "semantic_scholar": 949,
+        "semantic_scholar": 961,
         "openalex": 396,
         "opencitations": 3
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-07-01",
       "id": "1807.03819",
       "source_file": "1807.03819.yaml",
       "source_path": "papers/1807.03819.yaml",
@@ -229,9 +229,9 @@
         "paper": "https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html",
         "github": "https://github.com/locuslab/deq"
       },
-      "citations": 905,
+      "citations": 918,
       "citation_sources": {
-        "semantic_scholar": 905,
+        "semantic_scholar": 918,
         "openalex": 246,
         "opencitations": 0
       },
@@ -241,7 +241,7 @@
         "github_api": 804
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-22",
+      "metrics_updated": "2026-07-01",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -328,14 +328,14 @@
         "paper": "https://proceedings.neurips.cc/paper/2021/hash/b0083e1a03ff2a5b6a0a2c4e0b1c3f0a-Abstract.html",
         "alphaxiv": "https://www.alphaxiv.org/abs/2111.05177"
       },
-      "citations": 99,
+      "citations": 100,
       "citation_sources": {
-        "semantic_scholar": 99,
+        "semantic_scholar": 100,
         "openalex": 13,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2111.05177",
       "source_file": "2111.05177.yaml",
       "source_path": "papers/2111.05177.yaml",
@@ -376,14 +376,14 @@
         "arxiv": "https://arxiv.org/abs/2209.11142",
         "alphaxiv": "https://www.alphaxiv.org/abs/2209.11142"
       },
-      "citations": 71,
+      "citations": 73,
       "citation_sources": {
-        "semantic_scholar": 71,
+        "semantic_scholar": 73,
         "openalex": 7,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2209.11142",
       "source_file": "2209.11142.yaml",
       "source_path": "papers/2209.11142.yaml",
@@ -435,14 +435,14 @@
         "arxiv": "https://arxiv.org/abs/2301.13196",
         "alphaxiv": "https://www.alphaxiv.org/abs/2301.13196"
       },
-      "citations": 207,
+      "citations": 215,
       "citation_sources": {
-        "semantic_scholar": 207,
+        "semantic_scholar": 215,
         "openalex": 3,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-07-01",
       "id": "2301.13196",
       "source_file": "2301.13196.yaml",
       "source_path": "papers/2301.13196.yaml",
@@ -545,9 +545,9 @@
         "github": "https://github.com/Leiay/looped_transformer",
         "alphaxiv": "https://www.alphaxiv.org/abs/2311.12424"
       },
-      "citations": 96,
+      "citations": 103,
       "citation_sources": {
-        "semantic_scholar": 96,
+        "semantic_scholar": 103,
         "openalex": 0,
         "opencitations": 0
       },
@@ -557,7 +557,7 @@
         "github_api": 47
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-23",
+      "metrics_updated": "2026-07-01",
       "id": "2311.12424",
       "source_file": "2311.12424.yaml",
       "source_path": "papers/2311.12424.yaml",
@@ -677,14 +677,14 @@
         "arxiv": "https://arxiv.org/abs/2405.16039",
         "alphaxiv": "https://www.alphaxiv.org/abs/2405.16039"
       },
-      "citations": 43,
+      "citations": 47,
       "citation_sources": {
-        "semantic_scholar": 43,
+        "semantic_scholar": 47,
         "openalex": 1,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-06-30",
       "id": "2405.16039",
       "source_file": "2405.16039.yaml",
       "source_path": "papers/2405.16039.yaml",
@@ -774,14 +774,14 @@
         "arxiv": "https://arxiv.org/abs/2410.20672",
         "alphaxiv": "https://www.alphaxiv.org/abs/2410.20672"
       },
-      "citations": 47,
+      "citations": 50,
       "citation_sources": {
-        "semantic_scholar": 47,
+        "semantic_scholar": 50,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-06-29",
       "id": "2410.20672",
       "source_file": "2410.20672.yaml",
       "source_path": "papers/2410.20672.yaml",
@@ -838,19 +838,19 @@
         "github": "https://github.com/seal-rg/recurrent-pretraining",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.05171"
       },
-      "citations": 253,
+      "citations": 267,
       "citation_sources": {
-        "semantic_scholar": 253,
+        "semantic_scholar": 267,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 894,
+      "github_stars": 896,
       "star_sources": {
-        "github_api": 894
+        "github_api": 896
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-07-01",
       "id": "2502.05171",
       "source_file": "2502.05171.yaml",
       "source_path": "papers/2502.05171.yaml",
@@ -966,14 +966,14 @@
         "arxiv": "https://arxiv.org/abs/2502.17416",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.17416"
       },
-      "citations": 149,
+      "citations": 161,
       "citation_sources": {
-        "semantic_scholar": 149,
+        "semantic_scholar": 161,
         "openalex": 2,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-07-01",
       "id": "2502.17416",
       "source_file": "2502.17416.yaml",
       "source_path": "papers/2502.17416.yaml",
@@ -1028,14 +1028,14 @@
         "arxiv": "https://arxiv.org/abs/2506.21734",
         "alphaxiv": "https://www.alphaxiv.org/abs/2506.21734"
       },
-      "citations": 111,
+      "citations": 115,
       "citation_sources": {
-        "semantic_scholar": 111,
+        "semantic_scholar": 115,
         "openalex": 3,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-22",
+      "metrics_updated": "2026-07-01",
       "id": "2506.21734",
       "source_file": "2506.21734.yaml",
       "source_path": "papers/2506.21734.yaml",
@@ -1082,10 +1082,10 @@
         "arxiv": "https://arxiv.org/abs/2507.02199",
         "alphaxiv": "https://www.alphaxiv.org/abs/2507.02199"
       },
-      "citations": 10,
-      "metrics_updated": "2026-06-17",
+      "citations": 11,
+      "metrics_updated": "2026-06-29",
       "citation_sources": {
-        "semantic_scholar": 10,
+        "semantic_scholar": 11,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1192,15 +1192,15 @@
         "github": "https://github.com/raymin0223/mixture_of_recursions",
         "alphaxiv": "https://www.alphaxiv.org/abs/2507.10524"
       },
-      "citations": 82,
-      "metrics_updated": "2026-06-24",
-      "github_stars": 578,
+      "citations": 86,
+      "metrics_updated": "2026-07-01",
+      "github_stars": 580,
       "star_sources": {
-        "github_api": 578
+        "github_api": 580
       },
       "star_source_best": "github_api",
       "citation_sources": {
-        "semantic_scholar": 82,
+        "semantic_scholar": 86,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1262,14 +1262,14 @@
         "arxiv": "https://arxiv.org/abs/2509.23314",
         "alphaxiv": "https://www.alphaxiv.org/abs/2509.23314"
       },
-      "citations": 6,
+      "citations": 8,
       "citation_sources": {
-        "semantic_scholar": 6,
+        "semantic_scholar": 8,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2509.23314",
       "source_file": "2509.23314.yaml",
       "source_path": "papers/2509.23314.yaml",
@@ -1308,10 +1308,10 @@
         "arxiv": "https://arxiv.org/abs/2510.03206",
         "alphaxiv": "https://www.alphaxiv.org/abs/2510.03206"
       },
-      "citations": 15,
-      "metrics_updated": "2026-06-17",
+      "citations": 18,
+      "metrics_updated": "2026-06-30",
       "citation_sources": {
-        "semantic_scholar": 15,
+        "semantic_scholar": 18,
         "openalex": 0,
         "opencitations": 0
       },
@@ -1411,10 +1411,10 @@
         "arxiv": "https://arxiv.org/abs/2510.24824",
         "alphaxiv": "https://www.alphaxiv.org/abs/2510.24824"
       },
-      "citations": 13,
-      "metrics_updated": "2026-06-17",
+      "citations": 14,
+      "metrics_updated": "2026-06-29",
       "citation_sources": {
-        "semantic_scholar": 13,
+        "semantic_scholar": 14,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1472,10 +1472,10 @@
         "hf": "https://huggingface.co/ByteDance/Ouro-1.4B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2510.25741"
       },
-      "citations": 79,
-      "metrics_updated": "2026-06-18",
+      "citations": 87,
+      "metrics_updated": "2026-07-01",
       "citation_sources": {
-        "semantic_scholar": 79,
+        "semantic_scholar": 87,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1681,14 +1681,14 @@
         "arxiv": "https://arxiv.org/abs/2512.14693",
         "alphaxiv": "https://www.alphaxiv.org/abs/2512.14693"
       },
-      "citations": 4,
+      "citations": 5,
       "citation_sources": {
-        "semantic_scholar": 4,
+        "semantic_scholar": 5,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2512.14693",
       "source_file": "2512.14693.yaml",
       "source_path": "papers/2512.14693.yaml",
@@ -1793,14 +1793,14 @@
         "arxiv": "https://arxiv.org/abs/2602.05970",
         "alphaxiv": "https://www.alphaxiv.org/abs/2602.05970"
       },
-      "citations": 2,
+      "citations": 3,
       "citation_sources": {
-        "semantic_scholar": 2,
+        "semantic_scholar": 3,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-30",
       "id": "2602.05970",
       "source_file": "2602.05970.yaml",
       "source_path": "papers/2602.05970.yaml",
@@ -1904,9 +1904,9 @@
         "project": "https://rd-vla.github.io/",
         "alphaxiv": "https://www.alphaxiv.org/abs/2602.07845"
       },
-      "citations": 6,
+      "citations": 7,
       "citation_sources": {
-        "semantic_scholar": 6,
+        "semantic_scholar": 7,
         "openalex": 0,
         "opencitations": 0
       },
@@ -1916,7 +1916,7 @@
         "github_api": 38
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2602.07845",
       "source_file": "2602.07845.yaml",
       "source_path": "papers/2602.07845.yaml",
@@ -2024,14 +2024,14 @@
         "arxiv": "https://arxiv.org/abs/2602.09080",
         "alphaxiv": "https://www.alphaxiv.org/abs/2602.09080"
       },
-      "citations": 2,
+      "citations": 3,
       "citation_sources": {
-        "semantic_scholar": 2,
+        "semantic_scholar": 3,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2602.09080",
       "source_file": "2602.09080.yaml",
       "source_path": "papers/2602.09080.yaml",
@@ -2078,14 +2078,14 @@
         "arxiv": "https://arxiv.org/abs/2602.10520",
         "alphaxiv": "https://www.alphaxiv.org/abs/2602.10520"
       },
-      "citations": 1,
+      "citations": 3,
       "citation_sources": {
-        "semantic_scholar": 1,
+        "semantic_scholar": 3,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-07-01",
       "id": "2602.10520",
       "source_file": "2602.10520.yaml",
       "source_path": "papers/2602.10520.yaml",
@@ -2128,19 +2128,19 @@
         "github": "https://github.com/armenjeddi/loopformer",
         "alphaxiv": "https://www.alphaxiv.org/abs/2602.11451"
       },
-      "citations": 17,
+      "citations": 21,
       "citation_sources": {
-        "semantic_scholar": 17,
+        "semantic_scholar": 21,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 25,
+      "github_stars": 27,
       "star_sources": {
-        "github_api": 25
+        "github_api": 27
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-06-30",
       "id": "2602.11451",
       "source_file": "2602.11451.yaml",
       "source_path": "papers/2602.11451.yaml",
@@ -2182,14 +2182,14 @@
         "arxiv": "https://arxiv.org/abs/2602.11698",
         "alphaxiv": "https://www.alphaxiv.org/abs/2602.11698"
       },
-      "citations": 7,
+      "citations": 8,
       "citation_sources": {
-        "semantic_scholar": 7,
+        "semantic_scholar": 8,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-06-29",
       "id": "2602.11698",
       "source_file": "2602.11698.yaml",
       "source_path": "papers/2602.11698.yaml",
@@ -2239,14 +2239,14 @@
         "arxiv": "https://arxiv.org/abs/2603.01914",
         "alphaxiv": "https://www.alphaxiv.org/abs/2603.01914"
       },
-      "citations": 1,
+      "citations": 2,
       "citation_sources": {
-        "semantic_scholar": 1,
+        "semantic_scholar": 2,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2603.01914",
       "source_file": "2603.01914.yaml",
       "source_path": "papers/2603.01914.yaml",
@@ -2485,14 +2485,14 @@
         "arxiv": "https://arxiv.org/abs/2603.08391",
         "alphaxiv": "https://www.alphaxiv.org/abs/2603.08391"
       },
-      "citations": 3,
+      "citations": 5,
       "citation_sources": {
-        "semantic_scholar": 3,
+        "semantic_scholar": 5,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2603.08391",
       "source_file": "2603.08391.yaml",
       "source_path": "papers/2603.08391.yaml",
@@ -2537,14 +2537,14 @@
         "arxiv": "https://arxiv.org/abs/2603.19714",
         "alphaxiv": "https://www.alphaxiv.org/abs/2603.19714"
       },
-      "citations": 3,
+      "citations": 4,
       "citation_sources": {
-        "semantic_scholar": 3,
+        "semantic_scholar": 4,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-30",
       "id": "2603.19714",
       "source_file": "2603.19714.yaml",
       "source_path": "papers/2603.19714.yaml",
@@ -2639,14 +2639,14 @@
         "arxiv": "https://arxiv.org/abs/2604.07822",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.07822"
       },
-      "citations": 6,
+      "citations": 10,
       "citation_sources": {
-        "semantic_scholar": 6,
+        "semantic_scholar": 10,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-30",
       "id": "2604.07822",
       "source_file": "2604.07822.yaml",
       "source_path": "papers/2604.07822.yaml",
@@ -2691,14 +2691,14 @@
         "arxiv": "https://arxiv.org/abs/2604.09168",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.09168"
       },
-      "citations": 2,
+      "citations": 3,
       "citation_sources": {
-        "semantic_scholar": 2,
+        "semantic_scholar": 3,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-30",
       "id": "2604.09168",
       "source_file": "2604.09168.yaml",
       "source_path": "papers/2604.09168.yaml",
@@ -2854,14 +2854,14 @@
         "twitter": "https://x.com/HughBlayney/status/2046558050882899995?s=20",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.11791"
       },
-      "citations": 10,
+      "citations": 12,
       "citation_sources": {
-        "semantic_scholar": 10,
+        "semantic_scholar": 12,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-30",
       "id": "2604.11791",
       "source_file": "2604.11791.yaml",
       "source_path": "papers/2604.11791.yaml",
@@ -2907,10 +2907,10 @@
         "arxiv": "https://arxiv.org/abs/2604.12946",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.12946"
       },
-      "citations": 20,
-      "metrics_updated": "2026-06-18",
+      "citations": 24,
+      "metrics_updated": "2026-06-30",
       "citation_sources": {
-        "semantic_scholar": 20,
+        "semantic_scholar": 24,
         "openalex": 0,
         "opencitations": 0
       },
@@ -2970,14 +2970,14 @@
         "arxiv": "https://arxiv.org/abs/2604.14442",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.14442"
       },
-      "citations": 2,
+      "citations": 3,
       "citation_sources": {
-        "semantic_scholar": 2,
+        "semantic_scholar": 3,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2604.14442",
       "source_file": "2604.14442.yaml",
       "source_path": "papers/2604.14442.yaml",
@@ -3017,14 +3017,14 @@
         "arxiv": "https://arxiv.org/abs/2604.15259",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.15259"
       },
-      "citations": 3,
+      "citations": 5,
       "citation_sources": {
-        "semantic_scholar": 3,
+        "semantic_scholar": 5,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-30",
       "id": "2604.15259",
       "source_file": "2604.15259.yaml",
       "source_path": "papers/2604.15259.yaml",
@@ -3174,14 +3174,14 @@
         "arxiv": "https://arxiv.org/abs/2604.21106",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.21106"
       },
-      "citations": 7,
+      "citations": 9,
       "citation_sources": {
-        "semantic_scholar": 7,
+        "semantic_scholar": 9,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-06-30",
       "id": "2604.21106",
       "source_file": "2604.21106.yaml",
       "source_path": "papers/2604.21106.yaml",
@@ -3224,14 +3224,14 @@
         "arxiv": "https://arxiv.org/abs/2604.21254",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.21254"
       },
-      "citations": 7,
+      "citations": 8,
       "citation_sources": {
-        "semantic_scholar": 7,
+        "semantic_scholar": 8,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-06-29",
       "id": "2604.21254",
       "source_file": "2604.21254.yaml",
       "source_path": "papers/2604.21254.yaml",
@@ -3288,15 +3288,15 @@
         "github": "https://github.com/che-shr-cat/utm-jax",
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.21999"
       },
-      "citations": 2,
+      "citations": 3,
       "github_stars": 11,
       "star_sources": {
         "github_api": 11
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "citation_sources": {
-        "semantic_scholar": 2,
+        "semantic_scholar": 3,
         "openalex": 0,
         "opencitations": 0
       },
@@ -3583,14 +3583,14 @@
         "arxiv": "https://arxiv.org/abs/2605.07721",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.07721"
       },
-      "citations": 1,
+      "citations": 2,
       "citation_sources": {
-        "semantic_scholar": 1,
+        "semantic_scholar": 2,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2605.07721",
       "source_file": "2605.07721.yaml",
       "source_path": "papers/2605.07721.yaml",
@@ -3637,14 +3637,14 @@
         "arxiv": "https://arxiv.org/abs/2605.09165",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.09165"
       },
-      "citations": 0,
+      "citations": 1,
       "citation_sources": {
-        "semantic_scholar": 0,
+        "semantic_scholar": 1,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-30",
       "id": "2605.09165",
       "source_file": "2605.09165.yaml",
       "source_path": "papers/2605.09165.yaml",
@@ -3748,14 +3748,14 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.11011",
         "project": "https://thrillcrazyer.github.io/LoopUS"
       },
-      "citations": 0,
+      "citations": 1,
       "citation_sources": {
-        "semantic_scholar": 0,
+        "semantic_scholar": 1,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2605.11011",
       "source_file": "2605.11011.yaml",
       "source_path": "papers/2605.11011.yaml",
@@ -3801,14 +3801,14 @@
         "arxiv": "https://arxiv.org/abs/2605.12466",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.12466"
       },
-      "citations": 0,
+      "citations": 3,
       "citation_sources": {
-        "semantic_scholar": 0,
+        "semantic_scholar": 3,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-07-01",
       "id": "2605.12466",
       "source_file": "2605.12466.yaml",
       "source_path": "papers/2605.12466.yaml",
@@ -4053,14 +4053,14 @@
         "arxiv": "https://arxiv.org/abs/2605.18797",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.18797"
       },
-      "citations": 0,
+      "citations": 1,
       "citation_sources": {
-        "semantic_scholar": 0,
+        "semantic_scholar": 1,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-30",
       "id": "2605.18797",
       "source_file": "2605.18797.yaml",
       "source_path": "papers/2605.18797.yaml",
@@ -4314,14 +4314,14 @@
         "arxiv": "https://arxiv.org/abs/2605.20670",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.20670"
       },
-      "citations": 0,
+      "citations": 1,
       "citation_sources": {
-        "semantic_scholar": 0,
+        "semantic_scholar": 1,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-29",
       "id": "2605.20670",
       "source_file": "2605.20670.yaml",
       "source_path": "papers/2605.20670.yaml",
@@ -4420,17 +4420,17 @@
         "github": "https://github.com/locuslab/eqr",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.21488"
       },
-      "citations": 0,
+      "citations": 1,
       "citation_sources": {
-        "semantic_scholar": 0,
+        "semantic_scholar": 1,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
-      "github_stars": 39,
+      "metrics_updated": "2026-07-01",
+      "github_stars": 41,
       "star_sources": {
-        "github_api": 39
+        "github_api": 41
       },
       "star_source_best": "github_api",
       "id": "2605.21488",
@@ -4489,14 +4489,14 @@
         "arxiv": "https://arxiv.org/abs/2605.23872",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.23872"
       },
-      "citations": 1,
+      "citations": 2,
       "citation_sources": {
-        "semantic_scholar": 1,
+        "semantic_scholar": 2,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-07-01",
       "id": "2605.23872",
       "source_file": "2605.23872.yaml",
       "source_path": "papers/2605.23872.yaml",
@@ -4600,14 +4600,14 @@
         "arxiv": "https://arxiv.org/abs/2605.26733",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.26733"
       },
-      "citations": 1,
+      "citations": 3,
       "citation_sources": {
-        "semantic_scholar": 1,
+        "semantic_scholar": 3,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-06-17",
+      "metrics_updated": "2026-06-30",
       "id": "2605.26733",
       "source_file": "2605.26733.yaml",
       "source_path": "papers/2605.26733.yaml",
@@ -4967,10 +4967,10 @@
         "arxiv": "https://arxiv.org/abs/2606.01495",
         "alphaxiv": "https://www.alphaxiv.org/abs/2606.01495"
       },
-      "citations": 0,
-      "metrics_updated": "2026-06-17",
+      "citations": 1,
+      "metrics_updated": "2026-06-29",
       "citation_sources": {
-        "semantic_scholar": 0,
+        "semantic_scholar": 1,
         "openalex": 0,
         "opencitations": 0
       },
@@ -5366,12 +5366,13 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2606.18023"
       },
       "citations": 0,
-      "metrics_updated": "2026-06-18",
+      "metrics_updated": "2026-06-29",
       "citation_sources": {
+        "semantic_scholar": 0,
         "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "openalex",
+      "citation_source_best": "semantic_scholar",
       "id": "2606.18023",
       "source_file": "2606.18023.yaml",
       "source_path": "papers/2606.18023.yaml",
@@ -5428,18 +5429,19 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2606.18206",
         "github": "https://github.com/nilskiKonjIzDunava/fprm"
       },
-      "citations": 0,
+      "citations": 1,
       "citation_sources": {
+        "semantic_scholar": 1,
         "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "openalex",
-      "github_stars": 13,
+      "citation_source_best": "semantic_scholar",
+      "github_stars": 15,
       "star_sources": {
-        "github_api": 13
+        "github_api": 15
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-25",
+      "metrics_updated": "2026-07-01",
       "id": "2606.18206",
       "source_file": "2606.18206.yaml",
       "source_path": "papers/2606.18206.yaml",
@@ -5484,13 +5486,14 @@
         "arxiv": "https://arxiv.org/abs/2606.18208",
         "alphaxiv": "https://www.alphaxiv.org/abs/2606.18208"
       },
-      "citations": 0,
+      "citations": 1,
       "citation_sources": {
+        "semantic_scholar": 1,
         "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "openalex",
-      "metrics_updated": "2026-06-18",
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-07-01",
       "id": "2606.18208",
       "source_file": "2606.18208.yaml",
       "source_path": "papers/2606.18208.yaml",
@@ -5563,12 +5566,13 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2606.18524"
       },
       "citations": 0,
-      "metrics_updated": "2026-06-22",
+      "metrics_updated": "2026-06-29",
       "citation_sources": {
+        "semantic_scholar": 0,
         "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "openalex",
+      "citation_source_best": "semantic_scholar",
       "id": "2606.18524",
       "source_file": "2606.18524.yaml",
       "source_path": "papers/2606.18524.yaml",
@@ -5610,11 +5614,12 @@
       },
       "citations": 0,
       "citation_sources": {
+        "semantic_scholar": 0,
         "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "openalex",
-      "metrics_updated": "2026-06-22",
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-06-29",
       "id": "2606.20325",
       "source_file": "2606.20325.yaml",
       "source_path": "papers/2606.20325.yaml",
@@ -5656,11 +5661,12 @@
       },
       "citations": 0,
       "citation_sources": {
+        "semantic_scholar": 0,
         "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "openalex",
-      "metrics_updated": "2026-06-25",
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-06-29",
       "id": "2606.22462",
       "source_file": "2606.22462.yaml",
       "source_path": "papers/2606.22462.yaml",
@@ -5723,6 +5729,156 @@
       "arxiv_id": "2606.26488"
     },
     {
+      "title": "Stabilizing Extrapolation in Looped Transformers via Learned Stochastic Stopping",
+      "authors": "Hsun-Yu Kuo, El Mahdi Chayti, Patrik Reizinger, Wieland Brendel, Martin Jaggi",
+      "year": 2026,
+      "published_date": "2026-06-29",
+      "added_date": "2026-06-29",
+      "venue": "arXiv",
+      "category": "analysis",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "algorithmic-reasoning",
+        "scaling",
+        "adaptive-compute"
+      ],
+      "focus_tags": [
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "tags": [
+        "looped-transformer",
+        "depth-scaling"
+      ],
+      "desc": "Studies looped Transformers that repeatedly apply a shared Transformer block, showing that stochastic training-time loop counts and learned stochastic stopping can reduce out-of-distribution variance across inference loop counts on algorithmic sequence tasks.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2606.29983",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2606.29983"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-07-01",
+      "id": "2606.29983",
+      "source_file": "2606.29983.yaml",
+      "source_path": "papers/2606.29983.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Hsun-Yu Kuo",
+        "El Mahdi Chayti",
+        "Patrik Reizinger",
+        "Wieland Brendel",
+        "Martin Jaggi"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2606.29983"
+    },
+    {
+      "title": "Bridging the Gap Between Latent and Explicit Reasoning with Looped Transformers",
+      "authors": "Ying Fan, Anej Svete, Kangwook Lee",
+      "year": 2026,
+      "published_date": "2026-06-30",
+      "added_date": "2026-06-30",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop",
+        "parallel-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency",
+        "scaling"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "tags": [
+        "looped-transformer",
+        "looped-llm",
+        "depth-scaling"
+      ],
+      "desc": "Introduces LOTUS, a looped padded Transformer that reuses recurrent-depth weights for parallel latent chain-of-thought blocks, matching explicit CoT at 3B scale while reducing thought-phase latency.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2606.31779",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2606.31779"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-07-01",
+      "id": "2606.31779",
+      "source_file": "2606.31779.yaml",
+      "source_path": "papers/2606.31779.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Ying Fan",
+        "Anej Svete",
+        "Kangwook Lee"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2606.31779"
+    },
+    {
+      "title": "CHERRY: Compressed Hierarchical Experts with Recurrent Representational Yield",
+      "authors": "Dohyeon Kwon, Youngjin Park",
+      "year": 2026,
+      "published_date": "2026-06-30",
+      "added_date": "2026-06-30",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "efficiency",
+        "scaling",
+        "MoE"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "tags": [
+        "depth-recurrent",
+        "shared-weight-recurrence"
+      ],
+      "desc": "Compresses a 48-layer language Transformer to 6 layers and restores depth through learned recurrent unrolling, then combines compressed recurrent models as efficient experts.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2606.31796",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2606.31796"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-07-01",
+      "id": "2606.31796",
+      "source_file": "2606.31796.yaml",
+      "source_path": "papers/2606.31796.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Dohyeon Kwon",
+        "Youngjin Park"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2606.31796"
+    },
+    {
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
       "authors": "Guan Wang, Changling Liu, Chenyu Wang, Cai Zhou, Yuhao Sun, Yifei Wu, Shuai Zhen, Luca Scimeca, Yasin Abbasi Yadkori",
       "year": 2026,
@@ -5758,12 +5914,12 @@
         "github": "https://github.com/sapientinc/HRM-Text",
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B"
       },
-      "github_stars": 1549,
+      "github_stars": 1594,
       "star_sources": {
-        "github_api": 1549
+        "github_api": 1594
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-06-25",
+      "metrics_updated": "2026-07-01",
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0
@@ -6135,6 +6291,65 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-06-30",
+      "title": "Daily Loop-Model Watch — 2026-06-30",
+      "status": "ok",
+      "summary": "Two newly announced loop-model papers were added: LOTUS uses looped Transformers for supervised latent reasoning, and CHERRY studies recurrent recovery after deep Transformer compression. Several latent-reasoning and feature-refinement papers were checked but left out because they do not clearly reuse a learned internal operator.",
+      "highlights": [],
+      "candidates": [],
+      "content": "# Daily Loop-Model Watch - 2026-06-30\n\nTwo high-confidence papers were added today. Both are language-model papers, but they hit different parts of the loop-model boundary: one uses recurrent-depth Transformers to make latent reasoning competitive with explicit CoT, while the other uses recurrent unrolling as a way to recover capability after aggressive depth compression.\n\n## Bridging the Gap Between Latent and Explicit Reasoning with Looped Transformers\n\nLOTUS starts from a practical weakness of latent chain-of-thought methods: they can be faster than decoded reasoning, but have tended to fall behind explicit CoT as models scale. The paper's answer is a looped padded Transformer that processes `K` latent blocks in parallel for `R` recurrent iterations, with per-latent-position supervision against gold CoT-step tokens.\n\nWhy it was added: the abstract explicitly identifies looped, recurrent-depth Transformers as the mechanism, and says those Transformers reuse weights to increase computation depth without adding parameters. That is the collection's core same-forward learned-operator reuse rule.\n\nReader takeaway: latent reasoning does not have to be a black-box speed hack. With looped recurrence plus direct token-level supervision on latent positions, the paper reports matching explicit CoT at 3B scale while cutting thought-phase latency by 2.5x-6.9x.\n\n## CHERRY: Compressed Hierarchical Experts with Recurrent Representational Yield\n\nCHERRY is framed as a set of compute-efficiency techniques for language models. The loop-model part is the depth-compression result: a 48-layer, 1B-parameter Transformer is compressed to 6 layers, then restored through learned recurrent unrolling to 34 effective recurrent layers. The paper also combines compressed models as efficient experts.\n\nWhy it was added: recurrent unrolling is central to the reported depth recovery, and the abstract presents it as a learned mechanism for regaining effective depth after compression rather than as a training loop or repeated full-model call.\n\nReader takeaway: this is a useful efficiency-side data point for looped language models. The reported loss is close to a larger dense model while using fewer parameters, though the evidence is explicitly limited to one Korean model family and loss-based evaluation.\n\n## Checked But Not Added\n\n- **CoLT: Teaching Multi-Modal Models to Think with Chain of Latent Thoughts** (`2606.31986`) is a strong latent-reasoning paper, but the abstract describes chains of latent thought representations and supervisory decoders rather than a looped/reused internal learned block.\n- **FR-DETR** (`2606.30471`) includes a Recurrent Focus Refinement Module for object detection under adverse weather. It is adjacent, but the abstract only says features are iteratively refined using coarse predictions as guidance; it does not make shared learned-operator reuse explicit enough for this collection.\n- **Flow Reasoning Models** (`2606.29150`) uses discrete flow denoising, self-conditioning, and dynamically stable candidates as verifiers for structured reasoning. It is close in fixed-point language, but the loop is flow/denoising inference plus candidate search, not a learned recurrent-depth block reused as the model architecture.\n- **CARVE** (`2606.27229`) remains a near-miss from the prior watch: it improves recurrent linear attention over sequence-time memory, not same-forward depth reuse.",
+      "source_path": "briefings/2026/06/2026-06-30.md"
+    },
+    {
+      "date": "2026-06-29",
+      "title": "Daily Loop-Model Watch — 2026-06-29",
+      "status": "ok",
+      "summary": "One newly announced loop-model paper was added: a looped-transformer analysis paper on stochastic loop-count training and learned stopping. Several same-day reasoning/refinement papers were checked but left out because their loops are external, diffusion/search-based, or ordinary sequence recurrence.",
+      "highlights": [],
+      "candidates": [],
+      "content": "# Daily Loop-Model Watch - 2026-06-29\n\nOne high-confidence paper was added today. The useful signal is narrow but strong: it directly studies looped Transformers, where the same Transformer block is applied repeatedly, and asks how to make extrapolation across loop counts less brittle.\n\n## Stabilizing Extrapolation in Looped Transformers via Learned Stochastic Stopping\n\nThis paper targets a specific failure mode in looped Transformers. These models can solve variable-length algorithmic tasks by increasing the number of loop applications at inference time, but the paper reports that solutions with good in-distribution accuracy can still show high out-of-distribution variance when sequence length and loop count shift together.\n\nThe proposed fix is to treat loop count as a training-time stochastic variable. Randomizing the number of loops during training reduces the shortcut between sequence length and loop count, and the authors also study RL-Halting as a learned stochastic stopping schedule. Across binary addition, Dyck-1, Unique Set, and Copy, learned stochastic stopping often improves the accuracy-stability tradeoff, though it can also stabilize a suboptimal computation.\n\nWhy it was added: the architecture is squarely inside the collection boundary. The abstract explicitly says looped Transformers repeatedly apply a shared Transformer block, and the paper analyzes how stochastic loop counts and learned stopping affect that reused-block computation. This is not repeated prompting, agent planning, or a full-model retry loop.\n\nReader takeaway: \"when to stop\" is not just a test-time allocation policy for looped Transformers; it changes what computation the recurrent block learns during training.\n\n## Checked But Not Added\n\n- **Latent Visual Diffusion Reasoning with Monte Carlo Tree Search** (`2606.27988`) combines visual diffusion reasoning with MCTS. It is an inference/search process around diffusion-style reasoning, not same-forward reuse of a learned internal block.\n- **Grounded Iterative Language Planning** (`2606.27806`) combines a parameterized world model with API-based agent reasoning. The loop is an agent planning workflow, outside the repo's internal-recurrence boundary.\n- **Towards Reliable and Robust LLM Planning** (`2606.27757`) uses symbolic feedback for iterative self-refinement. That is prompt/framework iteration over LLM calls, not a looped model architecture.\n- **MER-R1** (`2606.27652`) optimizes slow-fast multimodal emotion reasoning behavior. The abstract does not identify a reused internal learned operator within one forward process.\n- **Speculative Refinement** (`2606.27474`) is a hybrid autoregressive/diffusion decoding strategy. It is a decoding/refinement method, not a recurrent-depth or fixed-point model.\n- **CARVE** (`2606.27229`) remains adjacent but outside the strict boundary: it improves recurrent linear attention over sequence-time memory, not looped depth inside one forward reasoning process.",
+      "source_path": "briefings/2026/06/2026-06-29.md"
+    },
+    {
+      "date": "2026-06-28",
+      "title": "Daily Loop-Model Briefing - 2026-06-28",
+      "status": "watchlist",
+      "summary": "No new strict-scope papers were added; the closest recent papers used predictive-coding inference, latent-reasoning initialization, sequence-time recurrence, or external agent loops rather than reused internal learned modules.",
+      "highlights": [
+        "The strongest technical near-miss was a predictive-coding paper that compares iterative sparse inference schemes, but its loop is an optimization/inference procedure over a fixed energy.",
+        "Recent latent-reasoning and recurrent-transformer papers remain useful vocabulary signals, yet their abstracts do not establish same-forward reuse of a learned block as the central mechanism.",
+        "Agent loops, diffusion loops, rollout loops, and sequence-memory recurrence continue to be excluded unless they expose reused internal learned operators."
+      ],
+      "candidates": [
+        {
+          "id": "2606.27802",
+          "title": "Accelerating Hierarchical Sparse Predictive Coding with Hybrid Amortized Inference",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2606.27802"
+        },
+        {
+          "id": "2606.27684",
+          "title": "Intuition-Guided Latent Reasoning for LLM-Based Recommendation",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2606.27684"
+        },
+        {
+          "id": "2606.27538",
+          "title": "The Context-Ready Transformer",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2606.27538"
+        },
+        {
+          "id": "2606.27009",
+          "title": "Semantic Early-Stopping for Iterative LLM Agent Loops",
+          "verdict": "out-of-scope",
+          "url": "https://arxiv.org/abs/2606.27009"
+        }
+      ],
+      "content": "# Daily Loop-Model Briefing - 2026-06-28\n\n## Outcome\n\nNo paper crossed the strict collection boundary today. Recent arXiv listings contained several papers with loop, recurrent, predictive-coding, and latent-reasoning language, but none clearly made a learned layer, block, module, or fixed-point operator get reused within one model forward process.\n\nThe prior strict-scope recursive-reasoner compression paper (`2606.26488`) is already covered by the existing June 25 review branch, so it was not duplicated here.\n\n## Checked but not added\n\n- **Accelerating Hierarchical Sparse Predictive Coding with Hybrid Amortized Inference** (`2606.27802`) is the closest technical near-miss. It studies hierarchical sparse predictive coding and compares ISTA, MFISTA, a LISTA-style amortized encoder, and hybrid corrective refinement. That is relevant to iterative latent inference, but the loop in the abstract is an optimization/inference procedure over a fixed sparse energy rather than a learned block or module reused as model depth.\n- **Intuition-Guided Latent Reasoning for LLM-Based Recommendation** (`2606.27684`) proposes an intuition embedding that initializes latent preference reasoning for recommendation. The paper is adjacent to continuous latent reasoning, but the abstract emphasizes starting-point alignment and recommendation-specific guidance, not recurrent reuse of an internal learned operator.\n- **The Context-Ready Transformer** (`2606.27538`) introduces a recurrent architecture around a Transformer block and correction network. The recurrence is tied to left-to-right sequence context and cached previous-position outputs; the abstract does not present recurrent depth or same-forward reuse of a shared block as the collection's target mechanism.\n- **Semantic Early-Stopping for Iterative LLM Agent Loops** (`2606.27009`) is a clean example of an excluded agent/workflow loop. It stops Writer/Critic-style multi-agent drafting loops based on semantic convergence, but repeated external LLM calls are outside the repo scope.",
+      "source_path": "briefings/2026/06/2026-06-28.md"
+    },
     {
       "date": "2026-06-25",
       "title": "Daily Loop-Model Briefing - 2026-06-25",

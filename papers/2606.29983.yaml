@@ -1,0 +1,38 @@
+title: Stabilizing Extrapolation in Looped Transformers via Learned Stochastic Stopping
+authors:
+- Hsun-Yu Kuo
+- El Mahdi Chayti
+- Patrik Reizinger
+- Wieland Brendel
+- Martin Jaggi
+year: 2026
+published_date: '2026-06-29'
+added_date: '2026-06-29'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- algorithmic-reasoning
+- scaling
+- adaptive-compute
+focus_tags:
+- training-algorithm
+- inference-algorithm
+tags:
+- looped-transformer
+- depth-scaling
+desc: Studies looped Transformers that repeatedly apply a shared Transformer block,
+  showing that stochastic training-time loop counts and learned stochastic stopping
+  can reduce out-of-distribution variance across inference loop counts on algorithmic
+  sequence tasks.
+links:
+  arxiv: https://arxiv.org/abs/2606.29983
+  alphaxiv: https://www.alphaxiv.org/abs/2606.29983
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-07-01'

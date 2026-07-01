@@ -25,9 +25,9 @@ desc: Probes a depth-recurrent Transformer to test whether latent chain-of-thoug
   interpretability effects.
 links:
   arxiv: https://arxiv.org/abs/2507.02199
-citations: 10
-metrics_updated: '2026-06-17'
+citations: 11
+metrics_updated: '2026-06-29'
 citation_sources:
-  semantic_scholar: 10
+  semantic_scholar: 11
   opencitations: 0
 citation_source_best: semantic_scholar

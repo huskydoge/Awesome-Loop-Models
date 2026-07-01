@@ -31,10 +31,10 @@ desc: Proposes Coevolutionary Continuous Discrete Diffusion, a joint continuous-
   expressivity.
 links:
   arxiv: https://arxiv.org/abs/2510.03206
-citations: 15
-metrics_updated: '2026-06-17'
+citations: 18
+metrics_updated: '2026-06-30'
 citation_sources:
-  semantic_scholar: 15
+  semantic_scholar: 18
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar

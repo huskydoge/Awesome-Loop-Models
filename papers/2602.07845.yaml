@@ -29,9 +29,9 @@ links:
   arxiv: https://arxiv.org/abs/2602.07845
   github: https://github.com/rd-vla/rd-vla
   project: https://rd-vla.github.io/
-citations: 6
+citations: 7
 citation_sources:
-  semantic_scholar: 6
+  semantic_scholar: 7
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
@@ -39,4 +39,4 @@ github_stars: 38
 star_sources:
   github_api: 38
 star_source_best: github_api
-metrics_updated: '2026-06-17'
+metrics_updated: '2026-06-29'

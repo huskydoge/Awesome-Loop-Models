@@ -1,0 +1,34 @@
+title: 'CHERRY: Compressed Hierarchical Experts with Recurrent Representational Yield'
+authors:
+- Dohyeon Kwon
+- Youngjin Park
+year: 2026
+published_date: '2026-06-30'
+added_date: '2026-06-30'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- scaling
+- MoE
+focus_tags:
+- architecture
+- training-algorithm
+tags:
+- depth-recurrent
+- shared-weight-recurrence
+desc: Compresses a 48-layer language Transformer to 6 layers and restores depth through
+  learned recurrent unrolling, then combines compressed recurrent models as efficient
+  experts.
+links:
+  arxiv: https://arxiv.org/abs/2606.31796
+  alphaxiv: https://www.alphaxiv.org/abs/2606.31796
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-07-01'

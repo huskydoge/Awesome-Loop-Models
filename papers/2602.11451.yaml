@@ -27,14 +27,14 @@ desc: Introduces LoopFormer, trained on variable-length trajectories to enable b
 links:
   arxiv: https://arxiv.org/abs/2602.11451
   github: https://github.com/armenjeddi/loopformer
-citations: 17
+citations: 21
 citation_sources:
-  semantic_scholar: 17
+  semantic_scholar: 21
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-github_stars: 25
+github_stars: 27
 star_sources:
-  github_api: 25
+  github_api: 27
 star_source_best: github_api
-metrics_updated: '2026-06-18'
+metrics_updated: '2026-06-30'

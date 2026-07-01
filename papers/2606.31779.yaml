@@ -1,0 +1,37 @@
+title: Bridging the Gap Between Latent and Explicit Reasoning with Looped Transformers
+authors:
+- Ying Fan
+- Anej Svete
+- Kangwook Lee
+year: 2026
+published_date: '2026-06-30'
+added_date: '2026-06-30'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+- parallel-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+- scaling
+focus_tags:
+- architecture
+- training-algorithm
+tags:
+- looped-transformer
+- looped-llm
+- depth-scaling
+desc: Introduces LOTUS, a looped padded Transformer that reuses recurrent-depth weights
+  for parallel latent chain-of-thought blocks, matching explicit CoT at 3B scale while
+  reducing thought-phase latency.
+links:
+  arxiv: https://arxiv.org/abs/2606.31779
+  alphaxiv: https://www.alphaxiv.org/abs/2606.31779
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-07-01'
