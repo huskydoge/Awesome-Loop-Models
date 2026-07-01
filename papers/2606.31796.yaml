@@ -21,10 +21,14 @@ focus_tags:
 tags:
 - depth-recurrent
 - shared-weight-recurrence
-desc: Compresses a 48-layer language Transformer to 6 layers and restores depth
-  through learned recurrent unrolling, then combines compressed recurrent models
-  as efficient experts.
+desc: Compresses a 48-layer language Transformer to 6 layers and restores depth through
+  learned recurrent unrolling, then combines compressed recurrent models as efficient
+  experts.
 links:
   arxiv: https://arxiv.org/abs/2606.31796
   alphaxiv: https://www.alphaxiv.org/abs/2606.31796
 citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-07-01'
