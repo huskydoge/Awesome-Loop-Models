@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 114,
-    "paper_total": 107,
+    "total": 116,
+    "paper_total": 109,
     "blog_total": 7,
-    "briefing_total": 28,
-    "latest_briefing_date": "2026-06-29",
-    "generated": "2026-06-30T05:46:52.085164+00:00",
+    "briefing_total": 29,
+    "latest_briefing_date": "2026-06-30",
+    "generated": "2026-07-01T03:21:32.347641+00:00",
     "generated_local_date": "2026-06-30",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -5732,6 +5732,95 @@
       "arxiv_id": "2606.29983"
     },
     {
+      "title": "Bridging the Gap Between Latent and Explicit Reasoning with Looped Transformers",
+      "authors": "Ying Fan, Anej Svete, Kangwook Lee",
+      "year": 2026,
+      "published_date": "2026-06-30",
+      "added_date": "2026-06-30",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop",
+        "parallel-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency",
+        "scaling"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "tags": [
+        "looped-transformer",
+        "looped-llm",
+        "depth-scaling"
+      ],
+      "desc": "Introduces LOTUS, a looped padded Transformer that reuses recurrent-depth weights for parallel latent chain-of-thought blocks, matching explicit CoT at 3B scale while reducing thought-phase latency.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2606.31779",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2606.31779"
+      },
+      "citations": 0,
+      "id": "2606.31779",
+      "source_file": "2606.31779.yaml",
+      "source_path": "papers/2606.31779.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Ying Fan",
+        "Anej Svete",
+        "Kangwook Lee"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2606.31779"
+    },
+    {
+      "title": "CHERRY: Compressed Hierarchical Experts with Recurrent Representational Yield",
+      "authors": "Dohyeon Kwon, Youngjin Park",
+      "year": 2026,
+      "published_date": "2026-06-30",
+      "added_date": "2026-06-30",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "efficiency",
+        "scaling",
+        "MoE"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "tags": [
+        "depth-recurrent",
+        "shared-weight-recurrence"
+      ],
+      "desc": "Compresses a 48-layer language Transformer to 6 layers and restores depth through learned recurrent unrolling, then combines compressed recurrent models as efficient experts.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2606.31796",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2606.31796"
+      },
+      "citations": 0,
+      "id": "2606.31796",
+      "source_file": "2606.31796.yaml",
+      "source_path": "papers/2606.31796.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Dohyeon Kwon",
+        "Youngjin Park"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2606.31796"
+    },
+    {
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
       "authors": "Guan Wang, Changling Liu, Chenyu Wang, Cai Zhou, Yuhao Sun, Yifei Wu, Shuai Zhen, Luca Scimeca, Yasin Abbasi Yadkori",
       "year": 2026,
@@ -6144,6 +6233,16 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-06-30",
+      "title": "Daily Loop-Model Watch — 2026-06-30",
+      "status": "ok",
+      "summary": "Two newly announced loop-model papers were added: LOTUS uses looped Transformers for supervised latent reasoning, and CHERRY studies recurrent recovery after deep Transformer compression. Several latent-reasoning and feature-refinement papers were checked but left out because they do not clearly reuse a learned internal operator.",
+      "highlights": [],
+      "candidates": [],
+      "content": "# Daily Loop-Model Watch - 2026-06-30\n\nTwo high-confidence papers were added today. Both are language-model papers, but they hit different parts of the loop-model boundary: one uses recurrent-depth Transformers to make latent reasoning competitive with explicit CoT, while the other uses recurrent unrolling as a way to recover capability after aggressive depth compression.\n\n## Bridging the Gap Between Latent and Explicit Reasoning with Looped Transformers\n\nLOTUS starts from a practical weakness of latent chain-of-thought methods: they can be faster than decoded reasoning, but have tended to fall behind explicit CoT as models scale. The paper's answer is a looped padded Transformer that processes `K` latent blocks in parallel for `R` recurrent iterations, with per-latent-position supervision against gold CoT-step tokens.\n\nWhy it was added: the abstract explicitly identifies looped, recurrent-depth Transformers as the mechanism, and says those Transformers reuse weights to increase computation depth without adding parameters. That is the collection's core same-forward learned-operator reuse rule.\n\nReader takeaway: latent reasoning does not have to be a black-box speed hack. With looped recurrence plus direct token-level supervision on latent positions, the paper reports matching explicit CoT at 3B scale while cutting thought-phase latency by 2.5x-6.9x.\n\n## CHERRY: Compressed Hierarchical Experts with Recurrent Representational Yield\n\nCHERRY is framed as a set of compute-efficiency techniques for language models. The loop-model part is the depth-compression result: a 48-layer, 1B-parameter Transformer is compressed to 6 layers, then restored through learned recurrent unrolling to 34 effective recurrent layers. The paper also combines compressed models as efficient experts.\n\nWhy it was added: recurrent unrolling is central to the reported depth recovery, and the abstract presents it as a learned mechanism for regaining effective depth after compression rather than as a training loop or repeated full-model call.\n\nReader takeaway: this is a useful efficiency-side data point for looped language models. The reported loss is close to a larger dense model while using fewer parameters, though the evidence is explicitly limited to one Korean model family and loss-based evaluation.\n\n## Checked But Not Added\n\n- **CoLT: Teaching Multi-Modal Models to Think with Chain of Latent Thoughts** (`2606.31986`) is a strong latent-reasoning paper, but the abstract describes chains of latent thought representations and supervisory decoders rather than a looped/reused internal learned block.\n- **FR-DETR** (`2606.30471`) includes a Recurrent Focus Refinement Module for object detection under adverse weather. It is adjacent, but the abstract only says features are iteratively refined using coarse predictions as guidance; it does not make shared learned-operator reuse explicit enough for this collection.\n- **Flow Reasoning Models** (`2606.29150`) uses discrete flow denoising, self-conditioning, and dynamically stable candidates as verifiers for structured reasoning. It is close in fixed-point language, but the loop is flow/denoising inference plus candidate search, not a learned recurrent-depth block reused as the model architecture.\n- **CARVE** (`2606.27229`) remains a near-miss from the prior watch: it improves recurrent linear attention over sequence-time memory, not same-forward depth reuse.",
+      "source_path": "briefings/2026/06/2026-06-30.md"
+    },
     {
       "date": "2026-06-29",
       "title": "Daily Loop-Model Watch — 2026-06-29",

@@ -18,8 +18,8 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (19)
-- `flat-loop` (94)
-- `parallel-loop` (6)
+- `flat-loop` (96)
+- `parallel-loop` (7)
 - `implicit-layer` (17)
 
 ## focus_tags
@@ -27,8 +27,8 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (7)
-- `training-algorithm` (51)
-- `architecture` (99)
+- `training-algorithm` (53)
+- `architecture` (101)
 - `data` (3)
 - `inference-algorithm` (78)
 
@@ -36,16 +36,16 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `reasoning` (62)
-- `language-modeling` (61)
-- `efficiency` (50)
+- `language-modeling` (63)
+- `reasoning` (63)
+- `efficiency` (52)
 - `algorithmic-reasoning` (26)
-- `scaling` (22)
+- `scaling` (24)
 - `theory` (14)
 - `vision` (9)
 - `memory-efficiency` (5)
+- `MoE` (5)
 - `sequence-modeling` (5)
-- `MoE` (4)
 - `adaptive-compute` (2)
 - `RL` (2)
 - `robotics-vla` (2)
@@ -63,19 +63,19 @@ Observed browser-facing domain tags currently used across the repo.
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (27)
+- `looped-transformer` (28)
 - `ACT` (7)
 - `DEQ` (7)
+- `looped-llm` (7)
 - `TRM` (7)
+- `depth-scaling` (6)
 - `HRM` (6)
-- `looped-llm` (6)
-- `depth-scaling` (5)
+- `shared-weight-recurrence` (6)
 - `recursive-transformer` (5)
-- `shared-weight-recurrence` (5)
+- `depth-recurrent` (4)
 - `Ouro` (4)
 - `UT` (4)
 - `convergence` (3)
-- `depth-recurrent` (3)
 - `mechanistic-analysis` (3)
 - `test-time-compute` (3)
 - `weight-tying` (3)
