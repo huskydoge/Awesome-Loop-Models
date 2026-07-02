@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 117,
-    "paper_total": 110,
+    "total": 118,
+    "paper_total": 111,
     "blog_total": 7,
-    "briefing_total": 30,
-    "latest_briefing_date": "2026-06-30",
-    "generated": "2026-07-01T03:35:09.805577+00:00",
+    "briefing_total": 31,
+    "latest_briefing_date": "2026-07-01",
+    "generated": "2026-07-02T03:25:07.191821+00:00",
     "generated_local_date": "2026-07-01",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -5879,6 +5879,54 @@
       "arxiv_id": "2606.31796"
     },
     {
+      "title": "DiscoLoop: Looping Discrete Embeddings and Continuous Hidden States for Multi-hop Reasoning",
+      "authors": "Hengyu Fu, Tianyu Guo, Zixuan Wang, Hanlin Zhu, Jason D. Lee, Jiantao Jiao, Stuart Russell, Song Mei",
+      "year": 2026,
+      "published_date": "2026-07-01",
+      "added_date": "2026-07-01",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "tags": [
+        "looped-transformer",
+        "looped-llm"
+      ],
+      "desc": "Introduces DiscoLoop, a looping architecture for multi-hop reasoning that carries both discrete embedding and continuous hidden-state channels across recurrent loop steps, improving generalization and training efficiency over looped-transformer baselines.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2607.00341",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2607.00341"
+      },
+      "citations": 0,
+      "id": "2607.00341",
+      "source_file": "2607.00341.yaml",
+      "source_path": "papers/2607.00341.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Hengyu Fu",
+        "Tianyu Guo",
+        "Zixuan Wang",
+        "Hanlin Zhu",
+        "Jason D. Lee",
+        "Jiantao Jiao",
+        "Stuart Russell",
+        "Song Mei"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2607.00341"
+    },
+    {
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
       "authors": "Guan Wang, Changling Liu, Chenyu Wang, Cai Zhou, Yuhao Sun, Yifei Wu, Shuai Zhen, Luca Scimeca, Yasin Abbasi Yadkori",
       "year": 2026,
@@ -6291,6 +6339,16 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-07-01",
+      "title": "Daily Loop-Model Watch — 2026-07-01",
+      "status": "ok",
+      "summary": "One newly announced loop-model paper was added: DiscoLoop extends looped Transformers with a mixed discrete-embedding and continuous-state recurrence for multi-hop reasoning. Several same-day loop-language hits were checked but stayed out because they describe external workflows, topology loops, or agent/data feedback rather than reused internal learned operators.",
+      "highlights": [],
+      "candidates": [],
+      "content": "# Daily Loop-Model Watch - 2026-07-01\n\nOne high-confidence paper was added today. The useful signal is not just that the paper studies latent reasoning; it directly builds on looped Transformers and proposes a new recurrence channel design for keeping multi-hop intermediate structure available across loop steps.\n\n## DiscoLoop: Looping Discrete Embeddings and Continuous Hidden States for Multi-hop Reasoning\n\nDiscoLoop studies two-hop reasoning where a model must compose parametric knowledge within a single forward pass instead of externalizing every step as chain-of-thought. The paper argues that standard non-recurrent Transformers lose useful first-hop facts across depth, while looped Transformers help by reusing memory but still suffer from representational mismatch between a decodable bridge entity and its token embedding.\n\nWhy it was added: the abstract explicitly frames Looped Transformers as the baseline mechanism and proposes a looping architecture whose recurrence carries both a discrete embedding channel and a continuous hidden-state channel. That makes the repeated learned computation part of the model's forward process, not an external prompting, search, or agent loop.\n\nReader takeaway: the mixed-channel recurrence nearly solves the symbolic and synthetic-language multi-hop setting with fewer training steps, and the paper reports lower training loss plus stronger benchmark performance than looped-transformer baselines in real-world pretraining.\n\n## Checked But Not Added\n\n- **Agentic generation of verifiable rules for deterministic, self-expanding reaction classification** (`2607.01061`) uses a verification loop in a multi-agent chemistry workflow. The loop is external rule generation and testing, not a reused learned internal operator.\n- **Monodromy in Persistent Homology over 1-Manifolds in 2D** (`2607.01046`) is mathematically about closed loops in topological data analysis. It has no loop-model architecture connection.",
+      "source_path": "briefings/2026/07/2026-07-01.md"
+    },
     {
       "date": "2026-06-30",
       "title": "Daily Loop-Model Watch — 2026-06-30",
