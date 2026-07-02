@@ -1,4 +1,5 @@
-title: 'DiscoLoop: Looping Discrete Embeddings and Continuous Hidden States for Multi-hop Reasoning'
+title: 'DiscoLoop: Looping Discrete Embeddings and Continuous Hidden States for Multi-hop
+  Reasoning'
 authors:
 - Hengyu Fu
 - Tianyu Guo
@@ -28,8 +29,13 @@ tags:
 - looped-llm
 desc: Introduces DiscoLoop, a looping architecture for multi-hop reasoning that carries
   both discrete embedding and continuous hidden-state channels across recurrent loop
-  steps, improving generalization and training efficiency over looped-transformer baselines.
+  steps, improving generalization and training efficiency over looped-transformer
+  baselines.
 links:
   arxiv: https://arxiv.org/abs/2607.00341
   alphaxiv: https://www.alphaxiv.org/abs/2607.00341
 citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-07-02'

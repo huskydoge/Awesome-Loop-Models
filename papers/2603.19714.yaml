@@ -30,10 +30,10 @@ desc: Proposes LoopRPT, a reinforcement pre-training method for looped language 
   and strengthening early-stage reasoning on Ouro.
 links:
   arxiv: https://arxiv.org/abs/2603.19714
-citations: 4
+citations: 5
 citation_sources:
-  semantic_scholar: 4
+  semantic_scholar: 5
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-06-30'
+metrics_updated: '2026-07-02'
