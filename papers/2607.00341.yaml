@@ -1,0 +1,35 @@
+title: 'DiscoLoop: Looping Discrete Embeddings and Continuous Hidden States for Multi-hop Reasoning'
+authors:
+- Hengyu Fu
+- Tianyu Guo
+- Zixuan Wang
+- Hanlin Zhu
+- Jason D. Lee
+- Jiantao Jiao
+- Stuart Russell
+- Song Mei
+year: 2026
+published_date: '2026-07-01'
+added_date: '2026-07-01'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+tags:
+- looped-transformer
+- looped-llm
+desc: Introduces DiscoLoop, a looping architecture for multi-hop reasoning that carries
+  both discrete embedding and continuous hidden-state channels across recurrent loop
+  steps, improving generalization and training efficiency over looped-transformer baselines.
+links:
+  arxiv: https://arxiv.org/abs/2607.00341
+  alphaxiv: https://www.alphaxiv.org/abs/2607.00341
+citations: 0
