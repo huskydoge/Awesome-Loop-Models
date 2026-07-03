@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 118,
-    "paper_total": 111,
+    "total": 119,
+    "paper_total": 112,
     "blog_total": 7,
-    "briefing_total": 31,
-    "latest_briefing_date": "2026-07-01",
-    "generated": "2026-07-02T06:51:01.684026+00:00",
+    "briefing_total": 32,
+    "latest_briefing_date": "2026-07-02",
+    "generated": "2026-07-03T03:20:28.050215+00:00",
     "generated_local_date": "2026-07-02",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -5936,6 +5936,49 @@
       "arxiv_id": "2607.00341"
     },
     {
+      "title": "G-RRM: Guiding Symbolic Solvers with Recurrent Reasoning Models",
+      "authors": "Timo Bertram, Sidhant Bhavnani, Richard Freinschlag, Erich Kobler, Andreas Mayr, Günter Klambauer",
+      "year": 2026,
+      "published_date": "2026-07-02",
+      "added_date": "2026-07-02",
+      "venue": "arXiv",
+      "category": "applications",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning"
+      ],
+      "focus_tags": [
+        "inference-algorithm",
+        "architecture"
+      ],
+      "desc": "Integrates symbol-equivariant Recurrent Reasoning Models with symbolic solvers, showing that neural solution proposals can cut Sudoku and SAT-style search when the downstream solver can overwrite imperfect recurrent-model hints.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2607.02491",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2607.02491"
+      },
+      "citations": 0,
+      "metrics_updated": "2026-07-02",
+      "id": "2607.02491",
+      "source_file": "2607.02491.yaml",
+      "source_path": "papers/2607.02491.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Timo Bertram",
+        "Sidhant Bhavnani",
+        "Richard Freinschlag",
+        "Erich Kobler",
+        "Andreas Mayr",
+        "Günter Klambauer"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2607.02491"
+    },
+    {
       "title": "HRM-Text: Efficient Pretraining Beyond Scaling",
       "authors": "Guan Wang, Changling Liu, Chenyu Wang, Cai Zhou, Yuhao Sun, Yifei Wu, Shuai Zhen, Luca Scimeca, Yasin Abbasi Yadkori",
       "year": 2026,
@@ -6348,6 +6391,16 @@
     }
   ],
   "briefings": [
+    {
+      "date": "2026-07-02",
+      "title": "Daily Loop-Model Watch — 2026-07-02",
+      "status": "ok",
+      "summary": "",
+      "highlights": [],
+      "candidates": [],
+      "content": "# Daily Loop-Model Briefing - 2026-07-02\n\n## Outcome\n\nOne new paper was added today: **G-RRM: Guiding Symbolic Solvers with Recurrent Reasoning Models** (`2607.02491`). It is not a general-purpose language-model architecture paper. Its value for this collection is narrower and cleaner: it tests whether a recurrent neural reasoner can provide useful guidance to exact symbolic solvers on constraint satisfaction problems.\n\n## Added\n\n### G-RRM: Guiding Symbolic Solvers with Recurrent Reasoning Models (`2607.02491`)\n\nG-RRM uses symbol-equivariant Recurrent Reasoning Models (SE-RRMs) as neural solvers that generate full solution proposals, then passes those proposals as guidance to backtracking and SAT-style symbolic solvers. The paper reports that this works best when the symbolic solver has enough combinatorial search to benefit from hints and can dynamically overwrite bad branching choices.\n\nWhy it was added: SE-RRMs belong to the recurrent reasoning family this repository tracks: the learned solver repeatedly updates latent reasoning state rather than relying on an external prompt loop or plain autoregressive decoding. This paper is an applications-focused addition because the main result is about practical solver acceleration from that recurrent model, not a new base loop architecture.\n\nMain reader takeaway: on 9x9 Sudoku, where the SE-RRM solves 91.1% of instances directly, G-RRM reduces median conflict counts to zero and reports a 33.3x median speedup for backtracking plus a 1.70x median speedup for Glucose 4.1. CaDiCaL does not benefit in the same way, which makes the paper useful as a boundary result: recurrent neural hints only translate into wall-clock gains when the downstream symbolic search procedure can exploit and repair them.\n\n## Checked but not added\n\n- **ReContext: Recursive Evidence Replay as LLM Harness for Long-Context Reasoning** (`2607.02509`) is a training-free evidence replay method around an existing LLM. It uses model-internal relevance signals, but the loop is a context-selection and replay harness rather than a reused learned internal operator inside one forward process.\n- **A Hippocampus for Linear Attention: An Exact Memory for What the Recurrent State Forgets** (`2607.02303`) improves sequence-memory behavior for linear attention with a bounded exact KV cache. It is adjacent recurrent-state work, but the abstract is about token-prefix memory rather than recurrent depth or fixed-point loop-model computation.\n- **Multimodal Knowledge Edit-Scoped Generalization for Online Recursive MLLM Editing** (`2607.01978`) is an online editing method with recursive updates and preconditioners. The recurrence is in the editing/update procedure, not the model's same-forward learned-module computation.\n- **Closed-loop, agentic, and human-in-the-loop papers** from today's feed were left out unless they exposed an internal reused learned operator. Their loops are control, planning, verification, data, or deployment workflows rather than loop-model mechanisms.\n",
+      "source_path": "briefings/2026/07/2026-07-02.md"
+    },
     {
       "date": "2026-07-01",
       "title": "Daily Loop-Model Watch — 2026-07-01",
