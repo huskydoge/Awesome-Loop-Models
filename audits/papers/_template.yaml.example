@@ -1,0 +1,64 @@
+# Save as audits/papers/<paper-id>.yaml.
+# paper_id must equal both filename stems: audits/papers/<paper-id>.yaml and
+# papers/<paper-id>.yaml. Copy evidence from a primary source; do not infer it.
+
+paper_id: "2601.00001"
+status: "needs-review" # needs-review | verified | remove
+
+source:
+  # Use the canonical primary paper URL (arXiv, OpenReview, or paper link).
+  url: "https://arxiv.org/abs/2601.00001"
+  # Record the inspected source revision, version, or dated snapshot.
+  version: "v1"
+  verified_on: "2026-07-10"
+
+# Identify the human or agent review provenance; do not use an anonymous label.
+reviewer: "Reviewer name or review-run identifier"
+confidence: "low" # low | medium | high
+
+scope:
+  verdict: "uncertain" # in-scope | out-of-scope | uncertain
+  evidence: >-
+    State whether the same learned internal module or operator is reused within
+    one forward process, and cite what the primary source actually establishes.
+  # Point to a precise section, page, figure, table, or equation. An abstract is
+  # acceptable only when it directly proves the scope claim.
+  locator: "Section 3, page 5, Equation 2"
+
+taxonomy:
+  category:
+    value: "designs"
+    rationale: "Explain why the paper belongs on this catalog shelf."
+  mechanism_tags:
+    values:
+      - "flat-loop"
+    rationale: "Explain the loop form using primary-source evidence."
+  focus_tags:
+    values:
+      - "architecture"
+    rationale: "Explain the paper's technical focus."
+  domain_tags:
+    values:
+      - "reasoning"
+    rationale: "Explain the evaluated or intended domain."
+  tags:
+    values:
+      - "looped-transformer"
+    rationale: "Explain each optional alias or short identifier."
+
+content_checks:
+  title_authors:
+    status: "verified" # verified | issue | unresolved
+    evidence: "The primary source title page confirms title and author order."
+  publication:
+    status: "verified"
+    evidence: "The source history confirms the stored date and venue."
+  description:
+    status: "unresolved"
+    evidence: "List which catalog description claims still need source support."
+  links:
+    status: "verified"
+    evidence: "The linked project and repository identify this paper."
+
+unresolved_questions:
+  - "Which experiment directly supports the efficiency claim?"
