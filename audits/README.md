@@ -73,6 +73,9 @@ python3 scripts/validate_audits.py --require-complete
 Malformed, duplicate-key, mismatched, duplicate-ID, and orphan records always
 fail in both modes. Output and findings are deterministic; an error exits with
 status 1, while a valid partial or complete ledger exits with status 0.
+Completion counts include only unique records whose own schema and decision
+rules pass and whose corresponding canonical paper also validates successfully.
+Complete mode also rejects a missing or empty canonical `papers/` directory.
 
 The validator is read-only, has no auto-fix mode, and never uses the network.
 Audit records are research provenance only: the build does not include them in

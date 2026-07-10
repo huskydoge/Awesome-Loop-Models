@@ -101,6 +101,40 @@ def write_raw(root: Path, relative_path: str, value: str) -> Path:
 class AuditValidationTests(unittest.TestCase):
     """Exercise schema, parity, decision, coverage, and output contracts."""
 
+    def test_missing_papers_directory_fails_partial_and_complete_modes(self):
+        """A missing canonical source directory must never look like 0/0 success."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+
+            partial = validate_audits.validate_audits(root)
+            complete = validate_audits.validate_audits(
+                root, require_complete=True
+            )
+
+        for result in (partial, complete):
+            self.assertFalse(result.valid)
+            self.assertIn(
+                "missing-papers-directory",
+                {finding.code for finding in result.findings},
+            )
+            self.assertEqual(result.coverage.canonical_papers, 0)
+
+    def test_complete_mode_rejects_an_empty_canonical_directory(self):
+        """An existing but empty papers directory cannot satisfy the final gate."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            (root / "papers").mkdir()
+
+            result = validate_audits.validate_audits(
+                root, require_complete=True
+            )
+
+        self.assertFalse(result.valid)
+        self.assertIn(
+            "empty-canonical-catalog",
+            {finding.code for finding in result.findings},
+        )
+
     def test_valid_verified_record_is_a_complete_decision(self):
         """A fully evidenced matching record should pass complete mode."""
         with TemporaryDirectory() as tmpdir:
@@ -188,6 +222,8 @@ class AuditValidationTests(unittest.TestCase):
             "remove-scope",
             {finding.code for finding in invalid_result.findings},
         )
+        self.assertEqual(invalid_result.coverage.remove, 0)
+        self.assertEqual(invalid_result.coverage.complete_decisions, 0)
 
     def test_filename_paper_id_and_canonical_source_must_match(self):
         """Record identity should agree with its path and primary-source identity."""
@@ -203,6 +239,8 @@ class AuditValidationTests(unittest.TestCase):
         codes = {finding.code for finding in result.findings}
         self.assertIn("filename-id-mismatch", codes)
         self.assertIn("source-id-mismatch", codes)
+        self.assertEqual(result.coverage.verified, 0)
+        self.assertEqual(result.coverage.complete_decisions, 0)
 
     def test_duplicate_and_unknown_audit_ids_are_errors(self):
         """Orphan records and repeated logical IDs should always fail."""
@@ -238,6 +276,8 @@ class AuditValidationTests(unittest.TestCase):
         self.assertIn("scope.locator", fields)
         self.assertIn("taxonomy.category.rationale", fields)
         self.assertIn("content_checks.links.evidence", fields)
+        self.assertEqual(result.coverage.verified, 0)
+        self.assertEqual(result.coverage.complete_decisions, 0)
 
     def test_verified_taxonomy_must_exactly_match_canonical_yaml(self):
         """A verified ledger may not silently drift from canonical metadata."""
@@ -260,6 +300,50 @@ class AuditValidationTests(unittest.TestCase):
             drift_fields,
             {"taxonomy.category.value", "taxonomy.mechanism_tags.values"},
         )
+        self.assertEqual(result.coverage.verified, 0)
+        self.assertEqual(result.coverage.complete_decisions, 0)
+
+    def test_invalid_canonical_paper_cannot_complete_a_verified_decision(self):
+        """Record validity must include the corresponding canonical source."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            paper = canonical_paper()
+            paper["category"] = 42
+            write_yaml(root, "papers/2601.00001.yaml", paper)
+            write_yaml(root, "audits/papers/2601.00001.yaml", valid_audit())
+
+            result = validate_audits.validate_audits(root)
+
+        self.assertFalse(result.valid)
+        self.assertEqual(result.coverage.covered_papers, 1)
+        self.assertEqual(result.coverage.verified, 0)
+        self.assertEqual(result.coverage.complete_decisions, 0)
+
+    def test_generic_source_url_normalizes_query_order_and_encoding(self):
+        """Equivalent generic URLs should match despite query order and encoding."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            paper_id = "vendor-paper"
+            paper = canonical_paper(paper_id)
+            paper["links"] = {
+                "paper": (
+                    "https://papers.example.org/view/?b=2&a=hello%20world#source"
+                )
+            }
+            audit = valid_audit(paper_id)
+            audit["source"]["url"] = (
+                "https://papers.example.org/view?a=hello+world&b=2"
+            )
+            write_yaml(root, f"papers/{paper_id}.yaml", paper)
+            write_yaml(root, f"audits/papers/{paper_id}.yaml", audit)
+
+            result = validate_audits.validate_audits(
+                root, require_complete=True
+            )
+
+        self.assertEqual(result.findings, ())
+        self.assertEqual(result.coverage.verified, 1)
+        self.assertEqual(result.coverage.complete_decisions, 1)
 
     def test_invalid_status_confidence_date_and_url_are_rejected(self):
         """Scalar enums and source fields should follow the published schema."""

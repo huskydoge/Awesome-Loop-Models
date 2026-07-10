@@ -10,7 +10,7 @@ from dataclasses import asdict, dataclass
 from datetime import date
 from pathlib import Path
 from typing import Sequence
-from urllib.parse import parse_qs, urlsplit, urlunsplit
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 import yaml
 
@@ -375,12 +375,13 @@ def _url_identity(value: str) -> str | None:
         if match:
             return f"arxiv:{match.group(1)}"
     if host in {"openreview.net", "www.openreview.net"}:
-        openreview_id = parse_qs(parsed.query).get("id", [])
-        if openreview_id and openreview_id[0]:
-            return f"openreview:{openreview_id[0]}"
+        openreview_id = dict(parse_qsl(parsed.query)).get("id")
+        if openreview_id:
+            return f"openreview:{openreview_id}"
     netloc = parsed.netloc.lower()
     path = parsed.path.rstrip("/") or "/"
-    return urlunsplit((parsed.scheme.lower(), netloc, path, parsed.query, ""))
+    query = urlencode(sorted(parse_qsl(parsed.query, keep_blank_values=True)))
+    return urlunsplit((parsed.scheme.lower(), netloc, path, query, ""))
 
 
 def _validate_canonical_paper(
@@ -763,12 +764,32 @@ def validate_audits(
     """Validate canonical paper and audit YAML without writing or using network."""
     root = Path(root)
     findings: list[Finding] = []
-    paper_paths = _yaml_paths(root / "papers")
+    papers_directory = root / "papers"
+    paper_paths = _yaml_paths(papers_directory)
     audit_paths = _yaml_paths(root / "audits" / "papers")
+
+    if not papers_directory.is_dir():
+        _add(
+            findings,
+            "missing-papers-directory",
+            "papers",
+            "$",
+            "Canonical papers/ directory does not exist.",
+        )
+    elif require_complete and not paper_paths:
+        _add(
+            findings,
+            "empty-canonical-catalog",
+            "papers",
+            "$",
+            "Complete mode requires at least one canonical paper.",
+        )
 
     canonical: dict[str, tuple[dict[str, object], frozenset[str]]] = {}
     canonical_sources: dict[str, str] = {}
+    canonical_valid: dict[str, bool] = {}
     for path in paper_paths:
+        finding_count = len(findings)
         source = _source_name(path, root)
         canonical_sources[path.stem] = source
         loaded = _load_yaml(path, root, findings)
@@ -787,10 +808,12 @@ def validate_audits(
             canonical[path.stem] = _validate_canonical_paper(
                 loaded, path.stem, source, findings
             )
+        canonical_valid[path.stem] = len(findings) == finding_count
 
-    audit_records: list[tuple[str, str | None, str | None]] = []
+    audit_records: list[tuple[str, str | None, str | None, bool]] = []
     records_by_id: dict[str, list[str]] = {}
     for path in audit_paths:
+        finding_count = len(findings)
         source = _source_name(path, root)
         loaded = _load_yaml(path, root, findings)
         paper_id: str | None = None
@@ -809,7 +832,6 @@ def validate_audits(
             paper_id, status = _validate_audit_record(
                 loaded, path, root, canonical, findings
             )
-        audit_records.append((source, paper_id, status))
         if paper_id is not None:
             prior = records_by_id.setdefault(paper_id, [])
             if prior:
@@ -821,16 +843,21 @@ def validate_audits(
                     f"Paper ID {paper_id!r} already appears in {prior[0]}.",
                 )
             prior.append(source)
+        audit_records.append(
+            (source, paper_id, status, len(findings) == finding_count)
+        )
 
     canonical_ids = set(canonical)
     covered_ids = canonical_ids.intersection(records_by_id)
     missing_ids = canonical_ids.difference(records_by_id)
     unique_statuses: dict[str, str] = {}
-    for _, paper_id, status in audit_records:
+    for _, paper_id, status, record_valid in audit_records:
         if (
             paper_id in covered_ids
             and len(records_by_id[paper_id]) == 1
             and status is not None
+            and record_valid
+            and canonical_valid.get(paper_id, False)
         ):
             unique_statuses[paper_id] = status
 
@@ -843,7 +870,7 @@ def validate_audits(
                 "audit",
                 f"No audits/papers/{paper_id}.yaml record exists.",
             )
-        for source, paper_id, status in audit_records:
+        for source, paper_id, status, _ in audit_records:
             if paper_id in canonical_ids and status == "needs-review":
                 _add(
                     findings,
