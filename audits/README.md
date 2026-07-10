@@ -74,7 +74,12 @@ scope, descriptions, and taxonomy still require primary-source evidence.
 `audits/papers/*.yaml` is a review ledger kept separate from canonical
 `papers/*.yaml`. Copy `audits/papers/_template.yaml.example` to start a record.
 The audit filename stem, `paper_id`, and canonical paper filename stem must be
-identical. `source.url` must identify one of the canonical primary paper links.
+identical while a paper remains canonical. After an evidenced removal, the
+`status: remove` record may remain as a tombstone only when
+`audits/removed-papers.yaml` maps the same `paper_id` to the same primary-source
+identity. Other records require a matching canonical paper. `source.url` must
+identify one of the canonical primary paper links or the controlled tombstone
+source.
 
 Each record contains only these top-level fields:
 
@@ -108,11 +113,15 @@ python3 scripts/validate_audits.py --format json
 python3 scripts/validate_audits.py --require-complete
 ```
 
-Malformed, duplicate-key, mismatched, duplicate-ID, and orphan records always
-fail in both modes. Output and findings are deterministic; an error exits with
-status 1, while a valid partial or complete ledger exits with status 0.
-Completion counts include only unique records whose own schema and decision
-rules pass and whose corresponding canonical paper also validates successfully.
+Malformed, duplicate-key, mismatched, and duplicate-ID records always fail in
+both modes. Orphan records also fail unless they are evidenced `remove`
+tombstones registered in `audits/removed-papers.yaml`; the manifest rejects
+source-identity mismatches, missing removal records, non-removal statuses, and
+IDs whose canonical paper still exists. Output and findings are deterministic;
+an error exits with status 1, while a valid partial or complete ledger exits
+with status 0. Completion counts include only unique records whose own schema
+and decision rules pass and whose corresponding canonical paper also validates
+successfully; historical tombstones do not inflate canonical coverage.
 Complete mode also rejects a missing or empty canonical `papers/` directory.
 
 The validator is read-only, has no auto-fix mode, and never uses the network.
