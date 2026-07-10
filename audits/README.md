@@ -31,6 +31,35 @@ To audit a separate checkout, pass its repository root explicitly:
 python3 scripts/audit_catalog.py --root /path/to/Awesome-Loop-Models --format human
 ```
 
+## Reproducible risk inventory
+
+`scripts/build_catalog_risk_report.py` turns the raw canonical catalog and the
+auditor findings into `audits/catalog-risk-report.json` and
+`audits/catalog-risk-report.md`. It writes those reports but never modifies
+`papers/*.yaml`. Reproduce the checked-in 2026-07-10 snapshot with:
+
+```bash
+python3 scripts/build_catalog_risk_report.py --generated-on 2026-07-10 --catalog-commit 6b460f1cbd8d033fe0d356b9125bc40b18d1083f
+```
+
+Both snapshot arguments are required provenance: `--generated-on` must be an
+ISO calendar date and `--catalog-commit` must be the full 40-hex commit for the
+catalog being classified. Relative output overrides passed with
+`--json-output` and `--markdown-output` are resolved below `--root`.
+
+The priority queue is deterministic. P0 contains auditor errors; P1 contains
+non-P0 manual scope-review seeds or papers with multiple mechanism tags; P2
+contains remaining auditor warnings or singleton vocabulary; and P3 contains
+the rest. Singleton frequency is exact and case-sensitive in one combined
+`domain_tags` plus `tags` table, not separate per-axis tables. The generator
+checks that every canonical ID occurs exactly once in both the paper rows and
+the disjoint priority batches. Auditor findings are retained, including P0
+errors, but malformed or non-mapping raw YAML fails generation because it
+cannot be classified safely.
+
+This inventory is a review order, not a semantic verdict or auto-fix. Paper
+scope, descriptions, and taxonomy still require primary-source evidence.
+
 ## Per-paper evidence records
 
 `audits/papers/*.yaml` is a review ledger kept separate from canonical
