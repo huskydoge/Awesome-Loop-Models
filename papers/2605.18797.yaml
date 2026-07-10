@@ -32,6 +32,7 @@ desc: Stabilizes looped transformers with parameter-free fully looped signal rou
   test-time loop-depth control.
 links:
   arxiv: https://arxiv.org/abs/2605.18797
+  github: https://github.com/FuRuF-11/FullyLoopedTransformer
 citations: 1
 citation_sources:
   semantic_scholar: 1

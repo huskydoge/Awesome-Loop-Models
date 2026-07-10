@@ -13,7 +13,8 @@ mechanism_tags:
 - flat-loop
 domain_tags:
 - tabular-data
-- reasoning
+tags:
+- nanoTabPFNlooped
 focus_tags:
 - architecture
 - inference-algorithm

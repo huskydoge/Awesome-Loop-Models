@@ -1,0 +1,48 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.06510"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.06510
+  version: "arXiv v1, 2026-05-07; ICML 2026"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "nanoTabPFNlooped applies one learned Transformer layer recurrently for as many as six iterations within a prediction forward pass."
+  locator: "Section 5, Figure 9; Appendix A.3, Tables A.7-A.8"
+taxonomy:
+  category:
+    value: analysis
+    rationale: "The work analyzes layerwise inference dynamics and uses the resulting redundancy finding to construct a reduced recurrent model."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One shared layer is reused along a single iteration axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The paper studies depth-wise behavior and changes prediction-time execution by looping one layer."
+  domain_tags:
+    values:
+      - tabular-data
+    rationale: "The analyzed foundation models and downstream benchmarks are for tabular prediction."
+  tags:
+    values:
+      - nanoTabPFNlooped
+    rationale: "nanoTabPFNlooped is the official name of the recurrent single-layer model."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and ICML paper title page confirm the stored title and three-author order."
+  publication:
+    status: verified
+    evidence: "The source records arXiv v1 on 2026-05-07 and identifies the paper as accepted at ICML 2026."
+  description:
+    status: verified
+    evidence: "Section 5, Figure 9, and Appendix Tables A.7-A.8 support the depth-redundancy analysis, one-layer looped model, comparable performance, and parameter-ratio claim."
+  links:
+    status: verified
+    evidence: "The arXiv link identifies the paper, and the linked repository is the official implementation."
+unresolved_questions: []

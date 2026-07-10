@@ -1,0 +1,53 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2604.21999"
+status: verified
+source:
+  url: https://arxiv.org/abs/2604.21999
+  version: "arXiv v3, 2026-05-03"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The Universal Transformer repeatedly applies one learned block to the evolving state, while Adaptive Computation Time controls the number of recurrent steps."
+  locator: "Section 2.1, Figure 1; Section 2.3"
+taxonomy:
+  category:
+    value: analysis
+    rationale: "The work analyzes depth-state trade-offs, learned memory, and ACT behavior in an existing recurrent architecture."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One Universal Transformer block is reused along a single recurrent-depth axis."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+      - inference-algorithm
+    rationale: "The paper studies memory-token design, ACT initialization/training dynamics, and adaptive recurrent execution."
+  domain_tags:
+    values:
+      - reasoning
+      - algorithmic-reasoning
+    rationale: "The empirical study targets recursive-depth reasoning on Sudoku-Extreme."
+  tags:
+    values:
+      - UT
+      - ACT
+      - memory-tokens
+      - adaptive-computation-time
+    rationale: "These aliases identify the Universal Transformer, its adaptive-halting mechanism, and the learned state studied in the paper."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and sole author."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-04-23 and the inspected v3 on 2026-05-03; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Sections 2.1 and 2.3, Tables 2-3, and Figure 3 support the single-block recurrence, memory-token necessity, and shallow ACT-trap claims."
+  links:
+    status: verified
+    evidence: "The arXiv link identifies the paper, and the linked repository is the official implementation named by the paper."
+unresolved_questions: []

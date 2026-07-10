@@ -1,0 +1,52 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2604.21106"
+status: verified
+source:
+  url: https://arxiv.org/abs/2604.21106
+  version: "arXiv v3, 2026-05-07"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The prelude-recur-coda architecture applies the same learned recurrent block r times between non-recurrent input and output blocks in one forward computation."
+  locator: "Section 3.1; Section 3.2, Equation 1; Section 3.3, Equation 3"
+taxonomy:
+  category:
+    value: analysis
+    rationale: "The paper derives and empirically fits iso-depth scaling laws that quantify the value of recurrent passes relative to unique depth and compute."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "A single recurrent block is reused along one un-nested depth axis."
+  focus_tags:
+    values:
+      - architecture
+    rationale: "The analysis varies unique and recurrent architectural depth while controlling effective depth and compute."
+  domain_tags:
+    values:
+      - language-modeling
+      - scaling
+      - efficiency
+    rationale: "The scaling-law experiments study language models and compare recurrence, unique depth, and training FLOPs."
+  tags:
+    values:
+      - looped-llm
+      - depth-scaling
+      - scaling-laws
+      - iso-depth
+    rationale: "These aliases name the evaluated model family and the paper's iso-depth scaling analysis."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and three-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-04-22 and the inspected v3 on 2026-05-07; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Sections 3.1-3.3, Table 2, and Sections 5.1-5.2 support the recurrence-value, unique-depth, and compute trade-off summary."
+  links:
+    status: verified
+    evidence: "The canonical arXiv link identifies the audited paper."
+unresolved_questions: []

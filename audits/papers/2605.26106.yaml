@@ -1,0 +1,54 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.26106"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.26106
+  version: "arXiv v1, 2026-05-25"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "Within one masked-diffusion denoiser forward pass, LoopMDM applies the head and tail once and reuses the same learned early-middle Transformer layers K times."
+  locator: "Section 3, Equations 4-6; Section 4.1, Figure 1"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces a selectively looped architecture for masked diffusion language models."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "The selected middle block is repeatedly applied along one depth axis."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+      - inference-algorithm
+    rationale: "The work changes denoiser depth sharing, trains with recurrent depth, and varies loop count at inference."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+      - efficiency
+      - scaling
+    rationale: "LoopMDM targets masked-diffusion language modeling and reasoning with parameter-free training-depth and test-time compute scaling."
+  tags:
+    values:
+      - LoopMDM
+      - masked-diffusion-language-model
+      - looped-transformer
+    rationale: "These aliases identify the official model, its diffusion-LM setting, and its recurrent Transformer mechanism."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and six-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-25; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Section 3, Equations 4-6, Figure 1, and Table 4 support selective early-middle looping, no added parameters, and variable training/inference loop depth."
+  links:
+    status: verified
+    evidence: "The arXiv link identifies the audited paper; AlphaXiv resolves the same arXiv ID."
+unresolved_questions: []

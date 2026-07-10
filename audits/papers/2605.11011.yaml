@@ -1,0 +1,54 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.11011"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.11011
+  version: "arXiv v1, 2026-05-10"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "LoopUS runs its encoder and decoder once and repeatedly applies the same learned middle reasoning block to refine the latent state."
+  locator: "Section 3, Figure 2 and Equations 1-8"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces a method for recasting pretrained LLMs into latent-looping models."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One shared middle reasoning block is reused along a single latent-depth axis."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+      - inference-algorithm
+    rationale: "The work contributes the encoder-loop-decoder split, selective gating and random deep supervision, and adaptive early exit."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+      - efficiency
+      - scaling
+    rationale: "The method adapts pretrained language models for latent reasoning and permits loop-depth compute scaling without duplicating middle-block parameters."
+  tags:
+    values:
+      - LoopUS
+      - looped-depth-up-scaling
+      - latent-refinement
+    rationale: "These are the official method name and the paper's names for its depth up-scaling and recurrent latent-refinement ideas."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and four-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-10; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Section 3, Figure 2, and Equations 1-8 support the component split, selective gating, random deep supervision, adaptive exit, and pretrained-model conversion claims."
+  links:
+    status: verified
+    evidence: "The arXiv, author project, official GitHub repository, and author Hugging Face model all identify LoopUS; AlphaXiv resolves the same arXiv ID."
+unresolved_questions: []

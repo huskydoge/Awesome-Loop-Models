@@ -23,9 +23,9 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
-desc: Memory-Efficient Looped Transformer enables constant‑memory iterative reasoning
-  by sharing a single KV cache across loops, achieving strong performance without
-  the linear memory scaling of prior looped LLMs.
+desc: Introduces MELT, which maintains one fixed-size KV cache per layer across recurrent
+  reasoning loops, updates it through learned gating, and adapts pretrained Ouro models
+  with chunk-wise two-phase training to keep cache memory independent of loop depth.
 links:
   arxiv: https://arxiv.org/abs/2605.07721
 citations: 2

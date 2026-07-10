@@ -1,0 +1,52 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2606.04678"
+status: verified
+source:
+  url: https://arxiv.org/abs/2606.04678
+  version: "arXiv v2, 2026-06-15"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "LARM repeatedly applies one shared learned acoustic-encoder block within a recognition forward pass, conditioning the block on recurrent depth."
+  locator: "Section 3.1, Equation 1; Section 3.2, Figure 2 and Equations 2-12"
+taxonomy:
+  category:
+    value: applications
+    rationale: "The paper applies recurrent-depth Transformers to automatic speech recognition."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One shared acoustic block is reused over a single recurrent-depth axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The contribution is the depth-conditioned shared encoder and test-time control of its loop count."
+  domain_tags:
+    values:
+      - speech-recognition
+      - efficiency
+      - scaling
+    rationale: "LARM targets ASR and trades inference-time recurrent compute against recognition quality without adding distinct encoder blocks."
+  tags:
+    values:
+      - LARM
+      - looped-transformer
+      - test-time-compute
+    rationale: "LARM is the official model name, and the remaining aliases describe its architecture and adjustable inference-depth axis."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and six-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-06-03 and the inspected v2 on 2026-06-15; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Section 3.1, Equation 1, and Section 3.2, Figure 2 and Equations 2-12 support the depth-conditioned shared acoustic encoder and test-time loop-count scaling claims."
+  links:
+    status: verified
+    evidence: "The arXiv link identifies the audited paper; AlphaXiv resolves the same arXiv ID."
+unresolved_questions: []

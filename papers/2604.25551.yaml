@@ -10,8 +10,8 @@ category: analysis
 mechanism_tags:
 - flat-loop
 domain_tags:
+- graph-data
 - theory
-- algorithmic-reasoning
 tags:
 - RGNN
 - halting

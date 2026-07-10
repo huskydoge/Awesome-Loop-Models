@@ -1,0 +1,51 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2604.21254"
+status: verified
+source:
+  url: https://arxiv.org/abs/2604.21254
+  version: "arXiv v3, 2026-07-02"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "Hyperloop executes beginning and ending blocks once while repeatedly applying the same learned middle core, augmented by small loop-specific hyper-connections."
+  locator: "Section 3, Figure 1"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces the Hyperloop parameter-sharing architecture."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "The shared middle core is repeated over one recurrent-depth axis."
+  focus_tags:
+    values:
+      - architecture
+    rationale: "The contribution is the recurrent core plus loop-specific hyper-connection design."
+  domain_tags:
+    values:
+      - language-modeling
+      - efficiency
+      - memory-efficiency
+    rationale: "The model is evaluated for language modeling with parameter and activation-memory efficiency as central goals."
+  tags:
+    values:
+      - Hyperloop
+      - looped-transformer
+      - hyper-connections
+    rationale: "Hyperloop is the official model name, and the remaining aliases describe its looped Transformer and hyper-connection mechanisms."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and three-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-04-23 and the inspected v3 on 2026-07-02; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Section 3, Figure 1, Section 4.1, and Table 1 support the middle-block recurrence, hyper-connections, and parameter/memory-efficiency description."
+  links:
+    status: verified
+    evidence: "The arXiv link identifies the paper; the separate social post remains labeled as a comment."
+unresolved_questions: []

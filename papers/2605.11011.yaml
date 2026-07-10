@@ -32,6 +32,8 @@ links:
   arxiv: https://arxiv.org/abs/2605.11011
   alphaxiv: https://www.alphaxiv.org/abs/2605.11011
   project: https://thrillcrazyer.github.io/LoopUS
+  github: https://github.com/Thrillcrazyer/LoopUS
+  hf: https://huggingface.co/Thrillcrazyer/Qwen3_1.7B_LoopUS
 citations: 1
 citation_sources:
   semantic_scholar: 1

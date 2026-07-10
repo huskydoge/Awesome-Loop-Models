@@ -1,0 +1,54 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.26733"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.26733
+  version: "arXiv v1, 2026-05-26; ICML 2026"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "LoopLM repeatedly applies one shared learned transition operator to the latent state; STARS trains that recurrent operator for stability across loop depths."
+  locator: "Sections 3.1-3.2; Section 5, Equations 3-4"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces STARS, a stabilization method for test-time-scalable looped language models."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "The LoopLM transition operator is reused along one recurrent-depth axis."
+  focus_tags:
+    values:
+      - training-algorithm
+      - inference-algorithm
+    rationale: "STARS regularizes recurrent dynamics during training and targets robust execution at larger inference-time loop counts."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+      - theory
+      - scaling
+    rationale: "The method is evaluated on language reasoning, derives stability diagnostics from Jacobian dynamics, and studies loop-depth scaling."
+  tags:
+    values:
+      - LoopLM
+      - STARS
+      - recurrent-scaling
+      - stability-analysis
+    rationale: "These aliases identify the model family, proposed method, and its recurrent-scaling and stability-analysis focus."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and ICML paper title page confirm the stored title and seven-author order."
+  publication:
+    status: verified
+    evidence: "The source records arXiv v1 on 2026-05-26 and identifies the paper as accepted at ICML 2026."
+  description:
+    status: verified
+    evidence: "Sections 3-5, Equations 3-4, Figures 4-5, and Table 2 support the depth-collapse diagnosis, Jacobian spectral-radius regularization, random loop sampling, stable dynamics, and test-time scaling claims."
+  links:
+    status: verified
+    evidence: "The arXiv link identifies the paper, the linked GitHub repository is the official STARS implementation, and AlphaXiv resolves the same arXiv ID."
+unresolved_questions: []

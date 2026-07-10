@@ -1,0 +1,51 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.07721"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.07721
+  version: "arXiv v2, 2026-05-19"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "MELT repeatedly applies the same learned Transformer layers while maintaining and updating one fixed-size key-value state per layer across loops."
+  locator: "Section 3.2, Figure 2 and Equation 1; Section 3.3, Figure 3"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces the MELT recurrent architecture and its cache-update and adaptation procedures."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "The shared Transformer stack is reused over one recurrent reasoning-depth axis."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+    rationale: "The contributions include the fixed-state recurrent cache design and chunk-wise two-phase adaptation of pretrained Ouro models."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+      - efficiency
+      - memory-efficiency
+    rationale: "MELT targets recurrent language-model reasoning while explicitly decoupling cache memory from loop depth."
+  tags:
+    values:
+      - MELT
+    rationale: "MELT is the official model abbreviation."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and six-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-08 and the inspected v2 on 2026-05-19; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Sections 3.2-3.3, Figures 2-3, and Tables 2 and 4 support the fixed-size per-layer cache, learned updates, Ouro adaptation, two-phase training, and depth-independent cache-memory claims."
+  links:
+    status: verified
+    evidence: "The canonical arXiv link identifies the audited paper."
+unresolved_questions: []

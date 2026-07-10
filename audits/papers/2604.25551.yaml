@@ -1,0 +1,51 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2604.25551"
+status: verified
+source:
+  url: https://arxiv.org/abs/2604.25551
+  version: "arXiv v1, 2026-04-28"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The RGNN definitions repeatedly iterate one learned aggregation-combination layer on graph states until a convergence or halting condition is reached."
+  locator: "Section 3, Definitions 4-8 and Equations 2-4"
+taxonomy:
+  category:
+    value: analysis
+    rationale: "The paper proves expressiveness relationships among converging, output-converging, and halting RGNN variants."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "A single learned graph layer is repeatedly applied over one recurrence axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The variants differ in recurrent-state/output definitions and in whether execution converges or halts."
+  domain_tags:
+    values:
+      - graph-data
+      - theory
+    rationale: "The subject is recurrent graph neural networks, and the central results are formal expressiveness proofs."
+  tags:
+    values:
+      - RGNN
+      - halting
+      - convergence
+    rationale: "These aliases identify the analyzed model family and its two stopping regimes."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and two-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-04-28; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Section 3 and Section 4, Theorem 1, Propositions 2-3, and Corollary 1 support the recurrent message-passing definitions and expressiveness relationships."
+  links:
+    status: verified
+    evidence: "The canonical arXiv link identifies the audited paper."
+unresolved_questions: []

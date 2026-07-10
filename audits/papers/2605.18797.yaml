@@ -1,0 +1,53 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.18797"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.18797
+  version: "arXiv v2, 2026-05-25"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The Fully Looped Transformer reuses the same learned Transformer stack across recurrent depth while routing the signal and injecting attention between loop iterations."
+  locator: "Section 4.1, Equation 1; Section 4.2, Equations 2-3"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces fully looped signal routing and attention injection to stabilize looped Transformers."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "The learned stack is repeatedly applied along one recurrent-depth axis."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+      - inference-algorithm
+    rationale: "The paper diagnoses training instability, changes recurrent signal flow, and retains inference-time loop-depth control."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+      - scaling
+      - efficiency
+    rationale: "The experiments cover language modeling and reasoning while studying stable loop-depth and parameter-efficient scaling."
+  tags:
+    values:
+      - looped-transformer
+      - fully-looped-transformer
+    rationale: "These aliases identify the general model family and the proposed fully looped variant."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and seven-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-11 and the inspected v2 on 2026-05-25; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Sections 3 and 4, Equations 1-3, and Sections 5.2 and 5.4 support the instability diagnosis, parameter-free routing and attention injection, higher-loop training, and test-time depth control."
+  links:
+    status: verified
+    evidence: "The arXiv link identifies the paper, and the linked repository is the official implementation."
+unresolved_questions: []

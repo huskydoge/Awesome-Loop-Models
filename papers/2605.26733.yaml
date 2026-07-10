@@ -11,8 +11,8 @@ authors:
 year: 2026
 published_date: '2026-05-26'
 added_date: '2026-05-27'
-venue: arXiv
-category: analysis
+venue: ICML
+category: designs
 foundation: false
 mechanism_tags:
 - flat-loop
@@ -29,12 +29,14 @@ tags:
 focus_tags:
 - training-algorithm
 - inference-algorithm
-desc: Analyzes why Looped Language Models can collapse at larger recurrence depths
-  and proposes STARS, a spectral-radius-regularized training framework that pushes
-  latent dynamics toward stable fixed points for reliable test-time scaling.
+desc: Diagnoses why Looped Language Models can collapse at larger recurrence depths
+  and proposes STARS, which combines Jacobian spectral-radius regularization with
+  random loop sampling to encourage stable recurrent dynamics and improve test-time
+  scaling.
 links:
   arxiv: https://arxiv.org/abs/2605.26733
   alphaxiv: https://www.alphaxiv.org/abs/2605.26733
+  github: https://github.com/njuyxw/STARS
 citations: 3
 citation_sources:
   semantic_scholar: 3

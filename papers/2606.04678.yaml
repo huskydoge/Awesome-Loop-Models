@@ -19,6 +19,7 @@ domain_tags:
 - efficiency
 - scaling
 tags:
+- LARM
 - looped-transformer
 - test-time-compute
 focus_tags:

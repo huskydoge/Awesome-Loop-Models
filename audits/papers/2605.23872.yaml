@@ -1,0 +1,53 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.23872"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.23872
+  version: "arXiv v1, 2026-05-22"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-g"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "At inference time, the wrapper repeatedly applies the same contiguous block of frozen middle Transformer layers as damped latent-refinement sub-steps."
+  locator: "Section 2.1, Figure 1 and Equations 1-4; Section 2.3, Equations 5-16"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces a training-free execution wrapper that turns frozen pretrained Transformers into looped models."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One fixed middle-layer block is reused along a single refinement axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The wrapper changes the forward architecture and inference-time update rule without model training."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+      - efficiency
+      - scaling
+    rationale: "The method operates on pretrained language models and uses loop count as test-time compute for QA and reasoning without added parameters or fine-tuning."
+  tags:
+    values:
+      - looped-transformer
+      - training-free-looping
+      - test-time-compute
+    rationale: "These aliases directly describe the model family, no-training retrofit, and inference-time compute axis."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and five-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-22; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Sections 2.1 and 2.3, Figure 1, Equations 1-16, and Table 2 support the frozen middle-block wrapper, damped refinement, no-fine-tuning condition, and QA/reasoning improvements."
+  links:
+    status: verified
+    evidence: "The arXiv link identifies the audited paper; AlphaXiv resolves the same arXiv ID."
+unresolved_questions: []

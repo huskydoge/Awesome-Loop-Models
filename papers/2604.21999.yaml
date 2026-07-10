@@ -19,6 +19,7 @@ tags:
 - adaptive-computation-time
 focus_tags:
 - architecture
+- training-algorithm
 - inference-algorithm
 desc: Studies a single-block Universal Transformer with ACT on Sudoku-Extreme, showing
   that learned memory tokens are necessary for non-trivial recursive-depth reasoning
