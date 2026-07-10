@@ -12,7 +12,6 @@ mechanism_tags:
 - flat-loop
 domain_tags:
 - theory
-- reasoning
 focus_tags:
 - architecture
 - inference-algorithm

@@ -1,0 +1,50 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.16048"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.16048
+  version: "arXiv v1, 2026-05-15"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The architecture obtains depth by applying the same learned state-space-model block for multiple iterations within one forward computation."
+  locator: "Abstract, paragraphs 1-2"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper extends tied-depth recurrence to state-space models and adds an input-reshaping design."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One SSM block is iterated repeatedly along a single depth-recurrence axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The work changes the SSM architecture and exposes the number of repeated depth steps in the forward computation."
+  domain_tags:
+    values:
+      - sequence-modeling
+      - efficiency
+    rationale: "The model is evaluated on time-series classification and reduces parameters through shared-depth recurrence."
+  tags:
+    values:
+      - depth-recurrent
+      - shared-weight-recurrence
+    rationale: "Both aliases describe the paper's reuse of one learned block across model depth."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v1 title page confirms the stored title and four-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-15; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Abstract paragraphs 1-2 support depth recurrence in SSMs, input reshaping, the six time-series benchmarks, fewer parameters, and the reported comparison with untied SSMs."
+  links:
+    status: verified
+    evidence: "The arXiv URL resolves to and identifies this paper."
+unresolved_questions: []

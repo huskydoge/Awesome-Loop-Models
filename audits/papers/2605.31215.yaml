@@ -1,0 +1,53 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.31215"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.31215
+  version: "arXiv v1, 2026-05-29"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "FP-MGM defines part of its denoiser through a fixed-point solver that repeatedly evaluates shared learned attention layers within generation."
+  locator: "Abstract, paragraphs 1-4"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces a fixed-point architecture and training scheme for masked generative models."
+  mechanism_tags:
+    values:
+      - implicit-layer
+    rationale: "Shared attention layers define an equilibrium computed by a fixed-point solver."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+      - inference-algorithm
+    rationale: "The work contributes an implicit denoiser, consistency training, and solver-state reuse for adaptive-depth inference."
+  domain_tags:
+    values:
+      - language-modeling
+      - vision
+      - efficiency
+    rationale: "The fixed-point masked-generative formulation covers language and vision generation while reducing parameters and adapting compute depth."
+  tags:
+    values:
+      - DEQ
+      - FP-MGM
+      - CoFRe
+    rationale: "DEQ names the equilibrium family, FP-MGM the proposed model, and CoFRe the paper's consistency-based fixed-point training component."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v1 title page confirms the stored title and five-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-29; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Abstract paragraphs 1-4 support the shared-attention fixed-point denoiser, consistency training, solver-state reuse, adaptive depth, and parameter reduction in the description."
+  links:
+    status: verified
+    evidence: "The arXiv URL identifies the paper, and AlphaXiv mirrors the same arXiv identifier."
+unresolved_questions: []

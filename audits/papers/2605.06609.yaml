@@ -1,0 +1,48 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.06609"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.06609
+  version: "arXiv v1, 2026-05-07"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The construction first implements normalized gradient descent with transformer layers, then trains one self-attention layer and recurrently applies that same learned layer within one forward in-context computation."
+  locator: "Abstract, paragraph 2"
+taxonomy:
+  category:
+    value: analysis
+    rationale: "The paper proves how transformers implement an optimization algorithm and analyzes convergence and out-of-distribution behavior."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One learned self-attention layer is repeatedly applied along a single recurrence axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+      - training-algorithm
+    rationale: "The work gives a recurrent transformer construction, its normalized-gradient-descent inference interpretation, and training guarantees for the repeated layer."
+  domain_tags:
+    values:
+      - theory
+    rationale: "The principal contribution is a theoretical construction and convergence/OOD guarantee for in-context logistic regression."
+  tags:
+    values: []
+    rationale: "The canonical entry uses no optional alias tags."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v1 title page confirms the stored title and the Chenyang Zhang, Yuan Cao author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-07; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Abstract paragraph 2 supports the normalized-gradient-descent construction, recurrently applied trained self-attention layer, and convergence and OOD guarantees stated in the catalog description."
+  links:
+    status: verified
+    evidence: "The arXiv URL resolves to and identifies this paper."
+unresolved_questions: []

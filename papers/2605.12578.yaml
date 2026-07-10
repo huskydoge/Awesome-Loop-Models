@@ -7,24 +7,24 @@ authors:
 - Alexey Frolov
 - Manjesh K. Hanawal
 - Nikola Zlatanov
-year: 2026
-published_date: '2026-05-12'
+year: 2025
+published_date: '2025-12-03'
 added_date: '2026-05-14'
-venue: arXiv
+venue: IEEE Access
 category: applications
 mechanism_tags:
 - flat-loop
 domain_tags:
-- sequence-modeling
-- efficiency
+- wireless-communications
 focus_tags:
 - architecture
 - inference-algorithm
 desc: Applies a block-recurrent transformer to hybrid near/far-field THz UM-MIMO channel
-  estimation, training one state-memory transformer block once and iteratively reusing
-  it to improve narrowband and wideband NMSE.
+  estimation, iteratively reusing one state-memory transformer block to improve narrowband
+  and wideband NMSE.
 links:
   arxiv: https://arxiv.org/abs/2605.12578
+  paper: https://doi.org/10.1109/ACCESS.2025.3639689
 citations: 0
 metrics_updated: '2026-06-17'
 citation_sources:

@@ -1,0 +1,52 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.09226"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.09226
+  version: "arXiv v1, 2026-05-09"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The implicit graph model repeatedly evaluates a shared fixed-point operator, injecting quantum-derived signals at each solver step."
+  locator: "Abstract, paragraphs 1-3"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper formulates and compares new quantum-injection designs for implicit graph neural networks."
+  mechanism_tags:
+    values:
+      - implicit-layer
+    rationale: "The learned graph operator defines an equilibrium solved through repeated fixed-point evaluation."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The work designs injection couplings inside the implicit operator and studies the associated equilibrium solver and contraction behavior."
+  domain_tags:
+    values:
+      - theory
+      - efficiency
+      - graph-data
+      - quantum-machine-learning
+    rationale: "The paper gives contraction analysis and efficient implicit-depth computation for graph classification using quantum-derived features."
+  tags:
+    values:
+      - DEQ
+      - QDEQ
+    rationale: "DEQ identifies the equilibrium architecture and QDEQ is the paper's quantum deep-equilibrium model alias."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v1 title page confirms the stored title and four-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-09; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Abstract paragraphs 1-3 support the fixed, state-dependent, and backbone-dependent quantum injection pathways, fixed-point formulation, contraction analysis, and graph-classification evaluation."
+  links:
+    status: verified
+    evidence: "The arXiv page identifies the paper, and the linked official QIP_IGNN GitHub README names the same work and authors."
+unresolved_questions: []

@@ -1,0 +1,52 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.09165"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.09165
+  version: "arXiv v2, 2026-06-30"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The model repeatedly applies shared transformer layers in one forward computation, while sparse MoE routing can select different experts on successive loops."
+  locator: "Abstract"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces and evaluates a sparse-layer design for scaling looped language models."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "A shared transformer stack is repeated along one loop axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The contribution is the sparse looped architecture and the use of loop boundaries for inference-time early exit."
+  domain_tags:
+    values:
+      - language-modeling
+      - scaling
+      - efficiency
+    rationale: "The experiments scale looped language models with sparse mixture-of-experts layers and parameter-efficient repeated computation."
+  tags:
+    values:
+      - looped-transformer
+      - looped-llm
+      - MoE
+    rationale: "The looped aliases name the recurrent language-model family, while MoE identifies the sparse-expert architecture."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v2 title page confirms the stored title and four-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history identifies v2 dated 2026-06-30 and confirms the stored initial 2026 arXiv publication metadata; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "The abstract supports the sparse MoE scaling result, routing divergence across repeated shared layers, and effective early exits at loop boundaries."
+  links:
+    status: verified
+    evidence: "The arXiv URL resolves to and identifies this paper."
+unresolved_questions: []

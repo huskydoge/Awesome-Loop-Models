@@ -15,10 +15,10 @@ domain_tags:
 - language-modeling
 - scaling
 - efficiency
-- MoE
 tags:
 - looped-transformer
 - looped-llm
+- MoE
 focus_tags:
 - architecture
 - inference-algorithm

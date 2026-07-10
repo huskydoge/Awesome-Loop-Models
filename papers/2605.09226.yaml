@@ -14,8 +14,11 @@ mechanism_tags:
 domain_tags:
 - theory
 - efficiency
+- graph-data
+- quantum-machine-learning
 tags:
 - DEQ
+- QDEQ
 focus_tags:
 - architecture
 - inference-algorithm

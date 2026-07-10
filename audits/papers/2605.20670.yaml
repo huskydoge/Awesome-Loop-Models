@@ -1,0 +1,53 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.20670"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.20670
+  version: "arXiv v2, 2026-05-22"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "LT2 repeatedly applies shared transformer layers so successive loop steps refine memory and expand the effective receptive field within one forward computation."
+  locator: "Abstract, paragraphs 1-4"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces a family of linear-time looped-transformer architectures."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "A shared transformer computation is repeated along one loop axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The main contribution combines recurrent transformer design with linear or sparse attention for scalable iterative inference."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+      - efficiency
+      - scaling
+    rationale: "LT2 targets scalable language-model reasoning by replacing quadratic attention in repeated inference steps."
+  tags:
+    values:
+      - looped-transformer
+      - looped-llm
+      - Ouro
+    rationale: "The first two aliases name the architecture family, and Ouro identifies the model line compared and extended by LT2."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v2 title page confirms the stored title and seven-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history identifies v2 dated 2026-05-22 and confirms the stored 2026 arXiv publication metadata; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Abstract paragraphs 1-4 support linear or sparse attention, repeated memory refinement, receptive-field expansion, and the stated scalability motivation."
+  links:
+    status: verified
+    evidence: "The arXiv URL resolves to and identifies this paper."
+unresolved_questions: []

@@ -1,0 +1,52 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.28919"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.28919
+  version: "arXiv v1, 2026-05-27"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The model repeatedly reuses learned high-level and low-level reasoning modules in nested cycles and learns input-dependent halting for the recurrent computation."
+  locator: "Abstract, paragraphs 1-3"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper explores a compact autoregressive language-model design built around a hierarchical recurrent reasoning module."
+  mechanism_tags:
+    values:
+      - hierarchical-loop
+    rationale: "Learned high-level and low-level modules are reused in nested reasoning cycles."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The contribution is a hierarchical recurrent architecture with adaptive halting during inference."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+      - efficiency
+      - adaptive-compute
+    rationale: "The compact autoregressive model performs language reasoning with input-dependent recurrent depth."
+  tags:
+    values:
+      - HRM
+      - halting
+    rationale: "HRM names the Hierarchical Reasoning Module and halting names its learned adaptive-depth mechanism."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v1 title page confirms the stored title and sole author."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-27; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Abstract paragraphs 1-3 support the compact autoregressive model, nested high/low reasoning cycles, and learned input-dependent halting described by the catalog."
+  links:
+    status: verified
+    evidence: "The arXiv page identifies the paper, AlphaXiv mirrors the same identifier, and the linked CosmicFish-HRM repository identifies the same project in the arXiv comments."
+unresolved_questions: []

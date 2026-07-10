@@ -1,0 +1,51 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.18464"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.18464
+  version: "arXiv v2, 2026-05-19"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "PERL repeatedly applies one compact shared learned reasoning module to refine frozen CLIP latent representations within a forward prediction process."
+  locator: "Abstract, paragraphs 3-4"
+taxonomy:
+  category:
+    value: applications
+    rationale: "The recurrent module is applied to few-shot CLIP adaptation and transfer."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "A single shared reasoning module is reused across a linear sequence of latent-refinement steps."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+      - inference-algorithm
+    rationale: "The paper contributes a parameter-efficient recurrent adaptation architecture, its few-shot training procedure, and iterative latent inference."
+  domain_tags:
+    values:
+      - vision
+      - reasoning
+      - efficiency
+    rationale: "PERL performs visual representation reasoning with roughly 6K trainable adaptation parameters."
+  tags:
+    values:
+      - PERL
+    rationale: "PERL is the model name used by the paper."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v2 title page confirms the stored title and five-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history identifies v2 dated 2026-05-19 and confirms the stored 2026 arXiv publication metadata; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Abstract paragraphs 3-4 support recurrent reuse of a compact shared CLIP-latent reasoning module, the base-to-novel, transfer, and OOD evaluations, and the approximately 6K trainable-parameter claim."
+  links:
+    status: verified
+    evidence: "The arXiv URL resolves to and identifies this paper."
+unresolved_questions: []

@@ -1,0 +1,50 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.30215"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.30215
+  version: "arXiv v2, 2026-05-29"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "DVLT applies one learned transformer block recurrently for K refinement steps over per-view features within a forward 3D reconstruction computation."
+  locator: "Abstract, paragraphs 2-4; official NVIDIA project page, Method"
+taxonomy:
+  category:
+    value: applications
+    rationale: "The recurrent transformer is applied to multi-view 3D reconstruction."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One shared transformer block is repeated along a single refinement axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The paper introduces a looped multi-view architecture whose loop count controls inference-time computation."
+  domain_tags:
+    values:
+      - vision
+      - efficiency
+    rationale: "The task is visual 3D reconstruction, and parameter sharing plus adjustable loop count target efficient computation."
+  tags:
+    values:
+      - looped-transformer
+      - DVLT
+    rationale: "Looped-transformer names the architecture family and DVLT is the paper's model acronym."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v2 title page confirms the stored title and twelve-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history identifies v2 dated 2026-05-29 and confirms the stored initial 2026 arXiv publication metadata; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Abstract paragraphs 2-4 and the official NVIDIA project Method section support recurrent application to per-view features, variable refinement steps, and loop count as an inference-time compute control."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv pages share the same identifier, while the NVIDIA Research project page links the official nv-tlabs/dvlt repository and identifies the same paper."
+unresolved_questions: []

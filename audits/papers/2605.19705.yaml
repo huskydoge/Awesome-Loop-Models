@@ -1,0 +1,50 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.19705"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.19705
+  version: "arXiv v1, 2026-05-19"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "i-DEQ repeatedly evaluates a learned implicit image-restoration operator to a fixed point and adds inertial momentum to those iterations."
+  locator: "Abstract, paragraphs 1-2"
+taxonomy:
+  category:
+    value: applications
+    rationale: "The equilibrium architecture is applied to image restoration."
+  mechanism_tags:
+    values:
+      - implicit-layer
+    rationale: "The output is defined through the fixed point of a shared learned restoration operator."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The paper designs an inertial equilibrium architecture and a momentum-accelerated fixed-point inference procedure."
+  domain_tags:
+    values:
+      - vision
+      - efficiency
+    rationale: "The evaluated problem is image restoration, with reported stability, robustness, and inference-time improvements."
+  tags:
+    values:
+      - DEQ
+      - i-DEQ
+    rationale: "DEQ identifies the architecture family and i-DEQ is the proposed inertial model name."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v1 title page confirms the stored title and four-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-19; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Abstract paragraphs 1-2 support learned explicit nonconvex regularization, inertial fixed-point iterations, improved stability and robustness, and the reported near-halving of DEQ inference time."
+  links:
+    status: verified
+    evidence: "The arXiv URL resolves to and identifies this paper."
+unresolved_questions: []

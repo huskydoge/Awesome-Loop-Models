@@ -16,10 +16,10 @@ domain_tags:
 - efficiency
 tags:
 - DEQ
+- i-DEQ
 focus_tags:
 - architecture
 - inference-algorithm
-- training-algorithm
 desc: Introduces i-DEQ, an inertial deep-equilibrium image-restoration model that
   learns explicit nonconvex regularization and uses momentum in fixed-point iterations,
   improving stability and robustness while roughly halving DEQ inference time.

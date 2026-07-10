@@ -1,0 +1,48 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.20389"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.20389
+  version: "arXiv v1, 2026-05-19"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The nonlocal model repeatedly applies a learned latent integral operator until a fixed point is reached before its downstream decoder."
+  locator: "Abstract, paragraph 1"
+taxonomy:
+  category:
+    value: applications
+    rationale: "The implicit operator is applied to fMRI encoding and decoding tasks."
+  mechanism_tags:
+    values:
+      - implicit-layer
+    rationale: "A shared latent neural integral operator is solved by fixed-point iteration."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The work uses a latent nonlocal-operator architecture and an equilibrium inference process."
+  domain_tags:
+    values:
+      - sequence-modeling
+      - neuroscience
+    rationale: "The model processes structured fMRI signals for neural encoding, decoding, classification, and stimulus prediction."
+  tags:
+    values: []
+    rationale: "The canonical entry uses no optional alias tags."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v1 title page confirms the stored title and four-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-19; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Abstract paragraph 1 supports the latent neural integral-operator formulation, auxiliary-space fixed-point iterations, and downstream fMRI classification or stimulus-prediction tasks."
+  links:
+    status: verified
+    evidence: "The arXiv URL resolves to and identifies this paper."
+unresolved_questions: []

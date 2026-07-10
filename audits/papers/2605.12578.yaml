@@ -1,0 +1,47 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.12578"
+status: verified
+source:
+  url: https://doi.org/10.1109/ACCESS.2025.3639689
+  version: "IEEE Access version of record; publisher metadata registered 2025-12-03; arXiv v1, 2026-05-12"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The channel estimator iteratively applies one learned state-memory transformer block within a forward estimation process."
+  locator: "Abstract, paragraph 2"
+taxonomy:
+  category:
+    value: applications
+    rationale: "The recurrent transformer is applied to near- and far-field THz UM-MIMO channel estimation."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "A single state-memory transformer block is reused through a sequence of refinement iterations."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The contribution is a block-recurrent estimator architecture and its iterative channel-estimation computation."
+  domain_tags:
+    values:
+      - wireless-communications
+    rationale: "The evaluated task is THz wideband UM-MIMO channel estimation."
+  tags:
+    values: []
+    rationale: "The canonical entry uses no optional alias tags."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The IEEE version of record and DOI metadata confirm the stored title and six-author order."
+  publication:
+    status: verified
+    evidence: "The DOI record identifies IEEE Access as the venue and 2025 as the publication year. The stored 2025-12-03 published_date uses the DOI record's created date as the earliest verifiable publisher-recorded availability fallback; it is not asserted to be an editorial publication date. ArXiv v1 followed on 2026-05-12."
+  description:
+    status: verified
+    evidence: "Abstract paragraph 2 supports hybrid near/far-field THz UM-MIMO estimation, iterative reuse of one state-memory transformer block, and reported narrowband and wideband NMSE improvements."
+  links:
+    status: verified
+    evidence: "The DOI resolves to the IEEE version of record, and the arXiv link identifies the corresponding manuscript."
+unresolved_questions: []

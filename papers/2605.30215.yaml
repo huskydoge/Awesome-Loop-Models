@@ -25,7 +25,7 @@ domain_tags:
 - efficiency
 tags:
 - looped-transformer
-- recursive-transformer
+- DVLT
 focus_tags:
 - architecture
 - inference-algorithm
@@ -35,6 +35,8 @@ desc: Applies a single looped transformer block recurrently to per-view features
 links:
   arxiv: https://arxiv.org/abs/2605.30215
   alphaxiv: https://www.alphaxiv.org/abs/2605.30215
+  project: https://research.nvidia.com/labs/dvl/projects/dvlt/
+  github: https://github.com/nv-tlabs/dvlt
 citations: 0
 metrics_updated: '2026-06-17'
 citation_sources:

@@ -16,6 +16,8 @@ domain_tags:
 - vision
 - reasoning
 - efficiency
+tags:
+- PERL
 focus_tags:
 - architecture
 - training-algorithm

@@ -14,8 +14,10 @@ domain_tags:
 - language-modeling
 - reasoning
 - efficiency
+- adaptive-compute
 tags:
 - HRM
+- halting
 focus_tags:
 - architecture
 - inference-algorithm

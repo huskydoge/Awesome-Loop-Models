@@ -14,7 +14,6 @@ mechanism_tags:
 domain_tags:
 - sequence-modeling
 - efficiency
-- scaling
 tags:
 - depth-recurrent
 - shared-weight-recurrence

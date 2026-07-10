@@ -1,0 +1,52 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2606.00114"
+status: verified
+source:
+  url: https://arxiv.org/abs/2606.00114
+  version: "arXiv v1, 2026-05-27"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The system applies the same learned Transformer encoder layer recursively to refine semantic features, with the second recursion explicitly using the same parameter set within one forward communication pipeline."
+  locator: "Introduction, contributions; Section II-B, Equations 16-19 and the Recursive ViT-Based System parameter-sharing paragraph"
+taxonomy:
+  category:
+    value: applications
+    rationale: "The recurrent transformer is applied to resource-efficient image semantic communication."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "A shared vision-transformer computation is reapplied along one recursive refinement axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The contribution is a recursive ViT architecture with condition-dependent depth and width during inference."
+  domain_tags:
+    values:
+      - vision
+      - efficiency
+      - wireless-communications
+      - adaptive-compute
+    rationale: "The model transmits image semantics over varying channel conditions and adjusts computation to resource and input conditions."
+  tags:
+    values:
+      - recursive-transformer
+      - depth-scaling
+    rationale: "These aliases name the recursive transformer structure and its adjustable recurrence depth."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v1 title page confirms the stored title and six-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-27; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "The abstract and Section II-B support iterative semantic-feature refinement, shared-layer recursion, and dynamic adjustment of recursive depth and width according to image and channel conditions."
+  links:
+    status: verified
+    evidence: "The arXiv URL identifies the paper, and AlphaXiv mirrors the same arXiv identifier."
+unresolved_questions: []

@@ -19,6 +19,8 @@ domain_tags:
 - efficiency
 tags:
 - DEQ
+- FP-MGM
+- CoFRe
 focus_tags:
 - architecture
 - training-algorithm

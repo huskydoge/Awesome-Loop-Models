@@ -1,0 +1,51 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2605.30757"
+status: verified
+source:
+  url: https://arxiv.org/abs/2605.30757
+  version: "arXiv v1, 2026-05-29"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-i"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The analyzed looped transformers repeatedly apply a shared transformer update within a forward computation while retaining either compressed recurrent state or full sequence state."
+  locator: "Abstract, paragraphs 1-4"
+taxonomy:
+  category:
+    value: analysis
+    rationale: "The paper proves a memory-budget separation between chain-of-thought computation and two looped-transformer state regimes."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "The theoretical models repeat a shared transformer computation along one loop axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The separation concerns recurrent-state architecture and the memory available during iterative inference."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+      - theory
+      - memory-efficiency
+    rationale: "The work theoretically compares memory available to language-reasoning scratchpads and looped transformer states."
+  tags:
+    values:
+      - looped-transformer
+    rationale: "This alias directly names the recurrent transformer family analyzed."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv v1 title page confirms the stored title and sole author."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on 2026-05-29; no formal venue is claimed."
+  description:
+    status: verified
+    evidence: "Abstract paragraphs 1-4 support the persistent-state memory bound for compressed loops and the distinction between full sequence-state loops and chain-of-thought scratchpads stated in the revised description."
+  links:
+    status: verified
+    evidence: "The arXiv URL identifies the paper, and AlphaXiv mirrors the same arXiv identifier."
+unresolved_questions: []

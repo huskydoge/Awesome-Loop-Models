@@ -18,6 +18,8 @@ mechanism_tags:
 domain_tags:
 - vision
 - efficiency
+- wireless-communications
+- adaptive-compute
 tags:
 - recursive-transformer
 - depth-scaling
