@@ -215,21 +215,86 @@ class DailyBriefingBuildTests(unittest.TestCase):
         self.assertEqual(briefing["candidates"][0]["id"], "2604.21999")
         self.assertNotIn("run_id", briefing)
 
-    def test_build_json_includes_briefings_and_latest_date(self):
+    def test_load_briefings_keeps_every_briefing_content_for_internal_consumers(self):
+        with TemporaryDirectory() as tmpdir:
+            briefings_dir = Path(tmpdir) / "briefings"
+            for briefing_date, body in (
+                ("2026-04-28", "Latest reader notes."),
+                ("2026-04-27", "Earlier reader notes."),
+            ):
+                briefing_path = (
+                    briefings_dir
+                    / briefing_date[:4]
+                    / briefing_date[5:7]
+                    / f"{briefing_date}.md"
+                )
+                briefing_path.parent.mkdir(parents=True, exist_ok=True)
+                briefing_path.write_text(
+                    "---\n"
+                    f"date: {briefing_date}\n"
+                    f"title: Briefing {briefing_date}\n"
+                    "---\n\n"
+                    f"{body}\n",
+                    encoding="utf-8",
+                )
+
+            with patch.object(build, "BRIEFINGS_DIR", briefings_dir):
+                briefings = build.load_briefings()
+
+        self.assertEqual([briefing["date"] for briefing in briefings], ["2026-04-28", "2026-04-27"])
+        self.assertEqual([briefing["content"] for briefing in briefings], ["Latest reader notes.", "Earlier reader notes."])
+
+    def test_build_json_trims_briefings_for_browser_without_changing_catalog_entries(self):
         with TemporaryDirectory() as tmpdir:
             json_out = Path(tmpdir) / "papers.json"
+            papers = [{"id": "2604.21999", "title": "A paper"}]
+            blogs = [{"id": "blog-1", "title": "A blog"}]
             briefings = [
-                {"date": "2026-04-28", "title": "Today", "source_path": "briefings/2026/04/2026-04-28.md"},
-                {"date": "2026-04-27", "title": "Yesterday", "source_path": "briefings/2026/04/2026-04-27.md"},
+                {
+                    "date": "2026-04-27",
+                    "title": "Yesterday",
+                    "status": "ok",
+                    "summary": "Earlier summary.",
+                    "highlights": ["Earlier highlight."],
+                    "candidates": [],
+                    "content": "Earlier full Markdown body.",
+                    "source_path": "briefings/2026/04/2026-04-27.md",
+                },
+                {
+                    "date": "2026-04-28",
+                    "title": "Today",
+                    "status": "watchlist",
+                    "summary": "Latest summary.",
+                    "highlights": ["Latest highlight."],
+                    "candidates": [{"id": "2604.21999", "verdict": "strong candidate"}],
+                    "content": "Latest full Markdown body.",
+                    "source_path": "briefings/2026/04/2026-04-28.md",
+                },
             ]
             with patch.object(build, "JSON_OUT", json_out):
-                build.build_json([], [], briefings)
+                build.build_json(papers, blogs, briefings)
             payload = json.loads(json_out.read_text(encoding="utf-8"))
 
+        self.assertEqual(payload["papers"], papers)
+        self.assertEqual(payload["blogs"], blogs)
         self.assertEqual(payload["meta"]["briefing_total"], 2)
         self.assertEqual(payload["meta"]["latest_briefing_date"], "2026-04-28")
         self.assertEqual(payload["meta"]["briefing_section_title"], "Daily Briefing")
-        self.assertEqual(payload["briefings"][0]["date"], "2026-04-28")
+        self.assertEqual(
+            payload["briefings"],
+            [
+                {
+                    "date": "2026-04-28",
+                    "title": "Today",
+                    "status": "watchlist",
+                    "summary": "Latest summary.",
+                    "highlights": ["Latest highlight."],
+                    "candidates": [{"id": "2604.21999", "verdict": "strong candidate"}],
+                    "source_path": "briefings/2026/04/2026-04-28.md",
+                }
+            ],
+        )
+        self.assertNotIn("content", payload["briefings"][0])
 
     def test_repo_briefings_use_year_month_daily_paths(self):
         paths = sorted(path for path in BRIEFINGS_DIR.glob("*/*/*.md") if not path.name.startswith("_"))

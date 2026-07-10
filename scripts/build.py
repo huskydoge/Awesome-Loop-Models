@@ -779,6 +779,24 @@ def load_briefings() -> list[dict]:
     return sorted(briefings, key=lambda item: item["date"], reverse=True)
 
 
+def serialize_browser_briefings(briefings: list[dict]) -> list[dict]:
+    """Return the latest briefing with only fields rendered by index.html."""
+    if not briefings:
+        return []
+
+    latest = max(briefings, key=lambda item: item.get("date", ""))
+    browser_fields = (
+        "date",
+        "title",
+        "status",
+        "summary",
+        "highlights",
+        "candidates",
+        "source_path",
+    )
+    return [{field: latest[field] for field in browser_fields if field in latest}]
+
+
 def build_json(papers: list[dict], blogs: list[dict], briefings: list[dict] | None = None) -> None:
     briefings = sorted(briefings or [], key=lambda item: item.get("date", ""), reverse=True)
     payload = {
@@ -802,7 +820,7 @@ def build_json(papers: list[dict], blogs: list[dict], briefings: list[dict] | No
         "focus_tags": list(VALID_FOCUS_TAGS),
         "papers": papers,
         "blogs": blogs,
-        "briefings": briefings,
+        "briefings": serialize_browser_briefings(briefings),
     }
     JSON_OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"✓ papers.json  — {len(papers)} papers, {len(blogs)} blogs, {len(briefings)} briefings")
