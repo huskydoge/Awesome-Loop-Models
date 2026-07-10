@@ -149,6 +149,7 @@ VENUE_CLASSES = {
     "ICML": "venue-icml",
     "ACL": "venue-acl",
     "CoLM": "venue-colm",
+    "COLM 2025 Workshop": "venue-colm",
     "LoG": "venue-log",
     "arXiv": "venue-arxiv",
 }
@@ -496,7 +497,7 @@ def validate_blog_links(links: dict, source: str) -> None:
 def normalize_venue_class(venue: str, entry_type: str) -> str:
     if entry_type == "blog":
         return BLOG_VENUE_CLASS
-    return VENUE_CLASSES.get(venue, "venue-arxiv")
+    return VENUE_CLASSES.get(venue, "venue-other")
 
 
 def normalize_focus_tags(raw_focus_tags: object, source: str) -> list[str]:

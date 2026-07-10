@@ -33,6 +33,27 @@ FAVICON_PATH = REPO_ROOT / "assets" / "favicon.png"
 
 
 class BuildTaxonomyTests(unittest.TestCase):
+    def test_colm_workshop_uses_colm_venue_class(self):
+        """A COLM workshop must not fall back to the arXiv badge class."""
+        self.assertEqual(
+            build.normalize_venue_class("COLM 2025 Workshop", "paper"),
+            "venue-colm",
+        )
+
+    def test_unknown_paper_venue_uses_other_class(self):
+        """An unknown non-arXiv venue should render with the neutral badge."""
+        self.assertEqual(
+            build.normalize_venue_class("Example Workshop", "paper"),
+            "venue-other",
+        )
+
+    def test_arxiv_venue_keeps_arxiv_class(self):
+        """The canonical arXiv venue should keep its dedicated badge class."""
+        self.assertEqual(
+            build.normalize_venue_class("arXiv", "paper"),
+            "venue-arxiv",
+        )
+
     def test_foundation_category_is_rejected_as_legacy_shelf(self):
         paper = {"category": "foundation"}
         with self.assertRaisesRegex(ValueError, "invalid category"):
