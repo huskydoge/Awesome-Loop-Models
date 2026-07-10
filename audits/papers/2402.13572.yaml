@@ -1,0 +1,49 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2402.13572"
+status: verified
+source:
+  url: https://arxiv.org/abs/2402.13572
+  version: "arXiv v2; TMLR 2025 final"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "AlgoFormer places a weight-shared looped Transformer between pre- and post-Transformer stages."
+  locator: "Section 2.2, Equation 2"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces the AlgoFormer architectural framework."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "The middle Transformer stage shares weights across a flat depth loop."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+    rationale: "The work contributes the staged architecture and its algorithmic training setup."
+  domain_tags:
+    values:
+      - language-modeling
+      - algorithmic-reasoning
+    rationale: "Experiments cover algorithmic tasks and language settings."
+  tags:
+    values:
+      - AlgoFormer
+    rationale: "AlgoFormer is the official model name."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and OpenReview records confirm the title and nine-author order."
+  publication:
+    status: verified
+    evidence: "The official OpenReview record confirms TMLR 2025; 2024-02-21 remains the arXiv v1 date."
+  description:
+    status: verified
+    evidence: "Section 2.2 and experiments support pre/loop/post stages and comparisons with standard and vanilla looped Transformers."
+  links:
+    status: verified
+    evidence: "The arXiv, TMLR OpenReview, and chuanyang-Zheng/Algoformer links identify the work."
+unresolved_questions: []

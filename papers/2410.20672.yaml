@@ -9,24 +9,27 @@ authors:
 - Tal Schuster
 year: 2025
 published_date: '2024-10-28'
-venue: arXiv
+venue: ICLR
 category: designs
 mechanism_tags:
-- hierarchical-loop
+- flat-loop
 domain_tags:
 - language-modeling
+- efficiency
 tags:
 - recursive-transformer
 - LoRA
 focus_tags:
 - architecture
 - training-algorithm
-desc: Presents Relaxed Recursive Transformers as a parameter-sharing conversion and
-  uptraining recipe that turns pretrained LLMs into compact recursive models using
-  layer tying and layer-wise LoRA while preserving performance and improving deployment
-  efficiency.
+- inference-algorithm
+desc: Converts pretrained LLMs into compact Recursive and Relaxed Recursive Transformers
+  by repeatedly reusing one block of layers with depth-specific LoRA deltas; simulated
+  oracle-exit results for continuous depth-wise batching suggest a potential 2–3×
+  throughput gain, not a demonstrated deployment speedup.
 links:
   arxiv: https://arxiv.org/abs/2410.20672
+  openreview: https://openreview.net/forum?id=WwpYSOkkCt
   comment:
   - label: Reza Bayat reading list (#11)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20

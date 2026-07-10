@@ -1,0 +1,50 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2502.07827"
+status: verified
+source:
+  url: https://arxiv.org/abs/2502.07827
+  version: "arXiv v3; ICML 2025, PMLR 267"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The same Mamba2 state-space transformation is iterated over depth toward a fixed point under simultaneous or sequential solver ordering."
+  locator: "Section 3.1, Equations 6-7"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces implicit state-space language models and their curriculum."
+  mechanism_tags:
+    values:
+      - implicit-layer
+    rationale: "The shared state-space transformation is solved toward a fixed point."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+      - inference-algorithm
+    rationale: "The contribution covers the implicit architecture, bounded/free fixed-point curriculum, and solver execution."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+    rationale: "The model is an implicit language model evaluated on language and reasoning behavior."
+  tags:
+    values:
+      - implicit-ssm
+    rationale: "This alias identifies the paper's implicit state-space model family."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv, OpenReview, and PMLR records confirm the title and six-author order."
+  publication:
+    status: verified
+    evidence: "The official PMLR/OpenReview records confirm ICML 2025."
+  description:
+    status: verified
+    evidence: "Section 3 and experiments support shared fixed-point iteration, RNN-like expressivity, and mostly parallel training."
+  links:
+    status: verified
+    evidence: "The arXiv, OpenReview, PMLR, and microsoft/implicit_languagemodels identities match."
+unresolved_questions: []

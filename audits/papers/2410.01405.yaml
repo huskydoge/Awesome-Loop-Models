@@ -1,0 +1,51 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2410.01405"
+status: verified
+source:
+  url: https://arxiv.org/abs/2410.01405
+  version: "arXiv v7; ICML 2025, PMLR 267"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The theoretical model composes one shared Transformer r times, and TMLT conditions per-loop scaling on timestep encodings."
+  locator: "Section 2.2; Section 4.2"
+taxonomy:
+  category:
+    value: analysis
+    rationale: "The primary contribution is expressive-power theory plus an analyzed architectural remedy."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One Transformer is repeatedly composed over a flat recurrence axis."
+  focus_tags:
+    values:
+      - architecture
+    rationale: "The constructive enhancement changes timestep-conditioned loop scaling."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+      - theory
+    rationale: "The work develops theory for looped Transformer reasoning/function approximation in language-model architectures."
+  tags:
+    values:
+      - looped-transformer
+      - timestep-encoding
+      - TMLT
+    rationale: "These aliases identify the model family, mechanism, and proposed Timestep-Modulated model."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv, OpenReview, and PMLR records confirm the title and two-author order."
+  publication:
+    status: verified
+    evidence: "The official PMLR/OpenReview records confirm ICML 2025; 2024-10-02 is the arXiv v1 date."
+  description:
+    status: verified
+    evidence: "Sections 2-4 support approximation bounds, an architecture-specific limitation, and TMLT timestep-conditioned scaling."
+  links:
+    status: verified
+    evidence: "The arXiv, OpenReview, PMLR, and kevin671/tmlt identities match the paper."
+unresolved_questions: []

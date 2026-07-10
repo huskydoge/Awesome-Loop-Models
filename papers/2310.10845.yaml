@@ -4,9 +4,9 @@ authors:
 - Amirkeivan Mohtashami
 - Matteo Pagliardini
 - Martin Jaggi
-year: 2023
+year: 2025
 published_date: '2023-10-16'
-venue: arXiv
+venue: ICLR
 category: designs
 mechanism_tags:
 - flat-loop
@@ -18,11 +18,13 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
-desc: Recasts chain-of-thought as recurrent depth inside a token-level transformer,
-  using token-wise adaptive computation to spend extra iterations only where additional
-  reasoning budget helps.
+desc: Introduces CoTFormer, which repeatedly applies a shared Transformer block while
+  exposing earlier intermediate representations to later repeats, and uses a learned
+  token router to allocate repeated passes under a chosen inference compute budget.
 links:
   arxiv: https://arxiv.org/abs/2310.10845
+  openreview: https://openreview.net/forum?id=7igPXQFupX
+  github: https://github.com/epfml/cotformer
 citations: 9
 citation_sources:
   semantic_scholar: 9

@@ -1,0 +1,49 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2310.10845"
+status: verified
+source:
+  url: https://arxiv.org/abs/2310.10845
+  version: "arXiv v2; ICLR 2025 final"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "CoTFormer repeatedly applies the same weight-tied Transformer blocks and exposes earlier intermediate states to later repeats."
+  locator: "Section 3.1, Equation 3"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces the CoTFormer architecture and budget-adaptive routing."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One shared block stack is reused over a single recurrent-depth axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The contribution changes recurrent architecture and allocates repeated passes at inference."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+    rationale: "The model is trained and evaluated as a language model with chain-of-thought-inspired recurrent computation."
+  tags:
+    values:
+      - CoTFormer
+    rationale: "CoTFormer is the official architecture name."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and OpenReview records confirm the title and three-author order."
+  publication:
+    status: verified
+    evidence: "The official OpenReview record confirms ICLR 2025; the 2023 date remains the arXiv v1 date."
+  description:
+    status: verified
+    evidence: "Section 3.1 supports shared repeats, access to intermediate representations, and learned token routing under an inference budget."
+  links:
+    status: verified
+    evidence: "The arXiv, ICLR OpenReview, and epfml/cotformer repository identify the same work."
+unresolved_questions: []

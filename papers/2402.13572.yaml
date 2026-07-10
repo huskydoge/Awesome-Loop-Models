@@ -9,9 +9,9 @@ authors:
 - Michael K. Ng
 - Zhenguo Li
 - Zhaoqiang Liu
-year: 2024
+year: 2025
 published_date: '2024-02-21'
-venue: arXiv
+venue: TMLR
 category: designs
 mechanism_tags:
 - flat-loop
@@ -28,6 +28,8 @@ desc: Splits computation into pre-, loop-, and post-transformer stages, showing 
   on algorithmic and language tasks.
 links:
   arxiv: https://arxiv.org/abs/2402.13572
+  openreview: https://openreview.net/forum?id=oYP2Pd5aQt
+  github: https://github.com/chuanyang-Zheng/Algoformer
 citations: 8
 citation_sources:
   semantic_scholar: 8

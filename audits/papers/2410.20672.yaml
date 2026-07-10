@@ -1,0 +1,51 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2410.20672"
+status: verified
+source:
+  url: https://arxiv.org/abs/2410.20672
+  version: "arXiv v3; ICLR 2025 final"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "A learned block of K layers is repeatedly reused, with shared base weights and depth-specific LoRA deltas."
+  locator: "Figure 1; Section 2.2"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces conversion, uptraining, and inference proposals for compact recursive Transformers."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "There is one outer repeated block rather than a nested or multilevel loop."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+      - inference-algorithm
+    rationale: "The work covers parameter-sharing design, LoRA uptraining, and continuous depth-wise batching."
+  domain_tags:
+    values:
+      - language-modeling
+      - efficiency
+    rationale: "The converted LLMs target compact language modeling and potential inference efficiency."
+  tags:
+    values:
+      - recursive-transformer
+      - LoRA
+    rationale: "These identify the paper's model family and layer-wise adaptation method."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and OpenReview records confirm the title and six-author order."
+  publication:
+    status: verified
+    evidence: "The official OpenReview record confirms ICLR 2025; 2024-10-28 is the arXiv v1 date."
+  description:
+    status: verified
+    evidence: "Section 2.2 supports repeated blocks and LoRA; the throughput statement is explicitly limited to simulated oracle-exit potential."
+  links:
+    status: verified
+    evidence: "The arXiv and ICLR OpenReview identities match; the comment remains separately labeled as a reading list."
+unresolved_questions: []

@@ -23,11 +23,15 @@ tags:
 - Huginn
 focus_tags:
 - architecture
-desc: Presents Huginn, a recurrent-depth transformer (3.5B params) that iterates a
-  single block up to 64 times per token, achieving strong reasoning performance that
-  scales with additional test-time compute.
+- training-algorithm
+- inference-algorithm
+desc: Presents Huginn, a 3.5B-parameter recurrent-depth language model trained on
+  800B tokens whose shared core can be unrolled to variable depth; reasoning performance
+  improves with additional test-time recurrences, and the architecture supports zero-shot
+  adaptive compute and KV-cache sharing.
 links:
   arxiv: https://arxiv.org/abs/2502.05171
+  paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/3b01972cf31e6fa0fe29e4b8b5c2a0a1-Abstract-Conference.html
   hf: https://huggingface.co/tomg-group-umd/huginn-0125
   github: https://github.com/seal-rg/recurrent-pretraining
   comment:

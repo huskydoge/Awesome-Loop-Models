@@ -8,7 +8,7 @@ authors:
 - Dimitris Papailiopoulos
 year: 2023
 published_date: '2023-01-30'
-venue: arXiv
+venue: ICML
 category: analysis
 mechanism_tags:
 - flat-loop
@@ -20,11 +20,12 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
-desc: Shows that a shallow looped transformer can emulate instruction-set computation
-  and iterative algorithms such as SGD or matrix inversion, with the recurrence acting
-  as a reusable program counter.
+desc: Constructs a constant-depth looped Transformer that executes one instruction
+  per cycle, using an in-state program counter and reusable instruction blocks to
+  emulate a general-purpose computer, linear algebra routines, and in-context SGD.
 links:
   arxiv: https://arxiv.org/abs/2301.13196
+  paper: https://proceedings.mlr.press/v202/giannou23a.html
   comment:
   - label: Reza Bayat reading list (#4)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20

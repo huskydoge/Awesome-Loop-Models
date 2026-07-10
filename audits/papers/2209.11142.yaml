@@ -1,0 +1,48 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2209.11142"
+status: verified
+source:
+  url: https://arxiv.org/abs/2209.11142
+  version: "arXiv v2; LoG 2022, PMLR 198"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "A single learned GNN processor P consumes the prior hidden state and is reused over each algorithm trajectory."
+  locator: "Section 3.1, page 3, Equation 1"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper develops a generalist neural algorithmic learner and shared processor."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "The same processor is repeatedly applied over one algorithmic execution loop."
+  focus_tags:
+    values:
+      - architecture
+      - data
+    rationale: "The work combines a shared processor design with joint training across the CLRS task collection."
+  domain_tags:
+    values:
+      - algorithmic-reasoning
+    rationale: "All evaluations are neural execution of classical algorithms."
+  tags:
+    values:
+      - generalist-processor
+    rationale: "This alias describes the paper's single shared processor."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and PMLR records confirm the title and fifteen-author order."
+  publication:
+    status: verified
+    evidence: "The official PMLR record confirms LoG 2022."
+  description:
+    status: verified
+    evidence: "The paper trains jointly on exactly 30 CLRS tasks with task-specific encoders/decoders and shared-processor improvements."
+  links:
+    status: verified
+    evidence: "The arXiv and PMLR identities match the paper."
+unresolved_questions: []

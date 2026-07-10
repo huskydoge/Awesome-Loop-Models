@@ -19,6 +19,7 @@ tags:
 - implicit-ssm
 focus_tags:
 - architecture
+- training-algorithm
 - inference-algorithm
 desc: Introduces implicit state-space language models that iterate a shared transition
   toward a fixed point, recovering RNN-like expressivity while retaining mostly parallel
@@ -26,6 +27,7 @@ desc: Introduces implicit state-space language models that iterate a shared tran
 links:
   arxiv: https://arxiv.org/abs/2502.07827
   openreview: https://openreview.net/forum?id=5EbiopWH6e
+  paper: https://proceedings.mlr.press/v267/schone25a.html
   github: https://github.com/microsoft/implicit_languagemodels
 citations: 20
 citation_sources:

@@ -28,11 +28,12 @@ tags:
 focus_tags:
 - architecture
 - data
-desc: Presents a single GNN model trained on 30+ algorithms from the CLRS benchmark,
-  demonstrating that a shared recurrent architecture can generalize across diverse
-  algorithmic tasks.
+desc: Presents a single shared GNN processor trained jointly across all 30 CLRS algorithmic
+  tasks, with task-specific encoders and decoders and improvements to representations,
+  training, and processor architecture.
 links:
   arxiv: https://arxiv.org/abs/2209.11142
+  paper: https://proceedings.mlr.press/v198/ibarz22a.html
 citations: 73
 citation_sources:
   semantic_scholar: 73

@@ -1,0 +1,48 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "1511.08228"
+status: verified
+source:
+  url: https://arxiv.org/abs/1511.08228
+  version: "arXiv v3; ICLR 2016 camera-ready"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The input initializes the state once, after which the same learned CGRU blocks are reused over recurrent computation steps."
+  locator: "Section 2, pages 2-3, state-update and final-state equations"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces the Neural GPU recurrent convolutional architecture."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One stack of shared convolutional recurrent units is applied repeatedly."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+    rationale: "The work contributes both the recurrent design and its training procedure for long algorithmic sequences."
+  domain_tags:
+    values:
+      - algorithmic-reasoning
+    rationale: "The model learns algorithms including addition and multiplication."
+  tags:
+    values:
+      - Neural GPU
+    rationale: "Neural GPU is the official architecture name."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and ICLR paper confirm the title and two-author order."
+  publication:
+    status: verified
+    evidence: "The 2016 ICLR venue year intentionally differs from the 2015-11-25 arXiv v1 date."
+  description:
+    status: verified
+    evidence: "Section 2 and the algorithmic experiments support repeated shared convolution and learned addition/multiplication."
+  links:
+    status: verified
+    evidence: "The canonical arXiv link identifies the audited paper."
+unresolved_questions: []

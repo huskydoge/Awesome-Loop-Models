@@ -7,7 +7,7 @@ authors:
 year: 2024
 published_date: '2023-11-21'
 venue: ICLR
-category: analysis
+category: designs
 mechanism_tags:
 - flat-loop
 domain_tags:
@@ -17,9 +17,10 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
-desc: Proposes looped-transformer training for in-context data-fitting tasks, showing
-  comparable performance to standard transformers with under 10% of the parameters
-  by better matching iterative learning algorithms.
+desc: Proposes an input-injected looped-Transformer architecture and training method
+  for in-context data fitting, matching standard Transformers on the tested function
+  classes with about 1/12 of the parameters while converging to distribution-specific
+  fixed points.
 links:
   arxiv: https://arxiv.org/abs/2311.12424
   openreview: https://openreview.net/forum?id=HHbRxoDTxE

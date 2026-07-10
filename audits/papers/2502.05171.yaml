@@ -1,0 +1,50 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2502.05171"
+status: verified
+source:
+  url: https://arxiv.org/abs/2502.05171
+  version: "arXiv v2; NeurIPS 2025 proceedings"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "Huginn repeatedly executes the same learned recurrent core R between prelude and coda modules within one forward pass."
+  locator: "Section 3.1, prelude/shared-core/coda architecture"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces a large recurrent-depth language model and its training/inference methods."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One shared recurrent core is unrolled over a single depth axis."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+      - inference-algorithm
+    rationale: "The work contributes architecture, large-scale recurrent pretraining, and variable/adaptive-depth inference."
+  domain_tags:
+    values:
+      - language-modeling
+      - reasoning
+    rationale: "The 3.5B model is pretrained for language modeling and evaluated on reasoning with extra recurrence."
+  tags:
+    values:
+      - Huginn
+    rationale: "Huginn is the official model name."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and NeurIPS records confirm the title and nine-author order."
+  publication:
+    status: verified
+    evidence: "The official proceedings confirm NeurIPS 2025."
+  description:
+    status: verified
+    evidence: "Section 3 and evaluations support 3.5B parameters, 800B tokens, variable recurrence, test-time gains, adaptive compute, and KV sharing."
+  links:
+    status: verified
+    evidence: "The arXiv, NeurIPS, Hugging Face, and seal-rg/recurrent-pretraining identities match."
+unresolved_questions: []

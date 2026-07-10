@@ -1,0 +1,49 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "1807.03819"
+status: verified
+source:
+  url: https://arxiv.org/abs/1807.03819
+  version: "arXiv v3; ICLR 2019 final"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "Universal Transformers reuse shared self-attention and transition functions over recurrent depth, optionally with per-position ACT halting."
+  locator: "Section 2.1, Equations 4-5; Section 2.2"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces the Universal Transformer architecture and adaptive execution."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "A shared transition block is repeated over one recurrent-depth axis."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The contribution includes the architecture and optional per-position halting at inference."
+  domain_tags:
+    values:
+      - language-modeling
+      - algorithmic-reasoning
+    rationale: "The experiments span language tasks and algorithmic generalization."
+  tags:
+    values:
+      - UT
+    rationale: "UT is the standard abbreviation for Universal Transformer."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and OpenReview records confirm the title and five-author order."
+  publication:
+    status: verified
+    evidence: "The 2019 ICLR venue year intentionally differs from the 2018-07-10 arXiv v1 date."
+  description:
+    status: verified
+    evidence: "Sections 2.1-2.2 support shared recurrent depth and adaptive halting; the Turing-completeness claim is limited to the paper's stated assumptions."
+  links:
+    status: verified
+    evidence: "The arXiv and ICLR OpenReview identities match; the comment is separately labeled as a reading list."
+unresolved_questions: []

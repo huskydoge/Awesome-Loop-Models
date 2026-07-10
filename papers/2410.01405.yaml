@@ -3,10 +3,10 @@ title: 'On Expressive Power of Looped Transformers: Theoretical Analysis and Enh
 authors:
 - Kevin Xu
 - Issei Sato
-year: 2024
+year: 2025
 published_date: '2024-10-02'
 added_date: '2026-04-21'
-venue: arXiv
+venue: ICML
 category: analysis
 mechanism_tags:
 - flat-loop
@@ -17,12 +17,17 @@ domain_tags:
 tags:
 - looped-transformer
 - timestep-encoding
+- TMLT
 focus_tags:
 - architecture
-desc: Analyzes the expressive power of looped transformers, derives approximation-rate
-  limits, and shows that timestep encoding improves their function-approximation behavior.
+desc: Derives approximation-rate bounds and an architecture-specific limitation for
+  looped Transformers, then introduces the Timestep-Modulated Looped Transformer
+  (TMLT) to condition per-loop scaling parameters on timestep encodings.
 links:
   arxiv: https://arxiv.org/abs/2410.01405
+  openreview: https://openreview.net/forum?id=H4BuhRezCV
+  paper: https://proceedings.mlr.press/v267/xu25x.html
+  github: https://github.com/kevin671/tmlt
 citations: 21
 citation_sources:
   semantic_scholar: 21

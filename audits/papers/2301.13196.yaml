@@ -1,0 +1,49 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2301.13196"
+status: verified
+source:
+  url: https://arxiv.org/abs/2301.13196
+  version: "arXiv v1; ICML 2023, PMLR 202"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "A constant-depth learned Transformer executes one fetched instruction per cycle and feeds its output state into the next reuse."
+  locator: "Section 5, execution cycle, pages 19-20"
+taxonomy:
+  category:
+    value: analysis
+    rationale: "The primary artifact is a constructive expressive-power result for looped Transformers."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "The same instruction-execution Transformer is reused over a flat cycle sequence."
+  focus_tags:
+    values:
+      - architecture
+      - inference-algorithm
+    rationale: "The constructive architecture executes reusable instructions during forward computation."
+  domain_tags:
+    values:
+      - algorithmic-reasoning
+    rationale: "The constructions cover programs, linear algebra, and in-context SGD."
+  tags:
+    values:
+      - looped-transformer
+      - programmable-computer
+    rationale: "These aliases identify the analyzed architecture and its computer-simulation result."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and PMLR records confirm the title and six-author order."
+  publication:
+    status: verified
+    evidence: "The official PMLR record confirms ICML 2023."
+  description:
+    status: verified
+    evidence: "Section 5 supports per-cycle instruction execution, the in-state program counter, reusable blocks, linear algebra, and in-context SGD."
+  links:
+    status: verified
+    evidence: "The arXiv and PMLR identities match; the comment is labeled separately as a reading list."
+unresolved_questions: []

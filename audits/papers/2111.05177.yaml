@@ -1,0 +1,48 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2111.05177"
+status: verified
+source:
+  url: https://arxiv.org/abs/2111.05177
+  version: "arXiv v4; NeurIPS 2021 proceedings"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The model defines a learned equilibrium h*=F(h*,z), and phantom gradients approximate training through that shared implicit computation."
+  locator: "Section 2.1, Equation 1; Section 2.4, Equations 16-17"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces a training algorithm for implicit infinite-depth models."
+  mechanism_tags:
+    values:
+      - implicit-layer
+    rationale: "The learned layer is defined by an equilibrium equation."
+  focus_tags:
+    values:
+      - training-algorithm
+    rationale: "Phantom gradient is a backward-pass estimator and training method."
+  domain_tags:
+    values:
+      - efficiency
+    rationale: "The contribution reduces the cost of training implicit models."
+  tags:
+    values:
+      - DEQ
+      - phantom-gradient
+    rationale: "These identify the model family and proposed gradient estimator."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and NeurIPS records confirm the title and five-author order."
+  publication:
+    status: verified
+    evidence: "The official proceedings confirm NeurIPS 2021."
+  description:
+    status: verified
+    evidence: "Section 2.4 and the large-scale experiments support damped unrolling, truncated Neumann estimation, speed, and matched or improved results."
+  links:
+    status: verified
+    evidence: "The corrected NeurIPS proceedings hash and arXiv identity match the same paper."
+unresolved_questions: []

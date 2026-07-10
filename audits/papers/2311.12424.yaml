@@ -1,0 +1,50 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2311.12424"
+status: verified
+source:
+  url: https://arxiv.org/abs/2311.12424
+  version: "arXiv v3; ICLR 2024 final"
+  verified_on: "2026-07-10"
+reviewer: "codex-primary-source-audit-2026-07-10-batch-d"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The same input-injected Transformer f_theta is applied repeatedly within one model forward process."
+  locator: >-
+    Section 4, Training Strategy (looped-output recurrence immediately before
+    Equation 1); Section 4.1, Input Injection
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper proposes both a looped architecture and training method for in-context data fitting."
+  mechanism_tags:
+    values:
+      - flat-loop
+    rationale: "One shared input-injected Transformer is reused over a flat iteration sequence."
+  focus_tags:
+    values:
+      - architecture
+      - training-algorithm
+    rationale: "Architecture and training methodology are the primary contributions."
+  domain_tags:
+    values:
+      - algorithmic-reasoning
+    rationale: "The work learns iterative data-fitting algorithms in context."
+  tags:
+    values:
+      - looped-transformer
+    rationale: "The alias is the paper's explicit architecture family."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv and OpenReview records confirm the title and four-author order."
+  publication:
+    status: verified
+    evidence: "The 2024 ICLR year intentionally differs from the 2023-11-21 arXiv v1 date."
+  description:
+    status: verified
+    evidence: "Section 4 and the experiments support input injection, about one-twelfth parameter use on tested classes, and distribution-specific fixed points."
+  links:
+    status: verified
+    evidence: "The arXiv, OpenReview, and Leiay/looped_transformer links match; comments are labeled reading notes."
+unresolved_questions: []

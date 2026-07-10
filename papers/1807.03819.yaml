@@ -19,9 +19,10 @@ tags:
 - UT
 focus_tags:
 - architecture
-desc: Extends the standard Transformer with recurrent computation over depth via weight
-  tying, enabling Turing-complete computation and combining the parallelism of Transformers
-  with the inductive bias of RNNs.
+- inference-algorithm
+desc: Introduces the Universal Transformer, which repeatedly applies shared self-attention
+  and transition blocks over depth, optionally with per-position adaptive halting;
+  under the paper's stated assumptions the architecture is Turing-complete.
 links:
   arxiv: https://arxiv.org/abs/1807.03819
   openreview: https://openreview.net/forum?id=HyzdRiR9Y7
