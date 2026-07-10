@@ -5,6 +5,7 @@ from __future__ import annotations
 import contextlib
 import io
 import json
+import subprocess
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -40,6 +41,28 @@ def write_paper(root: Path, paper_id: str, paper: object) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(yaml.safe_dump(paper, sort_keys=False), encoding="utf-8")
     return path
+
+
+def run_git(root: Path, *args: str) -> str:
+    """Run one isolated fixture Git command and return stripped stdout."""
+    result = subprocess.run(
+        ["git", *args],
+        cwd=root,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return result.stdout.strip()
+
+
+def initialize_git_snapshot(root: Path) -> str:
+    """Commit the fixture catalog and return its full snapshot commit."""
+    run_git(root, "init", "--quiet")
+    run_git(root, "config", "user.email", "catalog-test@example.com")
+    run_git(root, "config", "user.name", "Catalog Test")
+    run_git(root, "add", "papers")
+    run_git(root, "commit", "--quiet", "-m", "catalog snapshot")
+    return run_git(root, "rev-parse", "HEAD")
 
 
 def build_four_priority_report(root: Path) -> dict:
@@ -128,6 +151,10 @@ class CatalogRiskReportTests(unittest.TestCase):
         row_ids = [row["paper_id"] for row in report["papers"]]
         batch_ids = [paper_id for ids in report["batches"].values() for paper_id in ids]
         self.assertEqual(report["paper_count"], 4)
+        self.assertEqual(
+            report["generator"],
+            {"path": "scripts/build_catalog_risk_report.py", "version": 1},
+        )
         self.assertEqual(len(row_ids), len(set(row_ids)))
         self.assertEqual(sorted(row_ids), sorted(batch_ids))
         self.assertIn(
@@ -148,6 +175,36 @@ class CatalogRiskReportTests(unittest.TestCase):
         self.assertIn("- 2601.00003", markdown)
         self.assertIn("### P3 — 1 papers", markdown)
         self.assertIn("- 2601.00004", markdown)
+        self.assertIn("Generator: scripts/build_catalog_risk_report.py v1", markdown)
+
+    def test_markdown_escapes_every_dynamic_table_cell(self):
+        """Pipes, backslashes, and newlines must not corrupt Markdown tables."""
+        with TemporaryDirectory() as tmpdir:
+            report = build_four_priority_report(Path(tmpdir))
+        p0 = next(
+            item
+            for item in report["auditor_findings"]
+            if item["source"] == "papers/2601.00001.yaml"
+        )
+        p0.update(
+            {
+                "code": "bad|code",
+                "field": "path\\field",
+                "message": "first line\r\nsecond | line \\ end",
+            }
+        )
+        p1 = next(row for row in report["papers"] if row["priority"] == "P1")
+        p1["reasons"].append("reason|with\\slash\nnext")
+
+        markdown = build_catalog_risk_report.render_catalog_risk_markdown(report)
+
+        self.assertIn(r"bad\|code: path\\field", markdown)
+        self.assertIn(r"first line<br>second \| line \\ end", markdown)
+        self.assertIn(r"reason\|with\\slash<br>next", markdown)
+        self.assertIn(
+            "Verify every flagged field against the primary source",
+            markdown,
+        )
 
     def test_unsafe_raw_yaml_fails_before_classification(self):
         """Malformed and non-mapping YAML should fail with a clear source path."""
@@ -185,6 +242,7 @@ class CatalogRiskReportCliTests(unittest.TestCase):
             root = Path(tmpdir)
             paper_path = write_paper(root, "2601.00001", valid_paper("2601.00001"))
             original_paper = paper_path.read_bytes()
+            snapshot_commit = initialize_git_snapshot(root)
 
             exit_code = build_catalog_risk_report.main(
                 [
@@ -193,7 +251,7 @@ class CatalogRiskReportCliTests(unittest.TestCase):
                     "--generated-on",
                     "2026-07-10",
                     "--catalog-commit",
-                    SNAPSHOT_COMMIT,
+                    snapshot_commit,
                     "--json-output",
                     "exports/risk.json",
                     "--markdown-output",
@@ -213,6 +271,92 @@ class CatalogRiskReportCliTests(unittest.TestCase):
             markdown,
             build_catalog_risk_report.render_catalog_risk_markdown(report),
         )
+
+    def test_provenance_accepts_only_the_matching_clean_papers_snapshot(self):
+        """A valid commit with identical tracked papers should pass provenance."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            write_paper(root, "2601.00001", valid_paper("2601.00001"))
+            snapshot_commit = initialize_git_snapshot(root)
+
+            build_catalog_risk_report.validate_catalog_provenance(
+                root,
+                snapshot_commit,
+            )
+
+    def test_provenance_rejects_invalid_commit_and_tracked_mismatch(self):
+        """Unknown commits and tracked paper changes should fail clearly."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            paper_path = write_paper(
+                root,
+                "2601.00001",
+                valid_paper("2601.00001"),
+            )
+            snapshot_commit = initialize_git_snapshot(root)
+            with self.assertRaisesRegex(
+                build_catalog_risk_report.CatalogRiskReportError,
+                "not a valid commit",
+            ):
+                build_catalog_risk_report.validate_catalog_provenance(
+                    root,
+                    "f" * 40,
+                )
+            paper_path.write_text("title: changed\n", encoding="utf-8")
+            with self.assertRaisesRegex(
+                build_catalog_risk_report.CatalogRiskReportError,
+                "tracked papers differ",
+            ):
+                build_catalog_risk_report.validate_catalog_provenance(
+                    root,
+                    snapshot_commit,
+                )
+
+    def test_provenance_rejects_untracked_paper_files(self):
+        """An untracked file below papers must invalidate snapshot provenance."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            write_paper(root, "2601.00001", valid_paper("2601.00001"))
+            snapshot_commit = initialize_git_snapshot(root)
+            write_paper(root, "2601.00002", valid_paper("2601.00002"))
+
+            with self.assertRaisesRegex(
+                build_catalog_risk_report.CatalogRiskReportError,
+                "untracked paper files",
+            ):
+                build_catalog_risk_report.validate_catalog_provenance(
+                    root,
+                    snapshot_commit,
+                )
+
+    def test_cli_rejects_output_paths_outside_root(self):
+        """Relative traversal and absolute outputs should fail without writes."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            write_paper(root, "2601.00001", valid_paper("2601.00001"))
+            snapshot_commit = initialize_git_snapshot(root)
+            paths = (Path("../outside.json"), root.parent / "absolute.json")
+            for output in paths:
+                with self.subTest(output=output):
+                    stderr = io.StringIO()
+                    with contextlib.redirect_stderr(stderr):
+                        exit_code = build_catalog_risk_report.main(
+                            [
+                                "--root",
+                                str(root),
+                                "--generated-on",
+                                "2026-07-10",
+                                "--catalog-commit",
+                                snapshot_commit,
+                                "--json-output",
+                                str(output),
+                            ]
+                        )
+
+                    self.assertEqual(exit_code, 1)
+                    self.assertIn("relative path below root", stderr.getvalue())
+                    self.assertFalse((root.parent / "outside.json").exists())
+                    self.assertFalse((root.parent / "absolute.json").exists())
 
     def test_cli_rejects_invalid_snapshot_arguments(self):
         """Invalid dates and non-40-hex commits should exit through argparse."""

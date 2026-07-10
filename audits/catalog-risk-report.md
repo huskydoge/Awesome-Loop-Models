@@ -2,6 +2,7 @@
 
 Generated on: 2026-07-10
 Catalog snapshot: 6b460f1cbd8d033fe0d356b9125bc40b18d1083f
+Generator: scripts/build_catalog_risk_report.py v1
 Canonical papers: 112
 
 ## What this report establishes
@@ -28,7 +29,7 @@ A publication year/date warning is also not an automatic correction. The catalog
 
 | Paper | Auditor findings | Required review |
 | --- | --- | --- |
-| 1909.01377 | missing-field: domain_tags — Required field is missing.<br>arxiv-id-mismatch: links.arxiv — Filename encodes arXiv ID 1909.01377, but links.arxiv is missing. | Check the canonical primary source before adding domain tags or changing the arXiv link. |
+| 1909.01377 | missing-field: domain_tags — Required field is missing.<br>arxiv-id-mismatch: links.arxiv — Filename encodes arXiv ID 1909.01377, but links.arxiv is missing. | Verify every flagged field against the primary source and record the supporting evidence before editing canonical metadata. |
 
 ## P1 — early semantic review
 

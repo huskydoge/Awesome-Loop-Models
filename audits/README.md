@@ -43,9 +43,16 @@ python3 scripts/build_catalog_risk_report.py --generated-on 2026-07-10 --catalog
 ```
 
 Both snapshot arguments are required provenance: `--generated-on` must be an
-ISO calendar date and `--catalog-commit` must be the full 40-hex commit for the
-catalog being classified. Relative output overrides passed with
-`--json-output` and `--markdown-output` are resolved below `--root`.
+ISO calendar date and `--catalog-commit` must be a valid full 40-hex commit in
+the repository at `--root`. Before writing, the CLI verifies that tracked
+`papers/` content exactly matches that commit and that `papers/` has no
+untracked files. This prevents a report from claiming a stale or unrelated
+snapshot. The report records generator path and version metadata so future
+format or rule changes remain identifiable.
+
+Output overrides passed with `--json-output` and `--markdown-output` must be
+relative paths that resolve below `--root`. Absolute paths, `..` traversal,
+and every destination inside `papers/` are rejected.
 
 The priority queue is deterministic. P0 contains auditor errors; P1 contains
 non-P0 manual scope-review seeds or papers with multiple mechanism tags; P2

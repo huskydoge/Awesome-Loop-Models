@@ -1,5 +1,9 @@
 {
   "schema_version": 1,
+  "generator": {
+    "path": "scripts/build_catalog_risk_report.py",
+    "version": 1
+  },
   "generated_on": "2026-07-10",
   "catalog_commit": "6b460f1cbd8d033fe0d356b9125bc40b18d1083f",
   "paper_count": 112,

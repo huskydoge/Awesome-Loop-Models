@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import sys
 from collections import Counter, defaultdict
 from dataclasses import asdict
@@ -30,6 +31,10 @@ UNSAFE_FINDING_CODES = frozenset(
     {"duplicate-yaml-key", "missing-papers-directory", "top-level-type", "yaml-parse"}
 )
 COMMIT_RE = re.compile(r"[0-9a-fA-F]{40}")
+GENERATOR_METADATA = {
+    "path": "scripts/build_catalog_risk_report.py",
+    "version": 1,
+}
 
 
 class CatalogRiskReportError(ValueError):
@@ -71,6 +76,63 @@ def _finding_sort_key(finding: Finding) -> tuple[str, str, int, str, str]:
         finding.code,
         finding.message,
     )
+
+
+def _run_git(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
+    """Run one read-only Git command and capture its status and output."""
+    try:
+        return subprocess.run(
+            ["git", *args],
+            cwd=root,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+    except OSError as exc:
+        raise CatalogRiskReportError(f"could not run git: {exc}") from exc
+
+
+def validate_catalog_provenance(root: Path, catalog_commit: str) -> None:
+    """Require a valid root commit matching tracked and untracked paper state."""
+    root = Path(root).resolve()
+    catalog_commit = _validate_catalog_commit(catalog_commit)
+    top_level = _run_git(root, "rev-parse", "--show-toplevel")
+    if top_level.returncode != 0:
+        detail = top_level.stderr.strip() or "not a Git repository"
+        raise CatalogRiskReportError(f"catalog root provenance failed: {detail}")
+    if Path(top_level.stdout.strip()).resolve() != root:
+        raise CatalogRiskReportError("catalog root must be the Git repository root")
+    commit = _run_git(root, "cat-file", "-e", f"{catalog_commit}^{{commit}}")
+    if commit.returncode != 0:
+        raise CatalogRiskReportError(
+            f"catalog-commit is not a valid commit in root: {catalog_commit}"
+        )
+    diff = _run_git(
+        root,
+        "diff",
+        "--quiet",
+        "--no-ext-diff",
+        catalog_commit,
+        "--",
+        "papers",
+    )
+    if diff.returncode == 1:
+        raise CatalogRiskReportError(
+            f"tracked papers differ from catalog-commit {catalog_commit}"
+        )
+    if diff.returncode != 0:
+        detail = diff.stderr.strip() or f"git diff exited {diff.returncode}"
+        raise CatalogRiskReportError(f"could not compare tracked papers: {detail}")
+    untracked = _run_git(root, "ls-files", "--others", "--", "papers")
+    if untracked.returncode != 0:
+        detail = untracked.stderr.strip() or f"git ls-files exited {untracked.returncode}"
+        raise CatalogRiskReportError(f"could not inspect untracked papers: {detail}")
+    untracked_paths = [line for line in untracked.stdout.splitlines() if line]
+    if untracked_paths:
+        raise CatalogRiskReportError(
+            "untracked paper files invalidate catalog provenance: "
+            + ", ".join(untracked_paths)
+        )
 
 
 def _load_raw_papers(root: Path, findings: Sequence[Finding]) -> list[tuple[Path, dict]]:
@@ -188,6 +250,7 @@ def build_catalog_risk_report(
     paper_count = len(rows)
     report = {
         "schema_version": 1,
+        "generator": dict(GENERATOR_METADATA),
         "generated_on": generated_on,
         "catalog_commit": catalog_commit,
         "paper_count": paper_count,
@@ -226,6 +289,7 @@ def render_catalog_risk_markdown(report: dict) -> str:
         "",
         f"Generated on: {report['generated_on']}",
         f"Catalog snapshot: {report['catalog_commit']}",
+        f"Generator: {report['generator']['path']} v{report['generator']['version']}",
         f"Canonical papers: {paper_count}",
         "",
         "## What this report establishes",
@@ -259,15 +323,18 @@ def render_catalog_risk_markdown(report: dict) -> str:
         if row["priority"] != "P0":
             continue
         text = "<br>".join(
-            f"{item['code']}: {item['field']} — {item['message']}"
+            f"{_escape_markdown_table_cell(item['code'])}: "
+            f"{_escape_markdown_table_cell(item['field'])} — "
+            f"{_escape_markdown_table_cell(item['message'])}"
             for item in findings_by_id[row["paper_id"]]
         )
         lines.append(
-            f"| {row['paper_id']} | {text} | Check the canonical primary source before adding domain tags or changing the arXiv link. |"
+            f"| {_escape_markdown_table_cell(row['paper_id'])} | {text} | Verify every flagged field against the primary source and record the supporting evidence before editing canonical metadata. |"
         )
     lines.extend(["", "## P1 — early semantic review", "", "| Paper | Reasons |", "| --- | --- |"])
     lines.extend(
-        f"| {row['paper_id']} | {'<br>'.join(row['reasons'])} |"
+        f"| {_escape_markdown_table_cell(row['paper_id'])} | "
+        f"{'<br>'.join(_escape_markdown_table_cell(reason) for reason in row['reasons'])} |"
         for row in report["papers"]
         if row["priority"] == "P1"
     )
@@ -313,6 +380,12 @@ def render_catalog_risk_markdown(report: dict) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _escape_markdown_table_cell(value: object) -> str:
+    """Escape Markdown table delimiters and normalize embedded line breaks."""
+    text = re.sub(r"\r\n?|\n", "<br>", str(value))
+    return text.replace("\\", "\\\\").replace("|", "\\|")
+
+
 def _arg_generated_on(value: str) -> str:
     """Adapt generated-on validation to argparse's error contract."""
     try:
@@ -337,14 +410,22 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--root", type=Path, default=REPO_ROOT, help="Repository root.")
     parser.add_argument("--generated-on", type=_arg_generated_on, required=True, help="Snapshot date in YYYY-MM-DD form.")
     parser.add_argument("--catalog-commit", type=_arg_catalog_commit, required=True, help="Snapshot commit as exactly 40 hex characters.")
-    parser.add_argument("--json-output", type=Path, default=Path("audits/catalog-risk-report.json"), help="JSON output path, relative to root by default.")
-    parser.add_argument("--markdown-output", type=Path, default=Path("audits/catalog-risk-report.md"), help="Markdown output path, relative to root by default.")
+    parser.add_argument("--json-output", type=Path, default=Path("audits/catalog-risk-report.json"), help="JSON output as a relative path below root.")
+    parser.add_argument("--markdown-output", type=Path, default=Path("audits/catalog-risk-report.md"), help="Markdown output as a relative path below root.")
     return parser
 
 
 def _output_path(root: Path, value: Path) -> Path:
-    """Resolve one output below root unless the caller supplied an absolute path."""
-    return value if value.is_absolute() else root / value
+    """Resolve a relative report path inside root and outside papers/."""
+    root = root.resolve()
+    if value.is_absolute():
+        raise CatalogRiskReportError("report output must be a relative path below root")
+    path = (root / value).resolve()
+    if not path.is_relative_to(root):
+        raise CatalogRiskReportError("report output must be a relative path below root")
+    if path.is_relative_to((root / "papers").resolve()):
+        raise CatalogRiskReportError("refusing to write report inside papers/")
+    return path
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -352,6 +433,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     root = args.root.resolve()
     try:
+        validate_catalog_provenance(root, args.catalog_commit)
+        json_output = _output_path(root, args.json_output)
+        markdown_output = _output_path(root, args.markdown_output)
         report = build_catalog_risk_report(
             root=root,
             findings=audit_catalog(root),
@@ -359,13 +443,9 @@ def main(argv: Sequence[str] | None = None) -> int:
             catalog_commit=args.catalog_commit,
         )
         outputs = (
-            (_output_path(root, args.json_output), json.dumps(report, indent=2, ensure_ascii=False) + "\n"),
-            (_output_path(root, args.markdown_output), render_catalog_risk_markdown(report)),
+            (json_output, json.dumps(report, indent=2, ensure_ascii=False) + "\n"),
+            (markdown_output, render_catalog_risk_markdown(report)),
         )
-        papers_dir = (root / "papers").resolve()
-        for path, _ in outputs:
-            if path.resolve().is_relative_to(papers_dir):
-                raise CatalogRiskReportError(f"refusing to write report inside papers/: {path}")
         for path, content in outputs:
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(content, encoding="utf-8")
