@@ -1997,6 +1997,22 @@ process.stdout.write(JSON.stringify(result));
         self.assertNotIn("function inferRepoNameFromLocation()", html)
         self.assertNotIn("https://github.com/huskydoge/Awesome-Loop-Models\">View on GitHub", html)
 
+    def test_site_avoids_remote_google_fonts(self):
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        self.assertNotIn("fonts.googleapis.com", html)
+        self.assertNotIn("fonts.gstatic.com", html)
+
+    def test_site_uses_a_small_favicon(self):
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        self.assertIn('<link rel="icon" type="image/png" href="assets/favicon.png" />', html)
+
+        favicon = FAVICON_PATH.read_bytes()
+        self.assertTrue(favicon.startswith(b"\x89PNG\r\n\x1a\n"))
+        self.assertEqual(favicon[12:16], b"IHDR")
+        self.assertEqual(int.from_bytes(favicon[16:20], "big"), 64)
+        self.assertEqual(int.from_bytes(favicon[20:24], "big"), 64)
+        self.assertLess(len(favicon), 20_000)
+
     def test_repo_docs_describe_submission_guide_and_pr_submission(self):
         contributing = CONTRIBUTING_PATH.read_text(encoding="utf-8")
         readme_header = README_HEADER_PATH.read_text(encoding="utf-8")
