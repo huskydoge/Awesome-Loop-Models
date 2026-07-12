@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 116,
-    "paper_total": 109,
+    "total": 117,
+    "paper_total": 110,
     "blog_total": 7,
-    "briefing_total": 32,
-    "latest_briefing_date": "2026-07-02",
-    "generated": "2026-07-10T13:02:45.472768+00:00",
-    "generated_local_date": "2026-07-10",
+    "briefing_total": 33,
+    "latest_briefing_date": "2026-07-12",
+    "generated": "2026-07-12T15:32:56.512921+00:00",
+    "generated_local_date": "2026-07-12",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -6101,6 +6101,53 @@
       "arxiv_id": "2607.02491"
     },
     {
+      "title": "RSF-GLLM: Bridging the Semantic Gap in Multi-Hop Knowledge Graph QA via Recurrent Soft-Flow and Decoupled LLM Generation",
+      "authors": "Sambaran Bandyopadhyay, Ananth Muppidi",
+      "year": 2026,
+      "published_date": "2026-07-07",
+      "added_date": "2026-07-12",
+      "venue": "ICML",
+      "category": "applications",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "graph-data",
+        "reasoning"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "tags": [
+        "RSF-GLLM"
+      ],
+      "desc": "Introduces a GRU-guided Recurrent Soft-Flow module that repeatedly updates query state and propagates relevance over a knowledge graph, then textualizes the resulting paths for grounded LLM answer generation.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2607.06527",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2607.06527"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-07-12",
+      "id": "2607.06527",
+      "source_file": "2607.06527.yaml",
+      "source_path": "papers/2607.06527.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Sambaran Bandyopadhyay",
+        "Ananth Muppidi"
+      ],
+      "venueClass": "venue-icml",
+      "arxiv_id": "2607.06527"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -6449,13 +6496,42 @@
   ],
   "briefings": [
     {
-      "date": "2026-07-02",
-      "title": "Daily Loop-Model Watch — 2026-07-02",
-      "status": "ok",
-      "summary": "",
-      "source_path": "briefings/2026/07/2026-07-02.md",
-      "highlights": [],
-      "candidates": []
+      "date": "2026-07-12",
+      "title": "Daily Loop-Model Briefing - 2026-07-12",
+      "status": "added",
+      "summary": "One recurrent knowledge-graph reasoner was added; its LLM generates answers, while the strict-scope loop lives in the GRU-guided graph module.",
+      "source_path": "briefings/2026/07/2026-07-12.md",
+      "highlights": [
+        "RSF repeatedly updates query state and propagates soft relevance through a knowledge graph.",
+        "The recurrent graph reasoner and LLM answer generator are explicitly decoupled.",
+        "Recent latent-stream, linear-attention-memory, and control papers remained outside the strict reused-module boundary."
+      ],
+      "candidates": [
+        {
+          "id": "2607.06527",
+          "title": "RSF-GLLM: Bridging the Semantic Gap in Multi-Hop Knowledge Graph QA via Recurrent Soft-Flow and Decoupled LLM Generation",
+          "verdict": "added",
+          "url": "https://arxiv.org/abs/2607.06527"
+        },
+        {
+          "id": "2607.08186",
+          "title": "Hidden Decoding at Scale: Towards Untapped Latent Reasoning Capabilities in Language Models",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2607.08186"
+        },
+        {
+          "id": "2607.07953",
+          "title": "Linear Attention Architectures: From Recurrent Memory to Parallel Computation",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2607.07953"
+        },
+        {
+          "id": "2607.08724",
+          "title": "Latent Memory Palace: Test-Time Compute for Long-Horizon Control",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2607.08724"
+        }
+      ]
     }
   ]
 }
