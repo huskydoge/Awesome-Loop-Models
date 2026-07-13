@@ -5,8 +5,8 @@
     "blog_total": 7,
     "briefing_total": 33,
     "latest_briefing_date": "2026-07-12",
-    "generated": "2026-07-12T15:40:15.609033+00:00",
-    "generated_local_date": "2026-07-12",
+    "generated": "2026-07-13T06:26:17.313551+00:00",
+    "generated_local_date": "2026-07-13",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -239,9 +239,9 @@
         "github": "https://github.com/locuslab/deq",
         "alphaxiv": "https://www.alphaxiv.org/abs/1909.01377"
       },
-      "citations": 928,
+      "citations": 927,
       "citation_sources": {
-        "semantic_scholar": 928,
+        "semantic_scholar": 927,
         "openalex": 246,
         "opencitations": 0
       },
@@ -251,7 +251,7 @@
         "github_api": 804
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-07-12",
+      "metrics_updated": "2026-07-13",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -1383,10 +1383,10 @@
         "opencitations": 0
       },
       "citation_source_best": "openalex",
-      "metrics_updated": "2026-07-12",
-      "github_stars": 6558,
+      "metrics_updated": "2026-07-13",
+      "github_stars": 6557,
       "star_sources": {
-        "github_api": 6558
+        "github_api": 6557
       },
       "star_source_best": "github_api",
       "id": "2510.04871",
@@ -4360,12 +4360,12 @@
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.20613"
       },
-      "github_stars": 1654,
+      "github_stars": 1658,
       "star_sources": {
-        "github_api": 1654
+        "github_api": 1658
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-07-12",
+      "metrics_updated": "2026-07-13",
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
@@ -4824,16 +4824,16 @@
         "github": "https://github.com/nv-tlabs/dvlt"
       },
       "citations": 0,
-      "metrics_updated": "2026-07-12",
+      "metrics_updated": "2026-07-13",
       "citation_sources": {
         "semantic_scholar": 0,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 371,
+      "github_stars": 372,
       "star_sources": {
-        "github_api": 371
+        "github_api": 372
       },
       "star_source_best": "github_api",
       "id": "2605.30215",
