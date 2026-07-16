@@ -677,6 +677,56 @@ process.stdout.write(JSON.stringify(result));
         ):
             self.assertIn(snippet, html)
 
+    def test_top_level_tabs_restore_hash_and_support_keyboard_navigation(self):
+        """Top-level tabs must preserve category hashes and expose full tab keyboard UX."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+
+        hash_start = html.index("function getTopLevelTabFromHash(hash) {")
+        hash_end = html.index("function applyTopLevelTab() {", hash_start)
+        hash_helper = html[hash_start:hash_end]
+        self.assertIn("return hash === '#stats' ? 'stats' : 'papers';", hash_helper)
+
+        keyboard_start = html.index("function handleTopLevelTabKeydown(event) {")
+        keyboard_end = html.index("function initTopLevelTabInteractions() {", keyboard_start)
+        keyboard_helper = html[keyboard_start:keyboard_end]
+        for key in ("ArrowLeft", "ArrowRight", "Home", "End"):
+            self.assertIn(key, keyboard_helper)
+        self.assertIn("event.preventDefault()", keyboard_helper)
+        self.assertIn("nextTab.focus()", keyboard_helper)
+        self.assertIn("setTopLevelTab(", keyboard_helper)
+
+        init_start = keyboard_end
+        init_end = html.index("applyTopLevelTab();", init_start)
+        init_helper = html[init_start:init_end]
+        self.assertIn("addEventListener('click'", init_helper)
+        self.assertIn("addEventListener('keydown', handleTopLevelTabKeydown)", init_helper)
+        self.assertIn("window.addEventListener('hashchange'", init_helper)
+        self.assertIn(
+            "setTopLevelTab(getTopLevelTabFromHash(window.location.hash), { updateHash: false })",
+            init_helper,
+        )
+
+        restore_start = html.index("function restoreTopLevelTabAfterCatalogLoad() {")
+        restore_end = html.index("initTopLevelTabInteractions();", restore_start)
+        restore_helper = html[restore_start:restore_end]
+        self.assertIn("window.location.hash || !HAS_USER_SELECTED_TOP_LEVEL_TAB", restore_helper)
+        self.assertIn("getTopLevelTabFromHash(window.location.hash)", restore_helper)
+        self.assertIn("ACTIVE_TOP_LEVEL_TAB", restore_helper)
+        self.assertIn("setTopLevelTab(requestedTab, { updateHash: false })", restore_helper)
+
+        build_start = html.index("function buildDOM(data) {")
+        build_end = html.index("// ── Search", build_start)
+        build_helper = html[build_start:build_end]
+        data_ready_index = build_helper.index("CATALOG_DATA_READY = true;")
+        restore_index = build_helper.index("restoreTopLevelTabAfterCatalogLoad();")
+        self.assertLess(data_ready_index, restore_index)
+
+        setter_start = html.index("function setTopLevelTab(tab, options) {")
+        setter_end = html.index("function handleTopLevelTabKeydown(event) {", setter_start)
+        setter_helper = html[setter_start:setter_end]
+        self.assertIn("window.location.hash !== nextHash", setter_helper)
+        self.assertIn("window.location.hash = nextHash", setter_helper)
+
     def test_stats_series_helpers_use_strict_utc_date_parsing(self):
         """Stats helpers must reject normalized-looking but impossible dates."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")

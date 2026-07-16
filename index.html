@@ -3059,8 +3059,8 @@
   <main id="main">
 
     <div class="top-level-tabs" role="tablist" aria-label="Catalog sections">
-      <button type="button" class="top-level-tab active" id="papers-tab" role="tab" aria-controls="papers-panel" aria-selected="true" tabindex="0" onclick="setTopLevelTab('papers')">Papers</button>
-      <button type="button" class="top-level-tab" id="stats-tab" role="tab" aria-controls="stats-panel" aria-selected="false" tabindex="-1" onclick="setTopLevelTab('stats')">Stats</button>
+      <button type="button" class="top-level-tab active" id="papers-tab" role="tab" aria-controls="papers-panel" aria-selected="true" tabindex="0">Papers</button>
+      <button type="button" class="top-level-tab" id="stats-tab" role="tab" aria-controls="stats-panel" aria-selected="false" tabindex="-1">Stats</button>
     </div>
 
     <div class="top-level-panel" id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0">
@@ -3960,6 +3960,7 @@ let ACTIVE_TOP_LEVEL_TAB = 'papers';
 let HAS_RENDERED_STATS = false;
 let CATALOG_DATA_READY = false;
 let CATALOG_DATA_ERROR = false;
+let HAS_USER_SELECTED_TOP_LEVEL_TAB = false;
 let CURRENT_VIEW = 'category';
 let FILTER_SIDEBAR_OPEN = false;
 let EXPANDED_TABLE_ROWS = new Set();
@@ -3972,6 +3973,15 @@ let REPO_TODAY = '';
  */
 function normalizeTopLevelTab(tab) {
   return tab === 'stats' ? 'stats' : 'papers';
+}
+
+/**
+ * Maps the current URL fragment to a top-level tab without consuming category hashes.
+ * @param {string} hash URL fragment, including the leading hash marker.
+ * @returns {'papers'|'stats'} The tab represented by the fragment.
+ */
+function getTopLevelTabFromHash(hash) {
+  return hash === '#stats' ? 'stats' : 'papers';
 }
 
 /** Synchronizes top-level tab controls and panels with the active tab state. */
@@ -3999,10 +4009,11 @@ function applyTopLevelTab() {
 /**
  * Activates a top-level tab and optionally reflects the selection in the URL.
  * @param {string} tab Requested tab identifier.
- * @param {{updateHash?: boolean}=} options Tab transition options.
+ * @param {{updateHash?: boolean, userInitiated?: boolean}=} options Tab transition options.
  */
 function setTopLevelTab(tab, options) {
   const settings = options || {};
+  if (settings.userInitiated) HAS_USER_SELECTED_TOP_LEVEL_TAB = true;
   ACTIVE_TOP_LEVEL_TAB = normalizeTopLevelTab(tab);
   applyTopLevelTab();
 
@@ -4013,15 +4024,62 @@ function setTopLevelTab(tab, options) {
   if (settings.updateHash !== false) {
     const nextHash = '#' + ACTIVE_TOP_LEVEL_TAB;
     if (window.location.hash !== nextHash) {
-      if (window.history && typeof window.history.replaceState === 'function') {
-        window.history.replaceState(null, '', nextHash);
-      } else {
-        window.location.hash = nextHash;
-      }
+      window.location.hash = nextHash;
     }
   }
 }
 
+/**
+ * Activates adjacent top-level tabs with the standard arrow, Home, and End keys.
+ * @param {KeyboardEvent} event Keyboard event dispatched by a top-level tab.
+ * @returns {void}
+ */
+function handleTopLevelTabKeydown(event) {
+  const tabs = Array.from(document.querySelectorAll('.top-level-tab[role="tab"]'));
+  const currentIndex = tabs.indexOf(event.currentTarget);
+  if (currentIndex < 0 || tabs.length === 0) return;
+
+  let nextIndex = null;
+  if (event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+  if (event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % tabs.length;
+  if (event.key === 'Home') nextIndex = 0;
+  if (event.key === 'End') nextIndex = tabs.length - 1;
+  if (nextIndex === null) return;
+
+  event.preventDefault();
+  const nextTab = tabs[nextIndex];
+  const nextTabName = nextTab.id === 'stats-tab' ? 'stats' : 'papers';
+  setTopLevelTab(nextTabName, { userInitiated: true });
+  nextTab.focus();
+}
+
+/** Registers pointer, keyboard, and browser-history behavior for the top-level tabs. */
+function initTopLevelTabInteractions() {
+  document.querySelectorAll('.top-level-tab[role="tab"]').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      setTopLevelTab(tab.id === 'stats-tab' ? 'stats' : 'papers', { userInitiated: true });
+    });
+    tab.addEventListener('keydown', handleTopLevelTabKeydown);
+  });
+
+  window.addEventListener('hashchange', function() {
+    setTopLevelTab(getTopLevelTabFromHash(window.location.hash), { updateHash: false });
+  });
+}
+
+/**
+ * Applies the initial URL fragment after catalog data is ready without clobbering
+ * a pre-load user selection when the URL has no fragment to drive the state.
+ * @returns {void}
+ */
+function restoreTopLevelTabAfterCatalogLoad() {
+  const requestedTab = window.location.hash || !HAS_USER_SELECTED_TOP_LEVEL_TAB
+    ? getTopLevelTabFromHash(window.location.hash)
+    : ACTIVE_TOP_LEVEL_TAB;
+  setTopLevelTab(requestedTab, { updateHash: false });
+}
+
+initTopLevelTabInteractions();
 applyTopLevelTab();
 
 const TAG_GROUP_LABELS = {
@@ -5075,9 +5133,7 @@ function buildDOM(data) {
   updateViewToggleButtons();
   applyViewMode();
   doSearch(document.getElementById("search").value || "");
-  if (ACTIVE_TOP_LEVEL_TAB === 'stats' && !HAS_RENDERED_STATS) {
-    renderStatsPanel();
-  }
+  restoreTopLevelTabAfterCatalogLoad();
 }
 
 // ── Search ────────────────────────────────────────────────────────────────────
@@ -5273,9 +5329,7 @@ fetch("papers.json")
   .catch(function(err) {
     console.error("Failed to load papers.json:", err);
     CATALOG_DATA_ERROR = true;
-    if (ACTIVE_TOP_LEVEL_TAB === 'stats' && !HAS_RENDERED_STATS) {
-      renderStatsPanel();
-    }
+    restoreTopLevelTabAfterCatalogLoad();
     document.getElementById("sections-container").innerHTML =
       "<p style=\"color:var(--accent5);padding:20px\">Failed to load resource data. Please refresh or check the console.</p>";
   });
