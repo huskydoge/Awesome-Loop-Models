@@ -577,6 +577,82 @@
       overscroll-behavior: contain;
     }
 
+    /* ── Top-level catalog tabs ── */
+    .top-level-tabs {
+      display: flex;
+      align-items: flex-end;
+      gap: 22px;
+      max-width: 100%;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .top-level-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .top-level-tab {
+      flex: 0 0 auto;
+      margin-bottom: -1px;
+      padding: 7px 1px 9px;
+      border: 0;
+      border-bottom: 2px solid transparent;
+      background: transparent;
+      color: var(--text-muted);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .top-level-tab:hover {
+      color: var(--text);
+    }
+
+    .top-level-tab.active,
+    .top-level-tab[aria-selected="true"] {
+      border-bottom-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .top-level-tab:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    .top-level-panel {
+      min-width: 0;
+    }
+
+    .top-level-panel[hidden] {
+      display: none;
+    }
+
+    .stats-panel-placeholder {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: linear-gradient(180deg, var(--surface), var(--bg));
+    }
+
+    .stats-panel-placeholder h2 {
+      margin-bottom: 4px;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 18px;
+      line-height: 1.35;
+    }
+
+    .stats-panel-placeholder p {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
     /* ── Category Section ── */
     .category {
       margin-bottom: 42px;
@@ -2737,45 +2813,60 @@
   <!-- Main -->
   <main id="main">
 
-    <div class="category-disclaimer" id="category-disclaimer">
-      <strong>Classification note.</strong> The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure.
+    <div class="top-level-tabs" role="tablist" aria-label="Catalog sections">
+      <button type="button" class="top-level-tab active" id="papers-tab" role="tab" aria-controls="papers-panel" aria-selected="true" tabindex="0" onclick="setTopLevelTab('papers')">Papers</button>
+      <button type="button" class="top-level-tab" id="stats-tab" role="tab" aria-controls="stats-panel" aria-selected="false" tabindex="-1" onclick="setTopLevelTab('stats')">Stats</button>
     </div>
 
-    <div class="mobile-directory" id="mobile-directory">
-      <button type="button" class="mobile-directory-toggle" id="mobile-directory-toggle" aria-expanded="false">
-        <span>Browse Sections</span>
-        <span class="mobile-directory-hint">tap to expand</span>
-      </button>
-      <div class="mobile-directory-body" id="mobile-directory-tree"></div>
-    </div>
+    <div class="top-level-panel" id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0">
 
-    <!-- Sections rendered dynamically by JS -->
-    <div id="sections-container"></div>
+      <div class="category-disclaimer" id="category-disclaimer">
+        <strong>Classification note.</strong> The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure.
+      </div>
 
-    <div class="table-view-shell" id="table-view-shell" hidden>
-      <div class="table-view-scroll">
-        <table class="papers-table" aria-label="Table view of loop-model resources">
-          <thead>
-            <tr>
-              <th scope="col">Title</th>
-              <th scope="col"><div class="table-sort-header"><button type="button" class="sort-btn table-sort-btn" data-sort="date" onclick="setSort('date')">Date</button><button type="button" class="table-sort-direction-btn" data-sort="date" data-direction="desc" onclick="toggleSortDirection('date')" aria-label="Toggle Date sort direction" aria-pressed="false">↕</button></div></th>
-              <th scope="col">Venue</th>
-              <th scope="col">Links</th>
-              <th scope="col">Focus</th>
-              <th scope="col">Domains</th>
-              <th scope="col"><div class="table-sort-header"><button type="button" class="sort-btn table-sort-btn" data-sort="citations" onclick="setSort('citations')">Citations</button><button type="button" class="table-sort-direction-btn" data-sort="citations" data-direction="desc" onclick="toggleSortDirection('citations')" aria-label="Toggle Citations sort direction" aria-pressed="false">↕</button></div></th>
-              <th scope="col"><div class="table-sort-header"><button type="button" class="sort-btn table-sort-btn" data-sort="stars" onclick="setSort('stars')">Stars</button><button type="button" class="table-sort-direction-btn" data-sort="stars" data-direction="desc" onclick="toggleSortDirection('stars')" aria-label="Toggle Stars sort direction" aria-pressed="false">↕</button></div></th>
-            </tr>
-          </thead>
-          <tbody id="papers-table-body"></tbody>
-        </table>
+      <div class="mobile-directory" id="mobile-directory">
+        <button type="button" class="mobile-directory-toggle" id="mobile-directory-toggle" aria-expanded="false">
+          <span>Browse Sections</span>
+          <span class="mobile-directory-hint">tap to expand</span>
+        </button>
+        <div class="mobile-directory-body" id="mobile-directory-tree"></div>
+      </div>
+
+      <!-- Sections rendered dynamically by JS -->
+      <div id="sections-container"></div>
+
+      <div class="table-view-shell" id="table-view-shell" hidden>
+        <div class="table-view-scroll">
+          <table class="papers-table" aria-label="Table view of loop-model resources">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col"><div class="table-sort-header"><button type="button" class="sort-btn table-sort-btn" data-sort="date" onclick="setSort('date')">Date</button><button type="button" class="table-sort-direction-btn" data-sort="date" data-direction="desc" onclick="toggleSortDirection('date')" aria-label="Toggle Date sort direction" aria-pressed="false">↕</button></div></th>
+                <th scope="col">Venue</th>
+                <th scope="col">Links</th>
+                <th scope="col">Focus</th>
+                <th scope="col">Domains</th>
+                <th scope="col"><div class="table-sort-header"><button type="button" class="sort-btn table-sort-btn" data-sort="citations" onclick="setSort('citations')">Citations</button><button type="button" class="table-sort-direction-btn" data-sort="citations" data-direction="desc" onclick="toggleSortDirection('citations')" aria-label="Toggle Citations sort direction" aria-pressed="false">↕</button></div></th>
+                <th scope="col"><div class="table-sort-header"><button type="button" class="sort-btn table-sort-btn" data-sort="stars" onclick="setSort('stars')">Stars</button><button type="button" class="table-sort-direction-btn" data-sort="stars" data-direction="desc" onclick="toggleSortDirection('stars')" aria-label="Toggle Stars sort direction" aria-pressed="false">↕</button></div></th>
+              </tr>
+            </thead>
+            <tbody id="papers-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="no-results" style="display:none">
+        <div class="no-results-icon">🔍</div>
+        <p>No resources found matching "<span id="no-results-query"></span>"</p>
       </div>
     </div>
 
-    <div id="no-results" style="display:none">
-      <div class="no-results-icon">🔍</div>
-      <p>No resources found matching "<span id="no-results-query"></span>"</p>
-    </div>
+    <section class="top-level-panel stats-panel" id="stats-panel" role="tabpanel" aria-labelledby="stats-tab" tabindex="0" hidden>
+      <div class="stats-panel-placeholder">
+        <h2>Catalog statistics</h2>
+        <p>Timeline and publication-trend summaries will appear here.</p>
+      </div>
+    </section>
 
   </main>
 </div>
@@ -3134,10 +3225,70 @@ let ACCEPTED_ONLY = false;
 let TODAY_ONLY = false;
 let HAS_CODE_ONLY = false;
 let HAS_COMMENTS_ONLY = false;
+let ACTIVE_TOP_LEVEL_TAB = 'papers';
 let CURRENT_VIEW = 'category';
 let FILTER_SIDEBAR_OPEN = false;
 let EXPANDED_TABLE_ROWS = new Set();
 let REPO_TODAY = '';
+
+/**
+ * Coerces a requested top-level tab to a supported tab identifier.
+ * @param {string} tab Requested tab identifier.
+ * @returns {'papers'|'stats'} A supported tab identifier.
+ */
+function normalizeTopLevelTab(tab) {
+  return tab === 'stats' ? 'stats' : 'papers';
+}
+
+/** Synchronizes top-level tab controls and panels with the active tab state. */
+function applyTopLevelTab() {
+  const isStats = ACTIVE_TOP_LEVEL_TAB === 'stats';
+  const papersTab = document.getElementById('papers-tab');
+  const statsTab = document.getElementById('stats-tab');
+  const papersPanel = document.getElementById('papers-panel');
+  const statsPanel = document.getElementById('stats-panel');
+
+  if (papersTab) {
+    papersTab.classList.toggle('active', !isStats);
+    papersTab.setAttribute('aria-selected', isStats ? 'false' : 'true');
+    papersTab.tabIndex = isStats ? -1 : 0;
+  }
+  if (statsTab) {
+    statsTab.classList.toggle('active', isStats);
+    statsTab.setAttribute('aria-selected', isStats ? 'true' : 'false');
+    statsTab.tabIndex = isStats ? 0 : -1;
+  }
+  if (papersPanel) papersPanel.hidden = isStats;
+  if (statsPanel) statsPanel.hidden = !isStats;
+}
+
+/**
+ * Activates a top-level tab and optionally reflects the selection in the URL.
+ * @param {string} tab Requested tab identifier.
+ * @param {{updateHash?: boolean}=} options Tab transition options.
+ */
+function setTopLevelTab(tab, options) {
+  const settings = options || {};
+  ACTIVE_TOP_LEVEL_TAB = normalizeTopLevelTab(tab);
+  applyTopLevelTab();
+
+  if (ACTIVE_TOP_LEVEL_TAB === 'stats' && typeof renderStatsPanel === 'function') {
+    renderStatsPanel();
+  }
+
+  if (settings.updateHash !== false) {
+    const nextHash = '#' + ACTIVE_TOP_LEVEL_TAB;
+    if (window.location.hash !== nextHash) {
+      if (window.history && typeof window.history.replaceState === 'function') {
+        window.history.replaceState(null, '', nextHash);
+      } else {
+        window.location.hash = nextHash;
+      }
+    }
+  }
+}
+
+applyTopLevelTab();
 
 const TAG_GROUP_LABELS = {
   mechanism: 'Loop Mechanism',

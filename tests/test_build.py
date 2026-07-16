@@ -642,6 +642,23 @@ class TagFilterUiTests(unittest.TestCase):
         self.assertNotIn("Category / Subcategory", header_snippet)
         self.assertNotIn("Added", header_snippet)
 
+    def test_top_level_papers_and_stats_tab_shell_exists(self):
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        for snippet in (
+            'role="tablist"',
+            'id="papers-tab"',
+            'id="stats-tab"',
+            'id="papers-panel"',
+            'id="stats-panel"',
+            'role="tabpanel"',
+            "let ACTIVE_TOP_LEVEL_TAB = 'papers';",
+            "function setTopLevelTab(tab, options) {",
+            "function applyTopLevelTab() {",
+            "Category view",
+            "Table view",
+        ):
+            self.assertIn(snippet, html)
+
     def test_table_header_sort_buttons_exist_for_date_citations_and_stars_with_direction_controls(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn('data-sort="date" onclick="setSort(\'date\')">&#128197; Date</button>', html)
