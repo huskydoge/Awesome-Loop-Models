@@ -5,7 +5,7 @@
     "blog_total": 7,
     "briefing_total": 34,
     "latest_briefing_date": "2026-07-16",
-    "generated": "2026-07-16T13:55:25.546092+00:00",
+    "generated": "2026-07-16T14:03:22.732772+00:00",
     "generated_local_date": "2026-07-16",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -5947,7 +5947,19 @@
         "Kangwook Lee"
       ],
       "venueClass": "venue-arxiv",
-      "arxiv_id": "2606.31779"
+      "arxiv_id": "2606.31779",
+      "community_comments": [
+        {
+          "label": "Ying Fan's announcement thread",
+          "url": "https://x.com/yingfan_bot/status/2077441955202482419?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Ying Fan's announcement thread",
+          "url": "https://x.com/yingfan_bot/status/2077441955202482419?s=20"
+        }
+      ]
     },
     {
       "title": "CHERRY: Compressed Hierarchical Experts with Recurrent Representational Yield",
