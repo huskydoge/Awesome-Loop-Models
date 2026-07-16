@@ -25,10 +25,10 @@ desc: Proposes phantom gradient, a lightweight backpropagation estimator for imp
 links:
   arxiv: https://arxiv.org/abs/2111.05177
   paper: https://proceedings.neurips.cc/paper_files/paper/2021/hash/cb8da6767461f2812ae4290eac7cbc42-Abstract.html
-citations: 104
+citations: 105
 citation_sources:
-  semantic_scholar: 104
+  semantic_scholar: 105
   openalex: 13
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-10'
+metrics_updated: '2026-07-16'

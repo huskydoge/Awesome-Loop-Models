@@ -23,13 +23,13 @@ links:
   arxiv: https://arxiv.org/abs/2006.08656
   paper: https://proceedings.neurips.cc/paper_files/paper/2020/hash/3812f9a59b634c2a9c574610eaba5bed-Abstract.html
   github: https://github.com/locuslab/mdeq
-citations: 256
+citations: 257
 citation_sources:
-  semantic_scholar: 256
+  semantic_scholar: 257
   openalex: 53
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-12'
+metrics_updated: '2026-07-16'
 github_stars: 237
 star_sources:
   github_api: 237

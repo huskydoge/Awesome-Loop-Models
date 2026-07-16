@@ -25,10 +25,10 @@ desc: Introduces PTRM, an inference-time scaling framework for Tiny Recursive Mo
   and selects the final answer with the model's Q head without retraining.
 links:
   arxiv: https://arxiv.org/abs/2605.19943
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-06-17'
+metrics_updated: '2026-07-16'

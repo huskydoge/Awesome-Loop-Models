@@ -29,9 +29,9 @@ links:
   openreview: https://openreview.net/forum?id=5EbiopWH6e
   paper: https://proceedings.mlr.press/v267/schone25a.html
   github: https://github.com/microsoft/implicit_languagemodels
-citations: 21
+citations: 23
 citation_sources:
-  semantic_scholar: 21
+  semantic_scholar: 23
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
@@ -39,4 +39,4 @@ github_stars: 10
 star_sources:
   github_api: 10
 star_source_best: github_api
-metrics_updated: '2026-07-10'
+metrics_updated: '2026-07-16'

@@ -22,17 +22,17 @@ focus_tags:
 - architecture
 - inference-algorithm
 desc: Uses ANIRA as a controlled recurrent-Transformer framework to study per-token
-  variable-depth computation, showing that adaptive compute can align with token
-  complexity while failing to extrapolate to longer algorithmic inputs.
+  variable-depth computation, showing that adaptive compute can align with token complexity
+  while failing to extrapolate to longer algorithmic inputs.
 links:
   arxiv: https://arxiv.org/abs/2602.08864
   comment:
   - label: Benhao's reading note
     url: https://x.com/huskydogewoof/status/2031044736182616081?s=20
-citations: 3
+citations: 4
 citation_sources:
-  semantic_scholar: 3
+  semantic_scholar: 4
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-02'
+metrics_updated: '2026-07-16'
