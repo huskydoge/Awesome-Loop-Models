@@ -808,6 +808,11 @@ function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
         self.assertIn('<div class="site-brand">', masthead)
         self.assertIn('<div class="top-level-tabs" role="tablist"', masthead)
         self.assertIn('<div class="header-actions">', masthead)
+        brand_index = masthead.index('<div class="site-brand">')
+        tabs_index = masthead.index('<div class="top-level-tabs" role="tablist"')
+        actions_index = masthead.index('<div class="header-actions">')
+        self.assertLess(brand_index, tabs_index)
+        self.assertLess(tabs_index, actions_index)
         self.assertNotIn("top-level-tabs", main)
         for marker in (
             'class="header-sub"',
@@ -846,6 +851,13 @@ function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
         self.assertIn(".site-masthead", mobile_css)
         self.assertIn(".top-level-tabs", mobile_css)
         self.assertIn("flex-basis: 100%;", mobile_css)
+        self.assertIn(".site-brand {\n        order: 1;", mobile_css)
+        self.assertIn(".site-masthead .top-level-tabs {\n        order: 2;", mobile_css)
+        self.assertIn(".site-masthead .header-actions {\n        order: 3;", mobile_css)
+
+        compact_start = style.rindex("@media (max-width: 480px)")
+        compact_css = style[compact_start:]
+        self.assertIn(".site-masthead .header-actions {\n        order: 3;", compact_css)
 
     def test_top_level_tabs_restore_hash_and_support_keyboard_navigation(self):
         """Top-level tabs must preserve category hashes and expose full tab keyboard UX."""
