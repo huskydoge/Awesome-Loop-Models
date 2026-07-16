@@ -939,6 +939,18 @@ class CanonicalPaperMetadataTests(unittest.TestCase):
 
         self.assertEqual(violations, [])
 
+    def test_all_repo_paper_yaml_files_have_intake_dates(self):
+        """Require every canonical paper source to record its catalog intake date."""
+        violations = []
+        for yaml_path in sorted((REPO_ROOT / "papers").glob("*.yaml")):
+            if yaml_path.name.startswith("_"):
+                continue
+            data = yaml.safe_load(yaml_path.read_text(encoding="utf-8")) or {}
+            if data.get("added_date") in (None, ""):
+                violations.append(f"{yaml_path.name}: missing added_date")
+
+        self.assertEqual(violations, [])
+
     def test_all_repo_blog_yaml_files_have_publication_dates_and_no_taxonomy_fields(self):
         violations = []
         for yaml_path in sorted((REPO_ROOT / "blogs").glob("*.yaml")):
