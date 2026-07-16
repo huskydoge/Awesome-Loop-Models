@@ -702,6 +702,24 @@ function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
         self.assertNotIn("daily-briefing-notes", html)
         self.assertNotIn("<summary>Notes</summary>", html)
 
+    def test_papers_side_widgets_reflow_before_they_can_overlap_masthead_tools(self):
+        """Side widgets must leave absolute positioning throughout the mid-width range."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        media_start = html.index("@media (max-width: 1344px) {")
+        media_end = html.index("/* ── Sidebar contribute link ── */", media_start)
+        media_css = html[media_start:media_end]
+
+        self.assertIn(".daily-briefing-notice,\n      .daily-watch-countdown {", media_css)
+        for declaration in (
+            "position: relative;",
+            "top: auto;",
+            "left: auto;",
+            "right: auto;",
+            "width: min(560px, 100%);",
+        ):
+            self.assertIn(declaration, media_css)
+        self.assertNotIn("@media (max-width: 1080px)", html)
+
     def test_category_section_counts_render_as_numbers_only(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("'<span class=\"category-count\">' + count + '</span>'", html)
