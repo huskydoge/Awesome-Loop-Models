@@ -2928,7 +2928,10 @@ function parseIsoDate(value) {
   var year = Number(parts[0]);
   var month = Number(parts[1]);
   var day = Number(parts[2]);
-  var parsed = new Date(Date.UTC(year, month - 1, day));
+  if (year === 0) return null;
+  var parsed = new Date(0);
+  parsed.setUTCFullYear(year, month - 1, day);
+  parsed.setUTCHours(0, 0, 0, 0);
   if (parsed.getUTCFullYear() !== year
       || parsed.getUTCMonth() !== month - 1
       || parsed.getUTCDate() !== day) {
@@ -2999,7 +3002,8 @@ function buildMonthlyPublicationSeries(papers) {
   papers.forEach(function(paper) {
     var publishedDate = parseIsoDate(paper && paper.published_date);
     if (!publishedDate) return;
-    var monthStart = new Date(Date.UTC(publishedDate.getUTCFullYear(), publishedDate.getUTCMonth(), 1));
+    var monthStart = new Date(publishedDate.getTime());
+    monthStart.setUTCDate(1);
     var key = formatIsoDateUtc(monthStart).slice(0, 7);
     var timestamp = monthStart.getTime();
     counts[key] = (counts[key] || 0) + 1;

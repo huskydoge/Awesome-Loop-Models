@@ -373,6 +373,21 @@ class DailyBriefingBuildTests(unittest.TestCase):
 
 
 class TagFilterUiTests(unittest.TestCase):
+    @staticmethod
+    def run_stats_series_helpers(expression: str):
+        """Evaluate the pure paper-statistics helpers from index.html in Node."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        helper_start = html.index("function parseIsoDate(value) {")
+        helper_end = html.index("function escapeHtml(str) {", helper_start)
+        helpers = html[helper_start:helper_end]
+        script = f"""
+{helpers}
+const result = {expression};
+process.stdout.write(JSON.stringify(result));
+"""
+        output = subprocess.check_output(["node", "-e", script], text=True)
+        return json.loads(output)
+
     def test_date_sort_is_default_active_sort(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("let CURRENT_SORT = 'date';", html)
@@ -673,7 +688,8 @@ class TagFilterUiTests(unittest.TestCase):
         format_helper = html[format_start:format_end]
 
         self.assertIn("/^\\d{4}-\\d{2}-\\d{2}$/", parse_helper)
-        self.assertIn("Date.UTC", parse_helper)
+        self.assertIn("setUTCFullYear", parse_helper)
+        self.assertIn("setUTCHours", parse_helper)
         self.assertIn("getUTCFullYear()", parse_helper)
         self.assertIn("getUTCMonth()", parse_helper)
         self.assertIn("getUTCDate()", parse_helper)
@@ -689,7 +705,7 @@ class TagFilterUiTests(unittest.TestCase):
         daily_end = html.index("function buildMonthlyPublicationSeries(papers) {", daily_start)
         daily_helper = html[daily_start:daily_end]
 
-        self.assertIn("paper.added_date", daily_helper)
+        self.assertIn("parseIsoDate(paper && paper.added_date)", daily_helper)
         self.assertNotIn("paper.published_date", daily_helper)
         self.assertIn("setUTCDate", daily_helper)
         for field in ("key:", "label:", "count:", "cumulative:"):
@@ -721,6 +737,80 @@ class TagFilterUiTests(unittest.TestCase):
         self.assertIn("series.slice(-7)", summary_helper)
         self.assertIn("bucket.count > peakDay.count", summary_helper)
         self.assertNotIn("bucket.count >= peakDay.count", summary_helper)
+
+    def test_stats_helpers_execute_date_series_and_summary_boundaries(self):
+        """Execute strict dates, gap filling, field isolation, and summary ties."""
+        result = self.run_stats_series_helpers("""(function() {
+  const daily = buildDailyPaperSeries([
+    { added_date: '2026-07-01' },
+    { added_date: '2026-07-03' },
+    { added_date: '2026-07-03' },
+    { published_date: '2026-07-02' }
+  ]);
+  const monthly = buildMonthlyPublicationSeries([
+    { published_date: '2025-11-15' },
+    { published_date: '2026-01-01' },
+    { added_date: '2025-12-01' }
+  ]);
+  const summarySeries = buildDailyPaperSeries([
+    { added_date: '2026-07-01' },
+    { added_date: '2026-07-01' },
+    { added_date: '2026-07-03' },
+    { added_date: '2026-07-07' },
+    { added_date: '2026-07-07' },
+    { added_date: '2026-07-08' }
+  ]);
+  return {
+    dates: {
+      invalidType: parseIsoDate(null),
+      invalidFormat: parseIsoDate('2026/02/28'),
+      impossible: parseIsoDate('2026-02-29'),
+      yearZero: parseIsoDate('0000-01-01'),
+      yearNinetyNine: formatIsoDateUtc(parseIsoDate('0099-12-31')),
+      leapDay: formatIsoDateUtc(parseIsoDate('2024-02-29'))
+    },
+    daily: daily,
+    monthly: monthly,
+    emptySummary: buildStatsSummary([], 4),
+    summary: buildStatsSummary(summarySeries, 10)
+  };
+})()""")
+
+        self.assertEqual(
+            result["dates"],
+            {
+                "invalidType": None,
+                "invalidFormat": None,
+                "impossible": None,
+                "yearZero": None,
+                "yearNinetyNine": "0099-12-31",
+                "leapDay": "2024-02-29",
+            },
+        )
+        self.assertEqual(
+            result["daily"],
+            [
+                {"key": "2026-07-01", "label": "2026-07-01", "count": 1, "cumulative": 1},
+                {"key": "2026-07-02", "label": "2026-07-02", "count": 0, "cumulative": 1},
+                {"key": "2026-07-03", "label": "2026-07-03", "count": 2, "cumulative": 3},
+            ],
+        )
+        self.assertEqual(
+            result["monthly"],
+            [
+                {"key": "2025-11", "label": "2025-11", "count": 1, "cumulative": 1},
+                {"key": "2025-12", "label": "2025-12", "count": 0, "cumulative": 1},
+                {"key": "2026-01", "label": "2026-01", "count": 1, "cumulative": 2},
+            ],
+        )
+        self.assertEqual(
+            result["emptySummary"],
+            {"totalPapers": 4, "datedPapers": 0, "lastSevenDays": 0, "peakDay": None},
+        )
+        self.assertEqual(result["summary"]["datedPapers"], 6)
+        self.assertEqual(result["summary"]["lastSevenDays"], 4)
+        self.assertEqual(result["summary"]["peakDay"]["key"], "2026-07-01")
+        self.assertEqual(result["summary"]["peakDay"]["count"], 2)
 
     def test_table_header_sort_buttons_exist_for_date_citations_and_stars_with_direction_controls(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
