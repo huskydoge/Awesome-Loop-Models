@@ -122,20 +122,69 @@
     }
 
     /* ── Header ── */
-    header {
-      background: var(--surface);
+    body > header {
+      background:
+        linear-gradient(180deg, rgba(9,105,218,0.025), transparent 72%),
+        var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 28px 32px 20px;
-      text-align: center;
+      padding: 14px 32px 18px;
       position: sticky;
       top: 0;
       z-index: 100;
       flex-shrink: 0;
+      transition: padding 0.18s ease, background 0.18s ease;
     }
 
     .header-inner {
-      max-width: 900px;
+      max-width: 1440px;
       margin: 0 auto;
+    }
+
+    .site-masthead {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
+      align-items: center;
+      gap: 24px;
+      width: 100%;
+      min-height: 38px;
+    }
+
+    .site-brand {
+      min-width: 0;
+    }
+
+    .site-brand h1 {
+      margin: 0;
+    }
+
+    .papers-only-tools {
+      width: min(900px, 100%);
+      margin: 14px auto 0;
+      text-align: center;
+    }
+
+    body.stats-mode > header {
+      padding-top: 11px;
+      padding-bottom: 11px;
+      background: color-mix(in srgb, var(--surface) 94%, var(--accent) 6%);
+    }
+
+    body.stats-mode .papers-only-tools,
+    body.stats-mode .sidebar {
+      display: none;
+    }
+
+    body.stats-mode .layout {
+      width: 100%;
+      max-width: 1560px;
+      padding: 30px clamp(18px, 3vw, 52px) 40px;
+      gap: 0;
+    }
+
+    body.stats-mode main,
+    body.stats-mode .stats-panel {
+      width: 100%;
+      max-width: none;
     }
 
     .filter-sidebar-toggle-row {
@@ -245,14 +294,12 @@
       padding: 2px 2px 0 2px;
     }
 
-    body.filter-sidebar-open header {
+    body.filter-sidebar-open > header {
       padding-top: 12px;
       padding-bottom: 14px;
     }
 
-    body.filter-sidebar-open h1,
     body.filter-sidebar-open .header-sub,
-    body.filter-sidebar-open .header-actions,
     body.filter-sidebar-open .filter-sidebar-toggle-row,
     body.filter-sidebar-open .daily-briefing-notice,
     body.filter-sidebar-open .daily-watch-countdown {
@@ -261,15 +308,15 @@
 
     h1 {
       font-family: var(--font-display);
-      font-size: 28px;
+      font-size: 19px;
       font-weight: 600;
       color: var(--text);
-      letter-spacing: -0.3px;
-      margin-bottom: 8px;
+      letter-spacing: -0.2px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
+      justify-content: flex-start;
+      gap: 8px;
+      white-space: nowrap;
     }
 
     .header-sub {
@@ -577,14 +624,18 @@
       overscroll-behavior: contain;
     }
 
-    /* ── Top-level catalog tabs ── */
+    /* ── Global site mode switch ── */
     .top-level-tabs {
       display: flex;
-      align-items: flex-end;
-      gap: 22px;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
       max-width: 100%;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--border);
+      padding: 3px;
+      border: 1px solid color-mix(in srgb, var(--border) 78%, var(--text) 22%);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--surface2) 72%, var(--bg) 28%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.34), 0 5px 16px rgba(15,23,42,0.05);
       overflow-x: auto;
       scrollbar-width: none;
     }
@@ -595,18 +646,19 @@
 
     .top-level-tab {
       flex: 0 0 auto;
-      margin-bottom: -1px;
-      padding: 7px 1px 9px;
-      border: 0;
-      border-bottom: 2px solid transparent;
+      min-width: 96px;
+      padding: 7px 18px;
+      border: 1px solid transparent;
+      border-radius: 999px;
       background: transparent;
       color: var(--text-muted);
       font: inherit;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
       cursor: pointer;
+      transition: color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
     }
 
     .top-level-tab:hover {
@@ -615,14 +667,15 @@
 
     .top-level-tab.active,
     .top-level-tab[aria-selected="true"] {
-      border-bottom-color: var(--accent);
-      color: var(--accent);
+      border-color: color-mix(in srgb, var(--border) 82%, transparent);
+      background: var(--bg);
+      color: var(--text);
+      box-shadow: 0 2px 8px rgba(15,23,42,0.09);
     }
 
     .top-level-tab:focus-visible {
       outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 2px;
+      outline-offset: 2px;
     }
 
     .top-level-panel {
@@ -1330,10 +1383,10 @@
     .header-actions {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 0 auto 20px;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: nowrap;
+      margin: 0;
     }
 
     .contribute-btn {
@@ -1341,7 +1394,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 8px 14px;
+      padding: 7px 12px;
       border-radius: 999px;
       font-size: 12px;
       font-weight: 700;
@@ -1367,7 +1420,7 @@
     .daily-briefing-notice,
     .daily-watch-countdown {
       position: absolute;
-      top: -1px;
+      top: 58px;
       margin: 0;
       border: 1px solid var(--border);
       border-top: 0;
@@ -1727,14 +1780,14 @@
 
     /* ── Responsive ── */
     @media (max-height: 820px) {
-      header {
-        padding: 20px 24px 16px;
+      body > header {
+        padding: 10px 24px 14px;
       }
       .header-sub {
         margin-bottom: 12px;
       }
-      .header-actions {
-        margin-bottom: 12px;
+      .site-masthead .header-actions {
+        margin: 0;
       }
     }
 
@@ -1744,7 +1797,7 @@
         min-height: 100vh;
         overflow: auto;
       }
-      header {
+      body > header {
         position: static;
         padding: 14px 12px 12px;
       }
@@ -2588,14 +2641,14 @@
 
     /* ── Mobile compact viewport overrides ── */
     @media (max-height: 820px) {
-      header {
-        padding: 20px 24px 16px;
+      body > header {
+        padding: 10px 24px 14px;
       }
       .header-sub {
         margin-bottom: 12px;
       }
-      .header-actions {
-        margin-bottom: 12px;
+      .site-masthead .header-actions {
+        margin: 0;
       }
     }
 
@@ -2605,7 +2658,7 @@
         min-height: 100vh;
         overflow: auto;
       }
-      header {
+      body > header {
         position: static;
         padding: 14px 12px 12px;
       }
@@ -2712,14 +2765,53 @@
         flex-direction: column;
         align-items: stretch;
       }
-      .header-inner > h1 { order: 1; }
-      .header-inner > .header-sub { order: 2; }
-      .header-inner > .header-actions { order: 3; }
-      .header-inner > .search-wrap { order: 4; }
-      .header-inner > .filter-sidebar-toggle-row { order: 5; }
-      .header-inner > .daily-briefing-notice { order: 6; }
-      .header-inner > .daily-watch-countdown { order: 7; }
-      .header-inner > .filter-sidebar { order: 8; }
+      .site-masthead {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px 12px;
+      }
+      .site-brand {
+        flex: 1 1 auto;
+      }
+      .site-brand h1 {
+        margin: 0;
+        font-size: 17px;
+      }
+      .site-masthead .header-actions {
+        flex: 0 0 auto;
+        margin: 0;
+      }
+      .site-masthead .top-level-tabs {
+        order: 3;
+        flex: 1 0 auto;
+        flex-basis: 100%;
+        width: 100%;
+      }
+      .site-masthead .top-level-tab {
+        flex: 1 1 50%;
+        min-width: 0;
+        padding-top: 9px;
+        padding-bottom: 9px;
+      }
+      .papers-only-tools {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 12px;
+      }
+      .papers-only-tools > .header-sub { order: 1; }
+      .papers-only-tools > .search-wrap { order: 2; }
+      .papers-only-tools > .filter-sidebar-toggle-row { order: 3; }
+      .papers-only-tools > .daily-briefing-notice { order: 4; }
+      .papers-only-tools > .daily-watch-countdown { order: 5; }
+      .papers-only-tools > .filter-sidebar { order: 6; }
+      body.stats-mode > header {
+        padding: 10px 12px;
+      }
+      body.stats-mode .layout {
+        padding: 18px 12px 28px;
+      }
       .daily-briefing-notice,
       .daily-watch-countdown {
         width: 100%;
@@ -2817,7 +2909,7 @@
     }
 
     @media (max-width: 768px) {
-      body.filter-sidebar-open header {
+      body.filter-sidebar-open > header {
         padding: 12px;
       }
 
@@ -2880,6 +2972,17 @@
     }
 
     @media (max-width: 480px) {
+      .site-brand {
+        flex-basis: 100%;
+      }
+      .site-brand h1 {
+        justify-content: center;
+      }
+      .site-masthead .header-actions {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+      }
       .filter-sidebar-header {
         padding-bottom: 6px;
       }
@@ -2923,24 +3026,32 @@
 
 <header>
   <div class="header-inner">
-    <h1>
-      <span>🔁</span>
-      Awesome Loop Models
-    </h1>
-    <p class="header-sub">
-      A curated list of papers and selected technical blogs on Loop Models.
-    </p>
-    <div class="header-actions">
-      <a class="contribute-btn github-btn"
-         id="header-github-link"
-         href="#"
-         target="_blank">
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        GitHub
-      </a>
-      <a class="contribute-btn"
-         href="submit.html">📄 Submit</a>
+    <div class="site-masthead">
+      <div class="site-brand">
+        <h1>
+          <span aria-hidden="true">🔁</span>
+          Awesome Loop Models
+        </h1>
+      </div>
+      <div class="top-level-tabs" role="tablist" aria-label="Site sections">
+        <button type="button" class="top-level-tab active" id="papers-tab" role="tab" aria-controls="papers-panel" aria-selected="true" tabindex="0">Papers</button>
+        <button type="button" class="top-level-tab" id="stats-tab" role="tab" aria-controls="stats-panel" aria-selected="false" tabindex="-1">Stats</button>
+      </div>
+      <div class="header-actions">
+        <a class="contribute-btn github-btn"
+           id="header-github-link"
+           href="#"
+           target="_blank">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="contribute-btn" href="submit.html">📄 Submit</a>
+      </div>
     </div>
+    <div class="papers-only-tools" id="papers-only-tools">
+      <p class="header-sub">
+        A curated list of papers and selected technical blogs on Loop Models.
+      </p>
     <aside class="daily-briefing-notice"
        id="daily-briefing-notice"
        aria-label="Latest Daily Briefing"
@@ -3036,6 +3147,7 @@
         </div>
       </div>
     </aside>
+    </div>
   </div>
 </header>
 
@@ -3057,11 +3169,6 @@
 
   <!-- Main -->
   <main id="main">
-
-    <div class="top-level-tabs" role="tablist" aria-label="Catalog sections">
-      <button type="button" class="top-level-tab active" id="papers-tab" role="tab" aria-controls="papers-panel" aria-selected="true" tabindex="0">Papers</button>
-      <button type="button" class="top-level-tab" id="stats-tab" role="tab" aria-controls="stats-panel" aria-selected="false" tabindex="-1">Stats</button>
-    </div>
 
     <div class="top-level-panel" id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0">
 
@@ -4118,6 +4225,7 @@ function applyTopLevelTab() {
   const papersPanel = document.getElementById('papers-panel');
   const statsPanel = document.getElementById('stats-panel');
 
+  document.body.classList.toggle('stats-mode', isStats);
   if (papersTab) {
     papersTab.classList.toggle('active', !isStats);
     papersTab.setAttribute('aria-selected', isStats ? 'false' : 'true');

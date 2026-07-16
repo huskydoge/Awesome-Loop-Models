@@ -430,6 +430,7 @@ function makeTab(id, selected, tabIndex) {{
 const tabs = [makeTab('papers-tab', true, 0), makeTab('stats-tab', false, -1)];
 const papersPanel = {{ hidden: false }};
 const statsPanel = {{ hidden: true }};
+const bodyClasses = {{}};
 const elements = {{
   'papers-tab': tabs[0],
   'stats-tab': tabs[1],
@@ -439,6 +440,11 @@ const elements = {{
   'section-blogs': {{}}
 }};
 const document = {{
+  body: {{
+    classList: {{
+      toggle: function(name, enabled) {{ bodyClasses[name] = Boolean(enabled); }}
+    }}
+  }},
   querySelectorAll: function(selector) {{
     return selector === '.top-level-tab[role="tab"]' ? tabs : [];
   }},
@@ -569,9 +575,10 @@ function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
         self.assertIn("function updateFilterSidebarSummary() {", html)
         self.assertIn("document.body.classList.toggle('filter-sidebar-open', isOpen);", html)
         self.assertIn(".filter-sidebar[hidden]", html)
-        self.assertIn("body.filter-sidebar-open h1", html)
+        self.assertIn("body.filter-sidebar-open .header-sub", html)
+        self.assertNotIn("body.filter-sidebar-open h1", html)
         self.assertIn("body.filter-sidebar-open .filter-sidebar-toggle-row", html)
-        self.assertIn("body.filter-sidebar-open header {\n        padding: 12px;", html)
+        self.assertIn("body.filter-sidebar-open > header {\n        padding: 12px;", html)
         self.assertIn(".filter-sidebar-controls {\n        grid-template-columns: 1fr;\n        gap: 10px;\n        overflow-x: visible;", html)
         self.assertIn(".filter-sidebar-controls .date-input {\n        flex: 1 1 128px;\n        width: auto;\n        min-width: 0;", html)
         self.assertIn(".tag-chip {\n        max-width: 100%;", html)
@@ -673,9 +680,9 @@ function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
         self.assertIn("transform: none;", html)
         self.assertNotIn("transform: rotate(-1.2deg)", html)
         self.assertNotIn("transform: rotate(1.2deg)", html)
-        self.assertIn(".header-inner > .search-wrap { order: 4; }", html)
-        self.assertIn(".header-inner > .daily-briefing-notice { order: 6; }", html)
-        self.assertIn(".header-inner > .daily-watch-countdown { order: 7; }", html)
+        self.assertIn(".papers-only-tools > .search-wrap { order: 2; }", html)
+        self.assertIn(".papers-only-tools > .daily-briefing-notice { order: 4; }", html)
+        self.assertIn(".papers-only-tools > .daily-watch-countdown { order: 5; }", html)
         self.assertIn("max-height: min(42vh, 320px);", html)
         self.assertIn("max-height: 220px;", html)
         self.assertIn(".daily-briefing-notice-detail::-webkit-scrollbar", html)
@@ -765,6 +772,62 @@ function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
             "Table view",
         ):
             self.assertIn(snippet, html)
+
+    def test_top_level_tabs_are_a_global_masthead_mode_switch(self):
+        """The site mode switch belongs to the masthead and owns the page layout."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        header_start = html.index("<header>")
+        header_end = html.index("</header>", header_start)
+        header = html[header_start:header_end]
+        masthead_start = header.index('<div class="site-masthead">')
+        masthead_end = header.index('<div class="papers-only-tools"', masthead_start)
+        masthead = header[masthead_start:masthead_end]
+        tools = header[masthead_end:]
+        main_start = html.index('<main id="main">')
+        main_end = html.index("</main>", main_start)
+        main = html[main_start:main_end]
+
+        self.assertIn('<div class="site-brand">', masthead)
+        self.assertIn('<div class="top-level-tabs" role="tablist"', masthead)
+        self.assertIn('<div class="header-actions">', masthead)
+        self.assertNotIn("top-level-tabs", main)
+        for marker in (
+            'class="header-sub"',
+            'id="daily-briefing-notice"',
+            'id="daily-watch-countdown"',
+            'class="search-wrap"',
+            'id="filter-sidebar-toggle"',
+            'id="filter-sidebar-panel"',
+        ):
+            self.assertIn(marker, tools)
+        for element_id in (
+            "papers-tab",
+            "stats-tab",
+            "header-github-link",
+            "daily-briefing-notice",
+            "daily-watch-countdown",
+        ):
+            self.assertEqual(html.count(f'id="{element_id}"'), 1)
+
+        apply_start = html.index("function applyTopLevelTab() {")
+        apply_end = html.index("function setTopLevelTab(tab, options) {", apply_start)
+        apply_helper = html[apply_start:apply_end]
+        self.assertIn("document.body.classList.toggle('stats-mode', isStats);", apply_helper)
+
+        style = html[html.index("<style>"):html.index("</style>")]
+        for selector in (
+            "body.stats-mode .papers-only-tools",
+            "body.stats-mode .sidebar",
+            "body.stats-mode .layout",
+            "body.stats-mode main",
+            "body.stats-mode .stats-panel",
+        ):
+            self.assertIn(selector, style)
+        mobile_start = style.index("@media (max-width: 768px)")
+        mobile_css = style[mobile_start:]
+        self.assertIn(".site-masthead", mobile_css)
+        self.assertIn(".top-level-tabs", mobile_css)
+        self.assertIn("flex-basis: 100%;", mobile_css)
 
     def test_top_level_tabs_restore_hash_and_support_keyboard_navigation(self):
         """Top-level tabs must preserve category hashes and expose full tab keyboard UX."""
@@ -918,6 +981,7 @@ process.stdout.write(JSON.stringify(result));
         result = self.run_top_level_tab_block("#stats", """
 const result = {
   active: ACTIVE_TOP_LEVEL_TAB,
+  statsMode: bodyClasses['stats-mode'],
   papersHidden: papersPanel.hidden,
   statsHidden: statsPanel.hidden,
   papersSelected: tabs[0].attributes['aria-selected'],
@@ -935,6 +999,7 @@ const result = {
 process.stdout.write(JSON.stringify(result));
 """)
         self.assertEqual(result["active"], "stats")
+        self.assertTrue(result["statsMode"])
         self.assertTrue(result["papersHidden"])
         self.assertFalse(result["statsHidden"])
         self.assertEqual(result["papersSelected"], "false")
