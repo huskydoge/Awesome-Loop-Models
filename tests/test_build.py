@@ -1915,6 +1915,16 @@ process.stdout.write(JSON.stringify({
         self.assertIn("max-width: 1640px;", style)
         self.assertIn("width: 248px;", style)
 
+    def test_footer_preserves_more_vertical_space_for_papers(self):
+        """The persistent footer should remain a compact single-line information bar."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        style = html[html.index("<style>"):html.index("</style>")]
+        footer_start = style.index("footer {")
+        footer_end = style.index("}", footer_start)
+        footer_style = style[footer_start:footer_end]
+        self.assertIn("padding: 10px 20px;", footer_style)
+        self.assertIn("margin-top: 6px;", footer_style)
+
     def test_table_view_rows_keep_compact_link_rendering_hooks(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("function renderCompactPaperLinksHtml(paper)", html)
