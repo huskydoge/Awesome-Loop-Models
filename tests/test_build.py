@@ -378,7 +378,7 @@ class TagFilterUiTests(unittest.TestCase):
         """Evaluate the pure paper-statistics helpers from index.html in Node."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         helper_start = html.index("function parseIsoDate(value) {")
-        helper_end = html.index("function escapeHtml(str) {", helper_start)
+        helper_end = html.index("function createStatsSvgElement(", helper_start)
         helpers = html[helper_start:helper_end]
         script = f"""
 {helpers}
@@ -395,7 +395,7 @@ process.stdout.write(JSON.stringify(result));
         state_start = html.index("let ACTIVE_TOP_LEVEL_TAB = 'papers';")
         state_end = html.index("let CURRENT_VIEW = 'category';", state_start)
         block_start = html.index("function normalizeTopLevelTab(tab) {")
-        block_end = html.index("const TAG_GROUP_LABELS = {", block_start)
+        block_end = html.index("initResearchPrompt();", block_start)
         production_block = html[state_start:state_end] + html[block_start:block_end]
         script = f"""
 let browserHash = {json.dumps(initial_hash)};
@@ -686,8 +686,11 @@ function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
         self.assertIn("max-height: min(42vh, 320px);", html)
         self.assertIn("max-height: 220px;", html)
         self.assertIn(".daily-briefing-notice-detail::-webkit-scrollbar", html)
-        self.assertIn("width: 2px;", html)
-        self.assertNotIn("width: 4px;", html)
+        scrollbar_start = html.index(".daily-briefing-notice-detail::-webkit-scrollbar {")
+        scrollbar_end = html.index("}", scrollbar_start)
+        scrollbar_css = html[scrollbar_start:scrollbar_end]
+        self.assertIn("width: 2px;", scrollbar_css)
+        self.assertNotIn("width: 4px;", scrollbar_css)
         self.assertIn("scrollbar-color: var(--scrollbar-thumb) transparent;", html)
         self.assertIn("daily-briefing-notice-source", html)
         self.assertIn("source md ↗", html)
@@ -776,7 +779,7 @@ function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
         for snippet in (
             '<button type="button" class="top-level-tab active" id="papers-tab" role="tab" aria-controls="papers-panel" aria-selected="true" tabindex="0"',
             '<button type="button" class="top-level-tab" id="stats-tab" role="tab" aria-controls="stats-panel" aria-selected="false" tabindex="-1"',
-            '<div class="top-level-panel" id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0">',
+            '<div class="top-level-panel" id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0"',
             '<section class="top-level-panel stats-panel" id="stats-panel" role="tabpanel" aria-labelledby="stats-tab" tabindex="0" hidden>',
         ):
             self.assertIn(snippet, html)
@@ -1508,7 +1511,7 @@ process.stdout.write(JSON.stringify({
 
         for marker in (
             "Release intelligence",
-            "The rhythm of loop-model research",
+            "The rhythm of<br />loop-model research",
             "Publication-time intelligence",
             'id="stats-hero-latest-date"',
             'id="stats-hero-latest-title"',
@@ -1952,7 +1955,7 @@ process.stdout.write(JSON.stringify({
         """The persistent footer should remain a compact single-line information bar."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         style = html[html.index("<style>"):html.index("</style>")]
-        footer_start = style.index("footer {")
+        footer_start = style.index("\n    footer {")
         footer_end = style.index("}", footer_start)
         footer_style = style[footer_start:footer_end]
         self.assertIn("padding: 10px 20px;", footer_style)
@@ -1966,11 +1969,14 @@ process.stdout.write(JSON.stringify({
 
     def test_table_view_rows_use_button_disclosure_markup(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        renderer_start = html.index("function renderTableRow(paper, query) {")
+        renderer_end = html.index("function renderTableView(query, papers) {", renderer_start)
+        renderer = html[renderer_start:renderer_end]
         self.assertIn("const detailRowId = 'paper-table-detail-' + paperId;", html)
         self.assertIn('class="paper-table-disclosure"', html)
         self.assertIn("aria-controls=\"' + detailRowId + '\"", html)
         self.assertIn("id=\"' + detailRowId + '\"", html)
-        self.assertNotIn('tabindex="0"', html)
+        self.assertNotIn('tabindex="0"', renderer)
 
     def test_table_view_toggle_ignores_interactive_children_and_syncs_button_state(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
