@@ -26,6 +26,7 @@ Local preview: run `python3 -m http.server 8123 --bind 127.0.0.1` from the repo 
 
 ## News
 
+- **2026-07-17** — The interactive browser now includes a release-date **Release Intelligence** view with publication pulse, long-term trends, and richer latest-release dossiers covering authors, summaries, tags, and metrics. [Explore Stats]({{PUBLIC_INDEX_URL}}#stats)
 - **2026-04-24** — Awesome Loop Models is released. [Announcement](https://x.com/huskydogewoof/status/2047655947942744285)
 
 ---

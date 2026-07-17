@@ -5,8 +5,8 @@
     "blog_total": 7,
     "briefing_total": 34,
     "latest_briefing_date": "2026-07-16",
-    "generated": "2026-07-16T13:55:25.546092+00:00",
-    "generated_local_date": "2026-07-16",
+    "generated": "2026-07-16T17:13:47.338789+00:00",
+    "generated_local_date": "2026-07-17",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -59,6 +59,7 @@
       "authors": "Łukasz Kaiser, Ilya Sutskever",
       "year": 2016,
       "published_date": "2015-11-25",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -104,6 +105,7 @@
       "authors": "Alex Graves",
       "year": 2016,
       "published_date": "2016-03-29",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "foundation": true,
@@ -151,6 +153,7 @@
       "authors": "Mostafa Dehghani, Stephan Gouws, Oriol Vinyals, Jakob Uszkoreit, Łukasz Kaiser",
       "year": 2019,
       "published_date": "2018-07-10",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "foundation": true,
@@ -213,6 +216,7 @@
       "authors": "Shaojie Bai, J. Zico Kolter, Vladlen Koltun",
       "year": 2019,
       "published_date": "2019-09-03",
+      "added_date": "2026-04-24",
       "venue": "NeurIPS",
       "category": "designs",
       "foundation": true,
@@ -269,6 +273,7 @@
       "authors": "Shaojie Bai, Vladlen Koltun, J. Zico Kolter",
       "year": 2020,
       "published_date": "2020-06-15",
+      "added_date": "2026-04-24",
       "venue": "NeurIPS",
       "category": "designs",
       "mechanism_tags": [
@@ -322,6 +327,7 @@
       "authors": "Zhengyang Geng, Xin-Yu Zhang, Shaojie Bai, Yisen Wang, Zhouchen Lin",
       "year": 2021,
       "published_date": "2021-11-09",
+      "added_date": "2026-04-24",
       "venue": "NeurIPS",
       "category": "designs",
       "domain_tags": [
@@ -371,6 +377,7 @@
       "authors": "Borja Ibarz, Vitaly Kurin, George Papamakarios, Kyriacos Nikiforou, Mehdi Bennani, Róbert Csordás, Andrew Dudzik, Matko Bošnjak, Alex Vitvitskyi, Yulia Rubanova, Andreea Deac, Beatrice Bevilacqua, Yaroslav Ganin, Charles Blundell, Petar Veličković",
       "year": 2022,
       "published_date": "2022-09-22",
+      "added_date": "2026-04-24",
       "venue": "LoG",
       "category": "designs",
       "mechanism_tags": [
@@ -430,6 +437,7 @@
       "authors": "Angeliki Giannou, Shashank Rajput, Jy-yong Sohn, Kangwook Lee, Jason D. Lee, Dimitris Papailiopoulos",
       "year": 2023,
       "published_date": "2023-01-30",
+      "added_date": "2026-04-24",
       "venue": "ICML",
       "category": "analysis",
       "mechanism_tags": [
@@ -493,6 +501,7 @@
       "authors": "Amirkeivan Mohtashami, Matteo Pagliardini, Martin Jaggi",
       "year": 2025,
       "published_date": "2023-10-16",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -547,6 +556,7 @@
       "authors": "Liu Yang, Kangwook Lee, Robert Nowak, Dimitris Papailiopoulos",
       "year": 2024,
       "published_date": "2023-11-21",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -621,6 +631,7 @@
       "authors": "Yihang Gao, Chuanyang Zheng, Enze Xie, Han Shi, Tianyang Hu, Yu Li, Michael K. Ng, Zhenguo Li, Zhaoqiang Liu",
       "year": 2025,
       "published_date": "2024-02-21",
+      "added_date": "2026-04-24",
       "venue": "TMLR",
       "category": "designs",
       "mechanism_tags": [
@@ -797,6 +808,7 @@
       "authors": "Sangmin Bae, Adam Fisch, Hrayr Harutyunyan, Ziwei Ji, Seungyeon Kim, Tal Schuster",
       "year": 2025,
       "published_date": "2024-10-28",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -862,6 +874,7 @@
       "authors": "Jonas Geiping, Sean McLeish, Neel Jain, John Kirchenbauer, Siddharth Singh, Brian R. Bartoldson, Bhavya Kailkhura, Abhinav Bhatele, Tom Goldstein",
       "year": 2025,
       "published_date": "2025-02-07",
+      "added_date": "2026-04-24",
       "venue": "NeurIPS",
       "must_read": true,
       "category": "designs",
@@ -937,6 +950,7 @@
       "authors": "Mark Schöne, Babak Rahmani, Heiner Kremer, Fabian Falck, Hitesh Ballani, Jannes Gladrow",
       "year": 2025,
       "published_date": "2025-02-10",
+      "added_date": "2026-04-24",
       "venue": "ICML",
       "category": "designs",
       "mechanism_tags": [
@@ -996,6 +1010,7 @@
       "authors": "Nikunj Saunshi, Nishanth Dikkala, Zhiyuan Li, Sanjiv Kumar, Sashank J. Reddi",
       "year": 2025,
       "published_date": "2025-02-24",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "analysis",
       "mechanism_tags": [
@@ -1061,6 +1076,7 @@
       "authors": "Guan Wang, Jin Li, Yuhao Sun, Xing Chen, Changling Liu, Yue Wu, Meng Lu, Sen Song, Yasin Abbasi Yadkori",
       "year": 2025,
       "published_date": "2025-06-26",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1172,6 +1188,7 @@
       "authors": "Ziyue Li, Yang Li, Tianyi Zhou",
       "year": 2025,
       "published_date": "2025-07-10",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1233,6 +1250,7 @@
       "authors": "Sangmin Bae, Yujin Kim, Reza Bayat, Sungnyun Kim, Jiyoun Ha, Tal Schuster, Adam Fisch, Hrayr Harutyunyan, Ziwei Ji, Aaron Courville, Se-Young Yun",
       "year": 2025,
       "published_date": "2025-07-14",
+      "added_date": "2026-04-24",
       "venue": "NeurIPS",
       "category": "designs",
       "mechanism_tags": [
@@ -1307,6 +1325,7 @@
       "authors": "Francesco Pappone, Donato Crisostomi, Emanuele Rodolà",
       "year": 2025,
       "published_date": "2025-09-27",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "analysis",
       "mechanism_tags": [
@@ -1464,6 +1483,7 @@
       "year": 2025,
       "must_read": true,
       "published_date": "2025-10-29",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1559,6 +1579,7 @@
       "authors": "Sean McLeish, Ang Li, John Kirchenbauer, Dayal Singh Kalra, Brian R. Bartoldson, Bhavya Kailkhura, Avi Schwarzschild, Jonas Geiping, Tom Goldstein, Micah Goldblum",
       "year": 2025,
       "published_date": "2025-11-10",
+      "added_date": "2026-04-26",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1685,6 +1706,7 @@
       "authors": "Zitian Gao, Lynx Chen, Yihao Xiao, He Xing, Ran Tao, Haoming Luo, Joey Zhou, Bryan Dai",
       "year": 2025,
       "published_date": "2025-12-16",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1743,6 +1765,7 @@
       "authors": "Jonas Knupp, Jan Hendrik Metzen, Jeremias Bohn, Georg Groh, Kristian Kersting",
       "year": 2026,
       "published_date": "2026-01-29",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1805,6 +1828,7 @@
       "authors": "Raj Ghugare, Michał Bortkiewicz, Alicja Ziarko, Benjamin Eysenbach",
       "year": 2026,
       "published_date": "2026-02-05",
+      "added_date": "2026-04-24",
       "venue": "ICML",
       "category": "analysis",
       "mechanism_tags": [
@@ -1855,6 +1879,7 @@
       "authors": "Yalcin Tur, Jalal Naghiyev, Haoquan Fang, Wei-Chuan Tsai, Jiafei Duan, Dieter Fox, Ranjay Krishna",
       "year": 2026,
       "published_date": "2026-02-08",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "applications",
       "mechanism_tags": [
@@ -1916,6 +1941,7 @@
       "authors": "Ibraheem Muhammad Moosa, Suhas Lohit, Ye Wang, Moitreya Chatterjee, Wenpeng Yin",
       "year": 2026,
       "published_date": "2026-02-09",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "analysis",
       "mechanism_tags": [
@@ -2090,6 +2116,7 @@
       "authors": "Ahmadreza Jeddi, Marco Ciccone, Babak Taati",
       "year": 2026,
       "published_date": "2026-02-11",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -2206,6 +2233,7 @@
       "authors": "Shixiang Song, He Li, Zitong Wang, Boyi Zeng, Feichen Song, Yixuan Wang, Zhiqin John Xu, Ziwei He, Zhouhan Lin",
       "year": 2026,
       "published_date": "2026-03-02",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -2261,6 +2289,7 @@
       "authors": "Yilong Chen, Naibin Gu, Junyuan Shang, Zhenyu Zhang, Yuchen Feng, Jiawei Sheng, Tingwen Liu, Shuohuan Wang, Yu Sun, Hua Wu, Haifeng Wang",
       "year": 2026,
       "published_date": "2026-03-05",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -2330,6 +2359,7 @@
       "authors": "Mieszko Komisarczyk, Saurabh Mathur, Maurice Kraus, Sriraam Natarajan, Kristian Kersting",
       "year": 2026,
       "published_date": "2026-03-05",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -2391,6 +2421,7 @@
       "authors": "Paulius Rauba, Claudio Fanconi, Mihaela van der Schaar",
       "year": 2026,
       "published_date": "2026-03-09",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "analysis",
       "mechanism_tags": [
@@ -2511,6 +2542,7 @@
       "authors": "Guo Tang, Shixin Jiang, Heng Chang, Nuo Chen, Yuhan Li, Huiming Fan, Jia Li, Ming Liu, Bing Qin",
       "year": 2026,
       "published_date": "2026-03-20",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -2744,6 +2776,7 @@
       "authors": "Jan Kirin",
       "year": 2026,
       "published_date": "2026-04-10",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "analysis",
       "mechanism_tags": [
@@ -2789,6 +2822,7 @@
       "authors": "Chentong Wang, Jincheng Gao, Fei Zhu, Jie Chen",
       "year": 2026,
       "published_date": "2026-04-13",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "applications",
       "mechanism_tags": [
@@ -2837,6 +2871,7 @@
       "authors": "Hugh Blayney, Álvaro Arroyo, Johan Obando-Ceron, Pablo Samuel Castro, Aaron Courville, Michael M. Bronstein, Xiaowen Dong",
       "year": 2026,
       "published_date": "2026-04-13",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "analysis",
       "mechanism_tags": [
@@ -2889,6 +2924,7 @@
       "authors": "Hayden Prairie, Zachary Novack, Taylor Berg-Kirkpatrick, Daniel Y. Fu",
       "year": 2026,
       "published_date": "2026-04-14",
+      "added_date": "2026-04-24",
       "venue": "LIT Workshop @ ICLR",
       "must_read": true,
       "category": "designs",
@@ -3573,6 +3609,7 @@
       "authors": "Victor Conchello Vendrell, Arnau Padres Masdemont, Niccolò Grillo, Jordi Ros-Giralt, Arash Behboodi, Fabio Valerio Massoli",
       "year": 2026,
       "published_date": "2026-05-08",
+      "added_date": "2026-05-11",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -6457,6 +6494,7 @@
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
       "published_date": "2026-01-26",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -6497,6 +6535,7 @@
       "authors": "Xiaojing Zhang, Haifeng Wu, Gang He, Jiyang Shen, Bochen Lyu, Zhanxing Zhu",
       "year": 2026,
       "published_date": "2026-01-26",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
