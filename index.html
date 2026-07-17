@@ -4138,6 +4138,7 @@ function renderReleasePulseChart(container, series, options) {
   });
 
   container.appendChild(svg);
+  container.scrollLeft = Math.max(0, container.scrollWidth - container.clientWidth);
 }
 
 /**
