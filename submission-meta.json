@@ -19,6 +19,7 @@
     "papers/2311.12424.yaml",
     "papers/2402.13572.yaml",
     "papers/2405.16039.yaml",
+    "papers/2409.15647.yaml",
     "papers/2410.01405.yaml",
     "papers/2410.20672.yaml",
     "papers/2502.05171.yaml",
@@ -128,7 +129,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 103
+        "count": 104
       },
       {
         "label": "hierarchical-loop",
@@ -146,7 +147,7 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 108
+        "count": 109
       },
       {
         "label": "inference-algorithm",
@@ -154,7 +155,7 @@
       },
       {
         "label": "training-algorithm",
-        "count": 56
+        "count": 57
       },
       {
         "label": "objective-loss",
@@ -180,7 +181,7 @@
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 28
+        "count": 29
       },
       {
         "label": "scaling",

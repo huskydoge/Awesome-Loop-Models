@@ -1,0 +1,26 @@
+title: Looped Transformers for Length Generalization
+authors:
+- Ying Fan
+- Yilun Du
+- Kannan Ramchandran
+- Kangwook Lee
+year: 2025
+published_date: '2024-09-24'
+added_date: '2026-07-18'
+venue: ICLR
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- algorithmic-reasoning
+focus_tags:
+- architecture
+- training-algorithm
+desc: Introduces an adaptive-step looped Transformer and training procedure that
+  improve length generalization on arithmetic and algorithmic tasks composed from
+  iterative RASP-L operations.
+links:
+  arxiv: https://arxiv.org/abs/2409.15647
+  openreview: https://openreview.net/forum?id=2edigk8yoU
+  github: https://github.com/UW-Madison-Lee-Lab/looped-tf
