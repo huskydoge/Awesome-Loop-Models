@@ -373,6 +373,118 @@ class DailyBriefingBuildTests(unittest.TestCase):
 
 
 class TagFilterUiTests(unittest.TestCase):
+    @staticmethod
+    def run_stats_series_helpers(expression: str):
+        """Evaluate the pure paper-statistics helpers from index.html in Node."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        helper_start = html.index("function parseIsoDate(value) {")
+        helper_end = html.index("function createStatsSvgElement(", helper_start)
+        tick_start = html.index("function selectTimelineTickIndices(", helper_end)
+        tick_end = html.index("function renderReleasePulseChart(", tick_start)
+        helpers = html[helper_start:helper_end] + html[tick_start:tick_end]
+        script = f"""
+{helpers}
+const result = {expression};
+process.stdout.write(JSON.stringify(result));
+"""
+        output = subprocess.check_output(["node", "-e", script], text=True)
+        return json.loads(output)
+
+    @staticmethod
+    def run_top_level_tab_block(initial_hash: str, test_body: str):
+        """Evaluate the complete production tab state and interaction block in Node."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        state_start = html.index("let ACTIVE_TOP_LEVEL_TAB = 'papers';")
+        state_end = html.index("let CURRENT_VIEW = 'category';", state_start)
+        block_start = html.index("function normalizeTopLevelTab(tab) {")
+        block_end = html.index("initResearchPrompt();", block_start)
+        production_block = html[state_start:state_end] + html[block_start:block_end]
+        script = f"""
+let browserHash = {json.dumps(initial_hash)};
+let focusedTabId = null;
+const hashWrites = [];
+const renderStatsCalls = [];
+const scrollRequests = [];
+const animationFrameCallbacks = [];
+const windowListeners = {{}};
+
+function makeTab(id, selected, tabIndex) {{
+  return {{
+    id: id,
+    tabIndex: tabIndex,
+    attributes: {{ 'aria-selected': selected ? 'true' : 'false' }},
+    listeners: {{}},
+    classList: {{
+      active: selected,
+      toggle: function(name, enabled) {{
+        if (name === 'active') this.active = Boolean(enabled);
+      }}
+    }},
+    setAttribute: function(name, value) {{ this.attributes[name] = value; }},
+    addEventListener: function(name, listener) {{
+      if (!this.listeners[name]) this.listeners[name] = [];
+      this.listeners[name].push(listener);
+    }},
+    focus: function() {{ focusedTabId = this.id; }}
+  }};
+}}
+
+const tabs = [makeTab('papers-tab', true, 0), makeTab('stats-tab', false, -1)];
+const papersPanel = {{ hidden: false }};
+const statsPanel = {{ hidden: true }};
+const bodyClasses = {{}};
+const elements = {{
+  'papers-tab': tabs[0],
+  'stats-tab': tabs[1],
+  'papers-panel': papersPanel,
+  'stats-panel': statsPanel,
+  'section-designs': {{}},
+  'section-blogs': {{}}
+}};
+const document = {{
+  body: {{
+    classList: {{
+      toggle: function(name, enabled) {{ bodyClasses[name] = Boolean(enabled); }}
+    }}
+  }},
+  querySelectorAll: function(selector) {{
+    return selector === '.top-level-tab[role="tab"]' ? tabs : [];
+  }},
+  getElementById: function(id) {{ return elements[id] || null; }}
+}};
+const window = {{
+  location: {{}},
+  addEventListener: function(name, listener) {{
+    if (!windowListeners[name]) windowListeners[name] = [];
+    windowListeners[name].push(listener);
+  }},
+  requestAnimationFrame: function(callback) {{ animationFrameCallbacks.push(callback); }}
+}};
+Object.defineProperty(window.location, 'hash', {{
+  get: function() {{ return browserHash; }},
+  set: function(value) {{
+    hashWrites.push(value);
+    browserHash = value;
+  }}
+}});
+function setBrowserHash(value) {{ browserHash = value; }}
+function dispatchWindowEvent(name) {{
+  (windowListeners[name] || []).forEach(function(listener) {{ listener(); }});
+}}
+function flushAnimationFrames() {{
+  while (animationFrameCallbacks.length) animationFrameCallbacks.shift()();
+}}
+function renderStatsPanel() {{
+  renderStatsCalls.push({{ ready: CATALOG_DATA_READY, error: CATALOG_DATA_ERROR }});
+}}
+function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
+
+{production_block}
+{test_body}
+"""
+        output = subprocess.check_output(["node", "-e", script], text=True)
+        return json.loads(output)
+
     def test_date_sort_is_default_active_sort(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("let CURRENT_SORT = 'date';", html)
@@ -465,9 +577,10 @@ class TagFilterUiTests(unittest.TestCase):
         self.assertIn("function updateFilterSidebarSummary() {", html)
         self.assertIn("document.body.classList.toggle('filter-sidebar-open', isOpen);", html)
         self.assertIn(".filter-sidebar[hidden]", html)
-        self.assertIn("body.filter-sidebar-open h1", html)
+        self.assertIn("body.filter-sidebar-open .header-sub", html)
+        self.assertNotIn("body.filter-sidebar-open h1", html)
         self.assertIn("body.filter-sidebar-open .filter-sidebar-toggle-row", html)
-        self.assertIn("body.filter-sidebar-open header {\n        padding: 12px;", html)
+        self.assertIn("body.filter-sidebar-open > header {\n        padding: 12px;", html)
         self.assertIn(".filter-sidebar-controls {\n        grid-template-columns: 1fr;\n        gap: 10px;\n        overflow-x: visible;", html)
         self.assertIn(".filter-sidebar-controls .date-input {\n        flex: 1 1 128px;\n        width: auto;\n        min-width: 0;", html)
         self.assertIn(".tag-chip {\n        max-width: 100%;", html)
@@ -569,14 +682,17 @@ class TagFilterUiTests(unittest.TestCase):
         self.assertIn("transform: none;", html)
         self.assertNotIn("transform: rotate(-1.2deg)", html)
         self.assertNotIn("transform: rotate(1.2deg)", html)
-        self.assertIn(".header-inner > .search-wrap { order: 4; }", html)
-        self.assertIn(".header-inner > .daily-briefing-notice { order: 6; }", html)
-        self.assertIn(".header-inner > .daily-watch-countdown { order: 7; }", html)
+        self.assertIn(".papers-only-tools > .search-wrap { order: 2; }", html)
+        self.assertIn(".papers-only-tools > .daily-briefing-notice { order: 4; }", html)
+        self.assertIn(".papers-only-tools > .daily-watch-countdown { order: 5; }", html)
         self.assertIn("max-height: min(42vh, 320px);", html)
         self.assertIn("max-height: 220px;", html)
         self.assertIn(".daily-briefing-notice-detail::-webkit-scrollbar", html)
-        self.assertIn("width: 2px;", html)
-        self.assertNotIn("width: 4px;", html)
+        scrollbar_start = html.index(".daily-briefing-notice-detail::-webkit-scrollbar {")
+        scrollbar_end = html.index("}", scrollbar_start)
+        scrollbar_css = html[scrollbar_start:scrollbar_end]
+        self.assertIn("width: 2px;", scrollbar_css)
+        self.assertNotIn("width: 4px;", scrollbar_css)
         self.assertIn("scrollbar-color: var(--scrollbar-thumb) transparent;", html)
         self.assertIn("daily-briefing-notice-source", html)
         self.assertIn("source md ↗", html)
@@ -590,6 +706,24 @@ class TagFilterUiTests(unittest.TestCase):
         self.assertNotIn("section-daily-briefing", html)
         self.assertNotIn("daily-briefing-notes", html)
         self.assertNotIn("<summary>Notes</summary>", html)
+
+    def test_papers_side_widgets_reflow_before_they_can_overlap_masthead_tools(self):
+        """Side widgets must leave absolute positioning throughout the mid-width range."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        media_start = html.index("@media (max-width: 1344px) {")
+        media_end = html.index("/* ── Sidebar contribute link ── */", media_start)
+        media_css = html[media_start:media_end]
+
+        self.assertIn(".daily-briefing-notice,\n      .daily-watch-countdown {", media_css)
+        for declaration in (
+            "position: relative;",
+            "top: auto;",
+            "left: auto;",
+            "right: auto;",
+            "width: min(560px, 100%);",
+        ):
+            self.assertIn(declaration, media_css)
+        self.assertNotIn("@media (max-width: 1080px)", html)
 
     def test_category_section_counts_render_as_numbers_only(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -641,6 +775,1051 @@ class TagFilterUiTests(unittest.TestCase):
         self.assertNotIn('<th scope="col">Year</th>', header_snippet)
         self.assertNotIn("Category / Subcategory", header_snippet)
         self.assertNotIn("Added", header_snippet)
+
+    def test_top_level_papers_and_stats_tab_shell_exists(self):
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        for snippet in (
+            '<button type="button" class="top-level-tab active" id="papers-tab" role="tab" aria-controls="papers-panel" aria-selected="true" tabindex="0"',
+            '<button type="button" class="top-level-tab" id="stats-tab" role="tab" aria-controls="stats-panel" aria-selected="false" tabindex="-1"',
+            '<div class="top-level-panel" id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0"',
+            '<section class="top-level-panel stats-panel" id="stats-panel" role="tabpanel" aria-labelledby="stats-tab" tabindex="0" hidden>',
+        ):
+            self.assertIn(snippet, html)
+
+        for snippet in (
+            'role="tablist"',
+            "let ACTIVE_TOP_LEVEL_TAB = 'papers';",
+            "function setTopLevelTab(tab, options) {",
+            "function applyTopLevelTab() {",
+            "Category view",
+            "Table view",
+        ):
+            self.assertIn(snippet, html)
+
+    def test_top_level_tabs_are_a_global_masthead_mode_switch(self):
+        """The site mode switch belongs to the masthead and owns the page layout."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        header_start = html.index("<header>")
+        header_end = html.index("</header>", header_start)
+        header = html[header_start:header_end]
+        masthead_start = header.index('<div class="site-masthead">')
+        masthead_end = header.index('<div class="papers-only-tools"', masthead_start)
+        masthead = header[masthead_start:masthead_end]
+        tools = header[masthead_end:]
+        main_start = html.index('<main id="main">')
+        main_end = html.index("</main>", main_start)
+        main = html[main_start:main_end]
+
+        self.assertIn('<div class="site-brand">', masthead)
+        self.assertIn('<div class="top-level-tabs" role="tablist"', masthead)
+        self.assertIn('<div class="header-actions">', masthead)
+        brand_index = masthead.index('<div class="site-brand">')
+        tabs_index = masthead.index('<div class="top-level-tabs" role="tablist"')
+        actions_index = masthead.index('<div class="header-actions">')
+        self.assertLess(brand_index, tabs_index)
+        self.assertLess(tabs_index, actions_index)
+        self.assertNotIn("top-level-tabs", main)
+        for marker in (
+            'class="header-sub"',
+            'id="daily-briefing-notice"',
+            'id="daily-watch-countdown"',
+            'class="search-wrap"',
+            'id="filter-sidebar-toggle"',
+            'id="filter-sidebar-panel"',
+        ):
+            self.assertIn(marker, tools)
+        for element_id in (
+            "papers-tab",
+            "stats-tab",
+            "header-github-link",
+            "daily-briefing-notice",
+            "daily-watch-countdown",
+        ):
+            self.assertEqual(html.count(f'id="{element_id}"'), 1)
+
+        apply_start = html.index("function applyTopLevelTab() {")
+        apply_end = html.index("function setTopLevelTab(tab, options) {", apply_start)
+        apply_helper = html[apply_start:apply_end]
+        self.assertIn("document.body.classList.toggle('stats-mode', isStats);", apply_helper)
+
+        style = html[html.index("<style>"):html.index("</style>")]
+        for selector in (
+            "body.stats-mode .papers-only-tools",
+            "body.stats-mode .sidebar",
+            "body.stats-mode .layout",
+            "body.stats-mode main",
+            "body.stats-mode .stats-panel",
+        ):
+            self.assertIn(selector, style)
+        mobile_start = style.index("@media (max-width: 768px)")
+        mobile_css = style[mobile_start:]
+        self.assertIn(".site-masthead", mobile_css)
+        self.assertIn(".top-level-tabs", mobile_css)
+        self.assertIn("flex-basis: 100%;", mobile_css)
+        self.assertIn(".site-brand {\n        order: 1;", mobile_css)
+        self.assertIn(".site-masthead .top-level-tabs {\n        order: 2;", mobile_css)
+        self.assertIn(".site-masthead .header-actions {\n        order: 3;", mobile_css)
+
+        compact_start = style.rindex("@media (max-width: 480px)")
+        compact_css = style[compact_start:]
+        self.assertIn(".site-masthead .header-actions {\n        order: 3;", compact_css)
+
+    def test_top_level_tabs_restore_hash_and_support_keyboard_navigation(self):
+        """Top-level tabs must preserve category hashes and expose full tab keyboard UX."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+
+        hash_start = html.index("function getTopLevelTabFromHash(hash) {")
+        hash_end = html.index("function applyTopLevelTab() {", hash_start)
+        hash_helper = html[hash_start:hash_end]
+        self.assertIn("return hash === '#stats' ? 'stats' : 'papers';", hash_helper)
+
+        keyboard_start = html.index("function handleTopLevelTabKeydown(event) {")
+        init_start = html.index("function initTopLevelTabInteractions() {", keyboard_start)
+        init_end = html.index("function restoreTopLevelTabAfterCatalogLoad() {", init_start)
+        init_helper = html[init_start:init_end]
+        self.assertIn("addEventListener('click'", init_helper)
+        self.assertIn("addEventListener('keydown', handleTopLevelTabKeydown)", init_helper)
+        self.assertIn("window.addEventListener('hashchange'", init_helper)
+        self.assertIn(
+            "setTopLevelTab(getTopLevelTabFromHash(window.location.hash), { updateHash: false })",
+            init_helper,
+        )
+        self.assertIn("restoreCategoryHashPosition(window.location.hash)", init_helper)
+
+        restore_start = html.index("function restoreTopLevelTabAfterCatalogLoad() {")
+        restore_end = html.index("initTopLevelTabInteractions();", restore_start)
+        restore_helper = html[restore_start:restore_end]
+        self.assertIn("window.location.hash || !HAS_USER_SELECTED_TOP_LEVEL_TAB", restore_helper)
+        self.assertIn("getTopLevelTabFromHash(window.location.hash)", restore_helper)
+        self.assertIn("ACTIVE_TOP_LEVEL_TAB", restore_helper)
+        self.assertIn("setTopLevelTab(requestedTab, { updateHash: false })", restore_helper)
+
+        build_start = html.index("function buildDOM(data) {")
+        build_end = html.index("// ── Search", build_start)
+        build_helper = html[build_start:build_end]
+        data_ready_index = build_helper.index("CATALOG_DATA_READY = true;")
+        sections_created_index = build_helper.index("container.appendChild(section)")
+        restore_index = build_helper.index("restoreTopLevelTabAfterCatalogLoad();")
+        category_restore_index = build_helper.index("restoreCategoryHashPosition(window.location.hash);")
+        self.assertLess(data_ready_index, restore_index)
+        self.assertLess(sections_created_index, category_restore_index)
+        self.assertLess(restore_index, category_restore_index)
+
+        bootstrap_start = html.index("initTopLevelTabInteractions();", restore_end)
+        bootstrap_end = html.index("const TAG_GROUP_LABELS = {", bootstrap_start)
+        bootstrap_helper = html[bootstrap_start:bootstrap_end]
+        self.assertIn(
+            "initTopLevelTabInteractions();\nsetTopLevelTab(getTopLevelTabFromHash(window.location.hash), { updateHash: false });",
+            bootstrap_helper,
+        )
+
+        setter_start = html.index("function setTopLevelTab(tab, options) {")
+        setter_end = html.index("function handleTopLevelTabKeydown(event) {", setter_start)
+        setter_helper = html[setter_start:setter_end]
+        self.assertIn("window.location.hash !== nextHash", setter_helper)
+        self.assertIn("window.location.hash = nextHash", setter_helper)
+
+    def test_top_level_hash_mapping_behavior(self):
+        """Only the dedicated Stats hash may select Stats; all other hashes select Papers."""
+        result = self.run_top_level_tab_block("", """
+const hashes = ['#stats', '#papers', '', '#section-designs'];
+const result = hashes.map(function(hash) {
+  return { hash: hash, tab: getTopLevelTabFromHash(hash) };
+});
+process.stdout.write(JSON.stringify(result));
+""")
+        self.assertEqual(
+            result,
+            [
+                {"hash": "#stats", "tab": "stats"},
+                {"hash": "#papers", "tab": "papers"},
+                {"hash": "", "tab": "papers"},
+                {"hash": "#section-designs", "tab": "papers"},
+            ],
+        )
+
+    def test_top_level_keyboard_navigation_behavior(self):
+        """Arrow/Home/End activate and focus tabs while Enter/Space retain native click."""
+        result = self.run_top_level_tab_block("", """
+function runKey(tabIndex, key) {
+  setBrowserHash(tabIndex === 0 ? '#papers' : '#stats');
+  dispatchWindowEvent('hashchange');
+  focusedTabId = null;
+  hashWrites.length = 0;
+  let prevented = false;
+  tabs[tabIndex].listeners.keydown[0]({
+    key: key,
+    currentTarget: tabs[tabIndex],
+    preventDefault: function() { prevented = true; }
+  });
+  return {
+    key: key,
+    from: tabs[tabIndex].id,
+    prevented: prevented,
+    focused: focusedTabId,
+    active: ACTIVE_TOP_LEVEL_TAB,
+    hash: window.location.hash,
+    hashWrites: hashWrites.slice()
+  };
+}
+const result = [
+  runKey(0, 'ArrowRight'),
+  runKey(1, 'ArrowRight'),
+  runKey(0, 'ArrowLeft'),
+  runKey(1, 'ArrowLeft'),
+  runKey(1, 'Home'),
+  runKey(0, 'End'),
+  runKey(0, 'Enter'),
+  runKey(0, ' ')
+];
+process.stdout.write(JSON.stringify(result));
+""")
+        expected = []
+        for key, source, target in (
+            ("ArrowRight", "papers-tab", "stats"),
+            ("ArrowRight", "stats-tab", "papers"),
+            ("ArrowLeft", "papers-tab", "stats"),
+            ("ArrowLeft", "stats-tab", "papers"),
+            ("Home", "stats-tab", "papers"),
+            ("End", "papers-tab", "stats"),
+        ):
+            expected.append(
+                {
+                    "key": key,
+                    "from": source,
+                    "prevented": True,
+                    "focused": f"{target}-tab",
+                    "active": target,
+                    "hash": f"#{target}",
+                    "hashWrites": [f"#{target}"],
+                }
+            )
+        expected.extend(
+            {
+                "key": key,
+                "from": "papers-tab",
+                "prevented": False,
+                "focused": None,
+                "active": "papers",
+                "hash": "#papers",
+                "hashWrites": [],
+            }
+            for key in ("Enter", " ")
+        )
+        self.assertEqual(
+            result,
+            expected,
+        )
+
+    def test_initial_stats_hash_activates_loading_panel_before_catalog_data(self):
+        """A direct Stats URL must reveal its panel and enter the loading path immediately."""
+        result = self.run_top_level_tab_block("#stats", """
+const result = {
+  active: ACTIVE_TOP_LEVEL_TAB,
+  statsMode: bodyClasses['stats-mode'],
+  papersHidden: papersPanel.hidden,
+  statsHidden: statsPanel.hidden,
+  papersSelected: tabs[0].attributes['aria-selected'],
+  statsSelected: tabs[1].attributes['aria-selected'],
+  renderCalls: renderStatsCalls,
+  hashWrites: hashWrites,
+  listeners: {
+    papersClick: (tabs[0].listeners.click || []).length,
+    papersKeydown: (tabs[0].listeners.keydown || []).length,
+    statsClick: (tabs[1].listeners.click || []).length,
+    statsKeydown: (tabs[1].listeners.keydown || []).length,
+    hashchange: (windowListeners.hashchange || []).length
+  }
+};
+process.stdout.write(JSON.stringify(result));
+""")
+        self.assertEqual(result["active"], "stats")
+        self.assertTrue(result["statsMode"])
+        self.assertTrue(result["papersHidden"])
+        self.assertFalse(result["statsHidden"])
+        self.assertEqual(result["papersSelected"], "false")
+        self.assertEqual(result["statsSelected"], "true")
+        self.assertEqual(result["renderCalls"], [{"ready": False, "error": False}])
+        self.assertEqual(result["hashWrites"], [])
+        self.assertEqual(
+            result["listeners"],
+            {
+                "papersClick": 1,
+                "papersKeydown": 1,
+                "statsClick": 1,
+                "statsKeydown": 1,
+                "hashchange": 1,
+            },
+        )
+
+    def test_top_level_click_history_reconcile_and_category_restore_behavior(self):
+        """Clicks write once; history restores state and section position without rewriting."""
+        result = self.run_top_level_tab_block("", """
+tabs[1].listeners.click[0]();
+const firstClick = { active: ACTIVE_TOP_LEVEL_TAB, writes: hashWrites.slice() };
+tabs[1].listeners.click[0]();
+const repeatedClick = { active: ACTIVE_TOP_LEVEL_TAB, writes: hashWrites.slice() };
+
+hashWrites.length = 0;
+setBrowserHash('#stats');
+dispatchWindowEvent('hashchange');
+const statsHistory = { active: ACTIVE_TOP_LEVEL_TAB, writes: hashWrites.slice() };
+
+CATALOG_DATA_READY = true;
+setBrowserHash('#section-designs');
+dispatchWindowEvent('hashchange');
+const categoryHistoryBeforeFrame = {
+  active: ACTIVE_TOP_LEVEL_TAB,
+  hash: window.location.hash,
+  writes: hashWrites.slice(),
+  queuedFrames: animationFrameCallbacks.length,
+  scrolls: scrollRequests.slice()
+};
+flushAnimationFrames();
+const categoryHistoryAfterFrame = { scrolls: scrollRequests.slice() };
+
+scrollRequests.length = 0;
+setBrowserHash('#section-designs');
+dispatchWindowEvent('hashchange');
+setBrowserHash('#stats');
+dispatchWindowEvent('hashchange');
+flushAnimationFrames();
+const staleCategoryFrame = {
+  active: ACTIVE_TOP_LEVEL_TAB,
+  hash: window.location.hash,
+  scrolls: scrollRequests.slice()
+};
+
+const result = {
+  firstClick: firstClick,
+  repeatedClick: repeatedClick,
+  statsHistory: statsHistory,
+  categoryHistoryBeforeFrame: categoryHistoryBeforeFrame,
+  categoryHistoryAfterFrame: categoryHistoryAfterFrame,
+  staleCategoryFrame: staleCategoryFrame
+};
+process.stdout.write(JSON.stringify(result));
+""")
+        self.assertEqual(result["firstClick"], {"active": "stats", "writes": ["#stats"]})
+        self.assertEqual(result["repeatedClick"], {"active": "stats", "writes": ["#stats"]})
+        self.assertEqual(result["statsHistory"], {"active": "stats", "writes": []})
+        self.assertEqual(
+            result["categoryHistoryBeforeFrame"],
+            {
+                "active": "papers",
+                "hash": "#section-designs",
+                "writes": [],
+                "queuedFrames": 1,
+                "scrolls": [],
+            },
+        )
+        self.assertEqual(result["categoryHistoryAfterFrame"], {"scrolls": ["section-designs"]})
+        self.assertEqual(
+            result["staleCategoryFrame"],
+            {"active": "stats", "hash": "#stats", "scrolls": []},
+        )
+
+    def test_catalog_load_reconcile_preserves_empty_hash_user_choice_but_honors_hash(self):
+        """Load completion preserves an unrepresented user choice unless a hash drives state."""
+        result = self.run_top_level_tab_block("", """
+tabs[1].listeners.click[0]();
+setBrowserHash('');
+CATALOG_DATA_READY = true;
+restoreTopLevelTabAfterCatalogLoad();
+const emptyHashAfterClick = ACTIVE_TOP_LEVEL_TAB;
+
+setBrowserHash('#papers');
+restoreTopLevelTabAfterCatalogLoad();
+const explicitPapers = ACTIVE_TOP_LEVEL_TAB;
+
+setBrowserHash('#stats');
+restoreTopLevelTabAfterCatalogLoad();
+const explicitStats = ACTIVE_TOP_LEVEL_TAB;
+
+setBrowserHash('#section-blogs');
+restoreTopLevelTabAfterCatalogLoad();
+const explicitCategory = ACTIVE_TOP_LEVEL_TAB;
+
+process.stdout.write(JSON.stringify({
+  emptyHashAfterClick: emptyHashAfterClick,
+  explicitPapers: explicitPapers,
+  explicitStats: explicitStats,
+  explicitCategory: explicitCategory
+}));
+""")
+        self.assertEqual(
+            result,
+            {
+                "emptyHashAfterClick": "stats",
+                "explicitPapers": "papers",
+                "explicitStats": "stats",
+                "explicitCategory": "papers",
+            },
+        )
+
+    def test_paper_section_navigation_leaves_stats_and_restores_repeated_hash(self):
+        """Sidebar navigation must reveal Papers and restore even when the hash is unchanged."""
+        result = self.run_top_level_tab_block("#stats", """
+CATALOG_DATA_READY = true;
+navigateToPaperSection('section-designs');
+const firstNavigation = {
+  active: ACTIVE_TOP_LEVEL_TAB,
+  hash: window.location.hash,
+  writes: hashWrites.slice(),
+  papersHidden: papersPanel.hidden,
+  statsHidden: statsPanel.hidden,
+  queuedFrames: animationFrameCallbacks.length
+};
+dispatchWindowEvent('hashchange');
+flushAnimationFrames();
+const firstScrolls = scrollRequests.slice();
+
+hashWrites.length = 0;
+scrollRequests.length = 0;
+navigateToPaperSection('section-designs');
+const repeatedNavigation = {
+  active: ACTIVE_TOP_LEVEL_TAB,
+  hash: window.location.hash,
+  writes: hashWrites.slice(),
+  queuedFrames: animationFrameCallbacks.length
+};
+flushAnimationFrames();
+
+process.stdout.write(JSON.stringify({
+  firstNavigation: firstNavigation,
+  firstScrolls: firstScrolls,
+  repeatedNavigation: repeatedNavigation,
+  repeatedScrolls: scrollRequests
+}));
+""")
+        self.assertEqual(
+            result["firstNavigation"],
+            {
+                "active": "papers",
+                "hash": "#section-designs",
+                "writes": ["#section-designs"],
+                "papersHidden": False,
+                "statsHidden": True,
+                "queuedFrames": 0,
+            },
+        )
+        self.assertEqual(result["firstScrolls"], ["section-designs"])
+        self.assertEqual(
+            result["repeatedNavigation"],
+            {
+                "active": "papers",
+                "hash": "#section-designs",
+                "writes": [],
+                "queuedFrames": 1,
+            },
+        )
+        self.assertEqual(result["repeatedScrolls"], ["section-designs"])
+
+    def test_stats_series_helpers_use_strict_utc_date_parsing(self):
+        """Stats helpers must reject normalized-looking but impossible dates."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        parse_start = html.index("function parseIsoDate(value) {")
+        parse_end = html.index("function formatIsoDateUtc(date) {", parse_start)
+        parse_helper = html[parse_start:parse_end]
+        format_start = parse_end
+        format_end = html.index("function buildDailyPublicationSeries(papers) {", format_start)
+        format_helper = html[format_start:format_end]
+
+        self.assertIn("/^\\d{4}-\\d{2}-\\d{2}$/", parse_helper)
+        self.assertIn("setUTCFullYear", parse_helper)
+        self.assertIn("setUTCHours", parse_helper)
+        self.assertIn("getUTCFullYear()", parse_helper)
+        self.assertIn("getUTCMonth()", parse_helper)
+        self.assertIn("getUTCDate()", parse_helper)
+        self.assertNotIn("new Date(value)", parse_helper)
+        self.assertIn("getUTCFullYear()", format_helper)
+        self.assertIn("getUTCMonth()", format_helper)
+        self.assertIn("getUTCDate()", format_helper)
+
+    def test_daily_stats_series_uses_only_publication_dates_and_fills_utc_days(self):
+        """Release cadence must use published dates without intake-date fallback."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        daily_start = html.index("function buildDailyPublicationSeries(papers) {")
+        daily_end = html.index("function buildMonthlyPublicationSeries(papers) {", daily_start)
+        daily_helper = html[daily_start:daily_end]
+
+        self.assertIn("parseIsoDate(paper && paper.published_date)", daily_helper)
+        self.assertNotIn("added_date", daily_helper)
+        self.assertIn("setUTCDate", daily_helper)
+        for field in ("key:", "label:", "count:", "cumulative:"):
+            self.assertIn(field, daily_helper)
+
+    def test_monthly_stats_series_uses_publication_dates_and_fills_utc_months(self):
+        """Publication history must use monthly published-date buckets only."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        monthly_start = html.index("function buildMonthlyPublicationSeries(papers) {")
+        monthly_end = html.index("function addTrailingAverage(series, windowSize) {", monthly_start)
+        monthly_helper = html[monthly_start:monthly_end]
+
+        self.assertIn("paper.published_date", monthly_helper)
+        self.assertNotIn("added_date", monthly_helper)
+        self.assertIn("setUTCMonth", monthly_helper)
+        for field in ("key:", "label:", "count:", "cumulative:"):
+            self.assertIn(field, monthly_helper)
+
+    def test_release_helpers_exclude_intake_dates_and_define_range_contracts(self):
+        """All pure Stats derivation must be release-only and range-aware."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        helpers_start = html.index("function buildDailyPublicationSeries(papers) {")
+        helpers_end = html.index("function createStatsSvgElement(", helpers_start)
+        helpers = html[helpers_start:helpers_end]
+
+        for function_name in (
+            "buildDailyPublicationSeries",
+            "buildMonthlyPublicationSeries",
+            "addTrailingAverage",
+            "slicePublicationRange",
+            "buildReleaseStatsSummary",
+            "buildAnnualReleaseSeries",
+            "getLatestReleasedPapers",
+        ):
+            self.assertIn(f"function {function_name}(", helpers)
+        self.assertNotIn("added_date", helpers)
+        self.assertIn("range === '90d'", helpers)
+        self.assertIn("range === 'all'", helpers)
+        self.assertIn("windowSize = 14", helpers)
+        self.assertIn("windowSize = 30", helpers)
+        self.assertIn("windowSize = 6", helpers)
+
+    def test_stats_helpers_execute_date_series_and_summary_boundaries(self):
+        """Execute strict dates, gap filling, release KPIs, and stable ordering."""
+        result = self.run_stats_series_helpers("""(function() {
+  const daily = buildDailyPublicationSeries([
+    { published_date: '2026-07-01' },
+    { published_date: '2026-07-03' },
+    { published_date: '2026-07-03' },
+    { added_date: '2026-07-02' },
+    { published_date: '2026-02-29' }
+  ]);
+  const monthly = buildMonthlyPublicationSeries([
+    { published_date: '2025-11-15' },
+    { published_date: '2026-01-01' },
+    { added_date: '2025-12-01' }
+  ]);
+  const lowYearMonthly = buildMonthlyPublicationSeries([
+    { published_date: '0099-12-15' },
+    { published_date: '0100-01-01' }
+  ]);
+  const summaryPapers = [
+    { id: 'jan-b', title: 'Beta', published_date: '2026-01-02' },
+    { id: 'jan-a', title: 'Alpha', published_date: '2026-01-01' },
+    { id: 'jan-c', title: 'Gamma', published_date: '2026-01-03' },
+    { id: 'mar-b', title: 'Beta', published_date: '2026-03-02' },
+    { id: 'mar-a', title: 'Alpha', published_date: '2026-03-01' },
+    { id: 'june', title: 'Older', published_date: '2026-06-03' },
+    { id: 'latest-b', title: 'Beta', published_date: '2026-07-03' },
+    { id: 'latest-a2', title: 'Alpha', published_date: '2026-07-03' },
+    { id: 'latest-a1', title: 'Alpha', published_date: '2026-07-03' },
+    { id: 'intake-only', title: 'Ignored', added_date: '2026-07-04' },
+    { id: 'invalid', title: 'Invalid', published_date: '2026-02-29' }
+  ];
+  const summaryDaily = buildDailyPublicationSeries(summaryPapers);
+  const summaryMonthly = buildMonthlyPublicationSeries(summaryPapers);
+  const rangeDaily = Array.from({ length: 400 }, function(_, index) {
+    var count = index === 35 ? 8 : (index === 36 ? 2 : (index === 310 ? 5 : (index === 311 ? 1 : 0)));
+    return { key: 'd' + index, label: 'd' + index, count: count, cumulative: index };
+  });
+  const rangeMonthly = Array.from({ length: 12 }, function(_, index) {
+    return { key: 'm' + index, label: 'm' + index, count: index === 0 ? 6 : 0, cumulative: index };
+  });
+  const ninetyDays = slicePublicationRange(rangeDaily, rangeMonthly, '90d');
+  const oneYear = slicePublicationRange(rangeDaily, rangeMonthly, '1y');
+  const allTime = slicePublicationRange(rangeDaily, rangeMonthly, 'all');
+  return {
+    dates: {
+      invalidType: parseIsoDate(null),
+      invalidFormat: parseIsoDate('2026/02/28'),
+      impossible: parseIsoDate('2026-02-29'),
+      yearZero: parseIsoDate('0000-01-01'),
+      yearNinetyNine: formatIsoDateUtc(parseIsoDate('0099-12-31')),
+      leapDay: formatIsoDateUtc(parseIsoDate('2024-02-29'))
+    },
+    daily: daily,
+    monthly: monthly,
+    lowYearMonthly: lowYearMonthly,
+    averages: addTrailingAverage([
+      { key: 'a', count: 2 },
+      { key: 'b', count: 4 },
+      { key: 'c', count: 0 }
+    ], 14).map(function(bucket) { return bucket.average; }),
+    normalizedAverages: addTrailingAverage([
+      { key: 'a', count: Infinity },
+      { key: 'b', count: -4 },
+      { key: 'c', count: '3' },
+      { key: 'd', count: NaN }
+    ], 2).map(function(bucket) { return bucket.average; }),
+    ranges: {
+      ninetyDays: {
+        range: ninetyDays.range,
+        granularity: ninetyDays.granularity,
+        windowSize: ninetyDays.windowSize,
+        length: ninetyDays.series.length,
+        firstKey: ninetyDays.series[0].key,
+        lastKey: ninetyDays.series[ninetyDays.series.length - 1].key,
+        firstAverages: ninetyDays.series.slice(0, 2).map(function(bucket) { return bucket.average; })
+      },
+      oneYear: {
+        range: oneYear.range,
+        granularity: oneYear.granularity,
+        windowSize: oneYear.windowSize,
+        length: oneYear.series.length,
+        firstKey: oneYear.series[0].key,
+        lastKey: oneYear.series[oneYear.series.length - 1].key,
+        firstAverages: oneYear.series.slice(0, 2).map(function(bucket) { return bucket.average; })
+      },
+      allTime: {
+        range: allTime.range,
+        granularity: allTime.granularity,
+        windowSize: allTime.windowSize,
+        length: allTime.series.length,
+        firstKey: allTime.series[0].key,
+        lastKey: allTime.series[allTime.series.length - 1].key,
+        firstAverages: allTime.series.slice(0, 2).map(function(bucket) { return bucket.average; })
+      }
+    },
+    emptyRange: slicePublicationRange(null, null, 'unexpected'),
+    emptySummary: buildReleaseStatsSummary(null, null, null),
+    summary: buildReleaseStatsSummary(summaryPapers, summaryDaily, summaryMonthly),
+    peakIsCopy: buildReleaseStatsSummary(summaryPapers, summaryDaily, summaryMonthly).peakMonth !== summaryMonthly[0],
+    annual: buildAnnualReleaseSeries([
+      { published_date: '2026-01-01' },
+      { published_date: '2024-12-31' },
+      { published_date: '2025-06-15' },
+      { published_date: '2024-01-01' },
+      { published_date: 'invalid' },
+      { added_date: '2023-01-01' }
+    ]),
+    latest: getLatestReleasedPapers(summaryPapers, 5).map(function(paper) { return paper.id; }),
+    latestIsCopy: getLatestReleasedPapers(summaryPapers, 1)[0] !== summaryPapers[8],
+    noLatest: getLatestReleasedPapers(null, -1)
+  };
+})()""")
+
+        self.assertEqual(
+            result["dates"],
+            {
+                "invalidType": None,
+                "invalidFormat": None,
+                "impossible": None,
+                "yearZero": None,
+                "yearNinetyNine": "0099-12-31",
+                "leapDay": "2024-02-29",
+            },
+        )
+        self.assertEqual(
+            result["daily"],
+            [
+                {"key": "2026-07-01", "label": "2026-07-01", "count": 1, "cumulative": 1},
+                {"key": "2026-07-02", "label": "2026-07-02", "count": 0, "cumulative": 1},
+                {"key": "2026-07-03", "label": "2026-07-03", "count": 2, "cumulative": 3},
+            ],
+        )
+        self.assertEqual(
+            result["monthly"],
+            [
+                {"key": "2025-11", "label": "2025-11", "count": 1, "cumulative": 1},
+                {"key": "2025-12", "label": "2025-12", "count": 0, "cumulative": 1},
+                {"key": "2026-01", "label": "2026-01", "count": 1, "cumulative": 2},
+            ],
+        )
+        self.assertEqual(
+            result["lowYearMonthly"],
+            [
+                {"key": "0099-12", "label": "0099-12", "count": 1, "cumulative": 1},
+                {"key": "0100-01", "label": "0100-01", "count": 1, "cumulative": 2},
+            ],
+        )
+        self.assertEqual(
+            result["emptySummary"],
+            {
+                "totalPapers": 0,
+                "releasesLast30Days": 0,
+                "latestReleaseDate": None,
+                "peakMonth": None,
+            },
+        )
+        self.assertEqual(result["averages"], [2, 3, 2])
+        self.assertEqual(result["normalizedAverages"], [0, 0, 1.5, 1.5])
+        self.assertEqual(
+            result["ranges"],
+            {
+                "ninetyDays": {
+                    "range": "90d",
+                    "granularity": "day",
+                    "windowSize": 14,
+                    "length": 90,
+                    "firstKey": "d310",
+                    "lastKey": "d399",
+                    "firstAverages": [5, 3],
+                },
+                "oneYear": {
+                    "range": "1y",
+                    "granularity": "day",
+                    "windowSize": 30,
+                    "length": 365,
+                    "firstKey": "d35",
+                    "lastKey": "d399",
+                    "firstAverages": [8, 5],
+                },
+                "allTime": {
+                    "range": "all",
+                    "granularity": "month",
+                    "windowSize": 6,
+                    "length": 12,
+                    "firstKey": "m0",
+                    "lastKey": "m11",
+                    "firstAverages": [6, 3],
+                },
+            },
+        )
+        self.assertEqual(
+            result["emptyRange"],
+            {"range": "1y", "granularity": "day", "windowSize": 30, "series": []},
+        )
+        self.assertEqual(result["summary"]["totalPapers"], 11)
+        self.assertEqual(result["summary"]["releasesLast30Days"], 3)
+        self.assertEqual(result["summary"]["latestReleaseDate"], "2026-07-03")
+        self.assertEqual(
+            result["summary"]["peakMonth"],
+            {"key": "2026-01", "label": "2026-01", "count": 3, "cumulative": 3},
+        )
+        self.assertTrue(result["peakIsCopy"])
+        self.assertEqual(
+            result["annual"],
+            [
+                {"key": "2024", "label": "2024", "count": 2},
+                {"key": "2025", "label": "2025", "count": 1},
+                {"key": "2026", "label": "2026", "count": 1},
+            ],
+        )
+        self.assertEqual(
+            result["latest"],
+            ["latest-a1", "latest-a2", "latest-b", "june", "mar-b"],
+        )
+        self.assertTrue(result["latestIsCopy"])
+        self.assertEqual(result["noLatest"], [])
+
+    def test_stats_panel_has_kpis_charts_and_accessible_fallback_summaries(self):
+        """Stats markup must expose a complete release-intelligence experience."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        stats_start = html.index('<section class="top-level-panel stats-panel"')
+        stats_end = html.index("</section>", stats_start)
+        stats_markup = html[stats_start:stats_end]
+
+        for marker in (
+            "Release intelligence",
+            "The rhythm of<br />loop-model research",
+            "Publication-time intelligence",
+            'id="stats-hero-latest-date"',
+            'id="stats-hero-latest-title"',
+            'id="stats-hero-latest-meta"',
+            'class="stats-metric-rail"',
+            'id="stats-total-papers"',
+            'id="stats-latest-thirty"',
+            'id="stats-latest-release"',
+            'id="stats-peak-month"',
+            'id="release-pulse-chart"',
+            'id="release-pulse-summary"',
+            'id="annual-release-volume"',
+            'id="latest-releases-list"',
+            'id="long-arc-chart"',
+            'id="long-arc-summary"',
+            'class="stats-range-control"',
+            'data-stats-range="90d"',
+            'data-stats-range="1y"',
+            'data-stats-range="all"',
+            'aria-pressed="true">1Y</button>',
+            "Release Pulse",
+            "Annual volume",
+            "Latest releases",
+            "Long arc",
+        ):
+            self.assertIn(marker, stats_markup)
+        self.assertIn('aria-live="polite"', stats_markup)
+        self.assertNotIn("stats-panel-placeholder", stats_markup)
+        for obsolete in (
+            "Catalog Growth",
+            "Collection telemetry",
+            "added date",
+            "intake",
+            "stats-latest-seven",
+            "stats-date-coverage",
+            "stats-peak-day",
+            "catalog-growth-chart",
+            "publication-trend-chart",
+        ):
+            self.assertNotIn(obsolete, stats_markup)
+
+    def test_stats_range_control_rerenders_only_the_selected_release_window(self):
+        """Range changes must stay local to Stats and never pass full daily history."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        state_start = html.index("let ACTIVE_TOP_LEVEL_TAB = 'papers';")
+        state_end = html.index("let CURRENT_VIEW = 'category';", state_start)
+        state_source = html[state_start:state_end]
+        bind_start = html.index("function initStatsRangeInteractions() {")
+        bind_end = html.index("function renderStatsPanel() {", bind_start)
+        bind_source = html[bind_start:bind_end]
+        pulse_start = html.index("function renderReleasePulse(")
+        pulse_end = html.index("function initStatsRangeInteractions() {", pulse_start)
+        pulse_source = html[pulse_start:pulse_end]
+
+        self.assertIn("let CURRENT_STATS_RANGE = '1y';", state_source)
+        self.assertIn("let STATS_RANGE_LISTENERS_BOUND = false;", state_source)
+        self.assertIn("if (STATS_RANGE_LISTENERS_BOUND) return;", bind_source)
+        self.assertIn("STATS_RANGE_LISTENERS_BOUND = true;", bind_source)
+        self.assertIn("CURRENT_STATS_RANGE = button.dataset.statsRange;", bind_source)
+        self.assertIn("setAttribute('aria-pressed'", bind_source)
+        self.assertIn("renderReleasePulse();", bind_source)
+        self.assertNotIn("location.hash", bind_source)
+        self.assertIn(
+            "slicePublicationRange(STATS_DAILY_RELEASES, STATS_MONTHLY_RELEASES, CURRENT_STATS_RANGE)",
+            pulse_source,
+        )
+        self.assertIn("rangeData.series", pulse_source)
+        self.assertNotIn("renderReleasePulseChart(container, STATS_DAILY_RELEASES", pulse_source)
+
+    def test_stats_render_slice_is_release_only(self):
+        """The entire Stats render path must remain independent of catalog intake dates."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        stats_start = html.index("function buildDailyPublicationSeries(papers) {")
+        stats_end = html.index("function escapeHtml(str) {", stats_start)
+        stats_source = html[stats_start:stats_end]
+
+        self.assertNotIn("added_date", stats_source)
+        self.assertNotIn("Catalog Growth", stats_source)
+        self.assertNotIn("intake", stats_source.lower())
+
+    def test_stats_panel_lazy_render_waits_for_catalog_data(self):
+        """Activating Stats before fetch completion must not lock an empty render."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        state_start = html.index("let ACTIVE_TOP_LEVEL_TAB = 'papers';")
+        setter_start = html.index("function setTopLevelTab(tab, options) {", state_start)
+        setter_end = html.index("function handleTopLevelTabKeydown(event) {", setter_start)
+        setter_source = html[setter_start:setter_end]
+        restore_start = html.index("function restoreTopLevelTabAfterCatalogLoad() {", setter_end)
+        restore_end = html.index("initTopLevelTabInteractions();", restore_start)
+        restore_source = html[restore_start:restore_end]
+        build_start = html.index("function buildDOM(data) {")
+        build_end = html.index("// ── Bootstrap: fetch papers.json", build_start)
+        build_source = html[build_start:build_end]
+
+        state_source = html[state_start:setter_start]
+        self.assertIn("let HAS_RENDERED_STATS = false;", state_source)
+        self.assertIn("let CATALOG_DATA_READY = false;", state_source)
+        self.assertIn(
+            "if (ACTIVE_TOP_LEVEL_TAB === 'stats' && !HAS_RENDERED_STATS) {\n"
+            "    renderStatsPanel();\n"
+            "  }",
+            setter_source,
+        )
+        self.assertNotIn("typeof renderStatsPanel", setter_source)
+        self.assertIn("setTopLevelTab(requestedTab, { updateHash: false });", restore_source)
+        ready_index = build_source.index("CATALOG_DATA_READY = true;")
+        reconcile_index = build_source.index("restoreTopLevelTabAfterCatalogLoad();")
+        self.assertLess(ready_index, reconcile_index)
+        self.assertNotIn("renderStatsPanel();", build_source)
+
+    def test_stats_panel_reports_catalog_fetch_failure(self):
+        """A rejected catalog request must replace the Stats loading message."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        state_start = html.index("let ALL_PAPERS = [];")
+        state_end = html.index("const TAG_GROUP_LABELS", state_start)
+        state_source = html[state_start:state_end]
+        stats_start = html.index("function renderStatsPanel() {")
+        stats_end = html.index("function escapeHtml(str) {", stats_start)
+        stats_source = html[stats_start:stats_end]
+        catch_start = html.index('.catch(function(err) {')
+        catch_end = html.index("\n  });", catch_start)
+        catch_source = html[catch_start:catch_end]
+
+        self.assertIn("let CATALOG_DATA_ERROR = false;", state_source)
+        self.assertIn("CATALOG_DATA_ERROR", stats_source)
+        self.assertIn("Catalog data could not be loaded", stats_source)
+        error_index = catch_source.index("CATALOG_DATA_ERROR = true;")
+        reconcile_index = catch_source.index("restoreTopLevelTabAfterCatalogLoad();")
+        self.assertLess(error_index, reconcile_index)
+        self.assertNotIn("renderStatsPanel();", catch_source)
+        self.assertIn("Failed to load resource data", catch_source)
+        self.assertIn("if (!r.ok)", html)
+
+    def test_timeline_tick_indices_keep_endpoints_without_collisions(self):
+        """Tick selection must preserve first/last labels and enforce pixel spacing."""
+        result = self.run_stats_series_helpers("""(function() {
+  const plotWidth = 642;
+  const minGap = 72;
+  const indices = selectTimelineTickIndices(44, plotWidth, minGap);
+  const positions = indices.map(function(index) { return (index + 0.5) * plotWidth / 44; });
+  const gaps = positions.slice(1).map(function(position, index) {
+    return position - positions[index];
+  });
+  return {
+    indices: indices,
+    first: indices[0],
+    last: indices[indices.length - 1],
+    minGap: Math.min.apply(null, gaps),
+    singleton: selectTimelineTickIndices(1, 120, minGap),
+    empty: selectTimelineTickIndices(0, 120, minGap)
+  };
+})()""")
+
+        self.assertEqual(result["first"], 0)
+        self.assertEqual(result["last"], 43)
+        self.assertNotIn(42, result["indices"])
+        self.assertGreaterEqual(result["minGap"], 72)
+        self.assertEqual(result["singleton"], [0])
+        self.assertEqual(result["empty"], [])
+
+    def test_release_renderers_use_pixel_spaced_tick_helper(self):
+        """SVG x labels must come from the shared collision-resistant selector."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        helper_start = html.index("function selectTimelineTickIndices(")
+        helper_end = html.index("function renderReleasePulseChart(", helper_start)
+        helper_source = html[helper_start:helper_end]
+        render_start = helper_end
+        render_end = html.index("function renderStatsPanel()", render_start)
+        render_source = html[render_start:render_end]
+
+        self.assertIn("minPixelGap", helper_source)
+        self.assertIn("plotWidth", helper_source)
+        self.assertIn("candidates", helper_source)
+        self.assertIn("lastIndex", helper_source)
+        self.assertIn("selectTimelineTickIndices", render_source)
+        self.assertNotIn("index % xTickStep", render_source)
+
+    def test_stats_renderers_use_safe_accessible_inline_svg_and_dom(self):
+        """Stats rendering must use safe DOM APIs, SVG text alternatives, and visible summaries."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        timeline_start = html.index("function renderReleasePulseChart(container, series, options) {")
+        timeline_end = html.index("function renderStatsPanel() {", timeline_start)
+        timeline_source = html[timeline_start:timeline_end]
+        stats_start = timeline_end
+        stats_end = html.index("function escapeHtml(str) {", stats_start)
+        stats_source = html[stats_start:stats_end]
+
+        for marker in (
+            "createStatsSvgElement",
+            "'title'",
+            "'desc'",
+            "'viewBox'",
+            "timeline-grid",
+            "timeline-bar",
+            "timeline-line",
+            "timeline-axis-count",
+            "timeline-axis-average",
+            "timeline-empty",
+            "textContent",
+            "renderAnnualReleaseVolume",
+            "renderLatestReleases",
+            "renderLongArcChart",
+            "getSafeStatsPaperUrl",
+        ):
+            self.assertIn(marker, timeline_source)
+        self.assertIn("setAttribute", timeline_source)
+        self.assertNotIn("innerHTML", timeline_source)
+        self.assertNotIn("innerHTML", stats_source)
+        self.assertIn("buildDailyPublicationSeries(ALL_PAPERS)", stats_source)
+        self.assertIn("buildMonthlyPublicationSeries(ALL_PAPERS)", stats_source)
+        self.assertIn("HAS_RENDERED_STATS = true;", stats_source)
+        self.assertIn("if (!CATALOG_DATA_READY)", stats_source)
+        self.assertIn("release-pulse-summary", html)
+        self.assertIn("long-arc-summary", html)
+        self.assertIn("'title'", timeline_source)
+        self.assertIn("'desc'", timeline_source)
+
+    def test_latest_release_dossiers_surface_catalog_context(self):
+        """Latest releases should expose authors, summaries, taxonomy, and metrics."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        render_start = html.index("function getStatsReleaseDateParts(value) {")
+        render_end = html.index("function renderLongArcChart(", render_start)
+        render_source = html[render_start:render_end]
+
+        for marker in (
+            "function summarizeStatsReleaseAuthors(paper)",
+            "function getStatsReleaseTags(paper, limit)",
+            "function summarizeStatsReleaseMomentum(dailySeries)",
+            "if (series.length === 0) return 'No release momentum available';",
+            "latest-release-date-rail",
+            "latest-release-authors",
+            "latest-release-desc",
+            "latest-release-tags",
+            "latest-release-footer",
+            "paper.citations",
+            "paper.github_stars",
+            "Read paper ↗",
+        ):
+            self.assertIn(marker, render_source)
+        self.assertNotIn("innerHTML", render_source)
+        self.assertIn("getLatestReleasedPapers(ALL_PAPERS, 5)", html)
+
+    def test_stats_charts_are_editorial_full_width_and_scroll_locally(self):
+        """Stats CSS must form a full-width editorial observatory with an instrument panel."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        stats_start = html.index("    .stats-panel {")
+        stats_end = html.index("    /* ── Category Section ── */", stats_start)
+        stats_css = html[stats_start:stats_end]
+
+        scroll_start = stats_css.index("    .stats-chart-scroll {")
+        scroll_end = stats_css.index("\n    }", scroll_start)
+        scroll_rule = stats_css[scroll_start:scroll_end]
+        chart_start = stats_css.index("    .stats-panel .timeline-chart {")
+        chart_end = stats_css.index("\n    }", chart_start)
+        chart_rule = stats_css[chart_start:chart_end]
+        primary_start = stats_css.index("    .stats-primary-chart {")
+        primary_end = stats_css.index("\n    }", primary_start)
+        primary_rule = stats_css[primary_start:primary_end]
+        grid_start = stats_css.index("    .stats-panel .timeline-grid {")
+        grid_end = stats_css.index("\n    }", grid_start)
+        grid_rule = stats_css[grid_start:grid_end]
+        bar_start = stats_css.index("    .stats-panel .timeline-bar {")
+        bar_end = stats_css.index("\n    }", bar_start)
+        bar_rule = stats_css[bar_start:bar_end]
+        line_start = stats_css.index("    .stats-panel .timeline-line {")
+        line_end = stats_css.index("\n    }", line_start)
+        line_rule = stats_css[line_start:line_end]
+
+        self.assertIn("width: 100%;", scroll_rule)
+        self.assertIn("max-width: 100%;", scroll_rule)
+        self.assertIn("overflow-x: auto;", scroll_rule)
+        self.assertIn("min-width: 760px;", chart_rule)
+        self.assertIn("color: var(--text-muted);", chart_rule)
+        self.assertIn("border: 1px solid #253650;", primary_rule)
+        self.assertIn("border-radius: 24px;", primary_rule)
+        self.assertIn("#0f1929", primary_rule)
+        self.assertIn("stroke: var(--border);", grid_rule)
+        self.assertIn("fill: var(--accent);", bar_rule)
+        self.assertIn("stroke: var(--accent2);", line_rule)
+        self.assertNotIn("animation:", stats_css)
+        self.assertIn("repeating-radial-gradient", stats_css)
+        self.assertIn("repeating-linear-gradient", stats_css)
+        self.assertNotIn("backdrop-filter", stats_css)
+        self.assertIn(".stats-lower-grid", stats_css)
+        self.assertIn("grid-template-columns", stats_css)
+        self.assertIn(".latest-release-item:first-child", stats_css)
+        self.assertIn("@media (max-width: 768px)", stats_css)
+        self.assertIn("min-height: 44px;", stats_css)
+
+    def test_stats_small_text_uses_accessible_muted_color(self):
+        """Small Stats labels must avoid the lower-contrast decorative text token."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        stats_start = html.index("    .stats-panel {")
+        stats_end = html.index("    /* ── Category Section ── */", stats_start)
+        stats_css = html[stats_start:stats_end]
+        note_start = stats_css.index("    .stats-metric-note {")
+        note_end = stats_css.index("\n    }", note_start)
+        note_rule = stats_css[note_start:note_end]
+        ticks_start = stats_css.index("    .stats-panel .timeline-axis-label,")
+        ticks_end = stats_css.index("\n    }", ticks_start)
+        ticks_rule = stats_css[ticks_start:ticks_end]
+
+        self.assertIn("color: var(--text-muted);", note_rule)
+        self.assertNotIn("var(--text-dim)", note_rule)
+        self.assertIn("fill: var(--text-muted);", ticks_rule)
+        self.assertNotIn("var(--text-dim)", ticks_rule)
 
     def test_table_header_sort_buttons_exist_for_date_citations_and_stars_with_direction_controls(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -735,6 +1914,55 @@ class TagFilterUiTests(unittest.TestCase):
         self.assertIn("'<div class=\"paper-meta\">' + paperDisplayDate + '</div>'", render_snippet)
         self.assertNotIn("authorsStr + ' · ' + paper.year", render_snippet)
 
+    def test_card_density_defaults_to_compact_with_an_accessible_toggle(self):
+        """Desktop cards should default compact while preserving a comfortable option."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        self.assertIn('<body class="paper-density-compact">', html)
+        self.assertIn('id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0" data-card-density="compact"', html)
+        self.assertIn('class="paper-density-toggle" role="group" aria-label="Paper card density"', html)
+        self.assertIn('id="paper-density-compact" aria-pressed="true" onclick="setPaperDensity(\'compact\')"', html)
+        self.assertIn('id="paper-density-comfortable" aria-pressed="false" onclick="setPaperDensity(\'comfortable\')"', html)
+        self.assertIn("let CURRENT_PAPER_DENSITY = 'compact';", html)
+        self.assertIn("function normalizePaperDensity(density) {", html)
+        self.assertIn("function applyPaperDensity() {", html)
+        self.assertIn("function setPaperDensity(density) {", html)
+        self.assertIn("function showComfortablePaperDensity() {", html)
+        self.assertIn("papersPanel.dataset.cardDensity = CURRENT_PAPER_DENSITY;", html)
+        self.assertIn("document.body.classList.toggle('paper-density-compact'", html)
+        self.assertIn("setToggleButtonState('paper-density-compact'", html)
+        self.assertIn("setToggleButtonState('paper-density-comfortable'", html)
+        self.assertIn("comfortableButton.focus();", html)
+
+        render_start = html.index("function renderCard(paper, query) {")
+        render_end = html.index("// ── State & Category Tree", render_start)
+        render_snippet = html[render_start:render_end]
+        self.assertIn('class="paper-signal-row"', render_snippet)
+        self.assertIn('class="paper-tag-overflow"', render_snippet)
+        self.assertIn("showComfortablePaperDensity()", render_snippet)
+
+        style = html[html.index("<style>"):html.index("</style>")]
+        self.assertIn("#papers-panel[data-card-density=\"compact\"] .paper-card", style)
+        self.assertIn("#papers-panel[data-card-density=\"compact\"] .paper-desc", style)
+        self.assertIn("#papers-panel[data-card-density=\"compact\"] .category-copy", style)
+        self.assertIn("#papers-panel[data-card-density=\"compact\"] .paper-card .link-btn", style)
+        self.assertIn("body:not(.stats-mode) > header", style)
+        self.assertNotIn("body.paper-density-compact:not(.stats-mode) > header", style)
+        self.assertIn("-webkit-line-clamp: 2;", style)
+        self.assertIn("@media (min-width: 769px)", style)
+        self.assertIn(".paper-density-toggle", style)
+        self.assertIn("max-width: 1640px;", style)
+        self.assertIn("width: 248px;", style)
+
+    def test_footer_preserves_more_vertical_space_for_papers(self):
+        """The persistent footer should remain a compact single-line information bar."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        style = html[html.index("<style>"):html.index("</style>")]
+        footer_start = style.index("\n    footer {")
+        footer_end = style.index("}", footer_start)
+        footer_style = style[footer_start:footer_end]
+        self.assertIn("padding: 10px 20px;", footer_style)
+        self.assertIn("margin-top: 6px;", footer_style)
+
     def test_table_view_rows_keep_compact_link_rendering_hooks(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("function renderCompactPaperLinksHtml(paper)", html)
@@ -743,11 +1971,14 @@ class TagFilterUiTests(unittest.TestCase):
 
     def test_table_view_rows_use_button_disclosure_markup(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        renderer_start = html.index("function renderTableRow(paper, query) {")
+        renderer_end = html.index("function renderTableView(query, papers) {", renderer_start)
+        renderer = html[renderer_start:renderer_end]
         self.assertIn("const detailRowId = 'paper-table-detail-' + paperId;", html)
         self.assertIn('class="paper-table-disclosure"', html)
         self.assertIn("aria-controls=\"' + detailRowId + '\"", html)
         self.assertIn("id=\"' + detailRowId + '\"", html)
-        self.assertNotIn('tabindex="0"', html)
+        self.assertNotIn('tabindex="0"', renderer)
 
     def test_table_view_toggle_ignores_interactive_children_and_syncs_button_state(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -789,6 +2020,16 @@ class TagFilterUiTests(unittest.TestCase):
         self.assertIn("window.innerWidth <= 768", scroll_snippet)
         self.assertIn("window.scrollTo", scroll_snippet)
         self.assertIn("scrollRoot.scrollTo", scroll_snippet)
+
+    def test_tree_links_use_top_level_paper_section_navigation(self):
+        """Tree links must route through the tab/hash state machine before scrolling."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        init_start = html.index("function initTreeInteractions()")
+        init_end = html.index("function initScrollObserver()", init_start)
+        init_source = html[init_start:init_end]
+
+        self.assertIn("navigateToPaperSection(sectionId);", init_source)
+        self.assertNotIn("scrollToSection(sectionId);", init_source)
 
     def test_search_count_is_not_table_view_only(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -934,6 +2175,20 @@ class CanonicalPaperMetadataTests(unittest.TestCase):
                 continue
             try:
                 build.normalize_optional_date_string(published_date, "published_date", yaml_path.name)
+            except ValueError as exc:
+                violations.append(str(exc))
+
+        self.assertEqual(violations, [])
+
+    def test_all_repo_paper_yaml_files_have_intake_dates(self):
+        """Require every canonical paper source to record a valid catalog intake date."""
+        violations = []
+        for paper_path in sorted((REPO_ROOT / "papers").glob("*.yaml")):
+            if paper_path.name.startswith("_"):
+                continue
+            data = yaml.safe_load(paper_path.read_text(encoding="utf-8")) or {}
+            try:
+                build.normalize_required_date_string(data.get("added_date"), "added_date", paper_path.name)
             except ValueError as exc:
                 violations.append(str(exc))
 

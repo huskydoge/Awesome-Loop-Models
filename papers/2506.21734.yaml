@@ -11,6 +11,7 @@ authors:
 - Yasin Abbasi Yadkori
 year: 2025
 published_date: '2025-06-26'
+added_date: '2026-04-24'
 venue: arXiv
 category: designs
 mechanism_tags:
@@ -29,10 +30,10 @@ desc: 'Proposes HRM, a brain-inspired recurrent architecture with two coupled mo
   module for detailed execution.'
 links:
   arxiv: https://arxiv.org/abs/2506.21734
-citations: 122
+citations: 123
 citation_sources:
-  semantic_scholar: 122
+  semantic_scholar: 123
   openalex: 3
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-16'
+metrics_updated: '2026-07-17'

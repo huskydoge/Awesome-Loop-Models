@@ -5,8 +5,8 @@
     "blog_total": 7,
     "briefing_total": 34,
     "latest_briefing_date": "2026-07-16",
-    "generated": "2026-07-16T14:03:22.732772+00:00",
-    "generated_local_date": "2026-07-16",
+    "generated": "2026-07-18T06:38:23.086635+00:00",
+    "generated_local_date": "2026-07-18",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -59,6 +59,7 @@
       "authors": "Łukasz Kaiser, Ilya Sutskever",
       "year": 2016,
       "published_date": "2015-11-25",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -104,6 +105,7 @@
       "authors": "Alex Graves",
       "year": 2016,
       "published_date": "2016-03-29",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "foundation": true,
@@ -128,14 +130,14 @@
         "arxiv": "https://arxiv.org/abs/1603.08983",
         "alphaxiv": "https://www.alphaxiv.org/abs/1603.08983"
       },
-      "citations": 782,
+      "citations": 784,
       "citation_sources": {
-        "semantic_scholar": 782,
+        "semantic_scholar": 784,
         "openalex": 360,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "id": "1603.08983",
       "source_file": "1603.08983.yaml",
       "source_path": "papers/1603.08983.yaml",
@@ -151,6 +153,7 @@
       "authors": "Mostafa Dehghani, Stephan Gouws, Oriol Vinyals, Jakob Uszkoreit, Łukasz Kaiser",
       "year": 2019,
       "published_date": "2018-07-10",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "foundation": true,
@@ -174,14 +177,14 @@
         "openreview": "https://openreview.net/forum?id=HyzdRiR9Y7",
         "alphaxiv": "https://www.alphaxiv.org/abs/1807.03819"
       },
-      "citations": 975,
+      "citations": 977,
       "citation_sources": {
-        "semantic_scholar": 975,
+        "semantic_scholar": 977,
         "openalex": 396,
         "opencitations": 3
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "id": "1807.03819",
       "source_file": "1807.03819.yaml",
       "source_path": "papers/1807.03819.yaml",
@@ -213,6 +216,7 @@
       "authors": "Shaojie Bai, J. Zico Kolter, Vladlen Koltun",
       "year": 2019,
       "published_date": "2019-09-03",
+      "added_date": "2026-04-24",
       "venue": "NeurIPS",
       "category": "designs",
       "foundation": true,
@@ -239,9 +243,9 @@
         "github": "https://github.com/locuslab/deq",
         "alphaxiv": "https://www.alphaxiv.org/abs/1909.01377"
       },
-      "citations": 934,
+      "citations": 937,
       "citation_sources": {
-        "semantic_scholar": 934,
+        "semantic_scholar": 937,
         "openalex": 246,
         "opencitations": 0
       },
@@ -251,7 +255,7 @@
         "github_api": 804
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -269,6 +273,7 @@
       "authors": "Shaojie Bai, Vladlen Koltun, J. Zico Kolter",
       "year": 2020,
       "published_date": "2020-06-15",
+      "added_date": "2026-04-24",
       "venue": "NeurIPS",
       "category": "designs",
       "mechanism_tags": [
@@ -291,14 +296,14 @@
         "github": "https://github.com/locuslab/mdeq",
         "alphaxiv": "https://www.alphaxiv.org/abs/2006.08656"
       },
-      "citations": 257,
+      "citations": 258,
       "citation_sources": {
-        "semantic_scholar": 257,
+        "semantic_scholar": 258,
         "openalex": 53,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "github_stars": 237,
       "star_sources": {
         "github_api": 237
@@ -322,6 +327,7 @@
       "authors": "Zhengyang Geng, Xin-Yu Zhang, Shaojie Bai, Yisen Wang, Zhouchen Lin",
       "year": 2021,
       "published_date": "2021-11-09",
+      "added_date": "2026-04-24",
       "venue": "NeurIPS",
       "category": "designs",
       "domain_tags": [
@@ -371,6 +377,7 @@
       "authors": "Borja Ibarz, Vitaly Kurin, George Papamakarios, Kyriacos Nikiforou, Mehdi Bennani, Róbert Csordás, Andrew Dudzik, Matko Bošnjak, Alex Vitvitskyi, Yulia Rubanova, Andreea Deac, Beatrice Bevilacqua, Yaroslav Ganin, Charles Blundell, Petar Veličković",
       "year": 2022,
       "published_date": "2022-09-22",
+      "added_date": "2026-04-24",
       "venue": "LoG",
       "category": "designs",
       "mechanism_tags": [
@@ -430,6 +437,7 @@
       "authors": "Angeliki Giannou, Shashank Rajput, Jy-yong Sohn, Kangwook Lee, Jason D. Lee, Dimitris Papailiopoulos",
       "year": 2023,
       "published_date": "2023-01-30",
+      "added_date": "2026-04-24",
       "venue": "ICML",
       "category": "analysis",
       "mechanism_tags": [
@@ -452,14 +460,14 @@
         "paper": "https://proceedings.mlr.press/v202/giannou23a.html",
         "alphaxiv": "https://www.alphaxiv.org/abs/2301.13196"
       },
-      "citations": 220,
+      "citations": 221,
       "citation_sources": {
-        "semantic_scholar": 220,
+        "semantic_scholar": 221,
         "openalex": 3,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "id": "2301.13196",
       "source_file": "2301.13196.yaml",
       "source_path": "papers/2301.13196.yaml",
@@ -493,6 +501,7 @@
       "authors": "Amirkeivan Mohtashami, Matteo Pagliardini, Martin Jaggi",
       "year": 2025,
       "published_date": "2023-10-16",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -547,6 +556,7 @@
       "authors": "Liu Yang, Kangwook Lee, Robert Nowak, Dimitris Papailiopoulos",
       "year": 2024,
       "published_date": "2023-11-21",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -621,6 +631,7 @@
       "authors": "Yihang Gao, Chuanyang Zheng, Enze Xie, Han Shi, Tianyang Hu, Yu Li, Michael K. Ng, Zhenguo Li, Zhaoqiang Liu",
       "year": 2025,
       "published_date": "2024-02-21",
+      "added_date": "2026-04-24",
       "venue": "TMLR",
       "category": "designs",
       "mechanism_tags": [
@@ -797,6 +808,7 @@
       "authors": "Sangmin Bae, Adam Fisch, Hrayr Harutyunyan, Ziwei Ji, Seungyeon Kim, Tal Schuster",
       "year": 2025,
       "published_date": "2024-10-28",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -862,6 +874,7 @@
       "authors": "Jonas Geiping, Sean McLeish, Neel Jain, John Kirchenbauer, Siddharth Singh, Brian R. Bartoldson, Bhavya Kailkhura, Abhinav Bhatele, Tom Goldstein",
       "year": 2025,
       "published_date": "2025-02-07",
+      "added_date": "2026-04-24",
       "venue": "NeurIPS",
       "must_read": true,
       "category": "designs",
@@ -888,9 +901,9 @@
         "github": "https://github.com/seal-rg/recurrent-pretraining",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.05171"
       },
-      "citations": 285,
+      "citations": 287,
       "citation_sources": {
-        "semantic_scholar": 285,
+        "semantic_scholar": 287,
         "openalex": 1,
         "opencitations": 0
       },
@@ -900,7 +913,7 @@
         "github_api": 900
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "id": "2502.05171",
       "source_file": "2502.05171.yaml",
       "source_path": "papers/2502.05171.yaml",
@@ -937,6 +950,7 @@
       "authors": "Mark Schöne, Babak Rahmani, Heiner Kremer, Fabian Falck, Hitesh Ballani, Jannes Gladrow",
       "year": 2025,
       "published_date": "2025-02-10",
+      "added_date": "2026-04-24",
       "venue": "ICML",
       "category": "designs",
       "mechanism_tags": [
@@ -996,6 +1010,7 @@
       "authors": "Nikunj Saunshi, Nishanth Dikkala, Zhiyuan Li, Sanjiv Kumar, Sashank J. Reddi",
       "year": 2025,
       "published_date": "2025-02-24",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "analysis",
       "mechanism_tags": [
@@ -1021,14 +1036,14 @@
         "openreview": "https://openreview.net/forum?id=din0lGfZFd",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.17416"
       },
-      "citations": 173,
+      "citations": 174,
       "citation_sources": {
-        "semantic_scholar": 173,
+        "semantic_scholar": 174,
         "openalex": 2,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "id": "2502.17416",
       "source_file": "2502.17416.yaml",
       "source_path": "papers/2502.17416.yaml",
@@ -1061,6 +1076,7 @@
       "authors": "Guan Wang, Jin Li, Yuhao Sun, Xing Chen, Changling Liu, Yue Wu, Meng Lu, Sen Song, Yasin Abbasi Yadkori",
       "year": 2025,
       "published_date": "2025-06-26",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1083,14 +1099,14 @@
         "arxiv": "https://arxiv.org/abs/2506.21734",
         "alphaxiv": "https://www.alphaxiv.org/abs/2506.21734"
       },
-      "citations": 122,
+      "citations": 123,
       "citation_sources": {
-        "semantic_scholar": 122,
+        "semantic_scholar": 123,
         "openalex": 3,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "id": "2506.21734",
       "source_file": "2506.21734.yaml",
       "source_path": "papers/2506.21734.yaml",
@@ -1172,6 +1188,7 @@
       "authors": "Ziyue Li, Yang Li, Tianyi Zhou",
       "year": 2025,
       "published_date": "2025-07-10",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1233,6 +1250,7 @@
       "authors": "Sangmin Bae, Yujin Kim, Reza Bayat, Sungnyun Kim, Jiyoun Ha, Tal Schuster, Adam Fisch, Hrayr Harutyunyan, Ziwei Ji, Aaron Courville, Se-Young Yun",
       "year": 2025,
       "published_date": "2025-07-14",
+      "added_date": "2026-04-24",
       "venue": "NeurIPS",
       "category": "designs",
       "mechanism_tags": [
@@ -1257,15 +1275,15 @@
         "github": "https://github.com/raymin0223/mixture_of_recursions",
         "alphaxiv": "https://www.alphaxiv.org/abs/2507.10524"
       },
-      "citations": 92,
-      "metrics_updated": "2026-07-16",
+      "citations": 93,
+      "metrics_updated": "2026-07-17",
       "github_stars": 577,
       "star_sources": {
         "github_api": 577
       },
       "star_source_best": "github_api",
       "citation_sources": {
-        "semantic_scholar": 92,
+        "semantic_scholar": 93,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1307,6 +1325,7 @@
       "authors": "Francesco Pappone, Donato Crisostomi, Emanuele Rodolà",
       "year": 2025,
       "published_date": "2025-09-27",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "analysis",
       "mechanism_tags": [
@@ -1464,6 +1483,7 @@
       "year": 2025,
       "must_read": true,
       "published_date": "2025-10-29",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1492,10 +1512,10 @@
         "hf": "https://huggingface.co/ByteDance/Ouro-1.4B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2510.25741"
       },
-      "citations": 93,
-      "metrics_updated": "2026-07-16",
+      "citations": 95,
+      "metrics_updated": "2026-07-17",
       "citation_sources": {
-        "semantic_scholar": 93,
+        "semantic_scholar": 95,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1559,6 +1579,7 @@
       "authors": "Sean McLeish, Ang Li, John Kirchenbauer, Dayal Singh Kalra, Brian R. Bartoldson, Bhavya Kailkhura, Avi Schwarzschild, Jonas Geiping, Tom Goldstein, Micah Goldblum",
       "year": 2025,
       "published_date": "2025-11-10",
+      "added_date": "2026-04-26",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1651,9 +1672,9 @@
         "github": "https://github.com/thu-nics/TaH",
         "alphaxiv": "https://www.alphaxiv.org/abs/2511.08577"
       },
-      "citations": 15,
+      "citations": 16,
       "citation_sources": {
-        "semantic_scholar": 15,
+        "semantic_scholar": 16,
         "openalex": 0,
         "opencitations": 0
       },
@@ -1663,7 +1684,7 @@
         "github_api": 74
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "id": "2511.08577",
       "source_file": "2511.08577.yaml",
       "source_path": "papers/2511.08577.yaml",
@@ -1685,6 +1706,7 @@
       "authors": "Zitian Gao, Lynx Chen, Yihao Xiao, He Xing, Ran Tao, Haoming Luo, Joey Zhou, Bryan Dai",
       "year": 2025,
       "published_date": "2025-12-16",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1714,10 +1736,10 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-10",
-      "github_stars": 133,
+      "metrics_updated": "2026-07-17",
+      "github_stars": 134,
       "star_sources": {
-        "github_api": 133
+        "github_api": 134
       },
       "star_source_best": "github_api",
       "id": "2512.14693",
@@ -1743,6 +1765,7 @@
       "authors": "Jonas Knupp, Jan Hendrik Metzen, Jeremias Bohn, Georg Groh, Kristian Kersting",
       "year": 2026,
       "published_date": "2026-01-29",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -1805,6 +1828,7 @@
       "authors": "Raj Ghugare, Michał Bortkiewicz, Alicja Ziarko, Benjamin Eysenbach",
       "year": 2026,
       "published_date": "2026-02-05",
+      "added_date": "2026-04-24",
       "venue": "ICML",
       "category": "analysis",
       "mechanism_tags": [
@@ -1855,6 +1879,7 @@
       "authors": "Yalcin Tur, Jalal Naghiyev, Haoquan Fang, Wei-Chuan Tsai, Jiafei Duan, Dieter Fox, Ranjay Krishna",
       "year": 2026,
       "published_date": "2026-02-08",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "applications",
       "mechanism_tags": [
@@ -1916,6 +1941,7 @@
       "authors": "Ibraheem Muhammad Moosa, Suhas Lohit, Ye Wang, Moitreya Chatterjee, Wenpeng Yin",
       "year": 2026,
       "published_date": "2026-02-09",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "analysis",
       "mechanism_tags": [
@@ -2090,6 +2116,7 @@
       "authors": "Ahmadreza Jeddi, Marco Ciccone, Babak Taati",
       "year": 2026,
       "published_date": "2026-02-11",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -2206,6 +2233,7 @@
       "authors": "Shixiang Song, He Li, Zitong Wang, Boyi Zeng, Feichen Song, Yixuan Wang, Zhiqin John Xu, Ziwei He, Zhouhan Lin",
       "year": 2026,
       "published_date": "2026-03-02",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -2261,6 +2289,7 @@
       "authors": "Yilong Chen, Naibin Gu, Junyuan Shang, Zhenyu Zhang, Yuchen Feng, Jiawei Sheng, Tingwen Liu, Shuohuan Wang, Yu Sun, Hua Wu, Haifeng Wang",
       "year": 2026,
       "published_date": "2026-03-05",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -2330,6 +2359,7 @@
       "authors": "Mieszko Komisarczyk, Saurabh Mathur, Maurice Kraus, Sriraam Natarajan, Kristian Kersting",
       "year": 2026,
       "published_date": "2026-03-05",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -2391,6 +2421,7 @@
       "authors": "Paulius Rauba, Claudio Fanconi, Mihaela van der Schaar",
       "year": 2026,
       "published_date": "2026-03-09",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "analysis",
       "mechanism_tags": [
@@ -2511,6 +2542,7 @@
       "authors": "Guo Tang, Shixin Jiang, Heng Chang, Nuo Chen, Yuhan Li, Huiming Fan, Jia Li, Ming Liu, Bing Qin",
       "year": 2026,
       "published_date": "2026-03-20",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -2744,6 +2776,7 @@
       "authors": "Jan Kirin",
       "year": 2026,
       "published_date": "2026-04-10",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "analysis",
       "mechanism_tags": [
@@ -2789,6 +2822,7 @@
       "authors": "Chentong Wang, Jincheng Gao, Fei Zhu, Jie Chen",
       "year": 2026,
       "published_date": "2026-04-13",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "applications",
       "mechanism_tags": [
@@ -2837,6 +2871,7 @@
       "authors": "Hugh Blayney, Álvaro Arroyo, Johan Obando-Ceron, Pablo Samuel Castro, Aaron Courville, Michael M. Bronstein, Xiaowen Dong",
       "year": 2026,
       "published_date": "2026-04-13",
+      "added_date": "2026-04-24",
       "venue": "arXiv",
       "category": "analysis",
       "mechanism_tags": [
@@ -2889,6 +2924,7 @@
       "authors": "Hayden Prairie, Zachary Novack, Taylor Berg-Kirkpatrick, Daniel Y. Fu",
       "year": 2026,
       "published_date": "2026-04-14",
+      "added_date": "2026-04-24",
       "venue": "LIT Workshop @ ICLR",
       "must_read": true,
       "category": "designs",
@@ -3573,6 +3609,7 @@
       "authors": "Victor Conchello Vendrell, Arnau Padres Masdemont, Niccolò Grillo, Jordi Ros-Giralt, Arash Behboodi, Fabio Valerio Massoli",
       "year": 2026,
       "published_date": "2026-05-08",
+      "added_date": "2026-05-11",
       "venue": "arXiv",
       "category": "designs",
       "mechanism_tags": [
@@ -4360,12 +4397,12 @@
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.20613"
       },
-      "github_stars": 1681,
+      "github_stars": 1691,
       "star_sources": {
-        "github_api": 1681
+        "github_api": 1691
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
@@ -4715,10 +4752,10 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-10",
-      "github_stars": 6,
+      "metrics_updated": "2026-07-17",
+      "github_stars": 7,
       "star_sources": {
-        "github_api": 6
+        "github_api": 7
       },
       "star_source_best": "github_api",
       "id": "2605.26733",
@@ -4823,17 +4860,17 @@
         "project": "https://research.nvidia.com/labs/dvl/projects/dvlt/",
         "github": "https://github.com/nv-tlabs/dvlt"
       },
-      "citations": 1,
-      "metrics_updated": "2026-07-16",
+      "citations": 2,
+      "metrics_updated": "2026-07-17",
       "citation_sources": {
-        "semantic_scholar": 1,
+        "semantic_scholar": 2,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 375,
+      "github_stars": 376,
       "star_sources": {
-        "github_api": 375
+        "github_api": 376
       },
       "star_source_best": "github_api",
       "id": "2605.30215",
@@ -5586,12 +5623,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 18,
+      "github_stars": 19,
       "star_sources": {
-        "github_api": 18
+        "github_api": 19
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "id": "2606.18206",
       "source_file": "2606.18206.yaml",
       "source_path": "papers/2606.18206.yaml",
@@ -6393,10 +6430,11 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "id": "2607.12945",
       "source_file": "2607.12945.yaml",
       "source_path": "papers/2607.12945.yaml",
@@ -6446,10 +6484,11 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-16",
+      "metrics_updated": "2026-07-17",
       "id": "2607.13491",
       "source_file": "2607.13491.yaml",
       "source_path": "papers/2607.13491.yaml",
@@ -6469,6 +6508,7 @@
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
       "published_date": "2026-01-26",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [
@@ -6509,6 +6549,7 @@
       "authors": "Xiaojing Zhang, Haifeng Wu, Gang He, Jiyang Shen, Bochen Lyu, Zhanxing Zhu",
       "year": 2026,
       "published_date": "2026-01-26",
+      "added_date": "2026-04-24",
       "venue": "ICLR",
       "category": "designs",
       "mechanism_tags": [

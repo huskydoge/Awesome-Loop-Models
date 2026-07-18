@@ -3,6 +3,7 @@ authors:
 - Alex Graves
 year: 2016
 published_date: '2016-03-29'
+added_date: '2026-04-24'
 venue: arXiv
 category: designs
 foundation: true
@@ -23,10 +24,10 @@ desc: Introduces ACT, a deterministic differentiable halting algorithm that lets
   and emitting an output.
 links:
   arxiv: https://arxiv.org/abs/1603.08983
-citations: 782
+citations: 784
 citation_sources:
-  semantic_scholar: 782
+  semantic_scholar: 784
   openalex: 360
   opencitations: 1
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-16'
+metrics_updated: '2026-07-17'
