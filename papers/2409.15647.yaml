@@ -1,0 +1,14 @@
+title: "Looped Transformers for Length Generalization"
+authors:
+  - "Ying Fan"
+  - "Yilun Du"
+  - "Kannan Ramchandran"
+  - "Kangwook Lee"
+year: 2025
+published_date: "2025-04"
+venue: "ICLR 2025"
+category: "designs"
+desc: "Recent work has shown that Transformers trained from scratch can successfully solve various arithmetic and algorithmic tasks, such as adding numbers and computing parity. While these Transformers generalize well on unseen inputs of the same length, they struggle with length generalization, i.e., handling inputs of unseen lengths. In this work, we demonstrate that looped Transformers with an adaptive number of steps significantly improve length generalization. We focus on tasks with a known iterative solution, involving multiple iterations of a RASP-L operation—a length-generalizable operation that can be expressed by a finite-sized Transformer. We train looped Transformers using our proposed learning algorithm and observe that they learn highly length-generalizable solutions for various tasks."
+links:
+  arxiv: "https://arxiv.org/abs/2409.15647"
+  github: "https://github.com/UW-Madison-Lee-Lab/looped-tf"
