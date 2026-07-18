@@ -17,10 +17,21 @@ domain_tags:
 focus_tags:
 - architecture
 - training-algorithm
-desc: Introduces an adaptive-step looped Transformer and training procedure that
-  improve length generalization on arithmetic and algorithmic tasks composed from
-  iterative RASP-L operations.
+desc: Introduces an adaptive-step looped Transformer and training procedure that improve
+  length generalization on arithmetic and algorithmic tasks composed from iterative
+  RASP-L operations.
 links:
   arxiv: https://arxiv.org/abs/2409.15647
   openreview: https://openreview.net/forum?id=2edigk8yoU
   github: https://github.com/UW-Madison-Lee-Lab/looped-tf
+citations: 76
+citation_sources:
+  semantic_scholar: 76
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+github_stars: 13
+star_sources:
+  github_api: 13
+star_source_best: github_api
+metrics_updated: '2026-07-18'
