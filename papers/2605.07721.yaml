@@ -29,10 +29,9 @@ desc: Introduces MELT, which maintains one fixed-size KV cache per layer across 
   with chunk-wise two-phase training to keep cache memory independent of loop depth.
 links:
   arxiv: https://arxiv.org/abs/2605.07721
-citations: 2
+citations: 3
 citation_sources:
-  semantic_scholar: 2
-  openalex: 0
+  semantic_scholar: 3
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-06-29'
+metrics_updated: '2026-07-20'
