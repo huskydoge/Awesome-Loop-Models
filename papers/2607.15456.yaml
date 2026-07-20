@@ -1,0 +1,26 @@
+title: 'Looped Latent Attention: Cross-Loop KV Compression for Looped Transformers'
+authors:
+- James O' Neill
+- Fergal Reid
+year: 2026
+published_date: '2026-07-16'
+added_date: '2026-07-20'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+focus_tags:
+- inference-algorithm
+tags:
+- LLA
+desc: Introduces Looped Latent Attention, a cross-loop KV-cache compression method that
+  exploits low-rank recurrence structure in looped, weight-tied Transformers without
+  collapsing all loops into one state.
+links:
+  arxiv: https://arxiv.org/abs/2607.15456
+  alphaxiv: https://www.alphaxiv.org/abs/2607.15456
+citations: 0
