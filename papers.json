@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 124,
-    "paper_total": 117,
+    "total": 126,
+    "paper_total": 119,
     "blog_total": 7,
-    "briefing_total": 34,
-    "latest_briefing_date": "2026-07-16",
-    "generated": "2026-07-20T06:25:03.075523+00:00",
+    "briefing_total": 35,
+    "latest_briefing_date": "2026-07-20",
+    "generated": "2026-07-20T20:34:30.252222+00:00",
     "generated_local_date": "2026-07-20",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -6446,6 +6446,91 @@
       "arxiv_id": "2607.13491"
     },
     {
+      "title": "Looped Latent Attention: Cross-Loop KV Compression for Looped Transformers",
+      "authors": "James O' Neill, Fergal Reid",
+      "year": 2026,
+      "published_date": "2026-07-16",
+      "added_date": "2026-07-20",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "inference-algorithm"
+      ],
+      "tags": [
+        "LLA"
+      ],
+      "desc": "Introduces Looped Latent Attention, a cross-loop KV-cache compression method that exploits low-rank recurrence structure in looped, weight-tied Transformers without collapsing all loops into one state.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2607.15456",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2607.15456"
+      },
+      "citations": 0,
+      "id": "2607.15456",
+      "source_file": "2607.15456.yaml",
+      "source_path": "papers/2607.15456.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "James O' Neill",
+        "Fergal Reid"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2607.15456"
+    },
+    {
+      "title": "Loop the Loopies!",
+      "authors": "Zitian Gao, Yilong Chen, Yihao Xiao, Xinyu Yang, Ran Tao, Joey Zhou, Bryan Dai",
+      "year": 2026,
+      "published_date": "2026-07-17",
+      "added_date": "2026-07-20",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "scaling"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "tags": [
+        "Loopie"
+      ],
+      "desc": "Introduces the Loopie MoE looped Transformer series, arguing that repeated reuse of compact Transformer blocks can outperform compute-matched vanilla Transformer baselines and support strong post-trained reasoning.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2607.16051",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2607.16051"
+      },
+      "citations": 0,
+      "id": "2607.16051",
+      "source_file": "2607.16051.yaml",
+      "source_path": "papers/2607.16051.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Zitian Gao",
+        "Yilong Chen",
+        "Yihao Xiao",
+        "Xinyu Yang",
+        "Ran Tao",
+        "Joey Zhou",
+        "Bryan Dai"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2607.16051"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -6796,70 +6881,46 @@
   ],
   "briefings": [
     {
-      "date": "2026-07-16",
-      "title": "Daily Loop-Model Briefing - 2026-07-16",
+      "date": "2026-07-20",
+      "title": "Daily Loop-Model Briefing - 2026-07-20",
       "status": "added",
-      "summary": "Six recent strict-scope papers were added, led by looped Transformer depth scaling, looped state-space models, looped-Transformer stability analysis, a DEQ audit, and two recursive recommendation models.",
-      "source_path": "briefings/2026/07/2026-07-16.md",
+      "summary": "Two recent looped-Transformer papers were added: Loopie scales looped MoE language models, while Looped Latent Attention compresses loop-indexed KV cache state.",
+      "source_path": "briefings/2026/07/2026-07-20.md",
       "highlights": [
-        "Looped language-model work is moving from architecture demos into scaling rules, state-space backbones, and stability diagnostics.",
-        "The DeepLoop and Looped Mamba papers both make parameter reuse explicit, but they test different parts of the design space: residual scaling for recurrent depth versus finite-depth recurrence over state-space blocks.",
-        "The two RecRec papers are application-side signals that recursive latent-state refinement is spreading into sequential recommendation."
+        "{'Looped-Transformer work is now attacking both model quality and serving cost': 'one paper scales the architecture itself, and the other compresses the recurrent cache it creates.'}",
+        "Loopie is the broader model-design signal: it argues that looped MoE Transformers can beat compute-matched vanilla Transformer baselines once training and post-training are adapted to the looped setting.",
+        "Looped Latent Attention is the systems-side complement: it treats KV vectors across recurrence steps as a low-rank trajectory and compresses loop-specific cache state without collapsing all loops into one state."
       ],
       "candidates": [
         {
-          "id": "2607.13491",
-          "title": "DeepLoop: Depth Scaling for Looped Transformers",
+          "id": "2607.16051",
+          "title": "Loop the Loopies!",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2607.13491"
+          "url": "https://arxiv.org/abs/2607.16051"
         },
         {
-          "id": "2607.10110",
-          "title": "Looped State-Space Language Models with Adaptive Exit-State Selection",
+          "id": "2607.15456",
+          "title": "Looped Latent Attention: Cross-Loop KV Compression for Looped Transformers",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2607.10110"
+          "url": "https://arxiv.org/abs/2607.15456"
         },
         {
-          "id": "2607.10681",
-          "title": "LayerNorm as Implicit Gain Control in Looped Transformers",
-          "verdict": "added",
-          "url": "https://arxiv.org/abs/2607.10681"
-        },
-        {
-          "id": "2607.11116",
-          "title": "The Equilibrium Is the Initialization: Lazy Identity Collapse in Physics-Structured Deep Equilibrium Reasoning",
-          "verdict": "added",
-          "url": "https://arxiv.org/abs/2607.11116"
-        },
-        {
-          "id": "2607.12945",
-          "title": "RecRec: Latent Interests Recursive Reasoning for Sequential Recommendation",
-          "verdict": "added",
-          "url": "https://arxiv.org/abs/2607.12945"
-        },
-        {
-          "id": "2607.10541",
-          "title": "RecRec: Recursive Refinement for Sequential Recommendation",
-          "verdict": "added",
-          "url": "https://arxiv.org/abs/2607.10541"
-        },
-        {
-          "id": "2607.14004",
-          "title": "Do Agent Optimizers Compound?",
+          "id": "2607.16189",
+          "title": "Searching Videos as Trees: Self-Correcting Agents for Grounded Long Video QA",
           "verdict": "out-of-scope",
-          "url": "https://arxiv.org/abs/2607.14004"
+          "url": "https://arxiv.org/abs/2607.16189"
         },
         {
-          "id": "2607.13988",
-          "title": "TRACE",
+          "id": "2607.15524",
+          "title": "Recursive Harness Self-Improvement",
           "verdict": "out-of-scope",
-          "url": "https://arxiv.org/abs/2607.13988"
+          "url": "https://arxiv.org/abs/2607.15524"
         },
         {
-          "id": "2607.13389",
-          "title": "Where Should RL Post-Training Compute Go?",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2607.13389"
+          "id": "2607.15655",
+          "title": "Adaptive Multi-Step Lookahead Decoding for Diffusion Language Models",
+          "verdict": "out-of-scope",
+          "url": "https://arxiv.org/abs/2607.15655"
         }
       ]
     }
