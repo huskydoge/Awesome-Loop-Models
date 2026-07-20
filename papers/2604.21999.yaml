@@ -28,12 +28,13 @@ links:
   arxiv: https://arxiv.org/abs/2604.21999
   github: https://github.com/che-shr-cat/utm-jax
 citations: 3
-github_stars: 12
+github_stars: 13
 star_sources:
-  github_api: 12
+  github_api: 13
 star_source_best: github_api
 metrics_updated: '2026-07-20'
 citation_sources:
   semantic_scholar: 3
+  openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar

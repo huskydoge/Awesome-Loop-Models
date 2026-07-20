@@ -29,6 +29,7 @@ links:
 citations: 106
 citation_sources:
   semantic_scholar: 106
+  openalex: 13
   opencitations: 0
 citation_source_best: semantic_scholar
 metrics_updated: '2026-07-20'

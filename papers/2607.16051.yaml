@@ -1,12 +1,12 @@
-title: 'Loop the Loopies!'
+title: Loop the Loopies!
 authors:
-- 'Zitian Gao'
-- 'Yilong Chen'
-- 'Yihao Xiao'
-- 'Xinyu Yang'
-- 'Ran Tao'
-- 'Joey Zhou'
-- 'Bryan Dai'
+- Zitian Gao
+- Yilong Chen
+- Yihao Xiao
+- Xinyu Yang
+- Ran Tao
+- Joey Zhou
+- Bryan Dai
 year: 2026
 published_date: '2026-07-17'
 added_date: '2026-07-20'
@@ -24,10 +24,15 @@ focus_tags:
 - training-algorithm
 tags:
 - Loopie
-desc: Introduces the Loopie MoE looped Transformer series, arguing that repeated reuse of
-  compact Transformer blocks can outperform compute-matched vanilla Transformer baselines
-  and support strong post-trained reasoning.
+desc: Introduces the Loopie MoE looped Transformer series, arguing that repeated reuse
+  of compact Transformer blocks can outperform compute-matched vanilla Transformer
+  baselines and support strong post-trained reasoning.
 links:
   arxiv: https://arxiv.org/abs/2607.16051
   alphaxiv: https://www.alphaxiv.org/abs/2607.16051
 citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-07-20'

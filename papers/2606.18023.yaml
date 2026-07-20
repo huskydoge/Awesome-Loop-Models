@@ -50,5 +50,6 @@ citations: 0
 metrics_updated: '2026-07-20'
 citation_sources:
   semantic_scholar: 0
+  openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar

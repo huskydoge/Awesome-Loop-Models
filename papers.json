@@ -5,7 +5,7 @@
     "blog_total": 7,
     "briefing_total": 35,
     "latest_briefing_date": "2026-07-20",
-    "generated": "2026-07-20T20:34:30.252222+00:00",
+    "generated": "2026-07-20T20:57:52.605739+00:00",
     "generated_local_date": "2026-07-20",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -83,6 +83,7 @@
       "citations": 399,
       "citation_sources": {
         "semantic_scholar": 399,
+        "openalex": 188,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
@@ -132,6 +133,7 @@
       "citations": 784,
       "citation_sources": {
         "semantic_scholar": 784,
+        "openalex": 360,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
@@ -178,6 +180,7 @@
       "citations": 979,
       "citation_sources": {
         "semantic_scholar": 979,
+        "openalex": 396,
         "opencitations": 3
       },
       "citation_source_best": "semantic_scholar",
@@ -243,6 +246,7 @@
       "citations": 941,
       "citation_sources": {
         "semantic_scholar": 941,
+        "openalex": 246,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -295,6 +299,7 @@
       "citations": 259,
       "citation_sources": {
         "semantic_scholar": 259,
+        "openalex": 53,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -347,6 +352,7 @@
       "citations": 106,
       "citation_sources": {
         "semantic_scholar": 106,
+        "openalex": 13,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -396,6 +402,7 @@
       "citations": 74,
       "citation_sources": {
         "semantic_scholar": 74,
+        "openalex": 7,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -456,6 +463,7 @@
       "citations": 221,
       "citation_sources": {
         "semantic_scholar": 221,
+        "openalex": 3,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -520,6 +528,7 @@
       "citations": 9,
       "citation_sources": {
         "semantic_scholar": 9,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -573,6 +582,7 @@
       "citations": 109,
       "citation_sources": {
         "semantic_scholar": 109,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -648,6 +658,7 @@
       "citations": 8,
       "citation_sources": {
         "semantic_scholar": 8,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -710,6 +721,7 @@
       "citations": 48,
       "citation_sources": {
         "semantic_scholar": 48,
+        "openalex": 1,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -763,6 +775,7 @@
       "citations": 76,
       "citation_sources": {
         "semantic_scholar": 76,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -821,6 +834,7 @@
       "citations": 22,
       "citation_sources": {
         "semantic_scholar": 22,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -875,6 +889,7 @@
       "citations": 52,
       "citation_sources": {
         "semantic_scholar": 52,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -942,6 +957,7 @@
       "citations": 288,
       "citation_sources": {
         "semantic_scholar": 288,
+        "openalex": 1,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1016,6 +1032,7 @@
       "citations": 23,
       "citation_sources": {
         "semantic_scholar": 23,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1024,7 +1041,7 @@
         "github_api": 10
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-07-18",
+      "metrics_updated": "2026-07-20",
       "id": "2502.07827",
       "source_file": "2502.07827.yaml",
       "source_path": "papers/2502.07827.yaml",
@@ -1075,6 +1092,7 @@
       "citations": 174,
       "citation_sources": {
         "semantic_scholar": 174,
+        "openalex": 2,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1137,6 +1155,7 @@
       "citations": 124,
       "citation_sources": {
         "semantic_scholar": 124,
+        "openalex": 3,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1249,6 +1268,7 @@
       "citations": 8,
       "citation_sources": {
         "semantic_scholar": 8,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1382,6 +1402,7 @@
       "citations": 8,
       "citation_sources": {
         "semantic_scholar": 8,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1428,15 +1449,16 @@
         "github": "https://github.com/SamsungSAILMontreal/TinyRecursiveModels",
         "alphaxiv": "https://www.alphaxiv.org/abs/2510.04871"
       },
-      "citations": 0,
+      "citations": 4,
       "citation_sources": {
+        "openalex": 4,
         "opencitations": 0
       },
-      "citation_source_best": "opencitations",
+      "citation_source_best": "openalex",
       "metrics_updated": "2026-07-20",
-      "github_stars": 6571,
+      "github_stars": 6573,
       "star_sources": {
-        "github_api": 6571
+        "github_api": 6573
       },
       "star_source_best": "github_api",
       "id": "2510.04871",
@@ -1638,6 +1660,7 @@
       "citations": 24,
       "citation_sources": {
         "semantic_scholar": 24,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1705,6 +1728,7 @@
       "citations": 16,
       "citation_sources": {
         "semantic_scholar": 16,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1761,6 +1785,7 @@
       "citations": 5,
       "citation_sources": {
         "semantic_scholar": 5,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1819,6 +1844,7 @@
       "citations": 8,
       "citation_sources": {
         "semantic_scholar": 8,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1882,6 +1908,7 @@
       "citations": 1,
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1935,6 +1962,7 @@
       "citations": 8,
       "citation_sources": {
         "semantic_scholar": 8,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1993,6 +2021,7 @@
       "citations": 4,
       "citation_sources": {
         "semantic_scholar": 4,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2058,6 +2087,7 @@
       "citations": 3,
       "citation_sources": {
         "semantic_scholar": 3,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2112,6 +2142,7 @@
       "citations": 3,
       "citation_sources": {
         "semantic_scholar": 3,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2169,6 +2200,7 @@
       "citations": 24,
       "citation_sources": {
         "semantic_scholar": 24,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2223,6 +2255,7 @@
       "citations": 8,
       "citation_sources": {
         "semantic_scholar": 8,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2280,6 +2313,7 @@
       "citations": 4,
       "citation_sources": {
         "semantic_scholar": 4,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2335,6 +2369,7 @@
       "citations": 3,
       "citation_sources": {
         "semantic_scholar": 3,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2402,6 +2437,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2465,6 +2501,7 @@
       "citations": 2,
       "citation_sources": {
         "semantic_scholar": 2,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2532,6 +2569,7 @@
       "citations": 5,
       "citation_sources": {
         "semantic_scholar": 5,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2584,6 +2622,7 @@
       "citations": 5,
       "citation_sources": {
         "semantic_scholar": 5,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2640,6 +2679,7 @@
       "citations": 5,
       "citation_sources": {
         "semantic_scholar": 5,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2685,13 +2725,14 @@
       "citations": 13,
       "citation_sources": {
         "semantic_scholar": 13,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
       "metrics_updated": "2026-07-20",
-      "github_stars": 92,
+      "github_stars": 93,
       "star_sources": {
-        "github_api": 92
+        "github_api": 93
       },
       "star_source_best": "github_api",
       "id": "2604.07822",
@@ -2742,6 +2783,7 @@
       "citations": 3,
       "citation_sources": {
         "semantic_scholar": 3,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2813,6 +2855,7 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2857,6 +2900,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2906,6 +2950,7 @@
       "citations": 14,
       "citation_sources": {
         "semantic_scholar": 14,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -2962,6 +3007,7 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 26,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3022,6 +3068,7 @@
       "citations": 3,
       "citation_sources": {
         "semantic_scholar": 3,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3068,6 +3115,7 @@
       "citations": 5,
       "citation_sources": {
         "semantic_scholar": 5,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3118,6 +3166,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3170,6 +3219,7 @@
       "citations": 1,
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3228,6 +3278,7 @@
       "citations": 9,
       "citation_sources": {
         "semantic_scholar": 9,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3277,6 +3328,7 @@
       "citations": 8,
       "citation_sources": {
         "semantic_scholar": 8,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3339,14 +3391,15 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.21999"
       },
       "citations": 3,
-      "github_stars": 12,
+      "github_stars": 13,
       "star_sources": {
-        "github_api": 12
+        "github_api": 13
       },
       "star_source_best": "github_api",
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 3,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3394,6 +3447,7 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3485,6 +3539,7 @@
       "citations": 1,
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3534,6 +3589,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3583,6 +3639,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3684,6 +3741,7 @@
       "citations": 1,
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3736,6 +3794,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3798,6 +3857,7 @@
       "citations": 2,
       "citation_sources": {
         "semantic_scholar": 2,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3857,6 +3917,7 @@
       "citations": 4,
       "citation_sources": {
         "semantic_scholar": 4,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3906,6 +3967,7 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0,
         "crossref": 0
       },
@@ -3958,6 +4020,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4010,6 +4073,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4064,6 +4128,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4119,6 +4184,7 @@
       "citations": 1,
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4179,6 +4245,7 @@
       "citations": 1,
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4229,6 +4296,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4279,6 +4347,7 @@
       "citations": 1,
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4323,6 +4392,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4378,15 +4448,16 @@
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.20613"
       },
-      "github_stars": 1707,
+      "github_stars": 1709,
       "star_sources": {
-        "github_api": 1707
+        "github_api": 1709
       },
       "star_source_best": "github_api",
       "metrics_updated": "2026-07-20",
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4443,6 +4514,7 @@
       "citations": 2,
       "citation_sources": {
         "semantic_scholar": 2,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4495,6 +4567,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4545,13 +4618,14 @@
       "citations": 2,
       "citation_sources": {
         "semantic_scholar": 2,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
       "metrics_updated": "2026-07-20",
-      "github_stars": 43,
+      "github_stars": 44,
       "star_sources": {
-        "github_api": 43
+        "github_api": 44
       },
       "star_source_best": "github_api",
       "id": "2605.21488",
@@ -4613,6 +4687,7 @@
       "citations": 3,
       "citation_sources": {
         "semantic_scholar": 3,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4667,6 +4742,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4723,6 +4799,7 @@
       "citations": 3,
       "citation_sources": {
         "semantic_scholar": 3,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4783,6 +4860,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4837,12 +4915,13 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 2,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 379,
+      "github_stars": 380,
       "star_sources": {
-        "github_api": 379
+        "github_api": 380
       },
       "star_source_best": "github_api",
       "id": "2605.30215",
@@ -4899,6 +4978,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4949,6 +5029,7 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5001,6 +5082,7 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5052,6 +5134,7 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5101,6 +5184,7 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5151,6 +5235,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5204,6 +5289,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5250,6 +5336,7 @@
       "citations": 1,
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5303,6 +5390,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5355,6 +5443,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5408,6 +5497,7 @@
       "citations": 1,
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5461,6 +5551,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5516,6 +5607,7 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5578,6 +5670,7 @@
       "citations": 3,
       "citation_sources": {
         "semantic_scholar": 3,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5637,6 +5730,7 @@
       "citations": 1,
       "citation_sources": {
         "semantic_scholar": 1,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5715,6 +5809,7 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5765,6 +5860,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5818,6 +5914,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5870,6 +5967,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5922,6 +6020,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -5985,6 +6084,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -6032,6 +6132,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -6085,6 +6186,7 @@
       "metrics_updated": "2026-07-20",
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -6134,6 +6236,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -6181,6 +6284,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -6229,6 +6333,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -6278,6 +6383,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -6324,6 +6430,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -6374,6 +6481,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -6427,6 +6535,7 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -6473,6 +6582,12 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2607.15456"
       },
       "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-07-20",
       "id": "2607.15456",
       "source_file": "2607.15456.yaml",
       "source_path": "papers/2607.15456.yaml",
@@ -6514,6 +6629,12 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2607.16051"
       },
       "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-07-20",
       "id": "2607.16051",
       "source_file": "2607.16051.yaml",
       "source_path": "papers/2607.16051.yaml",

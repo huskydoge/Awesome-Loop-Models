@@ -27,6 +27,7 @@ links:
 citations: 76
 citation_sources:
   semantic_scholar: 76
+  openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
 github_stars: 13
