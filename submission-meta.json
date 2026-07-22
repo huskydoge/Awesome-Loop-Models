@@ -124,6 +124,7 @@
     "papers/2607.13491.yaml",
     "papers/2607.15456.yaml",
     "papers/2607.16051.yaml",
+    "papers/2607.18618.yaml",
     "papers/openreview-chaingpt.yaml",
     "papers/openreview-modr.yaml"
   ],
@@ -131,7 +132,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 106
+        "count": 107
       },
       {
         "label": "hierarchical-loop",
@@ -153,11 +154,11 @@
       },
       {
         "label": "inference-algorithm",
-        "count": 83
+        "count": 84
       },
       {
         "label": "training-algorithm",
-        "count": 58
+        "count": 59
       },
       {
         "label": "objective-loss",
@@ -171,7 +172,7 @@
     "domain": [
       {
         "label": "language-modeling",
-        "count": 68
+        "count": 69
       },
       {
         "label": "reasoning",
@@ -179,7 +180,7 @@
       },
       {
         "label": "efficiency",
-        "count": 53
+        "count": 54
       },
       {
         "label": "algorithmic-reasoning",
@@ -251,6 +252,10 @@
       },
       {
         "label": "hyperspectral-imaging",
+        "count": 1
+      },
+      {
+        "label": "machine-translation",
         "count": 1
       },
       {
