@@ -33,13 +33,13 @@ desc: Stabilizes looped transformers with parameter-free fully looped signal rou
 links:
   arxiv: https://arxiv.org/abs/2605.18797
   github: https://github.com/FuRuF-11/FullyLoopedTransformer
-citations: 1
+citations: 2
 citation_sources:
-  semantic_scholar: 1
+  semantic_scholar: 2
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-20'
+metrics_updated: '2026-07-22'
 github_stars: 2
 star_sources:
   github_api: 2

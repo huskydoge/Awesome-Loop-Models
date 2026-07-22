@@ -27,13 +27,13 @@ links:
   arxiv: https://arxiv.org/abs/2606.06574
   alphaxiv: https://www.alphaxiv.org/abs/2606.06574
   github: https://github.com/tianyi-lab/PoLar
-citations: 1
+citations: 2
 citation_sources:
-  semantic_scholar: 1
+  semantic_scholar: 2
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-20'
+metrics_updated: '2026-07-22'
 github_stars: 23
 star_sources:
   github_api: 23

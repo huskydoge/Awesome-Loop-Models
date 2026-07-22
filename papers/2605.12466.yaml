@@ -30,13 +30,13 @@ links:
   arxiv: https://arxiv.org/abs/2605.12466
   project: https://attractor-models.github.io/
   github: https://github.com/jacobfa/Attractor
-citations: 4
+citations: 5
 citation_sources:
-  semantic_scholar: 4
+  semantic_scholar: 5
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-20'
+metrics_updated: '2026-07-22'
 github_stars: 27
 star_sources:
   github_api: 27

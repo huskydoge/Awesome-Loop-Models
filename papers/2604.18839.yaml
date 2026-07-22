@@ -32,9 +32,9 @@ desc: Introduces Denoising Recursion Models, a looped-transformer training metho
 links:
   arxiv: https://arxiv.org/abs/2604.18839
   github: https://github.com/wwwwwwwwz/DenoisingRecursionModels
-citations: 1
+citations: 2
 citation_sources:
-  semantic_scholar: 1
+  semantic_scholar: 2
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
@@ -42,4 +42,4 @@ github_stars: 6
 star_sources:
   github_api: 6
 star_source_best: github_api
-metrics_updated: '2026-07-20'
+metrics_updated: '2026-07-22'

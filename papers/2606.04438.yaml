@@ -30,10 +30,10 @@ desc: Introduces LoopMoE, a looped mixture-of-experts language model that combin
 links:
   arxiv: https://arxiv.org/abs/2606.04438
   alphaxiv: https://www.alphaxiv.org/abs/2606.04438
-citations: 1
+citations: 2
 citation_sources:
-  semantic_scholar: 1
+  semantic_scholar: 2
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-20'
+metrics_updated: '2026-07-22'

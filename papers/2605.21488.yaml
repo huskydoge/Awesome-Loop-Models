@@ -31,13 +31,13 @@ links:
   comment:
   - label: Benhao's announcement thread
     url: https://x.com/huskydogewoof/status/2057641657580064941?s=20
-citations: 2
+citations: 4
 citation_sources:
-  semantic_scholar: 2
+  semantic_scholar: 4
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-20'
+metrics_updated: '2026-07-22'
 github_stars: 44
 star_sources:
   github_api: 44
