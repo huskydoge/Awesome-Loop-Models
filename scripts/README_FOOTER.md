@@ -17,6 +17,22 @@ See [CONTRIBUTING.md](CONTRIBUTING.md), [TAXONOMY.md](TAXONOMY.md), and [TAGS.md
 
 ---
 
+## Citation
+
+If you find this repository useful, please consider citing this list:
+
+```bibtex
+@misc{huang2026awesomeloopmodels,
+    title = {Awesome-Loop-Models},
+    author = {Benhao Huang and {Awesome-Loop-Models Contributors}},
+    journal = {GitHub repository},
+    url = {https://github.com/huskydoge/Awesome-Loop-Models},
+    year = {2026},
+}
+```
+
+---
+
 <div align="center">
 <sub>
   Maintained by <a href="https://github.com/huskydoge">huskydoge</a>.
