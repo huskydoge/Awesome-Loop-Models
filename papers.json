@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 127,
-    "paper_total": 120,
+    "total": 128,
+    "paper_total": 121,
     "blog_total": 7,
-    "briefing_total": 36,
-    "latest_briefing_date": "2026-07-22",
-    "generated": "2026-07-28T07:56:24.906714+00:00",
+    "briefing_total": 37,
+    "latest_briefing_date": "2026-07-28",
+    "generated": "2026-07-29T03:44:26.809855+00:00",
     "generated_local_date": "2026-07-28",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -6704,6 +6704,57 @@
       "arxiv_id": "2607.18618"
     },
     {
+      "title": "Penelope: Localized Latent Recurrence for Efficient Structured Reasoning",
+      "authors": "Yutong Chen, Shouqian Shi, Xinran Liu, Haochen Wang, Jiaying Wang, Tianxing Xu, Yuanxi Wang, Zirui Ding",
+      "year": 2026,
+      "published_date": "2026-07-28",
+      "added_date": "2026-07-28",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm",
+        "training-algorithm"
+      ],
+      "desc": "Localizes latent recurrent computation to a narrow decoder interval, iteratively refining problem-conditioned boundary memory with GRU dynamics and recurrent readout states before answer generation.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2607.25915",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2607.25915"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-07-29",
+      "id": "2607.25915",
+      "source_file": "2607.25915.yaml",
+      "source_path": "papers/2607.25915.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Yutong Chen",
+        "Shouqian Shi",
+        "Xinran Liu",
+        "Haochen Wang",
+        "Jiaying Wang",
+        "Tianxing Xu",
+        "Yuanxi Wang",
+        "Zirui Ding"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2607.25915"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -7054,40 +7105,34 @@
   ],
   "briefings": [
     {
-      "date": "2026-07-22",
-      "title": "Daily Loop-Model Briefing - 2026-07-22",
+      "date": "2026-07-28",
+      "title": "Daily Loop-Model Briefing - 2026-07-28",
       "status": "added",
-      "summary": "One recent looped-language-model application was added: LatentMT studies recurrent hidden-state computation for machine translation.",
-      "source_path": "briefings/2026/07/2026-07-22.md",
+      "summary": "One new latent-recurrence design paper was added: Penelope localizes recurrent computation to a narrow decoder interval instead of looping the whole model.",
+      "source_path": "briefings/2026/07/2026-07-28.md",
       "highlights": [
-        "LatentMT is an application-side signal for LoopLMs: it moves latent recurrent computation from reasoning benchmarks into machine translation.",
-        "The main practical claim is compact-model efficiency: a 2.6B backbone with latent recurrent computation is reported to approach much larger models across 32 translation directions.",
-        "Two other loop-flavored submissions were left out for now because their abstracts raise evidence/scope concerns rather than giving clean inclusion cases."
+        "Penelope is a compact loop-model design signal: it spends extra computation in latent space through recurrent dynamics inside a selected decoder slice.",
+        "The main efficiency claim is architectural locality: the lower decoder prefix runs once, then a boundary memory is refined recurrently before answer generation.",
+        "The result reported in the abstract is a practical accuracy-latency tradeoff against established latent-reasoning models on structured-reasoning benchmarks."
       ],
       "candidates": [
         {
-          "id": "2607.18618",
-          "title": "LatentMT: Machine Translation with Latent Reasoning",
+          "id": "2607.25915",
+          "title": "Penelope: Localized Latent Recurrence for Efficient Structured Reasoning",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2607.18618"
+          "url": "https://arxiv.org/abs/2607.25915"
         },
         {
-          "id": "2607.18553",
-          "title": "Operational Proto-Introspection in Looped Language Models: Process-Quality Taps, Executable Branching, and the Readout-Control Boundary",
-          "verdict": "watchlist",
-          "url": "https://arxiv.org/abs/2607.18553"
-        },
-        {
-          "id": "2607.17843",
-          "title": "Mobius Learning: Cyclic Depth Folding in Transformers",
-          "verdict": "watchlist",
-          "url": "https://arxiv.org/abs/2607.17843"
-        },
-        {
-          "id": "2607.18829",
-          "title": "Countercurrent Multiplier Networks: A Renal-Inspired Iterative Operator with Provably Bounded Fixed-Point Dynamics",
+          "id": "2607.24617",
+          "title": "LaRec: Unleashing LLM-based Latent Reasoning for Generative Recommendation",
           "verdict": "borderline",
-          "url": "https://arxiv.org/abs/2607.18829"
+          "url": "https://arxiv.org/abs/2607.24617"
+        },
+        {
+          "id": "2607.25346",
+          "title": "The Case Against Generation for Retrieval: Discriminative Language Models as Effective Retrievers",
+          "verdict": "not-added",
+          "url": "https://arxiv.org/abs/2607.25346"
         }
       ]
     }

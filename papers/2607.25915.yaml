@@ -1,0 +1,37 @@
+title: 'Penelope: Localized Latent Recurrence for Efficient Structured Reasoning'
+authors:
+- Yutong Chen
+- Shouqian Shi
+- Xinran Liu
+- Haochen Wang
+- Jiaying Wang
+- Tianxing Xu
+- Yuanxi Wang
+- Zirui Ding
+year: 2026
+published_date: '2026-07-28'
+added_date: '2026-07-28'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+focus_tags:
+- architecture
+- inference-algorithm
+- training-algorithm
+desc: Localizes latent recurrent computation to a narrow decoder interval, iteratively
+  refining problem-conditioned boundary memory with GRU dynamics and recurrent readout
+  states before answer generation.
+links:
+  arxiv: https://arxiv.org/abs/2607.25915
+  alphaxiv: https://www.alphaxiv.org/abs/2607.25915
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-07-29'
