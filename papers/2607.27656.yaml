@@ -1,0 +1,36 @@
+title: Looped Transformers with Source-Centered State Evolution
+authors:
+- Bum Jun Kim
+- Kohei Hayashi
+- Shunsuke Kamiya
+- Masanori Koyama
+- Yusuke Iwasawa
+- Yutaka Matsuo
+year: 2026
+published_date: '2026-07-30'
+added_date: '2026-08-02'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- scaling
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces Source-Centered State Evolution for looped Transformers, preserving
+  an input-conditioned anchor while allowing a shared recurrent block to drive state-dependent
+  computation across loop depth.
+links:
+  arxiv: https://arxiv.org/abs/2607.27656
+  alphaxiv: https://www.alphaxiv.org/abs/2607.27656
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-08-03'

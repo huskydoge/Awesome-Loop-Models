@@ -1,0 +1,29 @@
+title: SILVA Networks as Structured Implicit Layers and Vector Attractors via Dynamic
+  Interaction Fields
+authors:
+- Jose Luis Lima de Jesus Silva
+year: 2026
+published_date: '2026-07-31'
+added_date: '2026-08-02'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- graphs
+- vision
+- scientific-ml
+focus_tags:
+- architecture
+desc: Introduces SILVA Networks as structured implicit layers, separating stimulus,
+  local interaction, global interaction, damping, and readout inside trainable fixed-point
+  dynamics.
+links:
+  arxiv: https://arxiv.org/abs/2607.28989
+  alphaxiv: https://www.alphaxiv.org/abs/2607.28989
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-08-03'
