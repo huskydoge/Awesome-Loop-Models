@@ -1,0 +1,35 @@
+title: 'ReLoop-UME: Recurrent Depth with Learnable Retrieval Registers for Universal
+  Multimodal Embedding'
+authors:
+- Shijie Wang
+- Xiangzhao Hao
+- Yueti Li
+- Guangyu Cao
+- Xinyu Tang
+- Haiyun Guo
+year: 2026
+published_date: '2026-07-30'
+added_date: '2026-08-02'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- multimodal
+- retrieval
+- efficiency
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Applies recurrent-depth block reuse to universal multimodal embedding, using
+  learnable retrieval registers to accumulate evidence across loops before producing
+  the final embedding.
+links:
+  arxiv: https://arxiv.org/abs/2607.28751
+  alphaxiv: https://www.alphaxiv.org/abs/2607.28751
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-08-03'

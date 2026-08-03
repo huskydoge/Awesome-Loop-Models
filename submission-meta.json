@@ -125,6 +125,9 @@
     "papers/2607.15456.yaml",
     "papers/2607.16051.yaml",
     "papers/2607.18618.yaml",
+    "papers/2607.27656.yaml",
+    "papers/2607.28751.yaml",
+    "papers/2607.28989.yaml",
     "papers/openreview-chaingpt.yaml",
     "papers/openreview-modr.yaml"
   ],
@@ -132,7 +135,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 107
+        "count": 109
       },
       {
         "label": "hierarchical-loop",
@@ -140,7 +143,7 @@
       },
       {
         "label": "implicit-layer",
-        "count": 14
+        "count": 15
       },
       {
         "label": "parallel-loop",
@@ -150,11 +153,11 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 110
+        "count": 113
       },
       {
         "label": "inference-algorithm",
-        "count": 84
+        "count": 86
       },
       {
         "label": "training-algorithm",
@@ -172,15 +175,15 @@
     "domain": [
       {
         "label": "language-modeling",
-        "count": 69
+        "count": 70
       },
       {
         "label": "reasoning",
-        "count": 68
+        "count": 69
       },
       {
         "label": "efficiency",
-        "count": 54
+        "count": 55
       },
       {
         "label": "algorithmic-reasoning",
@@ -188,7 +191,7 @@
       },
       {
         "label": "scaling",
-        "count": 20
+        "count": 21
       },
       {
         "label": "theory",
@@ -199,11 +202,11 @@
         "count": 12
       },
       {
-        "label": "memory-efficiency",
-        "count": 9
+        "label": "vision",
+        "count": 10
       },
       {
-        "label": "vision",
+        "label": "memory-efficiency",
         "count": 9
       },
       {
@@ -213,6 +216,10 @@
       {
         "label": "graph-data",
         "count": 4
+      },
+      {
+        "label": "multimodal",
+        "count": 2
       },
       {
         "label": "recommendation",
@@ -247,6 +254,10 @@
         "count": 1
       },
       {
+        "label": "graphs",
+        "count": 1
+      },
+      {
         "label": "hardware-aware",
         "count": 1
       },
@@ -256,10 +267,6 @@
       },
       {
         "label": "machine-translation",
-        "count": 1
-      },
-      {
-        "label": "multimodal",
         "count": 1
       },
       {
@@ -275,11 +282,19 @@
         "count": 1
       },
       {
+        "label": "retrieval",
+        "count": 1
+      },
+      {
         "label": "RL",
         "count": 1
       },
       {
         "label": "rl-control",
+        "count": 1
+      },
+      {
+        "label": "scientific-ml",
         "count": 1
       },
       {
