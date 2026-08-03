@@ -46,10 +46,10 @@ links:
   arxiv: https://arxiv.org/abs/2606.18023
   alphaxiv: https://www.alphaxiv.org/abs/2606.18023
   hf: https://huggingface.co/Multilingual-Multimodal-NLP/LoopCoder-V2
-citations: 0
-metrics_updated: '2026-07-20'
+citations: 1
+metrics_updated: '2026-08-03'
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
