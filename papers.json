@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 130,
-    "paper_total": 123,
+    "total": 132,
+    "paper_total": 125,
     "blog_total": 7,
-    "briefing_total": 37,
-    "latest_briefing_date": "2026-08-02",
-    "generated": "2026-08-03T06:27:21.117096+00:00",
-    "generated_local_date": "2026-08-03",
+    "briefing_total": 38,
+    "latest_briefing_date": "2026-08-05",
+    "generated": "2026-08-05T09:32:59.133784+00:00",
+    "generated_local_date": "2026-08-05",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -6848,6 +6848,95 @@
       "arxiv_id": "2607.28989"
     },
     {
+      "title": "The Ignition Is Real, and It Lives at the Readout: Latent composition, difficulty-clocked ignition, and the interface-constituted commit in a recurrent-depth reasoner",
+      "authors": "Simon Lam-Muir",
+      "year": 2026,
+      "published_date": "2026-08-04",
+      "added_date": "2026-08-05",
+      "venue": "arXiv",
+      "category": "analysis",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Analyzes iteration-by-iteration commitment in a recurrent-depth reasoner, finding a difficulty-dependent readout transition while separating robust hidden-state evidence from coordinate-dependent artifacts.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.03263",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.03263"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-08-05",
+      "id": "2608.03263",
+      "source_file": "2608.03263.yaml",
+      "source_path": "papers/2608.03263.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Simon Lam-Muir"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.03263"
+    },
+    {
+      "title": "LoopMTP: A looped transformer guided by latent multi-token prediction",
+      "authors": "Behzad Shomali, Markus Frey, David Berghaus, Joachim Koehler, Mehdi Ali",
+      "year": 2026,
+      "published_date": "2026-08-04",
+      "added_date": "2026-08-05",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "focus_tags": [
+        "architecture",
+        "objective-loss",
+        "training-algorithm"
+      ],
+      "desc": "Guides each reuse of a shared Transformer stack with a soft multi-token alignment target, then learns to aggregate intermediate loop states to reduce redundant computation and latent overthinking.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.03624",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.03624"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-08-05",
+      "id": "2608.03624",
+      "source_file": "2608.03624.yaml",
+      "source_path": "papers/2608.03624.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Behzad Shomali",
+        "Markus Frey",
+        "David Berghaus",
+        "Joachim Koehler",
+        "Mehdi Ali"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.03624"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -7198,46 +7287,46 @@
   ],
   "briefings": [
     {
-      "date": "2026-08-02",
-      "title": "Daily Loop-Model Briefing - 2026-08-02",
+      "date": "2026-08-05",
+      "title": "Daily Loop-Model Briefing - 2026-08-05",
       "status": "added",
-      "summary": "Three recent papers were added: SCSE improves looped-Transformer state evolution, ReLoop-UME applies recurrent depth to multimodal retrieval, and SILVA decomposes fixed-point implicit-layer dynamics.",
-      "source_path": "briefings/2026/08/2026-08-02.md",
+      "summary": "Two recent papers were added: LoopMTP gives recurrent Transformer iterations distinct future-token alignment targets, while The Ignition Is Real studies when a recurrent-depth reasoner commits to an answer at its readout.",
+      "source_path": "briefings/2026/08/2026-08-05.md",
       "highlights": [
-        "SCSE is the cleanest looped-Transformer design hit: it keeps the shared recurrent block explicit while adding an anchor-centered state evolution rule to stabilize input-conditioned recurrence.",
-        "ReLoop-UME is an application-side recurrent-depth signal for retrieval: a parameter-shared middle block is reused across loop steps while learned retrieval registers accumulate evidence.",
-        "SILVA broadens the implicit-layer side of the collection by making the fixed-point dynamics more interpretable through separated stimulus, local, global, damping, and readout terms."
+        "LoopMTP is a direct looped-language-model design: one Transformer stack is reused across iterations, with soft latent multi-token supervision and a learned aggregation gate over intermediate states.",
+        "The reported LoopMTP ablations isolate the MTP objective and aggregation gate, but do not independently isolate iteration indexing, per-iteration normalization, or 1/T residual scaling.",
+        "The Ignition Is Real is a mechanistic-analysis result rather than a new architecture, and its evidence comes from a 30M-parameter synthetic recurrent-depth reasoner rather than a general-purpose LLM."
       ],
       "candidates": [
         {
-          "id": "2607.27656",
-          "title": "Looped Transformers with Source-Centered State Evolution",
+          "id": "2608.03624",
+          "title": "LoopMTP: A looped transformer guided by latent multi-token prediction",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2607.27656"
+          "url": "https://arxiv.org/abs/2608.03624"
         },
         {
-          "id": "2607.28751",
-          "title": "ReLoop-UME: Recurrent Depth with Learnable Retrieval Registers for Universal Multimodal Embedding",
+          "id": "2608.03263",
+          "title": "The Ignition Is Real, and It Lives at the Readout",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2607.28751"
+          "url": "https://arxiv.org/abs/2608.03263"
         },
         {
-          "id": "2607.28989",
-          "title": "SILVA Networks as Structured Implicit Layers and Vector Attractors via Dynamic Interaction Fields",
-          "verdict": "added",
-          "url": "https://arxiv.org/abs/2607.28989"
-        },
-        {
-          "id": "2607.29503",
-          "title": "The Grokked Illusion: True Equilibrium Mitigates Catastrophic Forgetting",
-          "verdict": "out-of-scope",
-          "url": "https://arxiv.org/abs/2607.29503"
-        },
-        {
-          "id": "2607.29185",
-          "title": "Learning Latent Reasoning Traces for Scalar Reward Models End-to-End",
+          "id": "2608.02346",
+          "title": "Loop-Mamba",
           "verdict": "watchlist",
-          "url": "https://arxiv.org/abs/2607.29185"
+          "url": "https://arxiv.org/abs/2608.02346"
+        },
+        {
+          "id": "2608.03391",
+          "title": "TimeRLM",
+          "verdict": "out-of-scope",
+          "url": "https://arxiv.org/abs/2608.03391"
+        },
+        {
+          "id": "2608.02585",
+          "title": "GradCuit",
+          "verdict": "out-of-scope",
+          "url": "https://arxiv.org/abs/2608.02585"
         }
       ]
     }

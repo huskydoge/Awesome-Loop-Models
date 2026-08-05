@@ -1,0 +1,33 @@
+title: 'LoopMTP: A looped transformer guided by latent multi-token prediction'
+authors:
+- Behzad Shomali
+- Markus Frey
+- David Berghaus
+- Joachim Koehler
+- Mehdi Ali
+year: 2026
+published_date: '2026-08-04'
+added_date: '2026-08-05'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+focus_tags:
+- architecture
+- objective-loss
+- training-algorithm
+desc: Guides each reuse of a shared Transformer stack with a soft multi-token alignment
+  target, then learns to aggregate intermediate loop states to reduce redundant computation
+  and latent overthinking.
+links:
+  arxiv: https://arxiv.org/abs/2608.03624
+  alphaxiv: https://www.alphaxiv.org/abs/2608.03624
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-08-05'

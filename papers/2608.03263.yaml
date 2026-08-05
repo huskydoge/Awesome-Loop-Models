@@ -1,0 +1,29 @@
+title: 'The Ignition Is Real, and It Lives at the Readout: Latent composition, difficulty-clocked
+  ignition, and the interface-constituted commit in a recurrent-depth reasoner'
+authors:
+- Simon Lam-Muir
+year: 2026
+published_date: '2026-08-04'
+added_date: '2026-08-05'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+focus_tags:
+- architecture
+desc: Analyzes iteration-by-iteration commitment in a recurrent-depth reasoner, finding
+  a difficulty-dependent readout transition while separating robust hidden-state evidence
+  from coordinate-dependent artifacts.
+links:
+  arxiv: https://arxiv.org/abs/2608.03263
+  alphaxiv: https://www.alphaxiv.org/abs/2608.03263
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-08-05'
