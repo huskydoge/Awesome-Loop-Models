@@ -34,14 +34,14 @@ links:
   project: https://thrillcrazyer.github.io/LoopUS
   github: https://github.com/Thrillcrazyer/LoopUS
   hf: https://huggingface.co/Thrillcrazyer/Qwen3_1.7B_LoopUS
-citations: 4
+citations: 5
 citation_sources:
-  semantic_scholar: 4
+  semantic_scholar: 5
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-08-03'
-github_stars: 8
+metrics_updated: '2026-08-06'
+github_stars: 9
 star_sources:
-  github_api: 8
+  github_api: 9
 star_source_best: github_api

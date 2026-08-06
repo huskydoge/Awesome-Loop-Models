@@ -28,10 +28,10 @@ links:
   arxiv: https://arxiv.org/abs/2507.02199
   openreview: https://openreview.net/forum?id=roIQdXMuEj
   github: https://github.com/wenquanlu/huginn-latent-cot
-citations: 14
-metrics_updated: '2026-07-27'
+citations: 15
+metrics_updated: '2026-08-06'
 citation_sources:
-  semantic_scholar: 14
+  semantic_scholar: 15
   opencitations: 0
 citation_source_best: semantic_scholar
 github_stars: 20
