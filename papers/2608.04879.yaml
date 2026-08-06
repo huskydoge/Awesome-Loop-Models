@@ -1,0 +1,34 @@
+title: 'Training Crossroads for Recurrent Vision Transformers: Recurrence, Neural
+  ODEs, and Deep Supervision'
+authors:
+- Grzegorz Gruszczynski
+- Pawel Olszowiec
+- Michal Byra
+- Grzegorz Stefanski
+- Alberto Presta
+year: 2026
+published_date: '2026-08-05'
+added_date: '2026-08-05'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- efficiency
+- scaling
+focus_tags:
+- architecture
+- training-algorithm
+desc: Provides a controlled empirical study of single-block recurrent Vision Transformers,
+  comparing shared-block recurrence against independently parameterized depth, Neural
+  ODE training, and deep supervision under matched CIFAR-100 protocols.
+links:
+  arxiv: https://arxiv.org/abs/2608.04879
+  alphaxiv: https://www.alphaxiv.org/abs/2608.04879
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-08-06'
