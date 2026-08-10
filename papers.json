@@ -5,8 +5,8 @@
     "blog_total": 7,
     "briefing_total": 38,
     "latest_briefing_date": "2026-08-05",
-    "generated": "2026-08-06T06:39:15.076260+00:00",
-    "generated_local_date": "2026-08-06",
+    "generated": "2026-08-10T05:47:35.905886+00:00",
+    "generated_local_date": "2026-08-10",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -130,14 +130,14 @@
         "arxiv": "https://arxiv.org/abs/1603.08983",
         "alphaxiv": "https://www.alphaxiv.org/abs/1603.08983"
       },
-      "citations": 800,
+      "citations": 803,
       "citation_sources": {
-        "semantic_scholar": 800,
+        "semantic_scholar": 803,
         "openalex": 360,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "id": "1603.08983",
       "source_file": "1603.08983.yaml",
       "source_path": "papers/1603.08983.yaml",
@@ -177,14 +177,14 @@
         "openreview": "https://openreview.net/forum?id=HyzdRiR9Y7",
         "alphaxiv": "https://www.alphaxiv.org/abs/1807.03819"
       },
-      "citations": 999,
+      "citations": 1003,
       "citation_sources": {
-        "semantic_scholar": 999,
+        "semantic_scholar": 1003,
         "openalex": 396,
         "opencitations": 4
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "id": "1807.03819",
       "source_file": "1807.03819.yaml",
       "source_path": "papers/1807.03819.yaml",
@@ -243,9 +243,9 @@
         "github": "https://github.com/locuslab/deq",
         "alphaxiv": "https://www.alphaxiv.org/abs/1909.01377"
       },
-      "citations": 958,
+      "citations": 964,
       "citation_sources": {
-        "semantic_scholar": 958,
+        "semantic_scholar": 964,
         "openalex": 246,
         "opencitations": 0
       },
@@ -255,7 +255,7 @@
         "github_api": 805
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -296,14 +296,14 @@
         "github": "https://github.com/locuslab/mdeq",
         "alphaxiv": "https://www.alphaxiv.org/abs/2006.08656"
       },
-      "citations": 263,
+      "citations": 264,
       "citation_sources": {
-        "semantic_scholar": 263,
+        "semantic_scholar": 264,
         "openalex": 53,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "github_stars": 237,
       "star_sources": {
         "github_api": 237
@@ -460,14 +460,14 @@
         "paper": "https://proceedings.mlr.press/v202/giannou23a.html",
         "alphaxiv": "https://www.alphaxiv.org/abs/2301.13196"
       },
-      "citations": 227,
+      "citations": 228,
       "citation_sources": {
-        "semantic_scholar": 227,
+        "semantic_scholar": 228,
         "openalex": 3,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "id": "2301.13196",
       "source_file": "2301.13196.yaml",
       "source_path": "papers/2301.13196.yaml",
@@ -579,9 +579,9 @@
         "github": "https://github.com/Leiay/looped_transformer",
         "alphaxiv": "https://www.alphaxiv.org/abs/2311.12424"
       },
-      "citations": 114,
+      "citations": 116,
       "citation_sources": {
-        "semantic_scholar": 114,
+        "semantic_scholar": 116,
         "openalex": 0,
         "opencitations": 0
       },
@@ -591,7 +591,7 @@
         "github_api": 53
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "id": "2311.12424",
       "source_file": "2311.12424.yaml",
       "source_path": "papers/2311.12424.yaml",
@@ -954,19 +954,18 @@
         "github": "https://github.com/seal-rg/recurrent-pretraining",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.05171"
       },
-      "citations": 308,
+      "citations": 312,
       "citation_sources": {
-        "semantic_scholar": 308,
-        "openalex": 2,
+        "semantic_scholar": 312,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 911,
+      "github_stars": 912,
       "star_sources": {
-        "github_api": 911
+        "github_api": 912
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "id": "2502.05171",
       "source_file": "2502.05171.yaml",
       "source_path": "papers/2502.05171.yaml",
@@ -1089,14 +1088,14 @@
         "openreview": "https://openreview.net/forum?id=din0lGfZFd",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.17416"
       },
-      "citations": 187,
+      "citations": 189,
       "citation_sources": {
-        "semantic_scholar": 187,
+        "semantic_scholar": 189,
         "openalex": 2,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "id": "2502.17416",
       "source_file": "2502.17416.yaml",
       "source_path": "papers/2502.17416.yaml",
@@ -1152,14 +1151,13 @@
         "arxiv": "https://arxiv.org/abs/2506.21734",
         "alphaxiv": "https://www.alphaxiv.org/abs/2506.21734"
       },
-      "citations": 127,
+      "citations": 129,
       "citation_sources": {
-        "semantic_scholar": 127,
-        "openalex": 3,
+        "semantic_scholar": 129,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-27",
+      "metrics_updated": "2026-08-10",
       "id": "2506.21734",
       "source_file": "2506.21734.yaml",
       "source_path": "papers/2506.21734.yaml",
@@ -1265,14 +1263,14 @@
         "arxiv": "https://arxiv.org/abs/2507.07996",
         "alphaxiv": "https://www.alphaxiv.org/abs/2507.07996"
       },
-      "citations": 9,
+      "citations": 10,
       "citation_sources": {
-        "semantic_scholar": 9,
+        "semantic_scholar": 10,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "id": "2507.07996",
       "source_file": "2507.07996.yaml",
       "source_path": "papers/2507.07996.yaml",
@@ -1329,10 +1327,10 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2507.10524"
       },
       "citations": 99,
-      "metrics_updated": "2026-08-06",
-      "github_stars": 579,
+      "metrics_updated": "2026-08-10",
+      "github_stars": 580,
       "star_sources": {
-        "github_api": 579
+        "github_api": 580
       },
       "star_source_best": "github_api",
       "citation_sources": {
@@ -1732,12 +1730,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 78,
+      "github_stars": 79,
       "star_sources": {
-        "github_api": 78
+        "github_api": 79
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "id": "2511.08577",
       "source_file": "2511.08577.yaml",
       "source_path": "papers/2511.08577.yaml",
@@ -2505,10 +2503,10 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-22",
-      "github_stars": 3,
+      "metrics_updated": "2026-08-10",
+      "github_stars": 4,
       "star_sources": {
-        "github_api": 3
+        "github_api": 4
       },
       "star_source_best": "github_api",
       "id": "2603.08082",
@@ -2783,10 +2781,11 @@
       "citations": 3,
       "citation_sources": {
         "semantic_scholar": 3,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "id": "2604.09168",
       "source_file": "2604.09168.yaml",
       "source_path": "papers/2604.09168.yaml",
@@ -3862,10 +3861,10 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-06",
-      "github_stars": 9,
+      "metrics_updated": "2026-08-10",
+      "github_stars": 10,
       "star_sources": {
-        "github_api": 9
+        "github_api": 10
       },
       "star_source_best": "github_api",
       "id": "2605.11011",
@@ -3918,11 +3917,10 @@
       "citations": 6,
       "citation_sources": {
         "semantic_scholar": 6,
-        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "github_stars": 28,
       "star_sources": {
         "github_api": 28
@@ -3965,10 +3963,9 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.12578"
       },
       "citations": 0,
-      "metrics_updated": "2026-07-20",
+      "metrics_updated": "2026-08-10",
       "citation_sources": {
         "semantic_scholar": 0,
-        "openalex": 0,
         "opencitations": 0,
         "crossref": 0
       },
@@ -4449,12 +4446,12 @@
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.20613"
       },
-      "github_stars": 1791,
+      "github_stars": 1808,
       "star_sources": {
-        "github_api": 1791
+        "github_api": 1808
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "citations": 3,
       "citation_sources": {
         "semantic_scholar": 3,
@@ -4865,12 +4862,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 3,
+      "github_stars": 4,
       "star_sources": {
-        "github_api": 3
+        "github_api": 4
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-07-22",
+      "metrics_updated": "2026-08-10",
       "id": "2605.28919",
       "source_file": "2605.28919.yaml",
       "source_path": "papers/2605.28919.yaml",
@@ -5502,10 +5499,10 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-06",
-      "github_stars": 29,
+      "metrics_updated": "2026-08-10",
+      "github_stars": 30,
       "star_sources": {
-        "github_api": 29
+        "github_api": 30
       },
       "star_source_best": "github_api",
       "id": "2606.06574",
@@ -6875,10 +6872,11 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-05",
+      "metrics_updated": "2026-08-10",
       "id": "2608.03263",
       "source_file": "2608.03263.yaml",
       "source_path": "papers/2608.03263.yaml",
@@ -6919,10 +6917,11 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-06",
+      "metrics_updated": "2026-08-10",
       "id": "2608.03624",
       "source_file": "2608.03624.yaml",
       "source_path": "papers/2608.03624.yaml",
@@ -6966,10 +6965,12 @@
       },
       "citations": 0,
       "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
-      "citation_source_best": "opencitations",
-      "metrics_updated": "2026-08-06",
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-08-10",
       "id": "2608.04879",
       "source_file": "2608.04879.yaml",
       "source_path": "papers/2608.04879.yaml",

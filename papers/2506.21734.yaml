@@ -30,10 +30,9 @@ desc: 'Proposes HRM, a brain-inspired recurrent architecture with two coupled mo
   module for detailed execution.'
 links:
   arxiv: https://arxiv.org/abs/2506.21734
-citations: 127
+citations: 129
 citation_sources:
-  semantic_scholar: 127
-  openalex: 3
+  semantic_scholar: 129
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-27'
+metrics_updated: '2026-08-10'
