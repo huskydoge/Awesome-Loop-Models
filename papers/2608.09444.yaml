@@ -1,0 +1,30 @@
+title: Depth-adaptive Inference of Looped Language Models via Continuous Depth Batching
+authors:
+- Kristian Schwethelm
+- Daniel Rueckert
+- Georgios Kaissis
+year: 2026
+published_date: '2026-08-10'
+added_date: '2026-08-11'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+focus_tags:
+- inference-algorithm
+desc: Introduces continuous depth batching for looped language models, scheduling
+  shared-block loop iterations and boundary stages separately so adaptive-depth inference
+  can realize most of its theoretical speed-up.
+links:
+  arxiv: https://arxiv.org/abs/2608.09444
+  alphaxiv: https://www.alphaxiv.org/abs/2608.09444
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-08-11'

@@ -131,6 +131,9 @@
     "papers/2608.03263.yaml",
     "papers/2608.03624.yaml",
     "papers/2608.04879.yaml",
+    "papers/2608.08113.yaml",
+    "papers/2608.09444.yaml",
+    "papers/2608.09888.yaml",
     "papers/openreview-chaingpt.yaml",
     "papers/openreview-modr.yaml"
   ],
@@ -138,7 +141,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 112
+        "count": 115
       },
       {
         "label": "hierarchical-loop",
@@ -156,11 +159,11 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 116
+        "count": 118
       },
       {
         "label": "inference-algorithm",
-        "count": 86
+        "count": 88
       },
       {
         "label": "training-algorithm",
@@ -178,19 +181,19 @@
     "domain": [
       {
         "label": "language-modeling",
-        "count": 72
+        "count": 75
       },
       {
         "label": "reasoning",
-        "count": 71
+        "count": 73
       },
       {
         "label": "efficiency",
-        "count": 56
+        "count": 57
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 29
+        "count": 30
       },
       {
         "label": "scaling",

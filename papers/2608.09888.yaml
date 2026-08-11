@@ -1,0 +1,38 @@
+title: 'BDH-CQ: In-Context Learning with Recurrent Latent Reasoning'
+authors:
+- Björn Engdahl
+- Adrian Kosowski
+- Jan Chorowski
+- Zuzanna Stamirowska
+- Przemysław Uznański
+- Junlin Jiang
+- Rohan Phadke
+- Remigiusz Kinas
+- Richard Zhong
+year: 2026
+published_date: '2026-08-10'
+added_date: '2026-08-11'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- algorithmic-reasoning
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Combines in-context learning with recurrent latent memory and iterative latent-space
+  computation, improving ARC-AGI-1 cost efficiency with a 150M-parameter recurrent
+  reasoning model.
+links:
+  arxiv: https://arxiv.org/abs/2608.09888
+  alphaxiv: https://www.alphaxiv.org/abs/2608.09888
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-08-11'
