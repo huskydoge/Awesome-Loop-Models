@@ -1,0 +1,36 @@
+title: Full-bandwidth transformer
+authors:
+- Xi Wang
+- Ziyang Cai
+- Zheng Zhan
+- Harry Dong
+- Ying Fan
+- Gustavo de Rosa
+- Tim Pearce
+- John Langford
+year: 2026
+published_date: '2026-08-09'
+added_date: '2026-08-11'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+desc: Feeds each decoding step's top-layer hidden state back through a learned gate
+  at the bottom of the same Transformer stack, widening autoregressive feedback from
+  a sampled token to a full latent state.
+links:
+  arxiv: https://arxiv.org/abs/2608.08888
+  alphaxiv: https://www.alphaxiv.org/abs/2608.08888
+citations: 0
+metrics_updated: '2026-08-11'
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations

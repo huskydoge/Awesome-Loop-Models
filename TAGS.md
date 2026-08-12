@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (16)
-- `flat-loop` (115)
+- `flat-loop` (116)
 - `parallel-loop` (4)
 - `implicit-layer` (15)
 
@@ -27,8 +27,8 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (17)
-- `training-algorithm` (61)
-- `architecture` (118)
+- `training-algorithm` (62)
+- `architecture` (119)
 - `data` (2)
 - `inference-algorithm` (88)
 
@@ -36,9 +36,9 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `language-modeling` (75)
-- `reasoning` (73)
-- `efficiency` (57)
+- `language-modeling` (76)
+- `reasoning` (74)
+- `efficiency` (58)
 - `algorithmic-reasoning` (30)
 - `scaling` (22)
 - `theory` (14)

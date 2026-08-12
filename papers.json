@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 136,
-    "paper_total": 129,
+    "total": 137,
+    "paper_total": 130,
     "blog_total": 7,
     "briefing_total": 39,
     "latest_briefing_date": "2026-08-11",
-    "generated": "2026-08-11T16:32:15.597949+00:00",
+    "generated": "2026-08-12T05:06:35.192969+00:00",
     "generated_local_date": "2026-08-11",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -7034,6 +7034,56 @@
       "arxiv_id": "2608.08113"
     },
     {
+      "title": "Full-bandwidth transformer",
+      "authors": "Xi Wang, Ziyang Cai, Zheng Zhan, Harry Dong, Ying Fan, Gustavo de Rosa, Tim Pearce, John Langford",
+      "year": 2026,
+      "published_date": "2026-08-09",
+      "added_date": "2026-08-11",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Feeds each decoding step's top-layer hidden state back through a learned gate at the bottom of the same Transformer stack, widening autoregressive feedback from a sampled token to a full latent state.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.08888",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.08888"
+      },
+      "citations": 0,
+      "metrics_updated": "2026-08-11",
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "id": "2608.08888",
+      "source_file": "2608.08888.yaml",
+      "source_path": "papers/2608.08888.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Xi Wang",
+        "Ziyang Cai",
+        "Zheng Zhan",
+        "Harry Dong",
+        "Ying Fan",
+        "Gustavo de Rosa",
+        "Tim Pearce",
+        "John Langford"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.08888"
+    },
+    {
       "title": "Depth-adaptive Inference of Looped Language Models via Continuous Depth Batching",
       "authors": "Kristian Schwethelm, Daniel Rueckert, Georgios Kaissis",
       "year": 2026,
@@ -7483,12 +7533,13 @@
       "date": "2026-08-11",
       "title": "Daily Loop-Model Briefing - 2026-08-11",
       "status": "added",
-      "summary": "Three recent papers were added: continuous depth batching for looped LMs, recurrent latent reasoning for ARC-style tasks, and a recursive latent block for semantically grounded implicit reasoning.",
+      "summary": "Four recent papers were added: continuous depth batching for looped LMs, recurrent latent reasoning for ARC-style tasks, a recursive latent block for semantically grounded implicit reasoning, and full-state latent feedback across decoding steps.",
       "source_path": "briefings/2026/08/2026-08-11.md",
       "highlights": [
         "Continuous Depth Batching is the clearest systems hit: it assumes looped LMs whose shared layer block is iterated a variable number of times, then makes adaptive-depth serving practical.",
         "BDH-CQ is an applications entry for recurrent latent reasoning: it combines in-context memory updates with iterative latent-space computation and reports a strong ARC-AGI-1 cost-accuracy point.",
-        "ReLIT is a compact architecture entry: a trainable recursive latent block repeatedly refines hidden reasoning states on top of a frozen LLM backbone."
+        "ReLIT is a compact architecture entry: a trainable recursive latent block repeatedly refines hidden reasoning states on top of a frozen LLM backbone.",
+        "Full-bandwidth Transformer widens autoregressive feedback from a sampled token to the full top-layer hidden state, sending latent computation back through the same stack with negligible per-token overhead."
       ],
       "candidates": [
         {
@@ -7508,6 +7559,18 @@
           "title": "Think Deep, Speak Once: Relit, A Recursive Latent Implicit Transformer Framework",
           "verdict": "added",
           "url": "https://arxiv.org/abs/2608.08113"
+        },
+        {
+          "id": "2608.08888",
+          "title": "Full-bandwidth transformer",
+          "verdict": "added",
+          "url": "https://arxiv.org/abs/2608.08888"
+        },
+        {
+          "id": "2608.02870",
+          "title": "Maglev: Sliding Recurrent Memory",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2608.02870"
         }
       ]
     }
