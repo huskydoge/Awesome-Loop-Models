@@ -2,11 +2,11 @@
 
 ## Core Inclusion Rule
 
-A paper belongs in this repository only if:
+The strict loop-model catalog targets papers where:
 
 > Within one model forward process, a shared learned internal layer, block, module, or operator is reused.
 
-This is the repo's hard boundary. The qualifying loop must be inside the model's forward computation, not an external optimization, search, planning, or solver routine.
+This is the main scope boundary. The qualifying loop must be inside the model's forward computation, not an external optimization, search, planning, or solver routine.
 
 ## Scope Scale
 
@@ -18,6 +18,10 @@ The easiest way to understand the boundary is as a scale:
 4. Loop model
 
 Only the fourth category is the main target of this repo. Standard sequence-time recurrence across tokens or timesteps is not enough by itself; the repo's target is iterative depth or latent recurrence inside one forward pass.
+
+### Adjacent-work exception
+
+A rare, curator-approved paper may remain for its conceptual value with `catalog_fit: adjacent`. It must be visibly labeled **Adjacent work**, carry no strict `mechanism_tags`, and have primary-source audit evidence explaining why it falls outside the strict boundary. Omitting `catalog_fit` means strict scope.
 
 ## In Scope
 

@@ -15,6 +15,10 @@ category: "designs"
 foundation: false
 must_read: false
 
+# Omit `catalog_fit` for normal strict-scope entries. A curator may set
+# `catalog_fit: "adjacent"` for a rare, explicitly labeled exception with
+# primary-source boundary evidence; adjacent entries use `mechanism_tags: []`.
+
 # `must_read: true` is an optional maintainer-only flag.
 # If enabled, the README and browser prepend 🌟 before the paper title.
 # `submit.html` intentionally does not generate this field.

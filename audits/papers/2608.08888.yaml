@@ -1,0 +1,43 @@
+# Primary-source audit record for a curator-retained adjacent-work entry.
+paper_id: "2608.08888"
+status: verified
+source:
+  url: https://arxiv.org/abs/2608.08888
+  version: "arXiv v1, 2026-08-09"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: out-of-scope
+  evidence: "The top-layer state from token position t-1 is gated into the input at token position t; the recurrence therefore crosses autoregressive decoding steps rather than adding internal recurrent depth within one forward process."
+  locator: "Sections 2.1 and 2.4, Equations 1-4; Section 3 pseudocode"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces a learned full-bandwidth autoregressive feedback architecture and is retained only as explicitly marked adjacent work."
+  mechanism_tags:
+    values: []
+    rationale: "Sequence-time feedback does not qualify for a strict loop-mechanism tag."
+  focus_tags:
+    values: [architecture, training-algorithm]
+    rationale: "The contribution covers the feedback architecture and its training method."
+  domain_tags:
+    values: [language-modeling, reasoning, efficiency]
+    rationale: "The work evaluates autoregressive language modeling, reasoning behavior, and decoding efficiency."
+  tags:
+    values: []
+    rationale: "No optional alias is needed."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and eight-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on the stored publication date."
+  description:
+    status: verified
+    evidence: "Sections 2-3 support feedback of the preceding token's top-layer hidden state through a learned gate."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

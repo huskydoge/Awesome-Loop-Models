@@ -53,7 +53,7 @@ descriptions, categories, or semantic tag accuracy. See
 
 ### Papers
 
-A paper belongs here only if:
+The strict paper catalog targets work where:
 
 > Within one model forward process, a shared learned internal layer, block, module, or operator is reused.
 
@@ -73,6 +73,8 @@ Usually out of scope:
 - external search or planning over arbitrary layer orders when the qualifying loop is not a shared internal forward-process recurrence
 
 Standard sequence-time recurrence alone is not enough; the repo's target is iterative depth or latent recurrence inside one forward pass.
+
+Rare curator-approved exceptions may use `catalog_fit: adjacent`. These entries stay visible for conceptual value, are explicitly labeled outside strict scope, and must leave `mechanism_tags` empty. Omit `catalog_fit` for normal strict-scope submissions.
 
 ### What counts as a blog?
 
@@ -94,7 +96,7 @@ Usually out of scope:
 
 Blogs are taggable, but they do not use the paper taxonomy. They live in one flat `Blogs` section.
 
-If a paper or blog is borderline, explain the fit clearly in the pull request description.
+If a paper or blog is borderline, explain the fit clearly in the pull request description. Contributors should not set `catalog_fit: adjacent` without maintainer agreement.
 
 See [TAXONOMY.md](TAXONOMY.md) for the full paper taxonomy and the blog-section rule.
 
@@ -165,6 +167,8 @@ links:
       url: "https://x.com/..."
   twitter: ""
 ```
+
+For a maintainer-approved adjacent exception, add `catalog_fit: "adjacent"` and set `mechanism_tags: []`.
 
 ### Blog YAML sketch
 

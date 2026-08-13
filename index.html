@@ -1334,6 +1334,13 @@
       min-width: 0;
     }
 
+    .latest-release-title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
     .latest-release-title,
     .latest-release-title-static {
       display: block;
@@ -1653,20 +1660,45 @@
       flex-shrink: 0;
     }
 
-    .foundation-badge {
+    .foundation-badge,
+    .catalog-fit-badge {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       padding: 2px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(130,80,223,0.28);
-      background: rgba(130,80,223,0.08);
-      color: var(--accent3);
+      border: 1px solid;
       font-size: 10.5px;
       font-weight: 700;
       letter-spacing: 0.02em;
       white-space: nowrap;
       flex-shrink: 0;
+    }
+
+    .foundation-badge {
+      border-color: rgba(130,80,223,0.28);
+      background: rgba(130,80,223,0.08);
+      color: var(--accent3);
+    }
+
+    .catalog-fit-badge {
+      border-color: color-mix(in srgb, var(--accent4) 34%, transparent);
+      background: color-mix(in srgb, var(--accent4) 10%, transparent);
+      color: var(--accent4);
+    }
+
+    .catalog-fit-note {
+      margin-top: 8px;
+      padding: 7px 9px;
+      border-left: 3px solid var(--accent4);
+      background: color-mix(in srgb, var(--accent4) 7%, transparent);
+      color: var(--text-muted);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .catalog-fit-note strong {
+      color: var(--accent4);
     }
 
     .paper-venue {
@@ -4478,7 +4510,7 @@
         <div class="stats-metric">
           <dt class="stats-metric-label">Total papers</dt>
           <dd class="stats-metric-value" id="stats-total-papers">—</dd>
-          <dd class="stats-metric-note">Papers currently in the catalog</dd>
+          <dd class="stats-metric-note" id="stats-total-papers-note">Strict and adjacent catalog entries</dd>
         </div>
         <div class="stats-metric">
           <dt class="stats-metric-label">Latest 30 days</dt>
@@ -5356,10 +5388,15 @@ function renderLatestReleases(container, papers) {
   }
 
   releases.forEach(function(paper, releaseIndex) {
+    var isAdjacent = paper.catalog_fit === 'adjacent';
     var item = document.createElement('article');
     item.className = 'latest-release-item';
     item.setAttribute('role', 'listitem');
-    item.setAttribute('aria-label', 'Release ' + (releaseIndex + 1) + ': ' + String(paper.title || 'Untitled paper'));
+    item.setAttribute(
+      'aria-label',
+      'Release ' + (releaseIndex + 1) + ': ' + String(paper.title || 'Untitled paper')
+        + (isAdjacent ? ', adjacent work outside strict scope' : '')
+    );
 
     var date = document.createElement('time');
     date.className = 'latest-release-date';
@@ -5383,6 +5420,16 @@ function renderLatestReleases(container, papers) {
       title.className = 'latest-release-title-static';
     }
     title.textContent = String(paper.title || 'Untitled paper');
+    var titleRow = document.createElement('div');
+    titleRow.className = 'latest-release-title-row';
+    titleRow.appendChild(title);
+    if (isAdjacent) {
+      var fitBadge = document.createElement('span');
+      fitBadge.className = 'catalog-fit-badge';
+      fitBadge.title = CATALOG_ADJACENT_NOTE;
+      fitBadge.textContent = 'Adjacent work';
+      titleRow.appendChild(fitBadge);
+    }
 
     var taxonomy = document.createElement('div');
     taxonomy.className = 'latest-release-taxonomy';
@@ -5391,10 +5438,12 @@ function renderLatestReleases(container, papers) {
     category.textContent = paper._categoryLabel || 'Category not listed';
     var mechanism = document.createElement('span');
     mechanism.className = 'latest-release-mechanism';
-    mechanism.textContent = paper._mechanismLabel || 'Mechanism not listed';
+    mechanism.textContent = isAdjacent
+      ? 'No strict loop mechanism'
+      : (paper._mechanismLabel || 'Mechanism not listed');
     taxonomy.append(category, mechanism);
 
-    body.append(title, taxonomy);
+    body.append(titleRow, taxonomy);
     item.append(date, body);
     container.appendChild(item);
   });
@@ -5460,6 +5509,7 @@ function renderStatsPanel() {
   var latestWindow = STATS_DAILY_RELEASES.slice(-30);
   var latestPapers = getLatestReleasedPapers(ALL_PAPERS, 5);
   var totalElement = document.getElementById('stats-total-papers');
+  var totalNote = document.getElementById('stats-total-papers-note');
   var latestThirtyElement = document.getElementById('stats-latest-thirty');
   var latestThirtyNote = document.getElementById('stats-latest-thirty-note');
   var recentChangeElement = document.getElementById('stats-recent-change');
@@ -5468,6 +5518,13 @@ function renderStatsPanel() {
   var snapshot = document.getElementById('stats-snapshot');
 
   if (totalElement) totalElement.textContent = summary.totalPapers.toLocaleString('en-US');
+  if (totalNote) {
+    var adjacentCount = ALL_PAPERS.filter(function(paper) {
+      return paper.catalog_fit === 'adjacent';
+    }).length;
+    totalNote.textContent = (summary.totalPapers - adjacentCount).toLocaleString('en-US')
+      + ' strict scope · ' + adjacentCount.toLocaleString('en-US') + ' adjacent';
+  }
   if (latestThirtyElement) latestThirtyElement.textContent = summary.releasesLast30Days.toLocaleString('en-US');
   if (latestThirtyNote) {
     latestThirtyNote.textContent = latestWindow.length
@@ -5699,12 +5756,30 @@ function updateSortButtons() {
   });
 }
 
+const CATALOG_ADJACENT_NOTE = 'Retained as adjacent work; its recurrence is outside the strict single-forward loop-model scope.';
+
+/** Return the fixed adjacent-work badge for string-based catalog renderers. */
+function renderCatalogFitBadgeHtml(paper) {
+  return paper.catalog_fit === 'adjacent'
+    ? '<span class="catalog-fit-badge" title="' + escapeHtml(CATALOG_ADJACENT_NOTE) + '">Adjacent work</span>'
+    : '';
+}
+
+/** Return the visible scope-boundary note for adjacent catalog cards. */
+function renderCatalogFitNoteHtml(paper) {
+  return paper.catalog_fit === 'adjacent'
+    ? '<div class="catalog-fit-note"><strong>Scope boundary.</strong> ' + escapeHtml(CATALOG_ADJACENT_NOTE) + '</div>'
+    : '';
+}
+
 function renderTableRow(paper, query) {
   const expanded = EXPANDED_TABLE_ROWS.has(paper.id);
   const paperId = escapeHtml(paper.id || '');
   const detailRowId = 'paper-table-detail-' + paperId;
   const mustReadMarkerHtml = paper.must_read ? '<span class="must-read-marker" aria-label="Must read">🌟</span>' : '';
   const foundationBadgeHtml = paper.foundation ? '<span class="foundation-badge">Foundation</span>' : '';
+  const catalogFitBadgeHtml = renderCatalogFitBadgeHtml(paper);
+  const catalogFitNoteHtml = renderCatalogFitNoteHtml(paper);
   const paperDisplayDate = getPaperDisplayDate(paper);
   const detailMetaParts = [];
   if (paper.venue || paperDisplayDate) {
@@ -5723,12 +5798,13 @@ function renderTableRow(paper, query) {
   const detailHtml = '<div class="paper-table-detail">'
     + (detailMetaParts.length ? '<div class="paper-table-detail-meta">' + detailMetaParts.join('') + '</div>' : '')
     + (paper._authorsText ? '<section class="paper-table-detail-block"><div class="paper-table-detail-label">Authors</div><div class="paper-table-detail-text">' + highlightQuery(paper._authorsText, query) + '</div></section>' : '')
+    + catalogFitNoteHtml
     + (paper.desc ? '<section class="paper-table-detail-block"><div class="paper-table-detail-label">TL;DR</div><div class="paper-table-detail-text">' + highlightQuery(paper.desc, query) + '</div></section>' : '')
     + (detailLinksHtml ? '<section class="paper-table-detail-block"><div class="paper-table-detail-label">Links</div><div class="paper-links">' + detailLinksHtml + '</div></section>' : '')
     + '</div>';
 
   return '<tr class="paper-table-row' + (expanded ? ' is-expanded' : '') + '" data-paper-id="' + paperId + '">'
-    + '<td class="paper-table-title-cell"><button type="button" class="paper-table-disclosure" data-paper-id="' + paperId + '" aria-expanded="' + (expanded ? 'true' : 'false') + '" aria-controls="' + detailRowId + '"><span class="paper-table-title-wrap"><span class="paper-table-caret">' + (expanded ? '⌄' : '▸') + '</span><span class="paper-table-title-text">' + mustReadMarkerHtml + '<span>' + highlightQuery(paper.title, query) + '</span>' + foundationBadgeHtml + '</span></span></button></td>'
+    + '<td class="paper-table-title-cell"><button type="button" class="paper-table-disclosure" data-paper-id="' + paperId + '" aria-expanded="' + (expanded ? 'true' : 'false') + '" aria-controls="' + detailRowId + '"><span class="paper-table-title-wrap"><span class="paper-table-caret">' + (expanded ? '⌄' : '▸') + '</span><span class="paper-table-title-text">' + mustReadMarkerHtml + '<span>' + highlightQuery(paper.title, query) + '</span>' + foundationBadgeHtml + catalogFitBadgeHtml + '</span></span></button></td>'
     + '<td class="paper-table-number">' + formatTableText(getPaperDisplayDate(paper)) + '</td>'
     + '<td><span class="paper-venue ' + (paper.venueClass || 'venue-arxiv') + '">' + escapeHtml(paper.venue || '—') + '</span></td>'
     + '<td class="paper-table-links-cell">' + compactLinksHtml + '</td>'
@@ -5760,10 +5836,12 @@ function renderCard(paper, query) {
   const titleUrl = getPrimaryPaperUrl(paper);
   const mustReadMarkerHtml = paper.must_read ? '<span class="must-read-marker" aria-label="Must read">🌟</span>' : '';
   const foundationBadgeHtml = paper.foundation ? '<span class="foundation-badge">Foundation</span>' : '';
+  const catalogFitBadgeHtml = renderCatalogFitBadgeHtml(paper);
+  const catalogFitNoteHtml = renderCatalogFitNoteHtml(paper);
   const titleTextHtml = titleUrl
     ? '<a class="paper-title-link" href="' + escapeHtml(titleUrl) + '" target="_blank" rel="noopener">' + highlightQuery(paper.title, query) + '</a>'
     : highlightQuery(paper.title, query);
-  const titleHtml = mustReadMarkerHtml + titleTextHtml + foundationBadgeHtml;
+  const titleHtml = mustReadMarkerHtml + titleTextHtml + foundationBadgeHtml + catalogFitBadgeHtml;
   const authorsHtml = authorsStr
     ? '<div class="paper-meta">' + highlightQuery(authorsMetaText, query) + '</div>'
     : '<div class="paper-meta">' + paperDisplayDate + '</div>';
@@ -5821,6 +5899,7 @@ function renderCard(paper, query) {
     + '</div>'
     + authorsHtml
     + signalRowHtml
+    + catalogFitNoteHtml
     + (paper.desc ? '<div class="paper-desc">' + highlightQuery(paper.desc, query) + '</div>' : '')
     + '<div class="paper-links">' + linksHtml + '</div>'
     + '</div>';
@@ -6404,6 +6483,7 @@ function preparePaperRecord(paper) {
     paper._mechanismLabel,
     paper._focusLabel,
     paper._domainLabel,
+    paper.catalog_fit === 'adjacent' ? 'adjacent work ' + CATALOG_ADJACENT_NOTE : '',
     paper._addedDate
   ].join(' ').toLowerCase();
   return paper;

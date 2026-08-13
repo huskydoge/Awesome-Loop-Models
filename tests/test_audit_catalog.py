@@ -53,6 +53,32 @@ class CatalogAuditTests(unittest.TestCase):
 
         self.assertEqual(findings, [])
 
+    def test_adjacent_fit_allows_an_empty_mechanism_list(self):
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            paper = valid_paper()
+            paper["catalog_fit"] = "adjacent"
+            paper["mechanism_tags"] = []
+            write_paper(root, "2601.00001.yaml", paper)
+
+            findings = audit_catalog.audit_catalog(root)
+
+        self.assertEqual(findings, [])
+
+    def test_unknown_catalog_fit_is_rejected(self):
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            paper = valid_paper()
+            paper["catalog_fit"] = "borderline"
+            write_paper(root, "2601.00001.yaml", paper)
+
+            findings = audit_catalog.audit_catalog(root)
+
+        self.assertIn(
+            ("invalid-catalog-fit", "catalog_fit"),
+            {(item.code, item.field) for item in findings},
+        )
+
     def test_yaml_and_top_level_failures_are_reported_without_hiding_raw_data(self):
         """Malformed YAML and non-mapping documents should produce stable errors."""
         with TemporaryDirectory() as tmpdir:

@@ -490,6 +490,17 @@ def _validate_canonical_paper(
             "category",
             "Expected a non-empty string.",
         )
+    catalog_fit = data.get("catalog_fit", "strict")
+    if not isinstance(catalog_fit, str) or catalog_fit not in {"strict", "adjacent"}:
+        _add(
+            findings,
+            "invalid-catalog-fit",
+            source,
+            "catalog_fit",
+            "Expected 'strict' or 'adjacent'.",
+        )
+    else:
+        taxonomy["catalog_fit"] = catalog_fit
     for field in TAXONOMY_FIELDS[1:]:
         if field not in data:
             if field == "tags":
@@ -498,6 +509,25 @@ def _validate_canonical_paper(
         items = _string_list_field(data, field, source, "", findings)
         if items is not None:
             taxonomy[field] = items
+
+    mechanism_tags = taxonomy.get("mechanism_tags")
+    if isinstance(mechanism_tags, list):
+        if catalog_fit == "adjacent" and mechanism_tags:
+            _add(
+                findings,
+                "adjacent-mechanism-tag",
+                source,
+                "mechanism_tags",
+                "Adjacent work must not claim a strict loop-mechanism tag.",
+            )
+        elif catalog_fit == "strict" and not mechanism_tags:
+            _add(
+                findings,
+                "missing-mechanism-tag",
+                source,
+                "mechanism_tags",
+                "Strict-scope work must claim at least one loop-mechanism tag.",
+            )
 
     identities: set[str] = set()
     links = data.get("links")
@@ -810,13 +840,19 @@ def _validate_audit_record(
         )
 
     if status == "verified":
-        if scope_verdict != "in-scope":
+        paper_taxonomy = canonical.get(paper_id, ({}, frozenset()))[0]
+        expected_scope = (
+            "out-of-scope"
+            if paper_taxonomy.get("catalog_fit") == "adjacent"
+            else "in-scope"
+        )
+        if scope_verdict != expected_scope:
             _add(
                 findings,
                 "verified-scope",
                 source,
                 "scope.verdict",
-                "Verified records must have an in-scope verdict.",
+                f"Verified {paper_taxonomy.get('catalog_fit', 'strict')} records must have an {expected_scope} verdict.",
             )
         if confidence not in {"medium", "high"}:
             _add(

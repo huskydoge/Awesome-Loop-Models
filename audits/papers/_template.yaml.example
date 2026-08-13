@@ -27,6 +27,8 @@ scope:
   # Point to a precise section, page, figure, table, or equation. An abstract is
   # acceptable only when it directly proves the scope claim.
   locator: "Section 3, page 5, Equation 2"
+# A verified canonical entry with `catalog_fit: adjacent` uses out-of-scope
+# evidence here; strict verified entries use in-scope.
 
 taxonomy:
   category:

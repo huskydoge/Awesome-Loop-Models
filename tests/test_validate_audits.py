@@ -476,6 +476,56 @@ class AuditValidationTests(unittest.TestCase):
             {finding.code for finding in result.findings},
         )
 
+    def test_verified_adjacent_work_requires_out_of_scope_evidence(self):
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            paper = canonical_paper()
+            paper["catalog_fit"] = "adjacent"
+            paper["mechanism_tags"] = []
+            write_yaml(root, "papers/2601.00001.yaml", paper)
+            audit = valid_audit()
+            audit["taxonomy"]["mechanism_tags"]["values"] = []
+            audit["scope"]["verdict"] = "out-of-scope"
+            write_yaml(root, "audits/papers/2601.00001.yaml", audit)
+
+            valid_result = validate_audits.validate_audits(
+                root,
+                require_complete=True,
+            )
+
+            audit["scope"]["verdict"] = "in-scope"
+            write_yaml(root, "audits/papers/2601.00001.yaml", audit)
+            invalid_result = validate_audits.validate_audits(root)
+
+        self.assertEqual(valid_result.findings, ())
+        self.assertEqual(valid_result.coverage.verified, 1)
+        self.assertIn(
+            "verified-scope",
+            {finding.code for finding in invalid_result.findings},
+        )
+
+    def test_catalog_fit_controls_whether_mechanism_tags_must_be_empty(self):
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            adjacent = canonical_paper()
+            adjacent["catalog_fit"] = "adjacent"
+            write_yaml(root, "papers/2601.00001.yaml", adjacent)
+            adjacent_result = validate_audits.validate_audits(root)
+
+            strict = canonical_paper()
+            strict["mechanism_tags"] = []
+            write_yaml(root, "papers/2601.00001.yaml", strict)
+            strict_result = validate_audits.validate_audits(root)
+
+        self.assertIn(
+            "adjacent-mechanism-tag",
+            {finding.code for finding in adjacent_result.findings},
+        )
+        self.assertIn(
+            "missing-mechanism-tag",
+            {finding.code for finding in strict_result.findings},
+        )
+
     def test_shape_unknown_fields_and_duplicate_lists_are_rejected(self):
         """Strict mappings and unique string lists should expose schema mistakes."""
         with TemporaryDirectory() as tmpdir:

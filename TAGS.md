@@ -17,7 +17,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
-- `hierarchical-loop` (16)
+- `hierarchical-loop` (21)
 - `flat-loop` (119)
 - `parallel-loop` (4)
 - `implicit-layer` (15)
@@ -26,27 +26,27 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
-- `objective-loss` (17)
-- `training-algorithm` (63)
+- `objective-loss` (20)
+- `training-algorithm` (66)
 - `architecture` (122)
 - `data` (2)
-- `inference-algorithm` (89)
+- `inference-algorithm` (92)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `language-modeling` (78)
-- `reasoning` (76)
-- `efficiency` (61)
-- `algorithmic-reasoning` (30)
+- `language-modeling` (77)
+- `reasoning` (75)
+- `efficiency` (66)
+- `algorithmic-reasoning` (32)
 - `scaling` (23)
-- `theory` (14)
-- `adaptive-compute` (12)
-- `vision` (11)
-- `memory-efficiency` (10)
+- `adaptive-compute` (16)
+- `theory` (15)
+- `memory-efficiency` (13)
+- `vision` (12)
+- `graph-data` (6)
 - `sequence-modeling` (5)
-- `graph-data` (4)
 - `multimodal` (3)
 - `machine-translation` (2)
 - `recommendation` (2)
@@ -57,14 +57,11 @@ Observed browser-facing domain tags currently used across the repo.
 - `compositional-reasoning` (1)
 - `electronic-structure` (1)
 - `FLOPs-efficiency` (1)
-- `graphs` (1)
 - `hardware-aware` (1)
 - `hyperspectral-imaging` (1)
 - `neuroscience` (1)
-- `physics` (1)
 - `quantum-machine-learning` (1)
 - `retrieval` (1)
-- `RL` (1)
 - `rl-control` (1)
 - `scientific-ml` (1)
 - `speech-recognition` (1)
@@ -74,12 +71,12 @@ Observed browser-facing domain tags currently used across the repo.
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (27)
+- `looped-transformer` (28)
+- `MoE` (8)
 - `TRM` (8)
 - `DEQ` (7)
 - `HRM` (7)
 - `looped-llm` (7)
-- `MoE` (7)
 - `depth-recurrent` (6)
 - `shared-weight-recurrence` (6)
 - `ACT` (5)
@@ -156,7 +153,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `looped-depth-up-scaling` (1)
 - `looped-gpt` (1)
 - `Looped-Mamba` (1)
-- `Looped-Transformer` (1)
 - `LoopFormer` (1)
 - `Loopie` (1)
 - `LoopMDM` (1)

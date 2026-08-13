@@ -149,7 +149,7 @@
       },
       {
         "label": "hierarchical-loop",
-        "count": 16
+        "count": 21
       },
       {
         "label": "implicit-layer",
@@ -167,15 +167,15 @@
       },
       {
         "label": "inference-algorithm",
-        "count": 89
+        "count": 92
       },
       {
         "label": "training-algorithm",
-        "count": 63
+        "count": 66
       },
       {
         "label": "objective-loss",
-        "count": 17
+        "count": 20
       },
       {
         "label": "data",
@@ -185,47 +185,47 @@
     "domain": [
       {
         "label": "language-modeling",
-        "count": 78
+        "count": 77
       },
       {
         "label": "reasoning",
-        "count": 76
+        "count": 75
       },
       {
         "label": "efficiency",
-        "count": 61
+        "count": 66
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 30
+        "count": 32
       },
       {
         "label": "scaling",
         "count": 23
       },
       {
-        "label": "theory",
-        "count": 14
-      },
-      {
         "label": "adaptive-compute",
-        "count": 12
+        "count": 16
       },
       {
-        "label": "vision",
-        "count": 11
+        "label": "theory",
+        "count": 15
       },
       {
         "label": "memory-efficiency",
-        "count": 10
+        "count": 13
+      },
+      {
+        "label": "vision",
+        "count": 12
+      },
+      {
+        "label": "graph-data",
+        "count": 6
       },
       {
         "label": "sequence-modeling",
         "count": 5
-      },
-      {
-        "label": "graph-data",
-        "count": 4
       },
       {
         "label": "multimodal",
@@ -268,10 +268,6 @@
         "count": 1
       },
       {
-        "label": "graphs",
-        "count": 1
-      },
-      {
         "label": "hardware-aware",
         "count": 1
       },
@@ -284,19 +280,11 @@
         "count": 1
       },
       {
-        "label": "physics",
-        "count": 1
-      },
-      {
         "label": "quantum-machine-learning",
         "count": 1
       },
       {
         "label": "retrieval",
-        "count": 1
-      },
-      {
-        "label": "RL",
         "count": 1
       },
       {

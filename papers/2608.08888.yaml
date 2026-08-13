@@ -13,9 +13,9 @@ published_date: '2026-08-09'
 added_date: '2026-08-11'
 venue: arXiv
 category: designs
+catalog_fit: adjacent
 foundation: false
-mechanism_tags:
-- flat-loop
+mechanism_tags: []
 domain_tags:
 - language-modeling
 - reasoning

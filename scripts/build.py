@@ -53,6 +53,11 @@ VALID_MECHANISM_TAGS = (
     "implicit-layer",
 )
 
+VALID_CATALOG_FITS = ("strict", "adjacent")
+ADJACENT_SCOPE_NOTE = (
+    "Retained as adjacent work; its recurrence is outside the strict single-forward loop-model scope."
+)
+
 # Loop Mechanism is a strict browser-facing controlled vocabulary. Legacy paper
 # acronyms and fine-grained mechanism labels are metadata aliases only; they are
 # not mapped into mechanism_tags by the build.
@@ -60,7 +65,7 @@ VALID_MECHANISM_TAGS = (
 CATEGORY_DISCLAIMER = (
     "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, "
     "and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without "
-    "introducing lineage buckets."
+    "introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope."
 )
 FOUNDATION_LABEL = "Foundation"
 BLOG_SECTION_TITLE = "Blogs"
@@ -315,9 +320,17 @@ def normalize_paper_taxonomy_fields(paper: dict, source: str = "<paper>") -> dic
     if has_non_empty_metadata_value(paper.get("subcategory")):
         raise ValueError(f"{source}: subcategory is no longer supported; use the flat category field only")
 
+    raw_catalog_fit = paper.get("catalog_fit")
+    catalog_fit = "strict" if raw_catalog_fit is None else str(raw_catalog_fit).strip().lower()
+    if catalog_fit not in VALID_CATALOG_FITS:
+        raise ValueError(
+            f"{source}: invalid catalog_fit '{catalog_fit}'; valid values are {list(VALID_CATALOG_FITS)!r}"
+        )
+
     return {
         "category": raw_category,
         "foundation": normalize_foundation_flag(paper.get("foundation")),
+        "catalog_fit": catalog_fit,
     }
 
 
@@ -558,6 +571,7 @@ def load_papers() -> list[dict]:
         taxonomy = normalize_paper_taxonomy_fields(data, yaml_file.name)
         category_id = taxonomy["category"]
         foundation = taxonomy["foundation"]
+        catalog_fit = taxonomy["catalog_fit"]
 
         links = dict(data.get("links") or {})
         validate_links(links, yaml_file.name)
@@ -575,7 +589,11 @@ def load_papers() -> list[dict]:
         tags = normalize_str_list(data.get("tags", []))
         domain_tags, _ = split_domain_and_mechanism_tags(data.get("domain_tags", []))
         explicit_mechanism_tags = normalize_mechanism_tags(data.get("mechanism_tags", []), yaml_file.name)
-        if not explicit_mechanism_tags:
+        if catalog_fit == "adjacent" and explicit_mechanism_tags:
+            raise ValueError(
+                f"{yaml_file.name}: adjacent papers must not set mechanism_tags"
+            )
+        if catalog_fit == "strict" and not explicit_mechanism_tags:
             raise ValueError(
                 f"{yaml_file.name}: missing mechanism_tags; choose at least one of {list(VALID_MECHANISM_TAGS)!r}"
             )
@@ -592,6 +610,10 @@ def load_papers() -> list[dict]:
         paper["entry_type"] = "paper"
         paper["category"] = category_id
         paper["foundation"] = foundation
+        if catalog_fit == "adjacent":
+            paper["catalog_fit"] = catalog_fit
+        else:
+            paper.pop("catalog_fit", None)
         paper["links"] = links
         paper["tags"] = tags
         paper["mechanism_tags"] = mechanism_tags
@@ -1078,6 +1100,8 @@ def _paper_to_md(paper: dict) -> str:
         summary_parts.append(f"[{display_date}]")
     if paper.get("must_read"):
         summary_parts.append("🌟")
+    if paper.get("catalog_fit") == "adjacent":
+        summary_parts.append("⚠️ Adjacent work")
     summary_parts.append(f"<strong>{escape(title)}</strong>")
     if summary_link_html:
         summary_parts.append(summary_link_html)
@@ -1088,6 +1112,8 @@ def _paper_to_md(paper: dict) -> str:
     metadata = " · ".join(str(part).strip() for part in (authors, venue_year) if str(part).strip())
     if metadata:
         detail_lines.append(f"  <div><strong>Authors:</strong> {escape(metadata)}</div>")
+    if paper.get("catalog_fit") == "adjacent":
+        detail_lines.append(f"  <div><strong>Catalog fit:</strong> {escape(ADJACENT_SCOPE_NOTE)}</div>")
     if mechanism_tags:
         detail_lines.append(f"  <div><strong>Loop Mechanism:</strong> {escape(' · '.join(mechanism_tags))}</div>")
     if focus_tags:

@@ -43,6 +43,7 @@ ALLOWED_FIELDS = frozenset(
         "citation_source_best",
         "citation_sources",
         "citations",
+        "catalog_fit",
         "foundation",
         "github_stars",
         "metrics_updated",
@@ -242,6 +243,18 @@ def _validate_optional_fields(data: dict, source: str, findings: list[Finding]) 
                 source,
                 field,
                 f"Expected a boolean; got {type(data[field]).__name__}.",
+            )
+
+    if "catalog_fit" in data:
+        catalog_fit = data["catalog_fit"]
+        if not isinstance(catalog_fit, str) or catalog_fit not in {"strict", "adjacent"}:
+            _add(
+                findings,
+                "error",
+                "invalid-catalog-fit",
+                source,
+                "catalog_fit",
+                "Expected 'strict' or 'adjacent'.",
             )
 
     for field in ("citations", "github_stars"):
@@ -483,7 +496,10 @@ def _validate_tags(data: dict, source: str, findings: list[Finding]) -> None:
                 f"Expected a list of non-empty strings; got {type(value).__name__}.",
             )
             continue
-        if field in REQUIRED_TAG_FIELDS and not value:
+        allows_empty_mechanism = (
+            field == "mechanism_tags" and data.get("catalog_fit") == "adjacent"
+        )
+        if field in REQUIRED_TAG_FIELDS and not value and not allows_empty_mechanism:
             _add(
                 findings,
                 "error",
@@ -491,6 +507,15 @@ def _validate_tags(data: dict, source: str, findings: list[Finding]) -> None:
                 source,
                 field,
                 "Expected at least one tag.",
+            )
+        if field == "mechanism_tags" and value and data.get("catalog_fit") == "adjacent":
+            _add(
+                findings,
+                "error",
+                "adjacent-mechanism-tag",
+                source,
+                field,
+                "Adjacent work must not claim a strict loop-mechanism tag.",
             )
         seen: set[str] = set()
         normalized_items: list[tuple[int, str]] = []

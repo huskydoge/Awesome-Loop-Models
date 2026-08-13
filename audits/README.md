@@ -96,10 +96,12 @@ Each record contains only these top-level fields:
 
 All mapping keys are strict, all evidence and rationales are required, URLs
 must be absolute HTTP(S) URLs, and list values must be unique. A `verified`
-record requires an `in-scope` verdict, medium or high confidence, verified
-content checks, no unresolved questions, and taxonomy values that exactly
-match the current canonical paper. Tag-array order is ignored during that
-comparison; values are not normalized. A `remove` decision requires an
+strict-scope record requires an `in-scope` verdict; a canonical paper marked
+`catalog_fit: adjacent` instead requires an evidenced `out-of-scope` verdict
+while remaining verified and visible. Both require medium or high confidence,
+verified content checks, no unresolved questions, and taxonomy values that
+exactly match the current canonical paper. Tag-array order is ignored during
+that comparison; values are not normalized. A `remove` decision requires an
 evidenced `out-of-scope` verdict.
 
 Run the ledger validator from the repository root:

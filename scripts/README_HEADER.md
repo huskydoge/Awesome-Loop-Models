@@ -33,11 +33,13 @@ Local preview: run `python3 -m http.server 8123 --bind 127.0.0.1` from the repo 
 
 ## What Counts as a Loop Model?
 
-This repository uses a strict definition:
+The main catalog uses a strict definition:
 
 > By "loop model," we mean that, within a single forward pass of a model, a shared learned internal layer, block, module, or operator is reused.
 
-This repo therefore includes papers that focus on loop models themselves, their mechanisms, applications, and designs. It excludes papers that are primarily about broader-scale iteration patterns that do not directly connect to loop models as defined above, such as agent loops, repeated full-model calls, external solver rounds, energy-based models, or plain sequence-time recurrence.
+The main catalog therefore includes papers that focus on loop models themselves, their mechanisms, applications, and designs. It excludes papers that are primarily about broader-scale iteration patterns that do not directly connect to loop models as defined above, such as agent loops, repeated full-model calls, external solver rounds, energy-based models, or plain sequence-time recurrence.
+
+Rare curator-approved exceptions use `catalog_fit: adjacent`. They remain for conceptual value, are visibly labeled **Adjacent work**, carry no strict Loop Mechanism tag, and include primary-source evidence for the boundary. Omitting `catalog_fit` means strict scope.
 
 > Admittedly, loop models are deeply connected to the broader field of architecture and algorithm design (Diffusion, Energy-Based Models, etc.). We also welcome work that explicitly connects adjacent topics to loop models.
 
@@ -45,7 +47,7 @@ This repo therefore includes papers that focus on loop models themselves, their 
   <img src="assets/scope.png" alt="Scope scale from agent loop to loop models" width="100%" />
 </p>
 
-> Only the **rightmost end** of this scale is in scope for the main paper list.
+> Only the **rightmost end** of this scale is strict scope; any retained exception is explicitly marked adjacent.
 
 ## How the Repository Is Organized
 

@@ -110,6 +110,26 @@ class BuildTaxonomyTests(unittest.TestCase):
         self.assertNotIn("category_path", normalized)
         self.assertTrue(normalized["foundation"])
 
+    def test_adjacent_catalog_fit_is_valid_and_strict_is_the_default(self):
+        adjacent = build.normalize_paper_taxonomy_fields(
+            {"category": "designs", "catalog_fit": "adjacent"},
+            "paper.yaml",
+        )
+        strict = build.normalize_paper_taxonomy_fields(
+            {"category": "designs"},
+            "paper.yaml",
+        )
+
+        self.assertEqual(adjacent["catalog_fit"], "adjacent")
+        self.assertEqual(strict["catalog_fit"], "strict")
+
+    def test_unknown_catalog_fit_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, "invalid catalog_fit"):
+            build.normalize_paper_taxonomy_fields(
+                {"category": "designs", "catalog_fit": "borderline"},
+                "paper.yaml",
+            )
+
     def test_legacy_category_path_mappings_are_rejected(self):
         legacy_cases = (
             {"category": "capability", "category_path": ["theory_mechanisms"]},
@@ -558,13 +578,21 @@ function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
         self.assertIn("Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused", html)
         self.assertIn("category-disclaimer", html)
 
+    def test_adjacent_work_is_labeled_across_catalog_and_stats_views(self):
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        self.assertIn("catalog-fit-badge", html)
+        self.assertIn("paper.catalog_fit === 'adjacent'", html)
+        self.assertIn("Adjacent work", html)
+        self.assertIn("outside the strict single-forward loop-model scope", html)
+        self.assertIn('id="stats-total-papers-note"', html)
+
     def test_must_read_star_marker_is_rendered_in_frontend_titles(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("must-read-marker", html)
         self.assertIn("paper.must_read", html)
         self.assertIn("🌟", html)
-        self.assertIn("const titleHtml = mustReadMarkerHtml + titleTextHtml + foundationBadgeHtml;", html)
-        self.assertIn("mustReadMarkerHtml + '<span>' + highlightQuery(paper.title, query) + '</span>' + foundationBadgeHtml", html)
+        self.assertIn("const titleHtml = mustReadMarkerHtml + titleTextHtml + foundationBadgeHtml + catalogFitBadgeHtml;", html)
+        self.assertIn("mustReadMarkerHtml + '<span>' + highlightQuery(paper.title, query) + '</span>' + foundationBadgeHtml + catalogFitBadgeHtml", html)
 
     def test_filter_sidebar_hooks_exist_and_top_panel_resizer_is_removed(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -1895,7 +1923,7 @@ process.stdout.write(JSON.stringify({
 
         self.assertIn(".stats-latest-card", mobile_css)
         self.assertIn("order: -1;", mobile_css)
-        self.assertNotIn("order:", stats_css[:mobile_start])
+        self.assertNotRegex(stats_css[:mobile_start], r"(?m)^\s*order:")
 
     def test_stats_dashboard_refines_light_and_dark_theme_tokens(self):
         """Dashboard surfaces must have explicit light and dark treatments."""
@@ -2196,6 +2224,13 @@ process.stdout.write(JSON.stringify({{
 
 
 class CanonicalPaperMetadataTests(unittest.TestCase):
+    def test_full_bandwidth_transformer_is_retained_as_adjacent_work(self):
+        paper_path = REPO_ROOT / "papers" / "2608.08888.yaml"
+        data = yaml.safe_load(paper_path.read_text(encoding="utf-8")) or {}
+
+        self.assertEqual(data.get("catalog_fit"), "adjacent")
+        self.assertEqual(data.get("mechanism_tags"), [])
+
     def test_paper_2602_10520_is_classified_as_designs(self):
         paper_path = REPO_ROOT / "papers" / "2602.10520.yaml"
         data = yaml.safe_load(paper_path.read_text(encoding="utf-8")) or {}
@@ -2458,6 +2493,22 @@ class ReadmeRenderingTests(unittest.TestCase):
         self.assertIn("<div><strong>Domains:</strong> reasoning</div>", markdown)
         self.assertIn("<div><strong>TL;DR:</strong> Introduces a compact loop-model benchmark entry.</div>", markdown)
 
+    def test_readme_marks_adjacent_work_and_explains_the_scope_boundary(self):
+        markdown = build._paper_to_md(
+            {
+                "title": "Adjacent Recurrent Paper",
+                "authors": "Alice Example",
+                "venue": "arXiv",
+                "year": 2026,
+                "catalog_fit": "adjacent",
+                "links": {"arxiv": "https://arxiv.org/abs/2604.00001"},
+            }
+        )
+
+        self.assertIn("⚠️ Adjacent work", markdown)
+        self.assertIn("<strong>Catalog fit:</strong>", markdown)
+        self.assertIn("outside the strict single-forward loop-model scope", markdown)
+
     def test_foundation_paper_entries_hide_foundation_summary_chip(self):
         paper = {
             "title": "Foundation Loop Paper",
@@ -2606,6 +2657,43 @@ class LoadPapersRegressionTests(unittest.TestCase):
             with patch.object(build, "PAPERS_DIR", papers_dir):
                 with self.assertRaisesRegex(ValueError, "missing mechanism_tags"):
                     build.load_papers()
+
+    def test_load_papers_allows_empty_mechanism_only_for_adjacent_work(self):
+        with TemporaryDirectory() as tmpdir:
+            papers_dir = Path(tmpdir)
+            paper_path = papers_dir / "2603.08391.yaml"
+            paper_path.write_text(
+                yaml.safe_dump(
+                    {
+                        "title": "Adjacent Recurrent Paper",
+                        "authors": ["Test Author"],
+                        "year": 2026,
+                        "published_date": "2026-03-10",
+                        "venue": "arXiv",
+                        "category": "designs",
+                        "catalog_fit": "adjacent",
+                        "mechanism_tags": [],
+                        "domain_tags": ["language-modeling"],
+                        "focus_tags": ["architecture"],
+                        "links": {"arxiv": "https://arxiv.org/abs/2603.08391"},
+                    },
+                    sort_keys=False,
+                ),
+                encoding="utf-8",
+            )
+
+            with patch.object(build, "PAPERS_DIR", papers_dir):
+                papers = build.load_papers()
+
+            data = yaml.safe_load(paper_path.read_text(encoding="utf-8"))
+            data["mechanism_tags"] = ["flat-loop"]
+            paper_path.write_text(yaml.safe_dump(data, sort_keys=False), encoding="utf-8")
+            with patch.object(build, "PAPERS_DIR", papers_dir):
+                with self.assertRaisesRegex(ValueError, "adjacent papers must not set mechanism_tags"):
+                    build.load_papers()
+
+        self.assertEqual(papers[0]["catalog_fit"], "adjacent")
+        self.assertEqual(papers[0]["mechanism_tags"], [])
 
     def test_load_papers_derives_alphaxiv_from_arxiv_links(self):
         with TemporaryDirectory() as tmpdir:
@@ -2945,7 +3033,10 @@ class SourceFileMetadataTests(unittest.TestCase):
         self.assertEqual(payload["mechanism_tags"], list(build.VALID_MECHANISM_TAGS))
         allowed = set(build.VALID_MECHANISM_TAGS)
         for entry in [*payload["papers"], *payload.get("blogs", [])]:
-            self.assertTrue(entry.get("mechanism_tags"), entry.get("source_path"))
+            if entry.get("catalog_fit") == "adjacent":
+                self.assertEqual(entry.get("mechanism_tags"), [], entry.get("source_path"))
+            else:
+                self.assertTrue(entry.get("mechanism_tags"), entry.get("source_path"))
             self.assertLessEqual(set(entry.get("mechanism_tags", [])), allowed, entry.get("source_path"))
         for paper in payload["papers"]:
             self.assertNotIn("category_path", paper, paper.get("source_path"))
@@ -2958,6 +3049,17 @@ class SourceFileMetadataTests(unittest.TestCase):
 
 
 class DocumentationConsistencyTests(unittest.TestCase):
+    def test_docs_explain_the_adjacent_work_exception(self):
+        for text in (
+            TAXONOMY_PATH.read_text(encoding="utf-8"),
+            CONTRIBUTING_PATH.read_text(encoding="utf-8"),
+            README_HEADER_PATH.read_text(encoding="utf-8"),
+            PAPER_TEMPLATE_PATH.read_text(encoding="utf-8"),
+        ):
+            self.assertIn("catalog_fit", text)
+            self.assertIn("adjacent", text.lower())
+            self.assertIn("strict", text.lower())
+
     def test_docs_explain_three_coarse_categories_and_foundation_badge(self):
         texts = [
             TAXONOMY_PATH.read_text(encoding="utf-8"),

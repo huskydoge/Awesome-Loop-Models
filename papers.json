@@ -5,9 +5,9 @@
     "blog_total": 8,
     "briefing_total": 40,
     "latest_briefing_date": "2026-08-12",
-    "generated": "2026-08-13T06:34:36.392127+00:00",
+    "generated": "2026-08-13T16:54:18.824693+00:00",
     "generated_local_date": "2026-08-13",
-    "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
+    "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
     "blog_section_desc": "Long-form technical posts, essays, and deep-dives about loop models. Blogs can carry Loop Mechanism / focus / domain tags but stay in a single flat section rather than the paper taxonomy.",
@@ -759,11 +759,13 @@
         "flat-loop"
       ],
       "domain_tags": [
-        "algorithmic-reasoning"
+        "algorithmic-reasoning",
+        "adaptive-compute"
       ],
       "focus_tags": [
         "architecture",
-        "training-algorithm"
+        "training-algorithm",
+        "inference-algorithm"
       ],
       "desc": "Introduces an adaptive-step looped Transformer and training procedure that improve length generalization on arithmetic and algorithmic tasks composed from iterative RASP-L operations.",
       "links": {
@@ -2602,8 +2604,7 @@
       ],
       "domain_tags": [
         "language-modeling",
-        "reasoning",
-        "RL"
+        "reasoning"
       ],
       "tags": [
         "LoopRPT",
@@ -2611,7 +2612,8 @@
       ],
       "focus_tags": [
         "objective-loss",
-        "training-algorithm"
+        "training-algorithm",
+        "inference-algorithm"
       ],
       "desc": "Proposes LoopRPT, a reinforcement pre-training method for looped language models that assigns learning signals to latent iterations, improving accuracy-compute trade-offs and strengthening early-stage reasoning on Ouro.",
       "links": {
@@ -6211,17 +6213,19 @@
       "published_date": "2026-07-07",
       "added_date": "2026-07-12",
       "venue": "ICML",
-      "category": "applications",
+      "category": "designs",
       "foundation": false,
       "mechanism_tags": [
         "flat-loop"
       ],
       "domain_tags": [
         "graph-data",
-        "reasoning"
+        "reasoning",
+        "efficiency"
       ],
       "focus_tags": [
         "architecture",
+        "objective-loss",
         "inference-algorithm"
       ],
       "tags": [
@@ -6270,6 +6274,7 @@
       ],
       "focus_tags": [
         "architecture",
+        "training-algorithm",
         "inference-algorithm"
       ],
       "tags": [
@@ -6308,9 +6313,10 @@
       "published_date": "2026-07-12",
       "added_date": "2026-07-16",
       "venue": "arXiv",
-      "category": "applications",
+      "category": "designs",
       "foundation": false,
       "mechanism_tags": [
+        "hierarchical-loop",
         "flat-loop"
       ],
       "domain_tags": [
@@ -6319,6 +6325,7 @@
       ],
       "focus_tags": [
         "architecture",
+        "training-algorithm",
         "inference-algorithm"
       ],
       "tags": [
@@ -6368,11 +6375,10 @@
         "reasoning"
       ],
       "focus_tags": [
-        "architecture",
-        "training-algorithm"
+        "architecture"
       ],
       "tags": [
-        "Looped-Transformer"
+        "looped-transformer"
       ],
       "desc": "Analyzes pre-LayerNorm looped Transformers as recurrent systems, arguing that LayerNorm acts as implicit gain control for stable memory routing.",
       "links": {
@@ -6410,7 +6416,7 @@
         "implicit-layer"
       ],
       "domain_tags": [
-        "physics",
+        "graph-data",
         "reasoning"
       ],
       "focus_tags": [
@@ -6456,17 +6462,21 @@
       "published_date": "2026-07-14",
       "added_date": "2026-07-16",
       "venue": "arXiv",
-      "category": "applications",
+      "category": "designs",
       "foundation": false,
       "mechanism_tags": [
+        "hierarchical-loop",
         "flat-loop"
       ],
       "domain_tags": [
         "recommendation",
-        "reasoning"
+        "reasoning",
+        "adaptive-compute"
       ],
       "focus_tags": [
         "architecture",
+        "objective-loss",
+        "training-algorithm",
         "inference-algorithm"
       ],
       "tags": [
@@ -6513,11 +6523,13 @@
       "category": "designs",
       "foundation": false,
       "mechanism_tags": [
+        "hierarchical-loop",
         "flat-loop"
       ],
       "domain_tags": [
         "language-modeling",
-        "scaling"
+        "scaling",
+        "theory"
       ],
       "focus_tags": [
         "architecture",
@@ -6529,7 +6541,8 @@
       "desc": "Studies depth scaling in looped Transformers, showing how residual scaling can stabilize repeated use of compact physical blocks across many recurrent rounds.",
       "links": {
         "arxiv": "https://arxiv.org/abs/2607.13491",
-        "alphaxiv": "https://www.alphaxiv.org/abs/2607.13491"
+        "alphaxiv": "https://www.alphaxiv.org/abs/2607.13491",
+        "github": "https://github.com/lszshu/DeepLoop"
       },
       "citations": 1,
       "citation_sources": {
@@ -6567,7 +6580,8 @@
       ],
       "domain_tags": [
         "language-modeling",
-        "efficiency"
+        "efficiency",
+        "memory-efficiency"
       ],
       "focus_tags": [
         "inference-algorithm"
@@ -6614,14 +6628,17 @@
       "domain_tags": [
         "language-modeling",
         "reasoning",
-        "scaling"
+        "scaling",
+        "efficiency",
+        "memory-efficiency"
       ],
       "focus_tags": [
         "architecture",
         "training-algorithm"
       ],
       "tags": [
-        "Loopie"
+        "Loopie",
+        "MoE"
       ],
       "desc": "Introduces the Loopie MoE looped Transformer series, arguing that repeated reuse of compact Transformer blocks can outperform compute-matched vanilla Transformer baselines and support strong post-trained reasoning.",
       "links": {
@@ -6716,7 +6733,6 @@
       ],
       "domain_tags": [
         "language-modeling",
-        "reasoning",
         "scaling"
       ],
       "focus_tags": [
@@ -6759,7 +6775,7 @@
       "published_date": "2026-07-30",
       "added_date": "2026-08-02",
       "venue": "arXiv",
-      "category": "applications",
+      "category": "designs",
       "foundation": false,
       "mechanism_tags": [
         "flat-loop"
@@ -6812,10 +6828,11 @@
       "category": "designs",
       "foundation": false,
       "mechanism_tags": [
+        "flat-loop",
         "implicit-layer"
       ],
       "domain_tags": [
-        "graphs",
+        "graph-data",
         "vision",
         "scientific-ml"
       ],
@@ -6868,7 +6885,8 @@
       "desc": "Analyzes iteration-by-iteration commitment in a recurrent-depth reasoner, finding a difficulty-dependent readout transition while separating robust hidden-state evidence from coordinate-dependent artifacts.",
       "links": {
         "arxiv": "https://arxiv.org/abs/2608.03263",
-        "alphaxiv": "https://www.alphaxiv.org/abs/2608.03263"
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.03263",
+        "github": "https://github.com/primecalibre-research/ltg-replication-receipts"
       },
       "citations": 0,
       "citation_sources": {
@@ -6903,7 +6921,8 @@
       ],
       "domain_tags": [
         "language-modeling",
-        "reasoning"
+        "reasoning",
+        "efficiency"
       ],
       "focus_tags": [
         "architecture",
@@ -6953,6 +6972,7 @@
       "domain_tags": [
         "vision",
         "efficiency",
+        "memory-efficiency",
         "scaling"
       ],
       "focus_tags": [
@@ -6988,7 +7008,7 @@
       "arxiv_id": "2608.04879"
     },
     {
-      "title": "Think Deep, Speak Once: Relit, A Recursive Latent Implicit Transformer Framework",
+      "title": "Think Deep, Speak Once: ReLIT, A Recursive Latent Implicit Transformer Framework",
       "authors": "Abhishek Panwar, Maheep Singh, Saksham Bansal",
       "year": 2026,
       "published_date": "2026-08-08",
@@ -6997,14 +7017,20 @@
       "category": "designs",
       "foundation": false,
       "mechanism_tags": [
+        "hierarchical-loop",
         "flat-loop"
       ],
       "domain_tags": [
         "language-modeling",
-        "reasoning"
+        "reasoning",
+        "algorithmic-reasoning",
+        "adaptive-compute",
+        "efficiency"
       ],
       "focus_tags": [
-        "architecture"
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
       ],
       "desc": "Adds a lightweight trainable recursive latent block to a frozen LLM backbone, repeatedly refining latent thinking states before committing to a final answer.",
       "links": {
@@ -7040,10 +7066,9 @@
       "added_date": "2026-08-11",
       "venue": "arXiv",
       "category": "designs",
+      "catalog_fit": "adjacent",
       "foundation": false,
-      "mechanism_tags": [
-        "flat-loop"
-      ],
+      "mechanism_tags": [],
       "domain_tags": [
         "language-modeling",
         "reasoning",
@@ -7098,7 +7123,8 @@
       ],
       "domain_tags": [
         "language-modeling",
-        "efficiency"
+        "efficiency",
+        "adaptive-compute"
       ],
       "focus_tags": [
         "inference-algorithm"
@@ -7142,9 +7168,10 @@
         "flat-loop"
       ],
       "domain_tags": [
-        "language-modeling",
         "reasoning",
-        "algorithmic-reasoning"
+        "algorithmic-reasoning",
+        "vision",
+        "efficiency"
       ],
       "focus_tags": [
         "architecture",
@@ -7197,10 +7224,12 @@
       "domain_tags": [
         "language-modeling",
         "reasoning",
+        "algorithmic-reasoning",
         "efficiency"
       ],
       "focus_tags": [
         "architecture",
+        "objective-loss",
         "training-algorithm"
       ],
       "desc": "Retrofits Qwen2.5-0.5B with a weight-tied recurrent middle block and re-entry bridge, installing iterative latent computation at full-block and frozen-base adapter training budgets.",
@@ -7232,9 +7261,10 @@
       "published_date": "2026-08-11",
       "added_date": "2026-08-12",
       "venue": "ACVR Workshop @ ECCV",
-      "category": "applications",
+      "category": "designs",
       "foundation": false,
       "mechanism_tags": [
+        "hierarchical-loop",
         "flat-loop"
       ],
       "domain_tags": [
