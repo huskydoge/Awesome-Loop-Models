@@ -48,4 +48,3 @@ Malformed or unknown tag URLs clear the drill-down state and render the normal P
 - Unit/static contracts for URL parsing, paper-only filtering, prefix rendering, and Stats link semantics.
 - Browser checks for Stats → Papers, search-within-tag, clear, reload, Back/Forward, keyboard focus, mobile, and light/dark themes.
 - Existing complete unit suite and `git diff --check`.
-

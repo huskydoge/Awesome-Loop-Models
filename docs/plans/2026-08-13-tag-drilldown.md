@@ -156,4 +156,3 @@ One reviewer checks URL/filter correctness and paper-only count consistency; one
 **Step 5: Integrate**
 
 Fast-forward the validated implementation branch into `codex/catalog-intelligence-dashboard`, preserving the unrelated untracked `figures/` and `loop_transformers_baseline_backbone_report.md`.
-
