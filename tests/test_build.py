@@ -420,10 +420,16 @@ process.stdout.write(JSON.stringify(result));
         block_end = html.index("initResearchPrompt();", block_start)
         toggle_start = html.index("function toggleTagFilter(tagKey) {")
         toggle_end = html.index("function renderTagFilterGroups() {", toggle_start)
+        query_start = html.find("function syncSearchQueryToUrl(query) {")
+        query_block = ""
+        if query_start >= 0:
+            query_end = html.index("function initPublicationDateFilter() {", query_start)
+            query_block = html[query_start:query_end]
         production_block = (
             html[state_start:state_end]
             + html[block_start:block_end]
             + html[toggle_start:toggle_end]
+            + query_block
         )
         script = f"""
 let browserHash = {json.dumps(initial_hash)};
@@ -433,6 +439,7 @@ const renderStatsCalls = [];
 const scrollRequests = [];
 const animationFrameCallbacks = [];
 const windowListeners = {{}};
+const replaceStateCalls = [];
 const searchInput = {{ value: '' }};
 const searchCalls = [];
 let uiUpdates = 0;
@@ -483,7 +490,24 @@ const document = {{
   getElementById: function(id) {{ return elements[id] || null; }}
 }};
 const window = {{
-  location: {{ search: '' }},
+  location: {{
+    href: 'https://example.test/index.html' + {json.dumps(initial_hash)},
+    search: ''
+  }},
+  history: {{
+    state: null,
+    replaceState: function(state, title, url) {{
+      const nextUrl = new URL(String(url));
+      replaceStateCalls.push({{
+        tag: nextUrl.searchParams.get('tag'),
+        q: nextUrl.searchParams.get('q'),
+        hash: nextUrl.hash
+      }});
+      window.location.href = nextUrl.href;
+      window.location.search = nextUrl.search;
+      browserHash = nextUrl.hash;
+    }}
+  }},
   addEventListener: function(name, listener) {{
     if (!windowListeners[name]) windowListeners[name] = [];
     windowListeners[name].push(listener);
@@ -702,6 +726,103 @@ process.stdout.write(JSON.stringify({
                 "locked": "mechanism::flat-loop",
                 "active": ["mechanism::flat-loop"],
             },
+        )
+
+    def test_duplicate_history_events_restore_tag_route_only_once(self):
+        """A combined popstate/hashchange navigation has one effective restore."""
+        result = self.run_top_level_tab_block("#papers", """
+ALL_PAPERS = [{ _tagKeySet: new Set(['mechanism::flat-loop']) }];
+TAG_FILTER_LOOKUP = { 'mechanism::flat-loop': { displayLabel: 'flat-loop' } };
+CATALOG_DATA_READY = true;
+window.location.search = '?tag=mechanism%3A%3Aflat-loop&q=layer';
+dispatchWindowEvent('popstate');
+dispatchWindowEvent('hashchange');
+process.stdout.write(JSON.stringify({
+  locked: LOCKED_TAG_FILTER_KEY,
+  uiUpdates: uiUpdates,
+  searchCalls: searchCalls
+}));
+""")
+        self.assertEqual(
+            result,
+            {
+                "locked": "mechanism::flat-loop",
+                "uiUpdates": 1,
+                "searchCalls": ["layer"],
+            },
+        )
+
+    def test_tag_route_does_not_claim_an_existing_active_filter(self):
+        """Leaving a route retains a matching filter that predated the route."""
+        result = self.run_top_level_tab_block("#papers", """
+ALL_PAPERS = [{ _tagKeySet: new Set(['mechanism::flat-loop']) }];
+TAG_FILTER_LOOKUP = { 'mechanism::flat-loop': { displayLabel: 'flat-loop' } };
+ACTIVE_TAG_FILTERS = new Set(['mechanism::flat-loop']);
+CATALOG_DATA_READY = true;
+window.location.search = '?tag=mechanism%3A%3Aflat-loop';
+dispatchWindowEvent('popstate');
+window.location.search = '';
+dispatchWindowEvent('popstate');
+process.stdout.write(JSON.stringify({
+  locked: LOCKED_TAG_FILTER_KEY,
+  active: Array.from(ACTIVE_TAG_FILTERS)
+}));
+""")
+        self.assertEqual(
+            result,
+            {
+                "locked": "",
+                "active": ["mechanism::flat-loop"],
+            },
+        )
+
+    def test_search_query_sync_uses_replace_state_and_preserves_tag_route(self):
+        """Free search updates q in place without losing the locked tag or hash."""
+        result = self.run_top_level_tab_block("#papers", """
+if (typeof syncSearchQueryToUrl !== 'function') {
+  process.stdout.write(JSON.stringify({ missing: true }));
+} else {
+  window.location.href = 'https://example.test/index.html?tag=mechanism%3A%3Aflat-loop#papers';
+  window.location.search = '?tag=mechanism%3A%3Aflat-loop';
+  syncSearchQueryToUrl('Layer Norm');
+  syncSearchQueryToUrl('');
+  process.stdout.write(JSON.stringify({ calls: replaceStateCalls }));
+}
+""")
+        self.assertEqual(
+            result,
+            {
+                "calls": [
+                    {
+                        "tag": "mechanism::flat-loop",
+                        "q": "Layer Norm",
+                        "hash": "#papers",
+                    },
+                    {
+                        "tag": "mechanism::flat-loop",
+                        "q": None,
+                        "hash": "#papers",
+                    },
+                ]
+            },
+        )
+
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        helper_start = html.index("function syncSearchQueryToUrl(query) {")
+        helper_end = html.index("function initSearch() {", helper_start)
+        helper_source = html[helper_start:helper_end]
+        self.assertIn("new URL(window.location.href)", helper_source)
+        self.assertIn("nextUrl.searchParams.set('q'", helper_source)
+        self.assertIn("nextUrl.searchParams.delete('q')", helper_source)
+        self.assertIn("window.history.replaceState", helper_source)
+        self.assertNotIn("pushState", helper_source)
+
+        search_start = helper_end
+        search_end = html.index("function initPublicationDateFilter() {", search_start)
+        search_source = html[search_start:search_end]
+        self.assertLess(
+            search_source.index("syncSearchQueryToUrl(e.target.value);"),
+            search_source.index("doSearch(e.target.value);"),
         )
 
     def test_tag_filter_chip_counts_render_as_numbers_only(self):

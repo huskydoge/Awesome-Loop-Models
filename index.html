@@ -5924,6 +5924,9 @@ let NODE_COUNTS = {};
 let SECTION_OBSERVER = null;
 let ACTIVE_TAG_FILTERS = new Set();
 let LOCKED_TAG_FILTER_KEY = '';
+let LOCKED_TAG_FILTER_IS_ROUTE_OWNED = false;
+let HAS_RESTORED_TAG_DRILLDOWN_URL = false;
+let LAST_RESTORED_SEARCH_QUERY = '';
 let TAG_FILTER_GROUPS = [];
 let TAG_FILTER_LOOKUP = {};
 let TAG_FILTER_OPEN = false;
@@ -6262,14 +6265,31 @@ function getTagDrilldownKeyFromUrl() {
 /** Restores the locked tag and free-text query from the current URL. */
 function restoreTagDrilldownFromUrl() {
   if (!CATALOG_DATA_READY) return;
-  if (LOCKED_TAG_FILTER_KEY) ACTIVE_TAG_FILTERS.delete(LOCKED_TAG_FILTER_KEY);
-  LOCKED_TAG_FILTER_KEY = getTagDrilldownKeyFromUrl();
-  if (LOCKED_TAG_FILTER_KEY) ACTIVE_TAG_FILTERS.add(LOCKED_TAG_FILTER_KEY);
-
   const searchInput = document.getElementById('search');
-  if (searchInput) searchInput.value = new URLSearchParams(window.location.search).get('q') || '';
+  const nextTagKey = getTagDrilldownKeyFromUrl();
+  const nextQuery = new URLSearchParams(window.location.search).get('q') || '';
+  const stateIsCurrent = HAS_RESTORED_TAG_DRILLDOWN_URL
+    && nextTagKey === LOCKED_TAG_FILTER_KEY
+    && nextQuery === LAST_RESTORED_SEARCH_QUERY
+    && (!nextTagKey || ACTIVE_TAG_FILTERS.has(nextTagKey))
+    && (!searchInput || searchInput.value === nextQuery);
+  if (stateIsCurrent) return;
+
+  if (LOCKED_TAG_FILTER_KEY && LOCKED_TAG_FILTER_IS_ROUTE_OWNED) {
+    ACTIVE_TAG_FILTERS.delete(LOCKED_TAG_FILTER_KEY);
+  }
+  LOCKED_TAG_FILTER_KEY = nextTagKey;
+  LOCKED_TAG_FILTER_IS_ROUTE_OWNED = false;
+  if (LOCKED_TAG_FILTER_KEY && !ACTIVE_TAG_FILTERS.has(LOCKED_TAG_FILTER_KEY)) {
+    ACTIVE_TAG_FILTERS.add(LOCKED_TAG_FILTER_KEY);
+    LOCKED_TAG_FILTER_IS_ROUTE_OWNED = true;
+  }
+
+  HAS_RESTORED_TAG_DRILLDOWN_URL = true;
+  LAST_RESTORED_SEARCH_QUERY = nextQuery;
+  if (searchInput) searchInput.value = nextQuery;
   updateTagFilterUI();
-  doSearch(searchInput ? searchInput.value : '');
+  doSearch(nextQuery);
 }
 
 /** Synchronizes top-level tab controls and panels with the active tab state. */
@@ -7505,12 +7525,27 @@ function doSearch(query) {
   renderAllGrids(query.trim().toLowerCase());
 }
 
+/** Synchronizes the free-text query with the current URL without adding history. */
+function syncSearchQueryToUrl(query) {
+  const nextUrl = new URL(window.location.href);
+  const value = String(query == null ? '' : query);
+  if (value) {
+    nextUrl.searchParams.set('q', value);
+  } else {
+    nextUrl.searchParams.delete('q');
+  }
+  window.history.replaceState(window.history.state, '', nextUrl);
+}
+
 function initSearch() {
   const searchEl = document.getElementById("search");
   let debounce;
   searchEl.addEventListener("input", function(e) {
     clearTimeout(debounce);
-    debounce = setTimeout(function() { doSearch(e.target.value); }, 150);
+    debounce = setTimeout(function() {
+      syncSearchQueryToUrl(e.target.value);
+      doSearch(e.target.value);
+    }, 150);
   });
 }
 
