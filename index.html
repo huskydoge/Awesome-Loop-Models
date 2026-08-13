@@ -7541,10 +7541,11 @@ function initSearch() {
   const searchEl = document.getElementById("search");
   let debounce;
   searchEl.addEventListener("input", function(e) {
+    const query = e.target.value;
+    syncSearchQueryToUrl(query);
     clearTimeout(debounce);
     debounce = setTimeout(function() {
-      syncSearchQueryToUrl(e.target.value);
-      doSearch(e.target.value);
+      doSearch(query);
     }, 150);
   });
 }

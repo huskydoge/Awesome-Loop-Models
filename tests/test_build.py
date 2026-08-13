@@ -440,7 +440,14 @@ const scrollRequests = [];
 const animationFrameCallbacks = [];
 const windowListeners = {{}};
 const replaceStateCalls = [];
-const searchInput = {{ value: '' }};
+const searchInput = {{
+  value: '',
+  listeners: {{}},
+  addEventListener: function(name, listener) {{
+    if (!this.listeners[name]) this.listeners[name] = [];
+    this.listeners[name].push(listener);
+  }}
+}};
 const searchCalls = [];
 let uiUpdates = 0;
 
@@ -817,13 +824,49 @@ if (typeof syncSearchQueryToUrl !== 'function') {
         self.assertIn("window.history.replaceState", helper_source)
         self.assertNotIn("pushState", helper_source)
 
-        search_start = helper_end
+    def test_search_input_syncs_q_immediately_and_debounces_captured_query(self):
+        """Navigation sees the latest q while rendering still uses the input event value."""
+        result = self.run_top_level_tab_block("#papers", """
+window.location.href = 'https://example.test/index.html?tag=mechanism%3A%3Aflat-loop#papers';
+window.location.search = '?tag=mechanism%3A%3Aflat-loop';
+initSearch();
+searchInput.value = 'first query';
+searchInput.listeners.input[0]({ target: searchInput });
+const immediateCalls = replaceStateCalls.slice();
+searchInput.value = 'overwritten';
+setTimeout(function() {
+  process.stdout.write(JSON.stringify({
+    immediateCalls: immediateCalls,
+    finalCalls: replaceStateCalls,
+    searchCalls: searchCalls
+  }));
+}, 180);
+""")
+        expected_call = {
+            "tag": "mechanism::flat-loop",
+            "q": "first query",
+            "hash": "#papers",
+        }
+        self.assertEqual(
+            result,
+            {
+                "immediateCalls": [expected_call],
+                "finalCalls": [expected_call],
+                "searchCalls": ["first query"],
+            },
+        )
+
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        search_start = html.index("function initSearch() {")
         search_end = html.index("function initPublicationDateFilter() {", search_start)
         search_source = html[search_start:search_end]
-        self.assertLess(
-            search_source.index("syncSearchQueryToUrl(e.target.value);"),
-            search_source.index("doSearch(e.target.value);"),
-        )
+        capture_index = search_source.index("const query = e.target.value;")
+        sync_index = search_source.index("syncSearchQueryToUrl(query);")
+        debounce_index = search_source.index("debounce = setTimeout", sync_index)
+        self.assertLess(capture_index, sync_index)
+        self.assertLess(sync_index, debounce_index)
+        self.assertIn("doSearch(query);", search_source[debounce_index:])
+        self.assertNotIn("syncSearchQueryToUrl", search_source[debounce_index:])
 
     def test_tag_filter_chip_counts_render_as_numbers_only(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
