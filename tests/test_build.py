@@ -418,7 +418,13 @@ process.stdout.write(JSON.stringify(result));
         state_end = html.index("let CURRENT_VIEW = 'category';", state_start)
         block_start = html.index("function normalizeTopLevelTab(tab) {")
         block_end = html.index("initResearchPrompt();", block_start)
-        production_block = html[state_start:state_end] + html[block_start:block_end]
+        toggle_start = html.index("function toggleTagFilter(tagKey) {")
+        toggle_end = html.index("function renderTagFilterGroups() {", toggle_start)
+        production_block = (
+            html[state_start:state_end]
+            + html[block_start:block_end]
+            + html[toggle_start:toggle_end]
+        )
         script = f"""
 let browserHash = {json.dumps(initial_hash)};
 let focusedTabId = null;
@@ -678,6 +684,25 @@ process.stdout.write(JSON.stringify({
             },
         )
         self.assertEqual(result["uiUpdates"], 4)
+
+    def test_locked_tag_cannot_be_removed_by_regular_filter_toggle(self):
+        """The URL-owned tag remains enforced while its route is active."""
+        result = self.run_top_level_tab_block("#papers", """
+LOCKED_TAG_FILTER_KEY = 'mechanism::flat-loop';
+ACTIVE_TAG_FILTERS = new Set([LOCKED_TAG_FILTER_KEY]);
+toggleTagFilter(LOCKED_TAG_FILTER_KEY);
+process.stdout.write(JSON.stringify({
+  locked: LOCKED_TAG_FILTER_KEY,
+  active: Array.from(ACTIVE_TAG_FILTERS)
+}));
+""")
+        self.assertEqual(
+            result,
+            {
+                "locked": "mechanism::flat-loop",
+                "active": ["mechanism::flat-loop"],
+            },
+        )
 
     def test_tag_filter_chip_counts_render_as_numbers_only(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")

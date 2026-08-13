@@ -6600,7 +6600,7 @@ function setTagFilterOpen(isOpen) {
 }
 
 function toggleTagFilter(tagKey) {
-  if (!tagKey) return;
+  if (!tagKey || tagKey === LOCKED_TAG_FILTER_KEY) return;
   if (ACTIVE_TAG_FILTERS.has(tagKey)) {
     ACTIVE_TAG_FILTERS.delete(tagKey);
   } else {
