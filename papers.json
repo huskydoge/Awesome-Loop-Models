@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 137,
+    "total": 138,
     "paper_total": 130,
-    "blog_total": 7,
+    "blog_total": 8,
     "briefing_total": 39,
     "latest_briefing_date": "2026-08-11",
-    "generated": "2026-08-12T05:12:08.667131+00:00",
+    "generated": "2026-08-13T03:58:10.494762+00:00",
     "generated_local_date": "2026-08-12",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -7525,6 +7525,62 @@
         "Benhao Huang"
       ],
       "venueClass": "venue-other"
+    },
+    {
+      "title": "Towards Looped Models Done Right — Part I: Topology, Input Injection, Recurrent-State Design",
+      "authors": "Benhao Huang, Chufan Shi, Junlin Chen, Shicheng Wen, Zhengzhong Liu, Eric Xing, Xuezhe Ma",
+      "year": 2026,
+      "published_date": "2026-07-31",
+      "added_date": "2026-08-12",
+      "venue": "IFM Research",
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "scaling",
+        "efficiency",
+        "memory-efficiency"
+      ],
+      "tags": [
+        "Huginn",
+        "Ouro",
+        "MoE"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Runs controlled, compute-matched ablations of recurrence topology, input injection, and recurrent-state design, then transfers the favored Huginn-style sandwich architecture from dense 730M models to 8B/0.8B-active MoE models and compares it with Ouro and a feedforward baseline.\n",
+      "links": {
+        "blog": "https://ifm-research.notion.site/Towards-Looped-Models-Done-Right-3ade511912ec8128987dfeb7a5580043"
+      },
+      "id": "2026-07-31-towards-looped-models-done-right",
+      "source_file": "2026-07-31-towards-looped-models-done-right.yaml",
+      "source_path": "blogs/2026-07-31-towards-looped-models-done-right.yaml",
+      "entry_type": "blog",
+      "authors_list": [
+        "Benhao Huang",
+        "Chufan Shi",
+        "Junlin Chen",
+        "Shicheng Wen",
+        "Zhengzhong Liu",
+        "Eric Xing",
+        "Xuezhe Ma"
+      ],
+      "venueClass": "venue-other",
+      "community_comments": [
+        {
+          "label": "Benhao's announcement thread",
+          "url": "https://x.com/huskydogewoof/status/2083242247945126203?s=20"
+        }
+      ],
+      "comments": [
+        {
+          "label": "Benhao's announcement thread",
+          "url": "https://x.com/huskydogewoof/status/2083242247945126203?s=20"
+        }
+      ]
     }
   ],
   "briefings": [

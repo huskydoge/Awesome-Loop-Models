@@ -7,6 +7,7 @@
     "blogs/2026-04-21-claude-mythos-looped-llm-depth-scaling-axis.yaml",
     "blogs/2026-04-29-exact-input-writes-parcae.yaml",
     "blogs/2026-05-23-rethinking-hierarchy-iterative-reasoning-models.yaml",
+    "blogs/2026-07-31-towards-looped-models-done-right.yaml",
     "papers/1511.08228.yaml",
     "papers/1603.08983.yaml",
     "papers/1807.03819.yaml",
@@ -142,7 +143,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 116
+        "count": 117
       },
       {
         "label": "hierarchical-loop",
@@ -160,7 +161,7 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 119
+        "count": 120
       },
       {
         "label": "inference-algorithm",
@@ -182,15 +183,15 @@
     "domain": [
       {
         "label": "language-modeling",
-        "count": 76
+        "count": 77
       },
       {
         "label": "reasoning",
-        "count": 74
+        "count": 75
       },
       {
         "label": "efficiency",
-        "count": 58
+        "count": 59
       },
       {
         "label": "algorithmic-reasoning",
@@ -198,7 +199,7 @@
       },
       {
         "label": "scaling",
-        "count": 22
+        "count": 23
       },
       {
         "label": "theory",
@@ -214,7 +215,7 @@
       },
       {
         "label": "memory-efficiency",
-        "count": 9
+        "count": 10
       },
       {
         "label": "sequence-modeling",
