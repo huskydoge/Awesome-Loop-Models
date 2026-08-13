@@ -6381,6 +6381,13 @@ function getTagDrilldownHref(tagKey) {
   return '?' + params.toString() + '#papers';
 }
 
+/** Count paper records carrying a tag without including blog resources. */
+function getPaperCountForTagKey(tagKey) {
+  return ALL_PAPERS.filter(function(paper) {
+    return paper._tagKeySet && paper._tagKeySet.has(tagKey);
+  }).length;
+}
+
 /** Update the fixed tag token and search input description for the locked route. */
 function updateTagDrilldownSearchUI() {
   const scope = document.getElementById('search-tag-scope');
@@ -6402,9 +6409,7 @@ function updateTagDrilldownSearchUI() {
   const group = entry.group || LOCKED_TAG_FILTER_KEY.split('::')[0];
   const groupLabel = getTagDrilldownGroupLabel(group);
   const displayLabel = entry.displayLabel || entry.label || LOCKED_TAG_FILTER_KEY.split('::').slice(1).join('::');
-  const paperCount = ALL_PAPERS.filter(function(paper) {
-    return paper._tagKeySet && paper._tagKeySet.has(LOCKED_TAG_FILTER_KEY);
-  }).length;
+  const paperCount = getPaperCountForTagKey(LOCKED_TAG_FILTER_KEY);
   const searchLabel = 'Search within ' + paperCount + ' papers';
   label.textContent = groupLabel + ': ' + displayLabel;
   clearButton.setAttribute('aria-label', 'Clear ' + groupLabel + ' tag ' + displayLabel);
@@ -6414,10 +6419,19 @@ function updateTagDrilldownSearchUI() {
 
 /** Enter a tag route without carrying transient advanced filters into its count. */
 function navigateToTagDrilldown(tagKey) {
-  if (!TAG_FILTER_LOOKUP[tagKey] || !ALL_PAPERS.some(function(paper) {
-    return paper._tagKeySet && paper._tagKeySet.has(tagKey);
-  })) return;
+  if (!TAG_FILTER_LOOKUP[tagKey] || !getPaperCountForTagKey(tagKey)) return;
   ACTIVE_TAG_FILTERS.clear();
+  const startDate = document.getElementById('publication-date-start');
+  const endDate = document.getElementById('publication-date-end');
+  if (startDate) startDate.value = '';
+  if (endDate) endDate.value = '';
+  ACCEPTED_ONLY = false;
+  TODAY_ONLY = false;
+  HAS_CODE_ONLY = false;
+  HAS_COMMENTS_ONLY = false;
+  setFilterSidebarOpen(false);
+  setTagFilterOpen(false);
+  updateQuickFilterButtons();
   const nextUrl = new URL(getTagDrilldownHref(tagKey), window.location.href);
   window.history.pushState(window.history.state, '', nextUrl);
   setTopLevelTab('papers', { updateHash: false, userInitiated: true });
@@ -6809,15 +6823,16 @@ function renderTagFilterGroups() {
   if (!container) return;
   container.innerHTML = TAG_FILTER_GROUPS.map(function(group) {
     return '<section class="tag-filter-group">'
-      + '<div class="tag-filter-group-title">' + group.title + '</div>'
+      + '<div class="tag-filter-group-title">' + escapeHtml(group.title) + '</div>'
       + '<div class="tag-filter-chip-list">'
       + group.tags.map(function(tag) {
         const isActive = ACTIVE_TAG_FILTERS.has(tag.key);
         const isLocked = tag.key === LOCKED_TAG_FILTER_KEY;
+        const tagCount = isLocked ? getPaperCountForTagKey(tag.key) : tag.count;
         const activeClass = isActive ? ' is-active' : '';
-        return '<button type="button" class="tag-filter-chip' + activeClass + '" data-tag-key="' + tag.key + '" data-tag-group="' + tag.group + '" aria-pressed="' + (isActive ? 'true' : 'false') + '" aria-disabled="' + (isLocked ? 'true' : 'false') + '"' + (isLocked ? ' disabled' : '') + '>'
-          + '<span class="tag-filter-chip-label">' + tag.displayLabel + '</span>'
-          + '<span class="tag-filter-chip-count">' + tag.count + '</span>'
+        return '<button type="button" class="tag-filter-chip' + activeClass + '" data-tag-key="' + escapeHtml(tag.key) + '" data-tag-group="' + escapeHtml(tag.group) + '" aria-pressed="' + (isActive ? 'true' : 'false') + '" aria-disabled="' + (isLocked ? 'true' : 'false') + '"' + (isLocked ? ' disabled' : '') + '>'
+          + '<span class="tag-filter-chip-label">' + escapeHtml(tag.displayLabel) + '</span>'
+          + '<span class="tag-filter-chip-count">' + escapeHtml(tagCount) + '</span>'
           + '</button>';
       }).join('')
       + '</div>'
@@ -7771,6 +7786,12 @@ function initTagFilterControls() {
   });
 }
 
+/** Return whether a tag-link click should use in-page history navigation. */
+function shouldHandleTagDrilldownClick(event) {
+  return Boolean(event && !event.defaultPrevented && event.button === 0
+    && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey);
+}
+
 function initPaperTagInteractions() {
   if (TAG_DRILLDOWN_INTERACTIONS_BOUND) return;
   TAG_DRILLDOWN_INTERACTIONS_BOUND = true;
@@ -7779,8 +7800,7 @@ function initPaperTagInteractions() {
   if (clearButton) clearButton.addEventListener('click', clearTagDrilldown);
   document.addEventListener('click', function(event) {
     const link = event.target.closest('a[data-tag-key][href]');
-    if (!link || event.defaultPrevented || event.button !== 0
-      || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!link || !shouldHandleTagDrilldownClick(event)) return;
     event.preventDefault();
     navigateToTagDrilldown(link.dataset.tagKey);
   });

@@ -471,8 +471,16 @@ function makeStaticElement(hidden) {{
 const searchTagScope = makeStaticElement(true);
 const searchTagScopeLabel = makeStaticElement(false);
 const searchTagScopeClear = makeStaticElement(false);
+const publicationDateStart = makeStaticElement(false);
+publicationDateStart.value = '';
+const publicationDateEnd = makeStaticElement(false);
+publicationDateEnd.value = '';
 const searchCalls = [];
 let uiUpdates = 0;
+let FILTER_SIDEBAR_OPEN = false;
+const sidebarOpenCalls = [];
+const tagOpenCalls = [];
+let quickFilterUiUpdates = 0;
 
 function makeTab(id, selected, tabIndex) {{
   return {{
@@ -508,6 +516,8 @@ const elements = {{
   'search-tag-scope': searchTagScope,
   'search-tag-scope-label': searchTagScopeLabel,
   'search-tag-scope-clear': searchTagScopeClear,
+  'publication-date-start': publicationDateStart,
+  'publication-date-end': publicationDateEnd,
   'section-designs': {{}},
   'section-blogs': {{}}
 }};
@@ -577,6 +587,15 @@ function renderStatsPanel() {{
 }}
 function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
 function updateTagFilterUI() {{ uiUpdates += 1; }}
+function setFilterSidebarOpen(isOpen) {{
+  FILTER_SIDEBAR_OPEN = Boolean(isOpen);
+  sidebarOpenCalls.push(FILTER_SIDEBAR_OPEN);
+}}
+function setTagFilterOpen(isOpen) {{
+  TAG_FILTER_OPEN = Boolean(isOpen);
+  tagOpenCalls.push(TAG_FILTER_OPEN);
+}}
+function updateQuickFilterButtons() {{ quickFilterUiUpdates += 1; }}
 function doSearch(query) {{ searchCalls.push(query); }}
 
 {production_block}
@@ -716,20 +735,28 @@ process.stdout.write(JSON.stringify({{
         )
 
     def test_tag_navigation_and_clear_use_push_state_with_locked_search_ui(self):
-        """Entering clears transient tags; clearing removes only tag and preserves q."""
+        """Entering clears every result filter; clearing removes only tag and preserves q."""
         result = self.run_top_level_tab_block("#stats", """
 ALL_PAPERS = [
   { _tagKeySet: new Set(['mechanism::flat-loop']) },
   { _tagKeySet: new Set(['mechanism::flat-loop']) },
   { _tagKeySet: new Set(['focus::architecture']) }
 ];
-ALL_RESOURCES = ALL_PAPERS;
+ALL_RESOURCES = ALL_PAPERS.concat([{ entry_type: 'blog', _tagKeySet: new Set(['mechanism::flat-loop']) }]);
 TAG_FILTER_LOOKUP = {
   'mechanism::flat-loop': { group: 'mechanism', displayLabel: 'flat-loop' },
   'focus::architecture': { group: 'focus', displayLabel: 'architecture' }
 };
 CATALOG_DATA_READY = true;
 ACTIVE_TAG_FILTERS = new Set(['focus::architecture']);
+publicationDateStart.value = '2025-01-01';
+publicationDateEnd.value = '2026-01-01';
+ACCEPTED_ONLY = true;
+TODAY_ONLY = true;
+HAS_CODE_ONLY = true;
+HAS_COMMENTS_ONLY = true;
+FILTER_SIDEBAR_OPEN = true;
+TAG_FILTER_OPEN = true;
 
 navigateToTagDrilldown('mechanism::flat-loop');
 const entered = {
@@ -740,7 +767,17 @@ const entered = {
   clearLabel: searchTagScopeClear.attributes['aria-label'],
   placeholder: searchInput.placeholder,
   inputLabel: searchInput.attributes['aria-label'],
-  query: searchInput.value
+  query: searchInput.value,
+  dates: [publicationDateStart.value, publicationDateEnd.value],
+  quickFilters: [ACCEPTED_ONLY, TODAY_ONLY, HAS_CODE_ONLY, HAS_COMMENTS_ONLY],
+  panels: [FILTER_SIDEBAR_OPEN, TAG_FILTER_OPEN],
+  visibleCount: ALL_PAPERS.filter(function(paper) {
+    return Array.from(ACTIVE_TAG_FILTERS).every(function(key) { return paper._tagKeySet.has(key); });
+  }).length,
+  searchCall: searchCalls.at(-1),
+  quickFilterUiUpdates: quickFilterUiUpdates,
+  sidebarOpenCalls: sidebarOpenCalls,
+  tagOpenCalls: tagOpenCalls
 };
 
 ACTIVE_TAG_FILTERS.add('focus::architecture');
@@ -776,6 +813,14 @@ process.stdout.write(JSON.stringify({
                     "placeholder": "Search within 2 papers",
                     "inputLabel": "Search within 2 papers",
                     "query": "",
+                    "dates": ["", ""],
+                    "quickFilters": [False, False, False, False],
+                    "panels": [False, False],
+                    "visibleCount": 2,
+                    "searchCall": "",
+                    "quickFilterUiUpdates": 1,
+                    "sidebarOpenCalls": [False],
+                    "tagOpenCalls": [False],
                 },
                 "cleared": {
                     "active": ["focus::architecture"],
@@ -786,6 +831,84 @@ process.stdout.write(JSON.stringify({
                 },
             },
         )
+
+    def test_locked_advanced_chip_uses_paper_only_count_and_escapes_labels(self):
+        """The disabled route-owned chip matches Stats even when blogs share its tag."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        count_start = html.index("function getPaperCountForTagKey(")
+        count_end = html.index("function updateTagDrilldownSearchUI(", count_start)
+        count_source = html[count_start:count_end]
+        render_start = html.index("function renderTagFilterGroups() {")
+        render_end = html.index("function updateTagFilterUI() {", render_start)
+        render_source = html[render_start:render_end]
+        escape_start = html.index("function escapeHtml(str) {")
+        escape_end = html.index("function highlightQuery(", escape_start)
+        escape_source = html[escape_start:escape_end]
+        script = f"""
+{escape_source}
+{count_source}
+{render_source}
+const key = 'mechanism::flat-loop';
+const ALL_PAPERS = [
+  {{ _tagKeySet: new Set([key]) }},
+  {{ _tagKeySet: new Set([key]) }}
+];
+const ACTIVE_TAG_FILTERS = new Set([key]);
+const LOCKED_TAG_FILTER_KEY = key;
+const TAG_FILTER_GROUPS = [{{
+  title: 'Loop <mechanism>',
+  tags: [
+    {{ key: key, group: 'mechanism', displayLabel: 'flat-loop <img>', count: 3 }},
+    {{ key: 'focus::architecture', group: 'focus', displayLabel: 'architecture', count: 4 }}
+  ]
+}}];
+const container = {{ innerHTML: '' }};
+const document = {{ getElementById: function() {{ return container; }} }};
+renderTagFilterGroups();
+process.stdout.write(JSON.stringify({{ html: container.innerHTML }}));
+"""
+        output = json.loads(subprocess.check_output(["node", "-e", script], text=True))["html"]
+        self.assertIn('<span class="tag-filter-chip-count">2</span>', output)
+        self.assertIn('<span class="tag-filter-chip-count">4</span>', output)
+        self.assertIn("Loop &lt;mechanism&gt;", output)
+        self.assertIn("flat-loop &lt;img&gt;", output)
+        self.assertNotIn("<img>", output)
+
+    def test_tag_click_interception_only_handles_unmodified_left_clicks(self):
+        """Modified and non-left clicks retain the native anchor behavior."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        helper_start = html.index("function shouldHandleTagDrilldownClick(")
+        helper_end = html.index("function initPaperTagInteractions() {", helper_start)
+        helper_source = html[helper_start:helper_end]
+        script = f"""
+{helper_source}
+const base = {{ button: 0, defaultPrevented: false, metaKey: false, ctrlKey: false, shiftKey: false, altKey: false }};
+process.stdout.write(JSON.stringify({{
+  left: shouldHandleTagDrilldownClick(base),
+  prevented: shouldHandleTagDrilldownClick({{ ...base, defaultPrevented: true }}),
+  middle: shouldHandleTagDrilldownClick({{ ...base, button: 1 }}),
+  meta: shouldHandleTagDrilldownClick({{ ...base, metaKey: true }}),
+  ctrl: shouldHandleTagDrilldownClick({{ ...base, ctrlKey: true }}),
+  shift: shouldHandleTagDrilldownClick({{ ...base, shiftKey: true }}),
+  alt: shouldHandleTagDrilldownClick({{ ...base, altKey: true }})
+}}));
+"""
+        output = json.loads(subprocess.check_output(["node", "-e", script], text=True))
+        self.assertEqual(
+            output,
+            {
+                "left": True,
+                "prevented": False,
+                "middle": False,
+                "meta": False,
+                "ctrl": False,
+                "shift": False,
+                "alt": False,
+            },
+        )
+        interactions_start = html.index("function initPaperTagInteractions() {")
+        interactions_end = html.index("function initTableInteractions() {", interactions_start)
+        self.assertIn("shouldHandleTagDrilldownClick(event)", html[interactions_start:interactions_end])
 
     def test_card_tags_are_native_links_and_advanced_chips_expose_state(self):
         """Card tags navigate; advanced filter buttons remain explicit toggle controls."""
@@ -809,9 +932,7 @@ process.stdout.write(JSON.stringify({
         interactions_source = html[interactions_start:interactions_end]
         self.assertIn("document.addEventListener('click'", interactions_source)
         self.assertIn("navigateToTagDrilldown", interactions_source)
-        self.assertIn("event.button !== 0", interactions_source)
-        for modifier in ("event.metaKey", "event.ctrlKey", "event.shiftKey", "event.altKey"):
-            self.assertIn(modifier, interactions_source)
+        self.assertIn("shouldHandleTagDrilldownClick(event)", interactions_source)
 
     def test_tag_drilldown_state_is_url_backed_and_paper_only(self):
         """Locked tag routes must be URL-driven and exclude non-paper resources."""
@@ -1133,7 +1254,7 @@ setTimeout(function() {
 
     def test_tag_filter_chip_counts_render_as_numbers_only(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn("+ '<span class=\"tag-filter-chip-count\">' + tag.count + '</span>'", html)
+        self.assertIn("+ '<span class=\"tag-filter-chip-count\">' + escapeHtml(tagCount) + '</span>'", html)
         self.assertNotIn("tag.count + ' papers'", html)
         self.assertNotIn("tag.count + \" papers\"", html)
 
