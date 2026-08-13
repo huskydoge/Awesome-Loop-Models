@@ -35,7 +35,7 @@ If you find this repository useful, please consider citing this list:
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=huskydoge/Awesome-Loop-Models&type=Date)](https://star-history.com/#huskydoge/Awesome-Loop-Models&Date)
+![Star history of huskydoge/Awesome-Loop-Models](assets/star-history/star-history.png)
 
 ---
 
