@@ -7545,6 +7545,8 @@ function initSearch() {
     syncSearchQueryToUrl(query);
     clearTimeout(debounce);
     debounce = setTimeout(function() {
+      const currentQuery = new URLSearchParams(window.location.search).get('q') || '';
+      if (searchEl.value !== query || currentQuery !== query) return;
       doSearch(query);
     }, 150);
   });

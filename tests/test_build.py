@@ -831,9 +831,10 @@ window.location.href = 'https://example.test/index.html?tag=mechanism%3A%3Aflat-
 window.location.search = '?tag=mechanism%3A%3Aflat-loop';
 initSearch();
 searchInput.value = 'first query';
-searchInput.listeners.input[0]({ target: searchInput });
+const eventTarget = { value: 'first query' };
+searchInput.listeners.input[0]({ target: eventTarget });
 const immediateCalls = replaceStateCalls.slice();
-searchInput.value = 'overwritten';
+eventTarget.value = 'overwritten';
 setTimeout(function() {
   process.stdout.write(JSON.stringify({
     immediateCalls: immediateCalls,
@@ -867,6 +868,39 @@ setTimeout(function() {
         self.assertLess(sync_index, debounce_index)
         self.assertIn("doSearch(query);", search_source[debounce_index:])
         self.assertNotIn("syncSearchQueryToUrl", search_source[debounce_index:])
+
+    def test_pending_search_render_cannot_override_history_restored_query(self):
+        """A stale input timer must not replace results restored by Back or Forward."""
+        result = self.run_top_level_tab_block("#papers", """
+CATALOG_DATA_READY = true;
+window.location.href = 'https://example.test/index.html#papers';
+initSearch();
+searchInput.value = 'query A';
+searchInput.listeners.input[0]({ target: searchInput });
+window.location.href = 'https://example.test/index.html?q=query+B#papers';
+window.location.search = '?q=query+B';
+dispatchWindowEvent('popstate');
+setTimeout(function() {
+  process.stdout.write(JSON.stringify({
+    input: searchInput.value,
+    searchCalls: searchCalls
+  }));
+}, 180);
+""")
+        self.assertEqual(
+            result,
+            {
+                "input": "query B",
+                "searchCalls": ["query B"],
+            },
+        )
+
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        search_start = html.index("function initSearch() {")
+        search_end = html.index("function initPublicationDateFilter() {", search_start)
+        timer_source = html[html.index("debounce = setTimeout", search_start):search_end]
+        self.assertIn("searchEl.value !== query", timer_source)
+        self.assertIn("new URLSearchParams(window.location.search).get('q')", timer_source)
 
     def test_tag_filter_chip_counts_render_as_numbers_only(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
