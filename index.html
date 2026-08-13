@@ -687,175 +687,88 @@
     }
 
     .stats-panel {
-      isolation: isolate;
-      position: relative;
+      --stats-card-bg: #ffffff;
+      --stats-card-border: #cfd8e3;
+      --stats-track-bg: #e8eef5;
+      --stats-grid-line: rgba(73, 96, 122, 0.08);
       width: 100%;
       max-width: 100%;
       overflow-x: clip;
-      padding-bottom: 42px;
-    }
-
-    .stats-panel::before {
-      position: absolute;
-      z-index: -1;
-      top: -118px;
-      right: -86px;
-      width: min(44vw, 620px);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: repeating-radial-gradient(
-        circle,
-        color-mix(in srgb, var(--accent) 18%, transparent) 0 1px,
-        transparent 1px 24px
+      padding: 4px 0 42px;
+      background-image: repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent calc(8.333% - 1px),
+        var(--stats-grid-line) calc(8.333% - 1px),
+        var(--stats-grid-line) 8.333%
       );
-      opacity: 0.48;
-      content: '';
-      pointer-events: none;
     }
 
-    .stats-hero {
+    .stats-dashboard-header {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr);
-      align-items: center;
-      gap: clamp(34px, 6vw, 92px);
-      min-height: 292px;
-      padding: clamp(34px, 5vw, 68px) 0 clamp(32px, 4vw, 54px);
-    }
-
-    .stats-hero-copy {
-      min-width: 0;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 32px;
+      padding: 20px 0 22px;
+      border-bottom: 1px solid var(--stats-card-border);
     }
 
     .stats-eyebrow {
-      margin-bottom: 14px;
+      margin-bottom: 5px;
       color: var(--accent);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
-    .stats-hero h2 {
-      max-width: 960px;
+    .stats-dashboard-header h2 {
       color: var(--text);
       font-family: var(--font-display);
-      font-size: clamp(44px, 5.8vw, 86px);
-      font-weight: 520;
-      letter-spacing: -0.038em;
-      line-height: 0.94;
-    }
-
-    .stats-signal-card {
-      position: relative;
-      min-width: 0;
-      overflow: hidden;
-      padding: 22px 24px 24px;
-      border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--border));
-      border-radius: 20px;
-      background: color-mix(in srgb, var(--bg) 92%, var(--accent) 8%);
-      box-shadow: 0 22px 54px rgba(31, 35, 40, 0.09);
-    }
-
-    .stats-signal-card::after {
-      position: absolute;
-      right: -54px;
-      bottom: -70px;
-      width: 190px;
-      aspect-ratio: 1;
-      border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
-      border-radius: 50%;
-      box-shadow:
-        0 0 0 24px color-mix(in srgb, var(--accent) 7%, transparent),
-        0 0 0 48px color-mix(in srgb, var(--accent) 4%, transparent);
-      content: '';
-      pointer-events: none;
-    }
-
-    .stats-signal-card-topline {
-      display: flex;
-      position: relative;
-      z-index: 1;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 22px;
-      color: var(--text-muted);
-      font-size: 9.5px;
-      font-weight: 850;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .stats-signal-live {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--accent2);
-    }
-
-    .stats-signal-live i {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: currentColor;
-      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent2) 14%, transparent);
-    }
-
-    .stats-signal-date {
-      display: block;
-      position: relative;
-      z-index: 1;
-      margin-bottom: 8px;
-      color: var(--accent);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 11px;
-      font-weight: 750;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .stats-signal-title {
-      display: block;
-      position: relative;
-      z-index: 1;
-      max-width: 420px;
-      color: var(--text);
-      font-family: var(--font-display);
-      font-size: clamp(20px, 2vw, 29px);
-      font-weight: 600;
-      letter-spacing: -0.018em;
-      line-height: 1.12;
-      text-decoration: none;
-    }
-
-    .stats-signal-title[href]:hover {
-      color: var(--accent);
-    }
-
-    .stats-signal-meta {
-      position: relative;
-      z-index: 1;
-      margin-top: 13px;
-      color: var(--text-muted);
-      font-size: 11px;
-      font-weight: 650;
-      line-height: 1.45;
+      font-size: clamp(30px, 3.1vw, 48px);
+      font-weight: 560;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
     }
 
     .stats-scope {
-      position: relative;
-      z-index: 1;
-      max-width: 420px;
-      margin-top: 18px;
-      padding-top: 14px;
-      border-top: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+      max-width: 680px;
+      margin-top: 7px;
       color: var(--text-muted);
-      font-size: 11.5px;
-      line-height: 1.55;
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    .stats-snapshot-block {
+      min-width: 190px;
+      padding-left: 18px;
+      border-left: 2px solid var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      text-align: right;
+    }
+
+    .stats-snapshot-block span,
+    .stats-snapshot-block time {
+      display: block;
+    }
+
+    .stats-snapshot-block span {
+      color: var(--text-muted);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .stats-snapshot-block time {
+      margin-top: 5px;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 700;
     }
 
     .stats-status {
-      margin: 0 0 24px;
+      margin: 14px 0 0;
       padding: 11px 14px;
       border-left: 3px solid var(--accent);
       background: var(--surface);
@@ -870,20 +783,20 @@
     .stats-metric-rail {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      margin: 0 0 clamp(48px, 7vw, 92px);
+      margin: 16px 0;
       overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      background: var(--bg);
-      box-shadow: 0 18px 48px rgba(31, 35, 40, 0.055);
+      border: 1px solid var(--stats-card-border);
+      border-radius: 14px;
+      background: var(--stats-card-bg);
+      box-shadow: 0 8px 24px rgba(31, 35, 40, 0.045);
       counter-reset: stats-metric;
     }
 
     .stats-metric {
       counter-increment: stats-metric;
       min-width: 0;
-      padding: 20px clamp(16px, 2vw, 30px) 22px;
-      border-left: 1px solid var(--border);
+      padding: 15px clamp(14px, 1.8vw, 24px) 16px;
+      border-left: 1px solid var(--stats-card-border);
     }
 
     .stats-metric:first-child {
@@ -892,22 +805,13 @@
 
     .stats-metric::before {
       display: block;
-      margin-bottom: 22px;
+      margin-bottom: 10px;
       color: var(--text-dim);
       content: '0' counter(stats-metric);
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-size: 9px;
       font-weight: 800;
       letter-spacing: 0.12em;
-    }
-
-    .stats-metric:nth-child(2) {
-      background: color-mix(in srgb, var(--accent) 8%, var(--bg));
-    }
-
-    .stats-metric:nth-child(2)::before,
-    .stats-metric:nth-child(2) .stats-metric-value {
-      color: var(--accent);
     }
 
     .stats-metric-label {
@@ -924,7 +828,7 @@
       margin-top: 9px;
       color: var(--text);
       font-family: var(--font-display);
-      font-size: clamp(27px, 3vw, 44px);
+      font-size: clamp(25px, 2.5vw, 38px);
       font-variant-numeric: tabular-nums;
       font-weight: 560;
       letter-spacing: -0.025em;
@@ -939,12 +843,81 @@
       line-height: 1.45;
     }
 
+    .stats-metric-value[data-trend="positive"] {
+      color: var(--accent2);
+    }
+
+    .stats-metric-value[data-trend="negative"] {
+      color: var(--accent5);
+    }
+
     .stats-section-index {
       color: var(--accent);
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 0.15em;
       text-transform: uppercase;
+    }
+
+    .stats-dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .stats-dashboard-secondary {
+      margin-top: 16px;
+    }
+
+    .stats-dashboard-card {
+      min-width: 0;
+      padding: 22px;
+      border: 1px solid var(--stats-card-border);
+      border-radius: 18px;
+      background: var(--stats-card-bg);
+      box-shadow: 0 8px 24px rgba(31, 35, 40, 0.045);
+    }
+
+    .stats-pulse-card {
+      grid-column: span 8;
+    }
+
+    .stats-composition-card,
+    .stats-annual-card {
+      grid-column: span 4;
+    }
+
+    .stats-latest-card {
+      grid-column: span 8;
+    }
+
+    .stats-card-header {
+      margin-bottom: 18px;
+    }
+
+    .stats-card-header-inline {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .stats-card-header h3 {
+      margin-top: 4px;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: clamp(23px, 2vw, 31px);
+      font-weight: 560;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .stats-card-header p {
+      max-width: 430px;
+      margin-top: 5px;
+      color: var(--text-muted);
+      font-size: 11.5px;
+      line-height: 1.5;
     }
 
     .stats-primary-chart {
@@ -1130,10 +1103,6 @@
       fill: var(--accent);
     }
 
-    .stats-panel .timeline-axis-average {
-      fill: var(--accent2);
-    }
-
     .stats-panel .timeline-bar {
       fill: var(--accent);
       opacity: 0.78;
@@ -1161,10 +1130,6 @@
       fill: #70b7ff;
     }
 
-    .stats-primary-chart .timeline-axis-average {
-      fill: #7de4aa;
-    }
-
     .stats-primary-chart .timeline-bar {
       fill: #5faaff;
       opacity: 0.92;
@@ -1173,22 +1138,6 @@
     .stats-primary-chart .timeline-line {
       stroke: #77dfa6;
       filter: drop-shadow(0 0 4px rgba(119, 223, 166, 0.28));
-    }
-
-    .stats-panel .long-arc-line {
-      fill: none;
-      stroke: var(--accent);
-      stroke-width: 2.25;
-      stroke-linejoin: round;
-      stroke-linecap: round;
-      vector-effect: non-scaling-stroke;
-    }
-
-    .stats-panel .long-arc-endpoint {
-      fill: var(--bg);
-      stroke: var(--accent);
-      stroke-width: 2;
-      vector-effect: non-scaling-stroke;
     }
 
     .stats-panel .timeline-empty {
@@ -1216,53 +1165,101 @@
       color: var(--text);
     }
 
-    .stats-lower-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: clamp(34px, 5vw, 64px);
-      margin-top: clamp(58px, 8vw, 104px);
+    .stats-distribution-block + .stats-distribution-block {
+      margin-top: 19px;
+      padding-top: 17px;
+      border-top: 1px solid var(--stats-card-border);
     }
 
-    .stats-secondary-block {
-      min-width: 0;
-      padding: clamp(26px, 3.5vw, 42px);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      background: color-mix(in srgb, var(--surface) 68%, var(--bg));
-    }
-
-    .stats-secondary-block + .stats-secondary-block {
-      border-left: 1px solid var(--border);
-    }
-
-    .stats-secondary-header {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(250px, 0.55fr);
-      align-items: end;
-      gap: 34px;
-      margin-bottom: 28px;
-    }
-
-    .stats-secondary-header p {
-      color: var(--text-muted);
-      font-size: 11.5px;
-      line-height: 1.55;
-    }
-
-    .stats-secondary-heading {
-      margin: 7px 0 0;
+    .stats-distribution-block h4 {
+      margin-bottom: 10px;
       color: var(--text);
-      font-family: var(--font-display);
-      font-size: clamp(25px, 2.4vw, 36px);
-      font-weight: 560;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .stats-distribution-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .stats-distribution-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 5px 12px;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 10.5px;
+    }
+
+    .stats-distribution-label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .stats-distribution-value {
+      color: var(--text);
+      font-size: 10px;
+      font-variant-numeric: tabular-nums;
+      font-weight: 750;
+    }
+
+    .stats-distribution-track {
+      grid-column: 1 / -1;
+      height: 5px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: var(--stats-track-bg);
+    }
+
+    .stats-distribution-bar {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 52%, var(--accent2)));
+    }
+
+    .stats-distribution-note {
+      margin-top: 9px;
+      color: var(--text-muted);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .stats-taxonomy-details {
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 1px solid var(--stats-card-border);
+    }
+
+    .stats-taxonomy-details summary {
+      min-height: 44px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 750;
+      line-height: 44px;
+      cursor: pointer;
+    }
+
+    .stats-taxonomy-details summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .stats-taxonomy-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      padding-top: 12px;
     }
 
     .annual-volume-list {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 13px 28px;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 11px;
     }
 
     .annual-volume-row {
@@ -1279,7 +1276,7 @@
       height: 7px;
       overflow: hidden;
       border-radius: 999px;
-      background: color-mix(in srgb, var(--surface2) 76%, var(--bg));
+      background: var(--stats-track-bg);
     }
 
     .annual-volume-bar {
@@ -1306,258 +1303,69 @@
 
     .latest-releases-list {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 0;
+      border-top: 1px solid var(--stats-card-border);
     }
 
     .latest-release-item {
-      isolation: isolate;
-      position: relative;
       display: grid;
-      grid-template-columns: 72px minmax(0, 1fr);
-      gap: 18px;
-      min-height: 226px;
-      overflow: hidden;
-      padding: 20px;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      background: var(--bg);
-      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .latest-release-item:first-child {
-      grid-column: 1 / -1;
-      grid-template-columns: 104px minmax(0, 1fr);
-      min-height: 238px;
-      padding: clamp(24px, 3vw, 34px);
-      border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
-      background:
-        radial-gradient(circle at 96% 10%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 34%),
-        var(--bg);
-      box-shadow: 0 20px 44px rgba(31, 35, 40, 0.07);
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      min-height: 74px;
+      padding: 11px 2px;
+      border-bottom: 1px solid var(--stats-card-border);
     }
 
     .latest-release-item:hover {
-      z-index: 1;
-      border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
-      box-shadow: 0 18px 42px rgba(31, 35, 40, 0.09);
-      transform: translateY(-2px);
-    }
-
-    .latest-release-index {
-      position: absolute;
-      top: 13px;
-      right: 15px;
-      color: var(--text-dim);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 0.11em;
-    }
-
-    .latest-release-date-rail {
-      position: relative;
-      min-width: 0;
-      padding-right: 16px;
-      border-right: 1px solid var(--border);
+      background: color-mix(in srgb, var(--accent) 4%, transparent);
     }
 
     .latest-release-date {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      color: var(--text);
-      font-variant-numeric: tabular-nums;
-      line-height: 1;
-    }
-
-    .latest-release-day {
-      font-family: var(--font-display);
-      font-size: 32px;
-      font-weight: 560;
-      letter-spacing: -0.045em;
-    }
-
-    .latest-release-month-year {
-      margin-top: 7px;
       color: var(--text-muted);
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 8.5px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .latest-release-item:first-child .latest-release-day {
-      color: var(--accent);
-      font-size: 46px;
-    }
-
-    .latest-release-date-node {
-      position: absolute;
-      top: 72px;
-      right: -5px;
-      width: 9px;
-      height: 9px;
-      border: 2px solid var(--bg);
-      border-radius: 50%;
-      background: var(--text-dim);
-      box-shadow: 0 0 0 1px var(--border);
-    }
-
-    .latest-release-item:first-child .latest-release-date-node {
-      background: var(--accent);
-      box-shadow: 0 0 0 1px var(--accent), 0 0 0 6px color-mix(in srgb, var(--accent) 11%, transparent);
+      font-size: 10px;
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      white-space: nowrap;
     }
 
     .latest-release-body {
-      display: flex;
       min-width: 0;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .latest-release-meta-line {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      margin-bottom: 9px;
-    }
-
-    .latest-release-venue {
-      padding: 2px 7px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: var(--surface);
-      color: var(--text-muted);
-      font-size: 8.5px;
-      font-weight: 800;
-      letter-spacing: 0.07em;
-      line-height: 1.35;
-      text-transform: uppercase;
     }
 
     .latest-release-title,
     .latest-release-title-static {
       display: block;
-      max-width: 720px;
       color: var(--text);
-      font-family: var(--font-display);
-      font-size: 17px;
-      font-weight: 600;
-      line-height: 1.24;
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.35;
       text-decoration: none;
       text-decoration-thickness: 1px;
       text-underline-offset: 3px;
-    }
-
-    .latest-release-item:first-child .latest-release-title,
-    .latest-release-item:first-child .latest-release-title-static {
-      max-width: 920px;
-      font-size: clamp(23px, 2.5vw, 34px);
-      line-height: 1.14;
     }
 
     .latest-release-title:hover {
       color: var(--accent);
     }
 
-    .latest-release-authors {
-      margin-top: 8px;
-      color: var(--text-muted);
-      font-size: 10.5px;
-      line-height: 1.4;
-    }
-
-    .latest-release-desc {
-      display: -webkit-box;
-      margin-top: 12px;
-      overflow: hidden;
-      color: var(--text-muted);
-      font-size: 11.5px;
-      line-height: 1.5;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-    }
-
-    .latest-release-item:first-child .latest-release-desc {
-      max-width: 900px;
-      font-size: 12.5px;
-      -webkit-line-clamp: 2;
-    }
-
-    .latest-release-tags {
+    .latest-release-taxonomy {
       display: flex;
       flex-wrap: wrap;
-      gap: 5px;
-      margin-top: 14px;
+      gap: 6px 12px;
+      margin-top: 5px;
     }
 
-    .latest-release-tag {
-      padding: 2px 7px;
-      border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
-      border-radius: 999px;
-      background: color-mix(in srgb, var(--accent) 6%, var(--bg));
-      color: color-mix(in srgb, var(--accent) 72%, var(--text));
-      font-size: 9px;
-      font-weight: 700;
+    .latest-release-category,
+    .latest-release-mechanism {
+      color: var(--text-muted);
+      font-size: 9.5px;
       line-height: 1.35;
     }
 
-    .latest-release-footer {
-      display: flex;
-      align-items: center;
-      gap: 8px 12px;
-      width: 100%;
-      margin-top: auto;
-      padding-top: 16px;
-    }
-
-    .latest-release-metric {
-      color: var(--text-muted);
-      font-size: 9.5px;
-      font-variant-numeric: tabular-nums;
-      font-weight: 700;
-    }
-
-    .latest-release-read {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 28px;
-      padding: 4px 2px;
-      margin-left: auto;
+    .latest-release-category {
       color: var(--accent);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.035em;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    .latest-release-read:hover {
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .stats-long-arc {
-      margin-top: clamp(60px, 9vw, 124px);
-      padding-top: clamp(28px, 4vw, 46px);
-      border-top: 1px solid var(--border);
-    }
-
-    .stats-long-arc-header {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(240px, 0.45fr);
-      align-items: end;
-      gap: 40px;
-      margin-bottom: 20px;
-    }
-
-    .stats-long-arc-copy {
-      color: var(--text-muted);
-      font-size: 12px;
-      line-height: 1.6;
     }
 
     .stats-empty-block {
@@ -1567,89 +1375,74 @@
       font-size: 12px;
     }
 
+    @media (max-width: 1100px) {
+      .stats-pulse-card,
+      .stats-composition-card {
+        grid-column: span 12;
+      }
+    }
+
     @media (max-width: 900px) {
-      .stats-hero {
-        grid-template-columns: 1fr;
-        min-height: 0;
-      }
-      .stats-scope {
-        max-width: 620px;
-      }
-      .stats-signal-card {
-        max-width: 720px;
-      }
       .stats-metric-rail {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       .stats-metric:nth-child(3) {
-        padding-left: clamp(16px, 2vw, 30px);
         border-left: 0;
-        border-top: 1px solid var(--border);
       }
-      .stats-metric:nth-child(4) {
-        border-top: 1px solid var(--border);
+      .stats-metric:nth-child(n + 3) {
+        border-top: 1px solid var(--stats-card-border);
       }
-      .stats-lower-grid {
-        grid-template-columns: 1fr;
+      .stats-annual-card {
+        grid-column: span 5;
       }
-      .stats-secondary-block,
-      .stats-secondary-block + .stats-secondary-block {
-        padding: 28px;
-      }
-      .stats-secondary-header {
-        grid-template-columns: minmax(0, 1fr) minmax(220px, 0.7fr);
+      .stats-latest-card {
+        grid-column: span 7;
       }
     }
 
     @media (max-width: 768px) {
-      .stats-secondary-header {
-        grid-template-columns: 1fr;
-        gap: 12px;
+      .stats-dashboard-header {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
       }
-      .latest-releases-list {
-        grid-template-columns: 1fr;
+      .stats-snapshot-block {
+        min-width: 0;
+        text-align: left;
       }
-      .latest-release-item:first-child {
-        grid-column: auto;
+      .stats-pulse-card,
+      .stats-composition-card,
+      .stats-annual-card,
+      .stats-latest-card {
+        grid-column: span 12;
       }
-      .latest-release-read {
+      .stats-card-header-inline {
+        display: block;
+      }
+      .stats-dashboard-card {
+        padding: 18px;
+      }
+      .stats-range-button,
+      .stats-taxonomy-details summary {
         min-height: 44px;
-        padding-right: 8px;
-        padding-left: 8px;
       }
     }
 
     @media (max-width: 560px) {
-      .stats-panel::before {
-        top: -30px;
-        right: -12px;
-        width: 100vw;
-      }
-      .stats-hero {
-        gap: 28px;
-        padding-top: 28px;
-      }
-      .stats-hero h2 {
-        font-size: clamp(40px, 13vw, 58px);
+      .stats-dashboard-header h2 {
+        font-size: 32px;
       }
       .stats-metric {
-        padding: 16px 12px 18px;
-      }
-      .stats-metric:nth-child(odd) {
-        border-left: 0;
+        padding: 14px 12px 15px;
       }
       .stats-metric-value {
-        font-size: 28px;
-      }
-      .stats-metric::before {
-        margin-bottom: 14px;
+        font-size: 26px;
       }
       .stats-chart-header {
         display: block;
       }
       .stats-chart-actions {
         align-items: stretch;
-        margin-top: 20px;
+        margin-top: 18px;
       }
       .stats-range-control {
         display: flex;
@@ -1661,66 +1454,33 @@
         justify-content: flex-start;
         white-space: normal;
       }
-      .stats-period-summary {
-        padding: 12px 0 16px;
-      }
       .stats-primary-chart {
-        margin-right: -6px;
-        margin-left: -6px;
-        padding-right: 16px;
-        padding-left: 16px;
+        padding-right: 15px;
+        padding-left: 15px;
         border-radius: 18px;
       }
-      .stats-long-arc-header {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-      .stats-secondary-block,
-      .stats-secondary-block + .stats-secondary-block {
-        padding: 18px;
-        border-radius: 18px;
-      }
-      .stats-secondary-header {
-        grid-template-columns: 1fr;
-        gap: 11px;
-      }
-      .annual-volume-list,
-      .latest-releases-list {
-        grid-template-columns: 1fr;
+      .stats-taxonomy-detail-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
       .latest-release-item {
-        grid-template-columns: 66px minmax(0, 1fr);
-        gap: 13px;
-        min-height: 0;
-        padding: 17px 15px;
-      }
-      .latest-release-item:first-child {
-        grid-column: auto;
-        grid-template-columns: 66px minmax(0, 1fr);
-        min-height: 0;
-        padding: 18px 15px;
-      }
-      .latest-release-item:first-child .latest-release-day {
-        font-size: 36px;
-      }
-      .latest-release-item:first-child .latest-release-title,
-      .latest-release-item:first-child .latest-release-title-static {
-        font-size: 20px;
-      }
-      .latest-release-footer {
-        flex-wrap: wrap;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 5px;
       }
     }
 
     @media (prefers-color-scheme: dark) {
-      .stats-panel::before {
-        opacity: 0.7;
+      .stats-panel {
+        --stats-card-bg: #111923;
+        --stats-card-border: #2e3a49;
+        --stats-track-bg: #263140;
+        --stats-grid-line: rgba(139, 161, 184, 0.055);
       }
-      .stats-signal-card {
-        box-shadow: 0 22px 54px rgba(0, 0, 0, 0.24);
+      .stats-dashboard-card,
+      .stats-metric-rail {
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
       }
       .stats-primary-chart {
-        box-shadow: 0 28px 68px rgba(0, 0, 0, 0.34);
+        box-shadow: 0 22px 52px rgba(0, 0, 0, 0.3);
       }
     }
 
@@ -4698,21 +4458,16 @@
     </div>
 
     <section class="top-level-panel stats-panel" id="stats-panel" role="tabpanel" aria-labelledby="stats-tab" tabindex="0" hidden>
-      <header class="stats-hero">
-        <div class="stats-hero-copy">
-          <div class="stats-eyebrow">Release intelligence</div>
-          <h2>The rhythm of<br />loop-model research</h2>
+      <header class="stats-dashboard-header">
+        <div>
+          <div class="stats-eyebrow">Catalog intelligence</div>
+          <h2>Loop-model research at a glance</h2>
+          <p class="stats-scope">Publication trends and taxonomy coverage across the papers curated in this catalog.</p>
         </div>
-        <aside class="stats-signal-card" aria-label="Latest catalog signal">
-          <div class="stats-signal-card-topline">
-            <span>Latest signal</span>
-            <span class="stats-signal-live"><i aria-hidden="true"></i> Live catalog</span>
-          </div>
-          <time class="stats-signal-date" id="stats-hero-latest-date">—</time>
-          <a class="stats-signal-title" id="stats-hero-latest-title" target="_blank" rel="noopener">Loading the latest release…</a>
-          <p class="stats-signal-meta" id="stats-hero-latest-meta">The current publication signal will appear after the catalog loads.</p>
-          <p class="stats-scope">Publication-time intelligence for seeing when ideas surfaced, where momentum gathered, and which papers are moving the field now.</p>
-        </aside>
+        <div class="stats-snapshot-block">
+          <span>Dataset snapshot</span>
+          <time id="stats-snapshot">Loading catalog build…</time>
+        </div>
       </header>
       <p class="stats-status" id="stats-status" aria-live="polite">Loading catalog data…</p>
 
@@ -4723,80 +4478,98 @@
           <dd class="stats-metric-note">Papers currently in the catalog</dd>
         </div>
         <div class="stats-metric">
-          <dt class="stats-metric-label">Released in latest 30 recorded days</dt>
+          <dt class="stats-metric-label">Latest 30 days</dt>
           <dd class="stats-metric-value" id="stats-latest-thirty">—</dd>
-          <dd class="stats-metric-note" id="stats-latest-thirty-note">Anchored to the latest recorded release</dd>
+          <dd class="stats-metric-note" id="stats-latest-thirty-note">Anchored to the latest publication</dd>
+        </div>
+        <div class="stats-metric">
+          <dt class="stats-metric-label">Vs prior 30 days</dt>
+          <dd class="stats-metric-value" id="stats-recent-change">—</dd>
+          <dd class="stats-metric-note" id="stats-recent-change-note">Comparing equal publication windows</dd>
         </div>
         <div class="stats-metric">
           <dt class="stats-metric-label">Latest release</dt>
           <dd class="stats-metric-value" id="stats-latest-release">—</dd>
           <dd class="stats-metric-note">Most recent publication date represented</dd>
         </div>
-        <div class="stats-metric">
-          <dt class="stats-metric-label">Peak release month</dt>
-          <dd class="stats-metric-value" id="stats-peak-month">—</dd>
-          <dd class="stats-metric-note" id="stats-peak-month-note">Highest monthly release volume</dd>
-        </div>
       </dl>
 
-      <article class="stats-primary-chart" aria-labelledby="release-pulse-heading">
-        <header class="stats-chart-header">
-          <div class="stats-chart-heading">
-            <div class="stats-section-index">01 — Release cadence</div>
-            <h3 id="release-pulse-heading">Release Pulse</h3>
-            <p>Each blue mark is a paper’s publication date. The green line smooths the rhythm to reveal the underlying pace.</p>
-          </div>
-          <div class="stats-chart-actions">
-            <div class="stats-range-control" role="group" aria-label="Release Pulse date range">
-              <button type="button" class="stats-range-button" data-stats-range="90d" aria-pressed="false">90D</button>
-              <button type="button" class="stats-range-button" data-stats-range="1y" aria-pressed="true">1Y</button>
-              <button type="button" class="stats-range-button" data-stats-range="all" aria-pressed="false">ALL</button>
+      <div class="stats-dashboard-grid stats-dashboard-primary">
+        <article class="stats-primary-chart stats-pulse-card" aria-labelledby="release-pulse-heading">
+          <header class="stats-chart-header">
+            <div class="stats-chart-heading">
+              <div class="stats-section-index">Release cadence</div>
+              <h3 id="release-pulse-heading">Release Pulse</h3>
+              <p>Published papers per period, with a trailing average on the same scale.</p>
             </div>
-            <div class="stats-chart-legend" aria-label="Release Pulse legend">
-              <span><i class="stats-legend-swatch" aria-hidden="true"></i><span id="release-pulse-bar-label">Daily releases</span></span>
-              <span><i class="stats-legend-line" aria-hidden="true"></i><span id="release-pulse-line-label">30-day average</span></span>
+            <div class="stats-chart-actions">
+              <div class="stats-range-control" role="group" aria-label="Release Pulse date range">
+                <button type="button" class="stats-range-button" data-stats-range="90d" aria-pressed="false">90D</button>
+                <button type="button" class="stats-range-button" data-stats-range="1y" aria-pressed="true">1Y</button>
+                <button type="button" class="stats-range-button" data-stats-range="all" aria-pressed="false">ALL</button>
+              </div>
+              <div class="stats-chart-legend" aria-label="Release Pulse legend">
+                <span><i class="stats-legend-swatch" aria-hidden="true"></i><span id="release-pulse-bar-label">Daily releases</span></span>
+                <span><i class="stats-legend-line" aria-hidden="true"></i><span id="release-pulse-line-label">30-day average</span></span>
+              </div>
             </div>
-          </div>
-        </header>
-        <div class="stats-chart-scroll" id="release-pulse-chart" tabindex="0" aria-label="Scrollable Release Pulse chart"></div>
-        <p class="stats-period-summary" id="release-pulse-summary" aria-live="polite">The latest publication range will appear after the catalog loads.</p>
-      </article>
-
-      <div class="stats-lower-grid">
-        <article class="stats-secondary-block stats-latest-block" aria-labelledby="latest-releases-heading">
-          <header class="stats-secondary-header">
-            <div>
-              <div class="stats-section-index">02 — Release dossiers</div>
-              <h3 class="stats-secondary-heading" id="latest-releases-heading">Latest releases</h3>
-            </div>
-            <p>New papers, decoded at a glance: who made them, what they contribute, and where they sit in the loop-model landscape.</p>
           </header>
-          <div class="latest-releases-list" id="latest-releases-list" role="list" aria-live="polite"></div>
+          <div class="stats-chart-scroll" id="release-pulse-chart" tabindex="0" aria-label="Scrollable Release Pulse chart"></div>
+          <p class="stats-period-summary" id="release-pulse-summary" aria-live="polite">The latest publication range will appear after the catalog loads.</p>
         </article>
 
-        <article class="stats-secondary-block stats-annual-block" aria-labelledby="annual-volume-heading">
-          <header class="stats-secondary-header">
-            <div>
-              <div class="stats-section-index">03 — Year by year</div>
-              <h3 class="stats-secondary-heading" id="annual-volume-heading">Annual volume</h3>
+        <aside class="stats-dashboard-card stats-composition-card" aria-labelledby="catalog-composition-heading">
+          <header class="stats-card-header">
+            <div class="stats-section-index">Taxonomy coverage</div>
+            <h3 id="catalog-composition-heading">Catalog composition</h3>
+            <p>How curated papers are classified today.</p>
+          </header>
+          <div class="stats-distribution-block">
+            <h4>Primary category</h4>
+            <div id="stats-category-distribution" aria-live="polite"></div>
+          </div>
+          <div class="stats-distribution-block">
+            <h4>Loop mechanism</h4>
+            <div id="stats-mechanism-distribution" aria-live="polite"></div>
+            <p class="stats-distribution-note">Multi-label field; shares may total more than 100%.</p>
+          </div>
+          <details class="stats-taxonomy-details">
+            <summary>Explore focus and domain tags</summary>
+            <div class="stats-taxonomy-detail-grid">
+              <div class="stats-distribution-block">
+                <h4>Research focus</h4>
+                <div id="stats-focus-distribution"></div>
+              </div>
+              <div class="stats-distribution-block">
+                <h4>Top domains</h4>
+                <div id="stats-domain-distribution"></div>
+              </div>
             </div>
-            <p>Recorded publication volume by year, normalized against the most active year in the catalog.</p>
+          </details>
+        </aside>
+      </div>
+
+      <div class="stats-dashboard-grid stats-dashboard-secondary">
+        <article class="stats-dashboard-card stats-annual-card" aria-labelledby="annual-volume-heading">
+          <header class="stats-card-header">
+            <div class="stats-section-index">Year by year</div>
+            <h3 id="annual-volume-heading">Annual volume</h3>
+            <p id="annual-volume-note">The latest calendar year may be incomplete.</p>
           </header>
           <div id="annual-release-volume" aria-live="polite"></div>
         </article>
-      </div>
 
-      <article class="stats-long-arc" aria-labelledby="long-arc-heading">
-        <header class="stats-long-arc-header">
-          <div>
-            <div class="stats-section-index">04 — The complete record</div>
-            <h3 class="stats-secondary-heading" id="long-arc-heading">Long arc</h3>
-          </div>
-          <p class="stats-long-arc-copy">Cumulative publication history across the current catalog, aggregated by month from the earliest represented paper onward.</p>
-        </header>
-        <div class="stats-chart-scroll" id="long-arc-chart" tabindex="0" aria-label="Scrollable cumulative publication chart"></div>
-        <p class="stats-period-summary" id="long-arc-summary">The cumulative publication record will appear after the catalog loads.</p>
-      </article>
+        <article class="stats-dashboard-card stats-latest-card" aria-labelledby="latest-releases-heading">
+          <header class="stats-card-header stats-card-header-inline">
+            <div>
+              <div class="stats-section-index">Newest in the catalog</div>
+              <h3 id="latest-releases-heading">Latest releases</h3>
+            </div>
+            <p>Publication date, catalog category, and loop mechanism.</p>
+          </header>
+          <div class="latest-releases-list" id="latest-releases-list" role="list" aria-live="polite"></div>
+        </article>
+      </div>
     </section>
 
   </main>
@@ -5077,36 +4850,30 @@ function slicePublicationRange(dailySeries, monthlySeries, requestedRange) {
  * Build headline release metrics anchored to the latest recorded publication.
  * @param {Array<Object>} papers Paper records from the catalog.
  * @param {Array<Object>} dailySeries Gap-free daily publication buckets.
- * @param {Array<Object>} monthlySeries Gap-free monthly publication buckets.
- * @returns {Object} Total, recent releases, latest date, and peak month.
+ * @returns {Object} Total, equal recent windows, their change, and latest date.
  */
-function buildReleaseStatsSummary(papers, dailySeries, monthlySeries) {
+function buildReleaseStatsSummary(papers, dailySeries) {
   var catalog = Array.isArray(papers) ? papers : [];
   var daily = Array.isArray(dailySeries) ? dailySeries : [];
-  var monthly = Array.isArray(monthlySeries) ? monthlySeries : [];
   var latestBucket = daily.length ? daily[daily.length - 1] : null;
   var releasesLast30Days = daily.slice(-30).reduce(function(total, bucket) {
     return total + normalizeReleaseCount(bucket && bucket.count);
   }, 0);
-  var peakMonth = null;
-
-  monthly.forEach(function(bucket) {
-    var count = normalizeReleaseCount(bucket && bucket.count);
-    var peakCount = peakMonth ? normalizeReleaseCount(peakMonth.count) : -1;
-    if (!peakMonth
-        || count > peakCount
-        || (count === peakCount && String(bucket.key || '') < String(peakMonth.key || ''))) {
-      peakMonth = Object.assign({}, bucket, { count: count });
-    }
-  });
+  var releasesPrevious30Days = daily.slice(-60, -30).reduce(function(total, bucket) {
+    return total + normalizeReleaseCount(bucket && bucket.count);
+  }, 0);
+  var releaseChangePercent = releasesPrevious30Days === 0
+    ? (releasesLast30Days === 0 ? 0 : null)
+    : Math.round((releasesLast30Days - releasesPrevious30Days) / releasesPrevious30Days * 100);
 
   return {
     totalPapers: catalog.length,
     releasesLast30Days: releasesLast30Days,
+    releasesPrevious30Days: releasesPrevious30Days,
+    releaseChangePercent: releaseChangePercent,
     latestReleaseDate: latestBucket && typeof latestBucket.key === 'string'
       ? latestBucket.key
-      : null,
-    peakMonth: peakMonth ? Object.assign({}, peakMonth) : null
+      : null
   };
 }
 
@@ -5165,6 +4932,53 @@ function getLatestReleasedPapers(papers, limit) {
   }).slice(0, normalizedLimit).map(function(entry) {
     return Object.assign({}, entry.paper);
   });
+}
+
+/**
+ * Count a scalar or multi-value catalog field for dashboard composition views.
+ * @param {Array<Object>} papers Paper records from the catalog.
+ * @param {string} field Catalog field to count.
+ * @param {Object<string, string>=} labels Optional reader-facing labels by value.
+ * @returns {{totalPapers: number, assignmentCount: number, rows: Array<Object>}} Sorted distribution data.
+ */
+function buildStatsDistribution(papers, field, labels) {
+  var catalog = Array.isArray(papers) ? papers : [];
+  var labelMap = labels && typeof labels === 'object' ? labels : {};
+  var counts = Object.create(null);
+
+  catalog.forEach(function(paper) {
+    var raw = paper && paper[field];
+    var values = Array.isArray(raw) ? raw : [raw];
+    var seen = new Set();
+    values.forEach(function(value) {
+      var key = String(value || '').trim();
+      var normalizedKey = key.toLowerCase();
+      if (!key || seen.has(normalizedKey)) return;
+      seen.add(normalizedKey);
+      if (!counts[normalizedKey]) counts[normalizedKey] = { key: key, count: 0 };
+      counts[normalizedKey].count += 1;
+    });
+  });
+
+  var rows = Object.keys(counts).map(function(normalizedKey) {
+    var entry = counts[normalizedKey];
+    var fallbackLabel = entry.key.replace(/[-_]+/g, ' ');
+    fallbackLabel = fallbackLabel.charAt(0).toUpperCase() + fallbackLabel.slice(1);
+    return {
+      key: entry.key,
+      label: labelMap[entry.key] || fallbackLabel,
+      count: entry.count,
+      percentage: catalog.length ? Number((entry.count / catalog.length * 100).toFixed(1)) : 0
+    };
+  }).sort(function(left, right) {
+    return right.count - left.count || left.label.localeCompare(right.label);
+  });
+
+  return {
+    totalPapers: catalog.length,
+    assignmentCount: rows.reduce(function(total, row) { return total + row.count; }, 0),
+    rows: rows
+  };
 }
 
 /**
@@ -5295,17 +5109,17 @@ function renderReleasePulseChart(container, series, options) {
     return;
   }
 
-  var margin = { top: 42, right: 66, bottom: 48, left: 58 };
-  var pointWidth = settings.granularity === 'month' ? 10 : 4;
+  var margin = { top: 42, right: 28, bottom: 48, left: 58 };
+  var pointWidth = settings.granularity === 'month' ? 8 : (safeSeries.length > 180 ? 2 : 5);
   var chartWidth = Math.max(760, margin.left + margin.right + safeSeries.length * pointWidth);
   var chartHeight = 336;
   var plotWidth = chartWidth - margin.left - margin.right;
   var plotHeight = chartHeight - margin.top - margin.bottom;
-  var maxCount = Math.max(1, Math.max.apply(null, safeSeries.map(function(bucket) {
-    return normalizeReleaseCount(bucket && bucket.count);
-  })));
-  var maxAverage = Math.max(1, Math.max.apply(null, safeSeries.map(function(bucket) {
-    return normalizeReleaseCount(bucket && bucket.average);
+  var maxValue = Math.max(1, Math.max.apply(null, safeSeries.map(function(bucket) {
+    return Math.max(
+      normalizeReleaseCount(bucket && bucket.count),
+      normalizeReleaseCount(bucket && bucket.average)
+    );
   })));
   var idPrefix = settings.idPrefix || 'release-pulse';
   var titleId = idPrefix + '-title';
@@ -5336,17 +5150,11 @@ function renderReleasePulseChart(container, series, options) {
       x2: chartWidth - margin.right,
       y2: tickY
     }));
-    appendStatsSvgText(svg, String(Math.round(maxCount * tickRatio)), {
+    appendStatsSvgText(svg, String(Math.round(maxValue * tickRatio)), {
       class: 'timeline-tick-label timeline-axis-count',
       x: margin.left - 10,
       y: tickY + 3,
       'text-anchor': 'end'
-    });
-    appendStatsSvgText(svg, (maxAverage * tickRatio).toFixed(1), {
-      class: 'timeline-tick-label timeline-axis-average',
-      x: chartWidth - margin.right + 10,
-      y: tickY + 3,
-      'text-anchor': 'start'
     });
   }
 
@@ -5356,13 +5164,6 @@ function renderReleasePulseChart(container, series, options) {
     y: 17,
     'text-anchor': 'start'
   });
-  appendStatsSvgText(svg, settings.averageLabel || 'Trailing average', {
-    class: 'timeline-axis-label timeline-axis-average',
-    x: chartWidth - margin.right,
-    y: 17,
-    'text-anchor': 'end'
-  });
-
   var stepWidth = plotWidth / safeSeries.length;
   var barWidth = Math.max(1.5, Math.min(9, stepWidth * 0.68));
   var averagePoints = [];
@@ -5370,7 +5171,7 @@ function renderReleasePulseChart(container, series, options) {
     var count = normalizeReleaseCount(bucket && bucket.count);
     var average = normalizeReleaseCount(bucket && bucket.average);
     var centerX = margin.left + stepWidth * index + stepWidth / 2;
-    var barHeight = count / maxCount * plotHeight;
+    var barHeight = count / maxValue * plotHeight;
     if (barHeight > 0) {
       svg.appendChild(createStatsSvgElement('rect', {
         class: 'timeline-bar',
@@ -5380,7 +5181,7 @@ function renderReleasePulseChart(container, series, options) {
         height: barHeight
       }));
     }
-    averagePoints.push(centerX + ',' + (margin.top + plotHeight - average / maxAverage * plotHeight));
+    averagePoints.push(centerX + ',' + (margin.top + plotHeight - average / maxValue * plotHeight));
   });
   svg.appendChild(createStatsSvgElement('polyline', {
     class: 'timeline-line',
@@ -5401,6 +5202,55 @@ function renderReleasePulseChart(container, series, options) {
 
   container.appendChild(svg);
   container.scrollLeft = Math.max(0, container.scrollWidth - container.clientWidth);
+}
+
+/**
+ * Render a catalog distribution as readable labels, counts, percentages, and bars.
+ * @param {HTMLElement|null} container Distribution container.
+ * @param {{totalPapers: number, assignmentCount: number, rows: Array<Object>}} distribution Distribution data.
+ * @param {{limit?: number}=} options Optional row limit for secondary dimensions.
+ * @returns {void}
+ */
+function renderStatsDistribution(container, distribution, options) {
+  if (!container) return;
+  container.replaceChildren();
+  var data = distribution && Array.isArray(distribution.rows) ? distribution : { rows: [] };
+  var requestedLimit = options && Number.isFinite(options.limit) ? Math.max(0, Math.floor(options.limit)) : data.rows.length;
+  var rows = data.rows.slice(0, requestedLimit);
+  if (rows.length === 0) {
+    var emptyState = document.createElement('p');
+    emptyState.className = 'stats-empty-block';
+    emptyState.textContent = 'No classification data is available.';
+    container.appendChild(emptyState);
+    return;
+  }
+
+  var list = document.createElement('div');
+  list.className = 'stats-distribution-list';
+  list.setAttribute('role', 'list');
+  rows.forEach(function(row) {
+    var item = document.createElement('div');
+    item.className = 'stats-distribution-row';
+    item.setAttribute('role', 'listitem');
+    item.setAttribute('aria-label', row.label + ': ' + row.count + ' papers, ' + row.percentage + ' percent');
+
+    var label = document.createElement('span');
+    label.className = 'stats-distribution-label';
+    label.textContent = row.label;
+    var value = document.createElement('strong');
+    value.className = 'stats-distribution-value';
+    value.textContent = row.count.toLocaleString('en-US') + ' · ' + row.percentage.toFixed(1) + '%';
+    var track = document.createElement('span');
+    track.className = 'stats-distribution-track';
+    track.setAttribute('aria-hidden', 'true');
+    var bar = document.createElement('span');
+    bar.className = 'stats-distribution-bar';
+    bar.style.width = Math.min(100, row.percentage).toFixed(1) + '%';
+    track.appendChild(bar);
+    item.append(label, value, track);
+    list.appendChild(item);
+  });
+  container.appendChild(list);
 }
 
 /**
@@ -5484,65 +5334,6 @@ function getStatsReleaseDateParts(value) {
 }
 
 /**
- * Condense an author list while preserving the first two reader-facing names.
- * @param {Object} paper Paper record.
- * @returns {string} Compact author summary.
- */
-function summarizeStatsReleaseAuthors(paper) {
-  var source = Array.isArray(paper && paper.authors_list) && paper.authors_list.length
-    ? paper.authors_list
-    : String((paper && paper.authors) || '').split(',');
-  var authors = source.map(function(author) { return String(author || '').trim(); }).filter(Boolean);
-  if (authors.length === 0) return 'Authors not listed';
-  if (authors.length <= 2) return authors.join(', ');
-  return authors.slice(0, 2).join(', ') + ' +' + (authors.length - 2) + ' authors';
-}
-
-/**
- * Select a compact, de-duplicated taxonomy signal for a release dossier.
- * @param {Object} paper Paper record.
- * @param {number} limit Maximum number of tags.
- * @returns {Array<string>} Ordered tag labels.
- */
-function getStatsReleaseTags(paper, limit) {
-  var maxTags = Number.isFinite(limit) ? Math.max(0, Math.floor(limit)) : 4;
-  var groups = [paper && paper.mechanism_tags, paper && paper.focus_tags, paper && paper.domain_tags];
-  var seen = new Set();
-  var tags = [];
-  groups.forEach(function(group) {
-    (Array.isArray(group) ? group : []).forEach(function(tag) {
-      var label = String(tag || '').trim();
-      var key = label.toLowerCase();
-      if (!label || seen.has(key) || tags.length >= maxTags) return;
-      seen.add(key);
-      tags.push(label);
-    });
-  });
-  return tags;
-}
-
-/**
- * Compare the latest recorded 30-day release volume with the preceding window.
- * @param {Array<Object>} dailySeries Complete daily publication series.
- * @returns {string} Reader-facing momentum summary.
- */
-function summarizeStatsReleaseMomentum(dailySeries) {
-  var series = Array.isArray(dailySeries) ? dailySeries : [];
-  if (series.length === 0) return 'No release momentum available';
-  var recent = series.slice(-30).reduce(function(total, bucket) {
-    return total + normalizeReleaseCount(bucket && bucket.count);
-  }, 0);
-  var previous = series.slice(-60, -30).reduce(function(total, bucket) {
-    return total + normalizeReleaseCount(bucket && bucket.count);
-  }, 0);
-  if (recent === 0 && previous === 0) return 'No release momentum available';
-  if (previous === 0) return recent + ' papers in the latest 30 days · momentum forming';
-  var change = Math.round((recent - previous) / previous * 100);
-  var direction = change > 0 ? '+' : '';
-  return recent + ' papers in the latest 30 days · ' + direction + change + '% vs prior 30';
-}
-
-/**
  * Render newest releases with safe text nodes and links.
  * @param {HTMLElement|null} container Latest-releases list container.
  * @param {Array<Object>} papers Newest release records.
@@ -5566,37 +5357,14 @@ function renderLatestReleases(container, papers) {
     item.setAttribute('role', 'listitem');
     item.setAttribute('aria-label', 'Release ' + (releaseIndex + 1) + ': ' + String(paper.title || 'Untitled paper'));
 
-    var indexLabel = document.createElement('span');
-    indexLabel.className = 'latest-release-index';
-    indexLabel.textContent = String(releaseIndex + 1).padStart(2, '0');
-
-    var dateRail = document.createElement('div');
-    dateRail.className = 'latest-release-date-rail';
     var date = document.createElement('time');
     date.className = 'latest-release-date';
     var dateParts = getStatsReleaseDateParts(paper.published_date);
     date.dateTime = dateParts.iso;
-    var day = document.createElement('span');
-    day.className = 'latest-release-day';
-    day.textContent = dateParts.day;
-    var monthYear = document.createElement('span');
-    monthYear.className = 'latest-release-month-year';
-    monthYear.textContent = dateParts.monthYear;
-    date.append(day, monthYear);
-    var dateNode = document.createElement('i');
-    dateNode.className = 'latest-release-date-node';
-    dateNode.setAttribute('aria-hidden', 'true');
-    dateRail.append(date, dateNode);
+    date.textContent = dateParts.iso || 'Date unknown';
 
     var body = document.createElement('div');
     body.className = 'latest-release-body';
-    var metaLine = document.createElement('div');
-    metaLine.className = 'latest-release-meta-line';
-    var venue = document.createElement('span');
-    venue.className = 'latest-release-venue';
-    venue.textContent = String(paper.venue || 'Venue not listed');
-    metaLine.appendChild(venue);
-
     var url = getSafeStatsPaperUrl(paper);
     var title;
     if (url) {
@@ -5612,144 +5380,20 @@ function renderLatestReleases(container, papers) {
     }
     title.textContent = String(paper.title || 'Untitled paper');
 
-    var authors = document.createElement('p');
-    authors.className = 'latest-release-authors';
-    authors.textContent = summarizeStatsReleaseAuthors(paper);
+    var taxonomy = document.createElement('div');
+    taxonomy.className = 'latest-release-taxonomy';
+    var category = document.createElement('span');
+    category.className = 'latest-release-category';
+    category.textContent = paper._categoryLabel || 'Category not listed';
+    var mechanism = document.createElement('span');
+    mechanism.className = 'latest-release-mechanism';
+    mechanism.textContent = paper._mechanismLabel || 'Mechanism not listed';
+    taxonomy.append(category, mechanism);
 
-    var description = document.createElement('p');
-    description.className = 'latest-release-desc';
-    description.textContent = String(paper.desc || 'No catalog summary is available yet.');
-
-    var tags = document.createElement('div');
-    tags.className = 'latest-release-tags';
-    getStatsReleaseTags(paper, 4).forEach(function(label) {
-      var tag = document.createElement('span');
-      tag.className = 'latest-release-tag';
-      tag.textContent = label;
-      tags.appendChild(tag);
-    });
-
-    var footer = document.createElement('div');
-    footer.className = 'latest-release-footer';
-    if (paper.citations != null) {
-      var citations = document.createElement('span');
-      citations.className = 'latest-release-metric';
-      citations.textContent = 'Citations · ' + formatMetricCount(paper.citations);
-      footer.appendChild(citations);
-    }
-    if (paper.github_stars != null) {
-      var stars = document.createElement('span');
-      stars.className = 'latest-release-metric';
-      stars.textContent = 'Stars · ' + formatMetricCount(paper.github_stars);
-      footer.appendChild(stars);
-    }
-    if (url) {
-      var readLink = document.createElement('a');
-      readLink.className = 'latest-release-read';
-      readLink.href = url;
-      readLink.target = '_blank';
-      readLink.rel = 'noopener';
-      readLink.textContent = 'Read paper ↗';
-      footer.appendChild(readLink);
-    }
-
-    body.append(metaLine, title, authors, description);
-    if (tags.childElementCount) body.appendChild(tags);
-    body.appendChild(footer);
-    item.append(indexLabel, dateRail, body);
+    body.append(title, taxonomy);
+    item.append(date, body);
     container.appendChild(item);
   });
-}
-
-/**
- * Render cumulative monthly publication history as a secondary accessible SVG.
- * @param {HTMLElement|null} container Long-arc chart container.
- * @param {Array<Object>} series Monthly publication buckets.
- * @returns {void}
- */
-function renderLongArcChart(container, series) {
-  if (!container) return;
-  container.replaceChildren();
-  var safeSeries = Array.isArray(series) ? series : [];
-  if (safeSeries.length === 0) {
-    var emptyState = document.createElement('p');
-    emptyState.className = 'timeline-empty';
-    emptyState.textContent = 'No cumulative publication history is available.';
-    container.appendChild(emptyState);
-    return;
-  }
-
-  var margin = { top: 30, right: 36, bottom: 46, left: 54 };
-  var chartWidth = Math.max(760, margin.left + margin.right + safeSeries.length * 9);
-  var chartHeight = 226;
-  var plotWidth = chartWidth - margin.left - margin.right;
-  var plotHeight = chartHeight - margin.top - margin.bottom;
-  var maxCumulative = Math.max(1, Math.max.apply(null, safeSeries.map(function(bucket) {
-    return normalizeReleaseCount(bucket && bucket.cumulative);
-  })));
-  var titleId = 'long-arc-svg-title';
-  var descId = 'long-arc-svg-desc';
-  var svg = createStatsSvgElement('svg', {
-    class: 'timeline-chart long-arc-chart',
-    'viewBox': '0 0 ' + chartWidth + ' ' + chartHeight,
-    role: 'img',
-    'aria-labelledby': titleId + ' ' + descId
-  });
-  svg.style.width = chartWidth + 'px';
-  var title = createStatsSvgElement('title', { id: titleId });
-  title.textContent = 'Long arc of catalog publication dates';
-  svg.appendChild(title);
-  var description = createStatsSvgElement('desc', { id: descId });
-  description.textContent = 'A cumulative line from the earliest to the latest monthly publication represented in the catalog.';
-  svg.appendChild(description);
-
-  for (var tickIndex = 0; tickIndex <= 3; tickIndex += 1) {
-    var tickRatio = tickIndex / 3;
-    var tickY = margin.top + plotHeight - tickRatio * plotHeight;
-    svg.appendChild(createStatsSvgElement('line', {
-      class: 'timeline-grid',
-      x1: margin.left,
-      y1: tickY,
-      x2: chartWidth - margin.right,
-      y2: tickY
-    }));
-    appendStatsSvgText(svg, String(Math.round(maxCumulative * tickRatio)), {
-      class: 'timeline-tick-label timeline-axis-count',
-      x: margin.left - 10,
-      y: tickY + 3,
-      'text-anchor': 'end'
-    });
-  }
-
-  var stepWidth = plotWidth / Math.max(1, safeSeries.length - 1);
-  var points = safeSeries.map(function(bucket, index) {
-    var x = margin.left + stepWidth * index;
-    var y = margin.top + plotHeight - normalizeReleaseCount(bucket.cumulative) / maxCumulative * plotHeight;
-    return x + ',' + y;
-  });
-  svg.appendChild(createStatsSvgElement('polyline', {
-    class: 'long-arc-line',
-    points: points.join(' ')
-  }));
-  var lastPoint = points[points.length - 1].split(',');
-  svg.appendChild(createStatsSvgElement('circle', {
-    class: 'long-arc-endpoint',
-    cx: lastPoint[0],
-    cy: lastPoint[1],
-    r: 4
-  }));
-
-  var xTickIndices = selectTimelineTickIndices(safeSeries.length, plotWidth, 82);
-  xTickIndices.forEach(function(index) {
-    var tickX = margin.left + stepWidth * index;
-    appendStatsSvgText(svg, formatStatsPeriodLabel(safeSeries[index].key, 'month'), {
-      class: 'timeline-tick-label',
-      x: tickX,
-      y: chartHeight - 17,
-      'text-anchor': index === 0 ? 'start' : (index === safeSeries.length - 1 ? 'end' : 'middle')
-    });
-  });
-  container.appendChild(svg);
 }
 
 /** Render the active range without exposing full daily history to the chart renderer. */
@@ -5764,7 +5408,6 @@ function renderReleasePulse() {
     title: 'Release Pulse — ' + rangeName,
     description: periodName + ' appear as blue bars; the ' + averageName.toLowerCase() + ' appears as a green line.',
     countLabel: periodName,
-    averageLabel: averageName,
     granularity: rangeData.granularity,
     emptyMessage: 'No valid paper publication dates are available.'
   });
@@ -5793,7 +5436,7 @@ function initStatsRangeInteractions() {
   });
 }
 
-/** Populate release metrics and the complete release-intelligence canvas on demand. */
+/** Populate release metrics and the complete catalog-intelligence dashboard on demand. */
 function renderStatsPanel() {
   initStatsRangeInteractions();
   var status = document.getElementById('stats-status');
@@ -5809,17 +5452,16 @@ function renderStatsPanel() {
 
   STATS_DAILY_RELEASES = buildDailyPublicationSeries(ALL_PAPERS);
   STATS_MONTHLY_RELEASES = buildMonthlyPublicationSeries(ALL_PAPERS);
-  var summary = buildReleaseStatsSummary(ALL_PAPERS, STATS_DAILY_RELEASES, STATS_MONTHLY_RELEASES);
+  var summary = buildReleaseStatsSummary(ALL_PAPERS, STATS_DAILY_RELEASES);
   var latestWindow = STATS_DAILY_RELEASES.slice(-30);
   var latestPapers = getLatestReleasedPapers(ALL_PAPERS, 5);
-  var latestPaper = latestPapers[0] || null;
-  var peakMonth = summary.peakMonth;
   var totalElement = document.getElementById('stats-total-papers');
   var latestThirtyElement = document.getElementById('stats-latest-thirty');
   var latestThirtyNote = document.getElementById('stats-latest-thirty-note');
+  var recentChangeElement = document.getElementById('stats-recent-change');
+  var recentChangeNote = document.getElementById('stats-recent-change-note');
   var latestReleaseElement = document.getElementById('stats-latest-release');
-  var peakMonthElement = document.getElementById('stats-peak-month');
-  var peakMonthNote = document.getElementById('stats-peak-month-note');
+  var snapshot = document.getElementById('stats-snapshot');
 
   if (totalElement) totalElement.textContent = summary.totalPapers.toLocaleString('en-US');
   if (latestThirtyElement) latestThirtyElement.textContent = summary.releasesLast30Days.toLocaleString('en-US');
@@ -5828,36 +5470,49 @@ function renderStatsPanel() {
       ? latestWindow[0].key + ' to ' + latestWindow[latestWindow.length - 1].key
       : 'No valid publication-date window';
   }
+  if (recentChangeElement) {
+    if (summary.releaseChangePercent === null) {
+      recentChangeElement.textContent = 'New';
+      recentChangeElement.dataset.trend = 'positive';
+    } else {
+      recentChangeElement.textContent = (summary.releaseChangePercent > 0 ? '+' : '') + summary.releaseChangePercent + '%';
+      recentChangeElement.dataset.trend = summary.releaseChangePercent > 0
+        ? 'positive'
+        : (summary.releaseChangePercent < 0 ? 'negative' : 'neutral');
+    }
+  }
+  if (recentChangeNote) {
+    recentChangeNote.textContent = summary.releasesPrevious30Days.toLocaleString('en-US') + ' releases in the prior window';
+  }
   if (latestReleaseElement) latestReleaseElement.textContent = summary.latestReleaseDate || 'No data';
-  if (peakMonthElement) peakMonthElement.textContent = peakMonth ? peakMonth.key : 'No data';
-  if (peakMonthNote) {
-    peakMonthNote.textContent = peakMonth
-      ? peakMonth.count + ' paper' + (peakMonth.count === 1 ? '' : 's') + ' released'
-      : 'No valid publication dates';
-  }
-
-  var heroLatestDate = document.getElementById('stats-hero-latest-date');
-  var heroLatestTitle = document.getElementById('stats-hero-latest-title');
-  var heroLatestMeta = document.getElementById('stats-hero-latest-meta');
-  if (heroLatestDate) {
-    var heroDateParts = getStatsReleaseDateParts(latestPaper && latestPaper.published_date);
-    heroLatestDate.textContent = heroDateParts.iso
-      ? heroDateParts.day + ' ' + heroDateParts.monthYear
-      : 'No dated release';
-    heroLatestDate.dateTime = heroDateParts.iso;
-  }
-  if (heroLatestTitle) {
-    var heroPaperUrl = getSafeStatsPaperUrl(latestPaper);
-    heroLatestTitle.textContent = latestPaper ? String(latestPaper.title || 'Untitled paper') : 'No release available';
-    if (heroPaperUrl) heroLatestTitle.href = heroPaperUrl;
-    else heroLatestTitle.removeAttribute('href');
-  }
-  if (heroLatestMeta) {
-    var heroVenue = latestPaper ? String(latestPaper.venue || 'Venue not listed') : 'Catalog status';
-    heroLatestMeta.textContent = heroVenue + ' · ' + summarizeStatsReleaseMomentum(STATS_DAILY_RELEASES);
+  if (snapshot) {
+    var snapshotDate = String(CATALOG_GENERATED_AT || '').slice(0, 10);
+    snapshot.textContent = snapshotDate ? snapshotDate + ' · UTC build' : 'Current catalog build';
+    snapshot.dateTime = CATALOG_GENERATED_AT || '';
   }
 
   renderReleasePulse();
+  var categoryLabels = Object.keys(CATEGORIES).reduce(function(labels, key) {
+    labels[key] = CATEGORIES[key] && CATEGORIES[key].title ? CATEGORIES[key].title : key;
+    return labels;
+  }, {});
+  renderStatsDistribution(
+    document.getElementById('stats-category-distribution'),
+    buildStatsDistribution(ALL_PAPERS, 'category', categoryLabels)
+  );
+  renderStatsDistribution(
+    document.getElementById('stats-mechanism-distribution'),
+    buildStatsDistribution(ALL_PAPERS, 'mechanism_tags')
+  );
+  renderStatsDistribution(
+    document.getElementById('stats-focus-distribution'),
+    buildStatsDistribution(ALL_PAPERS, 'focus_tags')
+  );
+  renderStatsDistribution(
+    document.getElementById('stats-domain-distribution'),
+    buildStatsDistribution(ALL_PAPERS, 'domain_tags'),
+    { limit: 8 }
+  );
   renderAnnualReleaseVolume(
     document.getElementById('annual-release-volume'),
     buildAnnualReleaseSeries(ALL_PAPERS)
@@ -5866,14 +5521,11 @@ function renderStatsPanel() {
     document.getElementById('latest-releases-list'),
     latestPapers
   );
-  renderLongArcChart(document.getElementById('long-arc-chart'), STATS_MONTHLY_RELEASES);
-  var longArcSummary = document.getElementById('long-arc-summary');
-  if (longArcSummary) {
-    longArcSummary.textContent = STATS_MONTHLY_RELEASES.length
-      ? STATS_MONTHLY_RELEASES[0].key + ' to ' + STATS_MONTHLY_RELEASES[STATS_MONTHLY_RELEASES.length - 1].key
-        + ' · ' + STATS_MONTHLY_RELEASES.length + ' recorded months · '
-        + STATS_MONTHLY_RELEASES[STATS_MONTHLY_RELEASES.length - 1].cumulative + ' cumulative papers.'
-      : 'No valid publication history is available for this catalog.';
+  var annualNote = document.getElementById('annual-volume-note');
+  if (annualNote) {
+    annualNote.textContent = summary.latestReleaseDate
+      ? 'Latest year is partial through ' + summary.latestReleaseDate + '.'
+      : 'No valid publication year is available.';
   }
   if (status) status.hidden = true;
   HAS_RENDERED_STATS = true;
@@ -6205,6 +5857,7 @@ let CURRENT_STATS_RANGE = '1y';
 let STATS_RANGE_LISTENERS_BOUND = false;
 let STATS_DAILY_RELEASES = [];
 let STATS_MONTHLY_RELEASES = [];
+let CATALOG_GENERATED_AT = '';
 let CURRENT_VIEW = 'category';
 let CURRENT_PAPER_DENSITY = 'compact';
 let FILTER_SIDEBAR_OPEN = false;
@@ -7678,6 +7331,7 @@ function renderTreeInto(container) {
 // ── Build DOM from papers.json data ──────────────────────────────────────────
 function buildDOM(data) {
   REPO_TODAY = (data.meta && data.meta.generated_local_date) || '';
+  CATALOG_GENERATED_AT = (data.meta && data.meta.generated) || '';
   CATEGORIES = data.categories || {};
   BLOG_SECTION_META = {
     title: (data.meta && data.meta.blog_section_title) || 'Blogs',

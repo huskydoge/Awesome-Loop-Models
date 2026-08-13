@@ -1277,6 +1277,7 @@ process.stdout.write(JSON.stringify({
             "buildReleaseStatsSummary",
             "buildAnnualReleaseSeries",
             "getLatestReleasedPapers",
+            "buildStatsDistribution",
         ):
             self.assertIn(f"function {function_name}(", helpers)
         self.assertNotIn("added_date", helpers)
@@ -1383,9 +1384,19 @@ process.stdout.write(JSON.stringify({
       }
     },
     emptyRange: slicePublicationRange(null, null, 'unexpected'),
-    emptySummary: buildReleaseStatsSummary(null, null, null),
-    summary: buildReleaseStatsSummary(summaryPapers, summaryDaily, summaryMonthly),
-    peakIsCopy: buildReleaseStatsSummary(summaryPapers, summaryDaily, summaryMonthly).peakMonth !== summaryMonthly[0],
+    emptySummary: buildReleaseStatsSummary(null, null),
+    summary: buildReleaseStatsSummary(summaryPapers, summaryDaily),
+    categoryDistribution: buildStatsDistribution([
+      { category: 'designs' },
+      { category: 'analysis' },
+      { category: 'designs' }
+    ], 'category', { designs: 'Designs', analysis: 'Analysis' }),
+    mechanismDistribution: buildStatsDistribution([
+      { mechanism_tags: ['flat-loop', 'flat-loop', 'implicit-layer'] },
+      { mechanism_tags: ['flat-loop'] },
+      { mechanism_tags: [] }
+    ], 'mechanism_tags'),
+    emptyDistribution: buildStatsDistribution(null, 'category'),
     annual: buildAnnualReleaseSeries([
       { published_date: '2026-01-01' },
       { published_date: '2024-12-31' },
@@ -1439,8 +1450,9 @@ process.stdout.write(JSON.stringify({
             {
                 "totalPapers": 0,
                 "releasesLast30Days": 0,
+                "releasesPrevious30Days": 0,
+                "releaseChangePercent": 0,
                 "latestReleaseDate": None,
-                "peakMonth": None,
             },
         )
         self.assertEqual(result["averages"], [2, 3, 2])
@@ -1483,12 +1495,35 @@ process.stdout.write(JSON.stringify({
         )
         self.assertEqual(result["summary"]["totalPapers"], 11)
         self.assertEqual(result["summary"]["releasesLast30Days"], 3)
+        self.assertEqual(result["summary"]["releasesPrevious30Days"], 1)
+        self.assertEqual(result["summary"]["releaseChangePercent"], 200)
         self.assertEqual(result["summary"]["latestReleaseDate"], "2026-07-03")
         self.assertEqual(
-            result["summary"]["peakMonth"],
-            {"key": "2026-01", "label": "2026-01", "count": 3, "cumulative": 3},
+            result["categoryDistribution"],
+            {
+                "totalPapers": 3,
+                "assignmentCount": 3,
+                "rows": [
+                    {"key": "designs", "label": "Designs", "count": 2, "percentage": 66.7},
+                    {"key": "analysis", "label": "Analysis", "count": 1, "percentage": 33.3},
+                ],
+            },
         )
-        self.assertTrue(result["peakIsCopy"])
+        self.assertEqual(
+            result["mechanismDistribution"],
+            {
+                "totalPapers": 3,
+                "assignmentCount": 3,
+                "rows": [
+                    {"key": "flat-loop", "label": "Flat loop", "count": 2, "percentage": 66.7},
+                    {"key": "implicit-layer", "label": "Implicit layer", "count": 1, "percentage": 33.3},
+                ],
+            },
+        )
+        self.assertEqual(
+            result["emptyDistribution"],
+            {"totalPapers": 0, "assignmentCount": 0, "rows": []},
+        )
         self.assertEqual(
             result["annual"],
             [
@@ -1504,40 +1539,43 @@ process.stdout.write(JSON.stringify({
         self.assertTrue(result["latestIsCopy"])
         self.assertEqual(result["noLatest"], [])
 
-    def test_stats_panel_has_kpis_charts_and_accessible_fallback_summaries(self):
-        """Stats markup must expose a complete release-intelligence experience."""
+    def test_stats_panel_has_catalog_intelligence_dashboard(self):
+        """Stats markup must expose a compact, taxonomy-aware dashboard."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         stats_start = html.index('<section class="top-level-panel stats-panel"')
         stats_end = html.index("</section>", stats_start)
         stats_markup = html[stats_start:stats_end]
 
         for marker in (
-            "Release intelligence",
-            "The rhythm of<br />loop-model research",
-            "Publication-time intelligence",
-            'id="stats-hero-latest-date"',
-            'id="stats-hero-latest-title"',
-            'id="stats-hero-latest-meta"',
+            "Catalog intelligence",
+            'id="stats-snapshot"',
             'class="stats-metric-rail"',
             'id="stats-total-papers"',
             'id="stats-latest-thirty"',
+            'id="stats-recent-change"',
+            'id="stats-recent-change-note"',
             'id="stats-latest-release"',
-            'id="stats-peak-month"',
+            'class="stats-dashboard-grid stats-dashboard-primary"',
             'id="release-pulse-chart"',
             'id="release-pulse-summary"',
+            'id="stats-category-distribution"',
+            'id="stats-mechanism-distribution"',
+            '<details class="stats-taxonomy-details">',
+            'id="stats-focus-distribution"',
+            'id="stats-domain-distribution"',
+            'class="stats-dashboard-grid stats-dashboard-secondary"',
             'id="annual-release-volume"',
+            'id="annual-volume-note"',
             'id="latest-releases-list"',
-            'id="long-arc-chart"',
-            'id="long-arc-summary"',
             'class="stats-range-control"',
             'data-stats-range="90d"',
             'data-stats-range="1y"',
             'data-stats-range="all"',
             'aria-pressed="true">1Y</button>',
             "Release Pulse",
+            "Catalog composition",
             "Annual volume",
             "Latest releases",
-            "Long arc",
         ):
             self.assertIn(marker, stats_markup)
         self.assertIn('aria-live="polite"', stats_markup)
@@ -1552,6 +1590,12 @@ process.stdout.write(JSON.stringify({
             "stats-peak-day",
             "catalog-growth-chart",
             "publication-trend-chart",
+            "stats-signal-card",
+            "stats-hero-latest",
+            "stats-peak-month",
+            "Release dossiers",
+            "Long arc",
+            "long-arc-chart",
         ):
             self.assertNotIn(obsolete, stats_markup)
 
@@ -1675,7 +1719,7 @@ process.stdout.write(JSON.stringify({
         self.assertEqual(result["empty"], [])
 
     def test_release_renderers_use_pixel_spaced_tick_helper(self):
-        """SVG x labels must come from the shared collision-resistant selector."""
+        """Release Pulse x labels must use the shared collision-resistant selector."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         helper_start = html.index("function selectTimelineTickIndices(")
         helper_end = html.index("function renderReleasePulseChart(", helper_start)
@@ -1690,6 +1734,19 @@ process.stdout.write(JSON.stringify({
         self.assertIn("lastIndex", helper_source)
         self.assertIn("selectTimelineTickIndices", render_source)
         self.assertNotIn("index % xTickStep", render_source)
+
+    def test_release_pulse_uses_one_shared_y_scale(self):
+        """Bars and their trailing average must use the same papers-per-period scale."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        render_start = html.index("function renderReleasePulseChart(container, series, options) {")
+        render_end = html.index("function renderAnnualReleaseVolume(", render_start)
+        render_source = html[render_start:render_end]
+
+        self.assertIn("var maxValue = Math.max", render_source)
+        self.assertIn("count / maxValue * plotHeight", render_source)
+        self.assertIn("average / maxValue * plotHeight", render_source)
+        self.assertNotIn("maxAverage", render_source)
+        self.assertNotIn("timeline-axis-average", render_source)
 
     def test_stats_renderers_use_safe_accessible_inline_svg_and_dom(self):
         """Stats rendering must use safe DOM APIs, SVG text alternatives, and visible summaries."""
@@ -1710,12 +1767,11 @@ process.stdout.write(JSON.stringify({
             "timeline-bar",
             "timeline-line",
             "timeline-axis-count",
-            "timeline-axis-average",
             "timeline-empty",
             "textContent",
+            "renderStatsDistribution",
             "renderAnnualReleaseVolume",
             "renderLatestReleases",
-            "renderLongArcChart",
             "getSafeStatsPaperUrl",
         ):
             self.assertIn(marker, timeline_source)
@@ -1724,26 +1780,38 @@ process.stdout.write(JSON.stringify({
         self.assertNotIn("innerHTML", stats_source)
         self.assertIn("buildDailyPublicationSeries(ALL_PAPERS)", stats_source)
         self.assertIn("buildMonthlyPublicationSeries(ALL_PAPERS)", stats_source)
+        self.assertIn("buildStatsDistribution(ALL_PAPERS, 'category'", stats_source)
+        self.assertIn("buildStatsDistribution(ALL_PAPERS, 'mechanism_tags'", stats_source)
+        self.assertIn("buildStatsDistribution(ALL_PAPERS, 'focus_tags'", stats_source)
+        self.assertIn("buildStatsDistribution(ALL_PAPERS, 'domain_tags'", stats_source)
         self.assertIn("HAS_RENDERED_STATS = true;", stats_source)
         self.assertIn("if (!CATALOG_DATA_READY)", stats_source)
         self.assertIn("release-pulse-summary", html)
-        self.assertIn("long-arc-summary", html)
         self.assertIn("'title'", timeline_source)
         self.assertIn("'desc'", timeline_source)
+        self.assertNotIn("renderLongArcChart", timeline_source)
 
-    def test_latest_release_dossiers_surface_catalog_context(self):
-        """Latest releases should expose authors, summaries, taxonomy, and metrics."""
+    def test_latest_releases_are_compact_taxonomy_rows(self):
+        """Latest releases should scan by date, title, category, and mechanism."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         render_start = html.index("function getStatsReleaseDateParts(value) {")
-        render_end = html.index("function renderLongArcChart(", render_start)
+        render_end = html.index("function renderReleasePulse()", render_start)
         render_source = html[render_start:render_end]
 
         for marker in (
-            "function summarizeStatsReleaseAuthors(paper)",
-            "function getStatsReleaseTags(paper, limit)",
-            "function summarizeStatsReleaseMomentum(dailySeries)",
-            "if (series.length === 0) return 'No release momentum available';",
-            "latest-release-date-rail",
+            "latest-release-item",
+            "latest-release-date",
+            "latest-release-title",
+            "latest-release-category",
+            "latest-release-mechanism",
+            "paper._categoryLabel",
+            "paper._mechanismLabel",
+        ):
+            self.assertIn(marker, render_source)
+        for obsolete in (
+            "summarizeStatsReleaseAuthors",
+            "getStatsReleaseTags",
+            "summarizeStatsReleaseMomentum",
             "latest-release-authors",
             "latest-release-desc",
             "latest-release-tags",
@@ -1752,12 +1820,12 @@ process.stdout.write(JSON.stringify({
             "paper.github_stars",
             "Read paper ↗",
         ):
-            self.assertIn(marker, render_source)
+            self.assertNotIn(obsolete, render_source)
         self.assertNotIn("innerHTML", render_source)
         self.assertIn("getLatestReleasedPapers(ALL_PAPERS, 5)", html)
 
-    def test_stats_charts_are_editorial_full_width_and_scroll_locally(self):
-        """Stats CSS must form a full-width editorial observatory with an instrument panel."""
+    def test_stats_dashboard_uses_twelve_column_information_grid(self):
+        """Stats CSS must prioritize cadence, composition, annual volume, and latest papers."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         stats_start = html.index("    .stats-panel {")
         stats_end = html.index("    /* ── Category Section ── */", stats_start)
@@ -1772,6 +1840,9 @@ process.stdout.write(JSON.stringify({
         primary_start = stats_css.index("    .stats-primary-chart {")
         primary_end = stats_css.index("\n    }", primary_start)
         primary_rule = stats_css[primary_start:primary_end]
+        dashboard_start = stats_css.index("    .stats-dashboard-grid {")
+        dashboard_end = stats_css.index("\n    }", dashboard_start)
+        dashboard_rule = stats_css[dashboard_start:dashboard_end]
         grid_start = stats_css.index("    .stats-panel .timeline-grid {")
         grid_end = stats_css.index("\n    }", grid_start)
         grid_rule = stats_css[grid_start:grid_end]
@@ -1790,18 +1861,41 @@ process.stdout.write(JSON.stringify({
         self.assertIn("border: 1px solid #253650;", primary_rule)
         self.assertIn("border-radius: 24px;", primary_rule)
         self.assertIn("#0f1929", primary_rule)
+        self.assertIn("grid-template-columns: repeat(12, minmax(0, 1fr));", dashboard_rule)
+        self.assertIn(".stats-pulse-card", stats_css)
+        self.assertIn("grid-column: span 8;", stats_css)
+        self.assertIn(".stats-composition-card", stats_css)
+        self.assertIn("grid-column: span 4;", stats_css)
+        self.assertIn(".stats-annual-card", stats_css)
+        self.assertIn(".stats-latest-card", stats_css)
+        self.assertIn(".stats-taxonomy-details", stats_css)
         self.assertIn("stroke: var(--border);", grid_rule)
         self.assertIn("fill: var(--accent);", bar_rule)
         self.assertIn("stroke: var(--accent2);", line_rule)
         self.assertNotIn("animation:", stats_css)
-        self.assertIn("repeating-radial-gradient", stats_css)
         self.assertIn("repeating-linear-gradient", stats_css)
         self.assertNotIn("backdrop-filter", stats_css)
-        self.assertIn(".stats-lower-grid", stats_css)
-        self.assertIn("grid-template-columns", stats_css)
-        self.assertIn(".latest-release-item:first-child", stats_css)
+        self.assertNotIn(".stats-lower-grid", stats_css)
+        self.assertNotIn(".latest-release-item:first-child", stats_css)
+        self.assertNotIn(".stats-long-arc", stats_css)
         self.assertIn("@media (max-width: 768px)", stats_css)
         self.assertIn("min-height: 44px;", stats_css)
+
+    def test_stats_dashboard_refines_light_and_dark_theme_tokens(self):
+        """Dashboard surfaces must have explicit light and dark treatments."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        stats_start = html.index("    .stats-panel {")
+        stats_end = html.index("    /* ── Category Section ── */", stats_start)
+        stats_css = html[stats_start:stats_end]
+
+        self.assertIn("--stats-card-bg:", stats_css)
+        self.assertIn("--stats-card-border:", stats_css)
+        self.assertIn("--stats-track-bg:", stats_css)
+        dark_start = stats_css.index("@media (prefers-color-scheme: dark)")
+        dark_source = stats_css[dark_start:]
+        self.assertIn(".stats-panel", dark_source)
+        self.assertIn("--stats-card-bg:", dark_source)
+        self.assertIn("--stats-card-border:", dark_source)
 
     def test_stats_small_text_uses_accessible_muted_color(self):
         """Small Stats labels must avoid the lower-contrast decorative text token."""
