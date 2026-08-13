@@ -5,8 +5,8 @@
     "blog_total": 8,
     "briefing_total": 39,
     "latest_briefing_date": "2026-08-11",
-    "generated": "2026-08-13T03:58:10.494762+00:00",
-    "generated_local_date": "2026-08-12",
+    "generated": "2026-08-13T04:00:38.575826+00:00",
+    "generated_local_date": "2026-08-13",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -80,14 +80,14 @@
         "arxiv": "https://arxiv.org/abs/1511.08228",
         "alphaxiv": "https://www.alphaxiv.org/abs/1511.08228"
       },
-      "citations": 402,
+      "citations": 403,
       "citation_sources": {
-        "semantic_scholar": 402,
+        "semantic_scholar": 403,
         "openalex": 187,
         "opencitations": 1
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-11",
+      "metrics_updated": "2026-08-13",
       "id": "1511.08228",
       "source_file": "1511.08228.yaml",
       "source_path": "papers/1511.08228.yaml",
@@ -349,14 +349,14 @@
         "paper": "https://proceedings.neurips.cc/paper_files/paper/2021/hash/cb8da6767461f2812ae4290eac7cbc42-Abstract.html",
         "alphaxiv": "https://www.alphaxiv.org/abs/2111.05177"
       },
-      "citations": 106,
+      "citations": 107,
       "citation_sources": {
-        "semantic_scholar": 106,
+        "semantic_scholar": 107,
         "openalex": 13,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-20",
+      "metrics_updated": "2026-08-13",
       "id": "2111.05177",
       "source_file": "2111.05177.yaml",
       "source_path": "papers/2111.05177.yaml",
@@ -718,14 +718,14 @@
         "github": "https://github.com/robertcsordas/moeut",
         "alphaxiv": "https://www.alphaxiv.org/abs/2405.16039"
       },
-      "citations": 51,
+      "citations": 52,
       "citation_sources": {
-        "semantic_scholar": 51,
+        "semantic_scholar": 52,
         "openalex": 1,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-27",
+      "metrics_updated": "2026-08-13",
       "github_stars": 93,
       "star_sources": {
         "github_api": 93
@@ -1448,13 +1448,13 @@
         "github": "https://github.com/SamsungSAILMontreal/TinyRecursiveModels",
         "alphaxiv": "https://www.alphaxiv.org/abs/2510.04871"
       },
-      "citations": 4,
+      "citations": 5,
       "citation_sources": {
-        "openalex": 4,
+        "openalex": 5,
         "opencitations": 0
       },
       "citation_source_best": "openalex",
-      "metrics_updated": "2026-08-11",
+      "metrics_updated": "2026-08-13",
       "github_stars": 6570,
       "star_sources": {
         "github_api": 6570
@@ -1564,10 +1564,10 @@
         "hf": "https://huggingface.co/ByteDance/Ouro-1.4B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2510.25741"
       },
-      "citations": 107,
-      "metrics_updated": "2026-08-12",
+      "citations": 108,
+      "metrics_updated": "2026-08-13",
       "citation_sources": {
-        "semantic_scholar": 107,
+        "semantic_scholar": 108,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3277,10 +3277,11 @@
       "citations": 11,
       "citation_sources": {
         "semantic_scholar": 11,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-12",
+      "metrics_updated": "2026-08-13",
       "id": "2604.21106",
       "source_file": "2604.21106.yaml",
       "source_path": "papers/2604.21106.yaml",
@@ -3535,9 +3536,9 @@
         "github": "https://github.com/amirbalef/is_one_layer_enough",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.06510"
       },
-      "citations": 1,
+      "citations": 2,
       "citation_sources": {
-        "semantic_scholar": 1,
+        "semantic_scholar": 2,
         "openalex": 0,
         "opencitations": 0
       },
@@ -3547,7 +3548,7 @@
         "github_api": 11
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-08-11",
+      "metrics_updated": "2026-08-13",
       "id": "2605.06510",
       "source_file": "2605.06510.yaml",
       "source_path": "papers/2605.06510.yaml",
@@ -4448,12 +4449,12 @@
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.20613"
       },
-      "github_stars": 1822,
+      "github_stars": 1825,
       "star_sources": {
-        "github_api": 1822
+        "github_api": 1825
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-08-12",
+      "metrics_updated": "2026-08-13",
       "citations": 4,
       "citation_sources": {
         "semantic_scholar": 4,
@@ -4618,10 +4619,11 @@
       "citations": 4,
       "citation_sources": {
         "semantic_scholar": 4,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-12",
+      "metrics_updated": "2026-08-13",
       "github_stars": 45,
       "star_sources": {
         "github_api": 45
@@ -4911,16 +4913,16 @@
         "github": "https://github.com/nv-tlabs/dvlt"
       },
       "citations": 2,
-      "metrics_updated": "2026-08-12",
+      "metrics_updated": "2026-08-13",
       "citation_sources": {
         "semantic_scholar": 2,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 410,
+      "github_stars": 411,
       "star_sources": {
-        "github_api": 410
+        "github_api": 411
       },
       "star_source_best": "github_api",
       "id": "2605.30215",
@@ -5493,14 +5495,14 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2606.06574",
         "github": "https://github.com/tianyi-lab/PoLar"
       },
-      "citations": 3,
+      "citations": 4,
       "citation_sources": {
-        "semantic_scholar": 3,
+        "semantic_scholar": 4,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-11",
+      "metrics_updated": "2026-08-13",
       "github_stars": 31,
       "star_sources": {
         "github_api": 31
@@ -5673,12 +5675,12 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 24,
+      "github_stars": 25,
       "star_sources": {
-        "github_api": 24
+        "github_api": 25
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-08-12",
+      "metrics_updated": "2026-08-13",
       "id": "2606.18206",
       "source_file": "2606.18206.yaml",
       "source_path": "papers/2606.18206.yaml",
@@ -7014,10 +7016,11 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-11",
+      "metrics_updated": "2026-08-13",
       "id": "2608.08113",
       "source_file": "2608.08113.yaml",
       "source_path": "papers/2608.08113.yaml",
@@ -7058,9 +7061,10 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2608.08888"
       },
       "citations": 0,
-      "metrics_updated": "2026-08-12",
+      "metrics_updated": "2026-08-13",
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -7109,10 +7113,11 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-11",
+      "metrics_updated": "2026-08-13",
       "id": "2608.09444",
       "source_file": "2608.09444.yaml",
       "source_path": "papers/2608.09444.yaml",
@@ -7155,10 +7160,11 @@
       "citations": 0,
       "citation_sources": {
         "semantic_scholar": 0,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-11",
+      "metrics_updated": "2026-08-13",
       "id": "2608.09888",
       "source_file": "2608.09888.yaml",
       "source_path": "papers/2608.09888.yaml",
