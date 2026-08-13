@@ -414,7 +414,7 @@ process.stdout.write(JSON.stringify(result));
     def run_top_level_tab_block(initial_hash: str, test_body: str):
         """Evaluate the complete production tab state and interaction block in Node."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        state_start = html.index("let ACTIVE_TOP_LEVEL_TAB = 'papers';")
+        state_start = html.index("let ALL_PAPERS = [];")
         state_end = html.index("let CURRENT_VIEW = 'category';", state_start)
         block_start = html.index("function normalizeTopLevelTab(tab) {")
         block_end = html.index("initResearchPrompt();", block_start)
@@ -427,6 +427,9 @@ const renderStatsCalls = [];
 const scrollRequests = [];
 const animationFrameCallbacks = [];
 const windowListeners = {{}};
+const searchInput = {{ value: '' }};
+const searchCalls = [];
+let uiUpdates = 0;
 
 function makeTab(id, selected, tabIndex) {{
   return {{
@@ -458,6 +461,7 @@ const elements = {{
   'stats-tab': tabs[1],
   'papers-panel': papersPanel,
   'stats-panel': statsPanel,
+  'search': searchInput,
   'section-designs': {{}},
   'section-blogs': {{}}
 }};
@@ -473,7 +477,7 @@ const document = {{
   getElementById: function(id) {{ return elements[id] || null; }}
 }};
 const window = {{
-  location: {{}},
+  location: {{ search: '' }},
   addEventListener: function(name, listener) {{
     if (!windowListeners[name]) windowListeners[name] = [];
     windowListeners[name].push(listener);
@@ -498,6 +502,8 @@ function renderStatsPanel() {{
   renderStatsCalls.push({{ ready: CATALOG_DATA_READY, error: CATALOG_DATA_ERROR }});
 }}
 function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
+function updateTagFilterUI() {{ uiUpdates += 1; }}
+function doSearch(query) {{ searchCalls.push(query); }}
 
 {production_block}
 {test_body}
@@ -540,6 +546,138 @@ function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("tag-filter-chip-count", html)
         self.assertIn("tag.count", html)
+
+    def test_tag_drilldown_state_is_url_backed_and_paper_only(self):
+        """Locked tag routes must be URL-driven and exclude non-paper resources."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        for snippet in (
+            "let LOCKED_TAG_FILTER_KEY = '';",
+            "function getTagDrilldownKeyFromUrl() {",
+            "function restoreTagDrilldownFromUrl() {",
+            "LOCKED_TAG_FILTER_KEY ? ALL_PAPERS : ALL_RESOURCES",
+            "window.addEventListener('popstate', restoreTagDrilldownFromUrl);",
+        ):
+            self.assertIn(snippet, html)
+
+        hash_start = html.index("window.addEventListener('hashchange'")
+        hash_end = html.index("window.addEventListener('popstate'", hash_start)
+        self.assertIn("restoreTagDrilldownFromUrl();", html[hash_start:hash_end])
+
+        build_start = html.index("function buildDOM(data) {")
+        build_end = html.index("// ── Search", build_start)
+        build_source = html[build_start:build_end]
+        self.assertLess(
+            build_source.index("TAG_FILTER_GROUPS = buildTagFilterGroups(ALL_RESOURCES);"),
+            build_source.index("restoreTagDrilldownFromUrl();"),
+        )
+
+    def test_tag_drilldown_url_restore_behavior(self):
+        """Valid paper tags and q restore; invalid routes fail closed across history."""
+        result = self.run_top_level_tab_block("#papers", """
+ALL_PAPERS = [{ _tagKeySet: new Set(['mechanism::flat-loop']) }];
+ALL_RESOURCES = ALL_PAPERS.concat([{ _tagKeySet: new Set(['domain::blog-only']) }]);
+ACTIVE_TAG_FILTERS = new Set(['focus::architecture']);
+TAG_FILTER_LOOKUP = {
+  'mechanism::flat-loop': { displayLabel: 'flat-loop' },
+  'domain::blog-only': { displayLabel: 'blog-only' }
+};
+CATALOG_DATA_READY = true;
+
+function parse(search, hash) {
+  window.location.search = search;
+  window.location.hash = hash;
+  return getTagDrilldownKeyFromUrl();
+}
+
+const parsed = {
+  valid: parse('?tag=mechanism%3A%3Aflat-loop', '#papers'),
+  unknown: parse('?tag=domain%3A%3Aunknown', '#papers'),
+  malformed: parse('?tag=mechanism%3Aflat-loop', '#papers'),
+  nonPaper: parse('?tag=domain%3A%3Ablog-only', '#papers'),
+  stats: parse('?tag=mechanism%3A%3Aflat-loop', '#stats')
+};
+
+window.location.search = '?tag=mechanism%3A%3Aflat-loop&q=LayerNorm';
+window.location.hash = '#papers';
+dispatchWindowEvent('popstate');
+const restored = {
+  locked: LOCKED_TAG_FILTER_KEY,
+  active: Array.from(ACTIVE_TAG_FILTERS).sort(),
+  query: searchInput.value,
+  searchCall: searchCalls.at(-1)
+};
+
+window.location.search = '?q=plain';
+dispatchWindowEvent('popstate');
+const leftRoute = {
+  locked: LOCKED_TAG_FILTER_KEY,
+  active: Array.from(ACTIVE_TAG_FILTERS).sort(),
+  query: searchInput.value,
+  searchCall: searchCalls.at(-1)
+};
+
+window.location.search = '?tag=mechanism%3A%3Aflat-loop&q=again';
+dispatchWindowEvent('popstate');
+window.location.hash = '#stats';
+dispatchWindowEvent('hashchange');
+const statsRoute = {
+  locked: LOCKED_TAG_FILTER_KEY,
+  active: Array.from(ACTIVE_TAG_FILTERS).sort(),
+  query: searchInput.value,
+  searchCall: searchCalls.at(-1)
+};
+
+process.stdout.write(JSON.stringify({
+  parsed: parsed,
+  listeners: {
+    popstate: (windowListeners.popstate || []).length,
+    hashchange: (windowListeners.hashchange || []).length
+  },
+  restored: restored,
+  leftRoute: leftRoute,
+  statsRoute: statsRoute,
+  uiUpdates: uiUpdates
+}));
+""")
+        self.assertEqual(
+            result["parsed"],
+            {
+                "valid": "mechanism::flat-loop",
+                "unknown": "",
+                "malformed": "",
+                "nonPaper": "",
+                "stats": "",
+            },
+        )
+        self.assertEqual(result["listeners"], {"popstate": 1, "hashchange": 1})
+        self.assertEqual(
+            result["restored"],
+            {
+                "locked": "mechanism::flat-loop",
+                "active": ["focus::architecture", "mechanism::flat-loop"],
+                "query": "LayerNorm",
+                "searchCall": "LayerNorm",
+            },
+        )
+        self.assertEqual(
+            result["leftRoute"],
+            {
+                "locked": "",
+                "active": ["focus::architecture"],
+                "query": "plain",
+                "searchCall": "plain",
+            },
+        )
+        self.assertEqual(
+            result["statsRoute"],
+            {
+                "locked": "",
+                "active": ["focus::architecture"],
+                "query": "again",
+                "searchCall": "again",
+            },
+        )
+        self.assertEqual(result["uiUpdates"], 4)
 
     def test_tag_filter_chip_counts_render_as_numbers_only(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")

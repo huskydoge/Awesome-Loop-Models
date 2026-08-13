@@ -5923,6 +5923,7 @@ let DIRECT_PAPERS_BY_NODE = {};
 let NODE_COUNTS = {};
 let SECTION_OBSERVER = null;
 let ACTIVE_TAG_FILTERS = new Set();
+let LOCKED_TAG_FILTER_KEY = '';
 let TAG_FILTER_GROUPS = [];
 let TAG_FILTER_LOOKUP = {};
 let TAG_FILTER_OPEN = false;
@@ -6245,6 +6246,32 @@ function getTopLevelTabFromHash(hash) {
   return hash === '#stats' ? 'stats' : 'papers';
 }
 
+/**
+ * Returns a valid paper-backed tag key from the current Papers URL.
+ * @returns {string} Canonical tag key, or an empty string for an invalid route.
+ */
+function getTagDrilldownKeyFromUrl() {
+  if (window.location.hash !== '#papers') return '';
+  const tagKey = new URLSearchParams(window.location.search).get('tag') || '';
+  if (!/^(mechanism|focus|domain)::[^:]+$/.test(tagKey) || !TAG_FILTER_LOOKUP[tagKey]) return '';
+  return ALL_PAPERS.some(function(paper) {
+    return paper._tagKeySet && paper._tagKeySet.has(tagKey);
+  }) ? tagKey : '';
+}
+
+/** Restores the locked tag and free-text query from the current URL. */
+function restoreTagDrilldownFromUrl() {
+  if (!CATALOG_DATA_READY) return;
+  if (LOCKED_TAG_FILTER_KEY) ACTIVE_TAG_FILTERS.delete(LOCKED_TAG_FILTER_KEY);
+  LOCKED_TAG_FILTER_KEY = getTagDrilldownKeyFromUrl();
+  if (LOCKED_TAG_FILTER_KEY) ACTIVE_TAG_FILTERS.add(LOCKED_TAG_FILTER_KEY);
+
+  const searchInput = document.getElementById('search');
+  if (searchInput) searchInput.value = new URLSearchParams(window.location.search).get('q') || '';
+  updateTagFilterUI();
+  doSearch(searchInput ? searchInput.value : '');
+}
+
 /** Synchronizes top-level tab controls and panels with the active tab state. */
 function applyTopLevelTab() {
   const isStats = ACTIVE_TOP_LEVEL_TAB === 'stats';
@@ -6358,8 +6385,10 @@ function initTopLevelTabInteractions() {
 
   window.addEventListener('hashchange', function() {
     setTopLevelTab(getTopLevelTabFromHash(window.location.hash), { updateHash: false });
+    restoreTagDrilldownFromUrl();
     restoreCategoryHashPosition(window.location.hash);
   });
+  window.addEventListener('popstate', restoreTagDrilldownFromUrl);
 }
 
 /**
@@ -6719,7 +6748,7 @@ function paperMatchesActiveFilters(paper, query, publicationDateFilter) {
 }
 
 function getFilteredPapers(query, publicationDateFilter) {
-  return ALL_RESOURCES.filter(function(paper) {
+  return (LOCKED_TAG_FILTER_KEY ? ALL_PAPERS : ALL_RESOURCES).filter(function(paper) {
     return paperMatchesActiveFilters(paper, query, publicationDateFilter);
   });
 }
@@ -7466,7 +7495,7 @@ function buildDOM(data) {
   updateViewToggleButtons();
   applyPaperDensity();
   applyViewMode();
-  doSearch(document.getElementById("search").value || "");
+  restoreTagDrilldownFromUrl();
   restoreTopLevelTabAfterCatalogLoad();
   restoreCategoryHashPosition(window.location.hash);
 }
