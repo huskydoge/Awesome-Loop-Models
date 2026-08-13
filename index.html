@@ -1853,13 +1853,17 @@
       text-decoration: none;
     }
 
-    .paper-tag:hover,
+    span.paper-tag {
+      cursor: default;
+    }
+
+    a.paper-tag:hover,
     .tag-filter-chip:hover {
       transform: translateY(-1px);
       border-color: var(--accent);
     }
 
-    .paper-tag:focus-visible,
+    a.paper-tag:focus-visible,
     .tag-filter-chip:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
@@ -4296,7 +4300,7 @@
         line-height: 1.25;
       }
 
-      #papers-panel[data-card-density="compact"] .paper-tags .paper-tag:nth-of-type(n+5) {
+      #papers-panel[data-card-density="compact"] .paper-tags > .paper-tag:nth-child(n+5) {
         display: none;
       }
 

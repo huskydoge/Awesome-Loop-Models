@@ -973,6 +973,11 @@ process.stdout.write(JSON.stringify({{ blogOnly: blogOnly, shared: shared }}));
         self.assertIn('<a href="?tag=domain%3A%3Areasoning#papers"', output["shared"])
         self.assertIn('data-tag-key="domain::reasoning"', output["shared"])
 
+        style = html[html.index("<style>"):html.index("</style>")]
+        self.assertIn("span.paper-tag {\n      cursor: default;", style)
+        self.assertIn("a.paper-tag:hover,", style)
+        self.assertNotIn("\n    .paper-tag:hover,", style)
+
     def test_card_tags_are_native_links_and_advanced_chips_expose_state(self):
         """Card tags navigate; advanced filter buttons remain explicit toggle controls."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -2887,6 +2892,8 @@ process.stdout.write(JSON.stringify({
         self.assertIn(".paper-density-toggle", style)
         self.assertIn("max-width: 1640px;", style)
         self.assertIn("width: 248px;", style)
+        self.assertIn('#papers-panel[data-card-density="compact"] .paper-tags > .paper-tag:nth-child(n+5)', style)
+        self.assertNotIn('.paper-tags .paper-tag:nth-of-type(n+5)', style)
 
     def test_footer_preserves_more_vertical_space_for_papers(self):
         """The persistent footer should remain a compact single-line information bar."""
