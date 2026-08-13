@@ -1,0 +1,30 @@
+title: 'Retrofitting Recurrent Depth into a Pretrained Language Model: Installation,
+  Extrapolation, Transfer, and Retention at Two Parameter Budgets'
+authors:
+- Mark Shapiro
+year: 2026
+published_date: '2026-07-31'
+added_date: '2026-08-12'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+desc: Retrofits Qwen2.5-0.5B with a weight-tied recurrent middle block and re-entry
+  bridge, installing iterative latent computation at full-block and frozen-base adapter
+  training budgets.
+links:
+  arxiv: https://arxiv.org/abs/2608.11233
+  alphaxiv: https://www.alphaxiv.org/abs/2608.11233
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-08-13'

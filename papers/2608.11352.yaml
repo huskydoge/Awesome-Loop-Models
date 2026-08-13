@@ -1,0 +1,30 @@
+title: ODE-Based Transformer Decoders for Iterative Sign Language Translation
+authors:
+- Tuğçe Kızıltepe
+- Hacer Yalim Keles
+year: 2026
+published_date: '2026-08-11'
+added_date: '2026-08-12'
+venue: ACVR Workshop @ ECCV
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- machine-translation
+- multimodal
+- efficiency
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Replaces residual updates in an iterative sign-language translation decoder
+  with ODE-inspired RK-2 and RK-4 updates that repeatedly evaluate the same learned
+  decoder function without adding decoder parameters.
+links:
+  arxiv: https://arxiv.org/abs/2608.11352
+  alphaxiv: https://www.alphaxiv.org/abs/2608.11352
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-08-13'

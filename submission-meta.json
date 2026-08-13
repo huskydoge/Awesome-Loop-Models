@@ -136,6 +136,8 @@
     "papers/2608.08888.yaml",
     "papers/2608.09444.yaml",
     "papers/2608.09888.yaml",
+    "papers/2608.11233.yaml",
+    "papers/2608.11352.yaml",
     "papers/openreview-chaingpt.yaml",
     "papers/openreview-modr.yaml"
   ],
@@ -143,7 +145,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 117
+        "count": 119
       },
       {
         "label": "hierarchical-loop",
@@ -161,15 +163,15 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 120
+        "count": 122
       },
       {
         "label": "inference-algorithm",
-        "count": 88
+        "count": 89
       },
       {
         "label": "training-algorithm",
-        "count": 62
+        "count": 63
       },
       {
         "label": "objective-loss",
@@ -183,15 +185,15 @@
     "domain": [
       {
         "label": "language-modeling",
-        "count": 77
+        "count": 78
       },
       {
         "label": "reasoning",
-        "count": 75
+        "count": 76
       },
       {
         "label": "efficiency",
-        "count": 59
+        "count": 61
       },
       {
         "label": "algorithmic-reasoning",
@@ -227,6 +229,10 @@
       },
       {
         "label": "multimodal",
+        "count": 3
+      },
+      {
+        "label": "machine-translation",
         "count": 2
       },
       {
@@ -271,10 +277,6 @@
       },
       {
         "label": "hyperspectral-imaging",
-        "count": 1
-      },
-      {
-        "label": "machine-translation",
         "count": 1
       },
       {
