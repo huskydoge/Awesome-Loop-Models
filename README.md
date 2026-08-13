@@ -1411,10 +1411,7 @@ If you find this repository useful, please consider citing this list:
 
 ## Star History
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/star-history/star-history-dark.svg">
-  <img alt="Star history of huskydoge/Awesome-Loop-Models" src="assets/star-history/star-history-light.svg">
-</picture>
+![Star history of huskydoge/Awesome-Loop-Models](assets/star-history/star-history.png)
 
 ---
 
