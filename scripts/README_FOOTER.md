@@ -33,6 +33,12 @@ If you find this repository useful, please consider citing this list:
 
 ---
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=huskydoge/Awesome-Loop-Models&type=Date)](https://star-history.com/#huskydoge/Awesome-Loop-Models&Date)
+
+---
+
 <div align="center">
 <sub>
   Maintained by <a href="https://github.com/huskydoge">huskydoge</a>.

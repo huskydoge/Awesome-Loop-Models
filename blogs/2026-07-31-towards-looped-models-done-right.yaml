@@ -1,0 +1,45 @@
+# IFM Research living blog released July 31, 2026.
+title: "Towards Looped Models Done Right — Part I: Topology, Input Injection, Recurrent-State Design"
+authors:
+  - "Benhao Huang"
+  - "Chufan Shi"
+  - "Junlin Chen"
+  - "Shicheng Wen"
+  - "Zhengzhong Liu"
+  - "Eric Xing"
+  - "Xuezhe Ma"
+year: 2026
+published_date: "2026-07-31"
+added_date: "2026-08-12"
+venue: "IFM Research"
+mechanism_tags:
+  - "flat-loop"
+
+domain_tags:
+  - "language-modeling"
+  - "reasoning"
+  - "scaling"
+  - "efficiency"
+  - "memory-efficiency"
+
+tags:
+  - "Huginn"
+  - "Ouro"
+  - "Mixture-of-Experts"
+  - "input-injection"
+  - "recurrent-state"
+
+focus_tags:
+  - "architecture"
+
+desc: >
+  Runs controlled, compute-matched ablations of recurrence topology, input
+  injection, and recurrent-state design, then transfers the favored
+  Huginn-style sandwich architecture from dense 730M models to 8B/0.8B-active
+  MoE models and compares it with Ouro and a feedforward baseline.
+
+links:
+  blog: "https://ifm-research.notion.site/Towards-Looped-Models-Done-Right-3ade511912ec8128987dfeb7a5580043"
+  comment:
+    - label: "Benhao's announcement thread"
+      url: "https://x.com/huskydogewoof/status/2083242247945126203?s=20"
