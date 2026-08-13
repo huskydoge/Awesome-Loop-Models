@@ -25,9 +25,7 @@ domain_tags:
 tags:
   - "Huginn"
   - "Ouro"
-  - "Mixture-of-Experts"
-  - "input-injection"
-  - "recurrent-state"
+  - "MoE"
 
 focus_tags:
   - "architecture"
