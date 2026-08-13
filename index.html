@@ -5357,8 +5357,11 @@ function renderStatsDistribution(container, distribution, options) {
 
   var list = document.createElement('div');
   list.className = 'stats-distribution-list';
+  list.setAttribute('role', 'list');
   rows.forEach(function(row) {
-    var item = document.createElement(tagGroup ? 'a' : 'div');
+    var listItem = document.createElement('div');
+    listItem.setAttribute('role', 'listitem');
+    var item = tagGroup ? document.createElement('a') : listItem;
     item.className = 'stats-distribution-row';
     if (tagGroup) {
       var tagKey = buildTagEntry(tagGroup, row.key).key;
@@ -5384,7 +5387,8 @@ function renderStatsDistribution(container, distribution, options) {
     bar.style.width = Math.min(100, row.percentage).toFixed(1) + '%';
     track.appendChild(bar);
     item.append(label, value, track);
-    list.appendChild(item);
+    if (tagGroup) listItem.appendChild(item);
+    list.appendChild(listItem);
   });
   container.appendChild(list);
 }
@@ -5928,6 +5932,18 @@ function renderTableView(query, papers) {
 }
 
 // ── Render a single paper card ────────────────────────────────────────────────
+/** Render a card tag as a link only when the Papers route has matching records. */
+function renderPaperTagHtml(entry, extraClass) {
+  const classes = ['paper-tag'];
+  if (extraClass) classes.push(extraClass);
+  if (ACTIVE_TAG_FILTERS.has(entry.key)) classes.push('is-active');
+  const label = escapeHtml(entry.displayLabel || entry.label);
+  if (!getPaperCountForTagKey(entry.key)) {
+    return '<span class="' + classes.join(' ') + '">' + label + '</span>';
+  }
+  return '<a href="' + escapeHtml(getTagDrilldownHref(entry.key)) + '" class="' + classes.join(' ') + '" data-tag-key="' + escapeHtml(entry.key) + '" data-tag-group="' + escapeHtml(entry.group) + '">' + label + '</a>';
+}
+
 function renderCard(paper, query) {
   query = query || '';
   const authorsStr = paper._authorsText || '';
@@ -5955,13 +5971,6 @@ function renderCard(paper, query) {
     });
   }
 
-  function renderTag(entry, extraClass) {
-    const classes = ['paper-tag'];
-    if (extraClass) classes.push(extraClass);
-    if (ACTIVE_TAG_FILTERS.has(entry.key)) classes.push('is-active');
-    return '<a href="' + escapeHtml(getTagDrilldownHref(entry.key)) + '" class="' + classes.join(' ') + '" data-tag-key="' + escapeHtml(entry.key) + '" data-tag-group="' + escapeHtml(entry.group) + '">' + escapeHtml(entry.displayLabel || entry.label) + '</a>';
-  }
-
   const tagEntries = Array.isArray(paper._tagEntries) ? paper._tagEntries : getPaperTagEntries(paper);
   const allTags = tagEntries.map(function(entry) { return entry.label; });
   const titleLower = (paper.title || '').toLowerCase();
@@ -5975,9 +5984,9 @@ function renderCard(paper, query) {
     : '';
   const tagsHtml = (displayMechanismEntries.length || displayFocusEntries.length || displayDomainEntries.length)
     ? '<div class="paper-tags">'
-      + displayMechanismEntries.map(function(entry) { return renderTag(entry, 'paper-tag-mechanism'); }).join('')
-      + displayFocusEntries.map(function(entry) { return renderTag(entry, 'paper-tag-focus'); }).join('')
-      + displayDomainEntries.map(function(entry) { return renderTag(entry, 'paper-tag-domain'); }).join('')
+      + displayMechanismEntries.map(function(entry) { return renderPaperTagHtml(entry, 'paper-tag-mechanism'); }).join('')
+      + displayFocusEntries.map(function(entry) { return renderPaperTagHtml(entry, 'paper-tag-focus'); }).join('')
+      + displayDomainEntries.map(function(entry) { return renderPaperTagHtml(entry, 'paper-tag-domain'); }).join('')
       + tagOverflowHtml
       + '</div>'
     : '';
@@ -6358,7 +6367,8 @@ function getTopLevelTabFromHash(hash) {
  * @returns {string} Canonical tag key, or an empty string for an invalid route.
  */
 function getTagDrilldownKeyFromUrl() {
-  if (window.location.hash !== '#papers') return '';
+  const hash = window.location.hash;
+  if (hash !== '#papers' && !hash.startsWith('#section-')) return '';
   const tagKey = new URLSearchParams(window.location.search).get('tag') || '';
   if (!/^(mechanism|focus|domain)::[^:]+$/.test(tagKey) || !TAG_FILTER_LOOKUP[tagKey]) return '';
   return ALL_PAPERS.some(function(paper) {
@@ -6436,6 +6446,8 @@ function navigateToTagDrilldown(tagKey) {
   window.history.pushState(window.history.state, '', nextUrl);
   setTopLevelTab('papers', { updateHash: false, userInitiated: true });
   restoreTagDrilldownFromUrl();
+  const searchInput = document.getElementById('search');
+  if (searchInput) searchInput.focus();
 }
 
 /** Clear only the locked URL tag while preserving q and any advanced filters. */
@@ -6447,6 +6459,8 @@ function clearTagDrilldown() {
   window.history.pushState(window.history.state, '', nextUrl);
   setTopLevelTab('papers', { updateHash: false, userInitiated: true });
   restoreTagDrilldownFromUrl();
+  const searchInput = document.getElementById('search');
+  if (searchInput) searchInput.focus();
 }
 
 /** Restores the locked tag and free-text query from the current URL. */

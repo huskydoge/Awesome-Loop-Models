@@ -441,6 +441,7 @@ const animationFrameCallbacks = [];
 const windowListeners = {{}};
 const replaceStateCalls = [];
 const pushStateCalls = [];
+let searchFocusCalls = 0;
 const searchInput = {{
   value: '',
   placeholder: 'Search papers or blogs by title, author, venue, keyword…',
@@ -453,6 +454,10 @@ const searchInput = {{
   addEventListener: function(name, listener) {{
     if (!this.listeners[name]) this.listeners[name] = [];
     this.listeners[name].push(listener);
+  }},
+  focus: function() {{
+    searchFocusCalls += 1;
+    document.activeElement = this;
   }}
 }};
 function makeStaticElement(hidden) {{
@@ -522,6 +527,7 @@ const elements = {{
   'section-blogs': {{}}
 }};
 const document = {{
+  activeElement: null,
   body: {{
     classList: {{
       toggle: function(name, enabled) {{ bodyClasses[name] = Boolean(enabled); }}
@@ -708,10 +714,17 @@ const category = new FakeElement('div');
 const mechanism = new FakeElement('div');
 renderStatsDistribution(category, data);
 renderStatsDistribution(mechanism, data, {{ tagGroup: 'mechanism' }});
-const categoryRow = category.children[0].children[0];
-const mechanismRow = mechanism.children[0].children[0];
+const categoryList = category.children[0];
+const mechanismList = mechanism.children[0];
+const categoryItem = categoryList.children[0];
+const mechanismItem = mechanismList.children[0];
+const categoryRow = categoryItem;
+const mechanismRow = mechanismItem.children[0] || mechanismItem;
 process.stdout.write(JSON.stringify({{
+  listRoles: [categoryList.attributes.role || null, mechanismList.attributes.role || null],
+  itemRoles: [categoryItem.attributes.role || null, mechanismItem.attributes.role || null],
   categoryTag: categoryRow.tagName,
+  categoryAria: categoryRow.attributes['aria-label'],
   mechanismTag: mechanismRow.tagName,
   href: mechanismRow.attributes.href,
   tagKey: mechanismRow.attributes['data-tag-key'],
@@ -724,7 +737,10 @@ process.stdout.write(JSON.stringify({{
         self.assertEqual(
             json.loads(output),
             {
+                "listRoles": ["list", "list"],
+                "itemRoles": ["listitem", "listitem"],
                 "categoryTag": "DIV",
+                "categoryAria": "Flat loop: 2 papers, 50 percent",
                 "mechanismTag": "A",
                 "href": "?tag=mechanism%3A%3Aflat-loop#papers",
                 "tagKey": "mechanism::flat-loop",
@@ -777,7 +793,9 @@ const entered = {
   searchCall: searchCalls.at(-1),
   quickFilterUiUpdates: quickFilterUiUpdates,
   sidebarOpenCalls: sidebarOpenCalls,
-  tagOpenCalls: tagOpenCalls
+  tagOpenCalls: tagOpenCalls,
+  focusCalls: searchFocusCalls,
+  searchFocused: document.activeElement === searchInput
 };
 
 ACTIVE_TAG_FILTERS.add('focus::architecture');
@@ -789,7 +807,9 @@ const cleared = {
   locked: LOCKED_TAG_FILTER_KEY,
   scopeHidden: searchTagScope.hidden,
   query: searchInput.value,
-  placeholder: searchInput.placeholder
+  placeholder: searchInput.placeholder,
+  focusCalls: searchFocusCalls,
+  searchFocused: document.activeElement === searchInput
 };
 process.stdout.write(JSON.stringify({
   pushes: pushStateCalls,
@@ -821,6 +841,8 @@ process.stdout.write(JSON.stringify({
                     "quickFilterUiUpdates": 1,
                     "sidebarOpenCalls": [False],
                     "tagOpenCalls": [False],
+                    "focusCalls": 1,
+                    "searchFocused": True,
                 },
                 "cleared": {
                     "active": ["focus::architecture"],
@@ -828,6 +850,8 @@ process.stdout.write(JSON.stringify({
                     "scopeHidden": True,
                     "query": "LayerNorm",
                     "placeholder": "Search papers or blogs by title, author, venue, keyword…",
+                    "focusCalls": 2,
+                    "searchFocused": True,
                 },
             },
         )
@@ -910,13 +934,54 @@ process.stdout.write(JSON.stringify({{
         interactions_end = html.index("function initTableInteractions() {", interactions_start)
         self.assertIn("shouldHandleTagDrilldownClick(event)", html[interactions_start:interactions_end])
 
+    def test_blog_only_tags_are_noninteractive_but_shared_paper_tags_link(self):
+        """A blog tag only links when the Papers route has matching results."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        helper_start = html.index("function renderPaperTagHtml(")
+        helper_end = html.index("function renderCard(paper, query) {", helper_start)
+        helper_source = html[helper_start:helper_end]
+        route_start = html.index("function getTagDrilldownHref(")
+        route_end = html.index("function updateTagDrilldownSearchUI(", route_start)
+        route_source = html[route_start:route_end]
+        escape_start = html.index("function escapeHtml(str) {")
+        escape_end = html.index("function highlightQuery(", escape_start)
+        escape_source = html[escape_start:escape_end]
+        script = f"""
+{escape_source}
+{route_source}
+{helper_source}
+const sharedKey = 'domain::reasoning';
+const ALL_PAPERS = [{{ _tagKeySet: new Set([sharedKey]) }}];
+const ACTIVE_TAG_FILTERS = new Set();
+const blogOnly = renderPaperTagHtml(
+  {{ key: 'domain::blog-only', group: 'domain', label: 'blog-only', displayLabel: 'blog-only' }},
+  'paper-tag-domain'
+);
+const shared = renderPaperTagHtml(
+  {{ key: sharedKey, group: 'domain', label: 'reasoning', displayLabel: 'reasoning' }},
+  'paper-tag-domain'
+);
+process.stdout.write(JSON.stringify({{ blogOnly: blogOnly, shared: shared }}));
+"""
+        output = json.loads(subprocess.check_output(["node", "-e", script], text=True))
+        self.assertEqual(
+            output["blogOnly"],
+            '<span class="paper-tag paper-tag-domain">blog-only</span>',
+        )
+        self.assertNotIn("href=", output["blogOnly"])
+        self.assertNotIn("data-tag-key", output["blogOnly"])
+        self.assertIn('<a href="?tag=domain%3A%3Areasoning#papers"', output["shared"])
+        self.assertIn('data-tag-key="domain::reasoning"', output["shared"])
+
     def test_card_tags_are_native_links_and_advanced_chips_expose_state(self):
         """Card tags navigate; advanced filter buttons remain explicit toggle controls."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        card_start = html.index("function renderCard(paper, query) {")
+        card_start = html.index("function renderPaperTagHtml(")
         card_end = html.index("// ── State & Category Tree", card_start)
         card_source = html[card_start:card_end]
+        self.assertIn("getPaperCountForTagKey(entry.key)", card_source)
         self.assertIn("'<a href=\"' + escapeHtml(getTagDrilldownHref(entry.key))", card_source)
+        self.assertIn("'<span class=\"' + classes.join(' ')", card_source)
         self.assertIn("data-tag-key", card_source)
 
         chip_start = html.index("function renderTagFilterGroups() {")
@@ -978,6 +1043,7 @@ function parse(search, hash) {
 
 const parsed = {
   valid: parse('?tag=mechanism%3A%3Aflat-loop', '#papers'),
+  section: parse('?tag=mechanism%3A%3Aflat-loop', '#section-designs'),
   unknown: parse('?tag=domain%3A%3Aunknown', '#papers'),
   malformed: parse('?tag=mechanism%3Aflat-loop', '#papers'),
   nonPaper: parse('?tag=domain%3A%3Ablog-only', '#papers'),
@@ -988,6 +1054,15 @@ window.location.search = '?tag=mechanism%3A%3Aflat-loop&q=LayerNorm';
 window.location.hash = '#papers';
 dispatchWindowEvent('popstate');
 const restored = {
+  locked: LOCKED_TAG_FILTER_KEY,
+  active: Array.from(ACTIVE_TAG_FILTERS).sort(),
+  query: searchInput.value,
+  searchCall: searchCalls.at(-1)
+};
+
+window.location.hash = '#section-designs';
+dispatchWindowEvent('hashchange');
+const categoryRoute = {
   locked: LOCKED_TAG_FILTER_KEY,
   active: Array.from(ACTIVE_TAG_FILTERS).sort(),
   query: searchInput.value,
@@ -1021,6 +1096,7 @@ process.stdout.write(JSON.stringify({
     hashchange: (windowListeners.hashchange || []).length
   },
   restored: restored,
+  categoryRoute: categoryRoute,
   leftRoute: leftRoute,
   statsRoute: statsRoute,
   uiUpdates: uiUpdates
@@ -1030,6 +1106,7 @@ process.stdout.write(JSON.stringify({
             result["parsed"],
             {
                 "valid": "mechanism::flat-loop",
+                "section": "mechanism::flat-loop",
                 "unknown": "",
                 "malformed": "",
                 "nonPaper": "",
@@ -1039,6 +1116,15 @@ process.stdout.write(JSON.stringify({
         self.assertEqual(result["listeners"], {"popstate": 1, "hashchange": 1})
         self.assertEqual(
             result["restored"],
+            {
+                "locked": "mechanism::flat-loop",
+                "active": ["focus::architecture", "mechanism::flat-loop"],
+                "query": "LayerNorm",
+                "searchCall": "LayerNorm",
+            },
+        )
+        self.assertEqual(
+            result["categoryRoute"],
             {
                 "locked": "mechanism::flat-loop",
                 "active": ["focus::architecture", "mechanism::flat-loop"],
