@@ -1561,6 +1561,7 @@ process.stdout.write(JSON.stringify({
             'id="stats-category-distribution"',
             'id="stats-mechanism-distribution"',
             '<details class="stats-taxonomy-details">',
+            "Focus and domain tags are multi-label; aggregate shares may exceed 100%.",
             'id="stats-focus-distribution"',
             'id="stats-domain-distribution"',
             'class="stats-dashboard-grid stats-dashboard-secondary"',
@@ -1784,6 +1785,7 @@ process.stdout.write(JSON.stringify({
         self.assertIn("buildStatsDistribution(ALL_PAPERS, 'mechanism_tags'", stats_source)
         self.assertIn("buildStatsDistribution(ALL_PAPERS, 'focus_tags'", stats_source)
         self.assertIn("buildStatsDistribution(ALL_PAPERS, 'domain_tags'", stats_source)
+        self.assertNotIn("{ limit:", stats_source)
         self.assertIn("HAS_RENDERED_STATS = true;", stats_source)
         self.assertIn("if (!CATALOG_DATA_READY)", stats_source)
         self.assertIn("release-pulse-summary", html)
@@ -1880,6 +1882,20 @@ process.stdout.write(JSON.stringify({
         self.assertNotIn(".stats-long-arc", stats_css)
         self.assertIn("@media (max-width: 768px)", stats_css)
         self.assertIn("min-height: 44px;", stats_css)
+
+    def test_stats_mobile_order_prioritizes_latest_releases_before_annual_volume(self):
+        """Mobile Stats should read KPI, Pulse, Composition, Latest, then Annual."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        stats_start = html.index("    .stats-panel {")
+        stats_end = html.index("    /* ── Category Section ── */", stats_start)
+        stats_css = html[stats_start:stats_end]
+        mobile_start = stats_css.index("    @media (max-width: 768px)")
+        mobile_end = stats_css.index("    @media (max-width: 560px)", mobile_start)
+        mobile_css = stats_css[mobile_start:mobile_end]
+
+        self.assertIn(".stats-latest-card", mobile_css)
+        self.assertIn("order: -1;", mobile_css)
+        self.assertNotIn("order:", stats_css[:mobile_start])
 
     def test_stats_dashboard_refines_light_and_dark_theme_tokens(self):
         """Dashboard surfaces must have explicit light and dark treatments."""

@@ -1415,6 +1415,9 @@
       .stats-latest-card {
         grid-column: span 12;
       }
+      .stats-latest-card {
+        order: -1;
+      }
       .stats-card-header-inline {
         display: block;
       }
@@ -4535,13 +4538,14 @@
           </div>
           <details class="stats-taxonomy-details">
             <summary>Explore focus and domain tags</summary>
+            <p class="stats-distribution-note">Focus and domain tags are multi-label; aggregate shares may exceed 100%.</p>
             <div class="stats-taxonomy-detail-grid">
               <div class="stats-distribution-block">
                 <h4>Research focus</h4>
                 <div id="stats-focus-distribution"></div>
               </div>
               <div class="stats-distribution-block">
-                <h4>Top domains</h4>
+                <h4>Domain tags</h4>
                 <div id="stats-domain-distribution"></div>
               </div>
             </div>
@@ -5510,8 +5514,7 @@ function renderStatsPanel() {
   );
   renderStatsDistribution(
     document.getElementById('stats-domain-distribution'),
-    buildStatsDistribution(ALL_PAPERS, 'domain_tags'),
-    { limit: 8 }
+    buildStatsDistribution(ALL_PAPERS, 'domain_tags')
   );
   renderAnnualReleaseVolume(
     document.getElementById('annual-release-volume'),
