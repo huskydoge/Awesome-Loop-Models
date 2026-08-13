@@ -33,6 +33,12 @@ If you find this repository useful, please consider citing this list:
 
 ---
 
+## Star History
+
+![Star history of huskydoge/Awesome-Loop-Models](assets/star-history/star-history.png)
+
+---
+
 <div align="center">
 <sub>
   Maintained by <a href="https://github.com/huskydoge">huskydoge</a>.
