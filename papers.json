@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 137,
-    "paper_total": 130,
+    "total": 139,
+    "paper_total": 132,
     "blog_total": 7,
-    "briefing_total": 39,
-    "latest_briefing_date": "2026-08-11",
-    "generated": "2026-08-12T05:12:08.667131+00:00",
+    "briefing_total": 40,
+    "latest_briefing_date": "2026-08-12",
+    "generated": "2026-08-13T03:47:09.417597+00:00",
     "generated_local_date": "2026-08-12",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets.",
     "foundation_label": "Foundation",
@@ -7179,6 +7179,93 @@
       "arxiv_id": "2608.09888"
     },
     {
+      "title": "Retrofitting Recurrent Depth into a Pretrained Language Model: Installation, Extrapolation, Transfer, and Retention at Two Parameter Budgets",
+      "authors": "Mark Shapiro",
+      "year": 2026,
+      "published_date": "2026-07-31",
+      "added_date": "2026-08-12",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Retrofits Qwen2.5-0.5B with a weight-tied recurrent middle block and re-entry bridge, installing iterative latent computation at full-block and frozen-base adapter training budgets.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.11233",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.11233"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-08-13",
+      "id": "2608.11233",
+      "source_file": "2608.11233.yaml",
+      "source_path": "papers/2608.11233.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Mark Shapiro"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.11233"
+    },
+    {
+      "title": "ODE-Based Transformer Decoders for Iterative Sign Language Translation",
+      "authors": "Tuğçe Kızıltepe, Hacer Yalim Keles",
+      "year": 2026,
+      "published_date": "2026-08-11",
+      "added_date": "2026-08-12",
+      "venue": "ACVR Workshop @ ECCV",
+      "category": "applications",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "machine-translation",
+        "multimodal",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Replaces residual updates in an iterative sign-language translation decoder with ODE-inspired RK-2 and RK-4 updates that repeatedly evaluate the same learned decoder function without adding decoder parameters.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.11352",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.11352"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-08-13",
+      "id": "2608.11352",
+      "source_file": "2608.11352.yaml",
+      "source_path": "papers/2608.11352.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Tuğçe Kızıltepe",
+        "Hacer Yalim Keles"
+      ],
+      "venueClass": "venue-other",
+      "arxiv_id": "2608.11352"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -7529,47 +7616,45 @@
   ],
   "briefings": [
     {
-      "date": "2026-08-11",
-      "title": "Daily Loop-Model Briefing - 2026-08-11",
+      "date": "2026-08-12",
+      "title": "Daily Loop-Model Briefing - 2026-08-12",
       "status": "added",
-      "summary": "Four recent papers were added: continuous depth batching for looped LMs, recurrent latent reasoning for ARC-style tasks, a recursive latent block for semantically grounded implicit reasoning, and full-state latent feedback across decoding steps.",
-      "source_path": "briefings/2026/08/2026-08-11.md",
+      "summary": "Two papers were added: a recurrent-depth retrofit of a pretrained language model and an ODE-inspired iterative decoder for sign language translation.",
+      "source_path": "briefings/2026/08/2026-08-12.md",
       "highlights": [
-        "Continuous Depth Batching is the clearest systems hit: it assumes looped LMs whose shared layer block is iterated a variable number of times, then makes adaptive-depth serving practical.",
-        "BDH-CQ is an applications entry for recurrent latent reasoning: it combines in-context memory updates with iterative latent-space computation and reports a strong ARC-AGI-1 cost-accuracy point.",
-        "ReLIT is a compact architecture entry: a trainable recursive latent block repeatedly refines hidden reasoning states on top of a frozen LLM backbone.",
-        "Full-bandwidth Transformer widens autoregressive feedback from a sampled token to the full top-layer hidden state, sending latent computation back through the same stack with negligible per-token overhead."
+        "A Qwen2.5-0.5B retrofit turns its middle 12 layers into one weight-tied recurrent block while preserving the original one-loop path.",
+        "The sign-language decoder repeatedly applies the same learned decoder function within refinement and Runge--Kutta stages, improving matched translation baselines without adding decoder parameters."
       ],
       "candidates": [
         {
-          "id": "2608.09444",
-          "title": "Depth-adaptive Inference of Looped Language Models via Continuous Depth Batching",
+          "id": "2608.11233",
+          "title": "Retrofitting Recurrent Depth into a Pretrained Language Model: Installation, Extrapolation, Transfer, and Retention at Two Parameter Budgets",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.09444"
+          "url": "https://arxiv.org/abs/2608.11233"
         },
         {
-          "id": "2608.09888",
-          "title": "BDH-CQ: In-Context Learning with Recurrent Latent Reasoning",
+          "id": "2608.11352",
+          "title": "ODE-Based Transformer Decoders for Iterative Sign Language Translation",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.09888"
+          "url": "https://arxiv.org/abs/2608.11352"
         },
         {
-          "id": "2608.08113",
-          "title": "Think Deep, Speak Once: Relit, A Recursive Latent Implicit Transformer Framework",
-          "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.08113"
-        },
-        {
-          "id": "2608.08888",
-          "title": "Full-bandwidth transformer",
-          "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.08888"
-        },
-        {
-          "id": "2608.02870",
-          "title": "Maglev: Sliding Recurrent Memory",
+          "id": "2608.11716",
+          "title": "Chain-of-Thought Shows the Path to a Tree: Realizing Branching Complexity",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.02870"
+          "url": "https://arxiv.org/abs/2608.11716"
+        },
+        {
+          "id": "2608.11701",
+          "title": "Consolidator: Learning Persistent Routed Memory Across Context Boundaries",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2608.11701"
+        },
+        {
+          "id": "2608.11657",
+          "title": "Semantic Lenia",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2608.11657"
         }
       ]
     }
