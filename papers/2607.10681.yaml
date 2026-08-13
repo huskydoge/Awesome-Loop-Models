@@ -14,9 +14,8 @@ domain_tags:
 - reasoning
 focus_tags:
 - architecture
-- training-algorithm
 tags:
-- Looped-Transformer
+- looped-transformer
 desc: Analyzes pre-LayerNorm looped Transformers as recurrent systems, arguing that
   LayerNorm acts as implicit gain control for stable memory routing.
 links:

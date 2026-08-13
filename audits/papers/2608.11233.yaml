@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2608.11233"
+status: verified
+source:
+  url: https://arxiv.org/abs/2608.11233
+  version: "arXiv v1, 2026-07-31"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The Prelude and Coda run once while the same weight-tied 12-layer recurrent block is reapplied multiple times inside one forward process."
+  locator: "Sections 3.1-3.3, Figure 1, and Listing 2"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces two methods for installing recurrent depth into a pretrained language model."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "One weight-tied middle block is reused over a single recurrent-depth axis."
+  focus_tags:
+    values: [architecture, objective-loss, training-algorithm]
+    rationale: "The work contributes the recurrent retrofit, intermediate-state supervision with outcome-only annealing, and two training-budget protocols."
+  domain_tags:
+    values: [language-modeling, reasoning, algorithmic-reasoning, efficiency]
+    rationale: "The model is evaluated on language-model retention and scrambled rule-table composition under full-block and adapter parameter budgets."
+  tags:
+    values: []
+    rationale: "No optional alias is needed."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and sole author."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on the stored publication date."
+  description:
+    status: verified
+    evidence: "Sections 3-4 support the Qwen2.5 retrofit, re-entry bridge, and two training budgets."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

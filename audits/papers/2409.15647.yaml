@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2409.15647"
+status: verified
+source:
+  url: https://arxiv.org/abs/2409.15647
+  version: "arXiv v5; ICLR 2025"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The model repeatedly applies the same Transformer block within one forward computation and can stop the recurrence at a selected depth."
+  locator: "Section 3; Section 4.3"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces an adaptive-step looped Transformer and its training procedure."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "One shared Transformer block is reused along a single recurrent-depth axis."
+  focus_tags:
+    values: [architecture, training-algorithm, inference-algorithm]
+    rationale: "The work covers the looped architecture, its curriculum, and confidence-based adaptive stopping."
+  domain_tags:
+    values: [algorithmic-reasoning, adaptive-compute]
+    rationale: "Evaluation targets algorithmic length generalization, while Section 4.3 varies inference depth through stopping rules."
+  tags:
+    values: []
+    rationale: "No optional alias is needed."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The primary-source record confirms the stored title and author order."
+  publication:
+    status: verified
+    evidence: "The primary-source record identifies the ICLR 2025 paper and stored publication date."
+  description:
+    status: verified
+    evidence: "The method and adaptive-stopping experiment support the stored summary."
+  links:
+    status: verified
+    evidence: "The arXiv, OpenReview, and repository links identify the same paper."
+unresolved_questions: []

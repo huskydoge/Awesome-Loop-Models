@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2607.18618"
+status: verified
+source:
+  url: https://arxiv.org/abs/2607.18618
+  version: "arXiv v1, 2026-07-21"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "A frozen LoopLM backbone repeatedly applies the same shared Transformer stack for recurrent hidden-state updates before next-token prediction."
+  locator: "Figure 1; Section 3.1, Equations 2-5"
+taxonomy:
+  category:
+    value: applications
+    rationale: "The main contribution applies an existing latent-reasoning LoopLM backbone to translation across 32 directions."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "One shared recurrent stack is unrolled along a single depth axis."
+  focus_tags:
+    values: [training-algorithm, inference-algorithm]
+    rationale: "The work uses frozen-backbone LoRA adaptation and controls recurrent inference depth."
+  domain_tags:
+    values: [language-modeling, machine-translation, efficiency]
+    rationale: "LatentMT is a looped language model evaluated on translation with explicit training, memory, latency, and inference-efficiency analysis."
+  tags:
+    values: []
+    rationale: "No optional alias is needed."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and six-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored first-posting date and venue."
+  description:
+    status: verified
+    evidence: "The abstract and results support recurrent translation across 32 directions and comparison with larger baselines."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

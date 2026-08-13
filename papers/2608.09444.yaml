@@ -14,6 +14,7 @@ mechanism_tags:
 domain_tags:
 - language-modeling
 - efficiency
+- adaptive-compute
 focus_tags:
 - inference-algorithm
 desc: Introduces continuous depth batching for looped language models, scheduling

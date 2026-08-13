@@ -4,8 +4,8 @@ status: verified
 source:
   url: https://arxiv.org/abs/2603.19714
   version: "arXiv v1, 2026-03-20"
-  verified_on: "2026-07-10"
-reviewer: "codex-primary-source-audit-2026-07-10-batch-f"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
 confidence: high
 scope:
   verdict: in-scope
@@ -23,13 +23,13 @@ taxonomy:
     values:
       - objective-loss
       - training-algorithm
-    rationale: "The central contribution is an iteration-level reinforcement objective and training algorithm."
+      - inference-algorithm
+    rationale: "The contribution combines an iteration-level reinforcement objective, its training procedure, and a learned exit policy for depth selection."
   domain_tags:
     values:
       - language-modeling
       - reasoning
-      - RL
-    rationale: "The method applies reinforcement pre-training to recurrent language-model reasoning."
+    rationale: "The evaluated problem domains are language modeling and reasoning; reinforcement learning is the training method, not a task domain."
   tags:
     values:
       - LoopRPT

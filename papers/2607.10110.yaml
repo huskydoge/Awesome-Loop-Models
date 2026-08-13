@@ -18,6 +18,7 @@ domain_tags:
 - adaptive-compute
 focus_tags:
 - architecture
+- training-algorithm
 - inference-algorithm
 tags:
 - Looped-Mamba

@@ -12,10 +12,12 @@ venue: arXiv
 category: designs
 foundation: false
 mechanism_tags:
+- hierarchical-loop
 - flat-loop
 domain_tags:
 - language-modeling
 - scaling
+- theory
 focus_tags:
 - architecture
 - training-algorithm
@@ -26,6 +28,7 @@ desc: Studies depth scaling in looped Transformers, showing how residual scaling
 links:
   arxiv: https://arxiv.org/abs/2607.13491
   alphaxiv: https://www.alphaxiv.org/abs/2607.13491
+  github: https://github.com/lszshu/DeepLoop
 citations: 1
 citation_sources:
   semantic_scholar: 1

@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2607.27656"
+status: verified
+source:
+  url: https://arxiv.org/abs/2607.27656
+  version: "arXiv v1, 2026-07-30"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "SCSE repeatedly reuses the same Transformer block over recurrent depth while preserving an input-conditioned source state."
+  locator: "Abstract; Section 2.1"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces source-centered state evolution as a reusable looped-Transformer architecture."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "One parameter-shared block is reused along a single loop-depth axis."
+  focus_tags:
+    values: [architecture, inference-algorithm]
+    rationale: "The work introduces the recurrent state update and evaluates calibrated depth selection."
+  domain_tags:
+    values: [language-modeling, scaling]
+    rationale: "Experiments cover language modeling, completion, and loop-depth/model-scale behavior; no reasoning task is evaluated."
+  tags:
+    values: []
+    rationale: "No optional alias is needed."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and six-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored date and venue."
+  description:
+    status: verified
+    evidence: "The abstract and Section 2.1 support the input anchor and shared recurrent update."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

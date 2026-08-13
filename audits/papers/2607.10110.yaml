@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2607.10110"
+status: verified
+source:
+  url: https://arxiv.org/abs/2607.10110
+  version: "arXiv v1, 2026-07-11"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The model repeatedly applies a shared Mamba or hybrid block to internal states within one forward computation."
+  locator: "Abstract; Section 3"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces looped state-space language-model architectures and exit-state selection."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "A shared block is reused over a single recurrent-depth axis."
+  focus_tags:
+    values: [architecture, training-algorithm, inference-algorithm]
+    rationale: "Section 3 specifies the architecture, staged training pipeline, and exit-state selector."
+  domain_tags:
+    values: [language-modeling, reasoning, adaptive-compute]
+    rationale: "The models are trained and evaluated for language modeling and reasoning with learned prediction-depth selection."
+  tags:
+    values: [Looped-Mamba]
+    rationale: "Looped-Mamba is the named model family."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and four-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored date and venue."
+  description:
+    status: verified
+    evidence: "The abstract and Section 3 support shared-block recurrence and exit-state selection."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

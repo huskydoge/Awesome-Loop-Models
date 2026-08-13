@@ -6,9 +6,10 @@ year: 2026
 published_date: '2026-08-11'
 added_date: '2026-08-12'
 venue: ACVR Workshop @ ECCV
-category: applications
+category: designs
 foundation: false
 mechanism_tags:
+- hierarchical-loop
 - flat-loop
 domain_tags:
 - machine-translation

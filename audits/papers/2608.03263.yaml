@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2608.03263"
+status: verified
+source:
+  url: https://arxiv.org/abs/2608.03263
+  version: "arXiv v1, 2026-08-04"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The analyzed recurrent-depth Transformer repeatedly applies a shared four-layer block over a fixed ladder of inference iterations."
+  locator: "Section 2, Substrate and instruments"
+taxonomy:
+  category:
+    value: analysis
+    rationale: "The paper diagnoses commitment and hidden-state/readout dynamics in a reproduced recurrent-depth reasoner."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "The recurrent block evolves hidden state along one iterative depth axis."
+  focus_tags:
+    values: [architecture]
+    rationale: "The analysis centers on hidden-state geometry and the tied vocabulary-readout interface."
+  domain_tags:
+    values: [language-modeling, reasoning]
+    rationale: "The work studies a latent-reasoning language model on synthetic multi-hop relational composition."
+  tags:
+    values: []
+    rationale: "No optional alias is needed."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and sole author."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored first-posting date and venue."
+  description:
+    status: verified
+    evidence: "The paper supports the readout transition and distinguishes robust hidden-state evidence from coordinate-dependent artifacts."
+  links:
+    status: verified
+    evidence: "Section 2 identifies the companion repository linked in the canonical record."
+unresolved_questions: []

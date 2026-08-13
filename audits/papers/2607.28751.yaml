@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2607.28751"
+status: verified
+source:
+  url: https://arxiv.org/abs/2607.28751
+  version: "arXiv v1, 2026-07-30"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "ReLoop-UME repeatedly reuses a parameter-shared retrieval-forming block while carrying retrieval registers across loop depth."
+  locator: "Abstract; Sections 3.2-3.5"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The principal artifact is a new recurrent-depth embedding architecture with learnable retrieval registers."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "The retrieval-forming block is reused sequentially along one recurrent-depth axis."
+  focus_tags:
+    values: [architecture, inference-algorithm]
+    rationale: "The paper contributes the register-based architecture and its recurrent retrieval computation."
+  domain_tags:
+    values: [multimodal, retrieval, efficiency]
+    rationale: "The architecture targets efficient universal multimodal embedding and retrieval."
+  tags:
+    values: []
+    rationale: "No optional alias is needed."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and six-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored date and venue."
+  description:
+    status: verified
+    evidence: "Sections 3.2-3.5 support recurrent block reuse and evidence accumulation in retrieval registers."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

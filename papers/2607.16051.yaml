@@ -19,11 +19,14 @@ domain_tags:
 - language-modeling
 - reasoning
 - scaling
+- efficiency
+- memory-efficiency
 focus_tags:
 - architecture
 - training-algorithm
 tags:
 - Loopie
+- MoE
 desc: Introduces the Loopie MoE looped Transformer series, arguing that repeated reuse
   of compact Transformer blocks can outperform compute-matched vanilla Transformer
   baselines and support strong post-trained reasoning.

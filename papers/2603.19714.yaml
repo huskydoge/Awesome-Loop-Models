@@ -19,13 +19,13 @@ mechanism_tags:
 domain_tags:
 - language-modeling
 - reasoning
-- RL
 tags:
 - LoopRPT
 - Ouro
 focus_tags:
 - objective-loss
 - training-algorithm
+- inference-algorithm
 desc: Proposes LoopRPT, a reinforcement pre-training method for looped language models
   that assigns learning signals to latent iterations, improving accuracy-compute trade-offs
   and strengthening early-stage reasoning on Ouro.

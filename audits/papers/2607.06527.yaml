@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2607.06527"
+status: verified
+source:
+  url: https://arxiv.org/abs/2607.06527
+  version: "arXiv v1, 2026-07-07; ICML 2026"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "RSF-GLLM repeatedly reuses its recurrent soft-flow update to refine query and graph-relevance states before a single LLM generation call."
+  locator: "Section 1; method section"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The main reusable artifact is the recurrent soft-flow architecture and regularizer, not only its KGQA application."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "The same soft-flow transition is iterated over one recurrent axis."
+  focus_tags:
+    values: [architecture, objective-loss, inference-algorithm]
+    rationale: "The paper contributes the recurrent graph-flow module, a flow-sparsity regularizer, and grounded path extraction."
+  domain_tags:
+    values: [graph-data, reasoning, efficiency]
+    rationale: "Experiments cover multi-hop knowledge-graph reasoning and report one-call generation efficiency."
+  tags:
+    values: [RSF-GLLM]
+    rationale: "RSF-GLLM is the paper's method name."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The primary-source record confirms the stored title and two-author order."
+  publication:
+    status: verified
+    evidence: "The primary source identifies the ICML paper and stored arXiv date."
+  description:
+    status: verified
+    evidence: "The introduction and method support recurrent state refinement and graph relevance propagation."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv links share the audited identifier."
+unresolved_questions: []

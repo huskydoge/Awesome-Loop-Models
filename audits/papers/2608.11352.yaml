@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2608.11352"
+status: verified
+source:
+  url: https://arxiv.org/abs/2608.11352
+  version: "arXiv v1, 2026-08-11; ACVR 2026 workshop"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The model iteratively reapplies its E2 decoder, and each Runge-Kutta update repeatedly evaluates the same learned decoder function without adding decoder parameters."
+  locator: "Section 3.3, Equation 1; Section 3.4, RK-2 and RK-4 formulations"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The main reusable artifact is an ODE-inspired Runge-Kutta decoder-update algorithm, with sign-language translation as its validation domain."
+  mechanism_tags:
+    values: [hierarchical-loop, flat-loop]
+    rationale: "Outer iterative refinement contains inner repeated evaluations of the shared decoder function at Runge-Kutta stages."
+  focus_tags:
+    values: [architecture, inference-algorithm]
+    rationale: "The paper replaces residual decoder updates with reusable RK-2 and RK-4 inference updates."
+  domain_tags:
+    values: [machine-translation, multimodal, efficiency]
+    rationale: "The method is evaluated for video-to-text sign-language translation with FLOP and latency trade-offs."
+  tags:
+    values: []
+    rationale: "No optional alias is needed."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and two-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv record confirms the stored date and ACVR workshop affiliation."
+  description:
+    status: verified
+    evidence: "Sections 3.3-3.4 support iterative RK-2/RK-4 evaluation of a shared decoder function without extra decoder parameters."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

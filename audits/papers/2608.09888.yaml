@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2608.09888"
+status: verified
+source:
+  url: https://arxiv.org/abs/2608.09888
+  version: "arXiv v1, 2026-08-10"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "BDH-CQ repeatedly applies the same latent transition to its hidden reasoning state after processing the demonstrations."
+  locator: "Sections 3.2-3.3, recurrent-state equations"
+taxonomy:
+  category:
+    value: applications
+    rationale: "The paper's primary artifact is empirical task evidence for demonstration-conditioned ARC visual transformations."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "One latent transition is reused along a single reasoning-depth axis."
+  focus_tags:
+    values: [architecture, inference-algorithm]
+    rationale: "The work describes the recurrent latent system and its iterative inference procedure."
+  domain_tags:
+    values: [reasoning, algorithmic-reasoning, vision, efficiency]
+    rationale: "Current experiments use visual-grid ARC reasoning and emphasize cost efficiency; language and mathematics are listed only as future work."
+  tags:
+    values: []
+    rationale: "No optional alias is needed."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and nine-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored date and venue."
+  description:
+    status: verified
+    evidence: "The paper supports recurrent latent computation and the ARC-AGI-1 cost-efficiency result."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

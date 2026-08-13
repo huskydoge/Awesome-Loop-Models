@@ -21,6 +21,7 @@ desc: Analyzes iteration-by-iteration commitment in a recurrent-depth reasoner, 
 links:
   arxiv: https://arxiv.org/abs/2608.03263
   alphaxiv: https://www.alphaxiv.org/abs/2608.03263
+  github: https://github.com/primecalibre-research/ltg-replication-receipts
 citations: 0
 citation_sources:
   semantic_scholar: 0

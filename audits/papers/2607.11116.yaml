@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2607.11116"
+status: verified
+source:
+  url: https://arxiv.org/abs/2607.11116
+  version: "arXiv v1, 2026-07-13"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The paper audits a deep-equilibrium layer whose learned operator is repeatedly solved to a fixed point within one forward process."
+  locator: "Section 3; equilibrium formulation"
+taxonomy:
+  category:
+    value: analysis
+    rationale: "The work diagnoses lazy identity collapse in an existing DEQ reasoning design."
+  mechanism_tags:
+    values: [implicit-layer]
+    rationale: "The model defines computation through a fixed point of a shared learned operator."
+  focus_tags:
+    values: [architecture, inference-algorithm]
+    rationale: "The analysis concerns DEQ structure and the behavior of its fixed-point solve."
+  domain_tags:
+    values: [graph-data, reasoning]
+    rationale: "Experiments use ProofWriter entailment and BFS graph reachability; physics is an inductive bias rather than an application domain."
+  tags:
+    values: [DEQ]
+    rationale: "DEQ identifies the audited deep-equilibrium model family."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and sole author."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored date and venue."
+  description:
+    status: verified
+    evidence: "The analysis supports the stored lazy identity-collapse summary."
+  links:
+    status: verified
+    evidence: "The arXiv, AlphaXiv, and repository URLs identify the same paper."
+unresolved_questions: []

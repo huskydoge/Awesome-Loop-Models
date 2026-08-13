@@ -11,7 +11,7 @@ foundation: false
 mechanism_tags:
 - implicit-layer
 domain_tags:
-- physics
+- graph-data
 - reasoning
 focus_tags:
 - architecture

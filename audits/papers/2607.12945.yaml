@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2607.12945"
+status: verified
+source:
+  url: https://arxiv.org/abs/2607.12945
+  version: "arXiv v1, 2026-07-14"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "RecRec uses a shared Reasoner block for multiple inner passes at each outer latent-interest reasoning step."
+  locator: "Section 3.3; Section 3.5"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper's main artifact is a backbone-agnostic context-compressor and recursive-reasoner architecture."
+  mechanism_tags:
+    values: [hierarchical-loop, flat-loop]
+    rationale: "Outer reasoning steps contain repeated shared inner passes, and the Reasoner itself is reused along a flat axis."
+  focus_tags:
+    values: [architecture, objective-loss, training-algorithm, inference-algorithm]
+    rationale: "The paper contributes the recursive modules, IDR objective, staged supervision, and adjustable-depth inference."
+  domain_tags:
+    values: [recommendation, reasoning, adaptive-compute]
+    rationale: "The system reasons over latent user interests for recommendation and changes inference depth without retraining."
+  tags:
+    values: [RecRec]
+    rationale: "RecRec is this paper's official method name despite another paper using the same acronym."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and nine-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored date and venue."
+  description:
+    status: verified
+    evidence: "Section 3 supports adjustable-depth refinement of compact latent-interest state."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

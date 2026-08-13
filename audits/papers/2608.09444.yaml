@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2608.09444"
+status: verified
+source:
+  url: https://arxiv.org/abs/2608.09444
+  version: "arXiv v1, 2026-08-10"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The target looped language model repeatedly applies a shared recurrent core within one forward process, while CDB schedules per-sequence loop counts."
+  locator: "Abstract; Sections 2.1-2.3"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces continuous depth batching as a reusable inference scheduler."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "The scheduled model reuses one recurrent core over a single depth axis."
+  focus_tags:
+    values: [inference-algorithm]
+    rationale: "The central contribution is an inference scheduler for depth-adaptive looped models."
+  domain_tags:
+    values: [language-modeling, efficiency, adaptive-compute]
+    rationale: "CDB realizes speedups from per-sequence adaptive loop depth in language-model inference."
+  tags:
+    values: []
+    rationale: "No optional alias is needed."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and three-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored date and venue."
+  description:
+    status: verified
+    evidence: "Sections 2.1-2.3 support separate scheduling of recurrent and boundary stages."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

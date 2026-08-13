@@ -18,9 +18,10 @@ foundation: false
 mechanism_tags:
 - flat-loop
 domain_tags:
-- language-modeling
 - reasoning
 - algorithmic-reasoning
+- vision
+- efficiency
 focus_tags:
 - architecture
 - inference-algorithm

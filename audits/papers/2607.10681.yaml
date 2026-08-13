@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2607.10681"
+status: verified
+source:
+  url: https://arxiv.org/abs/2607.10681
+  version: "arXiv v1, 2026-07-12"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "The analysis treats a pre-LayerNorm Transformer block as a recurrent system reused across loop depth."
+  locator: "Abstract; recurrent-system formulation"
+taxonomy:
+  category:
+    value: analysis
+    rationale: "The paper analyzes stability and memory routing in an existing looped-Transformer form."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "One Transformer block is reused over a single recurrent-depth axis."
+  focus_tags:
+    values: [architecture]
+    rationale: "The contribution characterizes LayerNorm's architectural role as gain control rather than proposing a training algorithm."
+  domain_tags:
+    values: [language-modeling, reasoning]
+    rationale: "The analyzed architecture is a looped language model intended for recurrent reasoning."
+  tags:
+    values: [looped-transformer]
+    rationale: "The normalized lowercase alias avoids a case-only duplicate in the catalog."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and sole author."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored date and venue."
+  description:
+    status: verified
+    evidence: "The abstract supports the gain-control and stable-memory-routing summary."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2607.13491"
+status: verified
+source:
+  url: https://arxiv.org/abs/2607.13491
+  version: "arXiv v2, 2026-08-06"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "DeepLoop repeatedly applies shared physical Transformer blocks for multiple rounds; v2 also studies shared low-level recurrences nested inside outer high-level updates."
+  locator: "Figure 1; Section 2.1, Equation 1; Section 4.1, Equation 18"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces residual parameterization and initialization rules for stable tied recurrent depth."
+  mechanism_tags:
+    values: [hierarchical-loop, flat-loop]
+    rationale: "The base design has one recurrent-depth axis, while the v2 hierarchy nests low-level recurrence inside high-level updates."
+  focus_tags:
+    values: [architecture, training-algorithm]
+    rationale: "DeepLoop changes residual architecture and initialization scaling for repeatedly visited shared blocks."
+  domain_tags:
+    values: [language-modeling, scaling, theory]
+    rationale: "The paper derives tied-depth stability bounds and evaluates recurrent-depth scaling on GPT-style language models."
+  tags:
+    values: [DeepLoop]
+    rationale: "DeepLoop is the paper's official method name."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv title page confirms the stored title and five-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history records v1 on the stored publication date and v2 on 2026-08-06."
+  description:
+    status: verified
+    evidence: "The abstract and Sections 3-5 support stable repeated block use across recurrent depth."
+  links:
+    status: verified
+    evidence: "The arXiv paper identifies the official DeepLoop repository linked in the canonical record."
+unresolved_questions: []

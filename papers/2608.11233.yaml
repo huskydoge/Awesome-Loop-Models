@@ -13,9 +13,11 @@ mechanism_tags:
 domain_tags:
 - language-modeling
 - reasoning
+- algorithmic-reasoning
 - efficiency
 focus_tags:
 - architecture
+- objective-loss
 - training-algorithm
 desc: Retrofits Qwen2.5-0.5B with a weight-tied recurrent middle block and re-entry
   bridge, installing iterative latent computation at full-block and frozen-base adapter

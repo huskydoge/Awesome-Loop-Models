@@ -17,6 +17,7 @@ mechanism_tags:
 domain_tags:
 - vision
 - efficiency
+- memory-efficiency
 - scaling
 focus_tags:
 - architecture

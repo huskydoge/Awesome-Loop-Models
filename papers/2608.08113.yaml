@@ -1,4 +1,4 @@
-title: 'Think Deep, Speak Once: Relit, A Recursive Latent Implicit Transformer Framework'
+title: 'Think Deep, Speak Once: ReLIT, A Recursive Latent Implicit Transformer Framework'
 authors:
 - Abhishek Panwar
 - Maheep Singh
@@ -10,12 +10,18 @@ venue: arXiv
 category: designs
 foundation: false
 mechanism_tags:
+- hierarchical-loop
 - flat-loop
 domain_tags:
 - language-modeling
 - reasoning
+- algorithmic-reasoning
+- adaptive-compute
+- efficiency
 focus_tags:
 - architecture
+- training-algorithm
+- inference-algorithm
 desc: Adds a lightweight trainable recursive latent block to a frozen LLM backbone,
   repeatedly refining latent thinking states before committing to a final answer.
 links:

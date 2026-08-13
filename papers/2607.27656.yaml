@@ -16,7 +16,6 @@ mechanism_tags:
 - flat-loop
 domain_tags:
 - language-modeling
-- reasoning
 - scaling
 focus_tags:
 - architecture

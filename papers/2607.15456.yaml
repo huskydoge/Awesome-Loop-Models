@@ -13,6 +13,7 @@ mechanism_tags:
 domain_tags:
 - language-modeling
 - efficiency
+- memory-efficiency
 focus_tags:
 - inference-algorithm
 tags:

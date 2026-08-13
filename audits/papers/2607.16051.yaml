@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2607.16051"
+status: verified
+source:
+  url: https://arxiv.org/abs/2607.16051
+  version: "arXiv v2"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "Loopie repeatedly reuses compact Transformer blocks over recurrent depth within each model forward pass."
+  locator: "Abstract; Section 2.4"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces and scales a family of looped MoE Transformer designs."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "The same block is reused along one recurrent-depth axis."
+  focus_tags:
+    values: [architecture, training-algorithm]
+    rationale: "The main contributions are the Loopie architecture family and its hardware-aware pretraining recipe."
+  domain_tags:
+    values: [language-modeling, reasoning, scaling, efficiency, memory-efficiency]
+    rationale: "The work evaluates scaled language modeling and reasoning while reporting wall-clock and activation-memory benefits."
+  tags:
+    values: [Loopie, MoE]
+    rationale: "Loopie is the model family and MoE identifies the official mixture-of-experts variants."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and seven-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored date and venue."
+  description:
+    status: verified
+    evidence: "The paper supports the compact-block reuse, MoE variants, and post-trained reasoning summary."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

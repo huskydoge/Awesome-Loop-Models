@@ -1,0 +1,43 @@
+# Primary-source audit record for the canonical paper entry.
+paper_id: "2607.15456"
+status: verified
+source:
+  url: https://arxiv.org/abs/2607.15456
+  version: "arXiv v2"
+  verified_on: "2026-08-13"
+reviewer: "codex-primary-source-audit-2026-08-13-catalog-cleanup"
+confidence: high
+scope:
+  verdict: in-scope
+  evidence: "Looped Latent Attention operates on the states produced by repeated reuse of a weight-tied Transformer block within one forward process."
+  locator: "Abstract; Section 1"
+taxonomy:
+  category:
+    value: designs
+    rationale: "The paper introduces a reusable cross-loop KV-compression method for looped Transformers."
+  mechanism_tags:
+    values: [flat-loop]
+    rationale: "The target model repeatedly applies one shared Transformer block along recurrent depth."
+  focus_tags:
+    values: [inference-algorithm]
+    rationale: "The contribution is an inference-time KV-cache compression algorithm."
+  domain_tags:
+    values: [language-modeling, efficiency, memory-efficiency]
+    rationale: "The method targets language-model inference, with exact KV-cache reduction and measured memory-capacity gains."
+  tags:
+    values: [LLA]
+    rationale: "LLA is the method abbreviation used by the paper."
+content_checks:
+  title_authors:
+    status: verified
+    evidence: "The arXiv record confirms the stored title and two-author order."
+  publication:
+    status: verified
+    evidence: "The arXiv history supports the stored date and venue."
+  description:
+    status: verified
+    evidence: "The abstract and Section 1 support cross-loop KV compression without collapsing loop states."
+  links:
+    status: verified
+    evidence: "The arXiv and AlphaXiv URLs share the audited identifier."
+unresolved_questions: []

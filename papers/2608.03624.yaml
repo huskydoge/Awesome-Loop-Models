@@ -16,6 +16,7 @@ mechanism_tags:
 domain_tags:
 - language-modeling
 - reasoning
+- efficiency
 focus_tags:
 - architecture
 - objective-loss

@@ -14,9 +14,11 @@ mechanism_tags:
 - flat-loop
 domain_tags:
 - algorithmic-reasoning
+- adaptive-compute
 focus_tags:
 - architecture
 - training-algorithm
+- inference-algorithm
 desc: Introduces an adaptive-step looped Transformer and training procedure that improve
   length generalization on arithmetic and algorithmic tasks composed from iterative
   RASP-L operations.

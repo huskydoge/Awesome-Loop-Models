@@ -9,9 +9,10 @@ venue: arXiv
 category: designs
 foundation: false
 mechanism_tags:
+- flat-loop
 - implicit-layer
 domain_tags:
-- graphs
+- graph-data
 - vision
 - scientific-ml
 focus_tags:
