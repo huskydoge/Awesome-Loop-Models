@@ -440,14 +440,37 @@ const scrollRequests = [];
 const animationFrameCallbacks = [];
 const windowListeners = {{}};
 const replaceStateCalls = [];
+const pushStateCalls = [];
 const searchInput = {{
   value: '',
+  placeholder: 'Search papers or blogs by title, author, venue, keyword…',
+  attributes: {{}},
   listeners: {{}},
+  setAttribute: function(name, value) {{
+    this.attributes[name] = String(value);
+    if (name === 'placeholder') this.placeholder = String(value);
+  }},
   addEventListener: function(name, listener) {{
     if (!this.listeners[name]) this.listeners[name] = [];
     this.listeners[name].push(listener);
   }}
 }};
+function makeStaticElement(hidden) {{
+  return {{
+    hidden: Boolean(hidden),
+    textContent: '',
+    attributes: {{}},
+    listeners: {{}},
+    setAttribute: function(name, value) {{ this.attributes[name] = String(value); }},
+    addEventListener: function(name, listener) {{
+      if (!this.listeners[name]) this.listeners[name] = [];
+      this.listeners[name].push(listener);
+    }}
+  }};
+}}
+const searchTagScope = makeStaticElement(true);
+const searchTagScopeLabel = makeStaticElement(false);
+const searchTagScopeClear = makeStaticElement(false);
 const searchCalls = [];
 let uiUpdates = 0;
 
@@ -482,6 +505,9 @@ const elements = {{
   'papers-panel': papersPanel,
   'stats-panel': statsPanel,
   'search': searchInput,
+  'search-tag-scope': searchTagScope,
+  'search-tag-scope-label': searchTagScopeLabel,
+  'search-tag-scope-clear': searchTagScopeClear,
   'section-designs': {{}},
   'section-blogs': {{}}
 }};
@@ -504,8 +530,19 @@ const window = {{
   history: {{
     state: null,
     replaceState: function(state, title, url) {{
-      const nextUrl = new URL(String(url));
+      const nextUrl = new URL(String(url), window.location.href);
       replaceStateCalls.push({{
+        tag: nextUrl.searchParams.get('tag'),
+        q: nextUrl.searchParams.get('q'),
+        hash: nextUrl.hash
+      }});
+      window.location.href = nextUrl.href;
+      window.location.search = nextUrl.search;
+      browserHash = nextUrl.hash;
+    }},
+    pushState: function(state, title, url) {{
+      const nextUrl = new URL(String(url), window.location.href);
+      pushStateCalls.push({{
         tag: nextUrl.searchParams.get('tag'),
         q: nextUrl.searchParams.get('q'),
         hash: nextUrl.hash
@@ -583,6 +620,198 @@ function doSearch(query) {{ searchCalls.push(query); }}
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("tag-filter-chip-count", html)
         self.assertIn("tag.count", html)
+
+    def test_locked_tag_search_scope_has_static_accessible_controls(self):
+        """The free-text input keeps a separate, removable locked-tag token."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        self.assertIn('id="search-tag-scope"', html)
+        self.assertIn('id="search-tag-scope-label"', html)
+        self.assertIn('id="search-tag-scope-clear"', html)
+        self.assertIn('class="search-field"', html)
+        self.assertIn('aria-live="polite"', html[html.index('id="search-count"') - 120:html.index('id="search-count"') + 120])
+        self.assertIn(".search-tag-scope", html)
+        self.assertIn("min-height: 44px", html)
+
+    def test_stats_tag_distributions_link_to_papers_but_categories_do_not(self):
+        """Only genuine multi-label taxonomy rows expose tag drill-down links."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        stats_start = html.index("function renderStatsPanel() {")
+        stats_end = html.index("function escapeHtml(str) {", stats_start)
+        stats_source = html[stats_start:stats_end]
+
+        category_call = stats_source[stats_source.index("'stats-category-distribution'"):stats_source.index("'stats-mechanism-distribution'")]
+        self.assertNotIn("tagGroup", category_call)
+        self.assertIn("{ tagGroup: 'mechanism' }", stats_source)
+        self.assertIn("{ tagGroup: 'focus' }", stats_source)
+        self.assertIn("{ tagGroup: 'domain' }", stats_source)
+
+        renderer_start = html.index("function renderStatsDistribution(")
+        renderer_end = html.index("function renderAnnualReleaseVolume(", renderer_start)
+        renderer_source = html[renderer_start:renderer_end]
+        self.assertIn("options.tagGroup", renderer_source)
+        self.assertIn("buildTagEntry(tagGroup, row.key).key", renderer_source)
+        self.assertIn("getTagDrilldownHref(tagKey)", renderer_source)
+        self.assertIn("'View ' + row.count + ' papers tagged '", renderer_source)
+
+    def test_stats_distribution_renderer_builds_native_accessible_tag_links(self):
+        """Stats rows keep safe DOM rendering while tag rows become native links."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        renderer_start = html.index("function renderStatsDistribution(")
+        renderer_end = html.index("function renderAnnualReleaseVolume(", renderer_start)
+        renderer_source = html[renderer_start:renderer_end]
+        href_start = html.index("function getTagDrilldownGroupLabel(")
+        href_end = html.index("function navigateToTagDrilldown(", href_start)
+        href_source = html[href_start:href_end]
+        entry_start = html.index("function buildTagEntry(group, label) {")
+        entry_end = html.index("function getPaperTagEntries(", entry_start)
+        entry_source = html[entry_start:entry_end]
+        script = f"""
+class FakeElement {{
+  constructor(tagName) {{
+    this.tagName = tagName.toUpperCase();
+    this.attributes = {{}};
+    this.children = [];
+    this.style = {{}};
+    this.className = '';
+    this.textContent = '';
+  }}
+  setAttribute(name, value) {{ this.attributes[name] = String(value); }}
+  appendChild(child) {{ this.children.push(child); return child; }}
+  append(...children) {{ this.children.push(...children); }}
+  replaceChildren(...children) {{ this.children = children; }}
+}}
+const document = {{ createElement: (tagName) => new FakeElement(tagName) }};
+{href_source}
+{entry_source}
+{renderer_source}
+const data = {{ rows: [{{ key: 'Flat-Loop', label: 'Flat loop', count: 2, percentage: 50 }}] }};
+const category = new FakeElement('div');
+const mechanism = new FakeElement('div');
+renderStatsDistribution(category, data);
+renderStatsDistribution(mechanism, data, {{ tagGroup: 'mechanism' }});
+const categoryRow = category.children[0].children[0];
+const mechanismRow = mechanism.children[0].children[0];
+process.stdout.write(JSON.stringify({{
+  categoryTag: categoryRow.tagName,
+  mechanismTag: mechanismRow.tagName,
+  href: mechanismRow.attributes.href,
+  tagKey: mechanismRow.attributes['data-tag-key'],
+  tagGroup: mechanismRow.attributes['data-tag-group'],
+  role: mechanismRow.attributes.role || null,
+  aria: mechanismRow.attributes['aria-label']
+}}));
+"""
+        output = subprocess.check_output(["node", "-e", script], text=True)
+        self.assertEqual(
+            json.loads(output),
+            {
+                "categoryTag": "DIV",
+                "mechanismTag": "A",
+                "href": "?tag=mechanism%3A%3Aflat-loop#papers",
+                "tagKey": "mechanism::flat-loop",
+                "tagGroup": "mechanism",
+                "role": None,
+                "aria": "View 2 papers tagged Loop mechanism: Flat loop",
+            },
+        )
+
+    def test_tag_navigation_and_clear_use_push_state_with_locked_search_ui(self):
+        """Entering clears transient tags; clearing removes only tag and preserves q."""
+        result = self.run_top_level_tab_block("#stats", """
+ALL_PAPERS = [
+  { _tagKeySet: new Set(['mechanism::flat-loop']) },
+  { _tagKeySet: new Set(['mechanism::flat-loop']) },
+  { _tagKeySet: new Set(['focus::architecture']) }
+];
+ALL_RESOURCES = ALL_PAPERS;
+TAG_FILTER_LOOKUP = {
+  'mechanism::flat-loop': { group: 'mechanism', displayLabel: 'flat-loop' },
+  'focus::architecture': { group: 'focus', displayLabel: 'architecture' }
+};
+CATALOG_DATA_READY = true;
+ACTIVE_TAG_FILTERS = new Set(['focus::architecture']);
+
+navigateToTagDrilldown('mechanism::flat-loop');
+const entered = {
+  active: Array.from(ACTIVE_TAG_FILTERS),
+  locked: LOCKED_TAG_FILTER_KEY,
+  scopeHidden: searchTagScope.hidden,
+  scopeLabel: searchTagScopeLabel.textContent,
+  clearLabel: searchTagScopeClear.attributes['aria-label'],
+  placeholder: searchInput.placeholder,
+  inputLabel: searchInput.attributes['aria-label'],
+  query: searchInput.value
+};
+
+ACTIVE_TAG_FILTERS.add('focus::architecture');
+searchInput.value = 'LayerNorm';
+syncSearchQueryToUrl(searchInput.value);
+clearTagDrilldown();
+const cleared = {
+  active: Array.from(ACTIVE_TAG_FILTERS),
+  locked: LOCKED_TAG_FILTER_KEY,
+  scopeHidden: searchTagScope.hidden,
+  query: searchInput.value,
+  placeholder: searchInput.placeholder
+};
+process.stdout.write(JSON.stringify({
+  pushes: pushStateCalls,
+  entered: entered,
+  cleared: cleared
+}));
+""")
+        self.assertEqual(
+            result,
+            {
+                "pushes": [
+                    {"tag": "mechanism::flat-loop", "q": None, "hash": "#papers"},
+                    {"tag": None, "q": "LayerNorm", "hash": "#papers"},
+                ],
+                "entered": {
+                    "active": ["mechanism::flat-loop"],
+                    "locked": "mechanism::flat-loop",
+                    "scopeHidden": False,
+                    "scopeLabel": "Loop mechanism: flat-loop",
+                    "clearLabel": "Clear Loop mechanism tag flat-loop",
+                    "placeholder": "Search within 2 papers",
+                    "inputLabel": "Search within 2 papers",
+                    "query": "",
+                },
+                "cleared": {
+                    "active": ["focus::architecture"],
+                    "locked": "",
+                    "scopeHidden": True,
+                    "query": "LayerNorm",
+                    "placeholder": "Search papers or blogs by title, author, venue, keyword…",
+                },
+            },
+        )
+
+    def test_card_tags_are_native_links_and_advanced_chips_expose_state(self):
+        """Card tags navigate; advanced filter buttons remain explicit toggle controls."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        card_start = html.index("function renderCard(paper, query) {")
+        card_end = html.index("// ── State & Category Tree", card_start)
+        card_source = html[card_start:card_end]
+        self.assertIn("'<a href=\"' + escapeHtml(getTagDrilldownHref(entry.key))", card_source)
+        self.assertIn("data-tag-key", card_source)
+
+        chip_start = html.index("function renderTagFilterGroups() {")
+        chip_end = html.index("function updateTagFilterUI() {", chip_start)
+        chip_source = html[chip_start:chip_end]
+        self.assertIn("aria-pressed", chip_source)
+        self.assertIn("aria-disabled", chip_source)
+        self.assertIn("disabled", chip_source)
+        self.assertIn("tag.key === LOCKED_TAG_FILTER_KEY", chip_source)
+
+        interactions_start = html.index("function initPaperTagInteractions() {")
+        interactions_end = html.index("function initTableInteractions() {", interactions_start)
+        interactions_source = html[interactions_start:interactions_end]
+        self.assertIn("document.addEventListener('click'", interactions_source)
+        self.assertIn("navigateToTagDrilldown", interactions_source)
+        self.assertIn("event.button !== 0", interactions_source)
+        for modifier in ("event.metaKey", "event.ctrlKey", "event.shiftKey", "event.altKey"):
+            self.assertIn(modifier, interactions_source)
 
     def test_tag_drilldown_state_is_url_backed_and_paper_only(self):
         """Locked tag routes must be URL-driven and exclude non-paper resources."""
@@ -973,7 +1202,7 @@ setTimeout(function() {
         self.assertIn(".filter-sidebar-controls {\n        grid-template-columns: 1fr;\n        gap: 10px;\n        overflow-x: visible;", html)
         self.assertIn(".filter-sidebar-controls .date-input {\n        flex: 1 1 128px;\n        width: auto;\n        min-width: 0;", html)
         self.assertIn(".tag-chip {\n        max-width: 100%;", html)
-        self.assertIn("setFilterSidebarOpen(true);", html)
+        self.assertNotIn("setFilterSidebarOpen(true);", html)
         self.assertNotIn(".filter-sidebar-backdrop", html)
         self.assertNotIn('id="filter-sidebar-backdrop"', html)
         self.assertNotIn("getElementById('filter-sidebar-backdrop')", html)

@@ -392,9 +392,57 @@
 
     /* ── Search ── */
     .search-wrap {
-      position: relative;
       max-width: 560px;
       margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .search-field {
+      position: relative;
+      flex: 1 1 260px;
+      min-width: 0;
+    }
+
+    .search-tag-scope {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding-left: 12px;
+      border: 1px solid var(--tag-border);
+      border-radius: var(--radius);
+      background: var(--tag-bg);
+      color: var(--accent3);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .search-tag-scope[hidden] {
+      display: none;
+    }
+
+    .search-tag-scope-clear {
+      min-width: 44px;
+      min-height: 44px;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .search-tag-scope-clear:hover,
+    .search-tag-scope-clear:focus-visible {
+      color: var(--text);
+    }
+
+    .search-tag-scope-clear:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -4px;
     }
 
     .search-icon {
@@ -1194,6 +1242,25 @@
       font-size: 10.5px;
     }
 
+    a.stats-distribution-row {
+      min-height: 44px;
+      margin: -4px -8px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    a.stats-distribution-row:hover {
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
+      color: var(--text);
+    }
+
+    a.stats-distribution-row:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
     .stats-distribution-label {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -1783,12 +1850,25 @@
 
     .paper-tag {
       appearance: none;
+      text-decoration: none;
     }
 
     .paper-tag:hover,
     .tag-filter-chip:hover {
       transform: translateY(-1px);
       border-color: var(--accent);
+    }
+
+    .paper-tag:focus-visible,
+    .tag-filter-chip:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .tag-filter-chip:disabled {
+      cursor: not-allowed;
+      opacity: 0.72;
+      transform: none;
     }
 
     .paper-tag-mechanism,
@@ -3772,6 +3852,13 @@
       .papers-only-tools > .daily-briefing-notice { order: 4; }
       .papers-only-tools > .daily-watch-countdown { order: 5; }
       .papers-only-tools > .filter-sidebar { order: 6; }
+      .search-wrap {
+        flex-wrap: wrap;
+      }
+      .search-tag-scope,
+      .search-field {
+        width: 100%;
+      }
       body.stats-mode > header {
         padding: 10px 12px;
       }
@@ -4356,11 +4443,17 @@
       <div class="daily-watch-countdown-meta" id="daily-watch-countdown-meta">20:05 ET Sunday–Thursday · about 5 minutes after arXiv's daily announcement.</div>
     </div>
     <div class="search-wrap">
-      <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-        <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
-      </svg>
-      <input type="text" id="search" placeholder="Search papers or blogs by title, author, venue, keyword…" autocomplete="off" />
-      <span class="search-count" id="search-count"></span>
+      <div class="search-tag-scope" id="search-tag-scope" hidden>
+        <span id="search-tag-scope-label"></span>
+        <button type="button" class="search-tag-scope-clear" id="search-tag-scope-clear" aria-label="Clear tag filter">×</button>
+      </div>
+      <div class="search-field">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+        </svg>
+        <input type="text" id="search" aria-label="Search papers or blogs" placeholder="Search papers or blogs by title, author, venue, keyword…" autocomplete="off" />
+        <span class="search-count" id="search-count" aria-live="polite"></span>
+      </div>
     </div>
     <div class="filter-sidebar-toggle-row">
       <button type="button" class="filter-sidebar-toggle" id="filter-sidebar-toggle" aria-expanded="false" aria-controls="filter-sidebar-panel">
@@ -5244,7 +5337,7 @@ function renderReleasePulseChart(container, series, options) {
  * Render a catalog distribution as readable labels, counts, percentages, and bars.
  * @param {HTMLElement|null} container Distribution container.
  * @param {{totalPapers: number, assignmentCount: number, rows: Array<Object>}} distribution Distribution data.
- * @param {{limit?: number}=} options Optional row limit for secondary dimensions.
+ * @param {{limit?: number, tagGroup?: string}=} options Optional row limit and taxonomy link group.
  * @returns {void}
  */
 function renderStatsDistribution(container, distribution, options) {
@@ -5252,6 +5345,7 @@ function renderStatsDistribution(container, distribution, options) {
   container.replaceChildren();
   var data = distribution && Array.isArray(distribution.rows) ? distribution : { rows: [] };
   var requestedLimit = options && Number.isFinite(options.limit) ? Math.max(0, Math.floor(options.limit)) : data.rows.length;
+  var tagGroup = options && options.tagGroup;
   var rows = data.rows.slice(0, requestedLimit);
   if (rows.length === 0) {
     var emptyState = document.createElement('p');
@@ -5263,12 +5357,18 @@ function renderStatsDistribution(container, distribution, options) {
 
   var list = document.createElement('div');
   list.className = 'stats-distribution-list';
-  list.setAttribute('role', 'list');
   rows.forEach(function(row) {
-    var item = document.createElement('div');
+    var item = document.createElement(tagGroup ? 'a' : 'div');
     item.className = 'stats-distribution-row';
-    item.setAttribute('role', 'listitem');
-    item.setAttribute('aria-label', row.label + ': ' + row.count + ' papers, ' + row.percentage + ' percent');
+    if (tagGroup) {
+      var tagKey = buildTagEntry(tagGroup, row.key).key;
+      item.setAttribute('href', getTagDrilldownHref(tagKey));
+      item.setAttribute('data-tag-key', tagKey);
+      item.setAttribute('data-tag-group', tagGroup);
+      item.setAttribute('aria-label', 'View ' + row.count + ' papers tagged ' + getTagDrilldownGroupLabel(tagGroup) + ': ' + row.label);
+    } else {
+      item.setAttribute('aria-label', row.label + ': ' + row.count + ' papers, ' + row.percentage + ' percent');
+    }
 
     var label = document.createElement('span');
     label.className = 'stats-distribution-label';
@@ -5563,15 +5663,18 @@ function renderStatsPanel() {
   );
   renderStatsDistribution(
     document.getElementById('stats-mechanism-distribution'),
-    buildStatsDistribution(ALL_PAPERS, 'mechanism_tags')
+    buildStatsDistribution(ALL_PAPERS, 'mechanism_tags'),
+    { tagGroup: 'mechanism' }
   );
   renderStatsDistribution(
     document.getElementById('stats-focus-distribution'),
-    buildStatsDistribution(ALL_PAPERS, 'focus_tags')
+    buildStatsDistribution(ALL_PAPERS, 'focus_tags'),
+    { tagGroup: 'focus' }
   );
   renderStatsDistribution(
     document.getElementById('stats-domain-distribution'),
-    buildStatsDistribution(ALL_PAPERS, 'domain_tags')
+    buildStatsDistribution(ALL_PAPERS, 'domain_tags'),
+    { tagGroup: 'domain' }
   );
   renderAnnualReleaseVolume(
     document.getElementById('annual-release-volume'),
@@ -5856,7 +5959,7 @@ function renderCard(paper, query) {
     const classes = ['paper-tag'];
     if (extraClass) classes.push(extraClass);
     if (ACTIVE_TAG_FILTERS.has(entry.key)) classes.push('is-active');
-    return '<button type="button" class="' + classes.join(' ') + '" data-tag-key="' + escapeHtml(entry.key) + '" data-tag-group="' + escapeHtml(entry.group) + '">' + escapeHtml(entry.displayLabel || entry.label) + '</button>';
+    return '<a href="' + escapeHtml(getTagDrilldownHref(entry.key)) + '" class="' + classes.join(' ') + '" data-tag-key="' + escapeHtml(entry.key) + '" data-tag-group="' + escapeHtml(entry.group) + '">' + escapeHtml(entry.displayLabel || entry.label) + '</a>';
   }
 
   const tagEntries = Array.isArray(paper._tagEntries) ? paper._tagEntries : getPaperTagEntries(paper);
@@ -5930,6 +6033,7 @@ let LAST_RESTORED_SEARCH_QUERY = '';
 let TAG_FILTER_GROUPS = [];
 let TAG_FILTER_LOOKUP = {};
 let TAG_FILTER_OPEN = false;
+let TAG_DRILLDOWN_INTERACTIONS_BOUND = false;
 let ACCEPTED_ONLY = false;
 let TODAY_ONLY = false;
 let HAS_CODE_ONLY = false;
@@ -6262,6 +6366,75 @@ function getTagDrilldownKeyFromUrl() {
   }) ? tagKey : '';
 }
 
+/** Return the reader-facing singular label for a supported taxonomy group. */
+function getTagDrilldownGroupLabel(group) {
+  if (group === 'mechanism') return 'Loop mechanism';
+  if (group === 'focus') return 'Focus';
+  if (group === 'domain') return 'Domain';
+  return 'Tag';
+}
+
+/** Build the native, shareable Papers URL for a taxonomy tag. */
+function getTagDrilldownHref(tagKey) {
+  const params = new URLSearchParams();
+  params.set('tag', String(tagKey || ''));
+  return '?' + params.toString() + '#papers';
+}
+
+/** Update the fixed tag token and search input description for the locked route. */
+function updateTagDrilldownSearchUI() {
+  const scope = document.getElementById('search-tag-scope');
+  const label = document.getElementById('search-tag-scope-label');
+  const clearButton = document.getElementById('search-tag-scope-clear');
+  const searchInput = document.getElementById('search');
+  if (!scope || !label || !clearButton || !searchInput) return;
+
+  const entry = TAG_FILTER_LOOKUP[LOCKED_TAG_FILTER_KEY];
+  scope.hidden = !entry;
+  if (!entry) {
+    label.textContent = '';
+    clearButton.setAttribute('aria-label', 'Clear tag filter');
+    searchInput.setAttribute('placeholder', 'Search papers or blogs by title, author, venue, keyword…');
+    searchInput.setAttribute('aria-label', 'Search papers or blogs');
+    return;
+  }
+
+  const group = entry.group || LOCKED_TAG_FILTER_KEY.split('::')[0];
+  const groupLabel = getTagDrilldownGroupLabel(group);
+  const displayLabel = entry.displayLabel || entry.label || LOCKED_TAG_FILTER_KEY.split('::').slice(1).join('::');
+  const paperCount = ALL_PAPERS.filter(function(paper) {
+    return paper._tagKeySet && paper._tagKeySet.has(LOCKED_TAG_FILTER_KEY);
+  }).length;
+  const searchLabel = 'Search within ' + paperCount + ' papers';
+  label.textContent = groupLabel + ': ' + displayLabel;
+  clearButton.setAttribute('aria-label', 'Clear ' + groupLabel + ' tag ' + displayLabel);
+  searchInput.setAttribute('placeholder', searchLabel);
+  searchInput.setAttribute('aria-label', searchLabel);
+}
+
+/** Enter a tag route without carrying transient advanced filters into its count. */
+function navigateToTagDrilldown(tagKey) {
+  if (!TAG_FILTER_LOOKUP[tagKey] || !ALL_PAPERS.some(function(paper) {
+    return paper._tagKeySet && paper._tagKeySet.has(tagKey);
+  })) return;
+  ACTIVE_TAG_FILTERS.clear();
+  const nextUrl = new URL(getTagDrilldownHref(tagKey), window.location.href);
+  window.history.pushState(window.history.state, '', nextUrl);
+  setTopLevelTab('papers', { updateHash: false, userInitiated: true });
+  restoreTagDrilldownFromUrl();
+}
+
+/** Clear only the locked URL tag while preserving q and any advanced filters. */
+function clearTagDrilldown() {
+  if (!LOCKED_TAG_FILTER_KEY) return;
+  const nextUrl = new URL(window.location.href);
+  nextUrl.searchParams.delete('tag');
+  nextUrl.hash = '#papers';
+  window.history.pushState(window.history.state, '', nextUrl);
+  setTopLevelTab('papers', { updateHash: false, userInitiated: true });
+  restoreTagDrilldownFromUrl();
+}
+
 /** Restores the locked tag and free-text query from the current URL. */
 function restoreTagDrilldownFromUrl() {
   if (!CATALOG_DATA_READY) return;
@@ -6288,6 +6461,7 @@ function restoreTagDrilldownFromUrl() {
   HAS_RESTORED_TAG_DRILLDOWN_URL = true;
   LAST_RESTORED_SEARCH_QUERY = nextQuery;
   if (searchInput) searchInput.value = nextQuery;
+  updateTagDrilldownSearchUI();
   updateTagFilterUI();
   doSearch(nextQuery);
 }
@@ -6638,8 +6812,10 @@ function renderTagFilterGroups() {
       + '<div class="tag-filter-group-title">' + group.title + '</div>'
       + '<div class="tag-filter-chip-list">'
       + group.tags.map(function(tag) {
-        const activeClass = ACTIVE_TAG_FILTERS.has(tag.key) ? ' is-active' : '';
-        return '<button type="button" class="tag-filter-chip' + activeClass + '" data-tag-key="' + tag.key + '" data-tag-group="' + tag.group + '">'
+        const isActive = ACTIVE_TAG_FILTERS.has(tag.key);
+        const isLocked = tag.key === LOCKED_TAG_FILTER_KEY;
+        const activeClass = isActive ? ' is-active' : '';
+        return '<button type="button" class="tag-filter-chip' + activeClass + '" data-tag-key="' + tag.key + '" data-tag-group="' + tag.group + '" aria-pressed="' + (isActive ? 'true' : 'false') + '" aria-disabled="' + (isLocked ? 'true' : 'false') + '"' + (isLocked ? ' disabled' : '') + '>'
           + '<span class="tag-filter-chip-label">' + tag.displayLabel + '</span>'
           + '<span class="tag-filter-chip-count">' + tag.count + '</span>'
           + '</button>';
@@ -7596,16 +7772,17 @@ function initTagFilterControls() {
 }
 
 function initPaperTagInteractions() {
-  const container = document.getElementById('sections-container');
-  if (!container) return;
+  if (TAG_DRILLDOWN_INTERACTIONS_BOUND) return;
+  TAG_DRILLDOWN_INTERACTIONS_BOUND = true;
 
-  container.addEventListener('click', function(event) {
-    const chip = event.target.closest('.paper-tag[data-tag-key]');
-    if (!chip) return;
+  const clearButton = document.getElementById('search-tag-scope-clear');
+  if (clearButton) clearButton.addEventListener('click', clearTagDrilldown);
+  document.addEventListener('click', function(event) {
+    const link = event.target.closest('a[data-tag-key][href]');
+    if (!link || event.defaultPrevented || event.button !== 0
+      || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
-    setFilterSidebarOpen(true);
-    setTagFilterOpen(true);
-    toggleTagFilter(chip.dataset.tagKey);
+    navigateToTagDrilldown(link.dataset.tagKey);
   });
 }
 
