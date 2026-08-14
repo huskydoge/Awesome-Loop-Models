@@ -1,106 +1,61 @@
-# Research Landscape Stats Redesign
+# Personal-Site-Aligned Catalog Redesign
 
 ## Goal
 
-Replace the current Stats dashboard with a compact Scientific Atlas that explains the size, publication activity, structural composition, and active research directions of the loop-model catalog.
+Align the complete Awesome Loop Models interface with the editorial academic visual language of `huskydoge.github.io`, while preserving the catalog-specific search, filtering, tag drill-down, table, submission, and statistics behavior.
 
-## Design Direction
+## Brand System
 
-Use a light, precise research-atlas visual language:
+The personal site is the visual source of truth:
 
-- warm off-white canvas with faint coordinate-grid lines;
-- white analytical panels with restrained borders and shallow elevation;
-- cobalt as the primary data color, with teal and amber as categorical accents;
-- existing display and body fonts, tabular numerals, and readable 12–14px supporting text;
-- no dark hero card, decorative numbering, glass effects, external fonts, or chart dependency.
+- Charter/Georgia-style editorial typography;
+- white paper canvas, near-black ink, muted gray copy, and restrained blue links;
+- thin rules, low radii, no decorative shadows, gradients, or oversized dark cards;
+- a centered 1180px shell with a 52px translucent desktop header; mobile keeps its 58px shell and 44px tap targets;
+- publication lists built from whitespace and separators rather than boxed cards.
 
-Dark mode remains supported as a quiet night-atlas variant, but every panel keeps the same visual grammar instead of mixing a single oversized dark card with light cards.
+System dark mode remains available as a quiet inverse using the same rules and hierarchy.
 
-## Information Architecture
+## Shared Shell
 
-### Header and indicators
+Use a small square `LM` brand mark plus `Awesome Loop Models`, text navigation for Papers and Stats, and restrained outline actions for Research Prompt, GitHub, and Submit. The active section is underlined, matching the personal site navigation.
 
-The compact header contains `Research Landscape`, one sentence describing the paper-only scope, and the catalog snapshot date.
+On desktop, keep the masthead deliberately compact: 52px overall, a 28px brand mark, and 32px visual action buttons. Do not compress or restructure the catalog toolbar in this pass.
 
-A four-cell indicator strip shows:
+Search and primary catalog actions stay visible. Secondary sort, date, view, and tag controls remain behind the existing Filters disclosure.
 
-1. total papers, with strict and adjacent counts as the note;
-2. publications in the latest 30-day catalog window;
-3. change versus the preceding 30-day window;
-4. latest represented publication date.
+## Papers
 
-The indicators are aligned observations, not four decorative SaaS cards.
+- Keep the current category tree, search, URL-backed tag routes, compact/comfortable density, and table view.
+- Render paper entries like the personal site's research archive: transparent rows separated by fine rules, serif titles, muted metadata, small inline tags, and quiet text links.
+- Restyle the desktop directory as a light editorial index instead of a card sidebar.
+- Preserve the `Adjacent` scope warning and accessibility semantics.
 
-### Publication trend and category composition
+## Stats Research Landscape
 
-The first analytical row contains:
+Use a natural-height white analytical grid:
 
-- an eight-column publication trend with `6M`, `24M`, and `All` controls;
-- a four-column Primary Category donut with an external legend.
+1. compact title, scope, snapshot, and four aligned metrics;
+2. publication trend with existing 90D/1Y/All behavior;
+3. a Primary Category donut, because category is mutually exclusive;
+4. ranked Loop Mechanism bars, because mechanism is multi-label;
+5. Focus/Domain active-direction tabs showing Top 6 values;
+6. an independent searchable full-tag explorer;
+7. a compact latest-publications list.
 
-`6M` and `24M` use monthly buckets. `All` uses annual buckets so the full history remains legible without horizontal scrolling. The chart has a fixed visual height and a text summary; it never stretches to match another panel.
+Multi-label fields are never shown as pie charts. Opening the complete explorer cannot stretch a neighboring chart.
 
-Primary Category is mutually exclusive, so a donut is semantically valid. Each legend row links to the corresponding Papers section.
+## Submit
 
-### Structural matrix and active directions
+Reuse the same tokens, header, typography, field borders, and button language on `submit.html`. Submission behavior and generated tag metadata remain unchanged.
 
-The second analytical row contains:
+## Implementation Boundaries
 
-- a seven-column `Category × Mechanism` matrix;
-- a five-column `Active Directions` panel.
-
-The matrix has three category rows and four mechanism columns. Cell intensity represents paper count, while the visible number preserves exactness. Each cell links to the existing paper-only route combining a mechanism tag query with a category section hash. No new router or filter model is introduced.
-
-Active Directions provides `Focus` and `Domain` tabs. It ranks the six most frequent values among papers in the latest 90-day catalog window, anchored to the latest valid publication date. Rows show recent counts, use horizontal bars for comparison, and link to the existing tag drill-down route.
-
-Mechanism, Focus, and Domain remain explicitly multi-label. They are never rendered as pie or donut charts.
-
-### Complete tag explorer
-
-A full-width native `details` block sits below both analysis rows. It is closed by default and contains:
-
-- Focus / Domain selection;
-- a search input;
-- all matching tag links with paper-only counts.
-
-Because the explorer is outside the analytical grid, opening it cannot stretch an adjacent chart. Search filters the already-loaded catalog data; no backend or new payload is required.
-
-## Removed Content
-
-- Remove Annual Volume because the `All` trend already covers publication history.
-- Remove Latest Releases because the Papers view already provides the latest-paper list and search.
-- Remove the expandable long-tail taxonomy from the narrow composition card.
-- Remove daily 365-bucket rendering from the default chart.
-
-## Data and Rendering
-
-Keep the existing `papers.json` fetch, `ALL_PAPERS`, lazy Stats render, loading/error states, date parsing, publication aggregation, release comparison, taxonomy distribution, safe DOM/SVG construction, and URL-backed tag drill-down.
-
-Add only two small pure aggregations:
-
-- Category × Mechanism counts;
-- recent Top-6 Focus or Domain distribution.
-
-The view layer is replaced: Stats CSS, Stats DOM, chart composition, donut, matrix, active directions, and all-tags explorer. No generated data schema changes are needed.
-
-## Responsive Behavior
-
-- Desktop: 12-column analytical grid with 8/4 then 7/5 panels.
-- Tablet: indicators become two columns; each analytical panel spans the full width.
-- Mobile: indicators remain a compact 2×2 grid; all analysis panels stack; chart buckets fit the viewport; no page-level horizontal scroll.
-- The all-tags explorer becomes a single-column list on narrow screens.
-
-All native controls keep visible focus states and at least 44px interactive targets. Charts retain textual summaries, and color is never the only carrier of exact values.
+- Modify only `index.html`, `submit.html`, and the existing focused contracts in `tests/test_build.py`.
+- Reuse `papers.json`, current URL state, existing safe DOM/SVG helpers, and current aggregation functions.
+- Add no framework, chart library, font download, schema, or data pipeline.
+- Keep hash navigation, keyboard support, visible focus, error/loading states, and mobile targets.
 
 ## Verification
 
-Static and browser checks cover:
-
-- required Scientific Atlas landmarks and absence of removed sections;
-- deterministic matrix and recent-direction aggregation;
-- native category/tag links and paper-only counts;
-- range switching and no page-level horizontal overflow;
-- desktop and 390px mobile composition;
-- light/dark readability, keyboard focus, loading/error states, and console errors.
-
-The repository policy prohibits running the test suite locally without an exact approved command. The implementation will leave focused tests and the full-suite command ready for the user to run.
+Use static source checks and `git diff --check` locally. Browser-check desktop and mobile layouts on an isolated static server after the user approves that exact local command. Leave the focused unit-test command ready for the user because repository policy prohibits running test suites locally without explicit approval.
