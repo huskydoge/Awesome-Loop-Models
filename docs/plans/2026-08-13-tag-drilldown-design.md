@@ -8,6 +8,8 @@ Make the mechanism, focus, and domain distributions in Stats actionable. A reade
 
 Reuse the existing Papers renderer, `ACTIVE_TAG_FILTERS`, and text search. Do not create another page, result renderer, data file, or dependency.
 
+Reuse the existing two-level filter disclosure as well. A tag route opens the outer Filters panel but leaves the full taxonomy list collapsed. The `Tags filter` toggle shows the active tag as a compact pill; selecting the toggle reveals the complete taxonomy only when the reader wants to change tags.
+
 The route is a normal URL such as:
 
 ```text
@@ -19,15 +21,16 @@ The tag value uses the existing stable `group::label` key. Stats distribution ro
 ## Interaction
 
 - Following a Stats tag link switches to Papers and shows paper-only results for that tag.
-- The search control displays a non-editable prefix token such as `Loop mechanism: flat-loop ×`.
-- Free text remains in the existing input and combines with the locked tag using AND.
-- Clearing the token removes only the tag and preserves the free-text query.
-- Existing advanced tag filters remain available; the route tag cannot be silently removed while its URL is active.
+- The outer Filters panel opens automatically, while the full tag taxonomy stays collapsed so paper content remains above the fold.
+- The `Tags filter` toggle shows the active tag label and paper count in a compact pill.
+- Selecting `Tags filter` expands the existing taxonomy; selecting the active tag again removes only the route tag and preserves the free-text query.
+- Free text stays in the normal search input with no tag prefix and combines with active tags using AND.
+- Existing advanced tag filters remain available and can be combined with the route tag.
 - Paper-card tag clicks use the same drill-down route.
 
 ## State and navigation
 
-URL state is authoritative for the locked drill-down tag. Parsing validates the decoded key against the paper-only tag lookup and fails closed for malformed or unknown values. `popstate` and `hashchange` restore or clear the locked tag so Back/Forward never leaves an invisible filter active.
+URL state is authoritative for the route-owned drill-down tag. Parsing validates the decoded key against the paper-only tag lookup and fails closed for malformed or unknown values. `popstate` and `hashchange` restore or clear the route tag so Back/Forward never leaves an invisible filter active.
 
 The current free-text query is stored as `q` with `history.replaceState`, avoiding one history entry per keystroke. Tag navigation uses normal link/history behavior.
 
@@ -37,7 +40,7 @@ Stats distributions count `ALL_PAPERS`, while the general filter inventory also 
 
 ## Accessibility and responsive behavior
 
-Distribution links have native keyboard behavior, visible focus, a minimum 44px target, and an accessible label containing tag type, label, and count. The prefix clear control has a specific accessible name. The existing live result count announces changes. The prefix wraps or truncates safely on mobile without shrinking the text input below a usable width.
+Distribution links have native keyboard behavior, visible focus, a minimum 44px target, and an accessible label containing tag type, label, and count. After navigation, focus moves to the existing `Tags filter` disclosure so its active summary is immediately discoverable. The compact summary truncates safely on mobile, and the existing live result count announces changes.
 
 ## Error and empty states
 
@@ -45,6 +48,6 @@ Malformed or unknown tag URLs clear the drill-down state and render the normal P
 
 ## Verification
 
-- Unit/static contracts for URL parsing, paper-only filtering, prefix rendering, and Stats link semantics.
-- Browser checks for Stats → Papers, search-within-tag, clear, reload, Back/Forward, keyboard focus, mobile, and light/dark themes.
+- Unit/static contracts for URL parsing, paper-only filtering, compact active-tag summary, collapsed taxonomy restoration, and Stats link semantics.
+- Browser checks for Stats → Papers, active summary, optional taxonomy expansion, search-within-tag, clear, reload, Back/Forward, keyboard focus, mobile, and light/dark themes.
 - Existing complete unit suite and `git diff --check`.
