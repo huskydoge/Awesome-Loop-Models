@@ -441,7 +441,6 @@ const animationFrameCallbacks = [];
 const windowListeners = {{}};
 const replaceStateCalls = [];
 const pushStateCalls = [];
-let searchFocusCalls = 0;
 const searchInput = {{
   value: '',
   placeholder: 'Search papers or blogs by title, author, venue, keyword…',
@@ -456,7 +455,6 @@ const searchInput = {{
     this.listeners[name].push(listener);
   }},
   focus: function() {{
-    searchFocusCalls += 1;
     document.activeElement = this;
   }}
 }};
@@ -473,9 +471,6 @@ function makeStaticElement(hidden) {{
     }}
   }};
 }}
-const searchTagScope = makeStaticElement(true);
-const searchTagScopeLabel = makeStaticElement(false);
-const searchTagScopeClear = makeStaticElement(false);
 const publicationDateStart = makeStaticElement(false);
 publicationDateStart.value = '';
 const publicationDateEnd = makeStaticElement(false);
@@ -518,9 +513,6 @@ const elements = {{
   'papers-panel': papersPanel,
   'stats-panel': statsPanel,
   'search': searchInput,
-  'search-tag-scope': searchTagScope,
-  'search-tag-scope-label': searchTagScopeLabel,
-  'search-tag-scope-clear': searchTagScopeClear,
   'publication-date-start': publicationDateStart,
   'publication-date-end': publicationDateEnd,
   'section-designs': {{}},
@@ -600,6 +592,7 @@ function setFilterSidebarOpen(isOpen) {{
 function setTagFilterOpen(isOpen) {{
   TAG_FILTER_OPEN = Boolean(isOpen);
   tagOpenCalls.push(TAG_FILTER_OPEN);
+  updateTagFilterUI();
 }}
 function updateQuickFilterButtons() {{ quickFilterUiUpdates += 1; }}
 function doSearch(query) {{ searchCalls.push(query); }}
@@ -646,16 +639,31 @@ function doSearch(query) {{ searchCalls.push(query); }}
         self.assertIn("tag-filter-chip-count", html)
         self.assertIn("tag.count", html)
 
-    def test_locked_tag_search_scope_has_static_accessible_controls(self):
-        """The free-text input keeps a separate, removable locked-tag token."""
+    def test_tag_drilldown_opens_filters_without_a_search_prefix(self):
+        """Tag routes should use the normal filter UI and leave search unchanged."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn('id="search-tag-scope"', html)
-        self.assertIn('id="search-tag-scope-label"', html)
-        self.assertIn('id="search-tag-scope-clear"', html)
         self.assertIn('class="search-field"', html)
         self.assertIn('aria-live="polite"', html[html.index('id="search-count"') - 120:html.index('id="search-count"') + 120])
-        self.assertIn(".search-tag-scope", html)
-        self.assertIn("min-height: 44px", html)
+        self.assertNotIn("search-tag-scope", html)
+        self.assertNotIn("updateTagDrilldownSearchUI", html)
+        restore_start = html.index("function restoreTagDrilldownFromUrl() {")
+        restore_end = html.index("function applyTopLevelTab() {", restore_start)
+        restore_source = html[restore_start:restore_end]
+        self.assertIn("setFilterSidebarOpen(true);", restore_source)
+        self.assertIn("setTagFilterOpen(false);", restore_source)
+        self.assertNotIn("setTagFilterOpen(true);", restore_source)
+        summary_start = html.index("function formatActiveTagSummary() {")
+        summary_end = html.index("function setTagFilterOpen(isOpen) {", summary_start)
+        summary_source = html[summary_start:summary_end]
+        self.assertIn("const entry = TAG_FILTER_LOOKUP[tagKey];", summary_source)
+        self.assertIn("getPaperCountForTagKey(tagKey)", summary_source)
+        self.assertIn("summary.classList.toggle('is-active', ACTIVE_TAG_FILTERS.size > 0);", html)
+        self.assertIn("#tag-filter-summary.is-active", html)
+        navigate_start = html.index("function navigateToTagDrilldown(tagKey) {")
+        navigate_end = html.index("function clearTagDrilldown() {", navigate_start)
+        navigate_source = html[navigate_start:navigate_end]
+        self.assertIn("window.requestAnimationFrame(function() { tagFilterToggle.focus(); });", navigate_source)
+        self.assertNotIn("searchInput.focus();", navigate_source)
 
     def test_stats_tag_distributions_link_to_papers_but_categories_do_not(self):
         """Only genuine multi-label taxonomy rows expose tag drill-down links."""
@@ -664,11 +672,16 @@ function doSearch(query) {{ searchCalls.push(query); }}
         stats_end = html.index("function escapeHtml(str) {", stats_start)
         stats_source = html[stats_start:stats_end]
 
+        direction_start = html.index("function renderStatsActiveDirections() {")
+        direction_end = html.index("function renderAnnualReleaseVolume(", direction_start)
+        direction_source = html[direction_start:direction_end]
+
         category_call = stats_source[stats_source.index("'stats-category-distribution'"):stats_source.index("'stats-mechanism-distribution'")]
         self.assertNotIn("tagGroup", category_call)
         self.assertIn("{ tagGroup: 'mechanism' }", stats_source)
-        self.assertIn("{ tagGroup: 'focus' }", stats_source)
-        self.assertIn("{ tagGroup: 'domain' }", stats_source)
+        self.assertIn("{ tagGroup: CURRENT_STATS_DIRECTION_GROUP }", direction_source)
+        self.assertIn("CURRENT_STATS_EXPLORER_GROUP", direction_source)
+        self.assertIn("getTagDrilldownHref(tagKey)", direction_source)
 
         renderer_start = html.index("function renderStatsDistribution(")
         renderer_end = html.index("function renderAnnualReleaseVolume(", renderer_start)
@@ -750,8 +763,8 @@ process.stdout.write(JSON.stringify({{
             },
         )
 
-    def test_tag_navigation_and_clear_use_push_state_with_locked_search_ui(self):
-        """Entering clears every result filter; clearing removes only tag and preserves q."""
+    def test_tag_navigation_expands_active_filter_without_search_prefix(self):
+        """Entering expands the active chip; clicking it clears only the route tag."""
         result = self.run_top_level_tab_block("#stats", """
 ALL_PAPERS = [
   { _tagKeySet: new Set(['mechanism::flat-loop']) },
@@ -771,18 +784,14 @@ ACCEPTED_ONLY = true;
 TODAY_ONLY = true;
 HAS_CODE_ONLY = true;
 HAS_COMMENTS_ONLY = true;
-FILTER_SIDEBAR_OPEN = true;
-TAG_FILTER_OPEN = true;
+FILTER_SIDEBAR_OPEN = false;
+TAG_FILTER_OPEN = false;
 
 navigateToTagDrilldown('mechanism::flat-loop');
 const entered = {
   active: Array.from(ACTIVE_TAG_FILTERS),
   locked: LOCKED_TAG_FILTER_KEY,
-  scopeHidden: searchTagScope.hidden,
-  scopeLabel: searchTagScopeLabel.textContent,
-  clearLabel: searchTagScopeClear.attributes['aria-label'],
   placeholder: searchInput.placeholder,
-  inputLabel: searchInput.attributes['aria-label'],
   query: searchInput.value,
   dates: [publicationDateStart.value, publicationDateEnd.value],
   quickFilters: [ACCEPTED_ONLY, TODAY_ONLY, HAS_CODE_ONLY, HAS_COMMENTS_ONLY],
@@ -793,23 +802,19 @@ const entered = {
   searchCall: searchCalls.at(-1),
   quickFilterUiUpdates: quickFilterUiUpdates,
   sidebarOpenCalls: sidebarOpenCalls,
-  tagOpenCalls: tagOpenCalls,
-  focusCalls: searchFocusCalls,
-  searchFocused: document.activeElement === searchInput
+  tagOpenCalls: tagOpenCalls
 };
 
 ACTIVE_TAG_FILTERS.add('focus::architecture');
 searchInput.value = 'LayerNorm';
 syncSearchQueryToUrl(searchInput.value);
-clearTagDrilldown();
+toggleTagFilter('mechanism::flat-loop');
 const cleared = {
   active: Array.from(ACTIVE_TAG_FILTERS),
   locked: LOCKED_TAG_FILTER_KEY,
-  scopeHidden: searchTagScope.hidden,
   query: searchInput.value,
   placeholder: searchInput.placeholder,
-  focusCalls: searchFocusCalls,
-  searchFocused: document.activeElement === searchInput
+  panels: [FILTER_SIDEBAR_OPEN, TAG_FILTER_OPEN]
 };
 process.stdout.write(JSON.stringify({
   pushes: pushStateCalls,
@@ -827,40 +832,32 @@ process.stdout.write(JSON.stringify({
                 "entered": {
                     "active": ["mechanism::flat-loop"],
                     "locked": "mechanism::flat-loop",
-                    "scopeHidden": False,
-                    "scopeLabel": "Loop mechanism: flat-loop",
-                    "clearLabel": "Clear Loop mechanism tag flat-loop",
-                    "placeholder": "Search within 2 papers",
-                    "inputLabel": "Search within 2 papers",
+                    "placeholder": "Search papers or blogs by title, author, venue, keyword…",
                     "query": "",
                     "dates": ["", ""],
                     "quickFilters": [False, False, False, False],
-                    "panels": [False, False],
+                    "panels": [True, False],
                     "visibleCount": 2,
                     "searchCall": "",
                     "quickFilterUiUpdates": 1,
-                    "sidebarOpenCalls": [False],
+                    "sidebarOpenCalls": [True],
                     "tagOpenCalls": [False],
-                    "focusCalls": 1,
-                    "searchFocused": True,
                 },
                 "cleared": {
                     "active": ["focus::architecture"],
                     "locked": "",
-                    "scopeHidden": True,
                     "query": "LayerNorm",
                     "placeholder": "Search papers or blogs by title, author, venue, keyword…",
-                    "focusCalls": 2,
-                    "searchFocused": True,
+                    "panels": [True, False],
                 },
             },
         )
 
-    def test_locked_advanced_chip_uses_paper_only_count_and_escapes_labels(self):
-        """The disabled route-owned chip matches Stats even when blogs share its tag."""
+    def test_route_owned_chip_uses_paper_only_count_and_remains_interactive(self):
+        """The active route chip matches Stats and can still be cleared in Filters."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         count_start = html.index("function getPaperCountForTagKey(")
-        count_end = html.index("function updateTagDrilldownSearchUI(", count_start)
+        count_end = html.index("function navigateToTagDrilldown(", count_start)
         count_source = html[count_start:count_end]
         render_start = html.index("function renderTagFilterGroups() {")
         render_end = html.index("function updateTagFilterUI() {", render_start)
@@ -897,6 +894,9 @@ process.stdout.write(JSON.stringify({{ html: container.innerHTML }}));
         self.assertIn("Loop &lt;mechanism&gt;", output)
         self.assertIn("flat-loop &lt;img&gt;", output)
         self.assertNotIn("<img>", output)
+        self.assertIn('aria-pressed="true"', output)
+        self.assertNotIn("aria-disabled", output)
+        self.assertNotIn(" disabled", output)
 
     def test_tag_click_interception_only_handles_unmodified_left_clicks(self):
         """Modified and non-left clicks retain the native anchor behavior."""
@@ -941,7 +941,7 @@ process.stdout.write(JSON.stringify({{
         helper_end = html.index("function renderCard(paper, query) {", helper_start)
         helper_source = html[helper_start:helper_end]
         route_start = html.index("function getTagDrilldownHref(")
-        route_end = html.index("function updateTagDrilldownSearchUI(", route_start)
+        route_end = html.index("function navigateToTagDrilldown(", route_start)
         route_source = html[route_start:route_end]
         escape_start = html.index("function escapeHtml(str) {")
         escape_end = html.index("function highlightQuery(", escape_start)
@@ -993,8 +993,8 @@ process.stdout.write(JSON.stringify({{ blogOnly: blogOnly, shared: shared }}));
         chip_end = html.index("function updateTagFilterUI() {", chip_start)
         chip_source = html[chip_start:chip_end]
         self.assertIn("aria-pressed", chip_source)
-        self.assertIn("aria-disabled", chip_source)
-        self.assertIn("disabled", chip_source)
+        self.assertNotIn("aria-disabled", chip_source)
+        self.assertNotIn(" disabled", chip_source)
         self.assertIn("tag.key === LOCKED_TAG_FILTER_KEY", chip_source)
 
         interactions_start = html.index("function initPaperTagInteractions() {")
@@ -1157,22 +1157,27 @@ process.stdout.write(JSON.stringify({
         )
         self.assertEqual(result["uiUpdates"], 4)
 
-    def test_locked_tag_cannot_be_removed_by_regular_filter_toggle(self):
-        """The URL-owned tag remains enforced while its route is active."""
+    def test_route_owned_tag_clears_through_regular_filter_toggle(self):
+        """Clicking the active route chip removes its URL state and filter."""
         result = self.run_top_level_tab_block("#papers", """
-LOCKED_TAG_FILTER_KEY = 'mechanism::flat-loop';
-ACTIVE_TAG_FILTERS = new Set([LOCKED_TAG_FILTER_KEY]);
-toggleTagFilter(LOCKED_TAG_FILTER_KEY);
+ALL_PAPERS = [{ _tagKeySet: new Set(['mechanism::flat-loop']) }];
+TAG_FILTER_LOOKUP = { 'mechanism::flat-loop': { displayLabel: 'flat-loop' } };
+CATALOG_DATA_READY = true;
+window.location.search = '?tag=mechanism%3A%3Aflat-loop';
+restoreTagDrilldownFromUrl();
+toggleTagFilter('mechanism::flat-loop');
 process.stdout.write(JSON.stringify({
   locked: LOCKED_TAG_FILTER_KEY,
-  active: Array.from(ACTIVE_TAG_FILTERS)
+  active: Array.from(ACTIVE_TAG_FILTERS),
+  pushes: pushStateCalls
 }));
 """)
         self.assertEqual(
             result,
             {
-                "locked": "mechanism::flat-loop",
-                "active": ["mechanism::flat-loop"],
+                "locked": "",
+                "active": [],
+                "pushes": [{"tag": None, "q": None, "hash": "#papers"}],
             },
         )
 
@@ -1414,7 +1419,11 @@ setTimeout(function() {
         self.assertIn(".filter-sidebar-controls {\n        grid-template-columns: 1fr;\n        gap: 10px;\n        overflow-x: visible;", html)
         self.assertIn(".filter-sidebar-controls .date-input {\n        flex: 1 1 128px;\n        width: auto;\n        min-width: 0;", html)
         self.assertIn(".tag-chip {\n        max-width: 100%;", html)
-        self.assertNotIn("setFilterSidebarOpen(true);", html)
+        init_start = html.index("function initFilterSidebarControls() {")
+        init_end = html.index("function rerenderCurrentResults() {", init_start)
+        init_source = html[init_start:init_end]
+        self.assertIn("setFilterSidebarOpen(false);", init_source)
+        self.assertNotIn("setFilterSidebarOpen(true);", init_source)
         self.assertNotIn(".filter-sidebar-backdrop", html)
         self.assertNotIn('id="filter-sidebar-backdrop"', html)
         self.assertNotIn("getElementById('filter-sidebar-backdrop')", html)
@@ -1498,7 +1507,10 @@ setTimeout(function() {
         self.assertIn('id="daily-briefing-notice-detail"', html)
         self.assertIn('aria-controls="daily-briefing-notice-detail"', html)
         self.assertIn('Details ↓', html)
-        self.assertIn('New today:', html)
+        self.assertIn("if (verdict === 'added') return true;", html)
+        self.assertIn('Latest loop-model report', html)
+        self.assertIn('This report added', html)
+        self.assertNotIn('New today:', html)
         self.assertIn('daily-briefing-notice-paper-link', html)
         self.assertIn("function renderDailyBriefingNoticeCandidate(candidate)", html)
         self.assertIn("function isDailyBriefingNewPaper(candidate)", html)
@@ -1633,14 +1645,16 @@ setTimeout(function() {
         header_end = html.index("</header>", header_start)
         header = html[header_start:header_end]
         masthead_start = header.index('<div class="site-masthead">')
-        masthead_end = header.index('<div class="papers-only-tools"', masthead_start)
-        masthead = header[masthead_start:masthead_end]
-        tools = header[masthead_end:]
+        masthead = header[masthead_start:]
+        tools_start = html.index('<div class="catalog-toolbar-shell">', header_end)
+        tools_end = html.index('<div class="layout">', tools_start)
+        tools = html[tools_start:tools_end]
         main_start = html.index('<main id="main">')
         main_end = html.index("</main>", main_start)
         main = html[main_start:main_end]
 
         self.assertIn('<div class="site-brand">', masthead)
+        self.assertIn('<span class="site-brand-mark" aria-hidden="true">LM</span>', masthead)
         self.assertIn('<div class="top-level-tabs" role="tablist"', masthead)
         self.assertIn('<div class="header-actions">', masthead)
         brand_index = masthead.index('<div class="site-brand">')
@@ -1681,18 +1695,60 @@ setTimeout(function() {
             "body.stats-mode .stats-panel",
         ):
             self.assertIn(selector, style)
-        mobile_start = style.index("@media (max-width: 768px)")
+        editorial_start = style.index("/* ── Personal-site-aligned editorial system ── */")
+        mobile_start = style.index("@media (max-width: 768px)", editorial_start)
         mobile_css = style[mobile_start:]
         self.assertIn(".site-masthead", mobile_css)
         self.assertIn(".top-level-tabs", mobile_css)
-        self.assertIn("flex-basis: 100%;", mobile_css)
-        self.assertIn(".site-brand {\n        order: 1;", mobile_css)
-        self.assertIn(".site-masthead .top-level-tabs {\n        order: 2;", mobile_css)
-        self.assertIn(".site-masthead .header-actions {\n        order: 3;", mobile_css)
+        self.assertIn(".site-masthead {\n        display: grid;", mobile_css)
+        self.assertIn("grid-template-columns: minmax(0, 1fr) auto;", mobile_css)
+        self.assertIn("min-width: max-content;", mobile_css)
+        self.assertIn(".site-brand-name {\n        display: block;", mobile_css)
+        self.assertIn("text-overflow: ellipsis;", mobile_css)
+        self.assertIn(".site-masthead .header-actions {\n        display: none;", mobile_css)
+        self.assertIn("position: sticky;", mobile_css)
 
-        compact_start = style.rindex("@media (max-width: 480px)")
-        compact_css = style[compact_start:]
-        self.assertIn(".site-masthead .header-actions {\n        order: 3;", compact_css)
+    def test_editorial_masthead_is_compact_on_desktop_without_shrinking_mobile_targets(self):
+        """Desktop chrome should be shorter while mobile keeps its existing tap targets."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        editorial_start = html.index("    /* ── Personal-site-aligned editorial system ── */")
+        editorial_end = html.index("  </style>", editorial_start)
+        editorial_css = html[editorial_start:editorial_end]
+        mobile_start = editorial_css.index("    @media (max-width: 768px)")
+        desktop_css = editorial_css[:mobile_start]
+        mobile_css = editorial_css[mobile_start:]
+
+        self.assertIn(
+            "body > header,\n    body:not(.stats-mode) > header,\n    body.stats-mode > header {",
+            desktop_css,
+        )
+        self.assertIn("padding: 0 24px;", desktop_css)
+        self.assertIn("min-height: 52px;", desktop_css)
+        self.assertIn("width: 28px;", desktop_css)
+        self.assertIn("height: 28px;", desktop_css)
+        self.assertIn("min-height: 32px;", desktop_css)
+        self.assertIn("min-height: 58px;", mobile_css)
+        self.assertIn("min-height: 44px;", mobile_css)
+
+    def test_editorial_form_controls_inherit_the_site_typeface(self):
+        """Native controls should not fall back to Arial or monospace beside serif content."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        self.assertIn(
+            "button,\n    input,\n    select,\n    textarea {\n      font: inherit;\n    }",
+            html,
+        )
+
+    def test_small_filter_rows_scroll_instead_of_stacking(self):
+        """Narrow tag routes should preserve paper space without clipping controls."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        editorial_start = html.index("    /* ── Personal-site-aligned editorial system ── */")
+        editorial_css = html[editorial_start:html.index("  </style>", editorial_start)]
+        self.assertIn("@media (max-width: 900px)", editorial_css)
+        self.assertIn(".filter-sidebar-controls .sort-bar,", editorial_css)
+        self.assertIn("flex-wrap: nowrap;", editorial_css)
+        self.assertIn("overflow-x: auto;", editorial_css)
+        self.assertIn("scrollbar-width: none;", editorial_css)
+        self.assertIn(".filter-sidebar-controls .date-input {\n        flex: 0 0 132px;", editorial_css)
 
     def test_top_level_tabs_restore_hash_and_support_keyboard_navigation(self):
         """Top-level tabs must preserve category hashes and expose full tab keyboard UX."""
@@ -2108,6 +2164,7 @@ process.stdout.write(JSON.stringify({
             "buildAnnualReleaseSeries",
             "getLatestReleasedPapers",
             "buildStatsDistribution",
+            "buildRecentStatsDistribution",
         ):
             self.assertIn(f"function {function_name}(", helpers)
         self.assertNotIn("added_date", helpers)
@@ -2226,6 +2283,11 @@ process.stdout.write(JSON.stringify({
       { mechanism_tags: ['flat-loop'] },
       { mechanism_tags: [] }
     ], 'mechanism_tags'),
+    recentDirections: buildRecentStatsDistribution([
+      { published_date: '2026-07-03', focus_tags: ['architecture'] },
+      { published_date: '2026-06-01', focus_tags: ['training-algorithm'] },
+      { published_date: '2026-03-01', focus_tags: ['objective-loss'] }
+    ], 'focus_tags', 90, 1),
     emptyDistribution: buildStatsDistribution(null, 'category'),
     annual: buildAnnualReleaseSeries([
       { published_date: '2026-01-01' },
@@ -2355,6 +2417,16 @@ process.stdout.write(JSON.stringify({
             {"totalPapers": 0, "assignmentCount": 0, "rows": []},
         )
         self.assertEqual(
+            result["recentDirections"],
+            {
+                "totalPapers": 2,
+                "assignmentCount": 1,
+                "rows": [
+                    {"key": "architecture", "label": "Architecture", "count": 1, "percentage": 50},
+                ],
+            },
+        )
+        self.assertEqual(
             result["annual"],
             [
                 {"key": "2024", "label": "2024", "count": 2},
@@ -2370,14 +2442,15 @@ process.stdout.write(JSON.stringify({
         self.assertEqual(result["noLatest"], [])
 
     def test_stats_panel_has_catalog_intelligence_dashboard(self):
-        """Stats markup must expose a compact, taxonomy-aware dashboard."""
+        """Stats markup must expose the approved editorial Research Landscape."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         stats_start = html.index('<section class="top-level-panel stats-panel"')
         stats_end = html.index("</section>", stats_start)
         stats_markup = html[stats_start:stats_end]
 
         for marker in (
-            "Catalog intelligence",
+            "Research landscape",
+            "Loop Models, mapped.",
             'id="stats-snapshot"',
             'class="stats-metric-rail"',
             'id="stats-total-papers"',
@@ -2385,28 +2458,31 @@ process.stdout.write(JSON.stringify({
             'id="stats-recent-change"',
             'id="stats-recent-change-note"',
             'id="stats-latest-release"',
-            'class="stats-dashboard-grid stats-dashboard-primary"',
+            'class="stats-dashboard-grid stats-dashboard-primary stats-landscape-primary"',
             'id="release-pulse-chart"',
             'id="release-pulse-summary"',
             'id="stats-category-distribution"',
             'id="stats-mechanism-distribution"',
-            '<details class="stats-taxonomy-details">',
-            "Focus and domain tags are multi-label; aggregate shares may exceed 100%.",
-            'id="stats-focus-distribution"',
-            'id="stats-domain-distribution"',
-            'class="stats-dashboard-grid stats-dashboard-secondary"',
-            'id="annual-release-volume"',
-            'id="annual-volume-note"',
+            'id="stats-active-directions"',
+            'data-stats-direction="focus"',
+            'data-stats-direction="domain"',
+            '<details class="stats-tag-explorer">',
+            'id="stats-tag-search"',
+            'id="stats-tag-results"',
+            'data-stats-explorer-group="focus"',
+            'data-stats-explorer-group="domain"',
+            'class="stats-dashboard-grid stats-dashboard-secondary stats-landscape-secondary"',
             'id="latest-releases-list"',
             'class="stats-range-control"',
             'data-stats-range="90d"',
             'data-stats-range="1y"',
             'data-stats-range="all"',
             'aria-pressed="true">1Y</button>',
-            "Release Pulse",
-            "Catalog composition",
-            "Annual volume",
-            "Latest releases",
+            "Release trend",
+            "Category mix",
+            "Loop mechanisms",
+            "Active directions",
+            "Latest publications",
         ):
             self.assertIn(marker, stats_markup)
         self.assertIn('aria-live="polite"', stats_markup)
@@ -2427,6 +2503,9 @@ process.stdout.write(JSON.stringify({
             "Release dossiers",
             "Long arc",
             "long-arc-chart",
+            "Annual volume",
+            'id="annual-release-volume"',
+            "stats-taxonomy-details",
         ):
             self.assertNotIn(obsolete, stats_markup)
 
@@ -2601,7 +2680,9 @@ process.stdout.write(JSON.stringify({
             "timeline-empty",
             "textContent",
             "renderStatsDistribution",
-            "renderAnnualReleaseVolume",
+            "renderStatsCategoryComposition",
+            "renderStatsActiveDirections",
+            "renderStatsTagExplorer",
             "renderLatestReleases",
             "getSafeStatsPaperUrl",
         ):
@@ -2613,9 +2694,8 @@ process.stdout.write(JSON.stringify({
         self.assertIn("buildMonthlyPublicationSeries(ALL_PAPERS)", stats_source)
         self.assertIn("buildStatsDistribution(ALL_PAPERS, 'category'", stats_source)
         self.assertIn("buildStatsDistribution(ALL_PAPERS, 'mechanism_tags'", stats_source)
-        self.assertIn("buildStatsDistribution(ALL_PAPERS, 'focus_tags'", stats_source)
-        self.assertIn("buildStatsDistribution(ALL_PAPERS, 'domain_tags'", stats_source)
-        self.assertNotIn("{ limit:", stats_source)
+        self.assertIn("renderStatsActiveDirections();", stats_source)
+        self.assertIn("renderStatsTagExplorer();", stats_source)
         self.assertIn("HAS_RENDERED_STATS = true;", stats_source)
         self.assertIn("if (!CATALOG_DATA_READY)", stats_source)
         self.assertIn("release-pulse-summary", html)
@@ -2657,97 +2737,88 @@ process.stdout.write(JSON.stringify({
         self.assertIn("getLatestReleasedPapers(ALL_PAPERS, 5)", html)
 
     def test_stats_dashboard_uses_twelve_column_information_grid(self):
-        """Stats CSS must prioritize cadence, composition, annual volume, and latest papers."""
+        """Stats CSS must use a natural-height editorial grid without a dark hero card."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        stats_start = html.index("    .stats-panel {")
-        stats_end = html.index("    /* ── Category Section ── */", stats_start)
+        stats_start = html.index("    /* ── Personal-site-aligned editorial system ── */")
+        stats_end = html.index("  </style>", stats_start)
         stats_css = html[stats_start:stats_end]
 
-        scroll_start = stats_css.index("    .stats-chart-scroll {")
-        scroll_end = stats_css.index("\n    }", scroll_start)
-        scroll_rule = stats_css[scroll_start:scroll_end]
-        chart_start = stats_css.index("    .stats-panel .timeline-chart {")
-        chart_end = stats_css.index("\n    }", chart_start)
-        chart_rule = stats_css[chart_start:chart_end]
-        primary_start = stats_css.index("    .stats-primary-chart {")
-        primary_end = stats_css.index("\n    }", primary_start)
-        primary_rule = stats_css[primary_start:primary_end]
         dashboard_start = stats_css.index("    .stats-dashboard-grid {")
         dashboard_end = stats_css.index("\n    }", dashboard_start)
         dashboard_rule = stats_css[dashboard_start:dashboard_end]
-        grid_start = stats_css.index("    .stats-panel .timeline-grid {")
-        grid_end = stats_css.index("\n    }", grid_start)
-        grid_rule = stats_css[grid_start:grid_end]
-        bar_start = stats_css.index("    .stats-panel .timeline-bar {")
-        bar_end = stats_css.index("\n    }", bar_start)
-        bar_rule = stats_css[bar_start:bar_end]
-        line_start = stats_css.index("    .stats-panel .timeline-line {")
-        line_end = stats_css.index("\n    }", line_start)
-        line_rule = stats_css[line_start:line_end]
 
-        self.assertIn("width: 100%;", scroll_rule)
-        self.assertIn("max-width: 100%;", scroll_rule)
-        self.assertIn("overflow-x: auto;", scroll_rule)
-        self.assertIn("min-width: 760px;", chart_rule)
-        self.assertIn("color: var(--text-muted);", chart_rule)
-        self.assertIn("border: 1px solid #253650;", primary_rule)
-        self.assertIn("border-radius: 24px;", primary_rule)
-        self.assertIn("#0f1929", primary_rule)
         self.assertIn("grid-template-columns: repeat(12, minmax(0, 1fr));", dashboard_rule)
+        self.assertIn("align-items: start;", dashboard_rule)
         self.assertIn(".stats-pulse-card", stats_css)
         self.assertIn("grid-column: span 8;", stats_css)
         self.assertIn(".stats-composition-card", stats_css)
         self.assertIn("grid-column: span 4;", stats_css)
-        self.assertIn(".stats-annual-card", stats_css)
+        self.assertIn(".stats-mechanism-card", stats_css)
+        self.assertIn(".stats-directions-card", stats_css)
         self.assertIn(".stats-latest-card", stats_css)
-        self.assertIn(".stats-taxonomy-details", stats_css)
-        self.assertIn("stroke: var(--border);", grid_rule)
-        self.assertIn("fill: var(--accent);", bar_rule)
-        self.assertIn("stroke: var(--accent2);", line_rule)
+        self.assertIn(".stats-category-donut", stats_css)
+        self.assertIn(".stats-tag-explorer", stats_css)
+        self.assertIn(".stats-tag-results", stats_css)
+        chart_scroll_css = stats_css[stats_css.index("    .stats-chart-scroll {"):]
+        self.assertIn("overflow-x: auto;", chart_scroll_css)
+        self.assertIn("scrollbar-width: none;", chart_scroll_css)
+        self.assertIn("background: transparent;", stats_css)
+        self.assertIn("border-top: 1px solid var(--border);", stats_css)
         self.assertNotIn("animation:", stats_css)
-        self.assertIn("repeating-linear-gradient", stats_css)
-        self.assertNotIn("backdrop-filter", stats_css)
-        self.assertNotIn(".stats-lower-grid", stats_css)
-        self.assertNotIn(".latest-release-item:first-child", stats_css)
-        self.assertNotIn(".stats-long-arc", stats_css)
         self.assertIn("@media (max-width: 768px)", stats_css)
         self.assertIn("min-height: 44px;", stats_css)
 
-    def test_stats_mobile_order_prioritizes_latest_releases_before_annual_volume(self):
-        """Mobile Stats should read KPI, Pulse, Composition, Latest, then Annual."""
+    def test_stats_mobile_stacks_landscape_without_order_hacks(self):
+        """Mobile Stats should stack naturally without reordering or horizontal overflow."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        stats_start = html.index("    .stats-panel {")
-        stats_end = html.index("    /* ── Category Section ── */", stats_start)
+        stats_start = html.index("    /* ── Personal-site-aligned editorial system ── */")
+        stats_end = html.index("  </style>", stats_start)
         stats_css = html[stats_start:stats_end]
         mobile_start = stats_css.index("    @media (max-width: 768px)")
-        mobile_end = stats_css.index("    @media (max-width: 560px)", mobile_start)
-        mobile_css = stats_css[mobile_start:mobile_end]
+        mobile_css = stats_css[mobile_start:]
 
-        self.assertIn(".stats-latest-card", mobile_css)
-        self.assertIn("order: -1;", mobile_css)
-        self.assertNotRegex(stats_css[:mobile_start], r"(?m)^\s*order:")
+        self.assertIn(".stats-dashboard-grid {\n        display: block;", mobile_css)
+        self.assertIn(".stats-tag-results {\n        grid-template-columns: 1fr;", mobile_css)
+        self.assertNotRegex(stats_css, r"(?m)^\s*order:\s*-1")
+
+    def test_stats_scrollbar_is_subtle_and_does_not_cover_content(self):
+        """Stats scroll roots must reserve clearance for their overlay scrollbars."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        stats_start = html.index("    /* ── Personal-site-aligned editorial system ── */")
+        stats_end = html.index("  </style>", stats_start)
+        stats_css = html[stats_start:stats_end]
+
+        self.assertIn("body.stats-mode main {", stats_css)
+        self.assertIn("padding-inline-end: 8px;", stats_css)
+        self.assertIn("scrollbar-gutter: stable;", stats_css)
+        self.assertIn("body.stats-mode main::-webkit-scrollbar", stats_css)
+        self.assertIn("html:has(body.stats-mode) {", stats_css)
+        self.assertIn("html:has(body.stats-mode)::-webkit-scrollbar", stats_css)
+        self.assertIn("width: 5px;", stats_css)
+        self.assertIn("body.stats-mode .layout {\n        padding-inline-end: 22px;", stats_css)
 
     def test_stats_dashboard_refines_light_and_dark_theme_tokens(self):
-        """Dashboard surfaces must have explicit light and dark treatments."""
+        """Research Landscape must keep the same editorial grammar in dark mode."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        stats_start = html.index("    .stats-panel {")
-        stats_end = html.index("    /* ── Category Section ── */", stats_start)
+        stats_start = html.index("    /* ── Personal-site-aligned editorial system ── */")
+        stats_end = html.index("  </style>", stats_start)
         stats_css = html[stats_start:stats_end]
 
         self.assertIn("--stats-card-bg:", stats_css)
         self.assertIn("--stats-card-border:", stats_css)
         self.assertIn("--stats-track-bg:", stats_css)
+        self.assertIn("--stats-data-1:", stats_css)
         dark_start = stats_css.index("@media (prefers-color-scheme: dark)")
         dark_source = stats_css[dark_start:]
         self.assertIn(".stats-panel", dark_source)
-        self.assertIn("--stats-card-bg:", dark_source)
-        self.assertIn("--stats-card-border:", dark_source)
+        self.assertIn("--stats-data-1:", dark_source)
+        self.assertIn("background: transparent;", dark_source)
 
     def test_stats_small_text_uses_accessible_muted_color(self):
         """Small Stats labels must avoid the lower-contrast decorative text token."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        stats_start = html.index("    .stats-panel {")
-        stats_end = html.index("    /* ── Category Section ── */", stats_start)
+        stats_start = html.index("    /* ── Personal-site-aligned editorial system ── */")
+        stats_end = html.index("  </style>", stats_start)
         stats_css = html[stats_start:stats_end]
         note_start = stats_css.index("    .stats-metric-note {")
         note_end = stats_css.index("\n    }", note_start)
@@ -2854,31 +2925,30 @@ process.stdout.write(JSON.stringify({
         self.assertIn("'<div class=\"paper-meta\">' + paperDisplayDate + '</div>'", render_snippet)
         self.assertNotIn("authorsStr + ' · ' + paper.year", render_snippet)
 
-    def test_card_density_defaults_to_compact_with_an_accessible_toggle(self):
-        """Desktop cards should default compact while preserving a comfortable option."""
+    def test_paper_cards_use_fixed_compact_density_with_local_tag_disclosure(self):
+        """Paper cards should stay compact while hidden tags expand per card."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn('<body class="paper-density-compact">', html)
+        self.assertIn("<body>", html)
         self.assertIn('id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0" data-card-density="compact"', html)
-        self.assertIn('class="paper-density-toggle" role="group" aria-label="Paper card density"', html)
-        self.assertIn('id="paper-density-compact" aria-pressed="true" onclick="setPaperDensity(\'compact\')"', html)
-        self.assertIn('id="paper-density-comfortable" aria-pressed="false" onclick="setPaperDensity(\'comfortable\')"', html)
-        self.assertIn("let CURRENT_PAPER_DENSITY = 'compact';", html)
-        self.assertIn("function normalizePaperDensity(density) {", html)
-        self.assertIn("function applyPaperDensity() {", html)
-        self.assertIn("function setPaperDensity(density) {", html)
-        self.assertIn("function showComfortablePaperDensity() {", html)
-        self.assertIn("papersPanel.dataset.cardDensity = CURRENT_PAPER_DENSITY;", html)
-        self.assertIn("document.body.classList.toggle('paper-density-compact'", html)
-        self.assertIn("setToggleButtonState('paper-density-compact'", html)
-        self.assertIn("setToggleButtonState('paper-density-comfortable'", html)
-        self.assertIn("comfortableButton.focus();", html)
+        self.assertNotIn("paper-density-toggle", html)
+        self.assertNotIn("paper-density-compact", html)
+        self.assertNotIn("paper-density-comfortable", html)
+        self.assertNotIn("CURRENT_PAPER_DENSITY", html)
+        self.assertNotIn("normalizePaperDensity", html)
+        self.assertNotIn("applyPaperDensity", html)
+        self.assertNotIn("setPaperDensity", html)
+        self.assertNotIn("showComfortablePaperDensity", html)
 
         render_start = html.index("function renderCard(paper, query) {")
         render_end = html.index("// ── State & Category Tree", render_start)
         render_snippet = html[render_start:render_end]
         self.assertIn('class="paper-signal-row"', render_snippet)
         self.assertIn('class="paper-tag-overflow"', render_snippet)
-        self.assertIn("showComfortablePaperDensity()", render_snippet)
+        self.assertIn('aria-expanded="false"', render_snippet)
+        self.assertIn('data-hidden-tag-count="', render_snippet)
+        self.assertIn("togglePaperTagOverflow(this)", render_snippet)
+        self.assertIn("function togglePaperTagOverflow(button) {", html)
+        self.assertIn("card.classList.toggle('show-all-tags')", html)
 
         style = html[html.index("<style>"):html.index("</style>")]
         self.assertIn("#papers-panel[data-card-density=\"compact\"] .paper-card", style)
@@ -2889,10 +2959,12 @@ process.stdout.write(JSON.stringify({
         self.assertNotIn("body.paper-density-compact:not(.stats-mode) > header", style)
         self.assertIn("-webkit-line-clamp: 2;", style)
         self.assertIn("@media (min-width: 769px)", style)
-        self.assertIn(".paper-density-toggle", style)
+        self.assertNotIn(".paper-density-toggle", style)
+        self.assertNotIn(".paper-density-button", style)
         self.assertIn("max-width: 1640px;", style)
         self.assertIn("width: 248px;", style)
         self.assertIn('#papers-panel[data-card-density="compact"] .paper-tags > .paper-tag:nth-child(n+5)', style)
+        self.assertIn('#papers-panel[data-card-density="compact"] .paper-card.show-all-tags .paper-tags > .paper-tag', style)
         self.assertNotIn('.paper-tags .paper-tag:nth-of-type(n+5)', style)
 
     def test_footer_preserves_more_vertical_space_for_papers(self):
@@ -4186,7 +4258,11 @@ process.stdout.write(JSON.stringify(result));
 
     def test_submit_page_marks_required_fields_and_gives_tag_actions_more_spacing(self):
         html = SUBMIT_PAGE_PATH.read_text(encoding="utf-8")
-        self.assertIn(".panel {\n      background: var(--surface);\n      border: 1px solid var(--border);\n      border-radius: var(--radius);\n      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);\n      padding: var(--space-5);\n      display: grid;\n      gap: var(--space-4);", html)
+        self.assertIn(".panel {\n      background: transparent;\n      border: 0;\n      border-top: 1px solid var(--border);\n      border-radius: 0;\n      box-shadow: none;", html)
+        self.assertIn('class="site-header"', html)
+        self.assertIn('class="site-brand-mark" aria-hidden="true">LM</span>', html)
+        self.assertIn('href="index.html#stats">Stats</a>', html)
+        self.assertIn('aria-current="page">Submit</a>', html)
         self.assertIn(".field.is-required .field-label::after", html)
         self.assertIn("content: ' *';", html)
         self.assertIn(".field.is-invalid .field-label", html)

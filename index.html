@@ -9,48 +9,49 @@
     /* ── Light theme (default) ── */
     :root {
       --bg: #ffffff;
-      --surface: #f6f8fa;
-      --surface2: #eaeef2;
-      --border: #d0d7de;
-      --accent: #0969da;
-      --accent2: #1a7f37;
-      --accent3: #8250df;
-      --accent4: #bc4c00;
-      --accent5: #cf222e;
-      --text: #1f2328;
-      --text-muted: #656d76;
-      --text-dim: #9198a1;
-      --tag-bg: #f0f6fc;
-      --tag-border: #d0d7de;
+      --surface: #ffffff;
+      --surface2: #f7f7f5;
+      --border: rgba(17, 17, 17, 0.11);
+      --accent: #315f78;
+      --accent2: #4f6f5b;
+      --accent3: #5c5687;
+      --accent4: #8a5943;
+      --accent5: #8a4040;
+      --text: #111111;
+      --text-muted: #555555;
+      --text-dim: rgba(17, 17, 17, 0.48);
+      --tag-bg: transparent;
+      --tag-border: rgba(17, 17, 17, 0.14);
       --search-bg: #ffffff;
-      --card-hover: #f0f6fc;
-      --scrollbar-thumb: rgba(31,35,40,0.16);
-      --scrollbar-thumb-hover: rgba(31,35,40,0.26);
+      --card-hover: rgba(17, 17, 17, 0.025);
+      --scrollbar-thumb: rgba(17,17,17,0.16);
+      --scrollbar-thumb-hover: rgba(17,17,17,0.26);
       --scrollbar-track: transparent;
-      --radius: 6px;
-      --radius-sm: 3px;
-      --font-display: "STIX Two Text", "Georgia", "Times New Roman", serif;
+      --radius: 4px;
+      --radius-sm: 2px;
+      --font-display: Charter, Georgia, "Times New Roman", "Songti SC", STSong, serif;
+      --font-body: Charter, Georgia, "Times New Roman", "Songti SC", STSong, serif;
     }
 
     /* ── Dark theme (follows system) ── */
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0d1117;
-        --surface: #161b22;
-        --surface2: #21262d;
-        --border: #30363d;
-        --accent: #58a6ff;
-        --accent2: #3fb950;
-        --accent3: #d2a8ff;
-        --accent4: #ffa657;
-        --accent5: #ff7b72;
-        --text: #e6edf3;
-        --text-muted: #8b949e;
-        --text-dim: #6e7681;
-        --tag-bg: #1f2937;
-        --tag-border: #374151;
-        --search-bg: #0d1117;
-        --card-hover: #1c2128;
+        --bg: #1d1e20;
+        --surface: #1d1e20;
+        --surface2: #2b2c2f;
+        --border: rgba(255,255,255,0.12);
+        --accent: #9eb9ca;
+        --accent2: #a8c1ae;
+        --accent3: #bbb5dd;
+        --accent4: #d2aa97;
+        --accent5: #d8a2a2;
+        --text: #dadadb;
+        --text-muted: #c4c4c5;
+        --text-dim: #9b9c9d;
+        --tag-bg: transparent;
+        --tag-border: rgba(255,255,255,0.14);
+        --search-bg: #1d1e20;
+        --card-hover: rgba(255,255,255,0.035);
         --scrollbar-thumb: rgba(230,237,243,0.18);
         --scrollbar-thumb-hover: rgba(230,237,243,0.30);
         --scrollbar-track: transparent;
@@ -59,6 +60,13 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
     html, body {
       height: 100%;
     }
@@ -66,9 +74,9 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      line-height: 1.6;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
       min-height: 100vh;
       height: 100vh;
       display: flex;
@@ -122,7 +130,9 @@
     }
 
     /* ── Header ── */
-    body > header {
+    body > header,
+    body:not(.stats-mode) > header,
+    body.stats-mode > header {
       background:
         linear-gradient(180deg, rgba(9,105,218,0.025), transparent 72%),
         var(--surface);
@@ -403,46 +413,6 @@
       position: relative;
       flex: 1 1 260px;
       min-width: 0;
-    }
-
-    .search-tag-scope {
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding-left: 12px;
-      border: 1px solid var(--tag-border);
-      border-radius: var(--radius);
-      background: var(--tag-bg);
-      color: var(--accent3);
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .search-tag-scope[hidden] {
-      display: none;
-    }
-
-    .search-tag-scope-clear {
-      min-width: 44px;
-      min-height: 44px;
-      border: 0;
-      background: transparent;
-      color: inherit;
-      font: inherit;
-      font-size: 17px;
-      cursor: pointer;
-    }
-
-    .search-tag-scope-clear:hover,
-    .search-tag-scope-clear:focus-visible {
-      color: var(--text);
-    }
-
-    .search-tag-scope-clear:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: -4px;
     }
 
     .search-icon {
@@ -3173,6 +3143,19 @@
       font-weight: 600;
     }
 
+    #tag-filter-summary.is-active {
+      max-width: min(320px, 45vw);
+      padding: 2px 7px;
+      overflow: hidden;
+      border: 1px solid var(--tag-border);
+      border-radius: 999px;
+      background: var(--surface2);
+      color: var(--accent3);
+      line-height: 1.4;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
     .tag-filter-caret {
       transition: transform 0.18s ease;
     }
@@ -3859,7 +3842,6 @@
       .search-wrap {
         flex-wrap: wrap;
       }
-      .search-tag-scope,
       .search-field {
         width: 100%;
       }
@@ -4078,7 +4060,7 @@
       }
     }
 
-    /* ── Paper browsing density ── */
+    /* ── Paper browsing ── */
     .filter-sidebar-toggle-row {
       width: min(760px, 100%);
       margin-left: auto;
@@ -4093,43 +4075,6 @@
       min-width: 0;
     }
 
-    .paper-density-toggle {
-      display: inline-flex;
-      align-items: center;
-      flex: 0 0 auto;
-      padding: 3px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: var(--surface2);
-    }
-
-    .paper-density-button {
-      min-height: 28px;
-      padding: 4px 9px;
-      border: 1px solid transparent;
-      border-radius: 7px;
-      background: transparent;
-      color: var(--text-muted);
-      font: inherit;
-      font-size: 10.5px;
-      font-weight: 750;
-      letter-spacing: 0.035em;
-      cursor: pointer;
-    }
-
-    .paper-density-button:hover {
-      color: var(--text);
-    }
-
-    .paper-density-button.active,
-    .paper-density-button[aria-pressed="true"] {
-      border-color: var(--border);
-      background: var(--bg);
-      color: var(--text);
-      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
-    }
-
-    .paper-density-button:focus-visible,
     .paper-tag-overflow:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
@@ -4304,6 +4249,10 @@
         display: none;
       }
 
+      #papers-panel[data-card-density="compact"] .paper-card.show-all-tags .paper-tags > .paper-tag {
+        display: inline-flex;
+      }
+
       #papers-panel[data-card-density="compact"] .paper-tag-overflow {
         display: inline-flex;
       }
@@ -4369,26 +4318,1139 @@
     }
 
     @media (max-width: 768px) {
-      .paper-density-toggle {
-        display: none;
-      }
-
       .filter-sidebar-toggle-row,
       .filter-sidebar-toggle-row .filter-sidebar-toggle {
         width: 100%;
       }
     }
+
+    /* ── Personal-site-aligned editorial system ── */
+    body > header,
+    body:not(.stats-mode) > header,
+    body.stats-mode > header {
+      min-height: 52px;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      box-shadow: none;
+      backdrop-filter: saturate(180%) blur(18px);
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .site-masthead {
+      min-height: 52px;
+      grid-template-columns: minmax(250px, 1fr) auto minmax(250px, 1fr);
+      gap: 24px;
+    }
+
+    .site-brand h1 {
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .site-brand-mark {
+      display: inline-flex;
+      width: 28px;
+      height: 28px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid color-mix(in srgb, var(--text) 24%, transparent);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .top-level-tabs {
+      min-height: 52px;
+      gap: 4px;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .top-level-tab {
+      min-width: 0;
+      min-height: 44px;
+      padding: 9px 12px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      box-shadow: none;
+      text-underline-offset: 0.38em;
+    }
+
+    .top-level-tab:hover {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .top-level-tab.active,
+    .top-level-tab[aria-selected="true"] {
+      background: transparent;
+      color: var(--text);
+      text-decoration: underline;
+      box-shadow: none;
+    }
+
+    .header-actions {
+      justify-self: end;
+      gap: 6px;
+    }
+
+    .research-prompt-launch,
+    .contribute-btn,
+    .github-btn {
+      min-height: 32px;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 650;
+      box-shadow: none;
+    }
+
+    .research-prompt-launch:hover,
+    .contribute-btn:hover,
+    .github-btn:hover {
+      border-color: color-mix(in srgb, var(--text) 28%, transparent);
+      background: var(--card-hover);
+      color: var(--text);
+      transform: none;
+    }
+
+    .research-prompt-launch-language {
+      color: var(--text-dim);
+    }
+
+    .catalog-toolbar-shell {
+      flex: 0 0 auto;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    body.stats-mode .catalog-toolbar-shell {
+      display: none;
+    }
+
+    .papers-only-tools,
+    body:not(.stats-mode) .papers-only-tools {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 24px 0 20px;
+    }
+
+    body:not(.stats-mode) .header-sub,
+    .header-sub {
+      margin-bottom: 12px;
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    #search {
+      min-height: 44px;
+      border-color: var(--border);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 15px;
+      box-shadow: none;
+    }
+
+    #search:focus {
+      border-color: color-mix(in srgb, var(--accent) 70%, var(--border));
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent);
+    }
+
+    .search-count {
+      background: linear-gradient(90deg, transparent, var(--search-bg) 20px);
+    }
+
+    .filter-sidebar-toggle,
+    .filter-sidebar {
+      border-radius: var(--radius);
+      box-shadow: none;
+    }
+
+    .filter-sidebar-toggle {
+      min-height: 38px;
+      background: transparent;
+      color: var(--text-muted);
+    }
+
+    .filter-sidebar-toggle:hover {
+      border-color: color-mix(in srgb, var(--text) 24%, transparent);
+      color: var(--text);
+      transform: none;
+    }
+
+    .layout,
+    body.stats-mode .layout {
+      width: min(1180px, 100%);
+      max-width: 1180px;
+      padding: 30px 24px 48px;
+      gap: 34px;
+    }
+
+    .sidebar {
+      width: 218px;
+      padding: 6px 0 24px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .sidebar-title,
+    .stats-eyebrow,
+    .stats-section-index {
+      color: var(--text-dim);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sidebar-subtitle {
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .tree-link {
+      min-height: 36px;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+    }
+
+    .tree-link.active {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 0.3em;
+    }
+
+    .tree-count {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--text-dim);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .category-disclaimer {
+      margin-bottom: 32px;
+      padding: 12px 0 12px 16px;
+      border: 0;
+      border-left: 2px solid var(--text);
+      border-radius: 0;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .category {
+      margin-bottom: 46px;
+    }
+
+    .category-header,
+    #papers-panel[data-card-density="compact"] .category-header {
+      margin-bottom: 0;
+      padding: 0 0 14px;
+      border: 0;
+      border-bottom: 1px solid var(--border);
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .category-icon {
+      display: none;
+    }
+
+    .category-title,
+    #papers-panel[data-card-density="compact"] .category-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      line-height: 1.25;
+    }
+
+    .category-desc,
+    #papers-panel[data-card-density="compact"] .category-desc {
+      max-width: 780px;
+      margin-top: 4px;
+      font-size: 14px;
+      line-height: 1.5;
+      white-space: normal;
+    }
+
+    .category-count,
+    .category-node-count {
+      border: 0;
+      background: transparent;
+      color: var(--text-dim);
+    }
+
+    .category-node,
+    #papers-panel[data-card-density="compact"] .category-node {
+      margin-left: calc(var(--depth, 0) * 10px);
+      padding: 18px 0 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .category-node-header,
+    #papers-panel[data-card-density="compact"] .category-node-header {
+      margin-bottom: 8px;
+    }
+
+    .papers-grid,
+    #papers-panel[data-card-density="compact"] .papers-grid {
+      gap: 0;
+    }
+
+    .paper-card,
+    #papers-panel[data-card-density="compact"] .paper-card {
+      padding: 17px 0;
+      border: 0;
+      border-top: 1px solid var(--border);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      transition: border-color 0.18s ease;
+    }
+
+    .paper-card:hover {
+      border-color: color-mix(in srgb, var(--text) 28%, transparent);
+      background: transparent;
+      transform: none;
+    }
+
+    .paper-title,
+    #papers-panel[data-card-density="compact"] .paper-title {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.38;
+    }
+
+    .paper-meta,
+    #papers-panel[data-card-density="compact"] .paper-meta {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .paper-desc,
+    #papers-panel[data-card-density="compact"] .paper-desc {
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .paper-tag,
+    .tag-filter-chip,
+    .metric-badge,
+    .paper-venue,
+    .foundation-badge,
+    .catalog-fit-badge {
+      border-radius: var(--radius-sm);
+      box-shadow: none;
+    }
+
+    .link-btn {
+      border-color: var(--border);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--accent);
+      box-shadow: none;
+    }
+
+    .link-btn:hover {
+      border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
+      background: var(--card-hover);
+      transform: none;
+    }
+
+    /* Research Landscape */
+    html:has(body.stats-mode) {
+      scrollbar-width: thin;
+      scrollbar-color: color-mix(in srgb, var(--text) 10%, transparent) transparent;
+    }
+
+    body.stats-mode main {
+      padding-inline-end: 8px;
+      scrollbar-gutter: stable;
+      scrollbar-color: color-mix(in srgb, var(--text) 10%, transparent) transparent;
+    }
+
+    body.stats-mode main::-webkit-scrollbar,
+    html:has(body.stats-mode)::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    body.stats-mode main::-webkit-scrollbar-thumb,
+    html:has(body.stats-mode)::-webkit-scrollbar-thumb {
+      border: 1px solid transparent;
+      background: color-mix(in srgb, var(--text) 10%, transparent);
+      background-clip: padding-box;
+    }
+
+    body.stats-mode main::-webkit-scrollbar-thumb:hover,
+    html:has(body.stats-mode)::-webkit-scrollbar-thumb:hover {
+      background: color-mix(in srgb, var(--text) 18%, transparent);
+    }
+
+    .stats-panel {
+      --stats-card-bg: transparent;
+      --stats-card-border: var(--border);
+      --stats-track-bg: color-mix(in srgb, var(--text) 7%, transparent);
+      --stats-grid-line: color-mix(in srgb, var(--text) 8%, transparent);
+      --stats-data-1: #315f78;
+      --stats-data-2: #7f756c;
+      --stats-data-3: #a39a90;
+      background: transparent;
+    }
+
+    .stats-dashboard-header,
+    .stats-landscape-header {
+      align-items: end;
+      padding: 0 0 26px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-dashboard-header h2 {
+      margin-top: 7px;
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.02;
+    }
+
+    .stats-scope {
+      max-width: 660px;
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .stats-snapshot-block {
+      padding-left: 24px;
+      border-left: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: var(--font-body);
+    }
+
+    .stats-metric-rail {
+      margin: 0 0 34px;
+      border: 0;
+      border-bottom: 1px solid var(--border);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .stats-metric {
+      min-height: 132px;
+      padding: 22px 20px 20px;
+    }
+
+    .stats-metric:first-child {
+      padding-left: 0;
+    }
+
+    .stats-metric::before {
+      display: none;
+    }
+
+    .stats-metric-label {
+      color: var(--text-dim);
+      font-size: 11px;
+      letter-spacing: 0.07em;
+    }
+
+    .stats-metric-value {
+      margin-top: 5px;
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 700;
+    }
+
+    .stats-metric-note {
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .stats-dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      align-items: start;
+      gap: 24px;
+    }
+
+    .stats-landscape-primary,
+    .stats-landscape-secondary {
+      margin-top: 0;
+      margin-bottom: 34px;
+    }
+
+    .stats-pulse-card {
+      grid-column: span 8;
+    }
+
+    .stats-composition-card {
+      grid-column: span 4;
+    }
+
+    .stats-mechanism-card {
+      grid-column: span 5;
+    }
+
+    .stats-directions-card {
+      grid-column: span 7;
+    }
+
+    .stats-dashboard-card,
+    .stats-primary-chart,
+    .stats-latest-card {
+      min-height: 0;
+      padding: 22px 0 0;
+      border: 0;
+      border-top: 1px solid var(--border);
+      border-radius: 0;
+      background: transparent;
+      color: var(--text);
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .stats-primary-chart {
+      padding-top: 22px;
+    }
+
+    .stats-card-header h3,
+    .stats-chart-heading h3,
+    .stats-primary-chart .stats-chart-heading h3 {
+      margin-top: 4px;
+      font-family: var(--font-display);
+      font-size: 25px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .stats-card-header p,
+    .stats-chart-heading p,
+    .stats-primary-chart .stats-chart-heading p,
+    .stats-primary-chart .stats-chart-legend,
+    .stats-primary-chart .stats-period-summary {
+      color: var(--text-muted);
+    }
+
+    .stats-range-control,
+    .stats-primary-chart .stats-range-control {
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: transparent;
+    }
+
+    .stats-range-button,
+    .stats-primary-chart .stats-range-button,
+    .stats-direction-tabs button {
+      min-height: 36px;
+      padding: 6px 10px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .stats-range-button[aria-pressed="true"],
+    .stats-primary-chart .stats-range-button[aria-pressed="true"],
+    .stats-direction-tabs button[aria-pressed="true"] {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .stats-chart-scroll {
+      min-height: 328px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .stats-chart-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .stats-panel .timeline-chart {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .stats-panel .timeline-grid {
+      stroke: var(--stats-grid-line);
+    }
+
+    .stats-panel .timeline-axis-label,
+    .stats-panel .timeline-tick-label {
+      fill: var(--text-muted);
+    }
+
+    .stats-panel .timeline-bar {
+      fill: var(--stats-data-1);
+      opacity: 0.68;
+    }
+
+    .stats-panel .timeline-line {
+      stroke: var(--text);
+    }
+
+    .stats-category-composition {
+      display: grid;
+      grid-template-columns: 148px minmax(0, 1fr);
+      align-items: center;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .stats-category-donut {
+      position: relative;
+      width: 148px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+    }
+
+    .stats-category-donut::after {
+      position: absolute;
+      inset: 28px;
+      border-radius: 50%;
+      background: var(--bg);
+      content: '';
+    }
+
+    .stats-category-donut > span {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+    }
+
+    .stats-category-donut strong {
+      font-family: var(--font-display);
+      font-size: 27px;
+      line-height: 1;
+    }
+
+    .stats-category-donut small {
+      margin-top: 4px;
+      color: var(--text-dim);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .stats-category-legend {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stats-category-legend a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .stats-category-legend a:hover {
+      color: var(--text);
+    }
+
+    .stats-category-legend a > span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stats-category-legend i {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+    }
+
+    .stats-category-legend strong {
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stats-direction-tabs {
+      display: inline-flex;
+      flex: 0 0 auto;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .stats-distribution-list {
+      margin-top: 18px;
+    }
+
+    .stats-distribution-row {
+      padding: 9px 0;
+      color: var(--text-muted);
+    }
+
+    a.stats-distribution-row:hover {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .stats-distribution-track {
+      height: 3px;
+      border-radius: 0;
+      background: var(--stats-track-bg);
+    }
+
+    .stats-distribution-bar {
+      border-radius: 0;
+      background: var(--stats-data-1);
+    }
+
+    .stats-tag-explorer {
+      margin: 0 0 36px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-tag-explorer > summary {
+      display: flex;
+      min-height: 78px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .stats-tag-explorer > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .stats-tag-explorer > summary span:first-child {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stats-tag-explorer > summary strong {
+      font-family: var(--font-display);
+      font-size: 19px;
+    }
+
+    .stats-tag-explorer > summary small {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .stats-tag-explorer[open] > summary > span:last-child {
+      transform: rotate(45deg);
+    }
+
+    .stats-tag-explorer-body {
+      padding: 2px 0 24px;
+    }
+
+    .stats-tag-explorer-toolbar {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .stats-tag-search-field {
+      display: flex;
+      width: min(440px, 100%);
+      flex-direction: column;
+      gap: 5px;
+      color: var(--text-dim);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .stats-tag-search-field input {
+      width: 100%;
+      min-height: 42px;
+      padding: 8px 11px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14px;
+      text-transform: none;
+      letter-spacing: 0;
+      outline: none;
+    }
+
+    .stats-tag-search-field input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent);
+    }
+
+    .stats-tag-results {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0 24px;
+    }
+
+    .stats-tag-results a {
+      display: flex;
+      min-height: 42px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .stats-tag-results a:hover {
+      color: var(--text);
+    }
+
+    .stats-tag-results strong {
+      color: var(--text-dim);
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stats-latest-card {
+      margin-top: 0;
+      margin-bottom: 24px;
+      order: initial;
+    }
+
+    .latest-releases-list {
+      margin-top: 12px;
+      border-top: 0;
+    }
+
+    .latest-release-item {
+      grid-template-columns: 104px minmax(0, 1fr);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .latest-release-title,
+    .latest-release-title-static {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1020px) {
+      .site-masthead {
+        grid-template-columns: minmax(210px, 1fr) auto minmax(210px, 1fr);
+        gap: 12px;
+      }
+
+      .research-prompt-launch-language {
+        display: none;
+      }
+
+      .stats-pulse-card,
+      .stats-composition-card,
+      .stats-mechanism-card,
+      .stats-directions-card {
+        grid-column: 1 / -1;
+      }
+
+      .stats-category-composition {
+        grid-template-columns: 160px minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body > header,
+      body:not(.stats-mode) > header,
+      body.stats-mode > header {
+        position: sticky;
+        padding: 0 12px;
+      }
+
+      .site-masthead {
+        display: grid;
+        min-height: 58px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        flex-wrap: nowrap;
+        gap: 8px;
+      }
+
+      .site-brand {
+        order: initial;
+        min-width: 0;
+        flex: 0 1 auto;
+        flex-basis: auto;
+      }
+
+      .site-brand h1 {
+        min-width: 0;
+        justify-content: flex-start;
+      }
+
+      .site-brand-name {
+        display: block;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .site-brand-mark {
+        width: 30px;
+        height: 30px;
+      }
+
+      .site-masthead .top-level-tabs {
+        order: initial;
+        width: auto;
+        min-width: max-content;
+        min-height: 58px;
+        flex: 0 0 auto;
+        flex-basis: auto;
+        justify-self: end;
+      }
+
+      .site-masthead .top-level-tab {
+        flex: 0 0 auto;
+      }
+
+      .site-masthead .header-actions {
+        display: none;
+      }
+
+      .top-level-tab {
+        min-height: 44px;
+        padding: 8px 10px;
+        font-size: 14px;
+      }
+
+      .papers-only-tools,
+      body:not(.stats-mode) .papers-only-tools {
+        padding: 18px 12px 16px;
+      }
+
+      .layout,
+      body.stats-mode .layout {
+        width: 100%;
+        padding: 24px 16px 40px;
+      }
+
+      body.stats-mode main {
+        padding-inline-end: 0;
+        scrollbar-gutter: auto;
+      }
+
+      body.stats-mode .layout {
+        padding-inline-end: 22px;
+      }
+
+      .stats-dashboard-header,
+      .stats-landscape-header {
+        align-items: start;
+        gap: 18px;
+      }
+
+      .stats-dashboard-header h2 {
+        font-size: 34px;
+      }
+
+      .stats-scope {
+        font-size: 14px;
+      }
+
+      .stats-snapshot-block {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .stats-metric-rail {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stats-metric,
+      .stats-metric:first-child {
+        min-height: 116px;
+        padding: 16px 12px;
+      }
+
+      .stats-metric:nth-child(odd) {
+        padding-left: 0;
+        border-left: 0;
+      }
+
+      .stats-metric:nth-child(n + 3) {
+        border-top: 1px solid var(--border);
+      }
+
+      .stats-metric-value {
+        font-size: 28px;
+      }
+
+      .stats-dashboard-grid {
+        display: block;
+      }
+
+      .stats-dashboard-card,
+      .stats-primary-chart {
+        margin-bottom: 32px;
+      }
+
+      .stats-chart-header,
+      .stats-card-header-inline,
+      .stats-tag-explorer-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .stats-chart-actions {
+        width: 100%;
+        align-items: flex-start;
+      }
+
+      .stats-chart-scroll {
+        min-height: 250px;
+      }
+
+      .stats-category-composition {
+        grid-template-columns: 116px minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .stats-category-donut {
+        width: 116px;
+      }
+
+      .stats-category-donut::after {
+        inset: 23px;
+      }
+
+      .stats-category-donut strong {
+        font-size: 23px;
+      }
+
+      .stats-tag-search-field {
+        width: 100%;
+      }
+
+      .stats-tag-results {
+        grid-template-columns: 1fr;
+      }
+
+      .latest-release-item {
+        grid-template-columns: 84px minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .filter-sidebar-controls .sort-bar,
+      .filter-sidebar-controls .date-filter-bar,
+      .filter-sidebar-controls .quick-filter-bar,
+      .filter-sidebar-controls .view-toggle-bar {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .filter-sidebar-controls .sort-bar::-webkit-scrollbar,
+      .filter-sidebar-controls .date-filter-bar::-webkit-scrollbar,
+      .filter-sidebar-controls .quick-filter-bar::-webkit-scrollbar,
+      .filter-sidebar-controls .view-toggle-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-sidebar-controls .sort-btn,
+      .filter-sidebar-controls .date-clear-btn {
+        flex: 0 0 auto;
+      }
+
+      .filter-sidebar-controls .date-input {
+        flex: 0 0 132px;
+        width: 132px;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body > header {
+        background: color-mix(in srgb, var(--bg) 92%, transparent);
+      }
+
+      .stats-panel {
+        --stats-data-1: #9eb9ca;
+        --stats-data-2: #aaa098;
+        --stats-data-3: #77736e;
+      }
+
+      .stats-dashboard-card,
+      .stats-primary-chart,
+      .stats-metric-rail,
+      .stats-panel .stats-primary-chart {
+        background: transparent;
+        box-shadow: none;
+      }
+    }
   </style>
 </head>
-<body class="paper-density-compact">
+<body>
 
 <header>
   <div class="header-inner">
     <div class="site-masthead">
       <div class="site-brand">
         <h1>
-          <span aria-hidden="true">🔁</span>
-          Awesome Loop Models
+          <span class="site-brand-mark" aria-hidden="true">LM</span>
+          <span class="site-brand-name">Awesome Loop Models</span>
         </h1>
       </div>
       <div class="top-level-tabs" role="tablist" aria-label="Site sections">
@@ -4414,6 +5476,11 @@
         <a class="contribute-btn" href="submit.html">📄 Submit</a>
       </div>
     </div>
+  </div>
+</header>
+
+<div class="catalog-toolbar-shell">
+  <div class="header-inner">
     <div class="papers-only-tools" id="papers-only-tools">
       <p class="header-sub">
         A curated list of papers and selected technical blogs on Loop Models.
@@ -4423,11 +5490,11 @@
        aria-label="Latest Daily Briefing"
        hidden>
       <div class="daily-briefing-notice-label">Daily report</div>
-      <div class="daily-briefing-notice-title" id="daily-briefing-notice-title">Today’s loop-model report</div>
+      <div class="daily-briefing-notice-title" id="daily-briefing-notice-title">Latest loop-model report</div>
       <div class="daily-briefing-notice-meta">
         <span id="daily-briefing-notice-date">—</span>
       </div>
-      <p class="daily-briefing-notice-compact" id="daily-briefing-notice-compact">Checking today’s briefing…</p>
+      <p class="daily-briefing-notice-compact" id="daily-briefing-notice-compact">Checking latest briefing…</p>
       <ul class="daily-briefing-notice-new-papers" id="daily-briefing-notice-new-papers"></ul>
       <button type="button"
               class="daily-briefing-notice-toggle"
@@ -4447,10 +5514,6 @@
       <div class="daily-watch-countdown-meta" id="daily-watch-countdown-meta">20:05 ET Sunday–Thursday · about 5 minutes after arXiv's daily announcement.</div>
     </div>
     <div class="search-wrap">
-      <div class="search-tag-scope" id="search-tag-scope" hidden>
-        <span id="search-tag-scope-label"></span>
-        <button type="button" class="search-tag-scope-clear" id="search-tag-scope-clear" aria-label="Clear tag filter">×</button>
-      </div>
       <div class="search-field">
         <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
           <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
@@ -4464,10 +5527,6 @@
         <span>Filters</span>
         <span class="filter-sidebar-toggle-meta" id="filter-sidebar-summary">Sort, date, tags</span>
       </button>
-      <div class="paper-density-toggle" role="group" aria-label="Paper card density">
-        <button type="button" class="paper-density-button active" id="paper-density-compact" aria-pressed="true" onclick="setPaperDensity('compact')">Compact</button>
-        <button type="button" class="paper-density-button" id="paper-density-comfortable" aria-pressed="false" onclick="setPaperDensity('comfortable')">Comfortable</button>
-      </div>
     </div>
     <aside class="filter-sidebar" id="filter-sidebar-panel" aria-hidden="true" hidden>
       <div class="filter-sidebar-header">
@@ -4525,7 +5584,7 @@
     </aside>
     </div>
   </div>
-</header>
+</div>
 
 <div class="layout">
   <!-- Sidebar -->
@@ -4538,7 +5597,7 @@
     <div class="sidebar-contribute">
       <a href="submit.html">
         <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        📄 Submit 
+        📄 Submit
       </a>
     </div>
   </aside>
@@ -4590,11 +5649,11 @@
     </div>
 
     <section class="top-level-panel stats-panel" id="stats-panel" role="tabpanel" aria-labelledby="stats-tab" tabindex="0" hidden>
-      <header class="stats-dashboard-header">
+      <header class="stats-dashboard-header stats-landscape-header">
         <div>
-          <div class="stats-eyebrow">Catalog intelligence</div>
-          <h2>Loop-model research at a glance</h2>
-          <p class="stats-scope">Publication trends and taxonomy coverage across the papers curated in this catalog.</p>
+          <div class="stats-eyebrow">Research landscape</div>
+          <h2>Loop Models, mapped.</h2>
+          <p class="stats-scope">Publication activity, structural choices, and research directions across the curated paper catalog.</p>
         </div>
         <div class="stats-snapshot-block">
           <span>Dataset snapshot</span>
@@ -4626,12 +5685,12 @@
         </div>
       </dl>
 
-      <div class="stats-dashboard-grid stats-dashboard-primary">
+      <div class="stats-dashboard-grid stats-dashboard-primary stats-landscape-primary">
         <article class="stats-primary-chart stats-pulse-card" aria-labelledby="release-pulse-heading">
           <header class="stats-chart-header">
             <div class="stats-chart-heading">
-              <div class="stats-section-index">Release cadence</div>
-              <h3 id="release-pulse-heading">Release Pulse</h3>
+              <div class="stats-section-index">Publication activity</div>
+              <h3 id="release-pulse-heading">Release trend</h3>
               <p>Published papers per period, with a trailing average on the same scale.</p>
             </div>
             <div class="stats-chart-actions">
@@ -4652,57 +5711,69 @@
 
         <aside class="stats-dashboard-card stats-composition-card" aria-labelledby="catalog-composition-heading">
           <header class="stats-card-header">
-            <div class="stats-section-index">Taxonomy coverage</div>
-            <h3 id="catalog-composition-heading">Catalog composition</h3>
-            <p>How curated papers are classified today.</p>
+            <div class="stats-section-index">Primary taxonomy</div>
+            <h3 id="catalog-composition-heading">Category mix</h3>
+            <p>One primary category per catalog paper.</p>
           </header>
-          <div class="stats-distribution-block">
-            <h4>Primary category</h4>
-            <div id="stats-category-distribution" aria-live="polite"></div>
-          </div>
-          <div class="stats-distribution-block">
-            <h4>Loop mechanism</h4>
-            <div id="stats-mechanism-distribution" aria-live="polite"></div>
-            <p class="stats-distribution-note">Multi-label field; shares may total more than 100%.</p>
-          </div>
-          <details class="stats-taxonomy-details">
-            <summary>Explore focus and domain tags</summary>
-            <p class="stats-distribution-note">Focus and domain tags are multi-label; aggregate shares may exceed 100%.</p>
-            <div class="stats-taxonomy-detail-grid">
-              <div class="stats-distribution-block">
-                <h4>Research focus</h4>
-                <div id="stats-focus-distribution"></div>
-              </div>
-              <div class="stats-distribution-block">
-                <h4>Domain tags</h4>
-                <div id="stats-domain-distribution"></div>
-              </div>
-            </div>
-          </details>
+          <div class="stats-category-composition" id="stats-category-distribution" aria-live="polite"></div>
         </aside>
       </div>
 
-      <div class="stats-dashboard-grid stats-dashboard-secondary">
-        <article class="stats-dashboard-card stats-annual-card" aria-labelledby="annual-volume-heading">
+      <div class="stats-dashboard-grid stats-dashboard-secondary stats-landscape-secondary">
+        <article class="stats-dashboard-card stats-mechanism-card" aria-labelledby="mechanism-heading">
           <header class="stats-card-header">
-            <div class="stats-section-index">Year by year</div>
-            <h3 id="annual-volume-heading">Annual volume</h3>
-            <p id="annual-volume-note">The latest calendar year may be incomplete.</p>
+            <div class="stats-section-index">Structural choices</div>
+            <h3 id="mechanism-heading">Loop mechanisms</h3>
+            <p>Multi-label; shares can total more than 100%.</p>
           </header>
-          <div id="annual-release-volume" aria-live="polite"></div>
+          <div id="stats-mechanism-distribution" aria-live="polite"></div>
         </article>
 
-        <article class="stats-dashboard-card stats-latest-card" aria-labelledby="latest-releases-heading">
+        <article class="stats-dashboard-card stats-directions-card" aria-labelledby="active-directions-heading">
           <header class="stats-card-header stats-card-header-inline">
             <div>
-              <div class="stats-section-index">Newest in the catalog</div>
-              <h3 id="latest-releases-heading">Latest releases</h3>
+              <div class="stats-section-index">Recent 90-day window</div>
+              <h3 id="active-directions-heading">Active directions</h3>
             </div>
-            <p>Publication date, catalog category, and loop mechanism.</p>
+            <div class="stats-direction-tabs" role="group" aria-label="Active direction taxonomy">
+              <button type="button" data-stats-direction="focus" aria-pressed="true">Focus</button>
+              <button type="button" data-stats-direction="domain" aria-pressed="false">Domain</button>
+            </div>
           </header>
-          <div class="latest-releases-list" id="latest-releases-list" role="list" aria-live="polite"></div>
+          <div id="stats-active-directions" aria-live="polite"></div>
         </article>
       </div>
+
+      <details class="stats-tag-explorer">
+        <summary>
+          <span><strong>Explore every tag</strong><small>Search the full paper-only Focus and Domain taxonomy.</small></span>
+          <span aria-hidden="true">＋</span>
+        </summary>
+        <div class="stats-tag-explorer-body">
+          <div class="stats-tag-explorer-toolbar">
+            <div class="stats-direction-tabs" role="group" aria-label="Tag explorer taxonomy">
+              <button type="button" data-stats-explorer-group="focus" aria-pressed="true">Focus</button>
+              <button type="button" data-stats-explorer-group="domain" aria-pressed="false">Domain</button>
+            </div>
+            <label class="stats-tag-search-field" for="stats-tag-search">
+              <span>Search tags</span>
+              <input type="search" id="stats-tag-search" placeholder="e.g. reasoning, efficiency, architecture" autocomplete="off" />
+            </label>
+          </div>
+          <div class="stats-tag-results" id="stats-tag-results" role="list" aria-live="polite"></div>
+        </div>
+      </details>
+
+      <article class="stats-dashboard-card stats-latest-card" aria-labelledby="latest-releases-heading">
+        <header class="stats-card-header stats-card-header-inline">
+          <div>
+            <div class="stats-section-index">Newest in the catalog</div>
+            <h3 id="latest-releases-heading">Latest publications</h3>
+          </div>
+          <p>Publication date, primary category, and loop mechanism.</p>
+        </header>
+        <div class="latest-releases-list" id="latest-releases-list" role="list" aria-live="polite"></div>
+      </article>
     </section>
 
   </main>
@@ -5114,6 +6185,31 @@ function buildStatsDistribution(papers, field, labels) {
   };
 }
 
+/** Build one taxonomy distribution inside a window anchored to the latest paper date. */
+function buildRecentStatsDistribution(papers, field, windowDays, limit) {
+  var catalog = Array.isArray(papers) ? papers : [];
+  var dated = catalog.map(function(paper) {
+    return { paper: paper, date: parseIsoDate(paper && paper.published_date) };
+  }).filter(function(entry) {
+    return entry.date !== null;
+  });
+  if (dated.length === 0) return buildStatsDistribution([], field);
+
+  var latestTime = Math.max.apply(null, dated.map(function(entry) { return entry.date.getTime(); }));
+  var days = Number.isFinite(windowDays) ? Math.max(1, Math.floor(windowDays)) : 90;
+  var earliestTime = latestTime - (days - 1) * 86400000;
+  var recentPapers = dated.filter(function(entry) {
+    return entry.date.getTime() >= earliestTime;
+  }).map(function(entry) {
+    return entry.paper;
+  });
+  var distribution = buildStatsDistribution(recentPapers, field);
+  var rowLimit = Number.isFinite(limit) ? Math.max(0, Math.floor(limit)) : distribution.rows.length;
+  distribution.rows = distribution.rows.slice(0, rowLimit);
+  distribution.assignmentCount = distribution.rows.reduce(function(total, row) { return total + row.count; }, 0);
+  return distribution;
+}
+
 /**
  * Create an SVG element with controlled attributes.
  * @param {string} tagName SVG tag name.
@@ -5263,7 +6359,7 @@ function renderReleasePulseChart(container, series, options) {
     role: 'img',
     'aria-labelledby': titleId + ' ' + descId
   });
-  svg.style.width = chartWidth + 'px';
+  svg.style.width = '100%';
 
   var title = createStatsSvgElement('title', { id: titleId });
   title.textContent = settings.title || 'Release Pulse';
@@ -5395,6 +6491,145 @@ function renderStatsDistribution(container, distribution, options) {
     list.appendChild(listItem);
   });
   container.appendChild(list);
+}
+
+/** Render the mutually exclusive primary category distribution as a donut and legend. */
+function renderStatsCategoryComposition(container, distribution) {
+  if (!container) return;
+  container.replaceChildren();
+  var data = distribution && Array.isArray(distribution.rows) ? distribution : { totalPapers: 0, rows: [] };
+  if (!data.rows.length || !data.totalPapers) {
+    var emptyState = document.createElement('p');
+    emptyState.className = 'stats-empty-block';
+    emptyState.textContent = 'No category data is available.';
+    container.appendChild(emptyState);
+    return;
+  }
+
+  var colors = ['var(--stats-data-1)', 'var(--stats-data-2)', 'var(--stats-data-3)'];
+  var cursor = 0;
+  var stops = data.rows.map(function(row, index) {
+    var start = cursor;
+    cursor += row.percentage;
+    return colors[index % colors.length] + ' ' + start.toFixed(1) + '% ' + cursor.toFixed(1) + '%';
+  });
+  var chart = document.createElement('div');
+  chart.className = 'stats-category-donut';
+  chart.style.background = 'conic-gradient(' + stops.join(', ') + ')';
+  chart.setAttribute('role', 'img');
+  chart.setAttribute('aria-label', data.rows.map(function(row) {
+    return row.label + ': ' + row.count + ' papers';
+  }).join('; '));
+  var center = document.createElement('span');
+  var total = document.createElement('strong');
+  total.textContent = data.totalPapers.toLocaleString('en-US');
+  var label = document.createElement('small');
+  label.textContent = 'papers';
+  center.append(total, label);
+  chart.appendChild(center);
+
+  var legend = document.createElement('div');
+  legend.className = 'stats-category-legend';
+  legend.setAttribute('role', 'list');
+  data.rows.forEach(function(row, index) {
+    var link = document.createElement('a');
+    link.href = '#section-' + row.key;
+    link.setAttribute('role', 'listitem');
+    link.setAttribute('aria-label', 'Browse ' + row.count + ' papers in ' + row.label);
+    var name = document.createElement('span');
+    var swatch = document.createElement('i');
+    swatch.style.background = colors[index % colors.length];
+    swatch.setAttribute('aria-hidden', 'true');
+    var text = document.createElement('span');
+    text.textContent = row.label;
+    name.append(swatch, text);
+    var value = document.createElement('strong');
+    value.textContent = row.count.toLocaleString('en-US') + ' · ' + row.percentage.toFixed(1) + '%';
+    link.append(name, value);
+    legend.appendChild(link);
+  });
+
+  container.append(chart, legend);
+}
+
+/** Return the catalog field name for a supported Stats taxonomy group. */
+function getStatsTaxonomyField(group) {
+  return group === 'domain' ? 'domain_tags' : 'focus_tags';
+}
+
+/** Render the current Top-6 recent Focus or Domain direction ranking. */
+function renderStatsActiveDirections() {
+  var container = document.getElementById('stats-active-directions');
+  if (!container || !CATALOG_DATA_READY) return;
+  renderStatsDistribution(
+    container,
+    buildRecentStatsDistribution(ALL_PAPERS, getStatsTaxonomyField(CURRENT_STATS_DIRECTION_GROUP), 90, 6),
+    { tagGroup: CURRENT_STATS_DIRECTION_GROUP }
+  );
+}
+
+/** Render the searchable full Focus or Domain inventory as compact native links. */
+function renderStatsTagExplorer() {
+  var container = document.getElementById('stats-tag-results');
+  var input = document.getElementById('stats-tag-search');
+  if (!container || !CATALOG_DATA_READY) return;
+  container.replaceChildren();
+  var query = String(input && input.value || '').trim().toLowerCase();
+  var rows = buildStatsDistribution(
+    ALL_PAPERS,
+    getStatsTaxonomyField(CURRENT_STATS_EXPLORER_GROUP)
+  ).rows.filter(function(row) {
+    return !query || row.label.toLowerCase().includes(query) || row.key.toLowerCase().includes(query);
+  });
+  if (rows.length === 0) {
+    var emptyState = document.createElement('p');
+    emptyState.className = 'stats-empty-block';
+    emptyState.textContent = 'No tags match this search.';
+    container.appendChild(emptyState);
+    return;
+  }
+
+  rows.forEach(function(row) {
+    var tagKey = buildTagEntry(CURRENT_STATS_EXPLORER_GROUP, row.key).key;
+    var link = document.createElement('a');
+    link.href = getTagDrilldownHref(tagKey);
+    link.setAttribute('role', 'listitem');
+    link.setAttribute('data-tag-key', tagKey);
+    link.setAttribute('data-tag-group', CURRENT_STATS_EXPLORER_GROUP);
+    link.setAttribute('aria-label', 'View ' + row.count + ' papers tagged ' + row.label);
+    var name = document.createElement('span');
+    name.textContent = row.label;
+    var count = document.createElement('strong');
+    count.textContent = row.count.toLocaleString('en-US');
+    link.append(name, count);
+    container.appendChild(link);
+  });
+}
+
+/** Register the Stats taxonomy tabs and explorer search once. */
+function initStatsTaxonomyInteractions() {
+  if (STATS_TAXONOMY_LISTENERS_BOUND) return;
+  STATS_TAXONOMY_LISTENERS_BOUND = true;
+  document.querySelectorAll('[data-stats-direction]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      CURRENT_STATS_DIRECTION_GROUP = button.dataset.statsDirection === 'domain' ? 'domain' : 'focus';
+      document.querySelectorAll('[data-stats-direction]').forEach(function(option) {
+        option.setAttribute('aria-pressed', option.dataset.statsDirection === CURRENT_STATS_DIRECTION_GROUP ? 'true' : 'false');
+      });
+      renderStatsActiveDirections();
+    });
+  });
+  document.querySelectorAll('[data-stats-explorer-group]').forEach(function(button) {
+    button.addEventListener('click', function() {
+      CURRENT_STATS_EXPLORER_GROUP = button.dataset.statsExplorerGroup === 'domain' ? 'domain' : 'focus';
+      document.querySelectorAll('[data-stats-explorer-group]').forEach(function(option) {
+        option.setAttribute('aria-pressed', option.dataset.statsExplorerGroup === CURRENT_STATS_EXPLORER_GROUP ? 'true' : 'false');
+      });
+      renderStatsTagExplorer();
+    });
+  });
+  var search = document.getElementById('stats-tag-search');
+  if (search) search.addEventListener('input', renderStatsTagExplorer);
 }
 
 /**
@@ -5600,6 +6835,7 @@ function initStatsRangeInteractions() {
 /** Populate release metrics and the complete catalog-intelligence dashboard on demand. */
 function renderStatsPanel() {
   initStatsRangeInteractions();
+  initStatsTaxonomyInteractions();
   var status = document.getElementById('stats-status');
   if (!CATALOG_DATA_READY) {
     if (status) {
@@ -5665,7 +6901,7 @@ function renderStatsPanel() {
     labels[key] = CATEGORIES[key] && CATEGORIES[key].title ? CATEGORIES[key].title : key;
     return labels;
   }, {});
-  renderStatsDistribution(
+  renderStatsCategoryComposition(
     document.getElementById('stats-category-distribution'),
     buildStatsDistribution(ALL_PAPERS, 'category', categoryLabels)
   );
@@ -5674,30 +6910,12 @@ function renderStatsPanel() {
     buildStatsDistribution(ALL_PAPERS, 'mechanism_tags'),
     { tagGroup: 'mechanism' }
   );
-  renderStatsDistribution(
-    document.getElementById('stats-focus-distribution'),
-    buildStatsDistribution(ALL_PAPERS, 'focus_tags'),
-    { tagGroup: 'focus' }
-  );
-  renderStatsDistribution(
-    document.getElementById('stats-domain-distribution'),
-    buildStatsDistribution(ALL_PAPERS, 'domain_tags'),
-    { tagGroup: 'domain' }
-  );
-  renderAnnualReleaseVolume(
-    document.getElementById('annual-release-volume'),
-    buildAnnualReleaseSeries(ALL_PAPERS)
-  );
+  renderStatsActiveDirections();
+  renderStatsTagExplorer();
   renderLatestReleases(
     document.getElementById('latest-releases-list'),
     latestPapers
   );
-  var annualNote = document.getElementById('annual-volume-note');
-  if (annualNote) {
-    annualNote.textContent = summary.latestReleaseDate
-      ? 'Latest year is partial through ' + summary.latestReleaseDate + '.'
-      : 'No valid publication year is available.';
-  }
   if (status) status.hidden = true;
   HAS_RENDERED_STATS = true;
 }
@@ -5984,7 +7202,7 @@ function renderCard(paper, query) {
   const displayTagCount = displayMechanismEntries.length + displayFocusEntries.length + displayDomainEntries.length;
   const hiddenCompactTagCount = Math.max(0, displayTagCount - 4);
   const tagOverflowHtml = hiddenCompactTagCount
-    ? '<button type="button" class="paper-tag-overflow" aria-label="Show ' + hiddenCompactTagCount + ' more tags in comfortable density" onclick="showComfortablePaperDensity()">+' + hiddenCompactTagCount + ' tags</button>'
+    ? '<button type="button" class="paper-tag-overflow" aria-expanded="false" data-hidden-tag-count="' + hiddenCompactTagCount + '" aria-label="Show ' + hiddenCompactTagCount + ' more tags for this paper" onclick="togglePaperTagOverflow(this)">+' + hiddenCompactTagCount + ' tags</button>'
     : '';
   const tagsHtml = (displayMechanismEntries.length || displayFocusEntries.length || displayDomainEntries.length)
     ? '<div class="paper-tags">'
@@ -6058,11 +7276,13 @@ let CATALOG_DATA_ERROR = false;
 let HAS_USER_SELECTED_TOP_LEVEL_TAB = false;
 let CURRENT_STATS_RANGE = '1y';
 let STATS_RANGE_LISTENERS_BOUND = false;
+let CURRENT_STATS_DIRECTION_GROUP = 'focus';
+let CURRENT_STATS_EXPLORER_GROUP = 'focus';
+let STATS_TAXONOMY_LISTENERS_BOUND = false;
 let STATS_DAILY_RELEASES = [];
 let STATS_MONTHLY_RELEASES = [];
 let CATALOG_GENERATED_AT = '';
 let CURRENT_VIEW = 'category';
-let CURRENT_PAPER_DENSITY = 'compact';
 let FILTER_SIDEBAR_OPEN = false;
 let EXPANDED_TABLE_ROWS = new Set();
 let REPO_TODAY = '';
@@ -6402,35 +7622,6 @@ function getPaperCountForTagKey(tagKey) {
   }).length;
 }
 
-/** Update the fixed tag token and search input description for the locked route. */
-function updateTagDrilldownSearchUI() {
-  const scope = document.getElementById('search-tag-scope');
-  const label = document.getElementById('search-tag-scope-label');
-  const clearButton = document.getElementById('search-tag-scope-clear');
-  const searchInput = document.getElementById('search');
-  if (!scope || !label || !clearButton || !searchInput) return;
-
-  const entry = TAG_FILTER_LOOKUP[LOCKED_TAG_FILTER_KEY];
-  scope.hidden = !entry;
-  if (!entry) {
-    label.textContent = '';
-    clearButton.setAttribute('aria-label', 'Clear tag filter');
-    searchInput.setAttribute('placeholder', 'Search papers or blogs by title, author, venue, keyword…');
-    searchInput.setAttribute('aria-label', 'Search papers or blogs');
-    return;
-  }
-
-  const group = entry.group || LOCKED_TAG_FILTER_KEY.split('::')[0];
-  const groupLabel = getTagDrilldownGroupLabel(group);
-  const displayLabel = entry.displayLabel || entry.label || LOCKED_TAG_FILTER_KEY.split('::').slice(1).join('::');
-  const paperCount = getPaperCountForTagKey(LOCKED_TAG_FILTER_KEY);
-  const searchLabel = 'Search within ' + paperCount + ' papers';
-  label.textContent = groupLabel + ': ' + displayLabel;
-  clearButton.setAttribute('aria-label', 'Clear ' + groupLabel + ' tag ' + displayLabel);
-  searchInput.setAttribute('placeholder', searchLabel);
-  searchInput.setAttribute('aria-label', searchLabel);
-}
-
 /** Enter a tag route without carrying transient advanced filters into its count. */
 function navigateToTagDrilldown(tagKey) {
   if (!TAG_FILTER_LOOKUP[tagKey] || !getPaperCountForTagKey(tagKey)) return;
@@ -6443,15 +7634,13 @@ function navigateToTagDrilldown(tagKey) {
   TODAY_ONLY = false;
   HAS_CODE_ONLY = false;
   HAS_COMMENTS_ONLY = false;
-  setFilterSidebarOpen(false);
-  setTagFilterOpen(false);
   updateQuickFilterButtons();
   const nextUrl = new URL(getTagDrilldownHref(tagKey), window.location.href);
   window.history.pushState(window.history.state, '', nextUrl);
   setTopLevelTab('papers', { updateHash: false, userInitiated: true });
   restoreTagDrilldownFromUrl();
-  const searchInput = document.getElementById('search');
-  if (searchInput) searchInput.focus();
+  const tagFilterToggle = document.getElementById('tag-filter-toggle');
+  if (tagFilterToggle) window.requestAnimationFrame(function() { tagFilterToggle.focus(); });
 }
 
 /** Clear only the locked URL tag while preserving q and any advanced filters. */
@@ -6463,8 +7652,6 @@ function clearTagDrilldown() {
   window.history.pushState(window.history.state, '', nextUrl);
   setTopLevelTab('papers', { updateHash: false, userInitiated: true });
   restoreTagDrilldownFromUrl();
-  const searchInput = document.getElementById('search');
-  if (searchInput) searchInput.focus();
 }
 
 /** Restores the locked tag and free-text query from the current URL. */
@@ -6493,8 +7680,12 @@ function restoreTagDrilldownFromUrl() {
   HAS_RESTORED_TAG_DRILLDOWN_URL = true;
   LAST_RESTORED_SEARCH_QUERY = nextQuery;
   if (searchInput) searchInput.value = nextQuery;
-  updateTagDrilldownSearchUI();
-  updateTagFilterUI();
+  if (LOCKED_TAG_FILTER_KEY) {
+    setFilterSidebarOpen(true);
+    setTagFilterOpen(false);
+  } else {
+    updateTagFilterUI();
+  }
   doSearch(nextQuery);
 }
 
@@ -6817,7 +8008,12 @@ function paperMatchesTagFilters(paper) {
 
 function formatActiveTagSummary() {
   if (ACTIVE_TAG_FILTERS.size === 0) return TAG_FILTER_OPEN ? '0 active' : 'hidden';
-  return ACTIVE_TAG_FILTERS.size + ' active';
+  if (ACTIVE_TAG_FILTERS.size > 1) return ACTIVE_TAG_FILTERS.size + ' active';
+  const tagKey = Array.from(ACTIVE_TAG_FILTERS)[0];
+  const entry = TAG_FILTER_LOOKUP[tagKey];
+  if (!entry) return '1 active';
+  const count = tagKey === LOCKED_TAG_FILTER_KEY ? getPaperCountForTagKey(tagKey) : entry.count;
+  return (entry.displayLabel || entry.label || tagKey) + ' · ' + count;
 }
 
 function setTagFilterOpen(isOpen) {
@@ -6826,7 +8022,11 @@ function setTagFilterOpen(isOpen) {
 }
 
 function toggleTagFilter(tagKey) {
-  if (!tagKey || tagKey === LOCKED_TAG_FILTER_KEY) return;
+  if (!tagKey) return;
+  if (tagKey === LOCKED_TAG_FILTER_KEY) {
+    clearTagDrilldown();
+    return;
+  }
   if (ACTIVE_TAG_FILTERS.has(tagKey)) {
     ACTIVE_TAG_FILTERS.delete(tagKey);
   } else {
@@ -6845,10 +8045,10 @@ function renderTagFilterGroups() {
       + '<div class="tag-filter-chip-list">'
       + group.tags.map(function(tag) {
         const isActive = ACTIVE_TAG_FILTERS.has(tag.key);
-        const isLocked = tag.key === LOCKED_TAG_FILTER_KEY;
-        const tagCount = isLocked ? getPaperCountForTagKey(tag.key) : tag.count;
+        const isRouteTag = tag.key === LOCKED_TAG_FILTER_KEY;
+        const tagCount = isRouteTag ? getPaperCountForTagKey(tag.key) : tag.count;
         const activeClass = isActive ? ' is-active' : '';
-        return '<button type="button" class="tag-filter-chip' + activeClass + '" data-tag-key="' + escapeHtml(tag.key) + '" data-tag-group="' + escapeHtml(tag.group) + '" aria-pressed="' + (isActive ? 'true' : 'false') + '" aria-disabled="' + (isLocked ? 'true' : 'false') + '"' + (isLocked ? ' disabled' : '') + '>'
+        return '<button type="button" class="tag-filter-chip' + activeClass + '" data-tag-key="' + escapeHtml(tag.key) + '" data-tag-group="' + escapeHtml(tag.group) + '" aria-pressed="' + (isActive ? 'true' : 'false') + '">'
           + '<span class="tag-filter-chip-label">' + escapeHtml(tag.displayLabel) + '</span>'
           + '<span class="tag-filter-chip-count">' + escapeHtml(tagCount) + '</span>'
           + '</button>';
@@ -6865,6 +8065,7 @@ function updateTagFilterUI() {
   if (!toggle || !panel || !summary) return;
   toggle.setAttribute('aria-expanded', TAG_FILTER_OPEN ? 'true' : 'false');
   panel.hidden = !TAG_FILTER_OPEN;
+  summary.classList.toggle('is-active', ACTIVE_TAG_FILTERS.size > 0);
   summary.textContent = formatActiveTagSummary();
   renderTagFilterGroups();
   updateFilterSidebarSummary();
@@ -7064,37 +8265,15 @@ function updateViewToggleButtons() {
   updateFilterSidebarSummary();
 }
 
-/** Normalize paper card density to one of the supported display modes. */
-function normalizePaperDensity(density) {
-  return density === 'comfortable' ? 'comfortable' : 'compact';
-}
-
-/** Synchronize density toggle buttons with the active paper card density. */
-function updatePaperDensityButtons() {
-  setToggleButtonState('paper-density-compact', CURRENT_PAPER_DENSITY === 'compact');
-  setToggleButtonState('paper-density-comfortable', CURRENT_PAPER_DENSITY === 'comfortable');
-}
-
-/** Apply paper card density without rebuilding the current result set. */
-function applyPaperDensity() {
-  const papersPanel = document.getElementById('papers-panel');
-  if (papersPanel) papersPanel.dataset.cardDensity = CURRENT_PAPER_DENSITY;
-  document.body.classList.toggle('paper-density-compact', CURRENT_PAPER_DENSITY === 'compact');
-  document.body.classList.toggle('paper-density-comfortable', CURRENT_PAPER_DENSITY === 'comfortable');
-  updatePaperDensityButtons();
-}
-
-/** Set the requested paper card density and update the existing DOM in place. */
-function setPaperDensity(density) {
-  CURRENT_PAPER_DENSITY = normalizePaperDensity(density);
-  applyPaperDensity();
-}
-
-/** Expand compact cards and move focus to the persistent density control. */
-function showComfortablePaperDensity() {
-  setPaperDensity('comfortable');
-  const comfortableButton = document.getElementById('paper-density-comfortable');
-  if (comfortableButton) comfortableButton.focus();
+/** Toggle hidden tags on one compact paper card. */
+function togglePaperTagOverflow(button) {
+  const card = button.closest('.paper-card');
+  if (!card) return;
+  const expanded = card.classList.toggle('show-all-tags');
+  const hiddenCount = Number(button.dataset.hiddenTagCount) || 0;
+  button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  button.setAttribute('aria-label', expanded ? 'Hide extra tags for this paper' : 'Show ' + hiddenCount + ' more tags for this paper');
+  button.textContent = expanded ? 'Fewer tags' : '+' + hiddenCount + ' tags';
 }
 
 function applyViewMode() {
@@ -7471,6 +8650,7 @@ function renderDailyBriefingNoticeCandidate(candidate) {
 function isDailyBriefingNewPaper(candidate) {
   const verdict = String((candidate && candidate.verdict) || '').toLowerCase();
   if (!verdict) return false;
+  if (verdict === 'added') return true;
   const negativeSignals = ['watchlist', 'near-miss', 'near miss', 'out of scope', 'borderline'];
   const positiveSignals = ['strong candidate', 'high-confidence', 'high confidence', 'in-scope', 'in scope', 'included'];
   return positiveSignals.some(function(signal) { return verdict.includes(signal); })
@@ -7534,12 +8714,12 @@ function updateDailyBriefingNotice() {
   const statusText = latest.status ? ' · ' + latest.status : '';
   const newPapers = getDailyBriefingNewPapers(latest);
 
-  if (titleEl) titleEl.textContent = 'Today’s loop-model report';
+  if (titleEl) titleEl.textContent = 'Latest loop-model report';
   if (dateEl) dateEl.textContent = (latest.date || 'latest') + statusText;
   if (compactEl) {
     compactEl.textContent = newPapers.length
-      ? 'New today: ' + newPapers.length + ' in-scope loop-model paper' + (newPapers.length === 1 ? '' : 's') + '.'
-      : 'New today: no in-scope loop-model papers.';
+      ? 'This report added ' + newPapers.length + ' in-scope loop-model paper' + (newPapers.length === 1 ? '' : 's') + '.'
+      : 'This report added no in-scope loop-model papers.';
   }
   if (newPapersEl) {
     newPapersEl.innerHTML = newPapers.map(renderDailyBriefingCompactPaper).join('');
@@ -7722,7 +8902,6 @@ function buildDOM(data) {
   initScrollObserver();
   updateQuickFilterButtons();
   updateViewToggleButtons();
-  applyPaperDensity();
   applyViewMode();
   restoreTagDrilldownFromUrl();
   restoreTopLevelTabAfterCatalogLoad();
@@ -7814,8 +8993,6 @@ function initPaperTagInteractions() {
   if (TAG_DRILLDOWN_INTERACTIONS_BOUND) return;
   TAG_DRILLDOWN_INTERACTIONS_BOUND = true;
 
-  const clearButton = document.getElementById('search-tag-scope-clear');
-  if (clearButton) clearButton.addEventListener('click', clearTagDrilldown);
   document.addEventListener('click', function(event) {
     const link = event.target.closest('a[data-tag-key][href]');
     if (!link || !shouldHandleTagDrilldownClick(event)) return;
