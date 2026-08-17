@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 140,
-    "paper_total": 132,
+    "total": 142,
+    "paper_total": 134,
     "blog_total": 8,
-    "briefing_total": 40,
-    "latest_briefing_date": "2026-08-12",
-    "generated": "2026-08-17T05:51:34.900648+00:00",
-    "generated_local_date": "2026-08-17",
+    "briefing_total": 41,
+    "latest_briefing_date": "2026-08-16",
+    "generated": "2026-08-17T06:51:25.087988+00:00",
+    "generated_local_date": "2026-08-16",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -7313,6 +7313,107 @@
       "arxiv_id": "2608.11352"
     },
     {
+      "title": "DFM Mimir v1: An Open HRM Delivering Frontier Performance at 1B Parameters Using Only Permissible Post-Training Data",
+      "authors": "Peter Schneider-Kamp, Jacob Nielsen, Gianluca Barmina, Kenneth Enevoldsen, Lukas Galke Poech",
+      "year": 2026,
+      "published_date": "2026-08-13",
+      "added_date": "2026-08-16",
+      "venue": "arXiv",
+      "category": "applications",
+      "foundation": false,
+      "mechanism_tags": [
+        "hierarchical-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning"
+      ],
+      "tags": [
+        "HRM-Text"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "data"
+      ],
+      "desc": "Trains a 1B Danish-English HRM-Text model from scratch on a permissibility-focused 70.5B-token instruction mixture, reusing fast and slow learned modules over two H-cycles and three L-cycles.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.13517",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.13517",
+        "github": "https://github.com/schneiderkamplab/HRM-Text"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "github_stars": 0,
+      "star_sources": {
+        "github_api": 0
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-08-17",
+      "id": "2608.13517",
+      "source_file": "2608.13517.yaml",
+      "source_path": "papers/2608.13517.yaml",
+      "entry_type": "paper",
+      "authors_list": [
+        "Peter Schneider-Kamp",
+        "Jacob Nielsen",
+        "Gianluca Barmina",
+        "Kenneth Enevoldsen",
+        "Lukas Galke Poech"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.13517"
+    },
+    {
+      "title": "Nanbeige4.2-3B on Apple Silicon: Fixing Deployment Bugs and Decreasing Looped Transformer Memory Overhead",
+      "authors": "John T. Halloran",
+      "year": 2026,
+      "published_date": "2026-08-14",
+      "added_date": "2026-08-16",
+      "venue": "arXiv",
+      "category": "analysis",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "efficiency",
+        "memory-efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Analyzes and fixes deployment bottlenecks for a 3B Looped Transformer that sends hidden states through the same layer stack twice, using chunked prefill to extend practical context length on 32 GiB Apple Silicon.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.13987",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.13987"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-08-17",
+      "id": "2608.13987",
+      "source_file": "2608.13987.yaml",
+      "source_path": "papers/2608.13987.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "John T. Halloran"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.13987"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -7719,45 +7820,27 @@
   ],
   "briefings": [
     {
-      "date": "2026-08-12",
-      "title": "Daily Loop-Model Briefing - 2026-08-12",
+      "date": "2026-08-16",
+      "title": "Daily Loop-Model Briefing - 2026-08-16",
       "status": "added",
-      "summary": "Two papers were added: a recurrent-depth retrofit of a pretrained language model and an ODE-inspired iterative decoder for sign language translation.",
-      "source_path": "briefings/2026/08/2026-08-12.md",
+      "summary": "Two papers were added: a systems analysis of looped-transformer deployment on Apple Silicon and a Danish-English application of the HRM-Text architecture.",
+      "source_path": "briefings/2026/08/2026-08-16.md",
       "highlights": [
-        "A Qwen2.5-0.5B retrofit turns its middle 12 layers into one weight-tied recurrent block while preserving the original one-loop path.",
-        "The sign-language decoder repeatedly applies the same learned decoder function within refinement and Runge--Kutta stages, improving matched translation baselines without adding decoder parameters."
+        "Chunked prefill lets Nanbeige4.2-3B process 11,231 tokens instead of 4,096 on a 32 GiB M2 Max, while preserving bit-identical outputs in the reported comparison.",
+        "Mimir trains a 1B H2L3 recurrent language model from scratch on 70.5B instruction-oriented tokens, with particularly large gains on Danish tasks."
       ],
       "candidates": [
         {
-          "id": "2608.11233",
-          "title": "Retrofitting Recurrent Depth into a Pretrained Language Model: Installation, Extrapolation, Transfer, and Retention at Two Parameter Budgets",
+          "id": "2608.13987",
+          "title": "Nanbeige4.2-3B on Apple Silicon: Fixing Deployment Bugs and Decreasing Looped Transformer Memory Overhead",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.11233"
+          "url": "https://arxiv.org/abs/2608.13987"
         },
         {
-          "id": "2608.11352",
-          "title": "ODE-Based Transformer Decoders for Iterative Sign Language Translation",
+          "id": "2608.13517",
+          "title": "DFM Mimir v1: An Open HRM Delivering Frontier Performance at 1B Parameters Using Only Permissible Post-Training Data",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.11352"
-        },
-        {
-          "id": "2608.11716",
-          "title": "Chain-of-Thought Shows the Path to a Tree: Realizing Branching Complexity",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.11716"
-        },
-        {
-          "id": "2608.11701",
-          "title": "Consolidator: Learning Persistent Routed Memory Across Context Boundaries",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.11701"
-        },
-        {
-          "id": "2608.11657",
-          "title": "Semantic Lenia",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.11657"
+          "url": "https://arxiv.org/abs/2608.13517"
         }
       ]
     }

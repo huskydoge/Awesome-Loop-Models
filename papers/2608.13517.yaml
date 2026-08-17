@@ -1,0 +1,43 @@
+title: 'DFM Mimir v1: An Open HRM Delivering Frontier Performance at 1B Parameters
+  Using Only Permissible Post-Training Data'
+authors:
+- Peter Schneider-Kamp
+- Jacob Nielsen
+- Gianluca Barmina
+- Kenneth Enevoldsen
+- Lukas Galke Poech
+year: 2026
+published_date: '2026-08-13'
+added_date: '2026-08-16'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- hierarchical-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- HRM-Text
+focus_tags:
+- architecture
+- training-algorithm
+- data
+desc: Trains a 1B Danish-English HRM-Text model from scratch on a permissibility-focused
+  70.5B-token instruction mixture, reusing fast and slow learned modules over two
+  H-cycles and three L-cycles.
+links:
+  arxiv: https://arxiv.org/abs/2608.13517
+  alphaxiv: https://www.alphaxiv.org/abs/2608.13517
+  github: https://github.com/schneiderkamplab/HRM-Text
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+github_stars: 0
+star_sources:
+  github_api: 0
+star_source_best: github_api
+metrics_updated: '2026-08-17'

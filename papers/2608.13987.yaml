@@ -1,0 +1,31 @@
+title: 'Nanbeige4.2-3B on Apple Silicon: Fixing Deployment Bugs and Decreasing Looped
+  Transformer Memory Overhead'
+authors:
+- John T. Halloran
+year: 2026
+published_date: '2026-08-14'
+added_date: '2026-08-16'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- memory-efficiency
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Analyzes and fixes deployment bottlenecks for a 3B Looped Transformer that sends
+  hidden states through the same layer stack twice, using chunked prefill to extend
+  practical context length on 32 GiB Apple Silicon.
+links:
+  arxiv: https://arxiv.org/abs/2608.13987
+  alphaxiv: https://www.alphaxiv.org/abs/2608.13987
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-08-17'

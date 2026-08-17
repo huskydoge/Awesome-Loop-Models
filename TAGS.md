@@ -17,8 +17,8 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
-- `hierarchical-loop` (21)
-- `flat-loop` (119)
+- `hierarchical-loop` (22)
+- `flat-loop` (120)
 - `parallel-loop` (4)
 - `implicit-layer` (15)
 
@@ -27,23 +27,23 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (20)
-- `training-algorithm` (66)
-- `architecture` (122)
-- `data` (2)
-- `inference-algorithm` (92)
+- `training-algorithm` (67)
+- `architecture` (124)
+- `data` (3)
+- `inference-algorithm` (93)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `language-modeling` (77)
-- `reasoning` (75)
-- `efficiency` (66)
+- `language-modeling` (79)
+- `reasoning` (76)
+- `efficiency` (67)
 - `algorithmic-reasoning` (32)
 - `scaling` (23)
 - `adaptive-compute` (16)
 - `theory` (15)
-- `memory-efficiency` (13)
+- `memory-efficiency` (14)
 - `vision` (12)
 - `graph-data` (6)
 - `sequence-modeling` (5)
@@ -92,6 +92,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `activation-compression` (2)
 - `adaptive-computation-time` (2)
 - `convergence` (2)
+- `HRM-Text` (2)
 - `hyper-connections` (2)
 - `latent-refinement` (2)
 - `LoRA` (2)
@@ -136,7 +137,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `GRAM` (1)
 - `HamEvo` (1)
 - `hierarchical-recurrence` (1)
-- `HRM-Text` (1)
 - `Hyperloop` (1)
 - `i-DEQ` (1)
 - `ILSD` (1)
