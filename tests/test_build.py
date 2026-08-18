@@ -1554,6 +1554,20 @@ setTimeout(function() {
             self.assertIn(declaration, media_css)
         self.assertNotIn("@media (max-width: 1080px)", html)
 
+        grid_start = html.index("@media (min-width: 769px) and (max-width: 1344px) {")
+        grid_end = html.index("@media (min-width: 769px) and (max-width: 1100px) {", grid_start)
+        grid_css = html[grid_start:grid_end]
+        board_start = grid_css.index("body:not(.stats-mode) .daily-briefing-notice {")
+        board_end = grid_css.index("}", board_start)
+        board_css = grid_css[board_start:board_end]
+        for declaration in (
+            "width: fit-content;",
+            "margin: 0 auto;",
+            "align-self: start;",
+            "justify-self: center;",
+        ):
+            self.assertIn(declaration, board_css)
+
     def test_category_section_counts_render_as_numbers_only(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("'<span class=\"category-count\">' + count + '</span>'", html)

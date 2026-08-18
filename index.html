@@ -4113,10 +4113,16 @@
       body:not(.stats-mode) .filter-sidebar-toggle-row { grid-area: controls; }
       body:not(.stats-mode) .filter-sidebar { grid-area: filters; }
 
-      body:not(.stats-mode) .daily-briefing-notice,
       body:not(.stats-mode) .daily-watch-countdown {
         width: 100%;
         margin: 0;
+      }
+
+      body:not(.stats-mode) .daily-briefing-notice {
+        width: fit-content;
+        margin: 0 auto;
+        align-self: start;
+        justify-self: center;
       }
     }
 
