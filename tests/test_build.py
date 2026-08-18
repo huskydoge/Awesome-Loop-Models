@@ -1494,69 +1494,56 @@ setTimeout(function() {
         self.assertIn("if (tableBody && tableBody.children.length) tableBody.textContent = '';", renderer)
         self.assertEqual(renderer.count("renderTableView(query, filteredPapers);"), 1)
 
-    def test_daily_briefing_notice_exists_in_frontend(self):
+    def test_daily_briefing_notice_is_a_compact_today_status_in_document_flow(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn("let ALL_BRIEFINGS = [];", html)
         self.assertIn('<aside class="daily-briefing-notice"', html)
         self.assertIn('id="daily-briefing-notice"', html)
-        self.assertIn('id="daily-briefing-notice-summary"', html)
-        self.assertIn('id="daily-briefing-notice-candidates"', html)
-        self.assertIn('id="daily-briefing-notice-compact"', html)
-        self.assertIn('id="daily-briefing-notice-new-papers"', html)
-        self.assertIn('id="daily-briefing-notice-toggle"', html)
-        self.assertIn('id="daily-briefing-notice-detail"', html)
-        self.assertIn('aria-controls="daily-briefing-notice-detail"', html)
-        self.assertIn('Details ↓', html)
-        self.assertIn("if (verdict === 'added') return true;", html)
-        self.assertIn('Latest loop-model report', html)
-        self.assertIn('This report added', html)
-        self.assertNotIn('New today:', html)
-        self.assertIn('daily-briefing-notice-paper-link', html)
-        self.assertIn("function renderDailyBriefingNoticeCandidate(candidate)", html)
-        self.assertIn("function isDailyBriefingNewPaper(candidate)", html)
-        self.assertIn("function renderDailyBriefingCompactPaper(candidate)", html)
-        self.assertIn("function setDailyBriefingNoticeExpanded(expanded)", html)
+        self.assertIn('<span class="daily-briefing-notice-label">Today</span>', html)
+        self.assertIn('id="daily-briefing-today-count">0 papers</strong>', html)
+        self.assertIn('class="daily-briefing-separator" aria-hidden="true">·</span>', html)
+        self.assertIn('id="daily-briefing-recommended">Husky recommended: No</span>', html)
         self.assertIn("function updateDailyBriefingNotice()", html)
-        self.assertIn("ALL_BRIEFINGS = data.briefings || [];", html)
         self.assertIn("updateDailyBriefingNotice();", html)
-        self.assertIn(".daily-briefing-notice {\n      left: 32px;", html)
-        self.assertIn(".daily-watch-countdown {\n      right: 32px;", html)
-        self.assertIn("transform: none;", html)
-        self.assertNotIn("transform: rotate(-1.2deg)", html)
-        self.assertNotIn("transform: rotate(1.2deg)", html)
-        self.assertIn(".papers-only-tools > .search-wrap { order: 2; }", html)
-        self.assertIn(".papers-only-tools > .daily-briefing-notice { order: 4; }", html)
-        self.assertIn(".papers-only-tools > .daily-watch-countdown { order: 5; }", html)
-        self.assertIn("max-height: min(42vh, 320px);", html)
-        self.assertIn("max-height: 220px;", html)
-        self.assertIn(".daily-briefing-notice-detail::-webkit-scrollbar", html)
-        scrollbar_start = html.index(".daily-briefing-notice-detail::-webkit-scrollbar {")
-        scrollbar_end = html.index("}", scrollbar_start)
-        scrollbar_css = html[scrollbar_start:scrollbar_end]
-        self.assertIn("width: 2px;", scrollbar_css)
-        self.assertNotIn("width: 4px;", scrollbar_css)
-        self.assertIn("scrollbar-color: var(--scrollbar-thumb) transparent;", html)
-        self.assertIn("daily-briefing-notice-source", html)
-        self.assertIn("source md ↗", html)
-        self.assertIn("body.filter-sidebar-open .daily-briefing-notice", html)
-        self.assertNotIn('<a class="daily-briefing-notice"', html)
-        self.assertNotIn("daily-briefing-notice-cta", html)
-        self.assertNotIn("Read ↗", html)
-        self.assertNotIn("function createDailyBriefingTreeNode()", html)
-        self.assertNotIn("function createDailyBriefingSection()", html)
-        self.assertNotIn("daily-briefing-card", html)
-        self.assertNotIn("section-daily-briefing", html)
-        self.assertNotIn("daily-briefing-notes", html)
-        self.assertNotIn("<summary>Notes</summary>", html)
 
-    def test_papers_side_widgets_reflow_before_they_can_overlap_masthead_tools(self):
-        """Side widgets must leave absolute positioning throughout the mid-width range."""
+        updater_start = html.index("function updateDailyBriefingNotice() {")
+        updater_end = html.index("function createCategorySection(", updater_start)
+        updater = html[updater_start:updater_end]
+        self.assertIn("paper._addedDate === getRepoTodayString()", updater)
+        self.assertIn("paper.must_read === true", updater)
+        self.assertIn("todayPapers.length + ' paper'", updater)
+        self.assertIn("recommendedCount ? 'Yes' : 'No'", updater)
+
+        css_start = html.index(".daily-briefing-notice {\n")
+        css_end = html.index("}", css_start)
+        notice_css = html[css_start:css_end]
+        for declaration in (
+            "position: relative;",
+            "display: flex;",
+            "flex-wrap: wrap;",
+            "width: fit-content;",
+            "max-width: 100%;",
+        ):
+            self.assertIn(declaration, notice_css)
+        self.assertNotIn("position: absolute;", notice_css)
+
+        for removed_ui in (
+            "daily-briefing-notice-detail",
+            "daily-briefing-notice-toggle",
+            "daily-briefing-notice-candidate",
+            "function renderDailyBriefingNoticeCandidate",
+            "function setDailyBriefingNoticeExpanded",
+            "ALL_BRIEFINGS",
+        ):
+            self.assertNotIn(removed_ui, html)
+
+    def test_countdown_reflows_before_it_can_overlap_masthead_tools(self):
+        """The remaining absolute side widget must rejoin flow at mid widths."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         media_start = html.index("@media (max-width: 1344px) {")
         media_end = html.index("/* ── Sidebar contribute link ── */", media_start)
         media_css = html[media_start:media_end]
 
-        self.assertIn(".daily-briefing-notice,\n      .daily-watch-countdown {", media_css)
+        self.assertIn(".daily-watch-countdown {", media_css)
         for declaration in (
             "position: relative;",
             "top: auto;",
