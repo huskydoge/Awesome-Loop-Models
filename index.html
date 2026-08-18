@@ -900,8 +900,7 @@
       grid-column: span 8;
     }
 
-    .stats-composition-card,
-    .stats-annual-card {
+    .stats-composition-card {
       grid-column: span 4;
     }
 
@@ -1287,51 +1286,6 @@
       padding-top: 12px;
     }
 
-    .annual-volume-list {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 11px;
-    }
-
-    .annual-volume-row {
-      display: grid;
-      grid-template-columns: 46px minmax(0, 1fr) 38px;
-      align-items: center;
-      gap: 12px;
-      color: var(--text-muted);
-      font-size: 11.5px;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .annual-volume-track {
-      height: 7px;
-      overflow: hidden;
-      border-radius: 999px;
-      background: var(--stats-track-bg);
-    }
-
-    .annual-volume-bar {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: color-mix(in srgb, var(--text-muted) 54%, transparent);
-    }
-
-    .annual-volume-row.is-latest-year {
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .annual-volume-row.is-latest-year .annual-volume-bar {
-      background: var(--accent);
-    }
-
-    .annual-volume-value {
-      color: var(--text);
-      font-weight: 750;
-      text-align: right;
-    }
-
     .stats-empty-block {
       padding: 32px 0;
       border-top: 1px dashed var(--border);
@@ -1356,9 +1310,6 @@
       .stats-metric:nth-child(n + 3) {
         border-top: 1px solid var(--stats-card-border);
       }
-      .stats-annual-card {
-        grid-column: span 5;
-      }
     }
 
     @media (max-width: 768px) {
@@ -1371,8 +1322,7 @@
         text-align: left;
       }
       .stats-pulse-card,
-      .stats-composition-card,
-      .stats-annual-card {
+      .stats-composition-card {
         grid-column: span 12;
       }
       .stats-card-header-inline {
@@ -4562,6 +4512,10 @@
       padding-bottom: 8px;
     }
 
+    .stats-chart-actions {
+      gap: 6px;
+    }
+
     .stats-card-header h3,
     .stats-chart-heading h3,
     .stats-primary-chart .stats-chart-heading h3 {
@@ -4621,7 +4575,13 @@
       width: 100%;
       min-width: 0;
       max-width: none;
-      height: 250px;
+      height: clamp(220px, 27vh, 250px);
+    }
+
+    .stats-period-summary {
+      padding: 8px 0 10px;
+      font-size: 10.5px;
+      line-height: 1.35;
     }
 
     .stats-panel .timeline-grid {
@@ -4744,6 +4704,13 @@
       color: var(--text-muted);
     }
 
+    a.stats-distribution-row {
+      min-height: 0;
+      margin: 0;
+      padding: 4px 0;
+      border-radius: 0;
+    }
+
     .stats-directions-card .stats-distribution-list {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0 18px;
@@ -4765,7 +4732,7 @@
       background: var(--stats-data-1);
     }
 
-    @media (min-width: 1180px) and (min-height: 761px) {
+    @media (min-width: 1180px) and (min-height: 820px) {
       body.stats-mode main {
         overflow: hidden;
         overscroll-behavior: none;
@@ -4945,6 +4912,12 @@
       .stats-range-button,
       .stats-direction-tabs button {
         min-height: 44px;
+      }
+
+      a.stats-distribution-row {
+        min-height: 44px;
+        margin: -4px -8px;
+        padding: 4px 8px;
       }
 
       .stats-category-composition {
@@ -5617,25 +5590,6 @@ function buildReleaseStatsSummary(papers, dailySeries) {
 }
 
 /**
- * Count valid paper releases by UTC publication year.
- * @param {Array<Object>} papers Paper records from the catalog.
- * @returns {Array<Object>} Chronologically ordered annual count buckets.
- */
-function buildAnnualReleaseSeries(papers) {
-  if (!Array.isArray(papers) || papers.length === 0) return [];
-  var counts = Object.create(null);
-  papers.forEach(function(paper) {
-    var publishedDate = parseIsoDate(paper && paper.published_date);
-    if (!publishedDate) return;
-    var year = formatIsoDateUtc(publishedDate).slice(0, 4);
-    counts[year] = (counts[year] || 0) + 1;
-  });
-  return Object.keys(counts).sort().map(function(year) {
-    return { key: year, label: year, count: counts[year] };
-  });
-}
-
-/**
  * Count a scalar or multi-value catalog field for dashboard composition views.
  * @param {Array<Object>} papers Paper records from the catalog.
  * @param {string} field Catalog field to count.
@@ -6076,56 +6030,6 @@ function initStatsTaxonomyInteractions() {
       renderStatsActiveDirections();
     });
   });
-}
-
-/**
- * Render chronological annual release totals as labeled horizontal bars.
- * @param {HTMLElement|null} container Annual-volume container.
- * @param {Array<Object>} series Annual release buckets.
- * @returns {void}
- */
-function renderAnnualReleaseVolume(container, series) {
-  if (!container) return;
-  container.replaceChildren();
-  var safeSeries = Array.isArray(series) ? series : [];
-  if (safeSeries.length === 0) {
-    var emptyState = document.createElement('p');
-    emptyState.className = 'stats-empty-block';
-    emptyState.textContent = 'No annual publication volume is available.';
-    container.appendChild(emptyState);
-    return;
-  }
-
-  var list = document.createElement('div');
-  list.className = 'annual-volume-list';
-  list.setAttribute('role', 'list');
-  var maxCount = Math.max(1, Math.max.apply(null, safeSeries.map(function(bucket) {
-    return normalizeReleaseCount(bucket && bucket.count);
-  })));
-  safeSeries.forEach(function(bucket, bucketIndex) {
-    var count = normalizeReleaseCount(bucket && bucket.count);
-    var row = document.createElement('div');
-    row.className = 'annual-volume-row';
-    if (bucketIndex === safeSeries.length - 1) row.classList.add('is-latest-year');
-    row.setAttribute('role', 'listitem');
-    row.setAttribute('aria-label', bucket.label + ': ' + count + ' papers');
-
-    var year = document.createElement('span');
-    year.textContent = bucket.label;
-    var track = document.createElement('span');
-    track.className = 'annual-volume-track';
-    track.setAttribute('aria-hidden', 'true');
-    var bar = document.createElement('span');
-    bar.className = 'annual-volume-bar';
-    bar.style.width = (count / maxCount * 100).toFixed(2) + '%';
-    track.appendChild(bar);
-    var value = document.createElement('strong');
-    value.className = 'annual-volume-value';
-    value.textContent = count.toLocaleString('en-US');
-    row.append(year, track, value);
-    list.appendChild(row);
-  });
-  container.appendChild(list);
 }
 
 /** Render the active range without exposing full daily history to the chart renderer. */

@@ -673,7 +673,7 @@ function doSearch(query) {{ searchCalls.push(query); }}
         stats_source = html[stats_start:stats_end]
 
         direction_start = html.index("function renderStatsActiveDirections() {")
-        direction_end = html.index("function renderAnnualReleaseVolume(", direction_start)
+        direction_end = html.index("function initStatsTaxonomyInteractions()", direction_start)
         direction_source = html[direction_start:direction_end]
 
         category_call = stats_source[stats_source.index("'stats-category-distribution'"):stats_source.index("'stats-mechanism-distribution'")]
@@ -682,7 +682,7 @@ function doSearch(query) {{ searchCalls.push(query); }}
         self.assertIn("{ tagGroup: CURRENT_STATS_DIRECTION_GROUP }", direction_source)
 
         renderer_start = html.index("function renderStatsDistribution(")
-        renderer_end = html.index("function renderAnnualReleaseVolume(", renderer_start)
+        renderer_end = html.index("function renderStatsCategoryComposition(", renderer_start)
         renderer_source = html[renderer_start:renderer_end]
         self.assertIn("options.tagGroup", renderer_source)
         self.assertIn("buildTagEntry(tagGroup, row.key).key", renderer_source)
@@ -693,7 +693,7 @@ function doSearch(query) {{ searchCalls.push(query); }}
         """Stats rows keep safe DOM rendering while tag rows become native links."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         renderer_start = html.index("function renderStatsDistribution(")
-        renderer_end = html.index("function renderAnnualReleaseVolume(", renderer_start)
+        renderer_end = html.index("function renderStatsCategoryComposition(", renderer_start)
         renderer_source = html[renderer_start:renderer_end]
         href_start = html.index("function getTagDrilldownGroupLabel(")
         href_end = html.index("function navigateToTagDrilldown(", href_start)
@@ -2160,7 +2160,6 @@ process.stdout.write(JSON.stringify({
             "addTrailingAverage",
             "slicePublicationRange",
             "buildReleaseStatsSummary",
-            "buildAnnualReleaseSeries",
             "buildStatsDistribution",
             "buildRecentStatsDistribution",
         ):
@@ -2286,15 +2285,7 @@ process.stdout.write(JSON.stringify({
       { published_date: '2026-06-01', focus_tags: ['training-algorithm'] },
       { published_date: '2026-03-01', focus_tags: ['objective-loss'] }
     ], 'focus_tags', 90, 1),
-    emptyDistribution: buildStatsDistribution(null, 'category'),
-    annual: buildAnnualReleaseSeries([
-      { published_date: '2026-01-01' },
-      { published_date: '2024-12-31' },
-      { published_date: '2025-06-15' },
-      { published_date: '2024-01-01' },
-      { published_date: 'invalid' },
-      { added_date: '2023-01-01' }
-    ]),
+    emptyDistribution: buildStatsDistribution(null, 'category')
   };
 })()""")
 
@@ -2421,14 +2412,7 @@ process.stdout.write(JSON.stringify({
                 ],
             },
         )
-        self.assertEqual(
-            result["annual"],
-            [
-                {"key": "2024", "label": "2024", "count": 2},
-                {"key": "2025", "label": "2025", "count": 1},
-                {"key": "2026", "label": "2026", "count": 1},
-            ],
-        )
+
     def test_stats_panel_has_catalog_intelligence_dashboard(self):
         """Stats markup must expose the approved editorial Research Landscape."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -2635,7 +2619,7 @@ process.stdout.write(JSON.stringify({
         """Bars and their trailing average must use the same papers-per-period scale."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         render_start = html.index("function renderReleasePulseChart(container, series, options) {")
-        render_end = html.index("function renderAnnualReleaseVolume(", render_start)
+        render_end = html.index("function renderStatsDistribution(", render_start)
         render_source = html[render_start:render_end]
 
         self.assertIn("var maxValue = Math.max", render_source)
@@ -2700,6 +2684,9 @@ process.stdout.write(JSON.stringify({
             "latest-release-item",
             "renderLatestReleases",
             "getLatestReleasedPapers",
+            "annual-volume",
+            "buildAnnualReleaseSeries",
+            "renderAnnualReleaseVolume",
         ):
             self.assertNotIn(removed, html)
 
@@ -2724,9 +2711,10 @@ process.stdout.write(JSON.stringify({
         self.assertIn(".stats-directions-card", stats_css)
         self.assertIn(".stats-category-donut", stats_css)
         self.assertIn("grid-template-columns: repeat(2, minmax(0, 1fr));", stats_css)
+        self.assertIn("a.stats-distribution-row {\n      min-height: 0;", stats_css)
         chart_scroll_css = stats_css[stats_css.index("    .stats-chart-scroll {"):]
         self.assertIn("overflow: hidden;", chart_scroll_css)
-        self.assertIn("height: 250px;", chart_scroll_css)
+        self.assertIn("height: clamp(220px, 27vh, 250px);", chart_scroll_css)
         self.assertIn("background: transparent;", stats_css)
         self.assertIn("border-top: 1px solid var(--border);", stats_css)
         self.assertNotIn("animation:", stats_css)
@@ -2740,11 +2728,15 @@ process.stdout.write(JSON.stringify({
         stats_end = html.index("  </style>", stats_start)
         stats_css = html[stats_start:stats_end]
         mobile_start = stats_css.index("    @media (max-width: 768px)")
-        mobile_css = stats_css[mobile_start:]
+        mobile_end = stats_css.index("    @media (max-width: 900px)", mobile_start)
+        mobile_css = stats_css[mobile_start:mobile_end]
+        chart_start = stats_css.index("    .stats-chart-scroll {")
+        chart_end = stats_css.index("\n    }", chart_start)
+        chart_rule = stats_css[chart_start:chart_end]
 
         self.assertIn(".stats-dashboard-grid {\n        display: block;", mobile_css)
         self.assertIn(".stats-direction-tabs button {\n        min-height: 44px;", mobile_css)
-        self.assertNotIn("overflow-x: auto", mobile_css)
+        self.assertIn("overflow: hidden;", chart_rule)
         self.assertNotRegex(stats_css, r"(?m)^\s*order:\s*-1")
 
     def test_stats_desktop_uses_one_screen_without_nested_scrollbars(self):
@@ -2754,7 +2746,7 @@ process.stdout.write(JSON.stringify({
         stats_end = html.index("  </style>", stats_start)
         stats_css = html[stats_start:stats_end]
 
-        self.assertIn("@media (min-width: 1180px) and (min-height: 761px)", stats_css)
+        self.assertIn("@media (min-width: 1180px) and (min-height: 820px)", stats_css)
         self.assertIn("body.stats-mode main {\n        overflow: hidden;", stats_css)
         self.assertNotIn("scrollbar-gutter", stats_css)
         self.assertNotIn("body.stats-mode main::-webkit-scrollbar", stats_css)
