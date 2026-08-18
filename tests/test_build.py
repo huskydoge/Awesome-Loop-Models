@@ -1555,7 +1555,7 @@ setTimeout(function() {
         grid_start = html.index("@media (min-width: 769px) and (max-width: 1344px) {")
         grid_end = html.index("@media (min-width: 769px) and (max-width: 1100px) {", grid_start)
         grid_css = html[grid_start:grid_end]
-        board_start = grid_css.index("body:not(.stats-mode) .daily-briefing-notice {")
+        board_start = grid_css.rindex("body:not(.stats-mode) .daily-briefing-notice {")
         board_end = grid_css.index("}", board_start)
         board_css = grid_css[board_start:board_end]
         for declaration in (
