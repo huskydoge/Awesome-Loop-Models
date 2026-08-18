@@ -2451,6 +2451,7 @@ process.stdout.write(JSON.stringify({
         ):
             self.assertIn(marker, stats_markup)
         self.assertIn('aria-live="polite"', stats_markup)
+        self.assertNotIn('id="release-pulse-chart" tabindex=', stats_markup)
         self.assertNotIn("stats-panel-placeholder", stats_markup)
         for obsolete in (
             "Catalog Growth",
@@ -2506,6 +2507,79 @@ process.stdout.write(JSON.stringify({
         )
         self.assertIn("rangeData.series", pulse_source)
         self.assertNotIn("renderReleasePulseChart(container, STATS_DAILY_RELEASES", pulse_source)
+
+    def test_stats_release_chart_resize_observer_deduplicates_visible_widths(self):
+        """Release chart resizing should rerender once per new visible integer width."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        observer_start = html.index("function initStatsReleaseChartResizeObserver() {")
+        observer_end = html.index("/** Register the native range buttons", observer_start)
+        observer_source = html[observer_start:observer_end]
+        render_start = html.index("function renderStatsPanel() {")
+        render_end = html.index("function escapeHtml(str) {", render_start)
+        render_source = html[render_start:render_end]
+
+        for marker in (
+            "typeof ResizeObserver !== 'function'",
+            "Math.round(container.getBoundingClientRect().width",
+            "width === LAST_STATS_RELEASE_CHART_WIDTH",
+            "!CATALOG_DATA_READY || !panel || panel.hidden",
+            "renderReleasePulse();",
+        ):
+            self.assertIn(marker, observer_source)
+        self.assertIn("initStatsReleaseChartResizeObserver();", render_source)
+        self.assertGreater(
+            render_source.index("initStatsReleaseChartResizeObserver();"),
+            render_source.index("if (!CATALOG_DATA_READY)"),
+        )
+
+        script = f"""
+let STATS_RELEASE_CHART_RESIZE_OBSERVER = null;
+let LAST_STATS_RELEASE_CHART_WIDTH = 0;
+let CATALOG_DATA_READY = true;
+let renderCalls = 0;
+let observerCalls = 0;
+let resizeCallback = null;
+const panel = {{ hidden: false }};
+const container = {{
+  clientWidth: 640,
+  getBoundingClientRect() {{ return {{ width: 640 }}; }}
+}};
+const document = {{
+  getElementById(id) {{
+    if (id === 'release-pulse-chart') return container;
+    if (id === 'stats-panel') return panel;
+    return null;
+  }}
+}};
+function renderReleasePulse() {{ renderCalls += 1; }}
+globalThis.ResizeObserver = function(callback) {{
+  observerCalls += 1;
+  resizeCallback = callback;
+  this.observe = function(target) {{ if (target !== container) throw new Error('wrong target'); }};
+}};
+{observer_source}
+initStatsReleaseChartResizeObserver();
+initStatsReleaseChartResizeObserver();
+resizeCallback([{{ contentRect: {{ width: 640.4 }} }}]);
+resizeCallback([{{ contentRect: {{ width: 699.6 }} }}]);
+resizeCallback([{{ contentRect: {{ width: 700.4 }} }}]);
+panel.hidden = true;
+resizeCallback([{{ contentRect: {{ width: 710 }} }}]);
+panel.hidden = false;
+resizeCallback([{{ contentRect: {{ width: 710 }} }}]);
+CATALOG_DATA_READY = false;
+resizeCallback([{{ contentRect: {{ width: 720 }} }}]);
+delete globalThis.ResizeObserver;
+STATS_RELEASE_CHART_RESIZE_OBSERVER = null;
+initStatsReleaseChartResizeObserver();
+process.stdout.write(JSON.stringify({{
+  observerCalls,
+  renderCalls,
+  lastWidth: LAST_STATS_RELEASE_CHART_WIDTH
+}}));
+"""
+        result = json.loads(subprocess.check_output(["node", "-e", script], text=True))
+        self.assertEqual(result, {"observerCalls": 1, "renderCalls": 2, "lastWidth": 710})
 
     def test_stats_render_slice_is_release_only(self):
         """The entire Stats render path must remain independent of catalog intake dates."""

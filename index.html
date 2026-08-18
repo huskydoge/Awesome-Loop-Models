@@ -1082,11 +1082,6 @@
       padding: 8px 0 0;
     }
 
-    .stats-chart-scroll:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: -2px;
-    }
-
     .stats-panel .timeline-chart {
       display: block;
       width: 100%;
@@ -5284,7 +5279,7 @@
               </div>
             </div>
           </header>
-          <div class="stats-chart-scroll" id="release-pulse-chart" tabindex="0" aria-label="Release trend chart"></div>
+          <div class="stats-chart-scroll" id="release-pulse-chart" aria-label="Release trend chart"></div>
           <p class="stats-period-summary" id="release-pulse-summary" aria-live="polite">The latest publication range will appear after the catalog loads.</p>
         </article>
 
@@ -6096,6 +6091,27 @@ function renderReleasePulse() {
   if (summary) summary.textContent = summarizeReleasePulse(rangeData);
 }
 
+/**
+ * Re-render the release chart when its visible container changes width.
+ * @returns {void}
+ */
+function initStatsReleaseChartResizeObserver() {
+  if (STATS_RELEASE_CHART_RESIZE_OBSERVER || typeof ResizeObserver !== 'function') return;
+  var container = document.getElementById('release-pulse-chart');
+  if (!container) return;
+  LAST_STATS_RELEASE_CHART_WIDTH = Math.round(container.getBoundingClientRect().width || container.clientWidth || 0);
+  STATS_RELEASE_CHART_RESIZE_OBSERVER = new ResizeObserver(function(entries) {
+    var entry = entries && entries[0];
+    var width = Math.round(entry && entry.contentRect ? entry.contentRect.width : container.clientWidth || 0);
+    if (width <= 0 || width === LAST_STATS_RELEASE_CHART_WIDTH) return;
+    var panel = document.getElementById('stats-panel');
+    if (!CATALOG_DATA_READY || !panel || panel.hidden) return;
+    LAST_STATS_RELEASE_CHART_WIDTH = width;
+    renderReleasePulse();
+  });
+  STATS_RELEASE_CHART_RESIZE_OBSERVER.observe(container);
+}
+
 /** Register the native range buttons exactly once for the lifetime of the page. */
 function initStatsRangeInteractions() {
   if (STATS_RANGE_LISTENERS_BOUND) return;
@@ -6127,6 +6143,7 @@ function renderStatsPanel() {
     }
     return;
   }
+  initStatsReleaseChartResizeObserver();
 
   STATS_DAILY_RELEASES = buildDailyPublicationSeries(ALL_PAPERS);
   STATS_MONTHLY_RELEASES = buildMonthlyPublicationSeries(ALL_PAPERS);
@@ -6549,6 +6566,8 @@ let CATALOG_DATA_ERROR = false;
 let HAS_USER_SELECTED_TOP_LEVEL_TAB = false;
 let CURRENT_STATS_RANGE = '1y';
 let STATS_RANGE_LISTENERS_BOUND = false;
+let STATS_RELEASE_CHART_RESIZE_OBSERVER = null;
+let LAST_STATS_RELEASE_CHART_WIDTH = 0;
 let CURRENT_STATS_DIRECTION_GROUP = 'focus';
 let STATS_TAXONOMY_LISTENERS_BOUND = false;
 let STATS_DAILY_RELEASES = [];
