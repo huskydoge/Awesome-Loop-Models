@@ -1,0 +1,34 @@
+title: 'RecurrentGPT: Expressive Depth through Recurrent Modulation in Transformers'
+authors:
+- Amr Hegazy
+- Amr Alanwar
+- Mostafa Elhoushi
+year: 2026
+published_date: '2026-08-15'
+added_date: '2026-08-17'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- scaling
+- memory-efficiency
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Introduces a prelude-shared-coda recurrent Transformer whose gated shared core
+  is iterated across depth, matching a 12-layer GPT-2 Small with three distinct layers
+  under isoFLOPS while reducing large-scale parameters by 63% and peak decoding memory
+  by 59%.
+links:
+  arxiv: https://arxiv.org/abs/2608.15062
+  alphaxiv: https://www.alphaxiv.org/abs/2608.15062
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-08-18'

@@ -1,0 +1,32 @@
+title: 'BRAID: Learning Equilibrium Maps in Interdependent Security Games via Weight-Tied
+  Iterative Graph Neural Networks'
+authors:
+- Elnaz Nowrouzi
+- Zhiqun Zuo
+- Xueru Zhang
+- Mohammad Mahdi Khalili
+year: 2026
+published_date: '2026-08-14'
+added_date: '2026-08-17'
+venue: GameSec
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- graph-data
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+desc: Introduces a weight-tied iterative GNN that amortizes best-response dynamics
+  into a single forward pass, predicting Nash equilibria up to 43x faster while recovering
+  equilibrium sensitivities across security-game specifications and graph sizes.
+links:
+  arxiv: https://arxiv.org/abs/2608.14856
+  alphaxiv: https://www.alphaxiv.org/abs/2608.14856
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-08-18'

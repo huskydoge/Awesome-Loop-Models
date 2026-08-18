@@ -1,0 +1,34 @@
+title: 'Behaviour Is an Incomplete Measure of Reasoning Development: Cross-surface
+  pre-arrival accessibility and the limits of developmental inference in a recurrent-depth
+  reasoner'
+authors:
+- Simon Lam-Muir
+year: 2026
+published_date: '2026-08-17'
+added_date: '2026-08-17'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+focus_tags:
+- architecture
+desc: Separates behavioural acquisition from hidden-state accessibility in a 30M looped
+  reasoner, finding pre-arrival answer information under preregistered controls while
+  explicitly withholding causal claims about the learned computation.
+links:
+  arxiv: https://arxiv.org/abs/2608.16085
+  alphaxiv: https://www.alphaxiv.org/abs/2608.16085
+  github: https://github.com/primecalibre-research/ltg-replication-receipts
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+github_stars: 0
+star_sources:
+  github_api: 0
+star_source_best: github_api
+metrics_updated: '2026-08-18'
