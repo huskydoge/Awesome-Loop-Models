@@ -2812,7 +2812,12 @@ process.stdout.write(JSON.stringify({{
         chart_rule = stats_css[chart_start:chart_end]
 
         self.assertIn(".stats-dashboard-grid {\n        display: block;", mobile_css)
-        self.assertIn(".stats-direction-tabs button {\n        min-height: 44px;", mobile_css)
+        self.assertIn(
+            ".stats-primary-chart .stats-range-button,\n"
+            "      .stats-direction-tabs button {\n"
+            "        min-height: 44px;",
+            mobile_css,
+        )
         self.assertIn("overflow: hidden;", chart_rule)
         self.assertNotRegex(stats_css, r"(?m)^\s*order:\s*-1")
 
