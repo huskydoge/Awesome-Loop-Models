@@ -2739,18 +2739,31 @@ process.stdout.write(JSON.stringify({
         self.assertIn("overflow: hidden;", chart_rule)
         self.assertNotRegex(stats_css, r"(?m)^\s*order:\s*-1")
 
-    def test_stats_desktop_uses_one_screen_without_nested_scrollbars(self):
-        """Ordinary desktop Stats should fit in main while small screens may scroll."""
+    def test_stats_uses_document_scroll_root_without_inner_clipping(self):
+        """Stats overflow belongs to the document edge, never the middle main pane."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         stats_start = html.index("    /* ── Personal-site-aligned editorial system ── */")
         stats_end = html.index("  </style>", stats_start)
         stats_css = html[stats_start:stats_end]
 
-        self.assertIn("@media (min-width: 1180px) and (min-height: 820px)", stats_css)
-        self.assertIn("body.stats-mode main {\n        overflow: hidden;", stats_css)
+        self.assertIn("html:has(body.stats-mode),\n    body.stats-mode {", stats_css)
+        self.assertIn("height: auto;\n      min-height: 100%;", stats_css)
+        self.assertIn("html:has(body.stats-mode) {\n      overflow-y: auto;", stats_css)
+        self.assertIn("body.stats-mode {\n      min-height: 100vh;\n      overflow: visible;", stats_css)
+        self.assertIn("min-height: calc(100vh - 61px);", stats_css)
+        self.assertIn("body.stats-mode main {\n      height: auto;", stats_css)
+        self.assertIn("overflow: visible;\n      overscroll-behavior: auto;", stats_css)
+        self.assertNotIn("body.stats-mode main {\n        overflow: hidden;", stats_css)
         self.assertNotIn("scrollbar-gutter", stats_css)
         self.assertNotIn("body.stats-mode main::-webkit-scrollbar", stats_css)
-        self.assertNotIn("html:has(body.stats-mode)", stats_css)
+
+        desktop_start = stats_css.index("@media (min-width: 1180px) and (min-height: 700px)")
+        desktop_end = stats_css.index("@media (max-width: 1020px)", desktop_start)
+        desktop_css = stats_css[desktop_start:desktop_end]
+        self.assertIn("min-height: 64px;", desktop_css)
+        self.assertIn(".stats-metric-note {\n        display: none;", desktop_css)
+        self.assertIn("height: clamp(200px, 24vh, 220px);", desktop_css)
+        self.assertIn(".stats-landscape-secondary {\n        margin-bottom: 0;", desktop_css)
 
     def test_stats_dashboard_refines_light_and_dark_theme_tokens(self):
         """Research Landscape must keep the same editorial grammar in dark mode."""
