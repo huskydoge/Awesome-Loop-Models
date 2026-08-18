@@ -2761,6 +2761,9 @@ process.stdout.write(JSON.stringify({{
             "annual-volume",
             "buildAnnualReleaseSeries",
             "renderAnnualReleaseVolume",
+            "stats-distribution-note",
+            "stats-taxonomy-details",
+            "stats-taxonomy-detail-grid",
         ):
             self.assertNotIn(removed, html)
 
@@ -2838,6 +2841,12 @@ process.stdout.write(JSON.stringify({{
         self.assertIn(".stats-metric-note {\n        display: none;", desktop_css)
         self.assertIn("height: clamp(200px, 24vh, 220px);", desktop_css)
         self.assertIn(".stats-landscape-secondary {\n        margin-bottom: 0;", desktop_css)
+
+        footer_media_start = stats_css.index("@media (min-width: 1180px) and (min-height: 860px)")
+        footer_media_end = stats_css.index("@media (max-width: 1020px)", footer_media_start)
+        footer_media_css = stats_css[footer_media_start:footer_media_end]
+        self.assertIn("body.stats-mode footer,\n      .stats-scope {\n        display: none;", footer_media_css)
+        self.assertNotIn("body.stats-mode footer", stats_css[:footer_media_start])
 
     def test_stats_dashboard_refines_light_and_dark_theme_tokens(self):
         """Research Landscape must keep the same editorial grammar in dark mode."""
