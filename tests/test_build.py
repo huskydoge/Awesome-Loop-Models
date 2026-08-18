@@ -680,8 +680,6 @@ function doSearch(query) {{ searchCalls.push(query); }}
         self.assertNotIn("tagGroup", category_call)
         self.assertIn("{ tagGroup: 'mechanism' }", stats_source)
         self.assertIn("{ tagGroup: CURRENT_STATS_DIRECTION_GROUP }", direction_source)
-        self.assertIn("CURRENT_STATS_EXPLORER_GROUP", direction_source)
-        self.assertIn("getTagDrilldownHref(tagKey)", direction_source)
 
         renderer_start = html.index("function renderStatsDistribution(")
         renderer_end = html.index("function renderAnnualReleaseVolume(", renderer_start)
@@ -2163,7 +2161,6 @@ process.stdout.write(JSON.stringify({
             "slicePublicationRange",
             "buildReleaseStatsSummary",
             "buildAnnualReleaseSeries",
-            "getLatestReleasedPapers",
             "buildStatsDistribution",
             "buildRecentStatsDistribution",
         ):
@@ -2298,9 +2295,6 @@ process.stdout.write(JSON.stringify({
       { published_date: 'invalid' },
       { added_date: '2023-01-01' }
     ]),
-    latest: getLatestReleasedPapers(summaryPapers, 5).map(function(paper) { return paper.id; }),
-    latestIsCopy: getLatestReleasedPapers(summaryPapers, 1)[0] !== summaryPapers[8],
-    noLatest: getLatestReleasedPapers(null, -1)
   };
 })()""")
 
@@ -2435,13 +2429,6 @@ process.stdout.write(JSON.stringify({
                 {"key": "2026", "label": "2026", "count": 1},
             ],
         )
-        self.assertEqual(
-            result["latest"],
-            ["latest-a1", "latest-a2", "latest-b", "june", "mar-b"],
-        )
-        self.assertTrue(result["latestIsCopy"])
-        self.assertEqual(result["noLatest"], [])
-
     def test_stats_panel_has_catalog_intelligence_dashboard(self):
         """Stats markup must expose the approved editorial Research Landscape."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -2467,13 +2454,7 @@ process.stdout.write(JSON.stringify({
             'id="stats-active-directions"',
             'data-stats-direction="focus"',
             'data-stats-direction="domain"',
-            '<details class="stats-tag-explorer">',
-            'id="stats-tag-search"',
-            'id="stats-tag-results"',
-            'data-stats-explorer-group="focus"',
-            'data-stats-explorer-group="domain"',
             'class="stats-dashboard-grid stats-dashboard-secondary stats-landscape-secondary"',
-            'id="latest-releases-list"',
             'class="stats-range-control"',
             'data-stats-range="90d"',
             'data-stats-range="1y"',
@@ -2483,7 +2464,6 @@ process.stdout.write(JSON.stringify({
             "Category mix",
             "Loop mechanisms",
             "Active directions",
-            "Latest publications",
         ):
             self.assertIn(marker, stats_markup)
         self.assertIn('aria-live="polite"', stats_markup)
@@ -2507,6 +2487,11 @@ process.stdout.write(JSON.stringify({
             "Annual volume",
             'id="annual-release-volume"',
             "stats-taxonomy-details",
+            "stats-tag-explorer",
+            "stats-tag-search",
+            "stats-tag-results",
+            "Latest publications",
+            "latest-releases-list",
         ):
             self.assertNotIn(obsolete, stats_markup)
 
@@ -2656,8 +2641,12 @@ process.stdout.write(JSON.stringify({
         self.assertIn("var maxValue = Math.max", render_source)
         self.assertIn("count / maxValue * plotHeight", render_source)
         self.assertIn("average / maxValue * plotHeight", render_source)
+        self.assertIn("Number(container.clientWidth)", render_source)
+        self.assertIn("var chartHeight = 250;", render_source)
         self.assertNotIn("maxAverage", render_source)
         self.assertNotIn("timeline-axis-average", render_source)
+        self.assertNotIn("Math.max(760", render_source)
+        self.assertNotIn("scrollLeft", render_source)
 
     def test_stats_renderers_use_safe_accessible_inline_svg_and_dom(self):
         """Stats rendering must use safe DOM APIs, SVG text alternatives, and visible summaries."""
@@ -2683,9 +2672,6 @@ process.stdout.write(JSON.stringify({
             "renderStatsDistribution",
             "renderStatsCategoryComposition",
             "renderStatsActiveDirections",
-            "renderStatsTagExplorer",
-            "renderLatestReleases",
-            "getSafeStatsPaperUrl",
         ):
             self.assertIn(marker, timeline_source)
         self.assertIn("setAttribute", timeline_source)
@@ -2696,7 +2682,6 @@ process.stdout.write(JSON.stringify({
         self.assertIn("buildStatsDistribution(ALL_PAPERS, 'category'", stats_source)
         self.assertIn("buildStatsDistribution(ALL_PAPERS, 'mechanism_tags'", stats_source)
         self.assertIn("renderStatsActiveDirections();", stats_source)
-        self.assertIn("renderStatsTagExplorer();", stats_source)
         self.assertIn("HAS_RENDERED_STATS = true;", stats_source)
         self.assertIn("if (!CATALOG_DATA_READY)", stats_source)
         self.assertIn("release-pulse-summary", html)
@@ -2704,41 +2689,22 @@ process.stdout.write(JSON.stringify({
         self.assertIn("'desc'", timeline_source)
         self.assertNotIn("renderLongArcChart", timeline_source)
 
-    def test_latest_releases_are_compact_taxonomy_rows(self):
-        """Latest releases should scan by date, title, category, and mechanism."""
+    def test_stats_dashboard_omits_long_secondary_feeds(self):
+        """The single-screen dashboard must not grow with tag or release feeds."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        render_start = html.index("function getStatsReleaseDateParts(value) {")
-        render_end = html.index("function renderReleasePulse()", render_start)
-        render_source = html[render_start:render_end]
-
-        for marker in (
+        for removed in (
+            "stats-tag-explorer",
+            "stats-tag-results",
+            "renderStatsTagExplorer",
+            "latest-releases-list",
             "latest-release-item",
-            "latest-release-date",
-            "latest-release-title",
-            "latest-release-category",
-            "latest-release-mechanism",
-            "paper._categoryLabel",
-            "paper._mechanismLabel",
+            "renderLatestReleases",
+            "getLatestReleasedPapers",
         ):
-            self.assertIn(marker, render_source)
-        for obsolete in (
-            "summarizeStatsReleaseAuthors",
-            "getStatsReleaseTags",
-            "summarizeStatsReleaseMomentum",
-            "latest-release-authors",
-            "latest-release-desc",
-            "latest-release-tags",
-            "latest-release-footer",
-            "paper.citations",
-            "paper.github_stars",
-            "Read paper ↗",
-        ):
-            self.assertNotIn(obsolete, render_source)
-        self.assertNotIn("innerHTML", render_source)
-        self.assertIn("getLatestReleasedPapers(ALL_PAPERS, 5)", html)
+            self.assertNotIn(removed, html)
 
     def test_stats_dashboard_uses_twelve_column_information_grid(self):
-        """Stats CSS must use a natural-height editorial grid without a dark hero card."""
+        """Stats CSS must use the approved compact 7/5 and 5/7 dashboard grid."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         stats_start = html.index("    /* ── Personal-site-aligned editorial system ── */")
         stats_end = html.index("  </style>", stats_start)
@@ -2751,18 +2717,16 @@ process.stdout.write(JSON.stringify({
         self.assertIn("grid-template-columns: repeat(12, minmax(0, 1fr));", dashboard_rule)
         self.assertIn("align-items: start;", dashboard_rule)
         self.assertIn(".stats-pulse-card", stats_css)
-        self.assertIn("grid-column: span 8;", stats_css)
+        self.assertIn("grid-column: span 7;", stats_css)
         self.assertIn(".stats-composition-card", stats_css)
-        self.assertIn("grid-column: span 4;", stats_css)
+        self.assertIn("grid-column: span 5;", stats_css)
         self.assertIn(".stats-mechanism-card", stats_css)
         self.assertIn(".stats-directions-card", stats_css)
-        self.assertIn(".stats-latest-card", stats_css)
         self.assertIn(".stats-category-donut", stats_css)
-        self.assertIn(".stats-tag-explorer", stats_css)
-        self.assertIn(".stats-tag-results", stats_css)
+        self.assertIn("grid-template-columns: repeat(2, minmax(0, 1fr));", stats_css)
         chart_scroll_css = stats_css[stats_css.index("    .stats-chart-scroll {"):]
-        self.assertIn("overflow-x: auto;", chart_scroll_css)
-        self.assertIn("scrollbar-width: none;", chart_scroll_css)
+        self.assertIn("overflow: hidden;", chart_scroll_css)
+        self.assertIn("height: 250px;", chart_scroll_css)
         self.assertIn("background: transparent;", stats_css)
         self.assertIn("border-top: 1px solid var(--border);", stats_css)
         self.assertNotIn("animation:", stats_css)
@@ -2779,24 +2743,22 @@ process.stdout.write(JSON.stringify({
         mobile_css = stats_css[mobile_start:]
 
         self.assertIn(".stats-dashboard-grid {\n        display: block;", mobile_css)
-        self.assertIn(".stats-tag-results {\n        grid-template-columns: 1fr;", mobile_css)
+        self.assertIn(".stats-direction-tabs button {\n        min-height: 44px;", mobile_css)
+        self.assertNotIn("overflow-x: auto", mobile_css)
         self.assertNotRegex(stats_css, r"(?m)^\s*order:\s*-1")
 
-    def test_stats_scrollbar_is_subtle_and_does_not_cover_content(self):
-        """Stats scroll roots must reserve clearance for their overlay scrollbars."""
+    def test_stats_desktop_uses_one_screen_without_nested_scrollbars(self):
+        """Ordinary desktop Stats should fit in main while small screens may scroll."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         stats_start = html.index("    /* ── Personal-site-aligned editorial system ── */")
         stats_end = html.index("  </style>", stats_start)
         stats_css = html[stats_start:stats_end]
 
-        self.assertIn("body.stats-mode main {", stats_css)
-        self.assertIn("padding-inline-end: 8px;", stats_css)
-        self.assertIn("scrollbar-gutter: stable;", stats_css)
-        self.assertIn("body.stats-mode main::-webkit-scrollbar", stats_css)
-        self.assertIn("html:has(body.stats-mode) {", stats_css)
-        self.assertIn("html:has(body.stats-mode)::-webkit-scrollbar", stats_css)
-        self.assertIn("width: 5px;", stats_css)
-        self.assertIn("body.stats-mode .layout {\n        padding-inline-end: 22px;", stats_css)
+        self.assertIn("@media (min-width: 1180px) and (min-height: 761px)", stats_css)
+        self.assertIn("body.stats-mode main {\n        overflow: hidden;", stats_css)
+        self.assertNotIn("scrollbar-gutter", stats_css)
+        self.assertNotIn("body.stats-mode main::-webkit-scrollbar", stats_css)
+        self.assertNotIn("html:has(body.stats-mode)", stats_css)
 
     def test_stats_dashboard_refines_light_and_dark_theme_tokens(self):
         """Research Landscape must keep the same editorial grammar in dark mode."""

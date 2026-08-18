@@ -905,10 +905,6 @@
       grid-column: span 4;
     }
 
-    .stats-latest-card {
-      grid-column: span 8;
-    }
-
     .stats-card-header {
       margin-bottom: 18px;
     }
@@ -1083,11 +1079,8 @@
     .stats-chart-scroll {
       width: 100%;
       max-width: 100%;
-      overflow-x: auto;
-      overflow-y: hidden;
+      overflow: hidden;
       padding: 8px 0 0;
-      scrollbar-width: thin;
-      scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
     }
 
     .stats-chart-scroll:focus-visible {
@@ -1097,7 +1090,8 @@
 
     .stats-panel .timeline-chart {
       display: block;
-      min-width: 760px;
+      width: 100%;
+      min-width: 0;
       max-width: none;
       height: auto;
       color: var(--text-muted);
@@ -1338,80 +1332,6 @@
       text-align: right;
     }
 
-    .latest-releases-list {
-      display: grid;
-      gap: 0;
-      border-top: 1px solid var(--stats-card-border);
-    }
-
-    .latest-release-item {
-      display: grid;
-      grid-template-columns: 92px minmax(0, 1fr);
-      gap: 16px;
-      align-items: center;
-      min-height: 74px;
-      padding: 11px 2px;
-      border-bottom: 1px solid var(--stats-card-border);
-    }
-
-    .latest-release-item:hover {
-      background: color-mix(in srgb, var(--accent) 4%, transparent);
-    }
-
-    .latest-release-date {
-      color: var(--text-muted);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 10px;
-      font-variant-numeric: tabular-nums;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .latest-release-body {
-      min-width: 0;
-    }
-
-    .latest-release-title-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      min-width: 0;
-    }
-
-    .latest-release-title,
-    .latest-release-title-static {
-      display: block;
-      color: var(--text);
-      font-size: 12.5px;
-      font-weight: 700;
-      line-height: 1.35;
-      text-decoration: none;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-
-    .latest-release-title:hover {
-      color: var(--accent);
-    }
-
-    .latest-release-taxonomy {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 12px;
-      margin-top: 5px;
-    }
-
-    .latest-release-category,
-    .latest-release-mechanism {
-      color: var(--text-muted);
-      font-size: 9.5px;
-      line-height: 1.35;
-    }
-
-    .latest-release-category {
-      color: var(--accent);
-    }
-
     .stats-empty-block {
       padding: 32px 0;
       border-top: 1px dashed var(--border);
@@ -1439,9 +1359,6 @@
       .stats-annual-card {
         grid-column: span 5;
       }
-      .stats-latest-card {
-        grid-column: span 7;
-      }
     }
 
     @media (max-width: 768px) {
@@ -1455,12 +1372,8 @@
       }
       .stats-pulse-card,
       .stats-composition-card,
-      .stats-annual-card,
-      .stats-latest-card {
+      .stats-annual-card {
         grid-column: span 12;
-      }
-      .stats-latest-card {
-        order: -1;
       }
       .stats-card-header-inline {
         display: block;
@@ -1508,10 +1421,6 @@
       }
       .stats-taxonomy-detail-grid {
         grid-template-columns: minmax(0, 1fr);
-      }
-      .latest-release-item {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 5px;
       }
     }
 
@@ -4513,35 +4422,6 @@
     }
 
     /* Research Landscape */
-    html:has(body.stats-mode) {
-      scrollbar-width: thin;
-      scrollbar-color: color-mix(in srgb, var(--text) 10%, transparent) transparent;
-    }
-
-    body.stats-mode main {
-      padding-inline-end: 8px;
-      scrollbar-gutter: stable;
-      scrollbar-color: color-mix(in srgb, var(--text) 10%, transparent) transparent;
-    }
-
-    body.stats-mode main::-webkit-scrollbar,
-    html:has(body.stats-mode)::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-    }
-
-    body.stats-mode main::-webkit-scrollbar-thumb,
-    html:has(body.stats-mode)::-webkit-scrollbar-thumb {
-      border: 1px solid transparent;
-      background: color-mix(in srgb, var(--text) 10%, transparent);
-      background-clip: padding-box;
-    }
-
-    body.stats-mode main::-webkit-scrollbar-thumb:hover,
-    html:has(body.stats-mode)::-webkit-scrollbar-thumb:hover {
-      background: color-mix(in srgb, var(--text) 18%, transparent);
-    }
-
     .stats-panel {
       --stats-card-bg: transparent;
       --stats-card-border: var(--border);
@@ -4551,19 +4431,20 @@
       --stats-data-2: #7f756c;
       --stats-data-3: #a39a90;
       background: transparent;
+      padding: 0;
     }
 
     .stats-dashboard-header,
     .stats-landscape-header {
       align-items: end;
-      padding: 0 0 26px;
+      padding: 0 0 12px;
       border-bottom: 1px solid var(--border);
     }
 
     .stats-dashboard-header h2 {
       margin-top: 7px;
       font-family: var(--font-display);
-      font-size: clamp(34px, 4vw, 52px);
+      font-size: clamp(30px, 3vw, 40px);
       font-weight: 700;
       letter-spacing: -0.025em;
       line-height: 1.02;
@@ -4571,21 +4452,21 @@
 
     .stats-scope {
       max-width: 660px;
-      margin-top: 12px;
+      margin-top: 5px;
       color: var(--text-muted);
-      font-size: 16px;
-      line-height: 1.55;
+      font-size: 13px;
+      line-height: 1.4;
     }
 
     .stats-snapshot-block {
-      padding-left: 24px;
+      padding-left: 18px;
       border-left: 1px solid var(--border);
       color: var(--text-muted);
       font-family: var(--font-body);
     }
 
     .stats-metric-rail {
-      margin: 0 0 34px;
+      margin: 0 0 16px;
       border: 0;
       border-bottom: 1px solid var(--border);
       border-radius: 0;
@@ -4594,8 +4475,8 @@
     }
 
     .stats-metric {
-      min-height: 132px;
-      padding: 22px 20px 20px;
+      min-height: 78px;
+      padding: 10px 16px 11px;
     }
 
     .stats-metric:first-child {
@@ -4608,42 +4489,43 @@
 
     .stats-metric-label {
       color: var(--text-dim);
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 0.07em;
     }
 
     .stats-metric-value {
       margin-top: 5px;
       font-family: var(--font-display);
-      font-size: 34px;
+      font-size: 27px;
       font-weight: 700;
     }
 
     .stats-metric-note {
       margin-top: 6px;
       color: var(--text-muted);
-      font-size: 12px;
+      font-size: 10.5px;
+      line-height: 1.3;
     }
 
     .stats-dashboard-grid {
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
       align-items: start;
-      gap: 24px;
+      gap: 20px;
     }
 
     .stats-landscape-primary,
     .stats-landscape-secondary {
       margin-top: 0;
-      margin-bottom: 34px;
+      margin-bottom: 16px;
     }
 
     .stats-pulse-card {
-      grid-column: span 8;
+      grid-column: span 7;
     }
 
     .stats-composition-card {
-      grid-column: span 4;
+      grid-column: span 5;
     }
 
     .stats-mechanism-card {
@@ -4655,10 +4537,9 @@
     }
 
     .stats-dashboard-card,
-    .stats-primary-chart,
-    .stats-latest-card {
+    .stats-primary-chart {
       min-height: 0;
-      padding: 22px 0 0;
+      padding: 14px 0 0;
       border: 0;
       border-top: 1px solid var(--border);
       border-radius: 0;
@@ -4669,7 +4550,16 @@
     }
 
     .stats-primary-chart {
-      padding-top: 22px;
+      padding-top: 14px;
+    }
+
+    .stats-card-header {
+      margin-bottom: 8px;
+    }
+
+    .stats-chart-header {
+      gap: 16px;
+      padding-bottom: 8px;
     }
 
     .stats-card-header h3,
@@ -4677,7 +4567,7 @@
     .stats-primary-chart .stats-chart-heading h3 {
       margin-top: 4px;
       font-family: var(--font-display);
-      font-size: 25px;
+      font-size: 21px;
       font-weight: 700;
       color: var(--text);
     }
@@ -4720,21 +4610,18 @@
     }
 
     .stats-chart-scroll {
-      min-height: 328px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .stats-chart-scroll::-webkit-scrollbar {
-      display: none;
+      width: 100%;
+      min-height: 0;
+      overflow: hidden;
+      padding: 0;
     }
 
     .stats-panel .timeline-chart {
       display: block;
-      max-width: 100%;
-      height: auto;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+      height: 250px;
     }
 
     .stats-panel .timeline-grid {
@@ -4757,22 +4644,22 @@
 
     .stats-category-composition {
       display: grid;
-      grid-template-columns: 148px minmax(0, 1fr);
+      grid-template-columns: 120px minmax(0, 1fr);
       align-items: center;
-      gap: 24px;
-      margin-top: 24px;
+      gap: 16px;
+      margin-top: 12px;
     }
 
     .stats-category-donut {
       position: relative;
-      width: 148px;
+      width: 120px;
       aspect-ratio: 1;
       border-radius: 50%;
     }
 
     .stats-category-donut::after {
       position: absolute;
-      inset: 28px;
+      inset: 23px;
       border-radius: 50%;
       background: var(--bg);
       content: '';
@@ -4791,7 +4678,7 @@
 
     .stats-category-donut strong {
       font-family: var(--font-display);
-      font-size: 27px;
+      font-size: 24px;
       line-height: 1;
     }
 
@@ -4812,7 +4699,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 12px;
-      padding: 11px 0;
+      padding: 7px 0;
       border-bottom: 1px solid var(--border);
       color: var(--text-muted);
       font-size: 12px;
@@ -4849,12 +4736,17 @@
     }
 
     .stats-distribution-list {
-      margin-top: 18px;
+      margin-top: 8px;
     }
 
     .stats-distribution-row {
-      padding: 9px 0;
+      padding: 4px 0;
       color: var(--text-muted);
+    }
+
+    .stats-directions-card .stats-distribution-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 18px;
     }
 
     a.stats-distribution-row:hover {
@@ -4873,139 +4765,21 @@
       background: var(--stats-data-1);
     }
 
-    .stats-tag-explorer {
-      margin: 0 0 36px;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
+    @media (min-width: 1180px) and (min-height: 761px) {
+      body.stats-mode main {
+        overflow: hidden;
+        overscroll-behavior: none;
+      }
 
-    .stats-tag-explorer > summary {
-      display: flex;
-      min-height: 78px;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      cursor: pointer;
-      list-style: none;
-    }
+      body.stats-mode .layout {
+        padding-top: 18px;
+        padding-bottom: 18px;
+      }
 
-    .stats-tag-explorer > summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .stats-tag-explorer > summary span:first-child {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .stats-tag-explorer > summary strong {
-      font-family: var(--font-display);
-      font-size: 19px;
-    }
-
-    .stats-tag-explorer > summary small {
-      color: var(--text-muted);
-      font-size: 13px;
-    }
-
-    .stats-tag-explorer[open] > summary > span:last-child {
-      transform: rotate(45deg);
-    }
-
-    .stats-tag-explorer-body {
-      padding: 2px 0 24px;
-    }
-
-    .stats-tag-explorer-toolbar {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 20px;
-    }
-
-    .stats-tag-search-field {
-      display: flex;
-      width: min(440px, 100%);
-      flex-direction: column;
-      gap: 5px;
-      color: var(--text-dim);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .stats-tag-search-field input {
-      width: 100%;
-      min-height: 42px;
-      padding: 8px 11px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 14px;
-      text-transform: none;
-      letter-spacing: 0;
-      outline: none;
-    }
-
-    .stats-tag-search-field input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent);
-    }
-
-    .stats-tag-results {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0 24px;
-    }
-
-    .stats-tag-results a {
-      display: flex;
-      min-height: 42px;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      border-bottom: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    .stats-tag-results a:hover {
-      color: var(--text);
-    }
-
-    .stats-tag-results strong {
-      color: var(--text-dim);
-      font-size: 11px;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .stats-latest-card {
-      margin-top: 0;
-      margin-bottom: 24px;
-      order: initial;
-    }
-
-    .latest-releases-list {
-      margin-top: 12px;
-      border-top: 0;
-    }
-
-    .latest-release-item {
-      grid-template-columns: 104px minmax(0, 1fr);
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .latest-release-title,
-    .latest-release-title-static {
-      font-family: var(--font-display);
-      font-size: 16px;
-      font-weight: 700;
+      .stats-chart-heading p,
+      .stats-card-header p {
+        display: none;
+      }
     }
 
     @media (max-width: 1020px) {
@@ -5106,15 +4880,6 @@
         padding: 24px 16px 40px;
       }
 
-      body.stats-mode main {
-        padding-inline-end: 0;
-        scrollbar-gutter: auto;
-      }
-
-      body.stats-mode .layout {
-        padding-inline-end: 22px;
-      }
-
       .stats-dashboard-header,
       .stats-landscape-header {
         align-items: start;
@@ -5167,8 +4932,7 @@
       }
 
       .stats-chart-header,
-      .stats-card-header-inline,
-      .stats-tag-explorer-toolbar {
+      .stats-card-header-inline {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -5178,8 +4942,9 @@
         align-items: flex-start;
       }
 
-      .stats-chart-scroll {
-        min-height: 250px;
+      .stats-range-button,
+      .stats-direction-tabs button {
+        min-height: 44px;
       }
 
       .stats-category-composition {
@@ -5199,16 +4964,8 @@
         font-size: 23px;
       }
 
-      .stats-tag-search-field {
-        width: 100%;
-      }
-
-      .stats-tag-results {
-        grid-template-columns: 1fr;
-      }
-
-      .latest-release-item {
-        grid-template-columns: 84px minmax(0, 1fr);
+      .stats-directions-card .stats-distribution-list {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
@@ -5513,7 +5270,7 @@
               </div>
             </div>
           </header>
-          <div class="stats-chart-scroll" id="release-pulse-chart" tabindex="0" aria-label="Scrollable Release Pulse chart"></div>
+          <div class="stats-chart-scroll" id="release-pulse-chart" tabindex="0" aria-label="Release trend chart"></div>
           <p class="stats-period-summary" id="release-pulse-summary" aria-live="polite">The latest publication range will appear after the catalog loads.</p>
         </article>
 
@@ -5552,36 +5309,6 @@
         </article>
       </div>
 
-      <details class="stats-tag-explorer">
-        <summary>
-          <span><strong>Explore every tag</strong><small>Search the full paper-only Focus and Domain taxonomy.</small></span>
-          <span aria-hidden="true">＋</span>
-        </summary>
-        <div class="stats-tag-explorer-body">
-          <div class="stats-tag-explorer-toolbar">
-            <div class="stats-direction-tabs" role="group" aria-label="Tag explorer taxonomy">
-              <button type="button" data-stats-explorer-group="focus" aria-pressed="true">Focus</button>
-              <button type="button" data-stats-explorer-group="domain" aria-pressed="false">Domain</button>
-            </div>
-            <label class="stats-tag-search-field" for="stats-tag-search">
-              <span>Search tags</span>
-              <input type="search" id="stats-tag-search" placeholder="e.g. reasoning, efficiency, architecture" autocomplete="off" />
-            </label>
-          </div>
-          <div class="stats-tag-results" id="stats-tag-results" role="list" aria-live="polite"></div>
-        </div>
-      </details>
-
-      <article class="stats-dashboard-card stats-latest-card" aria-labelledby="latest-releases-heading">
-        <header class="stats-card-header stats-card-header-inline">
-          <div>
-            <div class="stats-section-index">Newest in the catalog</div>
-            <h3 id="latest-releases-heading">Latest publications</h3>
-          </div>
-          <p>Publication date, primary category, and loop mechanism.</p>
-        </header>
-        <div class="latest-releases-list" id="latest-releases-list" role="list" aria-live="polite"></div>
-      </article>
     </section>
 
   </main>
@@ -5909,44 +5636,6 @@ function buildAnnualReleaseSeries(papers) {
 }
 
 /**
- * Return the newest valid releases with deterministic same-day ordering.
- * @param {Array<Object>} papers Paper records from the catalog.
- * @param {number} limit Maximum number of papers to return.
- * @returns {Array<Object>} Paper records sorted by date, title, id, and input order.
- */
-function getLatestReleasedPapers(papers, limit) {
-  if (!Array.isArray(papers) || papers.length === 0) return [];
-  var normalizedLimit = Number.isFinite(limit) ? Math.max(0, Math.floor(limit)) : 6;
-  if (normalizedLimit === 0) return [];
-
-  return papers.map(function(paper, index) {
-    return {
-      paper: paper,
-      publishedDate: parseIsoDate(paper && paper.published_date),
-      index: index
-    };
-  }).filter(function(entry) {
-    return entry.publishedDate !== null;
-  }).sort(function(left, right) {
-    var dateOrder = right.publishedDate.getTime() - left.publishedDate.getTime();
-    if (dateOrder !== 0) return dateOrder;
-
-    var leftTitle = String(left.paper.title || '').trim().toLowerCase();
-    var rightTitle = String(right.paper.title || '').trim().toLowerCase();
-    if (leftTitle < rightTitle) return -1;
-    if (leftTitle > rightTitle) return 1;
-
-    var leftId = String(left.paper.id || '').trim().toLowerCase();
-    var rightId = String(right.paper.id || '').trim().toLowerCase();
-    if (leftId < rightId) return -1;
-    if (leftId > rightId) return 1;
-    return left.index - right.index;
-  }).slice(0, normalizedLimit).map(function(entry) {
-    return Object.assign({}, entry.paper);
-  });
-}
-
-/**
  * Count a scalar or multi-value catalog field for dashboard composition views.
  * @param {Array<Object>} papers Paper records from the catalog.
  * @param {string} field Catalog field to count.
@@ -6146,10 +5835,9 @@ function renderReleasePulseChart(container, series, options) {
     return;
   }
 
-  var margin = { top: 42, right: 28, bottom: 48, left: 58 };
-  var pointWidth = settings.granularity === 'month' ? 8 : (safeSeries.length > 180 ? 2 : 5);
-  var chartWidth = Math.max(760, margin.left + margin.right + safeSeries.length * pointWidth);
-  var chartHeight = 336;
+  var margin = { top: 28, right: 18, bottom: 36, left: 42 };
+  var chartWidth = Math.max(320, Math.floor(Number(container.clientWidth) || 720));
+  var chartHeight = 250;
   var plotWidth = chartWidth - margin.left - margin.right;
   var plotHeight = chartHeight - margin.top - margin.bottom;
   var maxValue = Math.max(1, Math.max.apply(null, safeSeries.map(function(bucket) {
@@ -6238,7 +5926,6 @@ function renderReleasePulseChart(container, series, options) {
   });
 
   container.appendChild(svg);
-  container.scrollLeft = Math.max(0, container.scrollWidth - container.clientWidth);
 }
 
 /**
@@ -6376,45 +6063,7 @@ function renderStatsActiveDirections() {
   );
 }
 
-/** Render the searchable full Focus or Domain inventory as compact native links. */
-function renderStatsTagExplorer() {
-  var container = document.getElementById('stats-tag-results');
-  var input = document.getElementById('stats-tag-search');
-  if (!container || !CATALOG_DATA_READY) return;
-  container.replaceChildren();
-  var query = String(input && input.value || '').trim().toLowerCase();
-  var rows = buildStatsDistribution(
-    ALL_PAPERS,
-    getStatsTaxonomyField(CURRENT_STATS_EXPLORER_GROUP)
-  ).rows.filter(function(row) {
-    return !query || row.label.toLowerCase().includes(query) || row.key.toLowerCase().includes(query);
-  });
-  if (rows.length === 0) {
-    var emptyState = document.createElement('p');
-    emptyState.className = 'stats-empty-block';
-    emptyState.textContent = 'No tags match this search.';
-    container.appendChild(emptyState);
-    return;
-  }
-
-  rows.forEach(function(row) {
-    var tagKey = buildTagEntry(CURRENT_STATS_EXPLORER_GROUP, row.key).key;
-    var link = document.createElement('a');
-    link.href = getTagDrilldownHref(tagKey);
-    link.setAttribute('role', 'listitem');
-    link.setAttribute('data-tag-key', tagKey);
-    link.setAttribute('data-tag-group', CURRENT_STATS_EXPLORER_GROUP);
-    link.setAttribute('aria-label', 'View ' + row.count + ' papers tagged ' + row.label);
-    var name = document.createElement('span');
-    name.textContent = row.label;
-    var count = document.createElement('strong');
-    count.textContent = row.count.toLocaleString('en-US');
-    link.append(name, count);
-    container.appendChild(link);
-  });
-}
-
-/** Register the Stats taxonomy tabs and explorer search once. */
+/** Register the Stats direction tabs once. */
 function initStatsTaxonomyInteractions() {
   if (STATS_TAXONOMY_LISTENERS_BOUND) return;
   STATS_TAXONOMY_LISTENERS_BOUND = true;
@@ -6427,17 +6076,6 @@ function initStatsTaxonomyInteractions() {
       renderStatsActiveDirections();
     });
   });
-  document.querySelectorAll('[data-stats-explorer-group]').forEach(function(button) {
-    button.addEventListener('click', function() {
-      CURRENT_STATS_EXPLORER_GROUP = button.dataset.statsExplorerGroup === 'domain' ? 'domain' : 'focus';
-      document.querySelectorAll('[data-stats-explorer-group]').forEach(function(option) {
-        option.setAttribute('aria-pressed', option.dataset.statsExplorerGroup === CURRENT_STATS_EXPLORER_GROUP ? 'true' : 'false');
-      });
-      renderStatsTagExplorer();
-    });
-  });
-  var search = document.getElementById('stats-tag-search');
-  if (search) search.addEventListener('input', renderStatsTagExplorer);
 }
 
 /**
@@ -6488,116 +6126,6 @@ function renderAnnualReleaseVolume(container, series) {
     list.appendChild(row);
   });
   container.appendChild(list);
-}
-
-/**
- * Select a safe, reader-facing paper URL from known catalog link fields.
- * @param {Object} paper Paper record.
- * @returns {string} An absolute HTTP(S) URL, or an empty string.
- */
-function getSafeStatsPaperUrl(paper) {
-  var links = paper && paper.links && typeof paper.links === 'object' ? paper.links : {};
-  var candidates = [links.paper, links.arxiv, links.openreview, links.project, links.blog, links.github, links.hf];
-  for (var index = 0; index < candidates.length; index += 1) {
-    var value = typeof candidates[index] === 'string' ? candidates[index].trim() : '';
-    if (/^https?:\/\//i.test(value)) return value;
-  }
-  return '';
-}
-
-/**
- * Split an ISO publication date into an editorial day and month-year label.
- * @param {string} value ISO publication date.
- * @returns {{day: string, monthYear: string, iso: string}} Safe display parts.
- */
-function getStatsReleaseDateParts(value) {
-  var text = typeof value === 'string' ? value.trim() : '';
-  var match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(text);
-  if (!match) return { day: '—', monthYear: 'Date unknown', iso: '' };
-  var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var monthIndex = Number(match[2]) - 1;
-  var month = monthNames[monthIndex] || match[2];
-  return { day: match[3], monthYear: month + ' · ' + match[1], iso: text };
-}
-
-/**
- * Render newest releases with safe text nodes and links.
- * @param {HTMLElement|null} container Latest-releases list container.
- * @param {Array<Object>} papers Newest release records.
- * @returns {void}
- */
-function renderLatestReleases(container, papers) {
-  if (!container) return;
-  container.replaceChildren();
-  var releases = Array.isArray(papers) ? papers : [];
-  if (releases.length === 0) {
-    var emptyState = document.createElement('p');
-    emptyState.className = 'stats-empty-block';
-    emptyState.textContent = 'No dated releases are available to read.';
-    container.appendChild(emptyState);
-    return;
-  }
-
-  releases.forEach(function(paper, releaseIndex) {
-    var isAdjacent = paper.catalog_fit === 'adjacent';
-    var item = document.createElement('article');
-    item.className = 'latest-release-item';
-    item.setAttribute('role', 'listitem');
-    item.setAttribute(
-      'aria-label',
-      'Release ' + (releaseIndex + 1) + ': ' + String(paper.title || 'Untitled paper')
-        + (isAdjacent ? ', adjacent work outside strict scope' : '')
-    );
-
-    var date = document.createElement('time');
-    date.className = 'latest-release-date';
-    var dateParts = getStatsReleaseDateParts(paper.published_date);
-    date.dateTime = dateParts.iso;
-    date.textContent = dateParts.iso || 'Date unknown';
-
-    var body = document.createElement('div');
-    body.className = 'latest-release-body';
-    var url = getSafeStatsPaperUrl(paper);
-    var title;
-    if (url) {
-      title = document.createElement('a');
-      title.className = 'latest-release-title';
-      title.href = url;
-      title.target = '_blank';
-      title.rel = 'noopener';
-      title.title = 'Read ' + String(paper.title || 'this paper');
-    } else {
-      title = document.createElement('span');
-      title.className = 'latest-release-title-static';
-    }
-    title.textContent = String(paper.title || 'Untitled paper');
-    var titleRow = document.createElement('div');
-    titleRow.className = 'latest-release-title-row';
-    titleRow.appendChild(title);
-    if (isAdjacent) {
-      var fitBadge = document.createElement('span');
-      fitBadge.className = 'catalog-fit-badge';
-      fitBadge.title = CATALOG_ADJACENT_NOTE;
-      fitBadge.textContent = 'Adjacent work';
-      titleRow.appendChild(fitBadge);
-    }
-
-    var taxonomy = document.createElement('div');
-    taxonomy.className = 'latest-release-taxonomy';
-    var category = document.createElement('span');
-    category.className = 'latest-release-category';
-    category.textContent = paper._categoryLabel || 'Category not listed';
-    var mechanism = document.createElement('span');
-    mechanism.className = 'latest-release-mechanism';
-    mechanism.textContent = isAdjacent
-      ? 'No strict loop mechanism'
-      : (paper._mechanismLabel || 'Mechanism not listed');
-    taxonomy.append(category, mechanism);
-
-    body.append(titleRow, taxonomy);
-    item.append(date, body);
-    container.appendChild(item);
-  });
 }
 
 /** Render the active range without exposing full daily history to the chart renderer. */
@@ -6659,7 +6187,6 @@ function renderStatsPanel() {
   STATS_MONTHLY_RELEASES = buildMonthlyPublicationSeries(ALL_PAPERS);
   var summary = buildReleaseStatsSummary(ALL_PAPERS, STATS_DAILY_RELEASES);
   var latestWindow = STATS_DAILY_RELEASES.slice(-30);
-  var latestPapers = getLatestReleasedPapers(ALL_PAPERS, 5);
   var totalElement = document.getElementById('stats-total-papers');
   var totalNote = document.getElementById('stats-total-papers-note');
   var latestThirtyElement = document.getElementById('stats-latest-thirty');
@@ -6719,11 +6246,6 @@ function renderStatsPanel() {
     { tagGroup: 'mechanism' }
   );
   renderStatsActiveDirections();
-  renderStatsTagExplorer();
-  renderLatestReleases(
-    document.getElementById('latest-releases-list'),
-    latestPapers
-  );
   if (status) status.hidden = true;
   HAS_RENDERED_STATS = true;
 }
@@ -7083,7 +6605,6 @@ let HAS_USER_SELECTED_TOP_LEVEL_TAB = false;
 let CURRENT_STATS_RANGE = '1y';
 let STATS_RANGE_LISTENERS_BOUND = false;
 let CURRENT_STATS_DIRECTION_GROUP = 'focus';
-let CURRENT_STATS_EXPLORER_GROUP = 'focus';
 let STATS_TAXONOMY_LISTENERS_BOUND = false;
 let STATS_DAILY_RELEASES = [];
 let STATS_MONTHLY_RELEASES = [];
