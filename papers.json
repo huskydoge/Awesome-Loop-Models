@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 140,
-    "paper_total": 132,
+    "total": 143,
+    "paper_total": 135,
     "blog_total": 8,
-    "briefing_total": 40,
-    "latest_briefing_date": "2026-08-12",
-    "generated": "2026-08-17T05:51:34.900648+00:00",
+    "briefing_total": 41,
+    "latest_briefing_date": "2026-08-17",
+    "generated": "2026-08-18T03:38:12.804566+00:00",
     "generated_local_date": "2026-08-17",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope.",
     "foundation_label": "Foundation",
@@ -7313,6 +7313,145 @@
       "arxiv_id": "2608.11352"
     },
     {
+      "title": "BRAID: Learning Equilibrium Maps in Interdependent Security Games via Weight-Tied Iterative Graph Neural Networks",
+      "authors": "Elnaz Nowrouzi, Zhiqun Zuo, Xueru Zhang, Mohammad Mahdi Khalili",
+      "year": 2026,
+      "published_date": "2026-08-14",
+      "added_date": "2026-08-17",
+      "venue": "GameSec",
+      "category": "applications",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "graph-data",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Introduces a weight-tied iterative GNN that amortizes best-response dynamics into a single forward pass, predicting Nash equilibria up to 43x faster while recovering equilibrium sensitivities across security-game specifications and graph sizes.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.14856",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.14856"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-08-18",
+      "id": "2608.14856",
+      "source_file": "2608.14856.yaml",
+      "source_path": "papers/2608.14856.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Elnaz Nowrouzi",
+        "Zhiqun Zuo",
+        "Xueru Zhang",
+        "Mohammad Mahdi Khalili"
+      ],
+      "venueClass": "venue-other",
+      "arxiv_id": "2608.14856"
+    },
+    {
+      "title": "RecurrentGPT: Expressive Depth through Recurrent Modulation in Transformers",
+      "authors": "Amr Hegazy, Amr Alanwar, Mostafa Elhoushi",
+      "year": 2026,
+      "published_date": "2026-08-15",
+      "added_date": "2026-08-17",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "efficiency",
+        "scaling",
+        "memory-efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces a prelude-shared-coda recurrent Transformer whose gated shared core is iterated across depth, matching a 12-layer GPT-2 Small with three distinct layers under isoFLOPS while reducing large-scale parameters by 63% and peak decoding memory by 59%.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.15062",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.15062"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-08-18",
+      "id": "2608.15062",
+      "source_file": "2608.15062.yaml",
+      "source_path": "papers/2608.15062.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Amr Hegazy",
+        "Amr Alanwar",
+        "Mostafa Elhoushi"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.15062"
+    },
+    {
+      "title": "Behaviour Is an Incomplete Measure of Reasoning Development: Cross-surface pre-arrival accessibility and the limits of developmental inference in a recurrent-depth reasoner",
+      "authors": "Simon Lam-Muir",
+      "year": 2026,
+      "published_date": "2026-08-17",
+      "added_date": "2026-08-17",
+      "venue": "arXiv",
+      "category": "analysis",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning"
+      ],
+      "focus_tags": [
+        "architecture"
+      ],
+      "desc": "Separates behavioural acquisition from hidden-state accessibility in a 30M looped reasoner, finding pre-arrival answer information under preregistered controls while explicitly withholding causal claims about the learned computation.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.16085",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.16085",
+        "github": "https://github.com/primecalibre-research/ltg-replication-receipts"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "github_stars": 0,
+      "star_sources": {
+        "github_api": 0
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-08-18",
+      "id": "2608.16085",
+      "source_file": "2608.16085.yaml",
+      "source_path": "papers/2608.16085.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Simon Lam-Muir"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.16085"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -7719,45 +7858,58 @@
   ],
   "briefings": [
     {
-      "date": "2026-08-12",
-      "title": "Daily Loop-Model Briefing - 2026-08-12",
+      "date": "2026-08-17",
+      "title": "Daily Loop-Model Briefing - 2026-08-17",
       "status": "added",
-      "summary": "Two papers were added: a recurrent-depth retrofit of a pretrained language model and an ODE-inspired iterative decoder for sign language translation.",
-      "source_path": "briefings/2026/08/2026-08-12.md",
+      "summary": "Three papers were added: a gated recurrent-depth language model, a weight-tied graph network for equilibrium prediction, and a controlled analysis of when recurrent-depth reasoning becomes internally accessible before it is visible in model behaviour.",
+      "source_path": "briefings/2026/08/2026-08-17.md",
       "highlights": [
-        "A Qwen2.5-0.5B retrofit turns its middle 12 layers into one weight-tied recurrent block while preserving the original one-loop path.",
-        "The sign-language decoder repeatedly applies the same learned decoder function within refinement and Runge--Kutta stages, improving matched translation baselines without adding decoder parameters."
+        "RecurrentGPT iterates one gated shared core between fixed prelude and coda blocks, trading unique parameters and decoding memory for recurrent depth.",
+        "BRAID compresses iterative best-response dynamics into a weight-tied GNN forward pass and evaluates both equilibrium prediction and local sensitivity.",
+        "A recurrent-depth reasoning study separates behavioural acquisition from linear-probe accessibility and explicitly avoids treating probes as causal evidence of learned computation."
       ],
       "candidates": [
         {
-          "id": "2608.11233",
-          "title": "Retrofitting Recurrent Depth into a Pretrained Language Model: Installation, Extrapolation, Transfer, and Retention at Two Parameter Budgets",
+          "id": "2608.15062",
+          "title": "RecurrentGPT: Expressive Depth through Recurrent Modulation in Transformers",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.11233"
+          "url": "https://arxiv.org/abs/2608.15062"
         },
         {
-          "id": "2608.11352",
-          "title": "ODE-Based Transformer Decoders for Iterative Sign Language Translation",
+          "id": "2608.14856",
+          "title": "BRAID: Learning Equilibrium Maps in Interdependent Security Games via Weight-Tied Iterative Graph Neural Networks",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.11352"
+          "url": "https://arxiv.org/abs/2608.14856"
         },
         {
-          "id": "2608.11716",
-          "title": "Chain-of-Thought Shows the Path to a Tree: Realizing Branching Complexity",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.11716"
+          "id": "2608.16085",
+          "title": "Behaviour Is an Incomplete Measure of Reasoning Development: Cross-surface pre-arrival accessibility and the limits of developmental inference in a recurrent-depth reasoner",
+          "verdict": "added",
+          "url": "https://arxiv.org/abs/2608.16085"
         },
         {
-          "id": "2608.11701",
-          "title": "Consolidator: Learning Persistent Routed Memory Across Context Boundaries",
+          "id": "2608.15096",
+          "title": "MODAL: Multi-Modal Object Re-ID via Model-Driven Sparse Decoupling and Text-Image Differential Filtering",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.11701"
+          "url": "https://arxiv.org/abs/2608.15096"
         },
         {
-          "id": "2608.11657",
-          "title": "Semantic Lenia",
+          "id": "2608.15246",
+          "title": "CG-GLORE: A Conjugate Gradient-Based Global-Local Regularization Network for Sparse-View CT Reconstruction",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.11657"
+          "url": "https://arxiv.org/abs/2608.15246"
+        },
+        {
+          "id": "2608.13518",
+          "title": "Intervention-Aware Clinical World Model for Post-Op Outcome Forecasting in Cardiology",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2608.13518"
+        },
+        {
+          "id": "2608.15694",
+          "title": "RRFC: Recursive Refinement via Feedback Conditioning for Iterative Image-to-Image Generation",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2608.15694"
         }
       ]
     }
