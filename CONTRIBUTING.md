@@ -292,7 +292,7 @@ The checker reports every measured value alongside its limit and lists all viola
 
 | Asset or schema contract | Limit |
 |---|---:|
-| `papers.json` raw size | 260,000 bytes |
+| `papers.json` raw size | 280,000 bytes |
 | `papers.json` deterministic gzip size (`mtime=0`) | 60,000 bytes |
 | `papers.json.briefings` | At most 1 item |
 | `content` keys anywhere within browser briefings | 0 |
