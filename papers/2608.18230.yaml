@@ -1,0 +1,33 @@
+title: Allocating Recurrent Compute in Looped Language Models
+authors:
+- Ruhai Lin
+- Yiyang Guo
+- Rui-Jie Zhu
+- Hao Ye
+- Jason K. Eshraghian
+year: 2026
+published_date: '2026-08-18'
+added_date: '2026-08-20'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces MixerLoop, which repeatedly applies each shared Gated DeltaNet token
+  mixer while executing its dense FFN once, preserving recurrent-depth benefits with
+  lower projection cost and higher prefill throughput.
+links:
+  arxiv: https://arxiv.org/abs/2608.18230
+  alphaxiv: https://www.alphaxiv.org/abs/2608.18230
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-08-21'

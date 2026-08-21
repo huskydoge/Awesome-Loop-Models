@@ -1,0 +1,30 @@
+title: 'SABET-QA: Temporal Knowledge Graph Question Answering'
+authors:
+- Brahim Touayouch
+- Mirette Moawad
+- Dmitry Akulov
+year: 2026
+published_date: '2026-08-20'
+added_date: '2026-08-20'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- graph-data
+- reasoning
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces SABET-QA, which iteratively refines temporal knowledge-graph reasoning
+  states across four hops using a shared learned working-memory update, bidirectional
+  entity/time scoring, and adaptive hop aggregation.
+links:
+  arxiv: https://arxiv.org/abs/2608.20083
+  alphaxiv: https://www.alphaxiv.org/abs/2608.20083
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-08-21'

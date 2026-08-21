@@ -1,0 +1,30 @@
+title: Looped Language Models Improve Compositional Tool Calling
+authors:
+- Andrei Cristian Popescu
+- Haitz Sáez de Ocáriz Borde
+- Pietro Liò
+year: 2026
+published_date: '2026-08-17'
+added_date: '2026-08-20'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- compositional-reasoning
+focus_tags:
+- inference-algorithm
+desc: Evaluates native and retrofitted looped language models on compositional tool
+  calling, finding that recurrent depth most consistently improves multi-call dependency
+  handling while adaptive stopping uses fewer iterations.
+links:
+  arxiv: https://arxiv.org/abs/2608.18171
+  alphaxiv: https://www.alphaxiv.org/abs/2608.18171
+citations: 0
+citation_sources:
+  opencitations: 0
+citation_source_best: opencitations
+metrics_updated: '2026-08-21'

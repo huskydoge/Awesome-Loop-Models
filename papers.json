@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 143,
-    "paper_total": 135,
+    "total": 147,
+    "paper_total": 139,
     "blog_total": 8,
-    "briefing_total": 41,
-    "latest_briefing_date": "2026-08-17",
-    "generated": "2026-08-18T06:05:31.242097+00:00",
-    "generated_local_date": "2026-08-18",
+    "briefing_total": 42,
+    "latest_briefing_date": "2026-08-20",
+    "generated": "2026-08-21T04:43:18.122631+00:00",
+    "generated_local_date": "2026-08-20",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -7455,6 +7455,190 @@
       "arxiv_id": "2608.16085"
     },
     {
+      "title": "Looped Language Models Improve Compositional Tool Calling",
+      "authors": "Andrei Cristian Popescu, Haitz Sáez de Ocáriz Borde, Pietro Liò",
+      "year": 2026,
+      "published_date": "2026-08-17",
+      "added_date": "2026-08-20",
+      "venue": "arXiv",
+      "category": "applications",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "compositional-reasoning"
+      ],
+      "focus_tags": [
+        "inference-algorithm"
+      ],
+      "desc": "Evaluates native and retrofitted looped language models on compositional tool calling, finding that recurrent depth most consistently improves multi-call dependency handling while adaptive stopping uses fewer iterations.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.18171",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.18171"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-08-21",
+      "id": "2608.18171",
+      "source_file": "2608.18171.yaml",
+      "source_path": "papers/2608.18171.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Andrei Cristian Popescu",
+        "Haitz Sáez de Ocáriz Borde",
+        "Pietro Liò"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.18171"
+    },
+    {
+      "title": "Think Shallow, Solve Deep: Controlling Recurrent Dynamics for Reliable Test-Time Depth",
+      "authors": "Ivan Viakhirev, Kirill Borodin, Amirah Almutairi, Serguei Barannikov, Maxim Abramov, Grach Mkrtchian",
+      "year": 2026,
+      "published_date": "2026-08-18",
+      "added_date": "2026-08-20",
+      "venue": "arXiv",
+      "category": "analysis",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning",
+        "theory",
+        "adaptive-compute"
+      ],
+      "focus_tags": [
+        "objective-loss",
+        "inference-algorithm"
+      ],
+      "desc": "Characterizes recurrent operators as settling, marginal, or drifting, derives a depth-safety condition, and causally links a terminal fixed-point objective to stable test-time-depth extrapolation.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.18222",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.18222"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-08-21",
+      "id": "2608.18222",
+      "source_file": "2608.18222.yaml",
+      "source_path": "papers/2608.18222.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Ivan Viakhirev",
+        "Kirill Borodin",
+        "Amirah Almutairi",
+        "Serguei Barannikov",
+        "Maxim Abramov",
+        "Grach Mkrtchian"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.18222"
+    },
+    {
+      "title": "Allocating Recurrent Compute in Looped Language Models",
+      "authors": "Ruhai Lin, Yiyang Guo, Rui-Jie Zhu, Hao Ye, Jason K. Eshraghian",
+      "year": 2026,
+      "published_date": "2026-08-18",
+      "added_date": "2026-08-20",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces MixerLoop, which repeatedly applies each shared Gated DeltaNet token mixer while executing its dense FFN once, preserving recurrent-depth benefits with lower projection cost and higher prefill throughput.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.18230",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.18230"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-08-21",
+      "id": "2608.18230",
+      "source_file": "2608.18230.yaml",
+      "source_path": "papers/2608.18230.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Ruhai Lin",
+        "Yiyang Guo",
+        "Rui-Jie Zhu",
+        "Hao Ye",
+        "Jason K. Eshraghian"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.18230"
+    },
+    {
+      "title": "SABET-QA: Temporal Knowledge Graph Question Answering",
+      "authors": "Brahim Touayouch, Mirette Moawad, Dmitry Akulov",
+      "year": 2026,
+      "published_date": "2026-08-20",
+      "added_date": "2026-08-20",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "graph-data",
+        "reasoning"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces SABET-QA, which iteratively refines temporal knowledge-graph reasoning states across four hops using a shared learned working-memory update, bidirectional entity/time scoring, and adaptive hop aggregation.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.20083",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.20083"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "opencitations": 0
+      },
+      "citation_source_best": "opencitations",
+      "metrics_updated": "2026-08-21",
+      "id": "2608.20083",
+      "source_file": "2608.20083.yaml",
+      "source_path": "papers/2608.20083.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Brahim Touayouch",
+        "Mirette Moawad",
+        "Dmitry Akulov"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.20083"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -7861,58 +8045,65 @@
   ],
   "briefings": [
     {
-      "date": "2026-08-17",
-      "title": "Daily Loop-Model Briefing - 2026-08-17",
+      "date": "2026-08-20",
+      "title": "Daily Loop-Model Briefing - 2026-08-20",
       "status": "added",
-      "summary": "Three papers were added: a gated recurrent-depth language model, a weight-tied graph network for equilibrium prediction, and a controlled analysis of when recurrent-depth reasoning becomes internally accessible before it is visible in model behaviour.",
-      "source_path": "briefings/2026/08/2026-08-17.md",
+      "summary": "Four papers were added: an operator-level allocation of recurrent compute, an analysis of safe test-time depth, a tool-calling evaluation of looped language models, and a temporal knowledge-graph reasoner with a shared memory update.",
+      "source_path": "briefings/2026/08/2026-08-20.md",
       "highlights": [
-        "RecurrentGPT iterates one gated shared core between fixed prelude and coda blocks, trading unique parameters and decoding memory for recurrent depth.",
-        "BRAID compresses iterative best-response dynamics into a weight-tied GNN forward pass and evaluates both equilibrium prediction and local sensitivity.",
-        "A recurrent-depth reasoning study separates behavioural acquisition from linear-probe accessibility and explicitly avoids treating probes as causal evidence of learned computation."
+        "MixerLoop repeats the stateful token mixer but executes the dense FFN once, making recurrent compute allocation an operator-level design choice.",
+        "Stable extra test-time depth is tied to settling dynamics and a terminal fixed-point objective, rather than guaranteed by weight sharing alone.",
+        "Looped language models show their clearest tool-use gains on multi-call and dependency-aware tasks, while adaptive stopping reduces unnecessary loops.",
+        "SABET-QA reuses a learned working-memory update over four reasoning hops even though its hop projections are not tied."
       ],
       "candidates": [
         {
-          "id": "2608.15062",
-          "title": "RecurrentGPT: Expressive Depth through Recurrent Modulation in Transformers",
+          "id": "2608.18230",
+          "title": "Allocating Recurrent Compute in Looped Language Models",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.15062"
+          "url": "https://arxiv.org/abs/2608.18230"
         },
         {
-          "id": "2608.14856",
-          "title": "BRAID: Learning Equilibrium Maps in Interdependent Security Games via Weight-Tied Iterative Graph Neural Networks",
+          "id": "2608.18222",
+          "title": "Think Shallow, Solve Deep: Controlling Recurrent Dynamics for Reliable Test-Time Depth",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.14856"
+          "url": "https://arxiv.org/abs/2608.18222"
         },
         {
-          "id": "2608.16085",
-          "title": "Behaviour Is an Incomplete Measure of Reasoning Development: Cross-surface pre-arrival accessibility and the limits of developmental inference in a recurrent-depth reasoner",
+          "id": "2608.18171",
+          "title": "Looped Language Models Improve Compositional Tool Calling",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.16085"
+          "url": "https://arxiv.org/abs/2608.18171"
         },
         {
-          "id": "2608.15096",
-          "title": "MODAL: Multi-Modal Object Re-ID via Model-Driven Sparse Decoupling and Text-Image Differential Filtering",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.15096"
+          "id": "2608.20083",
+          "title": "SABET-QA: Temporal Knowledge Graph Question Answering",
+          "verdict": "added",
+          "url": "https://arxiv.org/abs/2608.20083"
         },
         {
-          "id": "2608.15246",
-          "title": "CG-GLORE: A Conjugate Gradient-Based Global-Local Regularization Network for Sparse-View CT Reconstruction",
+          "id": "2608.19971",
+          "title": "Iterative Proxy Correction",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.15246"
+          "url": "https://arxiv.org/abs/2608.19971"
         },
         {
-          "id": "2608.13518",
-          "title": "Intervention-Aware Clinical World Model for Post-Op Outcome Forecasting in Cardiology",
+          "id": "2608.19669",
+          "title": "Scaffolding Minds",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.13518"
+          "url": "https://arxiv.org/abs/2608.19669"
         },
         {
-          "id": "2608.15694",
-          "title": "RRFC: Recursive Refinement via Feedback Conditioning for Iterative Image-to-Image Generation",
+          "id": "2608.19553",
+          "title": "Boundary Refinement",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.15694"
+          "url": "https://arxiv.org/abs/2608.19553"
+        },
+        {
+          "id": "2608.19965",
+          "title": "3D-CurvSegFlow",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2608.19965"
         }
       ]
     }

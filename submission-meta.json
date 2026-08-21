@@ -141,6 +141,10 @@
     "papers/2608.14856.yaml",
     "papers/2608.15062.yaml",
     "papers/2608.16085.yaml",
+    "papers/2608.18171.yaml",
+    "papers/2608.18222.yaml",
+    "papers/2608.18230.yaml",
+    "papers/2608.20083.yaml",
     "papers/openreview-chaingpt.yaml",
     "papers/openreview-modr.yaml"
   ],
@@ -148,7 +152,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 122
+        "count": 126
       },
       {
         "label": "hierarchical-loop",
@@ -166,11 +170,11 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 125
+        "count": 127
       },
       {
         "label": "inference-algorithm",
-        "count": 93
+        "count": 97
       },
       {
         "label": "training-algorithm",
@@ -178,7 +182,7 @@
       },
       {
         "label": "objective-loss",
-        "count": 20
+        "count": 21
       },
       {
         "label": "data",
@@ -188,19 +192,19 @@
     "domain": [
       {
         "label": "language-modeling",
-        "count": 78
+        "count": 80
       },
       {
         "label": "reasoning",
-        "count": 76
+        "count": 80
       },
       {
         "label": "efficiency",
-        "count": 68
+        "count": 69
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 33
+        "count": 34
       },
       {
         "label": "scaling",
@@ -208,11 +212,11 @@
       },
       {
         "label": "adaptive-compute",
-        "count": 16
+        "count": 17
       },
       {
         "label": "theory",
-        "count": 15
+        "count": 16
       },
       {
         "label": "memory-efficiency",
@@ -224,7 +228,7 @@
       },
       {
         "label": "graph-data",
-        "count": 7
+        "count": 8
       },
       {
         "label": "sequence-modeling",
@@ -233,6 +237,10 @@
       {
         "label": "multimodal",
         "count": 3
+      },
+      {
+        "label": "compositional-reasoning",
+        "count": 2
       },
       {
         "label": "machine-translation",
@@ -256,10 +264,6 @@
       },
       {
         "label": "alignment",
-        "count": 1
-      },
-      {
-        "label": "compositional-reasoning",
         "count": 1
       },
       {
