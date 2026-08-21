@@ -116,7 +116,7 @@ class AssetBudgetContractTests(unittest.TestCase):
             root = Path(tmpdir)
             write_valid_fixture(root)
             payload = valid_papers_payload()
-            payload["padding"] = "x" * 260_000
+            payload["padding"] = "x" * check_asset_budgets.PAPERS_RAW_BYTES_LIMIT
             write_json(root / "papers.json", payload)
 
             report = check_asset_budgets.check_asset_budgets(root)
