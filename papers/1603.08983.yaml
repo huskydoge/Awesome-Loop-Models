@@ -24,10 +24,10 @@ desc: Introduces ACT, a deterministic differentiable halting algorithm that lets
   and emitting an output.
 links:
   arxiv: https://arxiv.org/abs/1603.08983
-citations: 814
+citations: 816
 citation_sources:
-  semantic_scholar: 814
+  semantic_scholar: 816
   openalex: 359
   opencitations: 1
 citation_source_best: semantic_scholar
-metrics_updated: '2026-08-21'
+metrics_updated: '2026-08-24'
