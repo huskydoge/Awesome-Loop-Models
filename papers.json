@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 147,
-    "paper_total": 139,
+    "total": 148,
+    "paper_total": 140,
     "blog_total": 8,
-    "briefing_total": 42,
-    "latest_briefing_date": "2026-08-20",
-    "generated": "2026-08-21T04:48:24.336585+00:00",
-    "generated_local_date": "2026-08-21",
+    "briefing_total": 43,
+    "latest_briefing_date": "2026-08-23",
+    "generated": "2026-08-24T03:30:53.588306+00:00",
+    "generated_local_date": "2026-08-23",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -7461,6 +7461,55 @@
       "arxiv_id": "2608.16085"
     },
     {
+      "title": "Recirculation",
+      "authors": "Michael C. Mozer, Shoaib Ahmed Siddiqui, Danny Sawyer, Sunny Sanyal, Rosanne Liu",
+      "year": 2026,
+      "published_date": "2026-08-18",
+      "added_date": "2026-08-23",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "reasoning",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Feeds a mixture of deep-layer activations back into shallower layers while reusing the same frozen Transformer stack, enabling training-free recurrent state tracking with an adaptive inference-time variant.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.17981",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.17981"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "openalex": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-08-23",
+      "id": "2608.17981",
+      "source_file": "2608.17981.yaml",
+      "source_path": "papers/2608.17981.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Michael C. Mozer",
+        "Shoaib Ahmed Siddiqui",
+        "Danny Sawyer",
+        "Sunny Sanyal",
+        "Rosanne Liu"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.17981"
+    },
+    {
       "title": "Looped Language Models Improve Compositional Tool Calling",
       "authors": "Andrei Cristian Popescu, Haitz Sáez de Ocáriz Borde, Pietro Liò",
       "year": 2026,
@@ -8054,65 +8103,20 @@
   ],
   "briefings": [
     {
-      "date": "2026-08-20",
-      "title": "Daily Loop-Model Briefing - 2026-08-20",
+      "date": "2026-08-23",
+      "title": "Daily Loop-Model Briefing - 2026-08-23",
       "status": "added",
-      "summary": "Four papers were added: an operator-level allocation of recurrent compute, an analysis of safe test-time depth, a tool-calling evaluation of looped language models, and a temporal knowledge-graph reasoner with a shared memory update.",
-      "source_path": "briefings/2026/08/2026-08-20.md",
+      "summary": "Recirculation was added as a training-free feedback architecture that mixes deep-layer activations into shallower layers and reuses the frozen Transformer stack for an additional recurrent pass.",
+      "source_path": "briefings/2026/08/2026-08-23.md",
       "highlights": [
-        "MixerLoop repeats the stateful token mixer but executes the dense FFN once, making recurrent compute allocation an operator-level design choice.",
-        "Stable extra test-time depth is tied to settling dynamics and a terminal fixed-point objective, rather than guaranteed by weight sharing alone.",
-        "Looped language models show their clearest tool-use gains on multi-call and dependency-aware tasks, while adaptive stopping reduces unnecessary loops.",
-        "SABET-QA reuses a learned working-memory update over four reasoning hops even though its hop projections are not tied."
+        "Recirculation couples depth feedback with sequential state propagation, distinguishing it from ordinary autoregressive decoding and standard depth-only looping."
       ],
       "candidates": [
         {
-          "id": "2608.18230",
-          "title": "Allocating Recurrent Compute in Looped Language Models",
+          "id": "2608.17981",
+          "title": "Recirculation",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.18230"
-        },
-        {
-          "id": "2608.18222",
-          "title": "Think Shallow, Solve Deep: Controlling Recurrent Dynamics for Reliable Test-Time Depth",
-          "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.18222"
-        },
-        {
-          "id": "2608.18171",
-          "title": "Looped Language Models Improve Compositional Tool Calling",
-          "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.18171"
-        },
-        {
-          "id": "2608.20083",
-          "title": "SABET-QA: Temporal Knowledge Graph Question Answering",
-          "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.20083"
-        },
-        {
-          "id": "2608.19971",
-          "title": "Iterative Proxy Correction",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.19971"
-        },
-        {
-          "id": "2608.19669",
-          "title": "Scaffolding Minds",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.19669"
-        },
-        {
-          "id": "2608.19553",
-          "title": "Boundary Refinement",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.19553"
-        },
-        {
-          "id": "2608.19965",
-          "title": "3D-CurvSegFlow",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.19965"
+          "url": "https://arxiv.org/abs/2608.17981"
         }
       ]
     }

@@ -1,0 +1,35 @@
+title: Recirculation
+authors:
+- Michael C. Mozer
+- Shoaib Ahmed Siddiqui
+- Danny Sawyer
+- Sunny Sanyal
+- Rosanne Liu
+year: 2026
+published_date: '2026-08-18'
+added_date: '2026-08-23'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Feeds a mixture of deep-layer activations back into shallower layers while reusing
+  the same frozen Transformer stack, enabling training-free recurrent state tracking
+  with an adaptive inference-time variant.
+links:
+  arxiv: https://arxiv.org/abs/2608.17981
+  alphaxiv: https://www.alphaxiv.org/abs/2608.17981
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-08-23'
