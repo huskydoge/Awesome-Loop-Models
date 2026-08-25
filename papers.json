@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 148,
-    "paper_total": 140,
+    "total": 150,
+    "paper_total": 142,
     "blog_total": 8,
-    "briefing_total": 43,
-    "latest_briefing_date": "2026-08-23",
-    "generated": "2026-08-24T05:54:26.341090+00:00",
+    "briefing_total": 44,
+    "latest_briefing_date": "2026-08-24",
+    "generated": "2026-08-25T00:56:51.633974+00:00",
     "generated_local_date": "2026-08-24",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope.",
     "foundation_label": "Foundation",
@@ -7701,6 +7701,98 @@
       "arxiv_id": "2608.20083"
     },
     {
+      "title": "Frozen CLIP Priors for Robust Self-Supervised Poisson Inverse Problems",
+      "authors": "Laura C. Diaz-Delgado, Emmanuel Martinez, Henry Arguello",
+      "year": 2026,
+      "published_date": "2026-08-20",
+      "added_date": "2026-08-24",
+      "venue": "arXiv",
+      "category": "applications",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "vision",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Unrolls an ADMM-inspired Poisson inverse-problem solver whose shared CLIP-based learned prior is reused across reconstruction iterations for robust self-supervised imaging.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.20524",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.20524"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-08-24",
+      "id": "2608.20524",
+      "source_file": "2608.20524.yaml",
+      "source_path": "papers/2608.20524.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Laura C. Diaz-Delgado",
+        "Emmanuel Martinez",
+        "Henry Arguello"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.20524"
+    },
+    {
+      "title": "Curriculum-Aware Interpolate-then-Refine: Learned Physiological Time-Series Imputation under Realistic Missingness",
+      "authors": "Yu-Chao Huang, Haochen Zhang, Nicholas Konz, Tianlong Chen",
+      "year": 2026,
+      "published_date": "2026-08-21",
+      "added_date": "2026-08-24",
+      "venue": "arXiv",
+      "category": "applications",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "sequence-modeling"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces CAIR, which applies one tied-weight Transformer refiner over three successive passes to correct a learned physiological time-series interpolation under realistic missingness.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.21207",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.21207"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-08-24",
+      "id": "2608.21207",
+      "source_file": "2608.21207.yaml",
+      "source_path": "papers/2608.21207.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Yu-Chao Huang",
+        "Haochen Zhang",
+        "Nicholas Konz",
+        "Tianlong Chen"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.21207"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -8107,20 +8199,26 @@
   ],
   "briefings": [
     {
-      "date": "2026-08-23",
-      "title": "Daily Loop-Model Briefing - 2026-08-23",
+      "date": "2026-08-24",
+      "title": "Daily Loop-Model Briefing - 2026-08-24",
       "status": "added",
-      "summary": "Recirculation was added as a training-free feedback architecture that mixes deep-layer activations into shallower layers and reuses the frozen Transformer stack for an additional recurrent pass.",
-      "source_path": "briefings/2026/08/2026-08-23.md",
+      "summary": "Two application papers reuse one learned refiner across internal iterations: CAIR for physiological time-series imputation and a CLIP-prior ADMM solver for Poisson inverse imaging.",
+      "source_path": "briefings/2026/08/2026-08-24.md",
       "highlights": [
-        "Recirculation couples depth feedback with sequential state propagation, distinguishing it from ordinary autoregressive decoding and standard depth-only looping."
+        "Both papers make weight sharing explicit, separating them from ordinary multi-stage pipelines whose learned operators differ by stage."
       ],
       "candidates": [
         {
-          "id": "2608.17981",
-          "title": "Recirculation",
+          "id": "2608.21207",
+          "title": "Curriculum-Aware Interpolate-then-Refine: Learned Physiological Time-Series Imputation under Realistic Missingness",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.17981"
+          "url": "https://arxiv.org/abs/2608.21207"
+        },
+        {
+          "id": "2608.20524",
+          "title": "Frozen CLIP Priors for Robust Self-Supervised Poisson Inverse Problems",
+          "verdict": "added",
+          "url": "https://arxiv.org/abs/2608.20524"
         }
       ]
     }
