@@ -1,0 +1,32 @@
+title: Frozen CLIP Priors for Robust Self-Supervised Poisson Inverse Problems
+authors:
+- Laura C. Diaz-Delgado
+- Emmanuel Martinez
+- Henry Arguello
+year: 2026
+published_date: '2026-08-20'
+added_date: '2026-08-24'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Unrolls an ADMM-inspired Poisson inverse-problem solver whose shared CLIP-based
+  learned prior is reused across reconstruction iterations for robust self-supervised
+  imaging.
+links:
+  arxiv: https://arxiv.org/abs/2608.20524
+  alphaxiv: https://www.alphaxiv.org/abs/2608.20524
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-08-24'

@@ -1,0 +1,33 @@
+title: 'Curriculum-Aware Interpolate-then-Refine: Learned Physiological Time-Series
+  Imputation under Realistic Missingness'
+authors:
+- Yu-Chao Huang
+- Haochen Zhang
+- Nicholas Konz
+- Tianlong Chen
+year: 2026
+published_date: '2026-08-21'
+added_date: '2026-08-24'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- sequence-modeling
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Introduces CAIR, which applies one tied-weight Transformer refiner over three
+  successive passes to correct a learned physiological time-series interpolation under
+  realistic missingness.
+links:
+  arxiv: https://arxiv.org/abs/2608.21207
+  alphaxiv: https://www.alphaxiv.org/abs/2608.21207
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-08-24'
