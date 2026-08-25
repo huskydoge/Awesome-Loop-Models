@@ -5,8 +5,8 @@
     "blog_total": 8,
     "briefing_total": 44,
     "latest_briefing_date": "2026-08-24",
-    "generated": "2026-08-25T00:56:51.633974+00:00",
-    "generated_local_date": "2026-08-24",
+    "generated": "2026-08-25T03:16:24.152562+00:00",
+    "generated_local_date": "2026-08-25",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -177,14 +177,14 @@
         "openreview": "https://openreview.net/forum?id=HyzdRiR9Y7",
         "alphaxiv": "https://www.alphaxiv.org/abs/1807.03819"
       },
-      "citations": 1012,
+      "citations": 1013,
       "citation_sources": {
-        "semantic_scholar": 1012,
+        "semantic_scholar": 1013,
         "openalex": 393,
         "opencitations": 4
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-21",
+      "metrics_updated": "2026-08-25",
       "id": "1807.03819",
       "source_file": "1807.03819.yaml",
       "source_path": "papers/1807.03819.yaml",
@@ -243,19 +243,19 @@
         "github": "https://github.com/locuslab/deq",
         "alphaxiv": "https://www.alphaxiv.org/abs/1909.01377"
       },
-      "citations": 974,
+      "citations": 976,
       "citation_sources": {
-        "semantic_scholar": 974,
+        "semantic_scholar": 976,
         "openalex": 245,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 805,
+      "github_stars": 806,
       "star_sources": {
-        "github_api": 805
+        "github_api": 806
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-08-21",
+      "metrics_updated": "2026-08-25",
       "id": "1909.01377",
       "source_file": "1909.01377.yaml",
       "source_path": "papers/1909.01377.yaml",
@@ -956,9 +956,9 @@
         "github": "https://github.com/seal-rg/recurrent-pretraining",
         "alphaxiv": "https://www.alphaxiv.org/abs/2502.05171"
       },
-      "citations": 329,
+      "citations": 330,
       "citation_sources": {
-        "semantic_scholar": 329,
+        "semantic_scholar": 330,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -967,7 +967,7 @@
         "github_api": 911
       },
       "star_source_best": "github_api",
-      "metrics_updated": "2026-08-21",
+      "metrics_updated": "2026-08-25",
       "id": "2502.05171",
       "source_file": "2502.05171.yaml",
       "source_path": "papers/2502.05171.yaml",
@@ -1269,10 +1269,11 @@
       "citations": 12,
       "citation_sources": {
         "semantic_scholar": 12,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-24",
+      "metrics_updated": "2026-08-25",
       "id": "2507.07996",
       "source_file": "2507.07996.yaml",
       "source_path": "papers/2507.07996.yaml",
@@ -2679,11 +2680,10 @@
       "citations": 6,
       "citation_sources": {
         "semantic_scholar": 6,
-        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-22",
+      "metrics_updated": "2026-08-25",
       "id": "2603.21676",
       "source_file": "2603.21676.yaml",
       "source_path": "papers/2603.21676.yaml",
@@ -2729,10 +2729,10 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-21",
-      "github_stars": 94,
+      "metrics_updated": "2026-08-25",
+      "github_stars": 95,
       "star_sources": {
-        "github_api": 94
+        "github_api": 95
       },
       "star_source_best": "github_api",
       "id": "2604.07822",
@@ -2852,10 +2852,9 @@
         "alphaxiv": "https://www.alphaxiv.org/abs/2604.09870"
       },
       "citations": 2,
-      "metrics_updated": "2026-07-22",
+      "metrics_updated": "2026-08-25",
       "citation_sources": {
         "semantic_scholar": 2,
-        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -4914,16 +4913,16 @@
         "github": "https://github.com/nv-tlabs/dvlt"
       },
       "citations": 2,
-      "metrics_updated": "2026-08-24",
+      "metrics_updated": "2026-08-25",
       "citation_sources": {
         "semantic_scholar": 2,
         "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 420,
+      "github_stars": 419,
       "star_sources": {
-        "github_api": 420
+        "github_api": 419
       },
       "star_source_best": "github_api",
       "id": "2605.30215",
