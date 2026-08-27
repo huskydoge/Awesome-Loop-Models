@@ -1,0 +1,28 @@
+title: Response Renormalization for Critical Deep Equilibrium Models
+authors:
+- Jose Luis Lima de Jesus Silva
+year: 2026
+published_date: '2026-08-24'
+added_date: '2026-08-26'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- scientific-ml
+- theory
+focus_tags:
+- training-algorithm
+desc: Introduces response-renormalized implicit differentiation for critical deep
+  equilibrium models, selectively controlling near-singular adjoint amplification
+  while preserving well-conditioned gradient channels.
+links:
+  arxiv: https://arxiv.org/abs/2608.23725
+  alphaxiv: https://www.alphaxiv.org/abs/2608.23725
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-08-27'

@@ -148,6 +148,8 @@
     "papers/2608.20083.yaml",
     "papers/2608.20524.yaml",
     "papers/2608.21207.yaml",
+    "papers/2608.23725.yaml",
+    "papers/2608.24136.yaml",
     "papers/openreview-chaingpt.yaml",
     "papers/openreview-modr.yaml"
   ],
@@ -155,7 +157,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 129
+        "count": 130
       },
       {
         "label": "hierarchical-loop",
@@ -163,7 +165,7 @@
       },
       {
         "label": "implicit-layer",
-        "count": 15
+        "count": 16
       },
       {
         "label": "parallel-loop",
@@ -177,11 +179,11 @@
       },
       {
         "label": "inference-algorithm",
-        "count": 100
+        "count": 101
       },
       {
         "label": "training-algorithm",
-        "count": 70
+        "count": 71
       },
       {
         "label": "objective-loss",
@@ -194,11 +196,11 @@
     ],
     "domain": [
       {
-        "label": "language-modeling",
-        "count": 81
+        "label": "reasoning",
+        "count": 82
       },
       {
-        "label": "reasoning",
+        "label": "language-modeling",
         "count": 81
       },
       {
@@ -207,7 +209,7 @@
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 34
+        "count": 35
       },
       {
         "label": "scaling",
@@ -215,11 +217,11 @@
       },
       {
         "label": "adaptive-compute",
-        "count": 17
+        "count": 18
       },
       {
         "label": "theory",
-        "count": 16
+        "count": 17
       },
       {
         "label": "memory-efficiency",
@@ -255,6 +257,10 @@
       },
       {
         "label": "robotics-vla",
+        "count": 2
+      },
+      {
+        "label": "scientific-ml",
         "count": 2
       },
       {
@@ -299,10 +305,6 @@
       },
       {
         "label": "rl-control",
-        "count": 1
-      },
-      {
-        "label": "scientific-ml",
         "count": 1
       },
       {
