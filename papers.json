@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 150,
-    "paper_total": 142,
+    "total": 152,
+    "paper_total": 144,
     "blog_total": 8,
-    "briefing_total": 44,
-    "latest_briefing_date": "2026-08-24",
-    "generated": "2026-08-25T03:16:24.152562+00:00",
-    "generated_local_date": "2026-08-25",
+    "briefing_total": 45,
+    "latest_briefing_date": "2026-08-26",
+    "generated": "2026-08-27T00:26:11.205886+00:00",
+    "generated_local_date": "2026-08-26",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -7792,6 +7792,98 @@
       "arxiv_id": "2608.21207"
     },
     {
+      "title": "Response Renormalization for Critical Deep Equilibrium Models",
+      "authors": "Jose Luis Lima de Jesus Silva",
+      "year": 2026,
+      "published_date": "2026-08-24",
+      "added_date": "2026-08-26",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "implicit-layer"
+      ],
+      "domain_tags": [
+        "scientific-ml",
+        "theory"
+      ],
+      "focus_tags": [
+        "training-algorithm"
+      ],
+      "desc": "Introduces response-renormalized implicit differentiation for critical deep equilibrium models, selectively controlling near-singular adjoint amplification while preserving well-conditioned gradient channels.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.23725",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.23725"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-08-27",
+      "id": "2608.23725",
+      "source_file": "2608.23725.yaml",
+      "source_path": "papers/2608.23725.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Jose Luis Lima de Jesus Silva"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.23725"
+    },
+    {
+      "title": "Steering Recurrent Reasoners at Inference Time with Readout Feedback",
+      "authors": "Shunsuke Kamiya, Masanori Koyama, Seongcheol Jeong, Fumiya Uchiyama, Kenji Kubo, Kohei Hayashi, Masahiro Suzuki, Yutaka Matsuo",
+      "year": 2026,
+      "published_date": "2026-08-25",
+      "added_date": "2026-08-26",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning",
+        "adaptive-compute"
+      ],
+      "focus_tags": [
+        "inference-algorithm"
+      ],
+      "desc": "Introduces Readout Feedback, which converts intermediate predictions into coupling forces that steer the shared-block latent dynamics of recurrent reasoners at test time without retraining.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.24136",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.24136"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-08-27",
+      "id": "2608.24136",
+      "source_file": "2608.24136.yaml",
+      "source_path": "papers/2608.24136.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Shunsuke Kamiya",
+        "Masanori Koyama",
+        "Seongcheol Jeong",
+        "Fumiya Uchiyama",
+        "Kenji Kubo",
+        "Kohei Hayashi",
+        "Masahiro Suzuki",
+        "Yutaka Matsuo"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.24136"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -8198,26 +8290,32 @@
   ],
   "briefings": [
     {
-      "date": "2026-08-24",
-      "title": "Daily Loop-Model Briefing - 2026-08-24",
+      "date": "2026-08-26",
+      "title": "Daily Loop-Model Briefing - 2026-08-26",
       "status": "added",
-      "summary": "Two application papers reuse one learned refiner across internal iterations: CAIR for physiological time-series imputation and a CLIP-prior ADMM solver for Poisson inverse imaging.",
-      "source_path": "briefings/2026/08/2026-08-24.md",
+      "summary": "Two papers expand inference-time control and training stability for recurrent-depth models: readout feedback for explicit recurrent reasoners and response renormalization for deep equilibrium layers.",
+      "source_path": "briefings/2026/08/2026-08-26.md",
       "highlights": [
-        "Both papers make weight sharing explicit, separating them from ordinary multi-stage pipelines whose learned operators differ by stage."
+        "Both works intervene on the dynamics of a reused learned operator rather than relying on repeated prompting, external agents, or independently parameterized stages."
       ],
       "candidates": [
         {
-          "id": "2608.21207",
-          "title": "Curriculum-Aware Interpolate-then-Refine: Learned Physiological Time-Series Imputation under Realistic Missingness",
+          "id": "2608.24136",
+          "title": "Steering Recurrent Reasoners at Inference Time with Readout Feedback",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.21207"
+          "url": "https://arxiv.org/abs/2608.24136"
         },
         {
-          "id": "2608.20524",
-          "title": "Frozen CLIP Priors for Robust Self-Supervised Poisson Inverse Problems",
+          "id": "2608.23725",
+          "title": "Response Renormalization for Critical Deep Equilibrium Models",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.20524"
+          "url": "https://arxiv.org/abs/2608.23725"
+        },
+        {
+          "id": "2608.24319",
+          "title": "Can a Dynamic Internal Field Govern a Transformer's Cognition? Certifiability, not Superiority, in Homeostatic Compute Control",
+          "verdict": "near-miss",
+          "url": "https://arxiv.org/abs/2608.24319"
         }
       ]
     }

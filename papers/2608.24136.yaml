@@ -1,0 +1,36 @@
+title: Steering Recurrent Reasoners at Inference Time with Readout Feedback
+authors:
+- Shunsuke Kamiya
+- Masanori Koyama
+- Seongcheol Jeong
+- Fumiya Uchiyama
+- Kenji Kubo
+- Kohei Hayashi
+- Masahiro Suzuki
+- Yutaka Matsuo
+year: 2026
+published_date: '2026-08-25'
+added_date: '2026-08-26'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+- adaptive-compute
+focus_tags:
+- inference-algorithm
+desc: Introduces Readout Feedback, which converts intermediate predictions into coupling
+  forces that steer the shared-block latent dynamics of recurrent reasoners at test
+  time without retraining.
+links:
+  arxiv: https://arxiv.org/abs/2608.24136
+  alphaxiv: https://www.alphaxiv.org/abs/2608.24136
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-08-27'
