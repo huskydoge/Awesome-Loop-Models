@@ -1,0 +1,38 @@
+title: Squeezing More from Limited Data with Recursive Transformers
+authors:
+- Serdar Gülbahar
+- Lukas Edman
+- Alexander Fraser
+year: 2026
+published_date: '2026-08-27'
+added_date: '2026-08-30'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- scaling
+focus_tags:
+- architecture
+- data
+desc: Introduces RecursiveGPT, reusing one causal Transformer block across fixed recurrent
+  depth with factorized embeddings to scale per-token compute without proportionally
+  increasing parameters under limited-data pretraining.
+links:
+  arxiv: https://arxiv.org/abs/2608.26973
+  alphaxiv: https://www.alphaxiv.org/abs/2608.26973
+  github: https://github.com/serdardoesml/recursive-lm
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+github_stars: 3
+star_sources:
+  github_api: 3
+star_source_best: github_api
+metrics_updated: '2026-08-31'

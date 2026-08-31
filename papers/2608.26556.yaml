@@ -1,0 +1,30 @@
+title: Dynamical phase selection controls compute scaling in looped transformers
+authors:
+- Gunn Kim
+year: 2026
+published_date: '2026-08-27'
+added_date: '2026-08-30'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- theory
+- scaling
+- adaptive-compute
+focus_tags:
+- inference-algorithm
+desc: Shows that identically accurate weight-tied looped Transformers can realize
+  initialization-selected dynamical phases, deriving parameter-free fold scaling and
+  an N^-2 workload tail while finding no analogous law in a Neimark-Sacker phase.
+links:
+  arxiv: https://arxiv.org/abs/2608.26556
+  alphaxiv: https://www.alphaxiv.org/abs/2608.26556
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-08-31'
