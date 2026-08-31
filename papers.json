@@ -5,7 +5,7 @@
     "blog_total": 8,
     "briefing_total": 46,
     "latest_briefing_date": "2026-08-30",
-    "generated": "2026-08-31T01:11:17.285597+00:00",
+    "generated": "2026-08-31T11:37:57.472922+00:00",
     "generated_local_date": "2026-08-31",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope.",
     "foundation_label": "Foundation",
@@ -1156,7 +1156,6 @@
       "citations": 137,
       "citation_sources": {
         "semantic_scholar": 137,
-        "openalex": 3,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -1909,11 +1908,10 @@
       "citations": 1,
       "citation_sources": {
         "semantic_scholar": 1,
-        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-07-20",
+      "metrics_updated": "2026-08-31",
       "id": "2602.05999",
       "source_file": "2602.05999.yaml",
       "source_path": "papers/2602.05999.yaml",
@@ -3744,6 +3742,7 @@
       "citations": 4,
       "citation_sources": {
         "semantic_scholar": 4,
+        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
@@ -3919,11 +3918,10 @@
       "citations": 6,
       "citation_sources": {
         "semantic_scholar": 6,
-        "openalex": 0,
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "metrics_updated": "2026-08-17",
+      "metrics_updated": "2026-08-31",
       "github_stars": 29,
       "star_sources": {
         "github_api": 29
@@ -4450,9 +4448,9 @@
         "hf": "https://huggingface.co/sapientinc/HRM-Text-1B",
         "alphaxiv": "https://www.alphaxiv.org/abs/2605.20613"
       },
-      "github_stars": 1919,
+      "github_stars": 1924,
       "star_sources": {
-        "github_api": 1919
+        "github_api": 1924
       },
       "star_source_best": "github_api",
       "metrics_updated": "2026-08-31",
@@ -4625,9 +4623,9 @@
       },
       "citation_source_best": "semantic_scholar",
       "metrics_updated": "2026-08-31",
-      "github_stars": 47,
+      "github_stars": 48,
       "star_sources": {
-        "github_api": 47
+        "github_api": 48
       },
       "star_source_best": "github_api",
       "id": "2605.21488",
@@ -4921,9 +4919,9 @@
         "opencitations": 0
       },
       "citation_source_best": "semantic_scholar",
-      "github_stars": 423,
+      "github_stars": 424,
       "star_sources": {
-        "github_api": 423
+        "github_api": 424
       },
       "star_source_best": "github_api",
       "id": "2605.30215",
