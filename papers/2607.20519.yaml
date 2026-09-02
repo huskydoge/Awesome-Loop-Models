@@ -1,0 +1,32 @@
+title: 'Adaptive Depth in Looped Transformers: Diagnosing Learned Halting Gates and
+  Trajectory Readouts'
+authors:
+- Andrei Cristian Popescu
+- Haitz Sáez de Ocáriz Borde
+- Pietro Liò
+year: 2026
+published_date: '2026-07-08'
+added_date: '2026-09-02'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- adaptive-compute
+- algorithmic-reasoning
+tags:
+- Ouro
+- halting
+focus_tags:
+- training-algorithm
+- inference-algorithm
+desc: Diagnoses adaptive depth in looped Transformers through a trajectory-readout
+  lens, finding that fixed-prior depth supervision shapes more useful stopping
+  signals than jointly learned halting gates, on synthetic tasks and Ouro-1.4B/2.6B
+  checkpoints.
+links:
+  arxiv: https://arxiv.org/abs/2607.20519
+  alphaxiv: https://www.alphaxiv.org/abs/2607.20519
