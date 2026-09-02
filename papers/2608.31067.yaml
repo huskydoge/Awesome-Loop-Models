@@ -1,0 +1,33 @@
+title: 'Universal Transformers for Circuit Computations: Perfect Length Generalization
+  in Tiny Transformers'
+authors:
+- Takuya Ito
+- Ruchir Puri
+- Murray Campbell
+- Parikshit Ram
+year: 2026
+published_date: '2026-08-31'
+added_date: '2026-09-01'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- theory
+- algorithmic-reasoning
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces a compact Universal Transformer that repeatedly applies one learned
+  circuit-reduction step with autonomous depth-based halting, enabling exact generalization
+  to much deeper symbolic expressions.
+links:
+  arxiv: https://arxiv.org/abs/2608.31067
+  alphaxiv: https://www.alphaxiv.org/abs/2608.31067
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-09-02'

@@ -1,12 +1,12 @@
 {
   "meta": {
-    "total": 154,
-    "paper_total": 146,
+    "total": 156,
+    "paper_total": 148,
     "blog_total": 8,
-    "briefing_total": 46,
-    "latest_briefing_date": "2026-08-30",
-    "generated": "2026-08-31T11:37:57.472922+00:00",
-    "generated_local_date": "2026-08-31",
+    "briefing_total": 47,
+    "latest_briefing_date": "2026-09-01",
+    "generated": "2026-09-02T00:35:18.109576+00:00",
+    "generated_local_date": "2026-09-01",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope.",
     "foundation_label": "Foundation",
     "blog_section_title": "Blogs",
@@ -7984,6 +7984,97 @@
       "arxiv_id": "2608.26973"
     },
     {
+      "title": "Evaluating Tiny Recursive Models Across Training for Code Generation",
+      "authors": "Anjani Sirivella, Aanisha Newaz, Glaucia Melo",
+      "year": 2026,
+      "published_date": "2026-08-29",
+      "added_date": "2026-09-01",
+      "venue": "CASCON",
+      "category": "analysis",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "data"
+      ],
+      "desc": "Tracks a 28M-parameter autoregressive Tiny Recursive Model across training, showing how recursive reuse of one two-layer block changes fit, free-running code generation, generalization, and compute relative to matched controls.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.29376",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.29376"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-09-02",
+      "id": "2608.29376",
+      "source_file": "2608.29376.yaml",
+      "source_path": "papers/2608.29376.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Anjani Sirivella",
+        "Aanisha Newaz",
+        "Glaucia Melo"
+      ],
+      "venueClass": "venue-other",
+      "arxiv_id": "2608.29376"
+    },
+    {
+      "title": "Universal Transformers for Circuit Computations: Perfect Length Generalization in Tiny Transformers",
+      "authors": "Takuya Ito, Ruchir Puri, Murray Campbell, Parikshit Ram",
+      "year": 2026,
+      "published_date": "2026-08-31",
+      "added_date": "2026-09-01",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "theory",
+        "algorithmic-reasoning"
+      ],
+      "focus_tags": [
+        "architecture",
+        "inference-algorithm"
+      ],
+      "desc": "Introduces a compact Universal Transformer that repeatedly applies one learned circuit-reduction step with autonomous depth-based halting, enabling exact generalization to much deeper symbolic expressions.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2608.31067",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2608.31067"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-09-02",
+      "id": "2608.31067",
+      "source_file": "2608.31067.yaml",
+      "source_path": "papers/2608.31067.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Takuya Ito",
+        "Ruchir Puri",
+        "Murray Campbell",
+        "Parikshit Ram"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2608.31067"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -8390,56 +8481,50 @@
   ],
   "briefings": [
     {
-      "date": "2026-08-30",
-      "title": "Daily Loop-Model Briefing - 2026-08-30",
+      "date": "2026-09-01",
+      "title": "Daily Loop-Model Briefing - 2026-09-01",
       "status": "added",
-      "summary": "Two papers connect recurrent-depth computation to dynamical phase selection and data-limited language-model scaling.",
-      "source_path": "briefings/2026/08/2026-08-30.md",
+      "summary": "Two papers connect shared-block recurrent depth to exact circuit computation and controlled code-generation evaluation.",
+      "source_path": "briefings/2026/09/2026-09-01.md",
       "highlights": [
-        "One paper explains how trained loop dynamics determine inference-time compute; the other uses shared-block recurrence to add per-token compute without proportionally increasing trainable parameters."
+        "A tiny Universal Transformer learns an exact iterative circuit algorithm, while a recursive code model reveals a sharp parameter-efficiency versus compute tradeoff."
       ],
       "candidates": [
         {
-          "id": "2608.26556",
-          "title": "Dynamical phase selection controls compute scaling in looped transformers",
+          "id": "2608.31067",
+          "title": "Universal Transformers for Circuit Computations: Perfect Length Generalization in Tiny Transformers",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.26556"
+          "url": "https://arxiv.org/abs/2608.31067"
         },
         {
-          "id": "2608.26973",
-          "title": "Squeezing More from Limited Data with Recursive Transformers",
+          "id": "2608.29376",
+          "title": "Evaluating Tiny Recursive Models Across Training for Code Generation",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.26973"
+          "url": "https://arxiv.org/abs/2608.29376"
         },
         {
-          "id": "2608.26673",
-          "title": "PredVLA: A Sub-Million-Parameter Predictive-Coding Policy for Robot Manipulation",
+          "id": "2608.30072",
+          "title": "Learning Representations through Token Prediction: Geometry, Approximation, and Downstream Guarantees",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.26673"
+          "url": "https://arxiv.org/abs/2608.30072"
         },
         {
-          "id": "2608.27259",
-          "title": "Making Latent Evolution Explicit: Operator-Structured Transitions for World Action Models",
+          "id": "2608.29160",
+          "title": "Training-Free Hidden-State Refinement for Flow-Matching Image Generators",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.27259"
+          "url": "https://arxiv.org/abs/2608.29160"
         },
         {
-          "id": "2608.27265",
-          "title": "SCIT: Testing Causal Cache Carriers in Latent Chain-of-Thought Models",
+          "id": "2608.31069",
+          "title": "A Model with No Head and Many Thoughts",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.27265"
+          "url": "https://arxiv.org/abs/2608.31069"
         },
         {
-          "id": "2608.27360",
-          "title": "Your Voice Cloning System is Secretly a Voice Anonymizer",
+          "id": "2608.30959",
+          "title": "LOCI: A Locator-Critic with Refinement Loop",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.27360"
-        },
-        {
-          "id": "2608.27141",
-          "title": "Safety Does Not Compose: Non-Decaying Loop State for Autonomous LLM Agents",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.27141"
+          "url": "https://arxiv.org/abs/2608.30959"
         }
       ]
     }
