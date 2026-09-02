@@ -1,0 +1,31 @@
+title: Evaluating Tiny Recursive Models Across Training for Code Generation
+authors:
+- Anjani Sirivella
+- Aanisha Newaz
+- Glaucia Melo
+year: 2026
+published_date: '2026-08-29'
+added_date: '2026-09-01'
+venue: CASCON
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+focus_tags:
+- architecture
+- data
+desc: Tracks a 28M-parameter autoregressive Tiny Recursive Model across training,
+  showing how recursive reuse of one two-layer block changes fit, free-running code
+  generation, generalization, and compute relative to matched controls.
+links:
+  arxiv: https://arxiv.org/abs/2608.29376
+  alphaxiv: https://www.alphaxiv.org/abs/2608.29376
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-09-02'
