@@ -1538,17 +1538,19 @@ def fetch_all(
                 for value in (*new_citation_sources.values(), legacy_citations)
                 if value is not None
             )
-            best_citation_source = p.get("citation_source_best")
             if max(new_citation_sources.values()) == new_citations:
                 best_citation_source = _best_citation_source(new_citation_sources)
+                if p.get("citation_source_best") != best_citation_source:
+                    p["citation_source_best"] = best_citation_source
+                    changed = True
+            elif "citation_source_best" in p:
+                p.pop("citation_source_best")
+                changed = True
             if p.get("citations") != new_citations:
                 p["citations"] = new_citations
                 changed = True
             if p.get("citation_sources") != new_citation_sources:
                 p["citation_sources"] = new_citation_sources
-                changed = True
-            if p.get("citation_source_best") != best_citation_source:
-                p["citation_source_best"] = best_citation_source
                 changed = True
 
         fresh_star_sources = star_source_maps.get(stem, {})
@@ -1565,17 +1567,19 @@ def fetch_all(
                 for value in (*new_star_sources.values(), legacy_stars)
                 if value is not None
             )
-            best_star_source = p.get("star_source_best")
             if max(new_star_sources.values()) == new_stars:
                 best_star_source = _best_star_source(new_star_sources)
+                if p.get("star_source_best") != best_star_source:
+                    p["star_source_best"] = best_star_source
+                    changed = True
+            elif "star_source_best" in p:
+                p.pop("star_source_best")
+                changed = True
             if p.get("github_stars") != new_stars:
                 p["github_stars"] = new_stars
                 changed = True
             if p.get("star_sources") != new_star_sources:
                 p["star_sources"] = new_star_sources
-                changed = True
-            if p.get("star_source_best") != best_star_source:
-                p["star_source_best"] = best_star_source
                 changed = True
         if changed:
             p["metrics_updated"] = now_str

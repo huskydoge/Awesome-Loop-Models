@@ -426,9 +426,11 @@ class SemanticScholarFetchTests(unittest.TestCase):
                 "citations: 10\n"
                 "citation_sources:\n"
                 "  semantic_scholar: 8\n"
+                "citation_source_best: semantic_scholar\n"
                 "github_stars: 50\n"
                 "star_sources:\n"
                 "  github_api: 45\n"
+                "star_source_best: github_api\n"
                 "metrics_updated: '2026-08-03'\n"
             ).encode()
             unsupported_path.write_bytes(unsupported_original)
