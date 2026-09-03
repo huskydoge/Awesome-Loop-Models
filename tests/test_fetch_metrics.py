@@ -412,7 +412,13 @@ class SemanticScholarFetchTests(unittest.TestCase):
                 "  arxiv: https://arxiv.org/abs/2403.09630\n"
                 "  github: https://github.com/owner/outage\n"
                 "citations: 3\n"
+                "citation_sources:\n"
+                "  semantic_scholar: 3\n"
+                "citation_source_best: semantic_scholar\n"
                 "github_stars: 5\n"
+                "star_sources:\n"
+                "  github_api: 5\n"
+                "star_source_best: github_api\n"
                 "metrics_updated: '2026-08-02'\n"
             ).encode()
             outage_path.write_bytes(outage_original)
@@ -490,10 +496,10 @@ class SemanticScholarFetchTests(unittest.TestCase):
         self.assertEqual(updated["metrics_updated"], "2026-09-03")
         self.assertEqual(outage_bytes, outage_original)
         self.assertEqual(outage["metrics_updated"], "2026-08-02")
-        self.assertNotIn("citation_sources", outage)
-        self.assertNotIn("citation_source_best", outage)
-        self.assertNotIn("star_sources", outage)
-        self.assertNotIn("star_source_best", outage)
+        self.assertEqual(outage["citation_sources"], {"semantic_scholar": 3})
+        self.assertEqual(outage["citation_source_best"], "semantic_scholar")
+        self.assertEqual(outage["star_sources"], {"github_api": 5})
+        self.assertEqual(outage["star_source_best"], "github_api")
         self.assertNotEqual(unsupported_bytes, unsupported_original)
         self.assertEqual(unsupported["citations"], 10)
         self.assertEqual(unsupported["citation_sources"], {"semantic_scholar": 7})
