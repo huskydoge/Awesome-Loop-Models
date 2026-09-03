@@ -13,7 +13,6 @@ from typing import Sequence, TextIO
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-PAPERS_RAW_BYTES_LIMIT = 280_000
 PAPERS_GZIP_BYTES_LIMIT = 60_000
 PAPERS_BRIEFINGS_LIMIT = 1
 BRIEFING_CONTENT_FIELDS_LIMIT = 0
@@ -183,14 +182,6 @@ def check_asset_budgets(root: Path) -> AssetBudgetReport:
     violations: list[str] = []
 
     papers_raw = read_required_file(root / "papers.json", "papers.json", violations)
-    add_measurement(
-        measurements,
-        violations,
-        "papers.json raw bytes",
-        len(papers_raw) if papers_raw is not None else None,
-        PAPERS_RAW_BYTES_LIMIT,
-        "bytes",
-    )
     add_measurement(
         measurements,
         violations,

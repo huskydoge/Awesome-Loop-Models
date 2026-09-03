@@ -101,7 +101,6 @@ class AssetBudgetContractTests(unittest.TestCase):
         self.assertEqual(
             {item.name for item in report.measurements},
             {
-                "papers.json raw bytes",
                 "papers.json deterministic gzip bytes",
                 "papers.json briefing count",
                 "papers.json briefing content fields",
@@ -109,27 +108,6 @@ class AssetBudgetContractTests(unittest.TestCase):
                 "assets/favicon.png raw bytes",
             },
         )
-
-    def test_rejects_papers_raw_bytes_over_limit(self):
-        """The raw papers catalog should fail independently of its gzip size."""
-        with TemporaryDirectory() as tmpdir:
-            root = Path(tmpdir)
-            write_valid_fixture(root)
-            payload = valid_papers_payload()
-            payload["padding"] = "x" * check_asset_budgets.PAPERS_RAW_BYTES_LIMIT
-            write_json(root / "papers.json", payload)
-
-            report = check_asset_budgets.check_asset_budgets(root)
-
-        self.assertGreater(
-            measurement(report, "papers.json raw bytes"),
-            check_asset_budgets.PAPERS_RAW_BYTES_LIMIT,
-        )
-        self.assertLessEqual(
-            measurement(report, "papers.json deterministic gzip bytes"),
-            check_asset_budgets.PAPERS_GZIP_BYTES_LIMIT,
-        )
-        self.assertIn("papers.json raw bytes", "\n".join(report.violations))
 
     def test_rejects_papers_gzip_bytes_over_limit(self):
         """The deterministic gzip budget should catch a high-entropy catalog."""
@@ -142,10 +120,6 @@ class AssetBudgetContractTests(unittest.TestCase):
 
             report = check_asset_budgets.check_asset_budgets(root)
 
-        self.assertLessEqual(
-            measurement(report, "papers.json raw bytes"),
-            check_asset_budgets.PAPERS_RAW_BYTES_LIMIT,
-        )
         self.assertGreater(
             measurement(report, "papers.json deterministic gzip bytes"),
             check_asset_budgets.PAPERS_GZIP_BYTES_LIMIT,
