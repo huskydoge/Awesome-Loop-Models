@@ -425,7 +425,15 @@ class SemanticScholarFetchTests(unittest.TestCase):
                 mock.patch.object(fetch_metrics, "fetch_citations_openalex", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_citations_opencitations", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_citations_crossref", return_value={}),
-                mock.patch.object(fetch_metrics, "fetch_stars_parallel", return_value=({}, {}, [])),
+                mock.patch.object(
+                    fetch_metrics,
+                    "fetch_stars_parallel",
+                    return_value=(
+                        {"legacy-paper": 40},
+                        {"legacy-paper": {"github_html": 40}},
+                        [],
+                    ),
+                ),
                 mock.patch.object(
                     fetch_metrics,
                     "_utcnow",
@@ -444,11 +452,11 @@ class SemanticScholarFetchTests(unittest.TestCase):
         self.assertNotEqual(updated_bytes, original)
         self.assertEqual(updated["citations"], 7)
         self.assertEqual(updated["citation_sources"], {"semantic_scholar": 6})
-        self.assertEqual(updated["citation_source_best"], "semantic_scholar")
+        self.assertNotIn("citation_source_best", updated)
         self.assertEqual(updated["github_stars"], 42)
-        self.assertEqual(updated["metrics_updated"], "2026-09-03")
-        self.assertNotIn("star_sources", updated)
+        self.assertEqual(updated["star_sources"], {"github_html": 40})
         self.assertNotIn("star_source_best", updated)
+        self.assertEqual(updated["metrics_updated"], "2026-09-03")
         self.assertEqual(outage_bytes, outage_original)
         self.assertEqual(outage["metrics_updated"], "2026-08-02")
         self.assertNotIn("citation_sources", outage)
@@ -539,7 +547,7 @@ class SemanticScholarFetchTests(unittest.TestCase):
 
         self.assertEqual(updated_bytes, original)
         cache_loader.assert_not_called()
-        cache_writer.assert_called_once()
+        cache_writer.assert_not_called()
         report_writer.assert_called_once()
 
     def test_load_dotenv_file_sets_missing_values_only(self):

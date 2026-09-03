@@ -1534,7 +1534,9 @@ def fetch_all(
                 for value in (p.get("citations"), *new_citation_sources.values())
                 if value is not None
             )
-            best_citation_source = _best_citation_source(new_citation_sources)
+            best_citation_source = p.get("citation_source_best")
+            if max(new_citation_sources.values()) == new_citations:
+                best_citation_source = _best_citation_source(new_citation_sources)
             if p.get("citations") != new_citations:
                 p["citations"] = new_citations
                 changed = True
@@ -1555,7 +1557,9 @@ def fetch_all(
                 for value in (p.get("github_stars"), *new_star_sources.values())
                 if value is not None
             )
-            best_star_source = _best_star_source(new_star_sources)
+            best_star_source = p.get("star_source_best")
+            if max(new_star_sources.values()) == new_stars:
+                best_star_source = _best_star_source(new_star_sources)
             if p.get("github_stars") != new_stars:
                 p["github_stars"] = new_stars
                 changed = True
@@ -1574,7 +1578,8 @@ def fetch_all(
                 yaml.dump(write_data, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
             updated += 1
 
-    _save_metrics_cache(cache, CACHE_FILE)
+    if not strict:
+        _save_metrics_cache(cache, CACHE_FILE)
     _save_github_link_report(broken_github_links, GITHUB_LINK_REPORT_FILE)
     if broken_github_links:
         print(f"      Wrote GitHub link report with {len(broken_github_links)} broken link(s) to {GITHUB_LINK_REPORT_FILE}.")
