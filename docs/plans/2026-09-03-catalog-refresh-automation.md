@@ -73,7 +73,7 @@ if strict:
 
 This deliberately guards known fields only. A newly added paper without an established metric remains eligible for the next refresh.
 
-**Step 4: Retain old source evidence with the existing dictionaries**
+**Step 4: Retain citation evidence and trust the fresh GitHub transport**
 
 Inside the per-paper loop, replace the destructive empty-result branches. Reuse ordinary dictionaries; do not add a provenance class or new file:
 
@@ -87,17 +87,13 @@ new_citation_sources = {
 new_citations = max(new_citation_sources.values(), default=p.get("citations"))
 best_citation_source = _best_citation_source(new_citation_sources)
 
-old_star_sources = p.get("star_sources")
-old_star_sources = old_star_sources if isinstance(old_star_sources, dict) else {}
-new_star_sources = {
-    **old_star_sources,
-    **star_source_maps.get(stem, {}),
-}
-new_stars = max(new_star_sources.values(), default=p.get("github_stars"))
-best_star_source = _best_star_source(new_star_sources)
+fresh_star_sources = star_source_maps.get(stem, {})
+if fresh_star_sources:
+    best_star_source, new_stars = next(iter(fresh_star_sources.items()))
+    new_star_sources = fresh_star_sources
 ```
 
-Keep the existing field-by-field change detection and `metrics_updated` behavior. When no source returns, these values equal the old YAML, so there is no rewrite and no false freshness date. Remove only the branches that pop source provenance on an empty result.
+Citation indexes are independent evidence, so failed-source citation provenance may be retained while a fresh value corrects the same source. GitHub API and HTML are instead primary/fallback transports for one star counter: the transport that succeeds in the current run is authoritative for the aggregate, provenance, and best source. Keep the existing field-by-field change detection and `metrics_updated` behavior. When no GitHub transport returns, preserve the old star fields byte-for-byte and do not advance freshness.
 
 **Step 5: Expose strict mode in the existing CLI**
 
