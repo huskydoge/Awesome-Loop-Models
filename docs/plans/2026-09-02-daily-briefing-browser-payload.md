@@ -62,7 +62,7 @@
 /opt/anaconda3/bin/python3.12 scripts/check_asset_budgets.py
 /opt/anaconda3/bin/python3.12 -m unittest \
   tests.test_build.DailyBriefingBuildTests.test_build_json_trims_briefings_for_browser_without_changing_catalog_entries \
-  tests.test_build.TagFilterUiTests.test_daily_briefing_notice_is_a_compact_today_status_in_document_flow \
+  tests.test_build.TagFilterUiTests.test_daily_briefing_notice_is_a_neutral_expandable_report_in_document_flow \
   tests.test_asset_budgets.AssetBudgetContractTests
 ```
 
