@@ -1,11 +1,11 @@
 {
   "meta": {
-    "total": 156,
-    "paper_total": 148,
+    "total": 158,
+    "paper_total": 150,
     "blog_total": 8,
-    "briefing_total": 47,
-    "latest_briefing_date": "2026-09-01",
-    "generated": "2026-09-02T00:47:37.217631+00:00",
+    "briefing_total": 48,
+    "latest_briefing_date": "2026-09-02",
+    "generated": "2026-09-03T00:34:10.320962+00:00",
     "generated_local_date": "2026-09-02",
     "category_disclaimer": "The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing lineage buckets. Rare adjacent works are explicitly marked outside strict scope.",
     "foundation_label": "Foundation",
@@ -8077,6 +8077,112 @@
       "arxiv_id": "2608.31067"
     },
     {
+      "title": "Latent Recurrent Thoughts: Recurrent Refinement of Proposed Latents for Reasoning with Frozen LLMs",
+      "authors": "Zhaoliang Chen, Jie Fu",
+      "year": 2026,
+      "published_date": "2026-09-01",
+      "added_date": "2026-09-02",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "reasoning",
+        "algorithmic-reasoning",
+        "language-modeling",
+        "efficiency"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm",
+        "inference-algorithm"
+      ],
+      "desc": "Pairs a task-specific latent proposer with a tiny TRM-style recurrent refiner that repeatedly applies one learned transition block before a frozen LLM decodes the answer.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2609.01117",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2609.01117",
+        "github": "https://github.com/czl-david/latent-recurrent-thoughts"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "github_stars": 0,
+      "star_sources": {
+        "github_api": 0
+      },
+      "star_source_best": "github_api",
+      "metrics_updated": "2026-09-03",
+      "id": "2609.01117",
+      "source_file": "2609.01117.yaml",
+      "source_path": "papers/2609.01117.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Zhaoliang Chen",
+        "Jie Fu"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2609.01117"
+    },
+    {
+      "title": "SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers",
+      "authors": "Shaowen Wang, Ge Zhang, Kairong Luo, Yuhao Wu, Shaofan Liu, Jiaheng Liu, Wenhao Huang, Shen Yan, Jian Li",
+      "year": 2026,
+      "published_date": "2026-09-01",
+      "added_date": "2026-09-02",
+      "venue": "arXiv",
+      "category": "designs",
+      "foundation": false,
+      "mechanism_tags": [
+        "flat-loop"
+      ],
+      "domain_tags": [
+        "language-modeling",
+        "scaling",
+        "efficiency",
+        "reasoning"
+      ],
+      "focus_tags": [
+        "architecture",
+        "training-algorithm"
+      ],
+      "desc": "Introduces a compute-matched sparse MoE Transformer that applies the same middle half of its layers twice, showing improved scaling and downstream performance without increasing per-token FLOPs, non-embedding parameters, or KV-cache size.",
+      "links": {
+        "arxiv": "https://arxiv.org/abs/2609.01343",
+        "alphaxiv": "https://www.alphaxiv.org/abs/2609.01343"
+      },
+      "citations": 0,
+      "citation_sources": {
+        "semantic_scholar": 0,
+        "opencitations": 0
+      },
+      "citation_source_best": "semantic_scholar",
+      "metrics_updated": "2026-09-03",
+      "id": "2609.01343",
+      "source_file": "2609.01343.yaml",
+      "source_path": "papers/2609.01343.yaml",
+      "entry_type": "paper",
+      "tags": [],
+      "authors_list": [
+        "Shaowen Wang",
+        "Ge Zhang",
+        "Kairong Luo",
+        "Yuhao Wu",
+        "Shaofan Liu",
+        "Jiaheng Liu",
+        "Wenhao Huang",
+        "Shen Yan",
+        "Jian Li"
+      ],
+      "venueClass": "venue-arxiv",
+      "arxiv_id": "2609.01343"
+    },
+    {
       "title": "ChainGPT: Dual-Reasoning Model with Recurrent Depth and Multi-Rank State Updates",
       "authors": "Yunao Zheng, Xiaojie Wang, Lei Ren, Chen Wei",
       "year": 2026,
@@ -8483,50 +8589,38 @@
   ],
   "briefings": [
     {
-      "date": "2026-09-01",
-      "title": "Daily Loop-Model Briefing - 2026-09-01",
+      "date": "2026-09-02",
+      "title": "Daily Loop-Model Briefing - 2026-09-02",
       "status": "added",
-      "summary": "Two papers connect shared-block recurrent depth to exact circuit computation and controlled code-generation evaluation.",
-      "source_path": "briefings/2026/09/2026-09-01.md",
+      "summary": "Two papers test recurrent depth through compute-matched MoE scaling and compact latent refinement in front of a frozen language model.",
+      "source_path": "briefings/2026/09/2026-09-02.md",
       "highlights": [
-        "A tiny Universal Transformer learns an exact iterative circuit algorithm, while a recursive code model reveals a sharp parameter-efficiency versus compute tradeoff."
+        "SMELT isolates the benefit of looping under matched budgets, while LRT shows that a tiny reused transition block can supply useful latent computation to an 8B decoder."
       ],
       "candidates": [
         {
-          "id": "2608.31067",
-          "title": "Universal Transformers for Circuit Computations: Perfect Length Generalization in Tiny Transformers",
+          "id": "2609.01343",
+          "title": "SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.31067"
+          "url": "https://arxiv.org/abs/2609.01343"
         },
         {
-          "id": "2608.29376",
-          "title": "Evaluating Tiny Recursive Models Across Training for Code Generation",
+          "id": "2609.01117",
+          "title": "Latent Recurrent Thoughts: Recurrent Refinement of Proposed Latents for Reasoning with Frozen LLMs",
           "verdict": "added",
-          "url": "https://arxiv.org/abs/2608.29376"
+          "url": "https://arxiv.org/abs/2609.01117"
         },
         {
-          "id": "2608.30072",
-          "title": "Learning Representations through Token Prediction: Geometry, Approximation, and Downstream Guarantees",
+          "id": "2609.01449",
+          "title": "Diffusion as a Training Curriculum for Timestep-Free Iterative Reasoning",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.30072"
+          "url": "https://arxiv.org/abs/2609.01449"
         },
         {
-          "id": "2608.29160",
-          "title": "Training-Free Hidden-State Refinement for Flow-Matching Image Generators",
+          "id": "2609.01550",
+          "title": "A Mathematical Theory of Reusable Neural Bases for Network Compression",
           "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.29160"
-        },
-        {
-          "id": "2608.31069",
-          "title": "A Model with No Head and Many Thoughts",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.31069"
-        },
-        {
-          "id": "2608.30959",
-          "title": "LOCI: A Locator-Critic with Refinement Loop",
-          "verdict": "near-miss",
-          "url": "https://arxiv.org/abs/2608.30959"
+          "url": "https://arxiv.org/abs/2609.01550"
         }
       ]
     }
