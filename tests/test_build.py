@@ -2865,7 +2865,12 @@ process.stdout.write(JSON.stringify({{
             "renderStatsActiveDirections",
         ):
             self.assertIn(marker, timeline_source)
+        line_start = timeline_source.index("createStatsSvgElement('polyline'")
+        line_end = timeline_source.index("}));", line_start)
+        line_source = timeline_source[line_start:line_end]
         self.assertIn("setAttribute", timeline_source)
+        self.assertIn("class: 'timeline-line'", line_source)
+        self.assertIn("'pathLength': 1", line_source)
         self.assertNotIn("innerHTML", timeline_source)
         self.assertNotIn("innerHTML", stats_source)
         self.assertIn("buildDailyPublicationSeries(ALL_PAPERS)", stats_source)
@@ -2910,6 +2915,30 @@ process.stdout.write(JSON.stringify({{
         dashboard_start = stats_css.index("    .stats-dashboard-grid {")
         dashboard_end = stats_css.index("\n    }", dashboard_start)
         dashboard_rule = stats_css[dashboard_start:dashboard_end]
+        reduced_motion_start = stats_css.rindex("    @media (prefers-reduced-motion: reduce)")
+        bar_selector = "    .stats-primary-chart .timeline-bar {"
+        bar_start = stats_css.rindex(bar_selector, 0, reduced_motion_start)
+        bar_end = stats_css.index("\n    }", bar_start)
+        bar_rule = stats_css[bar_start:bar_end]
+        line_selector = "    .stats-primary-chart .timeline-line {"
+        line_start = stats_css.rindex(line_selector, 0, reduced_motion_start)
+        line_end = stats_css.index("\n    }", line_start)
+        line_rule = stats_css[line_start:line_end]
+        reduced_motion_end = stats_css.index(
+            "    @media (prefers-color-scheme: dark)", reduced_motion_start
+        )
+        reduced_motion_css = stats_css[reduced_motion_start:reduced_motion_end]
+        reduced_motion_selector = (
+            "      .stats-primary-chart .timeline-bar,\n"
+            "      .stats-primary-chart .timeline-line {"
+        )
+        reduced_motion_rule_start = reduced_motion_css.index(reduced_motion_selector)
+        reduced_motion_rule_end = reduced_motion_css.index(
+            "\n      }", reduced_motion_rule_start
+        )
+        reduced_motion_rule = reduced_motion_css[
+            reduced_motion_rule_start:reduced_motion_rule_end
+        ]
 
         self.assertIn("grid-template-columns: repeat(12, minmax(0, 1fr));", dashboard_rule)
         self.assertIn("align-items: start;", dashboard_rule)
@@ -2927,7 +2956,15 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("height: clamp(220px, 27vh, 250px);", chart_scroll_css)
         self.assertIn("background: transparent;", stats_css)
         self.assertIn("border-top: 1px solid var(--border);", stats_css)
-        self.assertNotIn("animation:", stats_css)
+        self.assertIn("--stats-observatory-bg:", stats_css)
+        self.assertIn("animation: stats-bar-rise", bar_rule)
+        self.assertIn("stroke-dasharray: 1;", line_rule)
+        self.assertIn("animation: stats-line-draw", line_rule)
+        self.assertIn("@keyframes stats-bar-rise", stats_css)
+        self.assertIn("@keyframes stats-line-draw", stats_css)
+        self.assertIn(".stats-primary-chart .timeline-bar,", reduced_motion_rule)
+        self.assertIn(".stats-primary-chart .timeline-line {", reduced_motion_rule)
+        self.assertIn("animation: none;", reduced_motion_rule)
         self.assertIn("@media (max-width: 768px)", stats_css)
         self.assertIn("min-height: 44px;", stats_css)
 
@@ -3015,11 +3052,18 @@ process.stdout.write(JSON.stringify({{
         ticks_start = stats_css.index("    .stats-panel .timeline-axis-label,")
         ticks_end = stats_css.index("\n    }", ticks_start)
         ticks_rule = stats_css[ticks_start:ticks_end]
+        empty_selector = "    .stats-primary-chart .timeline-empty {"
+        self.assertIn(empty_selector, stats_css)
+        empty_start = stats_css.index(empty_selector)
+        empty_end = stats_css.index("\n    }", empty_start)
+        empty_rule = stats_css[empty_start:empty_end]
 
         self.assertIn("color: var(--text-muted);", note_rule)
         self.assertNotIn("var(--text-dim)", note_rule)
         self.assertIn("fill: var(--text-muted);", ticks_rule)
         self.assertNotIn("var(--text-dim)", ticks_rule)
+        self.assertIn("color: var(--stats-observatory-muted);", empty_rule)
+        self.assertIn("border-color: var(--stats-observatory-border);", empty_rule)
 
     def test_table_header_sort_buttons_exist_for_date_citations_and_stars_with_direction_controls(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
