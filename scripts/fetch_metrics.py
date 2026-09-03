@@ -1414,6 +1414,7 @@ def fetch_all(
     use_openalex: bool = True,
     use_opencitations: bool = True,
     use_crossref: bool = True,
+    strict: bool = False,
 ) -> None:
     show_progress = _resolve_progress_enabled(progress)
     cache = _load_metrics_cache(CACHE_FILE)
@@ -1500,6 +1501,19 @@ def fetch_all(
         show_progress=show_progress,
         cache=cache,
     )
+    if strict:
+        missing_fresh_metrics = []
+        for p in papers:
+            stem = p["stem"]
+            if p.get("citations") is not None and not citation_source_maps.get(stem):
+                missing_fresh_metrics.append(f"{stem}: citations")
+            if p.get("github_stars") is not None and not star_source_maps.get(stem):
+                missing_fresh_metrics.append(f"{stem}: github_stars")
+        if missing_fresh_metrics:
+            raise RuntimeError(
+                "Strict metrics refresh failed before write; no fresh value for:\n  - "
+                + "\n  - ".join(missing_fresh_metrics)
+            )
     print(f"      Got stars for {len(stars_map)}/{len(papers)} papers.")
 
     now_str = _utcnow().strftime("%Y-%m-%d")
@@ -1508,11 +1522,15 @@ def fetch_all(
         stem = p["stem"]
         yaml_file = p["_path"]
 
-        new_citations = citations_map.get(stem)
-        new_stars = stars_map.get(stem)
-        new_citation_sources = citation_source_maps.get(stem, {})
+        old_citation_sources = p.get("citation_sources")
+        old_citation_sources = old_citation_sources if isinstance(old_citation_sources, dict) else {}
+        new_citation_sources = {**old_citation_sources, **citation_source_maps.get(stem, {})}
+        new_citations = max(new_citation_sources.values(), default=p.get("citations"))
         best_citation_source = _best_citation_source(new_citation_sources)
-        new_star_sources = star_source_maps.get(stem, {})
+        old_star_sources = p.get("star_sources")
+        old_star_sources = old_star_sources if isinstance(old_star_sources, dict) else {}
+        new_star_sources = {**old_star_sources, **star_source_maps.get(stem, {})}
+        new_stars = max(new_star_sources.values(), default=p.get("github_stars"))
         best_star_source = _best_star_source(new_star_sources)
 
         changed = False
@@ -1526,13 +1544,6 @@ def fetch_all(
             if p.get("citation_source_best") != best_citation_source:
                 p["citation_source_best"] = best_citation_source
                 changed = True
-        else:
-            if "citation_sources" in p:
-                p.pop("citation_sources", None)
-                changed = True
-            if "citation_source_best" in p:
-                p.pop("citation_source_best", None)
-                changed = True
 
         if new_stars is not None:
             if p.get("github_stars") != new_stars:
@@ -1543,13 +1554,6 @@ def fetch_all(
                 changed = True
             if p.get("star_source_best") != best_star_source:
                 p["star_source_best"] = best_star_source
-                changed = True
-        else:
-            if "star_sources" in p:
-                p.pop("star_sources", None)
-                changed = True
-            if "star_source_best" in p:
-                p.pop("star_source_best", None)
                 changed = True
         if changed:
             p["metrics_updated"] = now_str
@@ -1583,6 +1587,11 @@ def fetch_all(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Fetch citation counts and GitHub stars")
     parser.add_argument("--dry-run", action="store_true", help="Print without writing")
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="Fail before writing when a previously known metric has no fresh value.",
+    )
     parser.add_argument(
         "--google-scholar",
         action="store_true",
@@ -1674,4 +1683,5 @@ if __name__ == "__main__":
         use_openalex=args.use_openalex,
         use_opencitations=args.use_opencitations,
         use_crossref=args.use_crossref,
+        strict=args.strict,
     )

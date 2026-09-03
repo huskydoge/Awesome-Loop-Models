@@ -307,6 +307,156 @@ class SemanticScholarFetchTests(unittest.TestCase):
         self.assertEqual(updated["citation_source_best"], "openalex")
         self.assertEqual(cache_data["version"], 1)
 
+    def test_fetch_all_preserves_metrics_and_provenance_during_source_outages(self):
+        """Keep last-known metrics when only one old citation source responds."""
+        with TemporaryDirectory() as tmp_dir:
+            papers_dir = Path(tmp_dir) / "papers"
+            papers_dir.mkdir()
+            paper_path = papers_dir / "2403.09629.yaml"
+            original = (
+                "title: Test Paper\n"
+                "year: 2024\n"
+                "links:\n"
+                "  arxiv: https://arxiv.org/abs/2403.09629\n"
+                "  github: https://github.com/owner/repo\n"
+                "citations: 7\n"
+                "citation_sources:\n"
+                "  semantic_scholar: 7\n"
+                "  openalex: 6\n"
+                "citation_source_best: semantic_scholar\n"
+                "github_stars: 42\n"
+                "star_sources:\n"
+                "  github_api: 42\n"
+                "  github_html: 41\n"
+                "star_source_best: github_api\n"
+                "metrics_updated: '2026-08-01'\n"
+            ).encode()
+            paper_path.write_bytes(original)
+
+            with (
+                mock.patch.object(fetch_metrics, "PAPERS_DIR", papers_dir),
+                mock.patch.object(fetch_metrics, "CACHE_FILE", Path(tmp_dir) / "cache.json"),
+                mock.patch.object(
+                    fetch_metrics,
+                    "GITHUB_LINK_REPORT_FILE",
+                    Path(tmp_dir) / "github-links.json",
+                ),
+                mock.patch.object(fetch_metrics, "fetch_citations_semantic_scholar", return_value={}),
+                mock.patch.object(
+                    fetch_metrics,
+                    "fetch_citations_openalex",
+                    return_value={"2403.09629": 6},
+                ),
+                mock.patch.object(fetch_metrics, "fetch_citations_opencitations", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_citations_crossref", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_stars_parallel", return_value=({}, {}, [])),
+                mock.patch.object(fetch_metrics, "_save_metrics_cache"),
+                mock.patch.object(fetch_metrics, "_save_github_link_report"),
+            ):
+                fetch_metrics.fetch_all(progress=False)
+
+            updated_bytes = paper_path.read_bytes()
+            updated = fetch_metrics.yaml.safe_load(updated_bytes)
+
+        self.assertEqual(updated_bytes, original)
+        self.assertEqual(updated["citations"], 7)
+        self.assertEqual(
+            updated["citation_sources"],
+            {"semantic_scholar": 7, "openalex": 6},
+        )
+        self.assertEqual(updated["citation_source_best"], "semantic_scholar")
+        self.assertEqual(updated["github_stars"], 42)
+        self.assertEqual(
+            updated["star_sources"],
+            {"github_api": 42, "github_html": 41},
+        )
+        self.assertEqual(updated["star_source_best"], "github_api")
+        self.assertEqual(updated["metrics_updated"], "2026-08-01")
+
+    def test_fetch_all_strict_fails_before_writes_for_known_zero_metrics(self):
+        """Treat zero as known and abort strict refreshes before any write."""
+        with TemporaryDirectory() as tmp_dir:
+            papers_dir = Path(tmp_dir) / "papers"
+            papers_dir.mkdir()
+            paper_path = papers_dir / "zero-metrics.yaml"
+            original = (
+                "title: Zero Metrics\n"
+                "year: 2026\n"
+                "links:\n"
+                "  arxiv: https://arxiv.org/abs/2601.00001\n"
+                "  github: https://github.com/owner/repo\n"
+                "citations: 0\n"
+                "github_stars: 0\n"
+                "metrics_updated: '2026-08-01'\n"
+            ).encode()
+            paper_path.write_bytes(original)
+
+            with (
+                mock.patch.object(fetch_metrics, "PAPERS_DIR", papers_dir),
+                mock.patch.object(fetch_metrics, "CACHE_FILE", Path(tmp_dir) / "cache.json"),
+                mock.patch.object(
+                    fetch_metrics,
+                    "GITHUB_LINK_REPORT_FILE",
+                    Path(tmp_dir) / "github-links.json",
+                ),
+                mock.patch.object(fetch_metrics, "fetch_citations_semantic_scholar", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_citations_openalex", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_citations_opencitations", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_citations_crossref", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_stars_parallel", return_value=({}, {}, [])),
+                mock.patch.object(fetch_metrics, "_save_metrics_cache") as cache_writer,
+                mock.patch.object(fetch_metrics, "_save_github_link_report") as report_writer,
+            ):
+                with self.assertRaises(RuntimeError) as raised:
+                    fetch_metrics.fetch_all(progress=False, strict=True)
+
+            updated_bytes = paper_path.read_bytes()
+
+        self.assertIn("zero-metrics: citations", str(raised.exception))
+        self.assertIn("zero-metrics: github_stars", str(raised.exception))
+        self.assertEqual(updated_bytes, original)
+        cache_writer.assert_not_called()
+        report_writer.assert_not_called()
+
+    def test_fetch_all_strict_allows_new_paper_without_metrics(self):
+        """Allow strict refreshes when a new paper has no known metric values."""
+        with TemporaryDirectory() as tmp_dir:
+            papers_dir = Path(tmp_dir) / "papers"
+            papers_dir.mkdir()
+            paper_path = papers_dir / "new-paper.yaml"
+            original = (
+                "title: New Paper\n"
+                "year: 2026\n"
+                "links:\n"
+                "  arxiv: https://arxiv.org/abs/2601.00002\n"
+                "  github: https://github.com/owner/new-repo\n"
+            ).encode()
+            paper_path.write_bytes(original)
+
+            with (
+                mock.patch.object(fetch_metrics, "PAPERS_DIR", papers_dir),
+                mock.patch.object(fetch_metrics, "CACHE_FILE", Path(tmp_dir) / "cache.json"),
+                mock.patch.object(
+                    fetch_metrics,
+                    "GITHUB_LINK_REPORT_FILE",
+                    Path(tmp_dir) / "github-links.json",
+                ),
+                mock.patch.object(fetch_metrics, "fetch_citations_semantic_scholar", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_citations_openalex", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_citations_opencitations", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_citations_crossref", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_stars_parallel", return_value=({}, {}, [])),
+                mock.patch.object(fetch_metrics, "_save_metrics_cache") as cache_writer,
+                mock.patch.object(fetch_metrics, "_save_github_link_report") as report_writer,
+            ):
+                fetch_metrics.fetch_all(progress=False, strict=True)
+
+            updated_bytes = paper_path.read_bytes()
+
+        self.assertEqual(updated_bytes, original)
+        cache_writer.assert_called_once()
+        report_writer.assert_called_once()
+
     def test_load_dotenv_file_sets_missing_values_only(self):
         with TemporaryDirectory() as tmp_dir:
             env_file = Path(tmp_dir) / ".env"
