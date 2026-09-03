@@ -2915,11 +2915,30 @@ process.stdout.write(JSON.stringify({{
         dashboard_start = stats_css.index("    .stats-dashboard-grid {")
         dashboard_end = stats_css.index("\n    }", dashboard_start)
         dashboard_rule = stats_css[dashboard_start:dashboard_end]
+        bar_selector = "    .stats-primary-chart .timeline-bar {"
+        bar_start = stats_css.rindex(bar_selector)
+        bar_end = stats_css.index("\n    }", bar_start)
+        bar_rule = stats_css[bar_start:bar_end]
+        line_selector = "    .stats-primary-chart .timeline-line {"
+        line_start = stats_css.rindex(line_selector)
+        line_end = stats_css.index("\n    }", line_start)
+        line_rule = stats_css[line_start:line_end]
         reduced_motion_start = stats_css.rindex("    @media (prefers-reduced-motion: reduce)")
         reduced_motion_end = stats_css.index(
             "    @media (prefers-color-scheme: dark)", reduced_motion_start
         )
         reduced_motion_css = stats_css[reduced_motion_start:reduced_motion_end]
+        reduced_motion_selector = (
+            "      .stats-primary-chart .timeline-bar,\n"
+            "      .stats-primary-chart .timeline-line {"
+        )
+        reduced_motion_rule_start = reduced_motion_css.index(reduced_motion_selector)
+        reduced_motion_rule_end = reduced_motion_css.index(
+            "\n      }", reduced_motion_rule_start
+        )
+        reduced_motion_rule = reduced_motion_css[
+            reduced_motion_rule_start:reduced_motion_rule_end
+        ]
 
         self.assertIn("grid-template-columns: repeat(12, minmax(0, 1fr));", dashboard_rule)
         self.assertIn("align-items: start;", dashboard_rule)
@@ -2938,17 +2957,14 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("background: transparent;", stats_css)
         self.assertIn("border-top: 1px solid var(--border);", stats_css)
         self.assertIn("--stats-observatory-bg:", stats_css)
-        self.assertIn("animation: stats-bar-rise", stats_css)
-        self.assertIn("animation: stats-line-draw", stats_css)
-        self.assertIn("stroke-dasharray: 1;", stats_css)
+        self.assertIn("animation: stats-bar-rise", bar_rule)
+        self.assertIn("stroke-dasharray: 1;", line_rule)
+        self.assertIn("animation: stats-line-draw", line_rule)
         self.assertIn("@keyframes stats-bar-rise", stats_css)
         self.assertIn("@keyframes stats-line-draw", stats_css)
-        self.assertIn(
-            ".stats-primary-chart .timeline-bar,\n"
-            "      .stats-primary-chart .timeline-line {",
-            reduced_motion_css,
-        )
-        self.assertIn("animation: none;", reduced_motion_css)
+        self.assertIn(".stats-primary-chart .timeline-bar,", reduced_motion_rule)
+        self.assertIn(".stats-primary-chart .timeline-line {", reduced_motion_rule)
+        self.assertIn("animation: none;", reduced_motion_rule)
         self.assertIn("@media (max-width: 768px)", stats_css)
         self.assertIn("min-height: 44px;", stats_css)
 
