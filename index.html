@@ -3727,9 +3727,6 @@
       .filter-sidebar-controls .date-clear-btn {
         padding: 4px 8px;
       }
-      .daily-briefing-notice {
-        padding: 6px 9px;
-      }
       .daily-watch-countdown {
         padding: 10px;
       }
@@ -8092,7 +8089,10 @@ function buildDOM(data) {
   CATALOG_DATA_ERROR = false;
   CATALOG_DATA_READY = true;
   ALL_BLOGS = (data.blogs || []).map(preparePaperRecord);
-  updateDailyBriefingNotice(Array.isArray(data.briefings) ? data.briefings[0] : null);
+  const latestBriefing = Array.isArray(data.briefings) ? data.briefings[0] : null;
+  updateDailyBriefingNotice(
+    latestBriefing && latestBriefing.date === getRepoTodayString() ? latestBriefing : null
+  );
   ALL_RESOURCES = ALL_PAPERS.concat(ALL_BLOGS);
   TAG_FILTER_GROUPS = buildTagFilterGroups(ALL_RESOURCES);
   buildCategoryIndex();

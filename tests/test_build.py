@@ -1,9 +1,11 @@
 import json
 import subprocess
 import unittest
+from datetime import datetime
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
+from zoneinfo import ZoneInfo
 
 import yaml
 
@@ -404,6 +406,14 @@ class DailyBriefingBuildTests(unittest.TestCase):
         self.assertEqual(payload["meta"]["briefing_total"], 2)
         self.assertEqual(payload["meta"]["latest_briefing_date"], "2026-04-28")
         self.assertEqual(payload["meta"]["briefing_section_title"], "Daily Briefing")
+        self.assertEqual(build.CATALOG_TIME_ZONE.key, "America/New_York")
+        self.assertEqual(
+            payload["meta"]["generated_local_date"],
+            datetime.fromisoformat(payload["meta"]["generated"])
+            .astimezone(ZoneInfo("America/New_York"))
+            .date()
+            .isoformat(),
+        )
         self.assertEqual(
             payload["briefings"],
             [
@@ -1578,7 +1588,11 @@ setTimeout(function() {
         self.assertIn('id="daily-briefing-body"', html)
         self.assertIn("function updateDailyBriefingNotice(briefing)", html)
         self.assertIn(
-            "updateDailyBriefingNotice(Array.isArray(data.briefings) ? data.briefings[0] : null);",
+            "const latestBriefing = Array.isArray(data.briefings) ? data.briefings[0] : null;",
+            html,
+        )
+        self.assertIn(
+            "latestBriefing && latestBriefing.date === getRepoTodayString() ? latestBriefing : null",
             html,
         )
         updater_start = html.index("function updateDailyBriefingNotice(briefing) {")
@@ -1608,6 +1622,7 @@ setTimeout(function() {
         ):
             self.assertIn(declaration, notice_css)
         self.assertNotIn("position: absolute;", notice_css)
+        self.assertNotIn(".daily-briefing-notice {\n        padding:", html)
 
     def test_countdown_reflows_before_it_can_overlap_masthead_tools(self):
         """The remaining absolute side widget must rejoin flow at mid widths."""

@@ -20,6 +20,7 @@ from datetime import date, datetime, timezone
 from html import escape
 from pathlib import Path
 from urllib.parse import quote, urlparse
+from zoneinfo import ZoneInfo
 
 import yaml
 
@@ -37,6 +38,7 @@ REPO_META_FILE = REPO_ROOT / "repo_meta.json"
 REPO_META_JS_OUT = REPO_ROOT / "assets" / "repo-meta.js"
 ISSUE_TEMPLATE_CONFIG_TEMPLATE_FILE = REPO_ROOT / ".github" / "ISSUE_TEMPLATE" / "config.template.yml"
 ISSUE_TEMPLATE_CONFIG_OUT = REPO_ROOT / ".github" / "ISSUE_TEMPLATE" / "config.yml"
+CATALOG_TIME_ZONE = ZoneInfo("America/New_York")
 
 VALID_FOCUS_TAGS = (
     "objective-loss",
@@ -870,6 +872,7 @@ def serialize_browser_briefings(briefings: list[dict]) -> list[dict]:
 
 def build_json(papers: list[dict], blogs: list[dict], briefings: list[dict] | None = None) -> None:
     briefings = sorted(briefings or [], key=lambda item: item.get("date", ""), reverse=True)
+    generated_at = datetime.now(timezone.utc)
     payload = {
         "meta": {
             "total": len(papers) + len(blogs),
@@ -877,8 +880,8 @@ def build_json(papers: list[dict], blogs: list[dict], briefings: list[dict] | No
             "blog_total": len(blogs),
             "briefing_total": len(briefings),
             "latest_briefing_date": briefings[0]["date"] if briefings else None,
-            "generated": datetime.now(timezone.utc).isoformat(),
-            "generated_local_date": datetime.now().astimezone().date().isoformat(),
+            "generated": generated_at.isoformat(),
+            "generated_local_date": generated_at.astimezone(CATALOG_TIME_ZONE).date().isoformat(),
             "category_disclaimer": CATEGORY_DISCLAIMER,
             "foundation_label": FOUNDATION_LABEL,
             "blog_section_title": BLOG_SECTION_TITLE,
