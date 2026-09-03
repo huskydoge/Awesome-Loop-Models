@@ -1609,8 +1609,9 @@ setTimeout(function() {
         self.assertIn("latestBriefing.date === currentDailyWatchDate", build_dom)
         self.assertNotIn("getRepoTodayString()", build_dom)
         updater_start = html.index("function updateDailyBriefingNotice(briefing) {")
-        updater_end = html.index("function createCategorySection(", updater_start)
+        updater_end = html.index("function hideStaleDailyBriefingNotice()", updater_start)
         updater = html[updater_start:updater_end]
+        self.assertIn("notice.dataset.briefingDate", updater)
         self.assertIn("Array.isArray(briefing.candidates)", updater)
         self.assertIn("candidate.verdict === 'added'", updater)
         self.assertIn("new Map(ALL_PAPERS.map", updater)
@@ -1623,6 +1624,15 @@ setTimeout(function() {
         self.assertIn("escapeHtml(paper.desc)", updater)
         self.assertNotIn("_addedDate", updater)
         self.assertNotIn("getRepoTodayString()", updater)
+
+        stale_start = updater_end
+        stale_end = html.index("function createCategorySection(", stale_start)
+        stale_helper = html[stale_start:stale_end]
+        self.assertIn("if (!notice || notice.hidden) return;", stale_helper)
+        self.assertIn("notice.dataset.briefingDate !== currentDate", stale_helper)
+        self.assertIn("notice.hidden = true;", stale_helper)
+        self.assertIn("notice.open = false;", stale_helper)
+        self.assertEqual(html.count("setInterval(hideStaleDailyBriefingNotice, 60_000);"), 1)
 
         css_start = html.index(".daily-briefing-notice {\n")
         css_end = html.index("}", css_start)

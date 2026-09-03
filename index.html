@@ -7956,6 +7956,7 @@ function createBlogTreeNode() {
 function updateDailyBriefingNotice(briefing) {
   const notice = document.getElementById('daily-briefing-notice');
   if (!notice) return;
+  notice.dataset.briefingDate = briefing && typeof briefing.date === 'string' ? briefing.date : '';
 
   const candidates = briefing && Array.isArray(briefing.candidates) ? briefing.candidates : [];
   const papersById = new Map(ALL_PAPERS.map(function(paper) {
@@ -7990,6 +7991,19 @@ function updateDailyBriefingNotice(briefing) {
   }
   notice.hidden = !briefing;
 }
+
+/** Hide and close the Today disclosure after the New York calendar date changes. */
+function hideStaleDailyBriefingNotice() {
+  const notice = document.getElementById('daily-briefing-notice');
+  if (!notice || notice.hidden) return;
+  const currentDate = getCurrentDailyWatchDateString();
+  if (!currentDate || notice.dataset.briefingDate !== currentDate) {
+    notice.hidden = true;
+    notice.open = false;
+  }
+}
+
+setInterval(hideStaleDailyBriefingNotice, 60_000);
 
 function createCategorySection(node, pathParts, depth) {
   const count = getNodeCount(pathParts);
