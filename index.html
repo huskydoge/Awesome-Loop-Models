@@ -4556,6 +4556,23 @@
       overflow: hidden;
     }
 
+    .stats-primary-chart::after {
+      position: absolute;
+      inset: 8px;
+      background:
+        linear-gradient(var(--stats-observatory-bar) 0 0) top left / 12px 1px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) top left / 1px 12px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) top right / 12px 1px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) top right / 1px 12px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) bottom left / 12px 1px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) bottom left / 1px 12px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) bottom right / 12px 1px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) bottom right / 1px 12px no-repeat;
+      content: '';
+      opacity: 0.38;
+      pointer-events: none;
+    }
+
     .stats-card-header {
       margin-bottom: 8px;
     }
@@ -5150,6 +5167,13 @@
         --stats-data-1: #9eb9ca;
         --stats-data-2: #aaa098;
         --stats-data-3: #77736e;
+        --stats-observatory-bg: #0b1422;
+        --stats-observatory-border: #385273;
+        --stats-observatory-grid: rgba(181, 205, 232, 0.14);
+        --stats-observatory-text: #f5f8fc;
+        --stats-observatory-muted: #b8c6d8;
+        --stats-observatory-bar: #75b8ff;
+        --stats-observatory-trend: #86e2ad;
       }
 
       .stats-dashboard-card,
