@@ -1643,7 +1643,7 @@ setTimeout(function() {
         self.assertLess(notice_markup, countdown_markup)
         self.assertLess(countdown_markup, status_end)
 
-        status_css_start = html.index(".daily-status-row {\n")
+        status_css_start = html.index("\n    .daily-status-row {\n") + 1
         status_css_end = html.index("}", status_css_start)
         status_css = html[status_css_start:status_css_end]
         for declaration in (
