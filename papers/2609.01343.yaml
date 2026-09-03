@@ -1,0 +1,39 @@
+title: 'SMELT: Scaling Laws for Compute-Matched MoE Looped Transformers'
+authors:
+- Shaowen Wang
+- Ge Zhang
+- Kairong Luo
+- Yuhao Wu
+- Shaofan Liu
+- Jiaheng Liu
+- Wenhao Huang
+- Shen Yan
+- Jian Li
+year: 2026
+published_date: '2026-09-01'
+added_date: '2026-09-02'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- scaling
+- efficiency
+- reasoning
+focus_tags:
+- architecture
+- training-algorithm
+desc: Introduces a compute-matched sparse MoE Transformer that applies the same middle
+  half of its layers twice, showing improved scaling and downstream performance without
+  increasing per-token FLOPs, non-embedding parameters, or KV-cache size.
+links:
+  arxiv: https://arxiv.org/abs/2609.01343
+  alphaxiv: https://www.alphaxiv.org/abs/2609.01343
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-09-03'
