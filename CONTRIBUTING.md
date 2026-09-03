@@ -214,7 +214,7 @@ Notes for blogs:
 
 Notes for both papers and blogs:
 - `published_date` is required for all papers and blogs; use the original release date and keep it as a quoted `YYYY-MM-DD` string
-- `added_date` is the repo intake date used by the daily feed / Today-style filtering; when included, keep it as a quoted `YYYY-MM-DD` string
+- `added_date` is the repo intake date used by the daily feed; the greatest valid paper value defines the `Newly Arrived` batch, while blogs are excluded from that filter; when included, keep it as a quoted `YYYY-MM-DD` string
 
 ### Filename Rules
 

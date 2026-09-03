@@ -864,7 +864,7 @@ ACTIVE_TAG_FILTERS = new Set(['focus::architecture']);
 publicationDateStart.value = '2025-01-01';
 publicationDateEnd.value = '2026-01-01';
 ACCEPTED_ONLY = true;
-TODAY_ONLY = true;
+NEWLY_ARRIVED_ONLY = true;
 HAS_CODE_ONLY = true;
 HAS_COMMENTS_ONLY = true;
 FILTER_SIDEBAR_OPEN = false;
@@ -877,7 +877,7 @@ const entered = {
   placeholder: searchInput.placeholder,
   query: searchInput.value,
   dates: [publicationDateStart.value, publicationDateEnd.value],
-  quickFilters: [ACCEPTED_ONLY, TODAY_ONLY, HAS_CODE_ONLY, HAS_COMMENTS_ONLY],
+  quickFilters: [ACCEPTED_ONLY, NEWLY_ARRIVED_ONLY, HAS_CODE_ONLY, HAS_COMMENTS_ONLY],
   panels: [FILTER_SIDEBAR_OPEN, TAG_FILTER_OPEN],
   visibleCount: ALL_PAPERS.filter(function(paper) {
     return Array.from(ACTIVE_TAG_FILTERS).every(function(key) { return paper._tagKeySet.has(key); });
@@ -1705,11 +1705,11 @@ setTimeout(function() {
         self.assertIn("'<span class=\"category-node-count\">' + count + '</span>'", html)
         self.assertNotIn("count + ' paper' + (count !== 1 ? 's' : '')", html)
 
-    def test_daily_watch_filter_controls_and_table_view_markup_exist(self):
+    def test_quick_filter_controls_and_table_view_markup_exist(self):
+        """Expose the supported quick filters alongside both catalog views."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         for snippet in (
             "Accepted only",
-            "Today",
             "w/ code",
             "w/ comments",
             "Category view",
@@ -1718,6 +1718,11 @@ setTimeout(function() {
             "papers-table-body",
         ):
             self.assertIn(snippet, html)
+        self.assertIn(
+            '<button type="button" class="sort-btn" id="newly-arrived-only-toggle" '
+            'aria-pressed="false" onclick="toggleNewlyArrivedOnly()">Newly Arrived</button>',
+            html,
+        )
 
         header_start = html.index('<table class="papers-table" aria-label="Table view of loop-model resources">')
         header_end = html.index("</thead>", header_start)
@@ -3061,14 +3066,39 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("labels.push('w/ code');", html)
         self.assertIn("labels.push('w/ comments');", html)
 
-    def test_today_filter_uses_published_date_not_added_date(self):
+    def test_newly_arrived_filter_uses_latest_valid_added_date(self):
+        """Only papers in the newest valid intake batch match while active."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn("function matchTodayOnly(paper) {", html)
-        matcher_start = html.index("function matchTodayOnly(paper) {")
+        date_start = html.index("function normalizeDateInputValue(raw) {")
+        date_end = html.index("function getPublicationDateFilter()", date_start)
+        matcher_start = html.index("function matchNewlyArrivedOnly(paper) {")
         matcher_end = html.index("function matchHasCodeOnly(paper)", matcher_start)
-        matcher_snippet = html[matcher_start:matcher_end]
-        self.assertIn("getPaperPublicationDateValue(paper) === getRepoTodayString()", matcher_snippet)
-        self.assertNotIn("paper.added_date", matcher_snippet)
+
+        script = f"""
+{html[date_start:date_end]}
+let NEWLY_ARRIVED_ONLY = true;
+const papers = [
+  {{ entry_type: 'paper', added_date: '2026-09-01' }},
+  {{ entry_type: 'paper', added_date: 'invalid' }},
+  {{ entry_type: 'paper', added_date: '2026-09-03' }}
+];
+const blog = {{ entry_type: 'blog', added_date: '2026-09-03' }};
+let LATEST_ADDED_DATE = getLatestAddedDateValue(papers);
+{html[matcher_start:matcher_end]}
+const active = papers.concat([blog]).map(matchNewlyArrivedOnly);
+NEWLY_ARRIVED_ONLY = false;
+process.stdout.write(JSON.stringify({{
+  latest: LATEST_ADDED_DATE,
+  active,
+  inactive: matchNewlyArrivedOnly(blog)
+}}));
+"""
+        output = subprocess.check_output(["node", "-e", script], text=True)
+        self.assertEqual(json.loads(output), {
+            "latest": "2026-09-03",
+            "active": [False, False, True, False],
+            "inactive": True,
+        })
 
     def test_daily_watch_countdown_widget_and_schedule_logic_exist(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -3190,15 +3220,28 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("const disclosureButton = summaryRow.querySelector('.paper-table-disclosure');", html)
         self.assertIn("if (disclosureButton) disclosureButton.setAttribute('aria-expanded', expanded ? 'true' : 'false');", html)
 
-    def test_daily_watch_filters_and_table_view_have_frontend_hooks(self):
+    def test_quick_filters_and_table_view_have_frontend_hooks(self):
+        """Wire the newest-intake state through the existing filter hooks."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("paper.entry_type !== 'blog' && paper.venue !== 'arXiv'", html)
-        self.assertIn("function getRepoTodayString()", html)
-        self.assertIn("generated_local_date", html)
-        self.assertIn("getPaperPublicationDateValue(paper) === getRepoTodayString()", html)
+        self.assertIn("let NEWLY_ARRIVED_ONLY = false;", html)
+        self.assertIn("let LATEST_ADDED_DATE = '';", html)
+        self.assertIn("function getLatestAddedDateValue(papers) {", html)
+        self.assertIn("function matchNewlyArrivedOnly(paper) {", html)
+        self.assertIn("LATEST_ADDED_DATE = getLatestAddedDateValue(ALL_PAPERS);", html)
         self.assertIn("function renderTableView(query, papers)", html)
         self.assertIn("function toggleTableRow(paperId)", html)
         self.assertIn("function setView(view)", html)
+        for obsolete_name in (
+            "TODAY_ONLY",
+            "today-only-toggle",
+            "matchTodayOnly",
+            "toggleTodayOnly",
+        ):
+            self.assertNotIn(obsolete_name, html)
+        self.assertNotIn("function getBrowserTodayString()", html)
+        self.assertNotIn("function getRepoTodayString()", html)
+        self.assertNotIn("let REPO_TODAY = '';", html)
 
     def test_mobile_compact_overrides_apply_after_base_control_styles(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
