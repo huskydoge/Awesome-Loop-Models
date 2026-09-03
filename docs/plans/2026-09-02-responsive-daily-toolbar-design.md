@@ -20,4 +20,4 @@ Change only `index.html` and its narrow static contract checks. Add no dependenc
 
 ## Verification
 
-Inspect the live local page at 1440, 1024, 768, 390, and 320 CSS pixels, both collapsed and expanded. Confirm the collapsed controls stay compact, the countdown remains top-aligned when Today opens, no horizontal overflow occurs, the Today target remains 44px tall, reduced motion stops the clock hand, and no console errors appear.
+Inspect the live local page at 1440, 1024, 768, 390, and 320 CSS pixels, both collapsed and expanded. Confirm the collapsed controls stay compact, the countdown remains top-aligned while it fits beside the open report and wraps below it on narrow screens, no horizontal overflow occurs, the Today target remains 44px tall, reduced motion stops the clock hand, and no console errors appear.

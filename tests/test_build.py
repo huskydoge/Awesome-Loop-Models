@@ -1579,6 +1579,7 @@ setTimeout(function() {
 
     def test_daily_briefing_notice_is_a_neutral_expandable_report_in_document_flow(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        self.assertIn('<div class="daily-status-row">', html)
         self.assertIn('<details class="daily-briefing-notice"', html)
         self.assertIn('id="daily-briefing-notice"', html)
         self.assertIn('<summary class="daily-briefing-summary">', html)
@@ -1634,50 +1635,69 @@ setTimeout(function() {
         self.assertIn("notice.open = false;", stale_helper)
         self.assertEqual(html.count("setInterval(hideStaleDailyBriefingNotice, 60_000);"), 1)
 
+        status_start = html.index('<div class="daily-status-row">')
+        notice_markup = html.index('<details class="daily-briefing-notice"', status_start)
+        countdown_markup = html.index('<div class="daily-watch-countdown"', notice_markup)
+        status_end = html.index('</div>\n    <div class="search-wrap">', countdown_markup)
+        self.assertLess(status_start, notice_markup)
+        self.assertLess(notice_markup, countdown_markup)
+        self.assertLess(countdown_markup, status_end)
+
+        status_css_start = html.index(".daily-status-row {\n")
+        status_css_end = html.index("}", status_css_start)
+        status_css = html[status_css_start:status_css_end]
+        for declaration in (
+            "display: flex;",
+            "align-items: flex-start;",
+            "flex-wrap: wrap;",
+            "justify-content: center;",
+            "width: 100%;",
+        ):
+            self.assertIn(declaration, status_css)
+
         css_start = html.index(".daily-briefing-notice {\n")
         css_end = html.index("}", css_start)
         notice_css = html[css_start:css_end]
         for declaration in (
             "position: relative;",
             "display: block;",
+            "flex: 0 1 auto;",
             "width: fit-content;",
-            "max-width: 100%;",
+            "min-width: 0;",
         ):
             self.assertIn(declaration, notice_css)
         self.assertNotIn("position: absolute;", notice_css)
         self.assertNotIn(".daily-briefing-notice {\n        padding:", html)
 
-    def test_countdown_reflows_before_it_can_overlap_masthead_tools(self):
-        """The remaining absolute side widget must rejoin flow at mid widths."""
+        open_css_start = html.index(".daily-briefing-notice[open] {\n")
+        open_css_end = html.index("}", open_css_start)
+        open_css = html[open_css_start:open_css_end]
+        self.assertIn("flex: 0 1 620px;", open_css)
+        self.assertIn("width: 620px;", open_css)
+
+        summary_start = html.index(".daily-briefing-summary {\n")
+        summary_end = html.index("}", summary_start)
+        self.assertIn("min-height: 44px;", html[summary_start:summary_end])
+
+    def test_daily_status_row_reflows_without_detached_positioning(self):
+        """Daily status remains in flow and becomes compact on phones."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        media_start = html.index("@media (max-width: 1344px) {")
-        media_end = html.index("/* ── Sidebar contribute link ── */", media_start)
-        media_css = html[media_start:media_end]
-
-        self.assertIn(".daily-watch-countdown {", media_css)
-        for declaration in (
-            "position: relative;",
-            "top: auto;",
-            "left: auto;",
-            "right: auto;",
-            "width: min(560px, 100%);",
-        ):
-            self.assertIn(declaration, media_css)
-        self.assertNotIn("@media (max-width: 1080px)", html)
-
-        grid_start = html.index("@media (min-width: 769px) and (max-width: 1344px) {")
-        grid_end = html.index("@media (min-width: 769px) and (max-width: 1100px) {", grid_start)
-        grid_css = html[grid_start:grid_end]
-        board_start = grid_css.rindex("body:not(.stats-mode) .daily-briefing-notice {")
-        board_end = grid_css.index("}", board_start)
-        board_css = grid_css[board_start:board_end]
-        for declaration in (
-            "width: fit-content;",
-            "margin: 0 auto;",
-            "align-self: start;",
-            "justify-self: center;",
-        ):
-            self.assertIn(declaration, board_css)
+        self.assertNotIn("position: absolute;\n      top: 58px;", html)
+        self.assertNotIn('id="daily-watch-countdown-value" aria-live=', html)
+        self.assertIn('id="daily-watch-countdown-value">Calculating…</div>', html)
+        self.assertIn('<span class="daily-watch-clock" aria-hidden="true"></span>', html)
+        self.assertIn('<div class="daily-watch-countdown-copy">', html)
+        self.assertIn('<div class="daily-watch-countdown-label">Next refresh</div>', html)
+        self.assertNotIn('"briefing countdown"', html)
+        self.assertIn(".papers-only-tools > .daily-status-row { order: 2; }", html)
+        self.assertIn(".papers-only-tools > .search-wrap { order: 3; }", html)
+        self.assertIn("@keyframes daily-watch-clock-spin", html)
+        self.assertIn("animation: daily-watch-clock-spin 60s steps(60, end) infinite;", html)
+        self.assertIn(".daily-watch-clock::after { animation: none; }", html)
+        self.assertIn(".daily-briefing-notice[open] {\n        flex: 0 0 100%;", html)
+        meta_start = html.index(".daily-watch-countdown-meta {\n")
+        meta_end = html.index("}", meta_start)
+        self.assertIn("display: none;", html[meta_start:meta_end])
 
     def test_category_section_counts_render_as_numbers_only(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
