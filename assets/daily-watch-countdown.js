@@ -3,7 +3,7 @@
 
   // Shared schedule metadata for the public-facing countdown.
   const DAILY_WATCH_TIME_ZONE = 'America/New_York';
-  const DAILY_WATCH_SCHEDULE = { hour: 20, minute: 5, activeWeekdays: [0, 1, 2, 3, 4] };
+  const DAILY_WATCH_SCHEDULE = { hour: 20, minute: 15, activeWeekdays: [0, 1, 2, 3, 4] };
   const DAILY_WATCH_WEEKDAY_LABELS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const DAILY_WATCH_WEEKDAY_INDEX = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
 
@@ -137,15 +137,15 @@
     const nextRun = computeNextDailyWatchRun(now);
     if (!nextRun) {
       valueEl.textContent = 'Schedule unavailable';
-      metaEl.textContent = '20:05 ET Sunday–Thursday · about 5 minutes after arXiv\'s daily announcement.';
+      metaEl.textContent = '20:15 ET Sunday–Thursday · about 15 minutes after arXiv\'s daily announcement.';
       return null;
     }
 
     const remainingMs = nextRun.date.getTime() - now.getTime();
     valueEl.textContent = 'in ' + formatCountdownDuration(remainingMs);
-    metaEl.textContent = '20:05 ET Sunday–Thursday · next fetch '
+    metaEl.textContent = '20:15 ET Sunday–Thursday · next paper watch '
       + formatDailyWatchRunLabel(nextRun)
-      + ' · about 5 minutes after arXiv\'s daily announcement.';
+      + ' · about 15 minutes after arXiv\'s daily announcement.';
     return nextRun;
   }
 

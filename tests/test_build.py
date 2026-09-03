@@ -1687,7 +1687,7 @@ setTimeout(function() {
         self.assertIn('id="daily-watch-countdown-value">Calculating…</div>', html)
         self.assertIn('<span class="daily-watch-clock" aria-hidden="true"></span>', html)
         self.assertIn('<div class="daily-watch-countdown-copy">', html)
-        self.assertIn('<div class="daily-watch-countdown-label">Next refresh</div>', html)
+        self.assertIn('<div class="daily-watch-countdown-label">Next paper watch</div>', html)
         self.assertNotIn('"briefing countdown"', html)
         self.assertIn(".papers-only-tools > .daily-status-row { order: 2; }", html)
         self.assertIn(".papers-only-tools > .search-wrap { order: 3; }", html)
@@ -3106,7 +3106,7 @@ process.stdout.write(JSON.stringify({{
         self.assertIn('id="daily-watch-countdown"', html)
         self.assertIn('id="daily-watch-countdown-value"', html)
         self.assertIn('id="daily-watch-countdown-meta"', html)
-        self.assertIn("20:05 ET Sunday–Thursday", html)
+        self.assertIn("20:15 ET Sunday–Thursday", html)
         self.assertIn("DAILY_WATCH_COUNTDOWN.startDailyWatchCountdown();", html)
         self.assertIn("DAILY_WATCH_COUNTDOWN.updateDailyWatchCountdown();", html)
         self.assertIn(".daily-watch-countdown", html)
@@ -3314,21 +3314,21 @@ process.stdout.write(JSON.stringify({{
 
     def test_daily_watch_helper_keeps_same_day_fetch_before_cutoff(self):
         result = self.run_daily_watch_helper("2026-04-23T12:00:00-04:00")
-        self.assertEqual(result["iso"], "2026-04-24T00:05:00.000Z")
+        self.assertEqual(result["iso"], "2026-04-24T00:15:00.000Z")
         self.assertEqual(result["weekday"], 4)
-        self.assertEqual(result["label"], "Thu 20:05 ET")
+        self.assertEqual(result["label"], "Thu 20:15 ET")
 
     def test_daily_watch_helper_rolls_thursday_night_to_sunday(self):
         result = self.run_daily_watch_helper("2026-04-23T21:00:00-04:00")
-        self.assertEqual(result["iso"], "2026-04-27T00:05:00.000Z")
+        self.assertEqual(result["iso"], "2026-04-27T00:15:00.000Z")
         self.assertEqual(result["weekday"], 0)
-        self.assertEqual(result["label"], "Sun 20:05 ET")
+        self.assertEqual(result["label"], "Sun 20:15 ET")
 
     def test_daily_watch_helper_handles_standard_time_offset(self):
         result = self.run_daily_watch_helper("2026-01-05T12:00:00-05:00")
-        self.assertEqual(result["iso"], "2026-01-06T01:05:00.000Z")
+        self.assertEqual(result["iso"], "2026-01-06T01:15:00.000Z")
         self.assertEqual(result["weekday"], 1)
-        self.assertEqual(result["label"], "Mon 20:05 ET")
+        self.assertEqual(result["label"], "Mon 20:15 ET")
 
 
 class CanonicalPaperMetadataTests(unittest.TestCase):
