@@ -3719,6 +3719,7 @@ class LoadPapersRegressionTests(unittest.TestCase):
                         "authors": ["Test Author"],
                         "year": 2026,
                         "published_date": "2026-03-10",
+                        "added_date": "2026-03-11",
                         "venue": "arXiv",
                         "category": "analysis",
                         "mechanism_tags": ["implicit-layer"],
@@ -3777,6 +3778,7 @@ class LoadPapersRegressionTests(unittest.TestCase):
                         "authors": ["Test Author"],
                         "year": 2026,
                         "published_date": "2026-03-10",
+                        "added_date": "2026-03-11",
                         "venue": "arXiv",
                         "category": "designs",
                         "catalog_fit": "adjacent",
@@ -3813,6 +3815,7 @@ class LoadPapersRegressionTests(unittest.TestCase):
                         "title": "Loop Test Paper",
                         "year": 2026,
                         "published_date": "2026-03-10",
+                        "added_date": "2026-03-11",
                         "venue": "arXiv",
                         "category": "analysis",
                         "mechanism_tags": ["flat-loop"],
@@ -3856,6 +3859,31 @@ class LoadPapersRegressionTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "missing required published_date"):
                     build.load_papers()
 
+    def test_load_papers_requires_added_date(self):
+        """Reject paper sources without a catalog intake date."""
+        with TemporaryDirectory() as tmpdir:
+            papers_dir = Path(tmpdir)
+            paper_path = papers_dir / "2603.08391.yaml"
+            paper_path.write_text(
+                yaml.safe_dump(
+                    {
+                        "title": "Loop Test Paper",
+                        "year": 2026,
+                        "published_date": "2026-03-10",
+                        "venue": "arXiv",
+                        "category": "analysis",
+                        "mechanism_tags": ["flat-loop"],
+                        "links": {"arxiv": "https://arxiv.org/abs/2603.08391"},
+                    },
+                    sort_keys=False,
+                ),
+                encoding="utf-8",
+            )
+
+            with patch.object(build, "PAPERS_DIR", papers_dir):
+                with self.assertRaisesRegex(ValueError, "missing required added_date"):
+                    build.load_papers()
+
     def test_load_papers_preserves_must_read_flag(self):
         with TemporaryDirectory() as tmpdir:
             papers_dir = Path(tmpdir)
@@ -3867,6 +3895,7 @@ class LoadPapersRegressionTests(unittest.TestCase):
                         "authors": ["Test Author"],
                         "year": 2026,
                         "published_date": "2026-03-10",
+                        "added_date": "2026-03-11",
                         "venue": "arXiv",
                         "category": "analysis",
                         "must_read": True,

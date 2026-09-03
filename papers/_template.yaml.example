@@ -44,9 +44,9 @@ must_read: false
 #
 # `published_date` is required for all papers. Use the source-paper
 # release date and keep it as a quoted `YYYY-MM-DD` string.
-# `added_date` is the repo intake date. The greatest valid paper value
-# defines the `Newly Arrived` batch; when present, keep it as a quoted
-# `YYYY-MM-DD` string.
+# `added_date` is required for all papers and records the repo intake date.
+# The greatest valid paper value defines the `Newly Arrived` batch; keep it
+# as a quoted `YYYY-MM-DD` string.
 
 mechanism_tags:
   - "flat-loop"

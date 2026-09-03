@@ -601,7 +601,7 @@ def load_papers() -> list[dict]:
             )
         mechanism_tags = merge_mechanism_tags(explicit_mechanism_tags)
         published_date = normalize_required_date_string(data.get("published_date"), "published_date", yaml_file.name)
-        added_date = normalize_optional_date_string(data.get("added_date"), "added_date", yaml_file.name)
+        added_date = normalize_required_date_string(data.get("added_date"), "added_date", yaml_file.name)
         must_read = normalize_must_read_flag(data.get("must_read"))
 
         paper = dict(data)
