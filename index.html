@@ -5247,9 +5247,9 @@
       <div class="daily-watch-countdown" id="daily-watch-countdown">
         <span class="daily-watch-clock" aria-hidden="true"></span>
         <div class="daily-watch-countdown-copy">
-          <div class="daily-watch-countdown-label">Next refresh</div>
+          <div class="daily-watch-countdown-label">Next paper watch</div>
           <div class="daily-watch-countdown-value" id="daily-watch-countdown-value">Calculating…</div>
-          <div class="daily-watch-countdown-meta" id="daily-watch-countdown-meta">20:05 ET Sunday–Thursday · about 5 minutes after arXiv's daily announcement.</div>
+          <div class="daily-watch-countdown-meta" id="daily-watch-countdown-meta">20:15 ET Sunday–Thursday · about 15 minutes after arXiv's daily announcement.</div>
         </div>
       </div>
     </div>
@@ -5295,7 +5295,7 @@
           <div class="quick-filter-bar">
             <span class="sort-label">Watch:</span>
             <button type="button" class="sort-btn" id="accepted-only-toggle" aria-pressed="false" onclick="toggleAcceptedOnly()">Accepted only</button>
-            <button type="button" class="sort-btn" id="today-only-toggle" aria-pressed="false" onclick="toggleTodayOnly()">Today</button>
+            <button type="button" class="sort-btn" id="newly-arrived-only-toggle" aria-pressed="false" onclick="toggleNewlyArrivedOnly()">Newly Arrived</button>
             <button type="button" class="sort-btn" id="has-code-toggle" aria-pressed="false" onclick="toggleHasCodeOnly()">w/ code</button>
             <button type="button" class="sort-btn" id="has-comments-toggle" aria-pressed="false" onclick="toggleHasCommentsOnly()">w/ comments</button>
           </div>
@@ -6462,17 +6462,6 @@ function renderMetricsHtml(paper) {
   return parts.length ? '<div class="paper-metrics">' + parts.join('') + '</div>' : '';
 }
 
-function getBrowserTodayString() {
-  const today = new Date();
-  return today.getFullYear()
-    + '-' + String(today.getMonth() + 1).padStart(2, '0')
-    + '-' + String(today.getDate()).padStart(2, '0');
-}
-
-function getRepoTodayString() {
-  return REPO_TODAY || getBrowserTodayString();
-}
-
 /** Return today's America/New_York date from the shared daily-watch helper. */
 function getCurrentDailyWatchDateString() {
   if (!window.DAILY_WATCH_COUNTDOWN
@@ -6734,7 +6723,8 @@ let TAG_FILTER_LOOKUP = {};
 let TAG_FILTER_OPEN = false;
 let TAG_DRILLDOWN_INTERACTIONS_BOUND = false;
 let ACCEPTED_ONLY = false;
-let TODAY_ONLY = false;
+let NEWLY_ARRIVED_ONLY = false;
+let LATEST_ADDED_DATE = '';
 let HAS_CODE_ONLY = false;
 let HAS_COMMENTS_ONLY = false;
 let ACTIVE_TOP_LEVEL_TAB = 'papers';
@@ -6754,7 +6744,6 @@ let CATALOG_GENERATED_AT = '';
 let CURRENT_VIEW = 'category';
 let FILTER_SIDEBAR_OPEN = false;
 let EXPANDED_TABLE_ROWS = new Set();
-let REPO_TODAY = '';
 let RESEARCH_PROMPT_LANGUAGE = 'en';
 let RESEARCH_PROMPT_LAST_TRIGGER = null;
 let RESEARCH_PROMPT_COPY_TIMER = null;
@@ -7100,7 +7089,7 @@ function navigateToTagDrilldown(tagKey) {
   if (startDate) startDate.value = '';
   if (endDate) endDate.value = '';
   ACCEPTED_ONLY = false;
-  TODAY_ONLY = false;
+  NEWLY_ARRIVED_ONLY = false;
   HAS_CODE_ONLY = false;
   HAS_COMMENTS_ONLY = false;
   updateQuickFilterButtons();
@@ -7583,6 +7572,14 @@ function normalizeDateInputValue(raw) {
   return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
 }
 
+/** Return the greatest valid paper intake date, or an empty string. */
+function getLatestAddedDateValue(papers) {
+  return papers.reduce(function(latest, paper) {
+    const addedDate = normalizeDateInputValue(paper && paper.added_date) || '';
+    return addedDate > latest ? addedDate : latest;
+  }, '');
+}
+
 function getPublicationDateFilter() {
   const startRaw = normalizeDateInputValue(document.getElementById("publication-date-start").value);
   const endRaw = normalizeDateInputValue(document.getElementById("publication-date-end").value);
@@ -7619,8 +7616,13 @@ function matchAcceptedOnly(paper) {
   return !ACCEPTED_ONLY || (paper.entry_type !== 'blog' && paper.venue !== 'arXiv');
 }
 
-function matchTodayOnly(paper) {
-  return !TODAY_ONLY || (getPaperPublicationDateValue(paper) === getRepoTodayString());
+/** Match papers in the newest catalog intake batch. */
+function matchNewlyArrivedOnly(paper) {
+  return !NEWLY_ARRIVED_ONLY || (
+    paper.entry_type !== 'blog'
+    && Boolean(LATEST_ADDED_DATE)
+    && normalizeDateInputValue(paper.added_date) === LATEST_ADDED_DATE
+  );
 }
 
 function matchHasCodeOnly(paper) {
@@ -7641,7 +7643,7 @@ function paperMatchesActiveFilters(paper, query, publicationDateFilter) {
     && paperMatchesTagFilters(paper)
     && paperMatchesQuery(paper, query)
     && matchAcceptedOnly(paper)
-    && matchTodayOnly(paper)
+    && matchNewlyArrivedOnly(paper)
     && matchHasCodeOnly(paper)
     && matchHasCommentsOnly(paper);
 }
@@ -7657,7 +7659,7 @@ function getFilterSidebarActiveCount() {
   let count = ACTIVE_TAG_FILTERS.size;
   if (publicationDateFilter.active) count += 1;
   if (ACCEPTED_ONLY) count += 1;
-  if (TODAY_ONLY) count += 1;
+  if (NEWLY_ARRIVED_ONLY) count += 1;
   if (HAS_CODE_ONLY) count += 1;
   if (HAS_COMMENTS_ONLY) count += 1;
   if (CURRENT_VIEW !== 'category') count += 1;
@@ -7722,7 +7724,7 @@ function setToggleButtonState(id, isActive) {
 
 function updateQuickFilterButtons() {
   setToggleButtonState('accepted-only-toggle', ACCEPTED_ONLY);
-  setToggleButtonState('today-only-toggle', TODAY_ONLY);
+  setToggleButtonState('newly-arrived-only-toggle', NEWLY_ARRIVED_ONLY);
   setToggleButtonState('has-code-toggle', HAS_CODE_ONLY);
   setToggleButtonState('has-comments-toggle', HAS_COMMENTS_ONLY);
   updateFilterSidebarSummary();
@@ -7766,8 +7768,8 @@ function toggleAcceptedOnly() {
   rerenderCurrentResults();
 }
 
-function toggleTodayOnly() {
-  TODAY_ONLY = !TODAY_ONLY;
+function toggleNewlyArrivedOnly() {
+  NEWLY_ARRIVED_ONLY = !NEWLY_ARRIVED_ONLY;
   updateQuickFilterButtons();
   rerenderCurrentResults();
 }
@@ -7835,7 +7837,7 @@ function getActiveFilterLabel(query, publicationDateFilter) {
     }
   }
   if (ACCEPTED_ONLY) labels.push('accepted only');
-  if (TODAY_ONLY) labels.push('today');
+  if (NEWLY_ARRIVED_ONLY) labels.push('newly arrived');
   if (HAS_CODE_ONLY) labels.push('w/ code');
   if (HAS_COMMENTS_ONLY) labels.push('w/ comments');
   if (labels.length === 0 && query) labels.push(query);
@@ -7987,7 +7989,7 @@ function renderAllGrids(q) {
   syncDynamicCounts(filteredPapers);
 
   const hasQuery = Boolean(query);
-  const hasActiveFilter = hasQuery || publicationDateFilter.active || ACTIVE_TAG_FILTERS.size > 0 || ACCEPTED_ONLY || TODAY_ONLY || HAS_CODE_ONLY || HAS_COMMENTS_ONLY;
+  const hasActiveFilter = hasQuery || publicationDateFilter.active || ACTIVE_TAG_FILTERS.size > 0 || ACCEPTED_ONLY || NEWLY_ARRIVED_ONLY || HAS_CODE_ONLY || HAS_COMMENTS_ONLY;
   const total = filteredPapers.length;
   const searchCount = document.getElementById('search-count');
   if (searchCount) {
@@ -8252,7 +8254,6 @@ function renderTreeInto(container) {
 
 // ── Build DOM from papers.json data ──────────────────────────────────────────
 function buildDOM(data) {
-  REPO_TODAY = (data.meta && data.meta.generated_local_date) || '';
   CATALOG_GENERATED_AT = (data.meta && data.meta.generated) || '';
   CATEGORIES = data.categories || {};
   BLOG_SECTION_META = {
@@ -8260,6 +8261,7 @@ function buildDOM(data) {
     desc: (data.meta && data.meta.blog_section_desc) || ''
   };
   ALL_PAPERS = (data.papers || []).map(preparePaperRecord);
+  LATEST_ADDED_DATE = getLatestAddedDateValue(ALL_PAPERS);
   CATALOG_DATA_ERROR = false;
   CATALOG_DATA_READY = true;
   ALL_BLOGS = (data.blogs || []).map(preparePaperRecord);

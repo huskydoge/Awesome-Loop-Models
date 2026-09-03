@@ -1,16 +1,19 @@
 name: Update paper metrics
 
 on:
+  push:
+    branches: [main]
   schedule:
-    - cron: "17 5 * * 1"
+    - cron: "17 5 * * *"
   workflow_dispatch:
 
 concurrency:
-  group: update-paper-metrics
-  cancel-in-progress: false
+  group: update-paper-metrics-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   update-metrics:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -40,10 +43,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
-        run: python3 scripts/fetch_metrics.py
+        run: python3 scripts/fetch_metrics.py --strict
 
       - name: Rebuild generated outputs
         run: python3 scripts/build.py
+
+      - name: Check static asset budgets
+        run: python3 scripts/check_asset_budgets.py
+
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -t . -p 'test_*.py'
 
       - name: Commit updated metrics
         run: |
@@ -51,5 +60,23 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add papers
           git add -f papers.json submission-meta.json README.md TAGS.md
-          git diff --cached --quiet || git commit -m "chore: update paper metrics [skip ci]"
-          git push
+          git diff --cached --quiet && exit 0
+
+          base_sha="$(git rev-parse HEAD)"
+          git fetch --no-tags origin '+refs/heads/main:refs/remotes/origin/main'
+          if [ "$(git rev-parse origin/main)" != "${base_sha}" ]; then
+            echo "::notice::main advanced; a newer push run owns this refresh."
+            exit 0
+          fi
+
+          git commit -m "chore: update paper metrics [skip ci]"
+          if git push origin HEAD:main; then
+            exit 0
+          fi
+
+          git fetch --no-tags origin '+refs/heads/main:refs/remotes/origin/main'
+          if [ "$(git rev-parse origin/main)" != "${base_sha}" ]; then
+            echo "::notice::main advanced during push; skipping stale refresh."
+            exit 0
+          fi
+          exit 1

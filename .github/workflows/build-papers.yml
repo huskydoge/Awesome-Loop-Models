@@ -1,8 +1,6 @@
 name: Build generated repo artifacts
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -11,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       pull-requests: read
 
     steps:
@@ -134,23 +132,6 @@ jobs:
           print("No new free-form tags detected.")
           EOF
 
-      - name: Require Semantic Scholar API key
-        if: ${{ github.event_name != 'pull_request' }}
-        env:
-          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
-        run: |
-          if [ -z "${SEMANTIC_SCHOLAR_API_KEY}" ]; then
-            echo "Missing repository secret: SEMANTIC_SCHOLAR_API_KEY" >&2
-            exit 1
-          fi
-
-      - name: Fetch citation counts and GitHub stars
-        if: ${{ github.event_name != 'pull_request' }}
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
-        run: python3 scripts/fetch_metrics.py
-
       - name: Build papers.json, submission-meta.json, README.md, and TAGS.md
         run: python3 scripts/build.py
 
@@ -159,13 +140,3 @@ jobs:
 
       - name: Run unit tests
         run: python3 -m unittest discover -s tests -t . -p 'test_*.py'
-
-      - name: Commit metrics and generated files (on main only)
-        if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add papers
-          git add -f papers.json submission-meta.json README.md TAGS.md
-          git diff --cached --quiet || git commit -m "chore: update metrics and generated artifacts [skip ci]"
-          git push
