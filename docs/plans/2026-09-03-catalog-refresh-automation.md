@@ -29,7 +29,7 @@ def test_fetch_all_preserves_prior_metrics_and_provenance_on_source_failure(self
     # metrics_updated in one temporary paper YAML.
     # Return one fresh citation source and no fresh star result.
     # Assert the fresh source is merged, failed-source provenance survives,
-    # and the star fields plus their old metrics_updated value are retained.
+    # star fields are retained, and metrics_updated advances for the citation change.
 
 def test_fetch_all_strict_failure_happens_before_any_write(self):
     """Strict mode must reject missing refresh coverage before persistence."""
@@ -78,14 +78,21 @@ This deliberately guards known fields only. A newly added paper without an estab
 Inside the per-paper loop, replace the destructive empty-result branches. Reuse ordinary dictionaries; do not add a provenance class or new file:
 
 ```python
-old_citation_sources = p.get("citation_sources")
-old_citation_sources = old_citation_sources if isinstance(old_citation_sources, dict) else {}
-new_citation_sources = {
-    **old_citation_sources,
-    **citation_source_maps.get(stem, {}),
-}
-new_citations = max(new_citation_sources.values(), default=p.get("citations"))
-best_citation_source = _best_citation_source(new_citation_sources)
+fresh_citation_sources = citation_source_maps.get(stem, {})
+if fresh_citation_sources:
+    old_citation_sources = p.get("citation_sources")
+    old_citation_sources = old_citation_sources if isinstance(old_citation_sources, dict) else {}
+    new_citation_sources = {**old_citation_sources, **fresh_citation_sources}
+    legacy_citations = p.get("citations")
+    if old_citation_sources and legacy_citations is not None:
+        if legacy_citations <= max(old_citation_sources.values()):
+            legacy_citations = None
+    new_citations = max(
+        value
+        for value in (*new_citation_sources.values(), legacy_citations)
+        if value is not None
+    )
+    best_citation_source = _best_citation_source(new_citation_sources)
 
 fresh_star_sources = star_source_maps.get(stem, {})
 if fresh_star_sources:
@@ -416,7 +423,7 @@ Use automation view immediately before the update. Preserve its name, active sta
 - For each selected paper, check only: verified venue/acceptance, official GitHub or Hugging Face code link, and concrete public community-comment URL.
 - Require exact primary/first-party evidence. Ambiguous matches, inaccessible evidence, and search snippets are reported but skipped.
 - Put verified changes on the existing daily review branch/PR. A no-op audit creates no commit or PR churn. Never push to `main`, merge, or auto-merge.
-- Keep the offline build/test instructions and add final-report counts for shard, audited papers, verified changes, and skipped uncertain candidates.
+- Keep the offline build and GitHub Actions test instructions, and add final-report counts for shard, audited papers, verified changes, and skipped uncertain candidates.
 
 Do not add a second automation or modify the recurrence rule.
 
