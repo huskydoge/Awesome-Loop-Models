@@ -2866,6 +2866,7 @@ process.stdout.write(JSON.stringify({{
         ):
             self.assertIn(marker, timeline_source)
         self.assertIn("setAttribute", timeline_source)
+        self.assertIn("'pathLength': 1", timeline_source)
         self.assertNotIn("innerHTML", timeline_source)
         self.assertNotIn("innerHTML", stats_source)
         self.assertIn("buildDailyPublicationSeries(ALL_PAPERS)", stats_source)
@@ -2927,7 +2928,11 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("height: clamp(220px, 27vh, 250px);", chart_scroll_css)
         self.assertIn("background: transparent;", stats_css)
         self.assertIn("border-top: 1px solid var(--border);", stats_css)
-        self.assertNotIn("animation:", stats_css)
+        self.assertIn("--stats-observatory-bg:", stats_css)
+        self.assertIn("animation: stats-bar-rise", stats_css)
+        self.assertIn("animation: stats-line-draw", stats_css)
+        self.assertIn("@media (prefers-reduced-motion: reduce)", stats_css)
+        self.assertIn("animation: none;", stats_css)
         self.assertIn("@media (max-width: 768px)", stats_css)
         self.assertIn("min-height: 44px;", stats_css)
 
