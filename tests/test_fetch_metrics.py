@@ -388,7 +388,7 @@ class SemanticScholarFetchTests(unittest.TestCase):
         self.assertEqual(updated["metrics_updated"], "2026-09-03")
 
     def test_fetch_all_preserves_legacy_aggregates_during_partial_and_total_outages(self):
-        """Retain aggregate-only metrics across lower results and total outages."""
+        """Retain unsupported legacy metrics across lower results and outages."""
         with TemporaryDirectory() as tmp_dir:
             papers_dir = Path(tmp_dir) / "papers"
             papers_dir.mkdir()
@@ -416,6 +416,22 @@ class SemanticScholarFetchTests(unittest.TestCase):
                 "metrics_updated: '2026-08-02'\n"
             ).encode()
             outage_path.write_bytes(outage_original)
+            unsupported_path = papers_dir / "unsupported-paper.yaml"
+            unsupported_original = (
+                "title: Unsupported Legacy Metrics\n"
+                "year: 2024\n"
+                "links:\n"
+                "  arxiv: https://arxiv.org/abs/2403.09631\n"
+                "  github: https://github.com/owner/unsupported\n"
+                "citations: 10\n"
+                "citation_sources:\n"
+                "  semantic_scholar: 8\n"
+                "github_stars: 50\n"
+                "star_sources:\n"
+                "  github_api: 45\n"
+                "metrics_updated: '2026-08-03'\n"
+            ).encode()
+            unsupported_path.write_bytes(unsupported_original)
 
             with (
                 mock.patch.object(fetch_metrics, "PAPERS_DIR", papers_dir),
@@ -428,7 +444,7 @@ class SemanticScholarFetchTests(unittest.TestCase):
                 mock.patch.object(
                     fetch_metrics,
                     "fetch_citations_semantic_scholar",
-                    return_value={"legacy-paper": 6},
+                    return_value={"legacy-paper": 6, "unsupported-paper": 7},
                 ),
                 mock.patch.object(fetch_metrics, "fetch_citations_openalex", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_citations_opencitations", return_value={}),
@@ -437,8 +453,11 @@ class SemanticScholarFetchTests(unittest.TestCase):
                     fetch_metrics,
                     "fetch_stars_parallel",
                     return_value=(
-                        {"legacy-paper": 40},
-                        {"legacy-paper": {"github_html": 40}},
+                        {"legacy-paper": 40, "unsupported-paper": 44},
+                        {
+                            "legacy-paper": {"github_html": 40},
+                            "unsupported-paper": {"github_api": 44},
+                        },
                         [],
                     ),
                 ),
@@ -456,6 +475,8 @@ class SemanticScholarFetchTests(unittest.TestCase):
             updated = fetch_metrics.yaml.safe_load(updated_bytes)
             outage_bytes = outage_path.read_bytes()
             outage = fetch_metrics.yaml.safe_load(outage_bytes)
+            unsupported_bytes = unsupported_path.read_bytes()
+            unsupported = fetch_metrics.yaml.safe_load(unsupported_bytes)
 
         self.assertNotEqual(updated_bytes, original)
         self.assertEqual(updated["citations"], 7)
@@ -471,6 +492,14 @@ class SemanticScholarFetchTests(unittest.TestCase):
         self.assertNotIn("citation_source_best", outage)
         self.assertNotIn("star_sources", outage)
         self.assertNotIn("star_source_best", outage)
+        self.assertNotEqual(unsupported_bytes, unsupported_original)
+        self.assertEqual(unsupported["citations"], 10)
+        self.assertEqual(unsupported["citation_sources"], {"semantic_scholar": 7})
+        self.assertNotIn("citation_source_best", unsupported)
+        self.assertEqual(unsupported["github_stars"], 50)
+        self.assertEqual(unsupported["star_sources"], {"github_api": 44})
+        self.assertNotIn("star_source_best", unsupported)
+        self.assertEqual(unsupported["metrics_updated"], "2026-09-03")
 
     def test_fetch_all_strict_fails_before_writes_for_known_zero_metrics(self):
         """Treat zero as known and abort strict refreshes before any write."""
