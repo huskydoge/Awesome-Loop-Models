@@ -1518,7 +1518,7 @@ def fetch_all(
             old_citation_sources = p.get("citation_sources")
             old_citation_sources = old_citation_sources if isinstance(old_citation_sources, dict) else {}
             new_citation_sources = {**old_citation_sources, **fresh_citation_sources}
-            # ponytail: retain only top-level counts unsupported by old sources; timestamps enable current-only values.
+            # Preserve an aggregate only when the saved per-source counts cannot explain it.
             legacy_citations = p.get("citations")
             if old_citation_sources and legacy_citations is not None:
                 if legacy_citations <= max(old_citation_sources.values()):
