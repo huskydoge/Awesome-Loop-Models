@@ -2915,15 +2915,15 @@ process.stdout.write(JSON.stringify({{
         dashboard_start = stats_css.index("    .stats-dashboard-grid {")
         dashboard_end = stats_css.index("\n    }", dashboard_start)
         dashboard_rule = stats_css[dashboard_start:dashboard_end]
+        reduced_motion_start = stats_css.rindex("    @media (prefers-reduced-motion: reduce)")
         bar_selector = "    .stats-primary-chart .timeline-bar {"
-        bar_start = stats_css.rindex(bar_selector)
+        bar_start = stats_css.rindex(bar_selector, 0, reduced_motion_start)
         bar_end = stats_css.index("\n    }", bar_start)
         bar_rule = stats_css[bar_start:bar_end]
         line_selector = "    .stats-primary-chart .timeline-line {"
-        line_start = stats_css.rindex(line_selector)
+        line_start = stats_css.rindex(line_selector, 0, reduced_motion_start)
         line_end = stats_css.index("\n    }", line_start)
         line_rule = stats_css[line_start:line_end]
-        reduced_motion_start = stats_css.rindex("    @media (prefers-reduced-motion: reduce)")
         reduced_motion_end = stats_css.index(
             "    @media (prefers-color-scheme: dark)", reduced_motion_start
         )
