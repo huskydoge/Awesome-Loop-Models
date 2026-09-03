@@ -288,8 +288,61 @@ class DailyBriefingBuildTests(unittest.TestCase):
     def test_build_json_trims_briefings_for_browser_without_changing_catalog_entries(self):
         with TemporaryDirectory() as tmpdir:
             json_out = Path(tmpdir) / "papers.json"
-            papers = [{"id": "2604.21999", "title": "A paper"}]
-            blogs = [{"id": "blog-1", "title": "A blog"}]
+            papers = [
+                {
+                    "id": "2604.21999",
+                    "entry_type": "paper",
+                    "title": "A paper",
+                    "authors": "A. Author",
+                    "authors_list": ["A. Author"],
+                    "venue": "arXiv",
+                    "venueClass": "venue-arxiv",
+                    "year": 2026,
+                    "published_date": "2026-04-28",
+                    "added_date": "2026-04-28",
+                    "desc": "A reader-facing summary.",
+                    "links": {"arxiv": "https://arxiv.org/abs/2604.21999"},
+                    "category": "designs",
+                    "foundation": False,
+                    "catalog_fit": "adjacent",
+                    "mechanism_tags": [],
+                    "focus_tags": ["architecture"],
+                    "domain_tags": ["reasoning"],
+                    "must_read": True,
+                    "citations": 12,
+                    "github_stars": 34,
+                    "community_comments": [{"label": "Review", "url": "https://example.com/review"}],
+                    "comments": [{"label": "Review", "url": "https://example.com/review"}],
+                    "source_file": "2604.21999.yaml",
+                    "source_path": "papers/2604.21999.yaml",
+                    "citation_source_best": "semantic_scholar",
+                    "citation_sources": {"semantic_scholar": 12},
+                    "star_source_best": "github",
+                    "star_sources": {"github": 34},
+                    "metrics_updated": "2026-04-28T00:00:00Z",
+                }
+            ]
+            blogs = [
+                {
+                    "id": "blog-1",
+                    "entry_type": "blog",
+                    "title": "A blog",
+                    "authors": "B. Author",
+                    "authors_list": ["B. Author"],
+                    "published_date": "2026-04-27",
+                    "desc": "A blog summary.",
+                    "links": {"blog": "https://example.com/blog"},
+                    "mechanism_tags": ["flat-loop"],
+                    "focus_tags": [],
+                    "domain_tags": [],
+                    "source_file": "blog-1.yaml",
+                    "source_path": "blogs/blog-1.yaml",
+                    "citation_sources": {"internal": 1},
+                    "metrics_updated": "2026-04-28T00:00:00Z",
+                }
+            ]
+            papers_before = json.loads(json.dumps(papers))
+            blogs_before = json.loads(json.dumps(blogs))
             briefings = [
                 {
                     "date": "2026-04-27",
@@ -322,10 +375,32 @@ class DailyBriefingBuildTests(unittest.TestCase):
             ]
             with patch.object(build, "JSON_OUT", json_out):
                 build.build_json(papers, blogs, briefings)
-            payload = json.loads(json_out.read_text(encoding="utf-8"))
+            raw_payload = json_out.read_text(encoding="utf-8")
+            payload = json.loads(raw_payload)
 
-        self.assertEqual(payload["papers"], papers)
-        self.assertEqual(payload["blogs"], blogs)
+        browser_fields = (
+            "id", "entry_type", "title", "authors", "authors_list", "venue", "venueClass",
+            "year", "published_date", "added_date", "desc", "links", "category", "foundation",
+            "catalog_fit", "mechanism_tags", "focus_tags", "domain_tags", "must_read", "citations",
+            "github_stars", "community_comments", "comments",
+        )
+        self.assertEqual(
+            payload["papers"],
+            [{field: papers_before[0][field] for field in browser_fields if field in papers_before[0]}],
+        )
+        self.assertEqual(
+            payload["blogs"],
+            [{field: blogs_before[0][field] for field in browser_fields if field in blogs_before[0]}],
+        )
+        self.assertEqual(papers, papers_before)
+        self.assertEqual(blogs, blogs_before)
+        for entry in [*payload["papers"], *payload["blogs"]]:
+            for field in (
+                "source_file", "source_path", "citation_source_best", "citation_sources",
+                "star_source_best", "star_sources", "metrics_updated",
+            ):
+                self.assertNotIn(field, entry)
+        self.assertEqual(raw_payload, json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
         self.assertEqual(payload["meta"]["briefing_total"], 2)
         self.assertEqual(payload["meta"]["latest_briefing_date"], "2026-04-28")
         self.assertEqual(payload["meta"]["briefing_section_title"], "Daily Briefing")

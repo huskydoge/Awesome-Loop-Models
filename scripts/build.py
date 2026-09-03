@@ -804,6 +804,36 @@ def load_briefings() -> list[dict]:
     return sorted(briefings, key=lambda item: item["date"], reverse=True)
 
 
+def serialize_browser_entry(entry: dict) -> dict:
+    """Return a catalog entry containing only fields consumed by index.html."""
+    browser_fields = (
+        "id",
+        "entry_type",
+        "title",
+        "authors",
+        "authors_list",
+        "venue",
+        "venueClass",
+        "year",
+        "published_date",
+        "added_date",
+        "desc",
+        "links",
+        "category",
+        "foundation",
+        "catalog_fit",
+        "mechanism_tags",
+        "focus_tags",
+        "domain_tags",
+        "must_read",
+        "citations",
+        "github_stars",
+        "community_comments",
+        "comments",
+    )
+    return {field: entry[field] for field in browser_fields if field in entry}
+
+
 def serialize_browser_briefing_candidate(candidate: dict) -> dict:
     """Return a new candidate mapping containing only fields rendered by index.html."""
     browser_fields = ("id", "title", "verdict", "url")
@@ -859,11 +889,11 @@ def build_json(papers: list[dict], blogs: list[dict], briefings: list[dict] | No
         "categories": CATEGORIES,
         "mechanism_tags": list(VALID_MECHANISM_TAGS),
         "focus_tags": list(VALID_FOCUS_TAGS),
-        "papers": papers,
-        "blogs": blogs,
+        "papers": [serialize_browser_entry(paper) for paper in papers],
+        "blogs": [serialize_browser_entry(blog) for blog in blogs],
         "briefings": serialize_browser_briefings(briefings),
     }
-    JSON_OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    JSON_OUT.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"✓ papers.json  — {len(papers)} papers, {len(blogs)} blogs, {len(briefings)} briefings")
 
 
