@@ -1522,19 +1522,14 @@ def fetch_all(
         stem = p["stem"]
         yaml_file = p["_path"]
 
-        old_citation_sources = p.get("citation_sources")
-        old_citation_sources = old_citation_sources if isinstance(old_citation_sources, dict) else {}
-        new_citation_sources = {**old_citation_sources, **citation_source_maps.get(stem, {})}
-        new_citations = max(new_citation_sources.values(), default=p.get("citations"))
-        best_citation_source = _best_citation_source(new_citation_sources)
-        old_star_sources = p.get("star_sources")
-        old_star_sources = old_star_sources if isinstance(old_star_sources, dict) else {}
-        new_star_sources = {**old_star_sources, **star_source_maps.get(stem, {})}
-        new_stars = max(new_star_sources.values(), default=p.get("github_stars"))
-        best_star_source = _best_star_source(new_star_sources)
-
         changed = False
-        if new_citations is not None:
+        fresh_citation_sources = citation_source_maps.get(stem, {})
+        if fresh_citation_sources:
+            old_citation_sources = p.get("citation_sources")
+            old_citation_sources = old_citation_sources if isinstance(old_citation_sources, dict) else {}
+            new_citation_sources = {**old_citation_sources, **fresh_citation_sources}
+            new_citations = max(new_citation_sources.values())
+            best_citation_source = _best_citation_source(new_citation_sources)
             if p.get("citations") != new_citations:
                 p["citations"] = new_citations
                 changed = True
@@ -1545,7 +1540,13 @@ def fetch_all(
                 p["citation_source_best"] = best_citation_source
                 changed = True
 
-        if new_stars is not None:
+        fresh_star_sources = star_source_maps.get(stem, {})
+        if fresh_star_sources:
+            old_star_sources = p.get("star_sources")
+            old_star_sources = old_star_sources if isinstance(old_star_sources, dict) else {}
+            new_star_sources = {**old_star_sources, **fresh_star_sources}
+            new_stars = max(new_star_sources.values())
+            best_star_source = _best_star_source(new_star_sources)
             if p.get("github_stars") != new_stars:
                 p["github_stars"] = new_stars
                 changed = True

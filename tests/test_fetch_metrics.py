@@ -2,9 +2,10 @@ import json
 import ssl
 import unittest
 import urllib.error
-from unittest import mock
+from datetime import datetime, timezone
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from unittest import mock
 
 from scripts import fetch_metrics
 
@@ -308,7 +309,7 @@ class SemanticScholarFetchTests(unittest.TestCase):
         self.assertEqual(cache_data["version"], 1)
 
     def test_fetch_all_preserves_metrics_and_provenance_during_source_outages(self):
-        """Keep last-known metrics when only one old citation source responds."""
+        """Merge a fresh citation while retaining failed-source provenance."""
         with TemporaryDirectory() as tmp_dir:
             papers_dir = Path(tmp_dir) / "papers"
             papers_dir.mkdir()
@@ -341,12 +342,71 @@ class SemanticScholarFetchTests(unittest.TestCase):
                     "GITHUB_LINK_REPORT_FILE",
                     Path(tmp_dir) / "github-links.json",
                 ),
-                mock.patch.object(fetch_metrics, "fetch_citations_semantic_scholar", return_value={}),
                 mock.patch.object(
                     fetch_metrics,
-                    "fetch_citations_openalex",
-                    return_value={"2403.09629": 6},
+                    "fetch_citations_semantic_scholar",
+                    return_value={"2403.09629": 8},
                 ),
+                mock.patch.object(fetch_metrics, "fetch_citations_openalex", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_citations_opencitations", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_citations_crossref", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_stars_parallel", return_value=({}, {}, [])),
+                mock.patch.object(
+                    fetch_metrics,
+                    "_utcnow",
+                    return_value=datetime(2026, 9, 3, tzinfo=timezone.utc),
+                ),
+                mock.patch.object(fetch_metrics, "_save_metrics_cache"),
+                mock.patch.object(fetch_metrics, "_save_github_link_report"),
+            ):
+                fetch_metrics.fetch_all(progress=False)
+
+            updated_bytes = paper_path.read_bytes()
+            updated = fetch_metrics.yaml.safe_load(updated_bytes)
+
+        self.assertNotEqual(updated_bytes, original)
+        self.assertEqual(updated["citations"], 8)
+        self.assertEqual(
+            updated["citation_sources"],
+            {"semantic_scholar": 8, "openalex": 6},
+        )
+        self.assertEqual(updated["citation_source_best"], "semantic_scholar")
+        self.assertEqual(updated["github_stars"], 42)
+        self.assertEqual(
+            updated["star_sources"],
+            {"github_api": 42, "github_html": 41},
+        )
+        self.assertEqual(updated["star_source_best"], "github_api")
+        self.assertEqual(updated["metrics_updated"], "2026-09-03")
+
+    def test_fetch_all_total_outage_leaves_legacy_aggregate_only_yaml_unchanged(self):
+        """Leave aggregate-only legacy metrics byte-stable on total outage."""
+        with TemporaryDirectory() as tmp_dir:
+            papers_dir = Path(tmp_dir) / "papers"
+            papers_dir.mkdir()
+            paper_path = papers_dir / "legacy-paper.yaml"
+            original = (
+                "title: Legacy Paper\n"
+                "year: 2024\n"
+                "links:\n"
+                "  arxiv: https://arxiv.org/abs/2403.09629\n"
+                "  github: https://github.com/owner/repo\n"
+                "citations: 7\n"
+                "github_stars: 42\n"
+                "metrics_updated: '2026-08-01'\n"
+            ).encode()
+            paper_path.write_bytes(original)
+
+            with (
+                mock.patch.object(fetch_metrics, "PAPERS_DIR", papers_dir),
+                mock.patch.object(fetch_metrics, "CACHE_FILE", Path(tmp_dir) / "cache.json"),
+                mock.patch.object(
+                    fetch_metrics,
+                    "GITHUB_LINK_REPORT_FILE",
+                    Path(tmp_dir) / "github-links.json",
+                ),
+                mock.patch.object(fetch_metrics, "fetch_citations_semantic_scholar", return_value={}),
+                mock.patch.object(fetch_metrics, "fetch_citations_openalex", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_citations_opencitations", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_citations_crossref", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_stars_parallel", return_value=({}, {}, [])),
@@ -360,18 +420,12 @@ class SemanticScholarFetchTests(unittest.TestCase):
 
         self.assertEqual(updated_bytes, original)
         self.assertEqual(updated["citations"], 7)
-        self.assertEqual(
-            updated["citation_sources"],
-            {"semantic_scholar": 7, "openalex": 6},
-        )
-        self.assertEqual(updated["citation_source_best"], "semantic_scholar")
         self.assertEqual(updated["github_stars"], 42)
-        self.assertEqual(
-            updated["star_sources"],
-            {"github_api": 42, "github_html": 41},
-        )
-        self.assertEqual(updated["star_source_best"], "github_api")
         self.assertEqual(updated["metrics_updated"], "2026-08-01")
+        self.assertNotIn("citation_sources", updated)
+        self.assertNotIn("citation_source_best", updated)
+        self.assertNotIn("star_sources", updated)
+        self.assertNotIn("star_source_best", updated)
 
     def test_fetch_all_strict_fails_before_writes_for_known_zero_metrics(self):
         """Treat zero as known and abort strict refreshes before any write."""
