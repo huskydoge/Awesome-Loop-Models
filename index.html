@@ -6324,6 +6324,17 @@ function getRepoTodayString() {
   return REPO_TODAY || getBrowserTodayString();
 }
 
+/** Return today's America/New_York date from the shared daily-watch helper. */
+function getCurrentDailyWatchDateString() {
+  if (!window.DAILY_WATCH_COUNTDOWN
+      || typeof window.DAILY_WATCH_COUNTDOWN.getDailyWatchParts !== 'function') return '';
+  const parts = window.DAILY_WATCH_COUNTDOWN.getDailyWatchParts(new Date());
+  if (!parts || !Number.isInteger(parts.year) || !Number.isInteger(parts.month) || !Number.isInteger(parts.day)) return '';
+  return String(parts.year).padStart(4, '0')
+    + '-' + String(parts.month).padStart(2, '0')
+    + '-' + String(parts.day).padStart(2, '0');
+}
+
 function formatTableText(value) {
   return value ? escapeHtml(value) : '<span class="paper-table-empty-value">—</span>';
 }
@@ -8090,8 +8101,11 @@ function buildDOM(data) {
   CATALOG_DATA_READY = true;
   ALL_BLOGS = (data.blogs || []).map(preparePaperRecord);
   const latestBriefing = Array.isArray(data.briefings) ? data.briefings[0] : null;
+  const currentDailyWatchDate = getCurrentDailyWatchDateString();
   updateDailyBriefingNotice(
-    latestBriefing && latestBriefing.date === getRepoTodayString() ? latestBriefing : null
+    latestBriefing && currentDailyWatchDate && latestBriefing.date === currentDailyWatchDate
+      ? latestBriefing
+      : null
   );
   ALL_RESOURCES = ALL_PAPERS.concat(ALL_BLOGS);
   TAG_FILTER_GROUPS = buildTagFilterGroups(ALL_RESOURCES);

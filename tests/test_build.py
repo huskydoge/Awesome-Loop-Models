@@ -1587,14 +1587,27 @@ setTimeout(function() {
         self.assertIn('id="daily-briefing-today-count" aria-live="polite">0 papers</strong>', html)
         self.assertIn('id="daily-briefing-body"', html)
         self.assertIn("function updateDailyBriefingNotice(briefing)", html)
+        self.assertIn("function getCurrentDailyWatchDateString()", html)
+        self.assertIn("window.DAILY_WATCH_COUNTDOWN.getDailyWatchParts(new Date())", html)
+        helper_start = html.index("function getCurrentDailyWatchDateString() {")
+        helper_end = html.index("function formatTableText(value)", helper_start)
+        helper = html[helper_start:helper_end]
+        self.assertIn("typeof window.DAILY_WATCH_COUNTDOWN.getDailyWatchParts !== 'function'", helper)
+        self.assertIn("return '';", helper)
         self.assertIn(
             "const latestBriefing = Array.isArray(data.briefings) ? data.briefings[0] : null;",
             html,
         )
         self.assertIn(
-            "latestBriefing && latestBriefing.date === getRepoTodayString() ? latestBriefing : null",
+            "const currentDailyWatchDate = getCurrentDailyWatchDateString();",
             html,
         )
+        build_dom_start = html.index("function buildDOM(data) {")
+        build_dom_end = html.index("// ── Search", build_dom_start)
+        build_dom = html[build_dom_start:build_dom_end]
+        self.assertIn("latestBriefing && currentDailyWatchDate", build_dom)
+        self.assertIn("latestBriefing.date === currentDailyWatchDate", build_dom)
+        self.assertNotIn("getRepoTodayString()", build_dom)
         updater_start = html.index("function updateDailyBriefingNotice(briefing) {")
         updater_end = html.index("function createCategorySection(", updater_start)
         updater = html[updater_start:updater_end]
