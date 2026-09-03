@@ -24,9 +24,15 @@ focus_tags:
 - training-algorithm
 - inference-algorithm
 desc: Diagnoses adaptive depth in looped Transformers through a trajectory-readout
-  lens, finding that fixed-prior depth supervision shapes more useful stopping
-  signals than jointly learned halting gates, on synthetic tasks and Ouro-1.4B/2.6B
-  checkpoints.
+  lens, finding that fixed-prior depth supervision shapes more useful stopping signals
+  than jointly learned halting gates, on synthetic tasks and Ouro-1.4B/2.6B checkpoints.
 links:
   arxiv: https://arxiv.org/abs/2607.20519
   alphaxiv: https://www.alphaxiv.org/abs/2607.20519
+citations: 2
+citation_sources:
+  semantic_scholar: 2
+  openalex: 0
+  opencitations: 0
+citation_source_best: semantic_scholar
+metrics_updated: '2026-09-03'

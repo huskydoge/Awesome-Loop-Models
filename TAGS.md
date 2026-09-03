@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (21)
-- `flat-loop` (136)
+- `flat-loop` (137)
 - `parallel-loop` (4)
 - `implicit-layer` (16)
 
@@ -27,21 +27,21 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (21)
-- `training-algorithm` (73)
+- `training-algorithm` (74)
 - `architecture` (135)
 - `data` (4)
-- `inference-algorithm` (104)
+- `inference-algorithm` (105)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `language-modeling` (85)
-- `reasoning` (84)
+- `language-modeling` (86)
+- `reasoning` (85)
 - `efficiency` (75)
-- `algorithmic-reasoning` (37)
+- `algorithmic-reasoning` (38)
 - `scaling` (27)
-- `adaptive-compute` (19)
+- `adaptive-compute` (20)
 - `theory` (19)
 - `memory-efficiency` (14)
 - `vision` (13)
@@ -78,11 +78,11 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `HRM` (7)
 - `looped-llm` (7)
 - `depth-recurrent` (6)
+- `Ouro` (6)
 - `shared-weight-recurrence` (6)
 - `ACT` (5)
 - `depth-scaling` (5)
-- `Ouro` (5)
-- `halting` (4)
+- `halting` (5)
 - `recursive-transformer` (4)
 - `UT` (4)
 - `Huginn` (3)
