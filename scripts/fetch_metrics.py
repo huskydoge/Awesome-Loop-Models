@@ -1528,10 +1528,14 @@ def fetch_all(
             old_citation_sources = p.get("citation_sources")
             old_citation_sources = old_citation_sources if isinstance(old_citation_sources, dict) else {}
             new_citation_sources = {**old_citation_sources, **fresh_citation_sources}
-            # ponytail: counts are best-known snapshots; add per-source timestamps for current-only aggregates.
+            # ponytail: retain only top-level counts unsupported by old sources; timestamps enable current-only values.
+            legacy_citations = p.get("citations")
+            if old_citation_sources and legacy_citations is not None:
+                if legacy_citations <= max(old_citation_sources.values()):
+                    legacy_citations = None
             new_citations = max(
                 value
-                for value in (p.get("citations"), *new_citation_sources.values())
+                for value in (*new_citation_sources.values(), legacy_citations)
                 if value is not None
             )
             best_citation_source = p.get("citation_source_best")
@@ -1552,9 +1556,13 @@ def fetch_all(
             old_star_sources = p.get("star_sources")
             old_star_sources = old_star_sources if isinstance(old_star_sources, dict) else {}
             new_star_sources = {**old_star_sources, **fresh_star_sources}
+            legacy_stars = p.get("github_stars")
+            if old_star_sources and legacy_stars is not None:
+                if legacy_stars <= max(old_star_sources.values()):
+                    legacy_stars = None
             new_stars = max(
                 value
-                for value in (p.get("github_stars"), *new_star_sources.values())
+                for value in (*new_star_sources.values(), legacy_stars)
                 if value is not None
             )
             best_star_source = p.get("star_source_best")

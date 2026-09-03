@@ -308,8 +308,8 @@ class SemanticScholarFetchTests(unittest.TestCase):
         self.assertEqual(updated["citation_source_best"], "openalex")
         self.assertEqual(cache_data["version"], 1)
 
-    def test_fetch_all_preserves_metrics_and_provenance_during_source_outages(self):
-        """Merge a fresh citation while retaining failed-source provenance."""
+    def test_fetch_all_applies_source_corrections_and_preserves_failed_provenance(self):
+        """Apply lower same-source values while retaining failed-source provenance."""
         with TemporaryDirectory() as tmp_dir:
             papers_dir = Path(tmp_dir) / "papers"
             papers_dir.mkdir()
@@ -320,9 +320,9 @@ class SemanticScholarFetchTests(unittest.TestCase):
                 "links:\n"
                 "  arxiv: https://arxiv.org/abs/2403.09629\n"
                 "  github: https://github.com/owner/repo\n"
-                "citations: 7\n"
+                "citations: 9\n"
                 "citation_sources:\n"
-                "  semantic_scholar: 7\n"
+                "  semantic_scholar: 9\n"
                 "  openalex: 6\n"
                 "citation_source_best: semantic_scholar\n"
                 "github_stars: 42\n"
@@ -345,12 +345,20 @@ class SemanticScholarFetchTests(unittest.TestCase):
                 mock.patch.object(
                     fetch_metrics,
                     "fetch_citations_semantic_scholar",
-                    return_value={"2403.09629": 8},
+                    return_value={"2403.09629": 5},
                 ),
                 mock.patch.object(fetch_metrics, "fetch_citations_openalex", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_citations_opencitations", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_citations_crossref", return_value={}),
-                mock.patch.object(fetch_metrics, "fetch_stars_parallel", return_value=({}, {}, [])),
+                mock.patch.object(
+                    fetch_metrics,
+                    "fetch_stars_parallel",
+                    return_value=(
+                        {"2403.09629": 40},
+                        {"2403.09629": {"github_api": 40}},
+                        [],
+                    ),
+                ),
                 mock.patch.object(
                     fetch_metrics,
                     "_utcnow",
@@ -365,18 +373,18 @@ class SemanticScholarFetchTests(unittest.TestCase):
             updated = fetch_metrics.yaml.safe_load(updated_bytes)
 
         self.assertNotEqual(updated_bytes, original)
-        self.assertEqual(updated["citations"], 8)
+        self.assertEqual(updated["citations"], 6)
         self.assertEqual(
             updated["citation_sources"],
-            {"semantic_scholar": 8, "openalex": 6},
+            {"semantic_scholar": 5, "openalex": 6},
         )
-        self.assertEqual(updated["citation_source_best"], "semantic_scholar")
-        self.assertEqual(updated["github_stars"], 42)
+        self.assertEqual(updated["citation_source_best"], "openalex")
+        self.assertEqual(updated["github_stars"], 41)
         self.assertEqual(
             updated["star_sources"],
-            {"github_api": 42, "github_html": 41},
+            {"github_api": 40, "github_html": 41},
         )
-        self.assertEqual(updated["star_source_best"], "github_api")
+        self.assertEqual(updated["star_source_best"], "github_html")
         self.assertEqual(updated["metrics_updated"], "2026-09-03")
 
     def test_fetch_all_preserves_legacy_aggregates_during_partial_and_total_outages(self):
