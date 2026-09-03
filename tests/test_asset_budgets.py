@@ -356,10 +356,23 @@ class AssetBudgetContractTests(unittest.TestCase):
         self.assertIn("assets/favicon.png raw bytes", rendered)
         self.assertIn("Asset budgets: FAIL", rendered)
 
-    def test_workflow_runs_generation_budgets_and_tests_on_pull_requests(self):
-        """PR CI should run offline generation and gates while keeping network and writes guarded."""
+    def test_build_workflow_is_offline_read_only_pull_request_ci(self):
+        """Build CI should validate pull requests without fetching metrics or writing to main."""
         workflow = yaml.safe_load(WORKFLOW_PATH.read_text(encoding="utf-8"))
-        steps = workflow["jobs"]["build"]["steps"]
+        self.assertEqual(
+            workflow[True],
+            {
+                "pull_request": {"branches": ["main"]},
+                "workflow_dispatch": None,
+            },
+        )
+
+        job = workflow["jobs"]["build"]
+        self.assertEqual(
+            job["permissions"],
+            {"contents": "read", "pull-requests": "read"},
+        )
+        steps = job["steps"]
         steps_by_name = {step["name"]: step for step in steps}
 
         offline_gate_commands = {
@@ -372,32 +385,91 @@ class AssetBudgetContractTests(unittest.TestCase):
                 self.assertEqual(steps_by_name[name]["run"], command)
                 self.assertNotIn("if", steps_by_name[name])
 
-        for name in (
+        self.assertIn("Validate YAML files", steps_by_name)
+        self.assertIn("Check new free-form tags need review", steps_by_name)
+
+        forbidden_names = (
             "Require Semantic Scholar API key",
             "Fetch citation counts and GitHub stars",
-        ):
+            "Commit metrics and generated files (on main only)",
+        )
+        for name in forbidden_names:
             with self.subTest(step=name):
-                self.assertEqual(
-                    steps_by_name[name]["if"],
-                    "${{ github.event_name != 'pull_request' }}",
-                )
-        commit_condition = steps_by_name["Commit metrics and generated files (on main only)"]["if"]
-        self.assertIn("github.event_name != 'pull_request'", commit_condition)
-        self.assertIn("github.ref == 'refs/heads/main'", commit_condition)
-        self.assertIn(
-            "git add -f papers.json submission-meta.json README.md TAGS.md",
-            steps_by_name["Commit metrics and generated files (on main only)"]["run"],
+                self.assertNotIn(name, steps_by_name)
+
+        serialized_steps = json.dumps(steps, sort_keys=True)
+        self.assertNotIn("SEMANTIC_SCHOLAR_API_KEY", serialized_steps)
+        self.assertNotIn("scripts/fetch_metrics.py", serialized_steps)
+        self.assertNotIn("git commit", serialized_steps)
+        self.assertNotIn("git push", serialized_steps)
+
+    def test_metric_workflow_is_the_single_stale_safe_main_writer(self):
+        """Metric refreshes should run daily and publish only from the current main commit."""
+        workflow = yaml.safe_load(UPDATE_METRICS_WORKFLOW_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(
+            workflow[True],
+            {
+                "push": {"branches": ["main"]},
+                "schedule": [{"cron": "17 5 * * *"}],
+                "workflow_dispatch": None,
+            },
+        )
+        self.assertEqual(
+            workflow["concurrency"],
+            {"group": "update-paper-metrics", "cancel-in-progress": True},
         )
 
-    def test_metric_workflow_commits_submission_metadata(self):
-        """Scheduled rebuilds should publish every generated browser dependency."""
-        workflow = yaml.safe_load(UPDATE_METRICS_WORKFLOW_PATH.read_text(encoding="utf-8"))
-        steps = workflow["jobs"]["update-metrics"]["steps"]
-        commit_step = next(step for step in steps if step["name"] == "Commit updated metrics")
-
+        job = workflow["jobs"]["update-metrics"]
+        self.assertEqual(job["if"], "github.ref == 'refs/heads/main'")
+        self.assertEqual(job["permissions"], {"contents": "write"})
+        steps = job["steps"]
+        steps_by_name = {step["name"]: step for step in steps}
         self.assertIn(
+            "--strict",
+            steps_by_name["Fetch citation counts and GitHub stars"]["run"],
+        )
+        self.assertEqual(
+            steps_by_name["Rebuild generated outputs"]["run"],
+            "python3 scripts/build.py",
+        )
+        self.assertEqual(
+            steps_by_name["Check static asset budgets"]["run"],
+            "python3 scripts/check_asset_budgets.py",
+        )
+        self.assertEqual(
+            steps_by_name["Run unit tests"]["run"],
+            "python3 -m unittest discover -s tests -t . -p 'test_*.py'",
+        )
+        commit_step = next(step for step in steps if step["name"] == "Commit updated metrics")
+        script = commit_step["run"]
+
+        for command in (
+            "git add papers",
             "git add -f papers.json submission-meta.json README.md TAGS.md",
-            commit_step["run"],
+            "git diff --cached --quiet && exit 0",
+            'base_sha="$(git rev-parse HEAD)"',
+            "git commit -m \"chore: update paper metrics [skip ci]\"",
+            "git push origin HEAD:main",
+        ):
+            with self.subTest(command=command):
+                self.assertIn(command, script)
+        self.assertEqual(
+            script.count(
+                "git fetch --no-tags origin '+refs/heads/main:refs/remotes/origin/main'"
+            ),
+            2,
+        )
+        self.assertEqual(
+            script.count('[ "$(git rev-parse origin/main)" != "${base_sha}" ]'),
+            2,
+        )
+        self.assertIn(
+            "::notice::main advanced; a newer push run owns this refresh.",
+            script,
+        )
+        self.assertIn(
+            "::notice::main advanced during push; skipping stale refresh.",
+            script,
         )
 
 
