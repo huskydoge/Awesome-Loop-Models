@@ -92,7 +92,10 @@ if fresh_citation_sources:
         for value in (*new_citation_sources.values(), legacy_citations)
         if value is not None
     )
-    best_citation_source = _best_citation_source(new_citation_sources)
+    if max(new_citation_sources.values()) == new_citations:
+        best_citation_source = _best_citation_source(new_citation_sources)
+    else:
+        best_citation_source = None
 
 fresh_star_sources = star_source_maps.get(stem, {})
 if fresh_star_sources:
