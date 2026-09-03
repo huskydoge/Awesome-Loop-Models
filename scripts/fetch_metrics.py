@@ -1384,16 +1384,6 @@ def _best_citation_source(source_counts: dict[str, int]) -> str | None:
     return max(source_counts.items(), key=lambda item: (item[1], -priority.get(item[0], 999)))[0]
 
 
-def _best_star_source(source_counts: dict[str, int]) -> str | None:
-    if not source_counts:
-        return None
-    priority = {
-        "github_api": 0,
-        "github_html": 1,
-    }
-    return max(source_counts.items(), key=lambda item: (item[1], -priority.get(item[0], 999)))[0]
-
-
 def _save_github_link_report(broken_links: list[dict], path: Path = GITHUB_LINK_REPORT_FILE) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {
@@ -1555,31 +1545,15 @@ def fetch_all(
 
         fresh_star_sources = star_source_maps.get(stem, {})
         if fresh_star_sources:
-            old_star_sources = p.get("star_sources")
-            old_star_sources = old_star_sources if isinstance(old_star_sources, dict) else {}
-            new_star_sources = {**old_star_sources, **fresh_star_sources}
-            legacy_stars = p.get("github_stars")
-            if old_star_sources and legacy_stars is not None:
-                if legacy_stars <= max(old_star_sources.values()):
-                    legacy_stars = None
-            new_stars = max(
-                value
-                for value in (*new_star_sources.values(), legacy_stars)
-                if value is not None
-            )
-            if max(new_star_sources.values()) == new_stars:
-                best_star_source = _best_star_source(new_star_sources)
-                if p.get("star_source_best") != best_star_source:
-                    p["star_source_best"] = best_star_source
-                    changed = True
-            elif "star_source_best" in p:
-                p.pop("star_source_best")
+            best_star_source, new_stars = next(iter(fresh_star_sources.items()))
+            if p.get("star_source_best") != best_star_source:
+                p["star_source_best"] = best_star_source
                 changed = True
             if p.get("github_stars") != new_stars:
                 p["github_stars"] = new_stars
                 changed = True
-            if p.get("star_sources") != new_star_sources:
-                p["star_sources"] = new_star_sources
+            if p.get("star_sources") != fresh_star_sources:
+                p["star_sources"] = fresh_star_sources
                 changed = True
         if changed:
             p["metrics_updated"] = now_str

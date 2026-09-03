@@ -308,8 +308,8 @@ class SemanticScholarFetchTests(unittest.TestCase):
         self.assertEqual(updated["citation_source_best"], "openalex")
         self.assertEqual(cache_data["version"], 1)
 
-    def test_fetch_all_applies_source_corrections_and_preserves_failed_provenance(self):
-        """Apply lower same-source values while retaining failed-source provenance."""
+    def test_fetch_all_applies_source_corrections_and_preserves_failed_citation_provenance(self):
+        """Apply fresh corrections while retaining failed citation provenance."""
         with TemporaryDirectory() as tmp_dir:
             papers_dir = Path(tmp_dir) / "papers"
             papers_dir.mkdir()
@@ -379,12 +379,9 @@ class SemanticScholarFetchTests(unittest.TestCase):
             {"semantic_scholar": 5, "openalex": 6},
         )
         self.assertEqual(updated["citation_source_best"], "openalex")
-        self.assertEqual(updated["github_stars"], 41)
-        self.assertEqual(
-            updated["star_sources"],
-            {"github_api": 40, "github_html": 41},
-        )
-        self.assertEqual(updated["star_source_best"], "github_html")
+        self.assertEqual(updated["github_stars"], 40)
+        self.assertEqual(updated["star_sources"], {"github_api": 40})
+        self.assertEqual(updated["star_source_best"], "github_api")
         self.assertEqual(updated["metrics_updated"], "2026-09-03")
 
     def test_fetch_all_preserves_legacy_aggregates_during_partial_and_total_outages(self):
@@ -434,9 +431,6 @@ class SemanticScholarFetchTests(unittest.TestCase):
                 "  semantic_scholar: 8\n"
                 "citation_source_best: semantic_scholar\n"
                 "github_stars: 50\n"
-                "star_sources:\n"
-                "  github_api: 45\n"
-                "star_source_best: github_api\n"
                 "metrics_updated: '2026-08-03'\n"
             ).encode()
             unsupported_path.write_bytes(unsupported_original)
@@ -490,9 +484,9 @@ class SemanticScholarFetchTests(unittest.TestCase):
         self.assertEqual(updated["citations"], 7)
         self.assertEqual(updated["citation_sources"], {"semantic_scholar": 6})
         self.assertNotIn("citation_source_best", updated)
-        self.assertEqual(updated["github_stars"], 42)
+        self.assertEqual(updated["github_stars"], 40)
         self.assertEqual(updated["star_sources"], {"github_html": 40})
-        self.assertNotIn("star_source_best", updated)
+        self.assertEqual(updated["star_source_best"], "github_html")
         self.assertEqual(updated["metrics_updated"], "2026-09-03")
         self.assertEqual(outage_bytes, outage_original)
         self.assertEqual(outage["metrics_updated"], "2026-08-02")
@@ -504,9 +498,9 @@ class SemanticScholarFetchTests(unittest.TestCase):
         self.assertEqual(unsupported["citations"], 10)
         self.assertEqual(unsupported["citation_sources"], {"semantic_scholar": 7})
         self.assertNotIn("citation_source_best", unsupported)
-        self.assertEqual(unsupported["github_stars"], 50)
+        self.assertEqual(unsupported["github_stars"], 44)
         self.assertEqual(unsupported["star_sources"], {"github_api": 44})
-        self.assertNotIn("star_source_best", unsupported)
+        self.assertEqual(unsupported["star_source_best"], "github_api")
         self.assertEqual(unsupported["metrics_updated"], "2026-09-03")
 
     def test_fetch_all_strict_fails_before_writes_for_known_zero_metrics(self):
