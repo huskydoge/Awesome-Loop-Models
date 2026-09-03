@@ -156,7 +156,7 @@ def test_metric_workflow_is_daily_serialized_main_writer(self):
     self.assertEqual(triggers["push"]["branches"], ["main"])
     self.assertIn("workflow_dispatch", triggers)
     self.assertEqual(workflow["concurrency"], {
-        "group": "update-paper-metrics",
+        "group": "update-paper-metrics-${{ github.ref }}",
         "cancel-in-progress": True,
     })
     self.assertEqual(job["if"], "github.ref == 'refs/heads/main'")
@@ -197,7 +197,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: update-paper-metrics
+  group: update-paper-metrics-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

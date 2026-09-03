@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: update-paper-metrics
+  group: update-paper-metrics-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

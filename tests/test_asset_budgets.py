@@ -416,7 +416,7 @@ class AssetBudgetContractTests(unittest.TestCase):
         )
         self.assertEqual(
             workflow["concurrency"],
-            {"group": "update-paper-metrics", "cancel-in-progress": True},
+            {"group": "update-paper-metrics-${{ github.ref }}", "cancel-in-progress": True},
         )
 
         job = workflow["jobs"]["update-metrics"]
