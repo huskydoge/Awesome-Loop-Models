@@ -2270,15 +2270,11 @@
 
     .daily-briefing-notice {
       position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 4px 7px;
+      display: block;
       width: fit-content;
       max-width: 100%;
       margin: 0 auto 12px;
-      padding: 6px 10px;
+      padding: 0;
       border: 1px solid var(--border);
       border-radius: 999px;
       background: color-mix(in srgb, var(--surface) 94%, var(--accent) 6%);
@@ -2286,6 +2282,26 @@
       font-size: 11px;
       line-height: 1.3;
       text-align: left;
+    }
+
+    .daily-briefing-notice[open] {
+      border-radius: 12px;
+    }
+
+    .daily-briefing-summary {
+      padding: 6px 10px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .daily-briefing-summary::marker {
+      color: var(--accent);
+    }
+
+    .daily-briefing-summary:focus-visible {
+      border-radius: inherit;
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     .daily-briefing-notice-label,
@@ -2315,10 +2331,45 @@
       color: var(--text-muted);
     }
 
-    .daily-briefing-recommended {
+    .daily-briefing-body {
+      width: 620px;
+      max-width: 100%;
+      padding: 0 10px 8px;
+    }
+
+    .daily-briefing-overview {
+      margin: 0;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
       color: var(--text-muted);
-      font-weight: 600;
-      white-space: nowrap;
+      line-height: 1.45;
+    }
+
+    .daily-briefing-papers {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .daily-briefing-paper {
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .daily-briefing-paper-title {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .daily-briefing-paper-title:hover {
+      text-decoration: underline;
+    }
+
+    .daily-briefing-paper-desc {
+      margin: 3px 0 0;
+      color: var(--text-muted);
+      line-height: 1.45;
     }
 
     .daily-watch-countdown {
@@ -5041,16 +5092,17 @@
       <p class="header-sub">
         A curated list of papers and selected technical blogs on Loop Models.
       </p>
-    <aside class="daily-briefing-notice"
+    <details class="daily-briefing-notice"
        id="daily-briefing-notice"
        aria-label="Today's catalog update"
-       aria-live="polite"
        hidden>
-      <span class="daily-briefing-notice-label">Today</span>
-      <strong class="daily-briefing-today-count" id="daily-briefing-today-count">0 papers</strong>
-      <span class="daily-briefing-separator" aria-hidden="true">·</span>
-      <span class="daily-briefing-recommended" id="daily-briefing-recommended">Husky recommended: No</span>
-    </aside>
+      <summary class="daily-briefing-summary">
+        <span class="daily-briefing-notice-label">Today</span>
+        <span class="daily-briefing-separator" aria-hidden="true">·</span>
+        <strong class="daily-briefing-today-count" id="daily-briefing-today-count" aria-live="polite">0 papers</strong>
+      </summary>
+      <div class="daily-briefing-body" id="daily-briefing-body"></div>
+    </details>
     <div class="daily-watch-countdown" id="daily-watch-countdown">
       <div class="daily-watch-countdown-label">Today papers refresh</div>
       <div class="daily-watch-countdown-value" id="daily-watch-countdown-value" aria-live="polite">Calculating…</div>
@@ -7893,25 +7945,42 @@ function createBlogTreeNode() {
   return wrapper;
 }
 
-function updateDailyBriefingNotice() {
+function updateDailyBriefingNotice(briefing) {
   const notice = document.getElementById('daily-briefing-notice');
   if (!notice) return;
 
-  const todayPapers = ALL_PAPERS.filter(function(paper) {
-    return paper._addedDate === getRepoTodayString();
-  });
-  const recommendedCount = todayPapers.filter(function(paper) {
-    return paper.must_read === true;
-  }).length;
+  const candidates = briefing && Array.isArray(briefing.candidates) ? briefing.candidates : [];
+  const papersById = new Map(ALL_PAPERS.map(function(paper) {
+    return [String(paper.id || ''), paper];
+  }));
+  const addedPapers = candidates
+    .filter(function(candidate) { return candidate && candidate.verdict === 'added'; })
+    .map(function(candidate) { return papersById.get(String(candidate.id || '')); })
+    .filter(Boolean);
   const countEl = document.getElementById('daily-briefing-today-count');
-  const recommendedEl = document.getElementById('daily-briefing-recommended');
+  const bodyEl = document.getElementById('daily-briefing-body');
   if (countEl) {
-    countEl.textContent = todayPapers.length + ' paper' + (todayPapers.length === 1 ? '' : 's');
+    countEl.textContent = addedPapers.length + ' paper' + (addedPapers.length === 1 ? '' : 's');
   }
-  if (recommendedEl) {
-    recommendedEl.textContent = 'Husky recommended: ' + (recommendedCount ? 'Yes' : 'No');
+  if (bodyEl) {
+    const summary = briefing && typeof briefing.summary === 'string' ? briefing.summary.trim() : '';
+    const paperRows = addedPapers.map(function(paper) {
+      const star = paper.must_read === true
+        ? '<span class="daily-briefing-star" role="img" aria-label="Must read">🌟</span> '
+        : '';
+      const title = star + escapeHtml(paper.title || paper.id || 'Untitled paper');
+      const url = getPrimaryPaperUrl(paper);
+      const titleHtml = url
+        ? '<a class="daily-briefing-paper-title" href="' + escapeHtml(url) + '" target="_blank" rel="noopener">' + title + '</a>'
+        : '<strong class="daily-briefing-paper-title">' + title + '</strong>';
+      return '<li class="daily-briefing-paper">' + titleHtml
+        + (paper.desc ? '<p class="daily-briefing-paper-desc">' + escapeHtml(paper.desc) + '</p>' : '')
+        + '</li>';
+    }).join('');
+    bodyEl.innerHTML = (summary ? '<p class="daily-briefing-overview">' + escapeHtml(summary) + '</p>' : '')
+      + (paperRows ? '<ul class="daily-briefing-papers">' + paperRows + '</ul>' : '');
   }
-  notice.hidden = false;
+  notice.hidden = !briefing;
 }
 
 function createCategorySection(node, pathParts, depth) {
@@ -8023,7 +8092,7 @@ function buildDOM(data) {
   CATALOG_DATA_ERROR = false;
   CATALOG_DATA_READY = true;
   ALL_BLOGS = (data.blogs || []).map(preparePaperRecord);
-  updateDailyBriefingNotice();
+  updateDailyBriefingNotice(Array.isArray(data.briefings) ? data.briefings[0] : null);
   ALL_RESOURCES = ALL_PAPERS.concat(ALL_BLOGS);
   TAG_FILTER_GROUPS = buildTagFilterGroups(ALL_RESOURCES);
   buildCategoryIndex();

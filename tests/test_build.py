@@ -1532,7 +1532,7 @@ setTimeout(function() {
         blog_end = html.index("function renderTreeInto(container)", blog_start)
         blog_builder = html[blog_start:blog_end]
         renderer_start = html.index("function renderAllGrids(q) {")
-        renderer_end = html.index("function updateDailyBriefingNotice()", renderer_start)
+        renderer_end = html.index("function updateDailyBriefingNotice(briefing)", renderer_start)
         renderer = html[renderer_start:renderer_end]
 
         self.assertIn('grid.dataset.nodeKey = getNodeKey(pathParts);', category_builder)
@@ -1557,7 +1557,7 @@ setTimeout(function() {
         """Preserve lazy table rendering when view modes change."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         renderer_start = html.index("function renderAllGrids(q) {")
-        renderer_end = html.index("function updateDailyBriefingNotice()", renderer_start)
+        renderer_end = html.index("function updateDailyBriefingNotice(briefing)", renderer_start)
         renderer = html[renderer_start:renderer_end]
 
         self.assertIn(
@@ -1567,47 +1567,47 @@ setTimeout(function() {
         self.assertIn("if (tableBody && tableBody.children.length) tableBody.textContent = '';", renderer)
         self.assertEqual(renderer.count("renderTableView(query, filteredPapers);"), 1)
 
-    def test_daily_briefing_notice_is_a_compact_today_status_in_document_flow(self):
+    def test_daily_briefing_notice_is_a_neutral_expandable_report_in_document_flow(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn('<aside class="daily-briefing-notice"', html)
+        self.assertIn('<details class="daily-briefing-notice"', html)
         self.assertIn('id="daily-briefing-notice"', html)
+        self.assertIn('<summary class="daily-briefing-summary">', html)
         self.assertIn('<span class="daily-briefing-notice-label">Today</span>', html)
-        self.assertIn('id="daily-briefing-today-count">0 papers</strong>', html)
         self.assertIn('class="daily-briefing-separator" aria-hidden="true">·</span>', html)
-        self.assertIn('id="daily-briefing-recommended">Husky recommended: No</span>', html)
-        self.assertIn("function updateDailyBriefingNotice()", html)
-        self.assertIn("updateDailyBriefingNotice();", html)
-
-        updater_start = html.index("function updateDailyBriefingNotice() {")
+        self.assertIn('id="daily-briefing-today-count" aria-live="polite">0 papers</strong>', html)
+        self.assertIn('id="daily-briefing-body"', html)
+        self.assertIn("function updateDailyBriefingNotice(briefing)", html)
+        self.assertIn(
+            "updateDailyBriefingNotice(Array.isArray(data.briefings) ? data.briefings[0] : null);",
+            html,
+        )
+        updater_start = html.index("function updateDailyBriefingNotice(briefing) {")
         updater_end = html.index("function createCategorySection(", updater_start)
         updater = html[updater_start:updater_end]
-        self.assertIn("paper._addedDate === getRepoTodayString()", updater)
+        self.assertIn("Array.isArray(briefing.candidates)", updater)
+        self.assertIn("candidate.verdict === 'added'", updater)
+        self.assertIn("new Map(ALL_PAPERS.map", updater)
+        self.assertIn("papersById.get(String(candidate.id || ''))", updater)
+        self.assertIn("briefing.summary", updater)
+        self.assertIn("paper.desc", updater)
         self.assertIn("paper.must_read === true", updater)
-        self.assertIn("todayPapers.length + ' paper'", updater)
-        self.assertIn("recommendedCount ? 'Yes' : 'No'", updater)
+        self.assertIn("getPrimaryPaperUrl(paper)", updater)
+        self.assertIn("escapeHtml(summary)", updater)
+        self.assertIn("escapeHtml(paper.desc)", updater)
+        self.assertNotIn("_addedDate", updater)
+        self.assertNotIn("getRepoTodayString()", updater)
 
         css_start = html.index(".daily-briefing-notice {\n")
         css_end = html.index("}", css_start)
         notice_css = html[css_start:css_end]
         for declaration in (
             "position: relative;",
-            "display: flex;",
-            "flex-wrap: wrap;",
+            "display: block;",
             "width: fit-content;",
             "max-width: 100%;",
         ):
             self.assertIn(declaration, notice_css)
         self.assertNotIn("position: absolute;", notice_css)
-
-        for removed_ui in (
-            "daily-briefing-notice-detail",
-            "daily-briefing-notice-toggle",
-            "daily-briefing-notice-candidate",
-            "function renderDailyBriefingNoticeCandidate",
-            "function setDailyBriefingNoticeExpanded",
-            "ALL_BRIEFINGS",
-        ):
-            self.assertNotIn(removed_ui, html)
 
     def test_countdown_reflows_before_it_can_overlap_masthead_tools(self):
         """The remaining absolute side widget must rejoin flow at mid widths."""
