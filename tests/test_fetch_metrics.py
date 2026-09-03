@@ -379,8 +379,8 @@ class SemanticScholarFetchTests(unittest.TestCase):
         self.assertEqual(updated["star_source_best"], "github_api")
         self.assertEqual(updated["metrics_updated"], "2026-09-03")
 
-    def test_fetch_all_total_outage_leaves_legacy_aggregate_only_yaml_unchanged(self):
-        """Leave aggregate-only legacy metrics byte-stable on total outage."""
+    def test_fetch_all_preserves_legacy_aggregates_during_partial_and_total_outages(self):
+        """Retain aggregate-only metrics across lower results and total outages."""
         with TemporaryDirectory() as tmp_dir:
             papers_dir = Path(tmp_dir) / "papers"
             papers_dir.mkdir()
@@ -396,6 +396,18 @@ class SemanticScholarFetchTests(unittest.TestCase):
                 "metrics_updated: '2026-08-01'\n"
             ).encode()
             paper_path.write_bytes(original)
+            outage_path = papers_dir / "outage-paper.yaml"
+            outage_original = (
+                "title: Outage Paper\n"
+                "year: 2024\n"
+                "links:\n"
+                "  arxiv: https://arxiv.org/abs/2403.09630\n"
+                "  github: https://github.com/owner/outage\n"
+                "citations: 3\n"
+                "github_stars: 5\n"
+                "metrics_updated: '2026-08-02'\n"
+            ).encode()
+            outage_path.write_bytes(outage_original)
 
             with (
                 mock.patch.object(fetch_metrics, "PAPERS_DIR", papers_dir),
@@ -405,11 +417,20 @@ class SemanticScholarFetchTests(unittest.TestCase):
                     "GITHUB_LINK_REPORT_FILE",
                     Path(tmp_dir) / "github-links.json",
                 ),
-                mock.patch.object(fetch_metrics, "fetch_citations_semantic_scholar", return_value={}),
+                mock.patch.object(
+                    fetch_metrics,
+                    "fetch_citations_semantic_scholar",
+                    return_value={"legacy-paper": 6},
+                ),
                 mock.patch.object(fetch_metrics, "fetch_citations_openalex", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_citations_opencitations", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_citations_crossref", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_stars_parallel", return_value=({}, {}, [])),
+                mock.patch.object(
+                    fetch_metrics,
+                    "_utcnow",
+                    return_value=datetime(2026, 9, 3, tzinfo=timezone.utc),
+                ),
                 mock.patch.object(fetch_metrics, "_save_metrics_cache"),
                 mock.patch.object(fetch_metrics, "_save_github_link_report"),
             ):
@@ -417,15 +438,23 @@ class SemanticScholarFetchTests(unittest.TestCase):
 
             updated_bytes = paper_path.read_bytes()
             updated = fetch_metrics.yaml.safe_load(updated_bytes)
+            outage_bytes = outage_path.read_bytes()
+            outage = fetch_metrics.yaml.safe_load(outage_bytes)
 
-        self.assertEqual(updated_bytes, original)
+        self.assertNotEqual(updated_bytes, original)
         self.assertEqual(updated["citations"], 7)
+        self.assertEqual(updated["citation_sources"], {"semantic_scholar": 6})
+        self.assertEqual(updated["citation_source_best"], "semantic_scholar")
         self.assertEqual(updated["github_stars"], 42)
-        self.assertEqual(updated["metrics_updated"], "2026-08-01")
-        self.assertNotIn("citation_sources", updated)
-        self.assertNotIn("citation_source_best", updated)
+        self.assertEqual(updated["metrics_updated"], "2026-09-03")
         self.assertNotIn("star_sources", updated)
         self.assertNotIn("star_source_best", updated)
+        self.assertEqual(outage_bytes, outage_original)
+        self.assertEqual(outage["metrics_updated"], "2026-08-02")
+        self.assertNotIn("citation_sources", outage)
+        self.assertNotIn("citation_source_best", outage)
+        self.assertNotIn("star_sources", outage)
+        self.assertNotIn("star_source_best", outage)
 
     def test_fetch_all_strict_fails_before_writes_for_known_zero_metrics(self):
         """Treat zero as known and abort strict refreshes before any write."""
@@ -500,6 +529,7 @@ class SemanticScholarFetchTests(unittest.TestCase):
                 mock.patch.object(fetch_metrics, "fetch_citations_opencitations", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_citations_crossref", return_value={}),
                 mock.patch.object(fetch_metrics, "fetch_stars_parallel", return_value=({}, {}, [])),
+                mock.patch.object(fetch_metrics, "_load_metrics_cache") as cache_loader,
                 mock.patch.object(fetch_metrics, "_save_metrics_cache") as cache_writer,
                 mock.patch.object(fetch_metrics, "_save_github_link_report") as report_writer,
             ):
@@ -508,6 +538,7 @@ class SemanticScholarFetchTests(unittest.TestCase):
             updated_bytes = paper_path.read_bytes()
 
         self.assertEqual(updated_bytes, original)
+        cache_loader.assert_not_called()
         cache_writer.assert_called_once()
         report_writer.assert_called_once()
 

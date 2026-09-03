@@ -1417,7 +1417,7 @@ def fetch_all(
     strict: bool = False,
 ) -> None:
     show_progress = _resolve_progress_enabled(progress)
-    cache = _load_metrics_cache(CACHE_FILE)
+    cache = {"version": CACHE_VERSION, "papers": {}} if strict else _load_metrics_cache(CACHE_FILE)
     papers = load_papers()
     if only:
         filtered = []
@@ -1528,7 +1528,12 @@ def fetch_all(
             old_citation_sources = p.get("citation_sources")
             old_citation_sources = old_citation_sources if isinstance(old_citation_sources, dict) else {}
             new_citation_sources = {**old_citation_sources, **fresh_citation_sources}
-            new_citations = max(new_citation_sources.values())
+            # ponytail: counts are best-known snapshots; add per-source timestamps for current-only aggregates.
+            new_citations = max(
+                value
+                for value in (p.get("citations"), *new_citation_sources.values())
+                if value is not None
+            )
             best_citation_source = _best_citation_source(new_citation_sources)
             if p.get("citations") != new_citations:
                 p["citations"] = new_citations
@@ -1545,7 +1550,11 @@ def fetch_all(
             old_star_sources = p.get("star_sources")
             old_star_sources = old_star_sources if isinstance(old_star_sources, dict) else {}
             new_star_sources = {**old_star_sources, **fresh_star_sources}
-            new_stars = max(new_star_sources.values())
+            new_stars = max(
+                value
+                for value in (p.get("github_stars"), *new_star_sources.values())
+                if value is not None
+            )
             best_star_source = _best_star_source(new_star_sources)
             if p.get("github_stars") != new_stars:
                 p["github_stars"] = new_stars
