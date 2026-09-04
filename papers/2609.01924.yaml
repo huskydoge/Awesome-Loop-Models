@@ -1,10 +1,11 @@
-title: 'Looped Transformers under the Jacobian Lens: Does the Global Workspace Survive Recurrence?'
+title: 'Looped Transformers under the Jacobian Lens: Does the Global Workspace Survive
+  Recurrence?'
 authors:
 - Wenlong Wang
 - Fergal Reid
 year: 2026
 published_date: '2026-09-01'
-added_date: "2026-09-03"
+added_date: '2026-09-03'
 venue: arXiv
 category: analysis
 foundation: false
@@ -22,3 +23,9 @@ desc: Extends the Jacobian lens to weight-tied virtual depth and compares worksp
 links:
   arxiv: https://arxiv.org/abs/2609.01924
   alphaxiv: https://www.alphaxiv.org/abs/2609.01924
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-04'
