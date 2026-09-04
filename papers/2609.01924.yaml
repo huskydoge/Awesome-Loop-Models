@@ -1,0 +1,24 @@
+title: 'Looped Transformers under the Jacobian Lens: Does the Global Workspace Survive Recurrence?'
+authors:
+- Wenlong Wang
+- Fergal Reid
+year: 2026
+published_date: '2026-09-01'
+added_date: "2026-09-03"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Extends the Jacobian lens to weight-tied virtual depth and compares workspace
+  dynamics in Ouro and Huginn, finding that recurrence preserves a causal workspace
+  while reshaping how information and interventions propagate across iterations.
+links:
+  arxiv: https://arxiv.org/abs/2609.01924
+  alphaxiv: https://www.alphaxiv.org/abs/2609.01924
