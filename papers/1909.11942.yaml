@@ -1,0 +1,29 @@
+title: "ALBERT: A Lite BERT for Self-supervised Learning of Language Representations"
+authors:
+  - "Zhenzhong Lan"
+  - "Mingda Chen"
+  - "Sebastian Goodman"
+  - "Kevin Gimpel"
+  - "Piyush Sharma"
+  - "Radu Soricut"
+year: 2019
+published_date: "2019-09-26"
+added_date: "2026-09-06"
+venue: "ICLR"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "language-modeling"
+  - "efficiency"
+  - "memory-efficiency"
+tags:
+  - "weight-tying"
+focus_tags:
+  - "architecture"
+  - "training-algorithm"
+desc: "Introduces factorized embeddings and cross-layer parameter sharing to reduce BERT's parameter footprint while retaining or improving performance at larger model scales."
+links:
+  arxiv: "https://arxiv.org/abs/1909.11942"
+  github: "https://github.com/google-research/ALBERT"
+  openreview: "https://openreview.net/forum?id=H1eA7AEtvS"

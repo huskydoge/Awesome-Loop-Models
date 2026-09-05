@@ -1,0 +1,25 @@
+title: "Trellis Networks for Sequence Modeling"
+authors:
+  - "Shaojie Bai"
+  - "J. Zico Kolter"
+  - "Vladlen Koltun"
+year: 2018
+published_date: "2018-10-15"
+added_date: "2026-09-06"
+venue: "ICLR"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "sequence-modeling"
+  - "language-modeling"
+  - "efficiency"
+tags:
+  - "weight-tying"
+focus_tags:
+  - "architecture"
+desc: "Introduces Trellis Networks, temporal convolutional sequence models that tie weights across depth and inject inputs at every layer, thereby generalizing truncated recurrent networks."
+links:
+  arxiv: "https://arxiv.org/abs/1810.06682"
+  github: "https://github.com/locuslab/trellisnet"
+  openreview: "https://openreview.net/forum?id=HyeVtoRqtQ"

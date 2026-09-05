@@ -1,0 +1,25 @@
+title: "Simulation of Graph Algorithms with Looped Transformers"
+authors:
+  - "Artur Back de Luca"
+  - "Kimon Fountoulakis"
+year: 2024
+published_date: "2024-02-02"
+added_date: "2026-09-06"
+venue: "ICML"
+category: "analysis"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "theory"
+  - "graph-data"
+  - "algorithmic-reasoning"
+tags:
+  - "looped-transformer"
+focus_tags:
+  - "architecture"
+  - "inference-algorithm"
+desc: "Constructs looped Transformers that simulate major graph algorithms, establishes constant-width Turing completeness, and identifies a finite-precision limit of the construction."
+links:
+  arxiv: "https://arxiv.org/abs/2402.01107"
+  github: "https://github.com/watcl-lab/graphalgosimulation"
+  openreview: "https://openreview.net/forum?id=aA2326y3hf"

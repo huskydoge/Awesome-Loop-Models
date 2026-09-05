@@ -1,0 +1,23 @@
+title: "Recurrent Stacking of Layers for Compact Neural Machine Translation Models"
+authors:
+  - "Raj Dabre"
+  - "Atsushi Fujita"
+year: 2018
+published_date: "2018-07-14"
+added_date: "2026-09-06"
+venue: "AAAI"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "machine-translation"
+  - "efficiency"
+tags:
+  - "shared-weight-recurrence"
+  - "weight-tying"
+focus_tags:
+  - "architecture"
+desc: "Shares one encoder or decoder layer across all stacked depths in neural machine translation, showing that six recurrent applications can approach a six-distinct-layer baseline with far fewer parameters."
+links:
+  arxiv: "https://arxiv.org/abs/1807.05353"
+  paper: "https://ojs.aaai.org/index.php/AAAI/article/view/4590"

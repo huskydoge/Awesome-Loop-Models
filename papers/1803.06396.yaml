@@ -1,0 +1,30 @@
+title: "Reviving and Improving Recurrent Back-Propagation"
+authors:
+  - "Renjie Liao"
+  - "Yuwen Xiong"
+  - "Ethan Fetaya"
+  - "Lisa Zhang"
+  - "KiJung Yoon"
+  - "Xaq Pitkow"
+  - "Raquel Urtasun"
+  - "Richard Zemel"
+year: 2018
+published_date: "2018-03-16"
+added_date: "2026-09-06"
+venue: "ICML"
+category: "designs"
+mechanism_tags:
+  - "implicit-layer"
+domain_tags:
+  - "efficiency"
+  - "memory-efficiency"
+  - "theory"
+tags:
+  - "convergence"
+focus_tags:
+  - "training-algorithm"
+desc: "Revisits recurrent back-propagation for convergent recurrent networks and introduces CG-RBP and Neumann-RBP, with the latter matching truncated BPTT time while using constant memory."
+links:
+  arxiv: "https://arxiv.org/abs/1803.06396"
+  paper: "https://proceedings.mlr.press/v80/liao18c.html"
+  github: "https://github.com/lrjconan/RBP"

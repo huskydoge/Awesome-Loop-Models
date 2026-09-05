@@ -1,0 +1,24 @@
+title: "Neural Execution of Graph Algorithms"
+authors:
+  - "Petar Veličković"
+  - "Rex Ying"
+  - "Matilde Padovano"
+  - "Raia Hadsell"
+  - "Charles Blundell"
+year: 2019
+published_date: "2019-10-23"
+added_date: "2026-09-06"
+venue: "ICLR"
+category: "applications"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "graph-data"
+  - "algorithmic-reasoning"
+focus_tags:
+  - "architecture"
+  - "training-algorithm"
+desc: "Trains a shared GNN processor to execute graph algorithms step by step, demonstrating benefits from max aggregation and positive transfer between reachability and shortest-path tasks."
+links:
+  arxiv: "https://arxiv.org/abs/1910.10593"
+  openreview: "https://openreview.net/forum?id=SkgKO0EtvS"

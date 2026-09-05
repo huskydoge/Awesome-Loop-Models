@@ -1,0 +1,26 @@
+title: "Bypassing the Exponential Dependency: Looped Transformers Efficiently Learn In-context by Multi-step Gradient Descent"
+authors:
+  - "Bo Chen"
+  - "Xiaoyu Li"
+  - "Yingyu Liang"
+  - "Zhenmei Shi"
+  - "Zhao Song"
+year: 2024
+published_date: "2024-10-15"
+added_date: "2026-09-06"
+venue: "AISTATS"
+category: "analysis"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "theory"
+  - "algorithmic-reasoning"
+tags:
+  - "looped-transformer"
+focus_tags:
+  - "architecture"
+  - "inference-algorithm"
+desc: "Shows that linear looped Transformers can implement multi-step gradient descent for in-context learning without an exponential dependence of sample size on the number of loops under well-conditioned data."
+links:
+  arxiv: "https://arxiv.org/abs/2410.11268"
+  openreview: "https://openreview.net/forum?id=4C1aRz2gRq"

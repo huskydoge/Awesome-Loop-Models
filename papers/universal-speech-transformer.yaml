@@ -1,0 +1,28 @@
+title: "Universal Speech Transformer"
+authors:
+  - "Yingzhu Zhao"
+  - "Chongjia Ni"
+  - "Cheung-Chi Leung"
+  - "Shafiq Joty"
+  - "Eng Siong Chng"
+  - "Bin Ma"
+year: 2020
+published_date: "2020-10-25"
+added_date: "2026-09-06"
+venue: "Interspeech"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "speech-recognition"
+  - "adaptive-compute"
+  - "efficiency"
+tags:
+  - "universal-transformer"
+  - "halting"
+focus_tags:
+  - "architecture"
+  - "inference-algorithm"
+desc: "Adapts the Universal Transformer to speech recognition with shared iterative encoder and decoder computation, dynamic depth, one-time positional encoding, and full hidden-state updates."
+links:
+  paper: "https://www.isca-archive.org/interspeech_2020/zhao20i_interspeech.html"

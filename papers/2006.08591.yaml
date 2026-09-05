@@ -1,0 +1,27 @@
+title: "Monotone operator equilibrium networks"
+authors:
+  - "Ezra Winston"
+  - "J. Zico Kolter"
+year: 2020
+published_date: "2020-06-15"
+added_date: "2026-09-06"
+venue: "NeurIPS"
+category: "designs"
+mechanism_tags:
+  - "implicit-layer"
+domain_tags:
+  - "theory"
+  - "vision"
+  - "efficiency"
+tags:
+  - "DEQ"
+  - "convergence"
+focus_tags:
+  - "architecture"
+  - "training-algorithm"
+  - "inference-algorithm"
+desc: "Introduces monDEQ, a monotone-operator parameterization and splitting solvers that guarantee a unique, stably computable equilibrium for implicit-depth networks."
+links:
+  arxiv: "https://arxiv.org/abs/2006.08591"
+  paper: "https://proceedings.neurips.cc/paper_files/paper/2020/hash/798d1c2813cbdf8bcdb388db0e32d496-Abstract.html"
+  github: "https://github.com/locuslab/monotone_op_net"

@@ -1,0 +1,33 @@
+title: "Sparse Universal Transformer"
+authors:
+  - "Shawn Tan"
+  - "Yikang Shen"
+  - "Zhenfang Chen"
+  - "Aaron Courville"
+  - "Chuang Gan"
+year: 2023
+published_date: "2023-10-11"
+added_date: "2026-09-06"
+venue: "EMNLP"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "language-modeling"
+  - "machine-translation"
+  - "compositional-reasoning"
+  - "adaptive-compute"
+  - "efficiency"
+tags:
+  - "UT"
+  - "MoE"
+  - "halting"
+focus_tags:
+  - "architecture"
+  - "objective-loss"
+  - "inference-algorithm"
+desc: "Combines the Universal Transformer's shared recurrent block with sparse mixtures of experts and stick-breaking halting to reduce compute while preserving compositional generalization."
+links:
+  arxiv: "https://arxiv.org/abs/2310.07096"
+  paper: "https://aclanthology.org/2023.emnlp-main.12/"
+  github: "https://github.com/shawntan/SUT"
