@@ -1611,7 +1611,10 @@ If you find this repository useful, please consider citing this list:
 
 ## Star History
 
-![Star history of huskydoge/Awesome-Loop-Models](assets/star-history/star-history.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=huskydoge%2Fawesome-loop-models&type=date&theme=dark">
+  <img alt="Star history of huskydoge/Awesome-Loop-Models" src="https://api.star-history.com/svg?repos=huskydoge%2Fawesome-loop-models&type=date">
+</picture>
 
 ---
 
