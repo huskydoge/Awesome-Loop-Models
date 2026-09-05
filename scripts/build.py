@@ -1139,7 +1139,7 @@ def _paper_to_md(paper: dict) -> str:
     if summary_link_html:
         summary_parts.append(summary_link_html)
 
-    lines = ["- <details>", f"  <summary>{' '.join(summary_parts)}</summary>"]
+    lines = ["<details>", f"  <summary>{' '.join(summary_parts)}</summary>"]
 
     detail_lines = []
     metadata = " · ".join(str(part).strip() for part in (authors, venue_year) if str(part).strip())

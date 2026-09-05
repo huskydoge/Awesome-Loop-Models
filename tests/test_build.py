@@ -3615,6 +3615,8 @@ class ReadmeRenderingTests(unittest.TestCase):
         summary_end = markdown.index("</summary>")
         summary_html = markdown[summary_start:summary_end]
 
+        self.assertTrue(markdown.startswith("<details>"))
+        self.assertNotIn("- <details>", markdown)
         self.assertIn("<summary><strong>Loop Test Paper</strong>", markdown)
         self.assertNotIn("<code>LoopTest</code>", summary_html)
         self.assertNotIn("<summary>Expand details</summary>", markdown)
