@@ -33,6 +33,7 @@ citations: 120
 citation_sources:
   semantic_scholar: 120
   opencitations: 0
+  openalex: 9
 star_source_best: github_api
 github_stars: 61
 star_sources:
