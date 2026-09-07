@@ -28,3 +28,4 @@ desc: Introduces MoDr, which adds multi-branch routing to a depth-recurrent Tran
 links:
   openreview: https://openreview.net/forum?id=9Pba4rcQbE
   paper: https://openreview.net/pdf?id=9Pba4rcQbE
+  github: https://github.com/zhangxjohn/MoDr

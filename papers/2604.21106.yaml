@@ -27,6 +27,7 @@ desc: Measures the parameter value of recurrence in looped language models with 
   and training compute.
 links:
   arxiv: https://arxiv.org/abs/2604.21106
+  github: https://github.com/kschwethelm/looped-lm-scaling
 citations: 12
 citation_sources:
   semantic_scholar: 12

@@ -31,6 +31,7 @@ desc: Introduces LARM, a depth-conditioned looped Transformer for automatic spee
 links:
   arxiv: https://arxiv.org/abs/2606.04678
   alphaxiv: https://www.alphaxiv.org/abs/2606.04678
+  github: https://github.com/idiap/LARM
 citations: 0
 citation_sources:
   semantic_scholar: 0

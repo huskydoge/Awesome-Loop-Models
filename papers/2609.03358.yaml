@@ -1,0 +1,24 @@
+title: 'Time Without Timesteps: Simulating Coupled Dynamical Systems via Self-Consistency'
+authors:
+- Liyu Zerihun
+- Mark Shinyoung Lee
+year: 2026
+published_date: '2026-09-03'
+added_date: '2026-09-06'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- scientific-ml
+- efficiency
+- memory-efficiency
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Composes learned full-trajectory subsystem surrogates through a Newton-Krylov
+  fixed-point solve, replacing 1,500-step rollouts with 4-10 solver iterations and
+  using an implicit adjoint whose memory is independent of solver depth.
+links:
+  arxiv: https://arxiv.org/abs/2609.03358

@@ -1,0 +1,33 @@
+title: Equation Recast for Canonical Operator Learning Across Parametric PDEs
+authors:
+- Qiyun Cheng
+- Valentin Duruisseaux
+- Cesar F. Clauser
+- Md Hossain Sahadath
+- Huihua Yang
+- Shaowu Pan
+- Nathaniel Ferraro
+- Anima Anandkumar
+- Wei Ji
+- Cristina Rea
+year: 2026
+published_date: '2026-09-02'
+added_date: '2026-09-06'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- scientific-ml
+- efficiency
+focus_tags:
+- data
+- training-algorithm
+- inference-algorithm
+desc: Reuses a single learned canonical inverse operator inside a fixed-point recast
+  for parameter-varying PDEs, enabling zero-shot extrapolation while exposing failure
+  through loss of convergence.
+links:
+  arxiv: https://arxiv.org/abs/2609.02982
+  github: https://github.com/QiyunCh/EquationRecast

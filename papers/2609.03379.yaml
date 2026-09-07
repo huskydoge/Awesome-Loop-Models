@@ -1,0 +1,30 @@
+title: 'RecurTrace: Adaptive Latent Reasoning with Loop-Time Memory'
+authors:
+- Yuxiang Wang
+- Kunyu Feng
+- Yingda Shen
+- Haoning Xu
+- Junyu Wang
+- Zhizheng Wu
+year: 2026
+published_date: '2026-09-03'
+added_date: '2026-09-06'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- adaptive-compute
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Adds loop-time attention over prior iteration states and oracle-distilled adaptive
+  halting to a fully weight-tied recurrent Qwen3 block, improving matched-compute
+  reasoning across 0.6B-8B models.
+links:
+  arxiv: https://arxiv.org/abs/2609.03379
