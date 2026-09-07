@@ -1,0 +1,30 @@
+title: "Visual Implicit Autoregressive Modeling"
+authors:
+  - "Pengfei Jiang"
+  - "Jixiang Luo"
+  - "Luxi Lin"
+  - "Zhaohong Huang"
+  - "Xuelong Li"
+year: 2026
+published_date: "2026-05-02"
+added_date: "2026-09-06"
+venue: "ICML"
+category: "designs"
+mechanism_tags:
+  - "implicit-layer"
+domain_tags:
+  - "vision"
+  - "efficiency"
+  - "memory-efficiency"
+  - "adaptive-compute"
+tags:
+  - "DEQ"
+focus_tags:
+  - "architecture"
+  - "training-algorithm"
+  - "inference-algorithm"
+desc: "Introduces VIAR, replacing the deep middle stack of a visual autoregressive generator with an implicit equilibrium layer trained by Jacobian-Free Backpropagation and controlled by per-scale iteration budgets at inference."
+links:
+  arxiv: "https://arxiv.org/abs/2605.01220"
+  github: "https://github.com/mobiushy/VIAR"
+  openreview: "https://openreview.net/forum?id=YnAT2dUBNO"

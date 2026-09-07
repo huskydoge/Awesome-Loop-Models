@@ -1,0 +1,28 @@
+title: "Implicit Deep Learning"
+authors:
+  - "Laurent El Ghaoui"
+  - "Fangda Gu"
+  - "Bertrand Travacca"
+  - "Armin Askari"
+  - "Alicia Y. Tsai"
+year: 2019
+published_date: "2019-08-17"
+added_date: "2026-09-06"
+venue: "SIAM Journal on Mathematics of Data Science"
+category: "designs"
+mechanism_tags:
+  - "implicit-layer"
+domain_tags:
+  - "theory"
+  - "efficiency"
+tags:
+  - "convergence"
+focus_tags:
+  - "architecture"
+  - "training-algorithm"
+  - "inference-algorithm"
+desc: "Formulates neural prediction as a learned fixed-point equation and develops well-posed implicit architectures, training schemes, and robustness analysis."
+links:
+  arxiv: "https://arxiv.org/abs/1908.06315"
+  paper: "https://epubs.siam.org/doi/10.1137/20M1358517"
+  github: "https://github.com/alicia-tsai/implicit-deep-learning"

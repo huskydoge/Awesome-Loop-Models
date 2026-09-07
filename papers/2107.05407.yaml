@@ -1,0 +1,27 @@
+title: "PonderNet: Learning to Ponder"
+authors:
+  - "Andrea Banino"
+  - "Jan Balaguer"
+  - "Charles Blundell"
+year: 2021
+published_date: "2021-07-12"
+added_date: "2026-09-06"
+venue: "AutoML Workshop @ ICML"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "reasoning"
+  - "adaptive-compute"
+  - "efficiency"
+tags:
+  - "halting"
+  - "adaptive-computation-time"
+focus_tags:
+  - "objective-loss"
+  - "training-algorithm"
+  - "inference-algorithm"
+desc: "Introduces a differentiable probabilistic halting objective that learns how many times to apply a recurrent step function for each input."
+links:
+  arxiv: "https://arxiv.org/abs/2107.05407"
+  openreview: "https://openreview.net/forum?id=1EuxRTe0WN"

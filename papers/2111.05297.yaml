@@ -1,0 +1,26 @@
+title: "Sliced Recursive Transformer"
+authors:
+  - "Zhiqiang Shen"
+  - "Zechun Liu"
+  - "Eric Xing"
+year: 2021
+published_date: "2021-11-09"
+added_date: "2026-09-06"
+venue: "ECCV"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "vision"
+  - "efficiency"
+  - "scaling"
+tags:
+  - "recursive-transformer"
+  - "weight-tying"
+focus_tags:
+  - "architecture"
+desc: "Builds parameter-efficient vision Transformers by recursively reusing blocks across depth and reducing recursive attention cost with sliced group self-attention."
+links:
+  arxiv: "https://arxiv.org/abs/2111.05297"
+  paper: "https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136840716.pdf"
+  github: "https://github.com/szq0214/SReT"

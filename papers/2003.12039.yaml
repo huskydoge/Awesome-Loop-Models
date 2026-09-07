@@ -1,0 +1,23 @@
+title: "RAFT: Recurrent All-Pairs Field Transforms for Optical Flow"
+authors:
+  - "Zachary Teed"
+  - "Jia Deng"
+year: 2020
+published_date: "2020-03-26"
+added_date: "2026-09-06"
+venue: "ECCV"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "vision"
+  - "efficiency"
+tags:
+  - "latent-refinement"
+focus_tags:
+  - "architecture"
+  - "inference-algorithm"
+desc: "Introduces RAFT, which builds an all-pairs correlation volume and repeatedly applies a learned recurrent update operator to refine a dense optical-flow field."
+links:
+  arxiv: "https://arxiv.org/abs/2003.12039"
+  github: "https://github.com/princeton-vl/RAFT"

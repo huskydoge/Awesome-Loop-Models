@@ -1,0 +1,27 @@
+title: "Stabilizing Equilibrium Models by Jacobian Regularization"
+authors:
+  - "Shaojie Bai"
+  - "Vladlen Koltun"
+  - "J. Zico Kolter"
+year: 2021
+published_date: "2021-06-28"
+added_date: "2026-09-06"
+venue: "ICML"
+category: "designs"
+mechanism_tags:
+  - "implicit-layer"
+domain_tags:
+  - "efficiency"
+  - "language-modeling"
+  - "vision"
+tags:
+  - "DEQ"
+  - "convergence"
+focus_tags:
+  - "objective-loss"
+  - "training-algorithm"
+desc: "Regularizes the Jacobian of DEQ update equations to stabilize forward and backward fixed-point solves with minimal additional cost."
+links:
+  arxiv: "https://arxiv.org/abs/2106.14342"
+  paper: "https://proceedings.mlr.press/v139/bai21b.html"
+  github: "https://github.com/locuslab/deq"

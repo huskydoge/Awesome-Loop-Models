@@ -1,0 +1,27 @@
+title: "Implicit Graph Neural Networks"
+authors:
+  - "Fangda Gu"
+  - "Heng Chang"
+  - "Wenwu Zhu"
+  - "Somayeh Sojoudi"
+  - "Laurent El Ghaoui"
+year: 2020
+published_date: "2020-09-14"
+added_date: "2026-09-06"
+venue: "NeurIPS"
+category: "designs"
+mechanism_tags:
+  - "implicit-layer"
+domain_tags:
+  - "graph-data"
+tags:
+  - "convergence"
+focus_tags:
+  - "architecture"
+  - "training-algorithm"
+  - "inference-algorithm"
+desc: "Defines graph representations as the solution of a learned fixed-point equation, with well-posedness conditions and implicit-differentiation training for long-range graph dependencies."
+links:
+  arxiv: "https://arxiv.org/abs/2009.06211"
+  paper: "https://proceedings.neurips.cc/paper/2020/hash/8b5c8441a8ff8e151b191c53c1842a38-Abstract.html"
+  github: "https://github.com/SwiftieH/IGNN"

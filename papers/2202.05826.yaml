@@ -1,0 +1,30 @@
+title: "End-to-end Algorithm Synthesis with Recurrent Networks: Extrapolation without Overthinking"
+authors:
+  - "Arpit Bansal"
+  - "Avi Schwarzschild"
+  - "Eitan Borgnia"
+  - "Zeyad Emam"
+  - "Furong Huang"
+  - "Micah Goldblum"
+  - "Tom Goldstein"
+year: 2022
+published_date: "2022-02-11"
+added_date: "2026-09-06"
+venue: "NeurIPS"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "reasoning"
+  - "algorithmic-reasoning"
+tags:
+  - "convergence"
+focus_tags:
+  - "objective-loss"
+  - "training-algorithm"
+  - "architecture"
+  - "inference-algorithm"
+desc: "Introduces a recall architecture and progressive training objective that prevent overthinking, enabling shared recurrent networks to extrapolate over thousands of test-time iterations."
+links:
+  arxiv: "https://arxiv.org/abs/2202.05826"
+  github: "https://github.com/aks2203/deep-thinking"

@@ -1,0 +1,26 @@
+title: "Object Representations as Fixed Points: Training Iterative Refinement Algorithms with Implicit Differentiation"
+authors:
+  - "Michael Chang"
+  - "Thomas L. Griffiths"
+  - "Sergey Levine"
+year: 2022
+published_date: "2022-07-02"
+added_date: "2026-09-06"
+venue: "NeurIPS"
+category: "designs"
+mechanism_tags:
+  - "implicit-layer"
+domain_tags:
+  - "vision"
+  - "memory-efficiency"
+tags:
+  - "latent-refinement"
+focus_tags:
+  - "training-algorithm"
+  - "inference-algorithm"
+desc: "Trains iterative object-centric refinement as a fixed-point computation through implicit differentiation, improving SLATE optimization with constant-memory backpropagation."
+links:
+  arxiv: "https://arxiv.org/abs/2207.00787"
+  paper: "https://proceedings.neurips.cc/paper_files/paper/2022/hash/d301e2878a7ebadf1a95029e904fc7d0-Abstract-Conference.html"
+  openreview: "https://openreview.net/forum?id=-5rFUTO2NWe"
+  project: "https://sites.google.com/view/implicit-slot-attention"

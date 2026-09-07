@@ -1,0 +1,24 @@
+title: "The Neural Data Router: Adaptive Control Flow in Transformers Improves Systematic Generalization"
+authors:
+  - "Róbert Csordás"
+  - "Kazuki Irie"
+  - "Jürgen Schmidhuber"
+year: 2021
+published_date: "2021-10-14"
+added_date: "2026-09-06"
+venue: "ICLR"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "algorithmic-reasoning"
+  - "compositional-reasoning"
+tags:
+  - "shared-weight-recurrence"
+focus_tags:
+  - "architecture"
+desc: "Adds copy gating and geometric attention to a weight-shared Transformer to learn adaptive control flow and improve systematic length and depth generalization."
+links:
+  arxiv: "https://arxiv.org/abs/2110.07732"
+  github: "https://github.com/RobertCsordas/ndr"
+  openreview: "https://openreview.net/forum?id=KBQP4A_J1K"

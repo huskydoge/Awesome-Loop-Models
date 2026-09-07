@@ -1,0 +1,25 @@
+title: "LoopQ: Quantization for Recursive Transformers"
+authors:
+  - "Rui Fang"
+  - "Hsi-Wen Chen"
+  - "Ming-Syan Chen"
+year: 2026
+published_date: "2026-05-08"
+added_date: "2026-09-06"
+venue: "arXiv"
+category: "designs"
+mechanism_tags:
+  - "flat-loop"
+domain_tags:
+  - "language-modeling"
+  - "efficiency"
+  - "memory-efficiency"
+  - "hardware-aware"
+tags:
+  - "LoopLM"
+focus_tags:
+  - "training-algorithm"
+  - "inference-algorithm"
+desc: "Introduces LoopQ, a loop-aware post-training quantization framework that preserves a shared quantized backbone while correcting role shifts, cross-loop state mismatch, and recursive quantization-error accumulation."
+links:
+  arxiv: "https://arxiv.org/abs/2605.16343"
