@@ -1,4 +1,5 @@
-title: 'Jina-OCR-v1: Efficient Document Parsing with Speculative Decoding and Dense Verifiable Rewards'
+title: 'Jina-OCR-v1: Efficient Document Parsing with Speculative Decoding and Dense
+  Verifiable Rewards'
 authors:
 - Alejandro Barón García
 - Feng Wang
@@ -26,3 +27,10 @@ desc: Reuses one FastMTP draft block recursively for three speculative predictio
 links:
   arxiv: https://arxiv.org/abs/2609.03181
   hf: https://huggingface.co/jinaai/jina-ocr-v1
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-07'

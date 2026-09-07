@@ -29,9 +29,13 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2607.18618
   github: https://github.com/UBC-NLP/LatentMT
 citations: 0
-metrics_updated: '2026-07-27'
+metrics_updated: '2026-09-07'
 citation_sources:
   semantic_scholar: 0
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0

@@ -10,7 +10,7 @@ year: 2026
 published_date: '2026-01-26'
 added_date: '2026-04-24'
 venue: ICLR
-category: "designs"
+category: designs
 mechanism_tags:
 - parallel-loop
 domain_tags:
@@ -24,8 +24,14 @@ focus_tags:
 - architecture
 - inference-algorithm
 - training-algorithm
-desc: Introduces MoDr, which adds multi-branch routing to a depth-recurrent Transformer so looped models can explore solution paths more adaptively at test time.
+desc: Introduces MoDr, which adds multi-branch routing to a depth-recurrent Transformer
+  so looped models can explore solution paths more adaptively at test time.
 links:
   openreview: https://openreview.net/forum?id=9Pba4rcQbE
   paper: https://openreview.net/pdf?id=9Pba4rcQbE
   github: https://github.com/zhangxjohn/MoDr
+star_source_best: github_api
+github_stars: 3
+star_sources:
+  github_api: 3
+metrics_updated: '2026-09-07'

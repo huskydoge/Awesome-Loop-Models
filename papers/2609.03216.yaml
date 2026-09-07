@@ -24,3 +24,14 @@ desc: Reuses the same ViT blocks across confidence-routed resolution-and-width r
 links:
   arxiv: https://arxiv.org/abs/2609.03216
   github: https://github.com/ds-kiel/ProgResViT
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-09-07'

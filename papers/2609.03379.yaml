@@ -28,3 +28,10 @@ desc: Adds loop-time attention over prior iteration states and oracle-distilled 
   reasoning across 0.6B-8B models.
 links:
   arxiv: https://arxiv.org/abs/2609.03379
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-07'

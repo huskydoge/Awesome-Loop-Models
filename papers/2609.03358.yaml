@@ -22,3 +22,10 @@ desc: Composes learned full-trajectory subsystem surrogates through a Newton-Kry
   using an implicit adjoint whose memory is independent of solver depth.
 links:
   arxiv: https://arxiv.org/abs/2609.03358
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-07'
