@@ -1,23 +1,36 @@
-title: "Lessons on Parameter Sharing across Layers in Transformers"
+title: Lessons on Parameter Sharing across Layers in Transformers
 authors:
-  - "Sho Takase"
-  - "Shun Kiyono"
+- Sho Takase
+- Shun Kiyono
 year: 2021
-published_date: "2021-04-13"
-added_date: "2026-09-06"
-venue: "SustaiNLP"
-category: "designs"
+published_date: '2021-04-13'
+added_date: '2026-09-06'
+venue: SustaiNLP
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "sequence-modeling"
-  - "machine-translation"
-  - "efficiency"
+- sequence-modeling
+- machine-translation
+- efficiency
 tags:
-  - "weight-tying"
+- weight-tying
 focus_tags:
-  - "architecture"
-desc: "Introduces Sequence, Cycle, and Cycle-reverse strategies for reusing Transformer layers across depth, balancing parameter efficiency, computation time, and translation quality."
+- architecture
+desc: Introduces Sequence, Cycle, and Cycle-reverse strategies for reusing Transformer
+  layers across depth, balancing parameter efficiency, computation time, and translation
+  quality.
 links:
-  arxiv: "https://arxiv.org/abs/2104.06022"
-  github: "https://github.com/takase/share_layer_params"
+  arxiv: https://arxiv.org/abs/2104.06022
+  github: https://github.com/takase/share_layer_params
+citation_source_best: semantic_scholar
+citations: 131
+citation_sources:
+  semantic_scholar: 131
+  openalex: 24
+  opencitations: 1
+star_source_best: github_api
+github_stars: 28
+star_sources:
+  github_api: 28
+metrics_updated: '2026-09-07'

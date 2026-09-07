@@ -1,25 +1,34 @@
-title: "On the Role of Depth and Looping for In-Context Learning with Task Diversity"
+title: On the Role of Depth and Looping for In-Context Learning with Task Diversity
 authors:
-  - "Khashayar Gatmiry"
-  - "Nikunj Saunshi"
-  - "Sashank J. Reddi"
-  - "Stefanie Jegelka"
-  - "Sanjiv Kumar"
+- Khashayar Gatmiry
+- Nikunj Saunshi
+- Sashank J. Reddi
+- Stefanie Jegelka
+- Sanjiv Kumar
 year: 2024
-published_date: "2024-10-29"
-added_date: "2026-09-06"
-venue: "arXiv"
-category: "analysis"
+published_date: '2024-10-29'
+added_date: '2026-09-06'
+venue: arXiv
+category: analysis
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "theory"
-  - "algorithmic-reasoning"
+- theory
+- algorithmic-reasoning
 tags:
-  - "looped-transformer"
+- looped-transformer
 focus_tags:
-  - "architecture"
-  - "inference-algorithm"
-desc: "Analyzes depth for diverse in-context linear-regression tasks, proving matching expressivity for looped Transformers together with stronger distribution-shift robustness and monotonic loss across depth."
+- architecture
+- inference-algorithm
+desc: Analyzes depth for diverse in-context linear-regression tasks, proving matching
+  expressivity for looped Transformers together with stronger distribution-shift robustness
+  and monotonic loss across depth.
 links:
-  arxiv: "https://arxiv.org/abs/2410.21698"
+  arxiv: https://arxiv.org/abs/2410.21698
+citation_source_best: semantic_scholar
+citations: 10
+citation_sources:
+  semantic_scholar: 10
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-07'

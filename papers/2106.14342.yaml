@@ -1,27 +1,39 @@
-title: "Stabilizing Equilibrium Models by Jacobian Regularization"
+title: Stabilizing Equilibrium Models by Jacobian Regularization
 authors:
-  - "Shaojie Bai"
-  - "Vladlen Koltun"
-  - "J. Zico Kolter"
+- Shaojie Bai
+- Vladlen Koltun
+- J. Zico Kolter
 year: 2021
-published_date: "2021-06-28"
-added_date: "2026-09-06"
-venue: "ICML"
-category: "designs"
+published_date: '2021-06-28'
+added_date: '2026-09-06'
+venue: ICML
+category: designs
 mechanism_tags:
-  - "implicit-layer"
+- implicit-layer
 domain_tags:
-  - "efficiency"
-  - "language-modeling"
-  - "vision"
+- efficiency
+- language-modeling
+- vision
 tags:
-  - "DEQ"
-  - "convergence"
+- DEQ
+- convergence
 focus_tags:
-  - "objective-loss"
-  - "training-algorithm"
-desc: "Regularizes the Jacobian of DEQ update equations to stabilize forward and backward fixed-point solves with minimal additional cost."
+- objective-loss
+- training-algorithm
+desc: Regularizes the Jacobian of DEQ update equations to stabilize forward and backward
+  fixed-point solves with minimal additional cost.
 links:
-  arxiv: "https://arxiv.org/abs/2106.14342"
-  paper: "https://proceedings.mlr.press/v139/bai21b.html"
-  github: "https://github.com/locuslab/deq"
+  arxiv: https://arxiv.org/abs/2106.14342
+  paper: https://proceedings.mlr.press/v139/bai21b.html
+  github: https://github.com/locuslab/deq
+citation_source_best: semantic_scholar
+citations: 97
+citation_sources:
+  semantic_scholar: 97
+  openalex: 6
+  opencitations: 0
+star_source_best: github_api
+github_stars: 807
+star_sources:
+  github_api: 807
+metrics_updated: '2026-09-07'

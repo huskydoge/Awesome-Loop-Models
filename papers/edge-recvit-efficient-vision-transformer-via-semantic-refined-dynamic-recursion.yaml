@@ -1,29 +1,36 @@
-title: "Edge-RecViT: Efficient Vision Transformer via Semantic-Refined Dynamic Recursion"
+title: 'Edge-RecViT: Efficient Vision Transformer via Semantic-Refined Dynamic Recursion'
 authors:
-  - "YiZhou Li"
-  - "Jinyi Xu"
-  - "Mingyu Yin"
-  - "Xianyi Zhao"
+- YiZhou Li
+- Jinyi Xu
+- Mingyu Yin
+- Xianyi Zhao
 year: 2026
-published_date: "2026-06-05"
-added_date: "2026-09-06"
-venue: "CVPR"
-category: "designs"
+published_date: '2026-06-05'
+added_date: '2026-09-06'
+venue: CVPR
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "vision"
-  - "efficiency"
-  - "adaptive-compute"
-  - "memory-efficiency"
+- vision
+- efficiency
+- adaptive-compute
+- memory-efficiency
 tags:
-  - "halting"
-  - "weight-tying"
+- halting
+- weight-tying
 focus_tags:
-  - "architecture"
-  - "training-algorithm"
-  - "inference-algorithm"
-desc: "Introduces Edge-RecViT, combining a fully shared recursive ViT hidden layer with an edge-aware token ranker that allocates per-token depth and early exits for parameter- and FLOP-efficient vision."
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Introduces Edge-RecViT, combining a fully shared recursive ViT hidden layer
+  with an edge-aware token ranker that allocates per-token depth and early exits for
+  parameter- and FLOP-efficient vision.
 links:
-  paper: "https://openaccess.thecvf.com/content/CVPR2026/html/Li_Edge-RecViT_Efficient_Vision_Transformer_via_Semantic-Refined_Dynamic_Recursion_CVPR_2026_paper.html"
-  github: "https://github.com/RicardoLee510520/Edge-RecViT"
+  paper: https://openaccess.thecvf.com/content/CVPR2026/html/Li_Edge-RecViT_Efficient_Vision_Transformer_via_Semantic-Refined_Dynamic_Recursion_CVPR_2026_paper.html
+  github: https://github.com/RicardoLee510520/Edge-RecViT
+star_source_best: github_api
+github_stars: 8
+star_sources:
+  github_api: 8
+metrics_updated: '2026-09-07'

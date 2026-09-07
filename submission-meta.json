@@ -8,21 +8,50 @@
     "blogs/2026-04-29-exact-input-writes-parcae.yaml",
     "blogs/2026-05-23-rethinking-hierarchy-iterative-reasoning-models.yaml",
     "blogs/2026-07-31-towards-looped-models-done-right.yaml",
+    "papers/1511.04491.yaml",
     "papers/1511.08228.yaml",
     "papers/1603.08983.yaml",
+    "papers/1803.06396.yaml",
     "papers/1807.03819.yaml",
+    "papers/1807.05353.yaml",
+    "papers/1810.06682.yaml",
+    "papers/1908.06315.yaml",
     "papers/1909.01377.yaml",
+    "papers/1909.11942.yaml",
+    "papers/1910.10593.yaml",
+    "papers/2003.12039.yaml",
+    "papers/2006.08591.yaml",
     "papers/2006.08656.yaml",
+    "papers/2009.06211.yaml",
+    "papers/2012.04124.yaml",
+    "papers/2101.00234.yaml",
+    "papers/2104.06022.yaml",
+    "papers/2106.04537.yaml",
+    "papers/2106.14342.yaml",
+    "papers/2107.05407.yaml",
+    "papers/2110.07732.yaml",
     "papers/2111.05177.yaml",
+    "papers/2111.05297.yaml",
+    "papers/2111.14576.yaml",
+    "papers/2202.05826.yaml",
+    "papers/2204.08442.yaml",
+    "papers/2207.00787.yaml",
     "papers/2209.11142.yaml",
+    "papers/2211.09961.yaml",
     "papers/2301.13196.yaml",
+    "papers/2310.07096.yaml",
     "papers/2310.10845.yaml",
     "papers/2311.12424.yaml",
+    "papers/2402.01107.yaml",
     "papers/2402.13572.yaml",
     "papers/2405.16039.yaml",
     "papers/2409.15647.yaml",
     "papers/2410.01405.yaml",
+    "papers/2410.08292.yaml",
+    "papers/2410.11268.yaml",
+    "papers/2410.15059.yaml",
     "papers/2410.20672.yaml",
+    "papers/2410.21698.yaml",
     "papers/2502.05171.yaml",
     "papers/2502.07827.yaml",
     "papers/2502.17416.yaml",
@@ -32,6 +61,7 @@
     "papers/2507.10524.yaml",
     "papers/2509.23314.yaml",
     "papers/2510.04871.yaml",
+    "papers/2510.14961.yaml",
     "papers/2510.24824.yaml",
     "papers/2510.25741.yaml",
     "papers/2511.07384.yaml",
@@ -67,6 +97,8 @@
     "papers/2604.21999.yaml",
     "papers/2604.25551.yaml",
     "papers/2604.27981.yaml",
+    "papers/2605.01220.yaml",
+    "papers/2605.03999.yaml",
     "papers/2605.06510.yaml",
     "papers/2605.06609.yaml",
     "papers/2605.07277.yaml",
@@ -77,6 +109,7 @@
     "papers/2605.12466.yaml",
     "papers/2605.12578.yaml",
     "papers/2605.16048.yaml",
+    "papers/2605.16343.yaml",
     "papers/2605.17811.yaml",
     "papers/2605.18464.yaml",
     "papers/2605.18797.yaml",
@@ -115,6 +148,7 @@
     "papers/2606.31779.yaml",
     "papers/2606.31796.yaml",
     "papers/2607.00341.yaml",
+    "papers/2607.00774.yaml",
     "papers/2607.02491.yaml",
     "papers/2607.06527.yaml",
     "papers/2607.10110.yaml",
@@ -164,44 +198,48 @@
     "papers/2609.03358.yaml",
     "papers/2609.03379.yaml",
     "papers/2609.03807.yaml",
+    "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
+    "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
-    "papers/openreview-modr.yaml"
+    "papers/openreview-modr.yaml",
+    "papers/polymorphic-universal-transformer.yaml",
+    "papers/universal-speech-transformer.yaml"
   ],
   "tag_inventories": {
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 141
+        "count": 168
+      },
+      {
+        "label": "implicit-layer",
+        "count": 29
       },
       {
         "label": "hierarchical-loop",
         "count": 21
       },
       {
-        "label": "implicit-layer",
-        "count": 18
-      },
-      {
         "label": "parallel-loop",
-        "count": 5
+        "count": 6
       }
     ],
     "focus": [
       {
         "label": "architecture",
-        "count": 141
+        "count": 173
       },
       {
         "label": "inference-algorithm",
-        "count": 112
+        "count": 137
       },
       {
         "label": "training-algorithm",
-        "count": 78
+        "count": 96
       },
       {
         "label": "objective-loss",
-        "count": 21
+        "count": 25
       },
       {
         "label": "data",
@@ -210,51 +248,59 @@
     ],
     "domain": [
       {
+        "label": "efficiency",
+        "count": 105
+      },
+      {
         "label": "language-modeling",
-        "count": 89
+        "count": 97
       },
       {
         "label": "reasoning",
-        "count": 87
-      },
-      {
-        "label": "efficiency",
-        "count": 81
+        "count": 94
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 38
-      },
-      {
-        "label": "scaling",
-        "count": 27
+        "count": 47
       },
       {
         "label": "adaptive-compute",
-        "count": 22
+        "count": 30
       },
       {
-        "label": "theory",
-        "count": 19
-      },
-      {
-        "label": "memory-efficiency",
-        "count": 15
+        "label": "scaling",
+        "count": 29
       },
       {
         "label": "vision",
-        "count": 15
+        "count": 28
+      },
+      {
+        "label": "theory",
+        "count": 27
+      },
+      {
+        "label": "memory-efficiency",
+        "count": 23
       },
       {
         "label": "graph-data",
-        "count": 8
+        "count": 12
       },
       {
         "label": "sequence-modeling",
+        "count": 10
+      },
+      {
+        "label": "machine-translation",
         "count": 6
       },
       {
         "label": "multimodal",
+        "count": 5
+      },
+      {
+        "label": "compositional-reasoning",
         "count": 4
       },
       {
@@ -262,11 +308,7 @@
         "count": 4
       },
       {
-        "label": "compositional-reasoning",
-        "count": 2
-      },
-      {
-        "label": "machine-translation",
+        "label": "hardware-aware",
         "count": 2
       },
       {
@@ -275,6 +317,10 @@
       },
       {
         "label": "robotics-vla",
+        "count": 2
+      },
+      {
+        "label": "speech-recognition",
         "count": 2
       },
       {
@@ -298,10 +344,6 @@
         "count": 1
       },
       {
-        "label": "hardware-aware",
-        "count": 1
-      },
-      {
         "label": "hyperspectral-imaging",
         "count": 1
       },
@@ -319,10 +361,6 @@
       },
       {
         "label": "rl-control",
-        "count": 1
-      },
-      {
-        "label": "speech-recognition",
         "count": 1
       },
       {

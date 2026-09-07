@@ -1,30 +1,44 @@
-title: "End-to-end Algorithm Synthesis with Recurrent Networks: Extrapolation without Overthinking"
+title: 'End-to-end Algorithm Synthesis with Recurrent Networks: Extrapolation without
+  Overthinking'
 authors:
-  - "Arpit Bansal"
-  - "Avi Schwarzschild"
-  - "Eitan Borgnia"
-  - "Zeyad Emam"
-  - "Furong Huang"
-  - "Micah Goldblum"
-  - "Tom Goldstein"
+- Arpit Bansal
+- Avi Schwarzschild
+- Eitan Borgnia
+- Zeyad Emam
+- Furong Huang
+- Micah Goldblum
+- Tom Goldstein
 year: 2022
-published_date: "2022-02-11"
-added_date: "2026-09-06"
-venue: "NeurIPS"
-category: "designs"
+published_date: '2022-02-11'
+added_date: '2026-09-06'
+venue: NeurIPS
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "reasoning"
-  - "algorithmic-reasoning"
+- reasoning
+- algorithmic-reasoning
 tags:
-  - "convergence"
+- convergence
 focus_tags:
-  - "objective-loss"
-  - "training-algorithm"
-  - "architecture"
-  - "inference-algorithm"
-desc: "Introduces a recall architecture and progressive training objective that prevent overthinking, enabling shared recurrent networks to extrapolate over thousands of test-time iterations."
+- objective-loss
+- training-algorithm
+- architecture
+- inference-algorithm
+desc: Introduces a recall architecture and progressive training objective that prevent
+  overthinking, enabling shared recurrent networks to extrapolate over thousands of
+  test-time iterations.
 links:
-  arxiv: "https://arxiv.org/abs/2202.05826"
-  github: "https://github.com/aks2203/deep-thinking"
+  arxiv: https://arxiv.org/abs/2202.05826
+  github: https://github.com/aks2203/deep-thinking
+citation_source_best: semantic_scholar
+citations: 29
+citation_sources:
+  semantic_scholar: 29
+  openalex: 3
+  opencitations: 0
+star_source_best: github_api
+github_stars: 92
+star_sources:
+  github_api: 92
+metrics_updated: '2026-09-07'

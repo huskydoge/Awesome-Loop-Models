@@ -1,27 +1,40 @@
-title: "Can You Learn an Algorithm? Generalizing from Easy to Hard Problems with Recurrent Networks"
+title: Can You Learn an Algorithm? Generalizing from Easy to Hard Problems with Recurrent
+  Networks
 authors:
-  - "Avi Schwarzschild"
-  - "Eitan Borgnia"
-  - "Arjun Gupta"
-  - "Furong Huang"
-  - "Uzi Vishkin"
-  - "Micah Goldblum"
-  - "Tom Goldstein"
+- Avi Schwarzschild
+- Eitan Borgnia
+- Arjun Gupta
+- Furong Huang
+- Uzi Vishkin
+- Micah Goldblum
+- Tom Goldstein
 year: 2021
-published_date: "2021-06-08"
-added_date: "2026-09-06"
-venue: "NeurIPS"
-category: "analysis"
+published_date: '2021-06-08'
+added_date: '2026-09-06'
+venue: NeurIPS
+category: analysis
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "reasoning"
-  - "algorithmic-reasoning"
+- reasoning
+- algorithmic-reasoning
 focus_tags:
-  - "architecture"
-  - "inference-algorithm"
-desc: "Shows that recurrent residual networks trained on easy prefix-sum, maze, and chess tasks can solve harder instances by applying their shared block for more iterations at test time."
+- architecture
+- inference-algorithm
+desc: Shows that recurrent residual networks trained on easy prefix-sum, maze, and
+  chess tasks can solve harder instances by applying their shared block for more iterations
+  at test time.
 links:
-  arxiv: "https://arxiv.org/abs/2106.04537"
-  github: "https://github.com/aks2203/easy-to-hard"
-  openreview: "https://openreview.net/forum?id=Tsp2PL7-GQ"
+  arxiv: https://arxiv.org/abs/2106.04537
+  github: https://github.com/aks2203/easy-to-hard
+  openreview: https://openreview.net/forum?id=Tsp2PL7-GQ
+citation_source_best: semantic_scholar
+citations: 120
+citation_sources:
+  semantic_scholar: 120
+  opencitations: 0
+star_source_best: github_api
+github_stars: 61
+star_sources:
+  github_api: 61
+metrics_updated: '2026-09-07'

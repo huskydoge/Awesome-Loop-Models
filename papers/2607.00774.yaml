@@ -1,22 +1,31 @@
-title: "Soft Mixture-of-Recursions: Going Deeper with Recursive Vision Transformers"
+title: 'Soft Mixture-of-Recursions: Going Deeper with Recursive Vision Transformers'
 authors:
-  - "Sang In Lee"
-  - "Jihun Park"
+- Sang In Lee
+- Jihun Park
 year: 2026
-published_date: "2026-07-01"
-added_date: "2026-09-06"
-venue: "arXiv"
-category: "designs"
+published_date: '2026-07-01'
+added_date: '2026-09-06'
+venue: arXiv
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "vision"
-  - "efficiency"
-  - "scaling"
+- vision
+- efficiency
+- scaling
 tags:
-  - "recursive-transformer"
+- recursive-transformer
 focus_tags:
-  - "architecture"
-desc: "Introduces SoftMoR and SR-ViT, learning token-wise mixtures over outputs from repeated applications of a shared Vision Transformer block so greater recursive depth improves accuracy with little parameter growth."
+- architecture
+desc: Introduces SoftMoR and SR-ViT, learning token-wise mixtures over outputs from
+  repeated applications of a shared Vision Transformer block so greater recursive
+  depth improves accuracy with little parameter growth.
 links:
-  arxiv: "https://arxiv.org/abs/2607.00774"
+  arxiv: https://arxiv.org/abs/2607.00774
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-07'

@@ -1,27 +1,39 @@
-title: "Monotone operator equilibrium networks"
+title: Monotone operator equilibrium networks
 authors:
-  - "Ezra Winston"
-  - "J. Zico Kolter"
+- Ezra Winston
+- J. Zico Kolter
 year: 2020
-published_date: "2020-06-15"
-added_date: "2026-09-06"
-venue: "NeurIPS"
-category: "designs"
+published_date: '2020-06-15'
+added_date: '2026-09-06'
+venue: NeurIPS
+category: designs
 mechanism_tags:
-  - "implicit-layer"
+- implicit-layer
 domain_tags:
-  - "theory"
-  - "vision"
-  - "efficiency"
+- theory
+- vision
+- efficiency
 tags:
-  - "DEQ"
-  - "convergence"
+- DEQ
+- convergence
 focus_tags:
-  - "architecture"
-  - "training-algorithm"
-  - "inference-algorithm"
-desc: "Introduces monDEQ, a monotone-operator parameterization and splitting solvers that guarantee a unique, stably computable equilibrium for implicit-depth networks."
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Introduces monDEQ, a monotone-operator parameterization and splitting solvers
+  that guarantee a unique, stably computable equilibrium for implicit-depth networks.
 links:
-  arxiv: "https://arxiv.org/abs/2006.08591"
-  paper: "https://proceedings.neurips.cc/paper_files/paper/2020/hash/798d1c2813cbdf8bcdb388db0e32d496-Abstract.html"
-  github: "https://github.com/locuslab/monotone_op_net"
+  arxiv: https://arxiv.org/abs/2006.08591
+  paper: https://proceedings.neurips.cc/paper_files/paper/2020/hash/798d1c2813cbdf8bcdb388db0e32d496-Abstract.html
+  github: https://github.com/locuslab/monotone_op_net
+citation_source_best: semantic_scholar
+citations: 175
+citation_sources:
+  semantic_scholar: 175
+  openalex: 13
+  opencitations: 0
+star_source_best: github_api
+github_stars: 53
+star_sources:
+  github_api: 53
+metrics_updated: '2026-09-07'

@@ -1,25 +1,38 @@
-title: "Subformer: Exploring Weight Sharing for Parameter Efficiency in Generative Transformers"
+title: 'Subformer: Exploring Weight Sharing for Parameter Efficiency in Generative
+  Transformers'
 authors:
-  - "Machel Reid"
-  - "Edison Marrese-Taylor"
-  - "Yutaka Matsuo"
+- Machel Reid
+- Edison Marrese-Taylor
+- Yutaka Matsuo
 year: 2021
-published_date: "2021-01-01"
-added_date: "2026-09-06"
-venue: "Findings of EMNLP"
-category: "designs"
+published_date: '2021-01-01'
+added_date: '2026-09-06'
+venue: Findings of EMNLP
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "language-modeling"
-  - "sequence-modeling"
-  - "machine-translation"
-  - "efficiency"
+- language-modeling
+- sequence-modeling
+- machine-translation
+- efficiency
 tags:
-  - "weight-tying"
+- weight-tying
 focus_tags:
-  - "architecture"
-desc: "Combines sandwich-style cross-layer sharing with self-attentive factorized embeddings to reduce generative Transformer parameters while preserving or improving task performance."
+- architecture
+desc: Combines sandwich-style cross-layer sharing with self-attentive factorized embeddings
+  to reduce generative Transformer parameters while preserving or improving task performance.
 links:
-  arxiv: "https://arxiv.org/abs/2101.00234"
-  github: "https://github.com/machelreid/subformer"
+  arxiv: https://arxiv.org/abs/2101.00234
+  github: https://github.com/machelreid/subformer
+citation_source_best: semantic_scholar
+citations: 67
+citation_sources:
+  semantic_scholar: 67
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 16
+star_sources:
+  github_api: 16
+metrics_updated: '2026-09-07'

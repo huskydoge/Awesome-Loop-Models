@@ -1,28 +1,41 @@
-title: "Implicit Deep Learning"
+title: Implicit Deep Learning
 authors:
-  - "Laurent El Ghaoui"
-  - "Fangda Gu"
-  - "Bertrand Travacca"
-  - "Armin Askari"
-  - "Alicia Y. Tsai"
+- Laurent El Ghaoui
+- Fangda Gu
+- Bertrand Travacca
+- Armin Askari
+- Alicia Y. Tsai
 year: 2019
-published_date: "2019-08-17"
-added_date: "2026-09-06"
-venue: "SIAM Journal on Mathematics of Data Science"
-category: "designs"
+published_date: '2019-08-17'
+added_date: '2026-09-06'
+venue: SIAM Journal on Mathematics of Data Science
+category: designs
 mechanism_tags:
-  - "implicit-layer"
+- implicit-layer
 domain_tags:
-  - "theory"
-  - "efficiency"
+- theory
+- efficiency
 tags:
-  - "convergence"
+- convergence
 focus_tags:
-  - "architecture"
-  - "training-algorithm"
-  - "inference-algorithm"
-desc: "Formulates neural prediction as a learned fixed-point equation and develops well-posed implicit architectures, training schemes, and robustness analysis."
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Formulates neural prediction as a learned fixed-point equation and develops
+  well-posed implicit architectures, training schemes, and robustness analysis.
 links:
-  arxiv: "https://arxiv.org/abs/1908.06315"
-  paper: "https://epubs.siam.org/doi/10.1137/20M1358517"
-  github: "https://github.com/alicia-tsai/implicit-deep-learning"
+  arxiv: https://arxiv.org/abs/1908.06315
+  paper: https://epubs.siam.org/doi/10.1137/20M1358517
+  github: https://github.com/alicia-tsai/implicit-deep-learning
+citation_source_best: semantic_scholar
+citations: 226
+citation_sources:
+  semantic_scholar: 226
+  openalex: 31
+  opencitations: 77
+  crossref: 77
+star_source_best: github_api
+github_stars: 3
+star_sources:
+  github_api: 3
+metrics_updated: '2026-09-07'

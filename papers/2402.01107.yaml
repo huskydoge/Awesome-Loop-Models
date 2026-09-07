@@ -1,25 +1,38 @@
-title: "Simulation of Graph Algorithms with Looped Transformers"
+title: Simulation of Graph Algorithms with Looped Transformers
 authors:
-  - "Artur Back de Luca"
-  - "Kimon Fountoulakis"
+- Artur Back de Luca
+- Kimon Fountoulakis
 year: 2024
-published_date: "2024-02-02"
-added_date: "2026-09-06"
-venue: "ICML"
-category: "analysis"
+published_date: '2024-02-02'
+added_date: '2026-09-06'
+venue: ICML
+category: analysis
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "theory"
-  - "graph-data"
-  - "algorithmic-reasoning"
+- theory
+- graph-data
+- algorithmic-reasoning
 tags:
-  - "looped-transformer"
+- looped-transformer
 focus_tags:
-  - "architecture"
-  - "inference-algorithm"
-desc: "Constructs looped Transformers that simulate major graph algorithms, establishes constant-width Turing completeness, and identifies a finite-precision limit of the construction."
+- architecture
+- inference-algorithm
+desc: Constructs looped Transformers that simulate major graph algorithms, establishes
+  constant-width Turing completeness, and identifies a finite-precision limit of the
+  construction.
 links:
-  arxiv: "https://arxiv.org/abs/2402.01107"
-  github: "https://github.com/watcl-lab/graphalgosimulation"
-  openreview: "https://openreview.net/forum?id=aA2326y3hf"
+  arxiv: https://arxiv.org/abs/2402.01107
+  github: https://github.com/watcl-lab/graphalgosimulation
+  openreview: https://openreview.net/forum?id=aA2326y3hf
+citation_source_best: semantic_scholar
+citations: 37
+citation_sources:
+  semantic_scholar: 37
+  openalex: 1
+  opencitations: 0
+star_source_best: github_api
+github_stars: 5
+star_sources:
+  github_api: 5
+metrics_updated: '2026-09-07'

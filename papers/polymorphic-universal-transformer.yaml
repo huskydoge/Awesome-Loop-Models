@@ -1,35 +1,42 @@
-title: "Polymorphic Universal Transformer"
+title: Polymorphic Universal Transformer
 authors:
-  - "Yilong Chen"
-  - "Zitian Gao"
-  - "Yihao Xiao"
-  - "Jason Klein Liu"
-  - "Xinyu Yang"
-  - "Yifan Luo"
-  - "Haoming Luo"
-  - "Zhengmao Ye"
-  - "Tingwen Liu"
-  - "Ran Tao"
-  - "Bryan Dai"
+- Yilong Chen
+- Zitian Gao
+- Yihao Xiao
+- Jason Klein Liu
+- Xinyu Yang
+- Yifan Luo
+- Haoming Luo
+- Zhengmao Ye
+- Tingwen Liu
+- Ran Tao
+- Bryan Dai
 year: 2026
-published_date: "2026-07-02"
-added_date: "2026-09-06"
-venue: "ACL"
-category: "designs"
+published_date: '2026-07-02'
+added_date: '2026-09-06'
+venue: ACL
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "language-modeling"
-  - "reasoning"
-  - "efficiency"
-  - "adaptive-compute"
+- language-modeling
+- reasoning
+- efficiency
+- adaptive-compute
 tags:
-  - "universal-transformer"
-  - "halting"
+- universal-transformer
+- halting
 focus_tags:
-  - "architecture"
-  - "inference-algorithm"
-desc: "Introduces the Polymorphic Universal Transformer, adding conditional sparse subspaces and uncertainty-aware depth scheduling to shared-parameter recurrence to reduce compute while mitigating representational collapse."
+- architecture
+- inference-algorithm
+desc: Introduces the Polymorphic Universal Transformer, adding conditional sparse
+  subspaces and uncertainty-aware depth scheduling to shared-parameter recurrence
+  to reduce compute while mitigating representational collapse.
 links:
-  paper: "https://aclanthology.org/2026.acl-long.1809/"
-  openreview: "https://openreview.net/forum?id=oNM8WcHyRo"
+  paper: https://aclanthology.org/2026.acl-long.1809/
+  openreview: https://openreview.net/forum?id=oNM8WcHyRo
+citation_source_best: semantic_scholar
+citations: 1
+citation_sources:
+  semantic_scholar: 1
+metrics_updated: '2026-09-07'

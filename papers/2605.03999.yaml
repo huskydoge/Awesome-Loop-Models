@@ -1,24 +1,35 @@
-title: "RD-ViT: Recurrent-Depth Vision Transformer for Semantic Segmentation with Reduced Data Dependence Extending the Recurrent-Depth Transformer Architecture to Dense Prediction"
+title: 'RD-ViT: Recurrent-Depth Vision Transformer for Semantic Segmentation with
+  Reduced Data Dependence Extending the Recurrent-Depth Transformer Architecture to
+  Dense Prediction'
 authors:
-  - "Renjie He"
+- Renjie He
 year: 2026
-published_date: "2026-05-05"
-added_date: "2026-09-06"
-venue: "arXiv"
-category: "designs"
+published_date: '2026-05-05'
+added_date: '2026-09-06'
+venue: arXiv
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "vision"
-  - "efficiency"
-  - "adaptive-compute"
+- vision
+- efficiency
+- adaptive-compute
 tags:
-  - "depth-recurrent"
-  - "ACT"
-  - "LoRA"
+- depth-recurrent
+- ACT
+- LoRA
 focus_tags:
-  - "architecture"
-  - "inference-algorithm"
-desc: "Introduces RD-ViT, looping one shared Transformer block for dense 2D and 3D segmentation with stable input injection, adaptive halting, depth-wise LoRA, and optional MoE specialization."
+- architecture
+- inference-algorithm
+desc: Introduces RD-ViT, looping one shared Transformer block for dense 2D and 3D
+  segmentation with stable input injection, adaptive halting, depth-wise LoRA, and
+  optional MoE specialization.
 links:
-  arxiv: "https://arxiv.org/abs/2605.03999"
+  arxiv: https://arxiv.org/abs/2605.03999
+citation_source_best: semantic_scholar
+citations: 1
+citation_sources:
+  semantic_scholar: 1
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-07'

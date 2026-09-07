@@ -1,26 +1,38 @@
-title: "Sliced Recursive Transformer"
+title: Sliced Recursive Transformer
 authors:
-  - "Zhiqiang Shen"
-  - "Zechun Liu"
-  - "Eric Xing"
+- Zhiqiang Shen
+- Zechun Liu
+- Eric Xing
 year: 2021
-published_date: "2021-11-09"
-added_date: "2026-09-06"
-venue: "ECCV"
-category: "designs"
+published_date: '2021-11-09'
+added_date: '2026-09-06'
+venue: ECCV
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "vision"
-  - "efficiency"
-  - "scaling"
+- vision
+- efficiency
+- scaling
 tags:
-  - "recursive-transformer"
-  - "weight-tying"
+- recursive-transformer
+- weight-tying
 focus_tags:
-  - "architecture"
-desc: "Builds parameter-efficient vision Transformers by recursively reusing blocks across depth and reducing recursive attention cost with sliced group self-attention."
+- architecture
+desc: Builds parameter-efficient vision Transformers by recursively reusing blocks
+  across depth and reducing recursive attention cost with sliced group self-attention.
 links:
-  arxiv: "https://arxiv.org/abs/2111.05297"
-  paper: "https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136840716.pdf"
-  github: "https://github.com/szq0214/SReT"
+  arxiv: https://arxiv.org/abs/2111.05297
+  paper: https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136840716.pdf
+  github: https://github.com/szq0214/SReT
+citation_source_best: semantic_scholar
+citations: 37
+citation_sources:
+  semantic_scholar: 37
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 67
+star_sources:
+  github_api: 67
+metrics_updated: '2026-09-07'

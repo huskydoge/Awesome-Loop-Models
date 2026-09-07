@@ -1,28 +1,41 @@
-title: "Deep Equilibrium Optical Flow Estimation"
+title: Deep Equilibrium Optical Flow Estimation
 authors:
-  - "Shaojie Bai"
-  - "Zhengyang Geng"
-  - "Yash Savani"
-  - "J. Zico Kolter"
+- Shaojie Bai
+- Zhengyang Geng
+- Yash Savani
+- J. Zico Kolter
 year: 2022
-published_date: "2022-04-18"
-added_date: "2026-09-06"
-venue: "CVPR"
-category: "designs"
+published_date: '2022-04-18'
+added_date: '2026-09-06'
+venue: CVPR
+category: designs
 mechanism_tags:
-  - "implicit-layer"
+- implicit-layer
 domain_tags:
-  - "vision"
-  - "efficiency"
-  - "memory-efficiency"
+- vision
+- efficiency
+- memory-efficiency
 tags:
-  - "DEQ"
-  - "convergence"
+- DEQ
+- convergence
 focus_tags:
-  - "architecture"
-  - "training-algorithm"
-  - "inference-algorithm"
-desc: "Recasts recurrent optical-flow estimation as an implicit fixed-point layer with analytic differentiation, fixed-point reuse, and sparse correction for lower memory use and faster convergence."
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Recasts recurrent optical-flow estimation as an implicit fixed-point layer with
+  analytic differentiation, fixed-point reuse, and sparse correction for lower memory
+  use and faster convergence.
 links:
-  arxiv: "https://arxiv.org/abs/2204.08442"
-  github: "https://github.com/locuslab/deq-flow"
+  arxiv: https://arxiv.org/abs/2204.08442
+  github: https://github.com/locuslab/deq-flow
+citation_source_best: semantic_scholar
+citations: 93
+citation_sources:
+  semantic_scholar: 93
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 180
+star_sources:
+  github_api: 180
+metrics_updated: '2026-09-07'

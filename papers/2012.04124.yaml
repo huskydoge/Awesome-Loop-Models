@@ -1,28 +1,37 @@
-title: "Parameter Efficient Multimodal Transformers for Video Representation Learning"
+title: Parameter Efficient Multimodal Transformers for Video Representation Learning
 authors:
-  - "Sangho Lee"
-  - "Youngjae Yu"
-  - "Gunhee Kim"
-  - "Thomas Breuel"
-  - "Jan Kautz"
-  - "Yale Song"
+- Sangho Lee
+- Youngjae Yu
+- Gunhee Kim
+- Thomas Breuel
+- Jan Kautz
+- Yale Song
 year: 2020
-published_date: "2020-12-08"
-added_date: "2026-09-06"
-venue: "ICLR"
-category: "designs"
+published_date: '2020-12-08'
+added_date: '2026-09-06'
+venue: ICLR
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "multimodal"
-  - "vision"
-  - "efficiency"
-  - "memory-efficiency"
+- multimodal
+- vision
+- efficiency
+- memory-efficiency
 tags:
-  - "weight-tying"
+- weight-tying
 focus_tags:
-  - "architecture"
-desc: "Shares Transformer parameters across depth and modalities, using modality-specific and shared factorization plus low-rank sharing to cut audio-visual video model parameters by up to 97% while enabling end-to-end training."
+- architecture
+desc: Shares Transformer parameters across depth and modalities, using modality-specific
+  and shared factorization plus low-rank sharing to cut audio-visual video model parameters
+  by up to 97% while enabling end-to-end training.
 links:
-  arxiv: "https://arxiv.org/abs/2012.04124"
-  openreview: "https://openreview.net/forum?id=6UdQLhqJyFD"
+  arxiv: https://arxiv.org/abs/2012.04124
+  openreview: https://openreview.net/forum?id=6UdQLhqJyFD
+citation_source_best: semantic_scholar
+citations: 93
+citation_sources:
+  semantic_scholar: 93
+  openalex: 36
+  opencitations: 0
+metrics_updated: '2026-09-07'

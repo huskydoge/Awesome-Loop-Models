@@ -1,20 +1,27 @@
-title: "Implicitly-Defined Neural Networks for Sequence Labeling"
+title: Implicitly-Defined Neural Networks for Sequence Labeling
 authors:
-  - "Michaeel Kazi"
-  - "Brian Thompson"
+- Michaeel Kazi
+- Brian Thompson
 year: 2017
-published_date: "2017-07-30"
-added_date: "2026-09-06"
-venue: "ACL"
-category: "designs"
+published_date: '2017-07-30'
+added_date: '2026-09-06'
+venue: ACL
+category: designs
 mechanism_tags:
-  - "implicit-layer"
+- implicit-layer
 domain_tags:
-  - "sequence-modeling"
+- sequence-modeling
 focus_tags:
-  - "architecture"
-  - "training-algorithm"
-  - "inference-algorithm"
-desc: "Defines sequence hidden states jointly through a learned implicit system and solves the coupled nonlinear equations to enable non-causal bidirectional interactions for sequence labeling."
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Defines sequence hidden states jointly through a learned implicit system and
+  solves the coupled nonlinear equations to enable non-causal bidirectional interactions
+  for sequence labeling.
 links:
-  paper: "https://aclanthology.org/P17-2027/"
+  paper: https://aclanthology.org/P17-2027/
+citation_source_best: semantic_scholar
+citations: 4
+citation_sources:
+  semantic_scholar: 4
+metrics_updated: '2026-09-07'

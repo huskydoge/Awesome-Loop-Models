@@ -1,32 +1,40 @@
-title: "Path Independent Equilibrium Models Can Better Exploit Test-Time Computation"
+title: Path Independent Equilibrium Models Can Better Exploit Test-Time Computation
 authors:
-  - "Cem Anil"
-  - "Ashwini Pokle"
-  - "Kaiqu Liang"
-  - "Johannes Treutlein"
-  - "Yuhuai Wu"
-  - "Shaojie Bai"
-  - "J. Zico Kolter"
-  - "Roger B. Grosse"
+- Cem Anil
+- Ashwini Pokle
+- Kaiqu Liang
+- Johannes Treutlein
+- Yuhuai Wu
+- Shaojie Bai
+- J. Zico Kolter
+- Roger B. Grosse
 year: 2022
-published_date: "2022-11-18"
-added_date: "2026-09-06"
-venue: "NeurIPS"
-category: "analysis"
+published_date: '2022-11-18'
+added_date: '2026-09-06'
+venue: NeurIPS
+category: analysis
 mechanism_tags:
-  - "implicit-layer"
+- implicit-layer
 domain_tags:
-  - "reasoning"
-  - "theory"
-  - "adaptive-compute"
+- reasoning
+- theory
+- adaptive-compute
 tags:
-  - "fixed-point-analysis"
-  - "convergence"
-  - "test-time-compute"
+- fixed-point-analysis
+- convergence
+- test-time-compute
 focus_tags:
-  - "architecture"
-  - "inference-algorithm"
-desc: "Links equilibrium models' ability to benefit from additional inference iterations to path independence and shows that promoting it improves upward generalization."
+- architecture
+- inference-algorithm
+desc: Links equilibrium models' ability to benefit from additional inference iterations
+  to path independence and shows that promoting it improves upward generalization.
 links:
-  arxiv: "https://arxiv.org/abs/2211.09961"
-  paper: "https://proceedings.neurips.cc/paper_files/paper/2022/hash/331c41353b053683e17f7c88a797701d-Abstract-Conference.html"
+  arxiv: https://arxiv.org/abs/2211.09961
+  paper: https://proceedings.neurips.cc/paper_files/paper/2022/hash/331c41353b053683e17f7c88a797701d-Abstract-Conference.html
+citation_source_best: semantic_scholar
+citations: 38
+citation_sources:
+  semantic_scholar: 38
+  openalex: 3
+  opencitations: 0
+metrics_updated: '2026-09-07'

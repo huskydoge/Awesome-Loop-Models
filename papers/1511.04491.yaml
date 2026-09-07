@@ -1,23 +1,32 @@
-title: "Deeply-Recursive Convolutional Network for Image Super-Resolution"
+title: Deeply-Recursive Convolutional Network for Image Super-Resolution
 authors:
-  - "Jiwon Kim"
-  - "Jung Kwon Lee"
-  - "Kyoung Mu Lee"
+- Jiwon Kim
+- Jung Kwon Lee
+- Kyoung Mu Lee
 year: 2015
-published_date: "2015-11-14"
-added_date: "2026-09-06"
-venue: "CVPR"
-category: "designs"
+published_date: '2015-11-14'
+added_date: '2026-09-06'
+venue: CVPR
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "vision"
-  - "efficiency"
+- vision
+- efficiency
 tags:
-  - "weight-tying"
+- weight-tying
 focus_tags:
-  - "architecture"
-  - "training-algorithm"
-desc: "Introduces DRCN, which applies one convolutional layer recursively up to 16 times and uses recursive supervision plus a skip connection to train a deep image super-resolution model without depth-proportional parameters."
+- architecture
+- training-algorithm
+desc: Introduces DRCN, which applies one convolutional layer recursively up to 16
+  times and uses recursive supervision plus a skip connection to train a deep image
+  super-resolution model without depth-proportional parameters.
 links:
-  arxiv: "https://arxiv.org/abs/1511.04491"
+  arxiv: https://arxiv.org/abs/1511.04491
+citation_source_best: semantic_scholar
+citations: 2787
+citation_sources:
+  semantic_scholar: 2787
+  openalex: 49
+  opencitations: 5
+metrics_updated: '2026-09-07'

@@ -1,25 +1,38 @@
-title: "Trellis Networks for Sequence Modeling"
+title: Trellis Networks for Sequence Modeling
 authors:
-  - "Shaojie Bai"
-  - "J. Zico Kolter"
-  - "Vladlen Koltun"
+- Shaojie Bai
+- J. Zico Kolter
+- Vladlen Koltun
 year: 2018
-published_date: "2018-10-15"
-added_date: "2026-09-06"
-venue: "ICLR"
-category: "designs"
+published_date: '2018-10-15'
+added_date: '2026-09-06'
+venue: ICLR
+category: designs
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "sequence-modeling"
-  - "language-modeling"
-  - "efficiency"
+- sequence-modeling
+- language-modeling
+- efficiency
 tags:
-  - "weight-tying"
+- weight-tying
 focus_tags:
-  - "architecture"
-desc: "Introduces Trellis Networks, temporal convolutional sequence models that tie weights across depth and inject inputs at every layer, thereby generalizing truncated recurrent networks."
+- architecture
+desc: Introduces Trellis Networks, temporal convolutional sequence models that tie
+  weights across depth and inject inputs at every layer, thereby generalizing truncated
+  recurrent networks.
 links:
-  arxiv: "https://arxiv.org/abs/1810.06682"
-  github: "https://github.com/locuslab/trellisnet"
-  openreview: "https://openreview.net/forum?id=HyeVtoRqtQ"
+  arxiv: https://arxiv.org/abs/1810.06682
+  github: https://github.com/locuslab/trellisnet
+  openreview: https://openreview.net/forum?id=HyeVtoRqtQ
+citation_source_best: semantic_scholar
+citations: 166
+citation_sources:
+  semantic_scholar: 166
+  openalex: 69
+  opencitations: 1
+star_source_best: github_api
+github_stars: 471
+star_sources:
+  github_api: 471
+metrics_updated: '2026-09-07'

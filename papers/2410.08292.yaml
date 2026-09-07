@@ -1,27 +1,37 @@
-title: "Can Looped Transformers Learn to Implement Multi-step Gradient Descent for In-context Learning?"
+title: Can Looped Transformers Learn to Implement Multi-step Gradient Descent for
+  In-context Learning?
 authors:
-  - "Khashayar Gatmiry"
-  - "Nikunj Saunshi"
-  - "Sashank J. Reddi"
-  - "Stefanie Jegelka"
-  - "Sanjiv Kumar"
+- Khashayar Gatmiry
+- Nikunj Saunshi
+- Sashank J. Reddi
+- Stefanie Jegelka
+- Sanjiv Kumar
 year: 2024
-published_date: "2024-07-08"
-added_date: "2026-09-06"
-venue: "ICML"
-category: "analysis"
+published_date: '2024-07-08'
+added_date: '2026-09-06'
+venue: ICML
+category: analysis
 mechanism_tags:
-  - "flat-loop"
+- flat-loop
 domain_tags:
-  - "theory"
-  - "algorithmic-reasoning"
+- theory
+- algorithmic-reasoning
 tags:
-  - "looped-transformer"
+- looped-transformer
 focus_tags:
-  - "training-algorithm"
-  - "architecture"
-  - "inference-algorithm"
-desc: "Proves that trained linear looped Transformers can learn multi-step preconditioned gradient descent for in-context linear regression and establishes convergence of gradient flow to such solutions."
+- training-algorithm
+- architecture
+- inference-algorithm
+desc: Proves that trained linear looped Transformers can learn multi-step preconditioned
+  gradient descent for in-context linear regression and establishes convergence of
+  gradient flow to such solutions.
 links:
-  arxiv: "https://arxiv.org/abs/2410.08292"
-  openreview: "https://openreview.net/forum?id=o8AaRKbP9K"
+  arxiv: https://arxiv.org/abs/2410.08292
+  openreview: https://openreview.net/forum?id=o8AaRKbP9K
+citation_source_best: semantic_scholar
+citations: 58
+citation_sources:
+  semantic_scholar: 58
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-07'

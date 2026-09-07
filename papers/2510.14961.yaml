@@ -1,27 +1,39 @@
-title: "Efficient Parallel Samplers for Recurrent-Depth Models"
+title: Efficient Parallel Samplers for Recurrent-Depth Models
 authors:
-  - "Jonas Geiping"
-  - "Xinyu Yang"
-  - "Guinan Su"
+- Jonas Geiping
+- Xinyu Yang
+- Guinan Su
 year: 2025
-published_date: "2025-10-16"
-added_date: "2026-09-06"
-venue: "ICML"
-category: "designs"
+published_date: '2025-10-16'
+added_date: '2026-09-06'
+venue: ICML
+category: designs
 mechanism_tags:
-  - "flat-loop"
-  - "parallel-loop"
+- flat-loop
+- parallel-loop
 domain_tags:
-  - "language-modeling"
-  - "reasoning"
-  - "efficiency"
+- language-modeling
+- reasoning
+- efficiency
 tags:
-  - "Huginn"
-  - "depth-recurrent"
+- Huginn
+- depth-recurrent
 focus_tags:
-  - "inference-algorithm"
-desc: "Introduces a diffusion-forcing sampler that advances new tokens while refining their recurrent-depth latent states in parallel, accelerating existing 3.5B looped language models by up to 5x without retraining."
+- inference-algorithm
+desc: Introduces a diffusion-forcing sampler that advances new tokens while refining
+  their recurrent-depth latent states in parallel, accelerating existing 3.5B looped
+  language models by up to 5x without retraining.
 links:
-  arxiv: "https://arxiv.org/abs/2510.14961"
-  github: "https://github.com/seal-rg/recurrent-pretraining"
-  openreview: "https://openreview.net/forum?id=h7WBYYJF1Q"
+  arxiv: https://arxiv.org/abs/2510.14961
+  github: https://github.com/seal-rg/recurrent-pretraining
+  openreview: https://openreview.net/forum?id=h7WBYYJF1Q
+citation_source_best: semantic_scholar
+citations: 5
+citation_sources:
+  semantic_scholar: 5
+  opencitations: 0
+star_source_best: github_api
+github_stars: 938
+star_sources:
+  github_api: 938
+metrics_updated: '2026-09-07'
