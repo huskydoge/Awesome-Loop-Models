@@ -1,0 +1,26 @@
+title: 'ProgResViT: Progressive Resolution and Width for Adaptive Vision Transformers'
+authors:
+- Ali Hojjat
+- Janek Haberer
+- Olaf Landsiedel
+year: 2026
+published_date: '2026-09-02'
+added_date: '2026-09-06'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- efficiency
+- adaptive-compute
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Reuses the same ViT blocks across confidence-routed resolution-and-width rounds,
+  projecting earlier representations into later rounds to retain accuracy while reducing
+  average ImageNet compute by up to 31.1%.
+links:
+  arxiv: https://arxiv.org/abs/2609.03216
+  github: https://github.com/ds-kiel/ProgResViT

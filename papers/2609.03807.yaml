@@ -1,0 +1,30 @@
+title: Free Pause Tokens
+authors:
+- John Langford
+- Nathan Godey
+- Giovanni Monea
+- Yoav Artzi
+- Harry Dong
+- Ying Fan
+- Gustavo de Rosa
+- Zheng Zhan
+year: 2026
+published_date: '2026-09-03'
+added_date: '2026-09-06'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- parallel-loop
+domain_tags:
+- language-modeling
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Introduces a parallel prediction stream that shares every Transformer backbone
+  weight and reads the state stream's per-layer KV states, improving 1B next-token
+  loss with essentially unchanged decode latency.
+links:
+  arxiv: https://arxiv.org/abs/2609.03807

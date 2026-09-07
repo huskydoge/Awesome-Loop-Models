@@ -158,6 +158,12 @@
     "papers/2609.01117.yaml",
     "papers/2609.01343.yaml",
     "papers/2609.01924.yaml",
+    "papers/2609.02982.yaml",
+    "papers/2609.03181.yaml",
+    "papers/2609.03216.yaml",
+    "papers/2609.03358.yaml",
+    "papers/2609.03379.yaml",
+    "papers/2609.03807.yaml",
     "papers/openreview-chaingpt.yaml",
     "papers/openreview-modr.yaml"
   ],
@@ -165,7 +171,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 138
+        "count": 141
       },
       {
         "label": "hierarchical-loop",
@@ -173,25 +179,25 @@
       },
       {
         "label": "implicit-layer",
-        "count": 16
+        "count": 18
       },
       {
         "label": "parallel-loop",
-        "count": 4
+        "count": 5
       }
     ],
     "focus": [
       {
         "label": "architecture",
-        "count": 136
+        "count": 141
       },
       {
         "label": "inference-algorithm",
-        "count": 106
+        "count": 112
       },
       {
         "label": "training-algorithm",
-        "count": 74
+        "count": 78
       },
       {
         "label": "objective-loss",
@@ -199,21 +205,21 @@
       },
       {
         "label": "data",
-        "count": 4
+        "count": 5
       }
     ],
     "domain": [
       {
         "label": "language-modeling",
-        "count": 87
+        "count": 89
       },
       {
         "label": "reasoning",
-        "count": 86
+        "count": 87
       },
       {
         "label": "efficiency",
-        "count": 75
+        "count": 81
       },
       {
         "label": "algorithmic-reasoning",
@@ -225,7 +231,7 @@
       },
       {
         "label": "adaptive-compute",
-        "count": 20
+        "count": 22
       },
       {
         "label": "theory",
@@ -233,11 +239,11 @@
       },
       {
         "label": "memory-efficiency",
-        "count": 14
+        "count": 15
       },
       {
         "label": "vision",
-        "count": 13
+        "count": 15
       },
       {
         "label": "graph-data",
@@ -249,7 +255,11 @@
       },
       {
         "label": "multimodal",
-        "count": 3
+        "count": 4
+      },
+      {
+        "label": "scientific-ml",
+        "count": 4
       },
       {
         "label": "compositional-reasoning",
@@ -265,10 +275,6 @@
       },
       {
         "label": "robotics-vla",
-        "count": 2
-      },
-      {
-        "label": "scientific-ml",
         "count": 2
       },
       {

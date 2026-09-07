@@ -1,0 +1,28 @@
+title: 'Jina-OCR-v1: Efficient Document Parsing with Speculative Decoding and Dense Verifiable Rewards'
+authors:
+- Alejandro Barón García
+- Feng Wang
+- Emilia Garcia Casademont
+- Han Xiao
+year: 2026
+published_date: '2026-09-02'
+added_date: '2026-09-06'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- multimodal
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Reuses one FastMTP draft block recursively for three speculative prediction
+  steps in an OCR vision-language model, doubling decoding speed over greedy autoregressive
+  decoding on an NVIDIA L4 while retaining lossless greedy verification.
+links:
+  arxiv: https://arxiv.org/abs/2609.03181
+  hf: https://huggingface.co/jinaai/jina-ocr-v1

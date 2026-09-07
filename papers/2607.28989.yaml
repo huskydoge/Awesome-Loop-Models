@@ -23,6 +23,7 @@ desc: Introduces SILVA Networks as structured implicit layers, separating stimul
 links:
   arxiv: https://arxiv.org/abs/2607.28989
   alphaxiv: https://www.alphaxiv.org/abs/2607.28989
+  github: https://github.com/jseluis/silva-networks
 citations: 1
 citation_sources:
   semantic_scholar: 1
