@@ -1,0 +1,31 @@
+# Catalog entry for arXiv:2609.04963.
+title: Fractal basins trap latent reasoning
+authors:
+- Jeffrey Lai
+- Anthony Bao
+- John Quinn
+- William Gilpin
+year: 2026
+published_date: '2026-09-04'
+added_date: "2026-09-07"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- hierarchical-loop
+- flat-loop
+- implicit-layer
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+- theory
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Studies recurrent-depth reasoners as dynamical systems, finding that harder
+  tasks produce fractal convergence-time basins through saddle-mediated transient
+  chaos and tracing their emergence during training of a looped Transformer.
+links:
+  arxiv: https://arxiv.org/abs/2609.04963
+  alphaxiv: https://www.alphaxiv.org/abs/2609.04963
+  github: https://github.com/GilpinLab/loopscape
