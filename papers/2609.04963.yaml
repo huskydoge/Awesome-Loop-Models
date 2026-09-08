@@ -1,4 +1,3 @@
-# Catalog entry for arXiv:2609.04963.
 title: Fractal basins trap latent reasoning
 authors:
 - Jeffrey Lai
@@ -7,7 +6,7 @@ authors:
 - William Gilpin
 year: 2026
 published_date: '2026-09-04'
-added_date: "2026-09-07"
+added_date: '2026-09-07'
 venue: arXiv
 category: analysis
 foundation: false
@@ -29,3 +28,13 @@ links:
   arxiv: https://arxiv.org/abs/2609.04963
   alphaxiv: https://www.alphaxiv.org/abs/2609.04963
   github: https://github.com/GilpinLab/loopscape
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 2
+star_sources:
+  github_api: 2
+metrics_updated: '2026-09-08'
