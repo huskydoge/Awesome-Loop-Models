@@ -198,6 +198,7 @@
     "papers/2609.03358.yaml",
     "papers/2609.03379.yaml",
     "papers/2609.03807.yaml",
+    "papers/2609.04963.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -209,15 +210,15 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 168
+        "count": 169
       },
       {
         "label": "implicit-layer",
-        "count": 29
+        "count": 30
       },
       {
         "label": "hierarchical-loop",
-        "count": 21
+        "count": 22
       },
       {
         "label": "parallel-loop",
@@ -227,11 +228,11 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 173
+        "count": 174
       },
       {
         "label": "inference-algorithm",
-        "count": 137
+        "count": 138
       },
       {
         "label": "training-algorithm",
@@ -257,11 +258,11 @@
       },
       {
         "label": "reasoning",
-        "count": 94
+        "count": 95
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 47
+        "count": 48
       },
       {
         "label": "adaptive-compute",
@@ -272,12 +273,12 @@
         "count": 29
       },
       {
-        "label": "vision",
+        "label": "theory",
         "count": 28
       },
       {
-        "label": "theory",
-        "count": 27
+        "label": "vision",
+        "count": 28
       },
       {
         "label": "memory-efficiency",
