@@ -27,6 +27,8 @@ desc: Introduces a prelude-shared-coda recurrent Transformer whose gated shared 
 links:
   arxiv: https://arxiv.org/abs/2608.15062
   alphaxiv: https://www.alphaxiv.org/abs/2608.15062
+  github: https://github.com/Amr-Hegazy1/gated-recurrent-transformer
+  hf: https://huggingface.co/collections/Amr-Hegazy/gated-recurrent-transformer-grt
 citations: 0
 citation_sources:
   semantic_scholar: 0

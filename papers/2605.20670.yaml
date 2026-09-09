@@ -32,6 +32,7 @@ desc: Introduces LT2, a looped-transformer family that replaces quadratic attent
   receptive field while keeping inference more scalable.
 links:
   arxiv: https://arxiv.org/abs/2605.20670
+  github: https://github.com/chili-lab/LT2
 citations: 4
 citation_sources:
   semantic_scholar: 4
