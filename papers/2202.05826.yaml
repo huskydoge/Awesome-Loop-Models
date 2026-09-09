@@ -32,13 +32,13 @@ links:
   arxiv: https://arxiv.org/abs/2202.05826
   github: https://github.com/aks2203/deep-thinking
 citation_source_best: semantic_scholar
-citations: 29
+citations: 30
 citation_sources:
-  semantic_scholar: 29
+  semantic_scholar: 30
   openalex: 3
   opencitations: 0
 star_source_best: github_api
 github_stars: 92
 star_sources:
   github_api: 92
-metrics_updated: '2026-09-07'
+metrics_updated: '2026-09-09'
