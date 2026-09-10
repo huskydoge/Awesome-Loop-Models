@@ -1,0 +1,31 @@
+title: 'DART: Distributional Adversarial Recurrent Training for Algorithm Learning'
+authors:
+- Hieu Tran Bao
+- Phung Thanh Dang
+- Pham Quang Nhat Minh
+- Hoang Thanh Tung
+year: 2026
+published_date: '2026-09-05'
+added_date: '2026-09-09'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+focus_tags:
+- objective-loss
+- training-algorithm
+desc: Replaces point targets with a local target distribution and adversarial critic
+  for recurrent reasoning models, improving stability and out-of-distribution accuracy
+  on Maze, Chess, and masked Sudoku.
+links:
+  arxiv: https://arxiv.org/abs/2609.05988
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-10'

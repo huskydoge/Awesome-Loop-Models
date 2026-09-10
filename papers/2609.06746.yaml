@@ -1,0 +1,31 @@
+title: 'Reason Through the Latent! Making Latent Visual Reasoning Necessary'
+authors:
+- Suhyeong Park
+- Junha Jung
+- Jaewoo Kang
+year: 2026
+published_date: '2026-09-06'
+added_date: '2026-09-09'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- multimodal
+- vision
+- reasoning
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Reuses one decoder layer and shared LoRA parameters for recurrent visual reasoning,
+  repeatedly re-reading fixed visual evidence while making the final recurrent state
+  the only image-conditioned path to prediction.
+links:
+  arxiv: https://arxiv.org/abs/2609.06746
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-10'
