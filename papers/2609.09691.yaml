@@ -1,0 +1,29 @@
+title: 'Looped GPT-BERT: Trading Parameters for Computation in Small Language Modeling'
+authors:
+- Tingshuo Fan
+- Hongtao Mu
+- Tianyu Zhou
+- Hansen Liu
+- Tao Ji
+year: 2026
+published_date: '2026-09-09'
+added_date: '2026-09-10'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+desc: Combines GPT-BERT's hybrid causal and masked objectives with a four-layer
+  Transformer stack reused across twelve recurrent traversals, trading parameters
+  for recurrent compute in small-data language modeling.
+links:
+  arxiv: https://arxiv.org/abs/2609.09691
+  alphaxiv: https://www.alphaxiv.org/abs/2609.09691
+  github: https://github.com/Survivor613/BabyLM-2026
+  hf: https://huggingface.co/Survivor613/BabyLM2026-Strict-Small-looped_GPT-BERT
