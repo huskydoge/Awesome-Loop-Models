@@ -19,11 +19,21 @@ domain_tags:
 focus_tags:
 - architecture
 - training-algorithm
-desc: Combines GPT-BERT's hybrid causal and masked objectives with a four-layer
-  Transformer stack reused across twelve recurrent traversals, trading parameters
-  for recurrent compute in small-data language modeling.
+desc: Combines GPT-BERT's hybrid causal and masked objectives with a four-layer Transformer
+  stack reused across twelve recurrent traversals, trading parameters for recurrent
+  compute in small-data language modeling.
 links:
   arxiv: https://arxiv.org/abs/2609.09691
   alphaxiv: https://www.alphaxiv.org/abs/2609.09691
   github: https://github.com/Survivor613/BabyLM-2026
   hf: https://huggingface.co/Survivor613/BabyLM2026-Strict-Small-looped_GPT-BERT
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 2
+star_sources:
+  github_api: 2
+metrics_updated: '2026-09-11'
