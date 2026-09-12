@@ -29,10 +29,10 @@ desc: Mechanistically analyzes explicit cyclic recurrence in looped language mod
 links:
   arxiv: https://arxiv.org/abs/2604.11791
   twitter: https://x.com/HughBlayney/status/2046558050882899995?s=20
-citations: 20
+citations: 21
 citation_sources:
-  semantic_scholar: 20
+  semantic_scholar: 21
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-09-11'
+metrics_updated: '2026-09-12'

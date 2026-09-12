@@ -23,13 +23,13 @@ links:
   arxiv: https://arxiv.org/abs/2003.12039
   github: https://github.com/princeton-vl/RAFT
 citation_source_best: semantic_scholar
-citations: 4163
+citations: 4164
 citation_sources:
-  semantic_scholar: 4163
+  semantic_scholar: 4164
   openalex: 139
   opencitations: 8
 star_source_best: github_api
-github_stars: 4093
+github_stars: 4095
 star_sources:
-  github_api: 4093
-metrics_updated: '2026-09-11'
+  github_api: 4095
+metrics_updated: '2026-09-12'

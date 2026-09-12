@@ -32,9 +32,9 @@ links:
   arxiv: https://arxiv.org/abs/2211.09961
   paper: https://proceedings.neurips.cc/paper_files/paper/2022/hash/331c41353b053683e17f7c88a797701d-Abstract-Conference.html
 citation_source_best: semantic_scholar
-citations: 38
+citations: 39
 citation_sources:
-  semantic_scholar: 38
+  semantic_scholar: 39
   openalex: 3
   opencitations: 0
-metrics_updated: '2026-09-07'
+metrics_updated: '2026-09-12'
