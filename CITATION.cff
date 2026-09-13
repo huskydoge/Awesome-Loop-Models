@@ -1,0 +1,9 @@
+# Citation metadata for GitHub's "Cite this repository" feature.
+cff-version: 1.2.0
+message: "If you find this repository useful, please cite it."
+title: "Awesome-Loop-Models"
+authors:
+  - family-names: "Huang"
+    given-names: "Benhao"
+  - name: "Awesome-Loop-Models Contributors"
+url: "https://github.com/huskydoge/Awesome-Loop-Models"
