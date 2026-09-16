@@ -34,9 +34,9 @@ links:
   arxiv: https://arxiv.org/abs/2511.08577
   openreview: https://openreview.net/forum?id=eQaJSRZiGn
   github: https://github.com/thu-nics/TaH
-citations: 22
+citations: 23
 citation_sources:
-  semantic_scholar: 22
+  semantic_scholar: 23
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar

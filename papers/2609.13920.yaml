@@ -1,4 +1,3 @@
-# Paper metadata for arXiv:2609.13920.
 title: Finite-Time Node Separation in Recurrent Graph Neural Networks with Persistent
   Gaussian Perturbations
 authors:
@@ -28,4 +27,5 @@ citations: 0
 citation_sources:
   semantic_scholar: 0
   opencitations: 0
+  openalex: 0
 metrics_updated: '2026-09-16'

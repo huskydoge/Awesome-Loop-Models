@@ -1,4 +1,3 @@
-# Paper metadata for arXiv:2609.15160.
 title: 'T-LoopFormer: Token-Level Elastic-Depth Looped Transformers for Latent Reasoning
   With Dynamic Routing'
 authors:
@@ -32,6 +31,7 @@ citations: 0
 citation_sources:
   semantic_scholar: 0
   opencitations: 0
+  openalex: 0
 star_source_best: github_api
 github_stars: 0
 star_sources:

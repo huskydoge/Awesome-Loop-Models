@@ -1,4 +1,3 @@
-# Paper metadata for arXiv:2609.13688.
 title: 'SONAR: A Structure-Consistent Neural Operator for Null-Space-Aware Sparse
   View CT Reconstruction'
 authors:
@@ -34,4 +33,5 @@ citations: 0
 citation_sources:
   semantic_scholar: 0
   opencitations: 0
+  openalex: 0
 metrics_updated: '2026-09-16'
