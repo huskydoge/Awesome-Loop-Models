@@ -153,6 +153,7 @@
     "papers/2607.02491.yaml",
     "papers/2607.06527.yaml",
     "papers/2607.10110.yaml",
+    "papers/2607.10128.yaml",
     "papers/2607.10541.yaml",
     "papers/2607.10681.yaml",
     "papers/2607.11116.yaml",
@@ -223,7 +224,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 182
+        "count": 183
       },
       {
         "label": "implicit-layer",
@@ -245,7 +246,7 @@
       },
       {
         "label": "inference-algorithm",
-        "count": 147
+        "count": 148
       },
       {
         "label": "training-algorithm",
@@ -253,7 +254,7 @@
       },
       {
         "label": "objective-loss",
-        "count": 28
+        "count": 29
       },
       {
         "label": "data",
@@ -263,19 +264,19 @@
     "domain": [
       {
         "label": "efficiency",
-        "count": 111
+        "count": 112
+      },
+      {
+        "label": "reasoning",
+        "count": 101
       },
       {
         "label": "language-modeling",
         "count": 100
       },
       {
-        "label": "reasoning",
-        "count": 100
-      },
-      {
         "label": "algorithmic-reasoning",
-        "count": 51
+        "count": 52
       },
       {
         "label": "adaptive-compute",
