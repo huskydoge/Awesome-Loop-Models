@@ -1,0 +1,40 @@
+title: 'Beyond Memorization: Extending Reasoning Depth with Recurrence, Memory and Test-Time Compute Scaling'
+authors:
+- Ivan Rodkin
+- Daniil Orel
+- Konstantin Smirnov
+- Arman Bolatov
+- Bilal Elbouardi
+- Besher Hassan
+- Yuri Kuratov
+- Aydar Bulatov
+- Preslav Nakov
+- Timothy Baldwin
+- Artem Shelmanov
+- Mikhail Burtsev
+year: 2026
+published_date: '2025-08-22'
+added_date: '2026-09-16'
+venue: Findings of ACL
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+- adaptive-compute
+tags:
+- ACT
+- adaptive-computation-time
+- test-time-compute
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Benchmarks recurrent depth on disjoint-rule cellular automata, finding that
+  layer- and model-level ACT add roughly one effective reasoning step through shared
+  adaptive updates but remain bounded on longer rollouts.
+links:
+  arxiv: https://arxiv.org/abs/2508.16745
+  paper: https://aclanthology.org/2026.findings-acl.2103/
+  github: https://github.com/RodkinIvan/associative-recurrent-memory-transformer/tree/ACT

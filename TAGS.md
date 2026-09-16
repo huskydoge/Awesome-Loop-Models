@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (23)
-- `flat-loop` (181)
+- `flat-loop` (182)
 - `parallel-loop` (6)
 - `implicit-layer` (30)
 
@@ -28,9 +28,9 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 
 - `objective-loss` (28)
 - `training-algorithm` (100)
-- `architecture` (185)
+- `architecture` (186)
 - `data` (5)
-- `inference-algorithm` (146)
+- `inference-algorithm` (147)
 
 ## domain_tags
 
@@ -38,9 +38,9 @@ Observed browser-facing domain tags currently used across the repo.
 
 - `efficiency` (111)
 - `language-modeling` (100)
-- `reasoning` (99)
-- `algorithmic-reasoning` (50)
-- `adaptive-compute` (32)
+- `reasoning` (100)
+- `algorithmic-reasoning` (51)
+- `adaptive-compute` (33)
 - `vision` (31)
 - `scaling` (30)
 - `theory` (30)
@@ -80,19 +80,19 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `TRM` (9)
 - `depth-recurrent` (8)
 - `shared-weight-recurrence` (8)
+- `ACT` (7)
 - `HRM` (7)
 - `looped-llm` (7)
-- `ACT` (6)
 - `Ouro` (6)
 - `recursive-transformer` (6)
 - `depth-scaling` (5)
 - `latent-refinement` (5)
+- `test-time-compute` (5)
 - `universal-transformer` (5)
 - `UT` (5)
+- `adaptive-computation-time` (4)
 - `Huginn` (4)
 - `LoopLM` (4)
-- `test-time-compute` (4)
-- `adaptive-computation-time` (3)
 - `LoRA` (3)
 - `activation-compression` (2)
 - `fixed-point-analysis` (2)
