@@ -59,6 +59,7 @@
     "papers/2507.02199.yaml",
     "papers/2507.07996.yaml",
     "papers/2507.10524.yaml",
+    "papers/2508.16745.yaml",
     "papers/2509.23314.yaml",
     "papers/2510.04871.yaml",
     "papers/2510.14961.yaml",
@@ -222,7 +223,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 181
+        "count": 182
       },
       {
         "label": "implicit-layer",
@@ -240,11 +241,11 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 185
+        "count": 186
       },
       {
         "label": "inference-algorithm",
-        "count": 146
+        "count": 147
       },
       {
         "label": "training-algorithm",
@@ -270,15 +271,15 @@
       },
       {
         "label": "reasoning",
-        "count": 99
+        "count": 100
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 50
+        "count": 51
       },
       {
         "label": "adaptive-compute",
-        "count": 32
+        "count": 33
       },
       {
         "label": "vision",
