@@ -30,14 +30,14 @@ links:
   openreview: https://openreview.net/forum?id=RzYXb5YWBs
   project: https://loopformer.github.io/
   github: https://github.com/armenjeddi/loopformer
-citations: 36
+citations: 38
 citation_sources:
-  semantic_scholar: 36
+  semantic_scholar: 38
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-github_stars: 44
+github_stars: 46
 star_sources:
-  github_api: 44
+  github_api: 46
 star_source_best: github_api
-metrics_updated: '2026-09-15'
+metrics_updated: '2026-09-16'

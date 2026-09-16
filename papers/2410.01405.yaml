@@ -28,13 +28,13 @@ links:
   openreview: https://openreview.net/forum?id=H4BuhRezCV
   paper: https://proceedings.mlr.press/v267/xu25x.html
   github: https://github.com/kevin671/tmlt
-citations: 26
+citations: 27
 citation_sources:
-  semantic_scholar: 26
+  semantic_scholar: 27
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-09-15'
+metrics_updated: '2026-09-16'
 github_stars: 9
 star_sources:
   github_api: 9
