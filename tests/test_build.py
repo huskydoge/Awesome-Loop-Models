@@ -21,6 +21,8 @@ ISSUE_TEMPLATE_CONFIG_TEMPLATE_PATH = REPO_ROOT / ".github" / "ISSUE_TEMPLATE" /
 FIX_ERROR_TEMPLATE_PATH = REPO_ROOT / ".github" / "ISSUE_TEMPLATE" / "fix_error.yml"
 PR_TEMPLATE_PATH = REPO_ROOT / ".github" / "pull_request_template.md"
 INDEX_HTML_PATH = REPO_ROOT / "index.html"
+READING_DESK_JS_PATH = REPO_ROOT / "assets" / "reading-desk.js"
+READING_DESK_CSS_PATH = REPO_ROOT / "assets" / "reading-desk.css"
 SUBMIT_PAGE_PATH = REPO_ROOT / "submit.html"
 CONTRIBUTING_PATH = REPO_ROOT / "CONTRIBUTING.md"
 README_HEADER_PATH = REPO_ROOT / "scripts" / "README_HEADER.md"
@@ -500,7 +502,7 @@ process.stdout.write(JSON.stringify(result));
         """Evaluate the complete production tab state and interaction block in Node."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         state_start = html.index("let ALL_PAPERS = [];")
-        state_end = html.index("let CURRENT_VIEW = 'category';", state_start)
+        state_end = html.index("let CURRENT_VIEW = 'category';", state_start) + len("let CURRENT_VIEW = 'category';")
         block_start = html.index("function normalizeTopLevelTab(tab) {")
         block_end = html.index("initResearchPrompt();", block_start)
         toggle_start = html.index("function toggleTagFilter(tagKey) {")
@@ -528,7 +530,7 @@ const replaceStateCalls = [];
 const pushStateCalls = [];
 const searchInput = {{
   value: '',
-  placeholder: 'Search papers or blogs by title, author, venue, keyword…',
+  placeholder: 'Search papers, authors, keywords…',
   attributes: {{}},
   listeners: {{}},
   setAttribute: function(name, value) {{
@@ -588,15 +590,18 @@ function makeTab(id, selected, tabIndex) {{
   }};
 }}
 
-const tabs = [makeTab('papers-tab', true, 0), makeTab('stats-tab', false, -1)];
-const papersPanel = {{ hidden: false }};
-const statsPanel = {{ hidden: true }};
+const tabs = [makeTab('papers-tab', true, 0), makeTab('stats-tab', false, -1), makeTab('blogs-tab', false, -1)];
+const papersPanel = makeStaticElement(false);
+const statsPanel = makeStaticElement(true);
+const catalogHeading = makeStaticElement(false);
 const bodyClasses = {{}};
 const elements = {{
   'papers-tab': tabs[0],
   'stats-tab': tabs[1],
+  'blogs-tab': tabs[2],
   'papers-panel': papersPanel,
   'stats-panel': statsPanel,
+  'catalog-heading': catalogHeading,
   'search': searchInput,
   'publication-date-start': publicationDateStart,
   'publication-date-end': publicationDateEnd,
@@ -669,6 +674,10 @@ function renderStatsPanel() {{
   renderStatsCalls.push({{ ready: CATALOG_DATA_READY, error: CATALOG_DATA_ERROR }});
 }}
 function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
+/** Keep this tab harness independent of detail-pane rendering. */
+function syncReadingDeskPanel() {{}}
+/** Preserve view transitions without rendering the catalog in this harness. */
+function setView(view) {{ CURRENT_VIEW = view; }}
 function updateTagFilterUI() {{ uiUpdates += 1; }}
 function setFilterSidebarOpen(isOpen) {{
   FILTER_SIDEBAR_OPEN = Boolean(isOpen);
@@ -737,7 +746,7 @@ function doSearch(query) {{ searchCalls.push(query); }}
         self.assertIn("setFilterSidebarOpen(true);", restore_source)
         self.assertIn("setTagFilterOpen(false);", restore_source)
         self.assertNotIn("setTagFilterOpen(true);", restore_source)
-        summary_start = html.index("function formatActiveTagSummary() {")
+        summary_start = html.index("function renderActiveTagSummary() {")
         summary_end = html.index("function setTagFilterOpen(isOpen) {", summary_start)
         summary_source = html[summary_start:summary_end]
         self.assertIn("const entry = TAG_FILTER_LOOKUP[tagKey];", summary_source)
@@ -915,7 +924,7 @@ process.stdout.write(JSON.stringify({
                 "entered": {
                     "active": ["mechanism::flat-loop"],
                     "locked": "mechanism::flat-loop",
-                    "placeholder": "Search papers or blogs by title, author, venue, keyword…",
+                    "placeholder": "Search papers, authors, keywords…",
                     "query": "",
                     "dates": ["", ""],
                     "quickFilters": [False, False, False, False],
@@ -930,7 +939,7 @@ process.stdout.write(JSON.stringify({
                     "active": ["focus::architecture"],
                     "locked": "",
                     "query": "LayerNorm",
-                    "placeholder": "Search papers or blogs by title, author, venue, keyword…",
+                    "placeholder": "Search papers, authors, keywords…",
                     "panels": [True, False],
                 },
             },
@@ -1094,7 +1103,7 @@ process.stdout.write(JSON.stringify({{ blogOnly: blogOnly, shared: shared }}));
             "let LOCKED_TAG_FILTER_KEY = '';",
             "function getTagDrilldownKeyFromUrl() {",
             "function restoreTagDrilldownFromUrl() {",
-            "LOCKED_TAG_FILTER_KEY ? ALL_PAPERS : ALL_RESOURCES",
+            "ACTIVE_TOP_LEVEL_TAB === 'blogs' ? ALL_BLOGS : ALL_PAPERS",
             "window.addEventListener('popstate', restoreTagDrilldownFromUrl);",
         ):
             self.assertIn(snippet, html)
@@ -1135,6 +1144,8 @@ const parsed = {
   unknown: parse('?tag=domain%3A%3Aunknown', '#papers'),
   malformed: parse('?tag=mechanism%3Aflat-loop', '#papers'),
   nonPaper: parse('?tag=domain%3A%3Ablog-only', '#papers'),
+  blogs: parse('?tag=mechanism%3A%3Aflat-loop', '#blogs'),
+  legacyBlogs: parse('?tag=mechanism%3A%3Aflat-loop', '#section-blogs'),
   stats: parse('?tag=mechanism%3A%3Aflat-loop', '#stats')
 };
 
@@ -1198,6 +1209,8 @@ process.stdout.write(JSON.stringify({
                 "unknown": "",
                 "malformed": "",
                 "nonPaper": "",
+                "blogs": "",
+                "legacyBlogs": "",
                 "stats": "",
             },
         )
@@ -1454,19 +1467,32 @@ setTimeout(function() {
         self.assertNotIn("family: 'Family Tags'", html)
         self.assertNotIn("paper.family_tags", html)
 
-    def test_paper_titles_link_to_primary_paper_pages(self):
+    def test_paper_titles_select_details_and_keep_primary_source_links(self):
+        """Reading-desk titles select a resource while sources remain native links."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        desk = READING_DESK_JS_PATH.read_text(encoding="utf-8")
+        render_start = html.index("function renderCard(paper, query) {")
+        render_end = html.index("// ── State & Category Tree", render_start)
+        card = html[render_start:render_end]
         self.assertIn("function getPrimaryPaperUrl(paper)", html)
         self.assertIn("paper.links.blog", html)
         self.assertIn("paper.links.arxiv", html)
         self.assertIn("paper.links.paper", html)
-        self.assertIn('class=\"paper-title-link\"', html)
+        self.assertIn('class="desk-paper-select"', card)
+        self.assertIn('aria-controls="paper-detail" aria-pressed="false"', card)
+        self.assertIn("renderPaperLinksHtml(paper)", card)
+        self.assertIn('class="paper-links desk-list-links"', card)
+        self.assertIn('class="desk-open-paper"', desk)
+        self.assertIn("getPrimaryPaperUrl(paper)", desk)
+        self.assertIn("escapeHtml(primaryUrl)", desk)
 
-    def test_foundation_badge_and_category_disclaimer_are_rendered(self):
+    def test_foundation_badge_remains_without_classification_disclosure(self):
+        """Removing the classification explanation does not remove paper status."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("foundation-badge", html)
-        self.assertIn("Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused", html)
-        self.assertIn("category-disclaimer", html)
+        self.assertNotIn("category-disclaimer", html)
+        self.assertNotIn("desk-scope", html)
+        self.assertNotIn("About the classification", html)
 
     def test_adjacent_work_is_labeled_across_catalog_and_stats_views(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -1476,12 +1502,18 @@ setTimeout(function() {
         self.assertIn("outside the strict single-forward loop-model scope", html)
         self.assertIn('id="stats-total-papers-note"', html)
 
-    def test_must_read_star_marker_is_rendered_in_frontend_titles(self):
+    def test_must_read_status_is_rendered_in_cards_details_and_table_titles(self):
+        """The reading desk uses a text status while table titles retain their star."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        desk = READING_DESK_JS_PATH.read_text(encoding="utf-8")
+        render_start = html.index("function renderCard(paper, query) {")
+        render_end = html.index("// ── State & Category Tree", render_start)
+        marker = '(paper.must_read ? \'<span class="desk-must-read">Must read</span>\' : \'\')'
+        self.assertIn(marker, html[render_start:render_end])
+        self.assertIn(marker, desk)
         self.assertIn("must-read-marker", html)
         self.assertIn("paper.must_read", html)
         self.assertIn("🌟", html)
-        self.assertIn("const titleHtml = mustReadMarkerHtml + titleTextHtml + foundationBadgeHtml + catalogFitBadgeHtml;", html)
         self.assertIn("mustReadMarkerHtml + '<span>' + highlightQuery(paper.title, query) + '</span>' + foundationBadgeHtml + catalogFitBadgeHtml", html)
 
     def test_filter_sidebar_hooks_exist_and_top_panel_resizer_is_removed(self):
@@ -1577,12 +1609,13 @@ setTimeout(function() {
         self.assertIn("if (tableBody && tableBody.children.length) tableBody.textContent = '';", renderer)
         self.assertEqual(renderer.count("renderTableView(query, filteredPapers);"), 1)
 
-    def test_daily_briefing_notice_is_a_neutral_expandable_report_in_document_flow(self):
+    def test_daily_briefing_notice_is_a_static_bulletin_in_document_flow(self):
+        """Catalog updates stay visible without nested disclosure controls."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn('<div class="daily-status-row">', html)
-        self.assertIn('<details class="daily-briefing-notice"', html)
+        self.assertIn('<div class="daily-briefing-notice"', html)
         self.assertIn('id="daily-briefing-notice"', html)
-        self.assertIn('<summary class="daily-briefing-summary">', html)
+        self.assertIn('<div class="daily-briefing-summary">', html)
         self.assertIn('<span class="daily-briefing-notice-label">Today</span>', html)
         self.assertIn('class="daily-briefing-separator" aria-hidden="true">·</span>', html)
         self.assertIn('id="daily-briefing-today-count" aria-live="polite">0 papers</strong>', html)
@@ -1632,16 +1665,22 @@ setTimeout(function() {
         self.assertIn("if (!notice || notice.hidden) return;", stale_helper)
         self.assertIn("notice.dataset.briefingDate !== currentDate", stale_helper)
         self.assertIn("notice.hidden = true;", stale_helper)
-        self.assertIn("notice.open = false;", stale_helper)
+        self.assertNotIn("notice.open", stale_helper)
         self.assertEqual(html.count("setInterval(hideStaleDailyBriefingNotice, 60_000);"), 1)
 
-        status_start = html.index('<div class="daily-status-row">')
-        notice_markup = html.index('<details class="daily-briefing-notice"', status_start)
+        watch_start = html.index('<section class="desk-watch"')
+        status_start = html.index('<div class="daily-status-row">', watch_start)
+        notice_markup = html.index('<div class="daily-briefing-notice"', status_start)
         countdown_markup = html.index('<div class="daily-watch-countdown"', notice_markup)
-        status_end = html.index('</div>\n    <div class="search-wrap">', countdown_markup)
+        watch_end = html.index('</section>', countdown_markup)
+        sidebar_end = html.index('</aside>', watch_start)
+        self.assertIn('aria-label="Catalog watch"', html[watch_start:status_start])
+        self.assertNotIn('desk-watch-title', html)
+        self.assertNotIn('<details', html[watch_start:watch_end])
         self.assertLess(status_start, notice_markup)
         self.assertLess(notice_markup, countdown_markup)
-        self.assertLess(countdown_markup, status_end)
+        self.assertLess(countdown_markup, watch_end)
+        self.assertLess(watch_end, sidebar_end)
 
         status_css_start = html.index("\n    .daily-status-row {\n") + 1
         status_css_end = html.index("}", status_css_start)
@@ -1662,22 +1701,18 @@ setTimeout(function() {
             "position: relative;",
             "display: block;",
             "flex: 0 1 auto;",
-            "width: fit-content;",
+            "width: 100%;",
             "min-width: 0;",
         ):
             self.assertIn(declaration, notice_css)
         self.assertNotIn("position: absolute;", notice_css)
         self.assertNotIn(".daily-briefing-notice {\n        padding:", html)
 
-        open_css_start = html.index(".daily-briefing-notice[open] {\n")
-        open_css_end = html.index("}", open_css_start)
-        open_css = html[open_css_start:open_css_end]
-        self.assertIn("flex: 0 1 620px;", open_css)
-        self.assertIn("width: 620px;", open_css)
+        self.assertNotIn(".daily-briefing-notice[open]", html)
 
         summary_start = html.index(".daily-briefing-summary {\n")
         summary_end = html.index("}", summary_start)
-        self.assertIn("min-height: 44px;", html[summary_start:summary_end])
+        self.assertNotIn("cursor: pointer;", html[summary_start:summary_end])
 
     def test_daily_status_row_reflows_without_detached_positioning(self):
         """Daily status remains in flow and becomes compact on phones."""
@@ -1694,7 +1729,7 @@ setTimeout(function() {
         self.assertIn("@keyframes daily-watch-clock-spin", html)
         self.assertIn("animation: daily-watch-clock-spin 60s steps(60, end) infinite;", html)
         self.assertIn(".daily-watch-clock::after { animation: none; }", html)
-        self.assertIn(".daily-briefing-notice[open] {\n        flex: 0 0 100%;", html)
+        self.assertIn(".daily-briefing-notice {\n        width: 100%;", html)
         meta_start = html.index(".daily-watch-countdown-meta {\n")
         meta_end = html.index("}", meta_start)
         self.assertIn("display: none;", html[meta_start:meta_end])
@@ -1755,11 +1790,13 @@ setTimeout(function() {
         self.assertNotIn("Category / Subcategory", header_snippet)
         self.assertNotIn("Added", header_snippet)
 
-    def test_top_level_papers_and_stats_tab_shell_exists(self):
+    def test_top_level_papers_stats_and_blogs_tab_shell_exists(self):
+        """All three navigation choices expose their tab and panel relationships."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         for snippet in (
             '<button type="button" class="top-level-tab active" id="papers-tab" role="tab" aria-controls="papers-panel" aria-selected="true" tabindex="0"',
             '<button type="button" class="top-level-tab" id="stats-tab" role="tab" aria-controls="stats-panel" aria-selected="false" tabindex="-1"',
+            '<button type="button" class="top-level-tab" id="blogs-tab" role="tab" aria-controls="papers-panel" aria-selected="false" tabindex="-1"',
             '<div class="top-level-panel" id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0"',
             '<section class="top-level-panel stats-panel" id="stats-panel" role="tabpanel" aria-labelledby="stats-tab" tabindex="0" hidden>',
         ):
@@ -1775,38 +1812,54 @@ setTimeout(function() {
         ):
             self.assertIn(snippet, html)
 
-    def test_top_level_tabs_are_a_global_masthead_mode_switch(self):
-        """The site mode switch belongs to the masthead and owns the page layout."""
+    def test_top_level_tabs_and_tools_use_the_three_column_reading_desk(self):
+        """The rail owns navigation while search and details occupy separate columns."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        header_start = html.index("<header>")
-        header_end = html.index("</header>", header_start)
-        header = html[header_start:header_end]
-        masthead_start = header.index('<div class="site-masthead">')
-        masthead = header[masthead_start:]
-        tools_start = html.index('<div class="catalog-toolbar-shell">', header_end)
-        tools_end = html.index('<div class="layout">', tools_start)
-        tools = html[tools_start:tools_end]
+        style = READING_DESK_CSS_PATH.read_text(encoding="utf-8")
+        sidebar_start = html.index('<aside class="sidebar"')
+        sidebar_end = html.index('</aside>', sidebar_start)
+        sidebar = html[sidebar_start:sidebar_end]
         main_start = html.index('<main id="main">')
         main_end = html.index("</main>", main_start)
         main = html[main_start:main_end]
+        tools_start = main.index('<div class="catalog-toolbar-shell">')
+        tools_end = main.index('id="papers-panel"', tools_start)
+        tools = main[tools_start:tools_end]
+        detail_start = html.index('<dialog class="paper-detail"', main_end)
 
-        self.assertIn('<div class="site-brand">', masthead)
-        self.assertIn('<span class="site-brand-mark" aria-hidden="true">LM</span>', masthead)
-        self.assertIn('<div class="top-level-tabs" role="tablist"', masthead)
-        self.assertIn('<div class="header-actions">', masthead)
-        brand_index = masthead.index('<div class="site-brand">')
-        tabs_index = masthead.index('<div class="top-level-tabs" role="tablist"')
-        actions_index = masthead.index('<div class="header-actions">')
+        self.assertLess(sidebar_end, main_start)
+        self.assertLess(main_end, detail_start)
+        self.assertIn('<div class="site-brand">', sidebar)
+        self.assertIn('<svg class="site-brand-mark"', sidebar)
+        self.assertNotIn('A field guide to recurrent depth', sidebar)
+        self.assertNotIn('id="sidebar-nav"', sidebar)
+        self.assertIn('id="category-filter"', tools)
+        self.assertNotIn('id="mobile-directory"', html)
+        self.assertIn('<div class="top-level-tabs" role="tablist"', sidebar)
+        self.assertIn('<div class="header-actions">', sidebar)
+        self.assertIn('aria-orientation="vertical"', sidebar)
+        brand_index = sidebar.index('<div class="site-brand">')
+        tabs_index = sidebar.index('<div class="top-level-tabs" role="tablist"')
+        actions_index = sidebar.index('<div class="header-actions">')
         self.assertLess(brand_index, tabs_index)
         self.assertLess(tabs_index, actions_index)
         self.assertNotIn("top-level-tabs", main)
         for marker in (
-            'class="header-sub"',
             'id="daily-briefing-notice"',
             'id="daily-watch-countdown"',
+            'id="research-prompt-launch"',
+            'href="submit.html"',
+            'data-theme-choice="system"',
+            'data-theme-choice="light"',
+            'data-theme-choice="dark"',
+        ):
+            self.assertIn(marker, sidebar)
+        for marker in (
             'class="search-wrap"',
             'id="filter-sidebar-toggle"',
             'id="filter-sidebar-panel"',
+            'id="desk-sort"',
+            'id="desk-view"',
         ):
             self.assertIn(marker, tools)
         for element_id in (
@@ -1822,28 +1875,19 @@ setTimeout(function() {
         apply_end = html.index("function setTopLevelTab(tab, options) {", apply_start)
         apply_helper = html[apply_start:apply_end]
         self.assertIn("document.body.classList.toggle('stats-mode', isStats);", apply_helper)
+        self.assertIn("syncReadingDeskPanel();", apply_helper)
 
-        style = html[html.index("<style>"):html.index("</style>")]
-        for selector in (
-            "body.stats-mode .papers-only-tools",
-            "body.stats-mode .sidebar",
-            "body.stats-mode .layout",
-            "body.stats-mode main",
-            "body.stats-mode .stats-panel",
-        ):
-            self.assertIn(selector, style)
-        editorial_start = style.index("/* ── Personal-site-aligned editorial system ── */")
-        mobile_start = style.index("@media (max-width: 768px)", editorial_start)
+        self.assertRegex(style, r"grid-template-columns:\s*var\(--desk-rail\)\s+minmax\([^;]+\)\s+1px\s+minmax\([^;]+\);")
+        self.assertIn(".reading-desk.stats-mode .layout", style)
+        self.assertIn(".reading-desk .layout.table-view-active", style)
+        self.assertIn("grid-template-columns: var(--desk-rail) minmax(0, 1fr);", style)
+        self.assertIn(".reading-desk .catalog-toolbar-shell { position: sticky;", style)
+        mobile_start = style.index("@media (max-width: 768px)")
         mobile_css = style[mobile_start:]
-        self.assertIn(".site-masthead", mobile_css)
-        self.assertIn(".top-level-tabs", mobile_css)
-        self.assertIn(".site-masthead {\n        display: grid;", mobile_css)
-        self.assertIn("grid-template-columns: minmax(0, 1fr) auto;", mobile_css)
-        self.assertIn("min-width: max-content;", mobile_css)
-        self.assertIn(".site-brand-name {\n        display: block;", mobile_css)
-        self.assertIn("text-overflow: ellipsis;", mobile_css)
-        self.assertIn(".site-masthead .header-actions {\n        display: none;", mobile_css)
-        self.assertIn("position: sticky;", mobile_css)
+        self.assertIn(".reading-desk .top-level-tabs { flex-direction: row;", mobile_css)
+        self.assertIn(".reading-desk .header-actions { display: flex;", mobile_css)
+        self.assertIn(".desk-watch { margin: 0; grid-row: 4; grid-column: 1 / -1;", mobile_css)
+        self.assertIn(".reading-desk .paper-detail { width: calc(100vw - 24px);", mobile_css)
 
     def test_editorial_masthead_is_compact_on_desktop_without_shrinking_mobile_targets(self):
         """Desktop chrome should be shorter while mobile keeps its existing tap targets."""
@@ -1894,7 +1938,9 @@ setTimeout(function() {
         hash_start = html.index("function getTopLevelTabFromHash(hash) {")
         hash_end = html.index("function applyTopLevelTab() {", hash_start)
         hash_helper = html[hash_start:hash_end]
-        self.assertIn("return hash === '#stats' ? 'stats' : 'papers';", hash_helper)
+        self.assertIn("hash === '#stats'", hash_helper)
+        self.assertIn("hash === '#blogs'", hash_helper)
+        self.assertIn("hash === '#section-blogs'", hash_helper)
 
         keyboard_start = html.index("function handleTopLevelTabKeydown(event) {")
         init_start = html.index("function initTopLevelTabInteractions() {", keyboard_start)
@@ -1943,9 +1989,9 @@ setTimeout(function() {
         self.assertIn("window.location.hash = nextHash", setter_helper)
 
     def test_top_level_hash_mapping_behavior(self):
-        """Only the dedicated Stats hash may select Stats; all other hashes select Papers."""
+        """Blogs has its own route while legacy category hashes remain compatible."""
         result = self.run_top_level_tab_block("", """
-const hashes = ['#stats', '#papers', '', '#section-designs'];
+const hashes = ['#stats', '#papers', '#blogs', '#section-blogs', '', '#section-designs'];
 const result = hashes.map(function(hash) {
   return { hash: hash, tab: getTopLevelTabFromHash(hash) };
 });
@@ -1956,16 +2002,65 @@ process.stdout.write(JSON.stringify(result));
             [
                 {"hash": "#stats", "tab": "stats"},
                 {"hash": "#papers", "tab": "papers"},
+                {"hash": "#blogs", "tab": "blogs"},
+                {"hash": "#section-blogs", "tab": "blogs"},
                 {"hash": "", "tab": "papers"},
                 {"hash": "#section-designs", "tab": "papers"},
             ],
         )
 
+    def test_blogs_navigation_rerenders_and_legacy_route_does_not_scroll(self):
+        """Blogs owns the shared content panel and legacy links never scroll Papers."""
+        result = self.run_top_level_tab_block("#papers", """
+CATALOG_DATA_READY = true;
+HAS_RESTORED_TAG_DRILLDOWN_URL = true;
+ACTIVE_CATEGORY_FILTER = 'designs';
+LAST_RESTORED_SEARCH_QUERY = 'depth';
+searchInput.value = 'depth';
+window.location.search = '?q=depth';
+tabs[2].listeners.click[0]();
+dispatchWindowEvent('hashchange');
+const entered = {
+  active: ACTIVE_TOP_LEVEL_TAB,
+  hash: window.location.hash,
+  selected: tabs.map(tab => tab.attributes['aria-selected']),
+  tabStops: tabs.map(tab => tab.tabIndex),
+  labelledBy: papersPanel.attributes['aria-labelledby'],
+  heading: catalogHeading.textContent,
+  searchLabel: searchInput.attributes['aria-label'],
+  placeholder: searchInput.placeholder,
+  panels: [papersPanel.hidden, statsPanel.hidden],
+  searches: searchCalls.slice()
+};
+setBrowserHash('#section-blogs');
+dispatchWindowEvent('hashchange');
+flushAnimationFrames();
+process.stdout.write(JSON.stringify({
+  entered,
+  legacy: { active: ACTIVE_TOP_LEVEL_TAB, category: ACTIVE_CATEGORY_FILTER, scrolls: scrollRequests }
+}));
+""")
+        self.assertEqual(result["entered"], {
+            "active": "blogs",
+            "hash": "#blogs",
+            "selected": ["false", "false", "true"],
+            "tabStops": [-1, -1, 0],
+            "labelledBy": "blogs-tab",
+            "heading": "Blogs",
+            "searchLabel": "Search blogs",
+            "placeholder": "Search blogs, authors, keywords…",
+            "panels": [False, True],
+            "searches": ["depth"],
+        })
+        self.assertEqual(result["legacy"], {
+            "active": "blogs", "category": "designs", "scrolls": [],
+        })
+
     def test_top_level_keyboard_navigation_behavior(self):
         """Arrow/Home/End activate and focus tabs while Enter/Space retain native click."""
         result = self.run_top_level_tab_block("", """
 function runKey(tabIndex, key) {
-  setBrowserHash(tabIndex === 0 ? '#papers' : '#stats');
+  setBrowserHash('#' + tabs[tabIndex].id.replace('-tab', ''));
   dispatchWindowEvent('hashchange');
   focusedTabId = null;
   hashWrites.length = 0;
@@ -1988,8 +2083,10 @@ function runKey(tabIndex, key) {
 const result = [
   runKey(0, 'ArrowRight'),
   runKey(1, 'ArrowRight'),
+  runKey(2, 'ArrowRight'),
   runKey(0, 'ArrowLeft'),
   runKey(1, 'ArrowLeft'),
+  runKey(2, 'ArrowLeft'),
   runKey(1, 'Home'),
   runKey(0, 'End'),
   runKey(0, 'Enter'),
@@ -2000,11 +2097,13 @@ process.stdout.write(JSON.stringify(result));
         expected = []
         for key, source, target in (
             ("ArrowRight", "papers-tab", "stats"),
-            ("ArrowRight", "stats-tab", "papers"),
-            ("ArrowLeft", "papers-tab", "stats"),
+            ("ArrowRight", "stats-tab", "blogs"),
+            ("ArrowRight", "blogs-tab", "papers"),
+            ("ArrowLeft", "papers-tab", "blogs"),
             ("ArrowLeft", "stats-tab", "papers"),
+            ("ArrowLeft", "blogs-tab", "stats"),
             ("Home", "stats-tab", "papers"),
-            ("End", "papers-tab", "stats"),
+            ("End", "papers-tab", "blogs"),
         ):
             expected.append(
                 {
@@ -2176,7 +2275,7 @@ process.stdout.write(JSON.stringify({
                 "emptyHashAfterClick": "stats",
                 "explicitPapers": "papers",
                 "explicitStats": "stats",
-                "explicitCategory": "papers",
+                "explicitCategory": "blogs",
             },
         )
 
@@ -2930,7 +3029,7 @@ process.stdout.write(JSON.stringify({{
         line_end = stats_css.index("\n    }", line_start)
         line_rule = stats_css[line_start:line_end]
         reduced_motion_end = stats_css.index(
-            "    @media (prefers-color-scheme: dark)", reduced_motion_start
+            '    :where(html[data-theme="dark"])', reduced_motion_start
         )
         reduced_motion_css = stats_css[reduced_motion_start:reduced_motion_end]
         reduced_motion_selector = (
@@ -3039,11 +3138,19 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("--stats-card-border:", stats_css)
         self.assertIn("--stats-track-bg:", stats_css)
         self.assertIn("--stats-data-1:", stats_css)
-        dark_start = stats_css.index("@media (prefers-color-scheme: dark)")
+        dark_start = stats_css.index(':where(html[data-theme="dark"])')
         dark_source = stats_css[dark_start:]
         self.assertIn(".stats-panel", dark_source)
         self.assertIn("--stats-data-1:", dark_source)
         self.assertIn("background: transparent;", dark_source)
+        self.assertNotIn("@media (prefers-color-scheme: dark)", html)
+        desk_style = READING_DESK_CSS_PATH.read_text(encoding="utf-8")
+        desk_script = READING_DESK_JS_PATH.read_text(encoding="utf-8")
+        self.assertIn(':root[data-theme="dark"]', desk_style)
+        self.assertIn("color-scheme: light;", desk_style)
+        self.assertIn("color-scheme: dark;", desk_style)
+        self.assertIn("document.documentElement.dataset.theme = resolveReadingDeskTheme", desk_script)
+        self.assertIn("window.matchMedia('(prefers-color-scheme: dark)')", desk_script)
 
     def test_stats_small_text_uses_accessible_muted_color(self):
         """Small Stats labels must avoid the lower-contrast decorative text token."""
@@ -3178,20 +3285,27 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("bDate.localeCompare(aDate)", html)
 
     def test_card_view_entries_show_full_publication_date(self):
+        """Cards show one publication date beside the authors, independent of detail state."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        desk = READING_DESK_JS_PATH.read_text(encoding="utf-8")
         render_start = html.index("function renderCard(paper, query) {")
         render_end = html.index("// ── State & Category Tree", render_start)
         render_snippet = html[render_start:render_end]
 
-        self.assertIn("const paperDisplayDate = getPaperDisplayDate(paper);", render_snippet)
-        self.assertIn("authorsStr + ' · ' + paperDisplayDate", render_snippet)
-        self.assertIn("'<div class=\"paper-meta\">' + paperDisplayDate + '</div>'", render_snippet)
-        self.assertNotIn("authorsStr + ' · ' + paper.year", render_snippet)
+        self.assertIn('class="desk-card-date"', render_snippet)
+        self.assertNotIn("desk-paper-footer", render_snippet)
+        self.assertEqual(render_snippet.count("getPaperDisplayDate(paper)"), 1)
+        self.assertIn("<time>' + escapeHtml(getPaperDisplayDate(paper))", render_snippet)
+        self.assertIn("<time>' + escapeHtml(getPaperDisplayDate(paper)) + '</time>'", desk)
+        self.assertNotIn("paper.year", render_snippet)
+        self.assertNotIn("paper.added_date", render_snippet)
 
-    def test_paper_cards_use_fixed_compact_density_with_local_tag_disclosure(self):
-        """Paper cards should stay compact while hidden tags expand per card."""
+    def test_paper_cards_keep_content_when_the_detail_column_changes(self):
+        """The same full cards reflow with list width without conditional content hiding."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn("<body>", html)
+        desk = READING_DESK_JS_PATH.read_text(encoding="utf-8")
+        style = READING_DESK_CSS_PATH.read_text(encoding="utf-8")
+        self.assertIn('<body class="reading-desk">', html)
         self.assertIn('id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0" data-card-density="compact"', html)
         self.assertNotIn("paper-density-toggle", html)
         self.assertNotIn("paper-density-compact", html)
@@ -3205,30 +3319,49 @@ process.stdout.write(JSON.stringify({{
         render_start = html.index("function renderCard(paper, query) {")
         render_end = html.index("// ── State & Category Tree", render_start)
         render_snippet = html[render_start:render_end]
-        self.assertIn('class="paper-signal-row"', render_snippet)
-        self.assertIn('class="paper-tag-overflow"', render_snippet)
-        self.assertIn('aria-expanded="false"', render_snippet)
-        self.assertIn('data-hidden-tag-count="', render_snippet)
-        self.assertIn("togglePaperTagOverflow(this)", render_snippet)
-        self.assertIn("function togglePaperTagOverflow(button) {", html)
-        self.assertIn("card.classList.toggle('show-all-tags')", html)
-
-        style = html[html.index("<style>"):html.index("</style>")]
-        self.assertIn("#papers-panel[data-card-density=\"compact\"] .paper-card", style)
-        self.assertIn("#papers-panel[data-card-density=\"compact\"] .paper-desc", style)
-        self.assertIn("#papers-panel[data-card-density=\"compact\"] .category-copy", style)
-        self.assertIn("#papers-panel[data-card-density=\"compact\"] .paper-card .link-btn", style)
-        self.assertIn("body:not(.stats-mode) > header", style)
-        self.assertNotIn("body.paper-density-compact:not(.stats-mode) > header", style)
-        self.assertIn("-webkit-line-clamp: 2;", style)
-        self.assertIn("@media (min-width: 769px)", style)
+        self.assertIn('<article class="paper-card"', render_snippet)
+        self.assertIn('class="desk-paper-select"', render_snippet)
+        self.assertIn('aria-controls="paper-detail" aria-pressed="false"', render_snippet)
+        self.assertIn('class="desk-card-summary"', render_snippet)
+        self.assertIn('class="desk-card-preview"', render_snippet)
+        self.assertIn('class="desk-card-signals"', render_snippet)
+        self.assertNotIn("desk-full-card", render_snippet)
+        self.assertNotIn("desk-paper-footer", render_snippet)
+        self.assertIn("highlightQuery(escapeHtml(paper.desc), query)", render_snippet)
+        self.assertIn("renderMetricsHtml(paper)", render_snippet)
+        self.assertIn("renderPaperLinksHtml(paper)", render_snippet)
+        self.assertIn('class="paper-links desk-list-links"', render_snippet)
+        self.assertIn("paper-tag-overflow", render_snippet)
+        self.assertIn("renderPaperTagHtml(entry, 'paper-tag-' + entry.group)", render_snippet)
+        self.assertIn('id="desk-show-details"', html)
+        self.assertIn("const READING_DESK_COLLAPSE_WIDTH = 220;", desk)
+        self.assertIn("wideList && readingDeskDetailCollapsed", desk)
+        self.assertIn("setReadingDeskDetailCollapsed(false);", desk)
+        self.assertIn('<dialog class="paper-detail" id="paper-detail" aria-labelledby="paper-detail-title">', html)
+        detail_start = desk.index("function renderReadingDeskDetail(paper) {")
+        detail_end = desk.index("function syncReadingDeskSelection(papers) {", detail_start)
+        detail = desk[detail_start:detail_end]
+        self.assertIn("['mechanism', 'focus', 'domain'].map", detail)
+        self.assertIn("entries.map(function(entry) { return renderPaperTagHtml", detail)
+        self.assertIn('<h3 id="desk-sources-title">Sources</h3>', detail)
+        self.assertIn("renderPaperLinksHtml(paper, false)", detail)
+        self.assertIn('<h3 id="desk-discussion-title">Discussion</h3>', detail)
+        self.assertIn("renderCommunityCommentsHtml(paper, true)", detail)
+        self.assertNotIn("Sources & discussion", detail)
+        self.assertIn("escapeHtml(paper.desc", detail)
+        self.assertNotIn(".slice(", detail)
+        self.assertIn("dialog.show();", desk)
+        self.assertIn("dialog.showModal();", desk)
+        self.assertIn(".reading-desk #papers-panel .paper-card", style)
+        self.assertNotIn("desk-full-card", style)
+        self.assertNotRegex(style, r"\.desk-detail-collapsed[^{}]*\.paper-(?:card|title|meta)")
+        self.assertIn("container: paper-list / inline-size;", style)
+        self.assertIn("@container paper-list (max-width: 640px)", style)
+        self.assertIn(".reading-desk #papers-panel .desk-list-links { display: flex; flex-wrap: wrap;", style)
+        self.assertIn(".reading-desk .paper-detail .paper-tags { display: flex; flex-wrap: wrap;", style)
+        self.assertIn("@media (max-width: 1119px)", style)
         self.assertNotIn(".paper-density-toggle", style)
         self.assertNotIn(".paper-density-button", style)
-        self.assertIn("max-width: 1640px;", style)
-        self.assertIn("width: 248px;", style)
-        self.assertIn('#papers-panel[data-card-density="compact"] .paper-tags > .paper-tag:nth-child(n+5)', style)
-        self.assertIn('#papers-panel[data-card-density="compact"] .paper-card.show-all-tags .paper-tags > .paper-tag', style)
-        self.assertNotIn('.paper-tags .paper-tag:nth-of-type(n+5)', style)
 
     def test_footer_preserves_more_vertical_space_for_papers(self):
         """The persistent footer should remain a compact single-line information bar."""

@@ -1,0 +1,394 @@
+/* Dependency-free regression check: node tests/reading-desk-check.cjs. */
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
+const path = require('node:path');
+const root = path.resolve(__dirname, '..');
+const source = fs.readFileSync(path.join(root, 'assets/reading-desk.js'), 'utf8');
+const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const css = fs.readFileSync(path.join(root, 'assets/reading-desk.css'), 'utf8');
+
+/** Boot the real script with the minimal browser surface needed before first paint. */
+function boot(preference, dark, denyStorage = false) {
+  const rootElement = { dataset: {} };
+  const media = { matches: dark, addEventListener() {} };
+  const context = vm.createContext({
+    window: { matchMedia: () => media },
+    document: { documentElement: rootElement, querySelectorAll: () => [] },
+    localStorage: { getItem() { if (denyStorage) throw new Error('Denied'); return preference; } },
+  });
+  vm.runInContext(source, context);
+  return { context, rootElement, media };
+}
+
+for (const [preference, dark, expected] of [
+  ['system', true, 'dark'], ['system', false, 'light'],
+  ['light', true, 'light'], ['dark', false, 'dark'], ['invalid', true, 'dark'],
+]) {
+  assert.equal(boot(preference, dark).rootElement.dataset.theme, expected);
+}
+const denied = boot(null, true, true);
+assert.equal(denied.rootElement.dataset.theme, 'dark');
+denied.context.applyReadingDeskTheme('light');
+assert.equal(denied.rootElement.dataset.theme, 'light');
+
+const choose = denied.context.chooseReadingDeskPaper;
+const records = [{ id: 'first' }, { id: 'second' }];
+assert.equal(choose(records, 'second'), records[1]);
+assert.equal(choose(records, 'filtered-out'), records[0]);
+assert.equal(choose([], 'second'), null);
+const toggling = boot(null, true);
+const actions = [];
+const dialog = {
+  open: true,
+  close() { this.open = false; actions.push('close-modal'); },
+  showModal() { this.open = true; actions.push('open-modal'); },
+};
+toggling.context.document.getElementById = () => dialog;
+toggling.context.renderReadingDeskDetail = paper => actions.push('render:' + paper.id);
+toggling.context.setReadingDeskDetailCollapsed = collapsed => {
+  vm.runInContext('readingDeskDetailCollapsed = ' + JSON.stringify(collapsed), toggling.context);
+  dialog.open = !collapsed;
+  actions.push(collapsed ? 'collapse' : 'expand');
+};
+toggling.context.selectReadingDeskPaper(records[0]);
+toggling.context.selectReadingDeskPaper(records[0]);
+assert.equal(dialog.open, false);
+toggling.context.selectReadingDeskPaper(records[0]);
+assert.equal(dialog.open, true);
+toggling.context.selectReadingDeskPaper(records[1]);
+assert.equal(dialog.open, true);
+toggling.context.closeReadingDeskDetail();
+assert.deepEqual(actions, ['render:first', 'collapse', 'render:first', 'expand', 'render:second', 'collapse']);
+toggling.media.matches = false;
+toggling.context.selectReadingDeskPaper(records[1]);
+assert.equal(dialog.open, true);
+toggling.context.closeReadingDeskDetail();
+assert.equal(dialog.open, false);
+assert.deepEqual(actions.slice(-3), ['render:second', 'open-modal', 'close-modal']);
+const thumbnail = denied.context.getReadingDeskThumbnailUrl;
+assert.equal(thumbnail({ id: '2301.13196' }), 'https://thumbnails.assets.alphaxiv.org/2301.13196v1.png');
+assert.equal(thumbnail({ links: { arxiv: 'https://arxiv.org/pdf/2301.13196v2.pdf?download=1' } }), 'https://thumbnails.assets.alphaxiv.org/2301.13196v2.png');
+assert.equal(thumbnail({ links: { alphaxiv: 'https://www.alphaxiv.org/abs/2301.13196v3' } }), 'https://thumbnails.assets.alphaxiv.org/2301.13196v3.png');
+assert.equal(thumbnail({ arxiv_id: '1511.04491', id: 'custom-title' }), 'https://thumbnails.assets.alphaxiv.org/1511.04491v1.png');
+assert.equal(thumbnail({ id: '2301.13196', entry_type: 'blog' }), '');
+assert.equal(thumbnail({ links: { arxiv: 'https://arxiv.org.evil.example/abs/2301.13196' } }), '');
+assert.equal(thumbnail({ id: '2301.13196" onerror="alert(1)' }), '');
+assert.equal(thumbnail({ id: 'acl-paper' }), '');
+const split = denied.context.clampReadingDeskSplit;
+assert.equal(split(0, 1000), 36);
+assert.equal(split(100, 1000), 78);
+assert.equal(split(50, 1000), 50);
+assert.equal(split(20, 720), 50);
+assert.equal(split(80, 0), 50);
+assert.equal(split(NaN, 1000), 47.5);
+const collapse = denied.context.shouldCollapseReadingDeskSplit;
+assert.equal(collapse(77.9, 1000), false);
+assert.equal(collapse(78, 1000), true);
+assert.equal(collapse(100, 1000), true);
+assert.equal(collapse(75, 800), true);
+assert.equal(collapse(NaN, 1000), false);
+assert.equal(collapse(100, 0), false);
+const sidebarWidth = denied.context.clampReadingDeskSidebarWidth;
+assert.equal(sidebarWidth(-100, 1440), 200);
+assert.equal(sidebarWidth(300, 1440), 300);
+assert.equal(sidebarWidth(1000, 1440), 420);
+assert.equal(sidebarWidth(420, 769), 409);
+assert.equal(sidebarWidth(0, 0), 200);
+assert.equal(sidebarWidth(NaN, 1440), 236);
+const rail = boot(null, false);
+const railAttributes = {};
+const railStyles = {};
+const detailDivider = { hidden: false };
+const railLayout = { clientWidth: 1440 };
+let splitUpdates = 0;
+rail.context.window.innerWidth = 1440;
+rail.context.document.querySelector = () => railLayout;
+rail.context.document.body = { style: { setProperty(name, value) { railStyles[name] = value; } } };
+rail.context.document.getElementById = id => id === 'desk-divider'
+  ? detailDivider : { setAttribute(name, value) { railAttributes[name] = value; } };
+rail.context.setReadingDeskSplit = (value, allowCollapse) => {
+  assert.equal(allowCollapse, undefined);
+  splitUpdates += 1;
+};
+rail.context.setReadingDeskSidebarWidth(-100);
+assert.equal(railStyles['--desk-rail'], '200px');
+assert.equal(railAttributes['aria-valuenow'], '200');
+rail.context.setReadingDeskSidebarWidth(1000);
+assert.equal(railStyles['--desk-rail'], '420px');
+assert.equal(splitUpdates, 2);
+assert.equal(vm.runInContext('readingDeskDetailCollapsed', rail.context), false);
+detailDivider.hidden = true;
+railLayout.clientWidth = 769;
+rail.context.setReadingDeskSidebarWidth(420);
+assert.equal(railStyles['--desk-rail'], '409px');
+assert.equal(railAttributes['aria-valuemax'], '409');
+assert.equal(splitUpdates, 2);
+rail.context.window.innerWidth = 390;
+rail.context.setReadingDeskSidebarWidth(200);
+assert.equal(railStyles['--desk-rail'], '409px');
+const card = html.slice(html.indexOf('function renderCard(paper, query)'), html.indexOf('// ── State & Category Tree'));
+assert.match(card, /class="desk-card-summary"/);
+assert.match(card, /highlightQuery\(escapeHtml\(paper\.desc\), query\)/);
+assert.match(card, /renderMetricsHtml\(paper\)/);
+assert.match(card, /renderPaperTagHtml\(entry, 'paper-tag-' \+ entry\.group\)/);
+assert.match(card, /aria-expanded="false" aria-controls="desk-card-tags-/);
+assert.doesNotMatch(card + css, /desk-full-card|desk-paper-footer/);
+assert.doesNotMatch(css, /\.desk-detail-collapsed #papers-panel/);
+assert.match(css, /container: paper-list \/ inline-size/);
+assert.match(css, /@container paper-list \(max-width: 640px\)/);
+assert.match(css, /\.layout\.desk-detail-collapsed \{ grid-template-columns: var\(--desk-rail\) minmax\(0, 1fr\);/);
+assert.match(html, /id="desk-show-details"[^>]+aria-controls="paper-detail"/);
+assert.match(card, /renderPaperLinksHtml\(paper\)/);
+assert.match(card, /paper-links desk-list-links/);
+assert.match(card, /class="desk-card-preview"/);
+assert.match(card, /loading="lazy" decoding="async" referrerpolicy="no-referrer"/);
+assert.match(card, /onerror="this\.parentElement\.remove\(\)"/);
+assert.match(html, /id="desk-divider"[^>]+role="separator"[^>]+aria-orientation="vertical"/);
+assert.match(html, /id="desk-sidebar-divider"[^>]+role="separator"[^>]+aria-orientation="vertical"[^>]+aria-controls="desk-sidebar"/);
+assert.match(css, /\.desk-divider\.desk-sidebar-divider \{[^}]*position: absolute;[^}]*left: calc\(var\(--desk-rail\) - 1px\);/);
+assert.match(css.slice(css.indexOf('@media (max-width: 768px)')), /\.desk-sidebar-divider \{ display: none; \}/);
+assert.match(html, /--font-body: Charter, Georgia/);
+assert.doesNotMatch(html, /@media\s*\(prefers-color-scheme:\s*dark\)/);
+assert.doesNotMatch(html, /category-disclaimer|desk-scope|About the classification/);
+assert.doesNotMatch(html, /A field guide to recurrent depth|class="desk-subtitle"/);
+assert.match(html, /<svg class="site-brand-mark"[^>]+aria-hidden="true">/);
+assert.match(html, /<span class="site-brand-name">Awesome Loop Models<\/span>/);
+assert.doesNotMatch(html, /id="sidebar-nav"|id="mobile-directory"/);
+const filterPanel = html.slice(html.indexOf('<aside class="filter-sidebar"'), html.indexOf('<div class="top-level-panel" id="papers-panel"'));
+assert.match(filterPanel, /<label for="category-filter"/);
+assert.match(filterPanel, /id="category-filter" onchange="setCategoryFilter\(this.value\)"/);
+assert.match(css, /\.reading-desk \.site-brand-name \{[^}]*max-width: none;/);
+const watch = html.slice(html.indexOf('<section class="desk-watch"'), html.indexOf('<div class="desk-sidebar-bottom">'));
+assert.match(watch, /aria-label="Catalog watch"/);
+assert.doesNotMatch(watch, /desk-watch-title|<h2/);
+assert.match(watch, /id="daily-watch-countdown"/);
+assert.match(watch, /id="daily-briefing-body"/);
+assert.doesNotMatch(watch, /<details|<summary/);
+assert.match(css, /\.reading-desk \.daily-briefing-notice \{[^}]*font-size: 14px;[^}]*line-height: 1\.6;/);
+assert.match(css, /\.reading-desk \.daily-watch-countdown-meta \{[^}]*font-size: 12px;[^}]*line-height: 1\.6;/);
+assert.match(css, /\.reading-desk \.daily-watch-countdown-value \{[^}]*font-size: 20px;[^}]*white-space: normal;/);
+assert.ok(html.indexOf('assets/reading-desk.js') < html.indexOf('<style>'));
+assert.match(html, /syncReadingDeskSelection\(filteredPapers\)/);
+assert.match(html, /<dialog class="paper-detail"/);
+assert.match(html, /class="desk-detail-close"[^>]+onclick="closeReadingDeskDetail\(\)"/);
+assert.match(card, /aria-expanded="false"/);
+assert.match(css, /\.desk-detail-close \{ display: grid;/);
+
+// Use real card/link/metric/detail renderers; only unrelated taxonomy helpers are stubbed.
+const detailContent = { innerHTML: '' };
+const rendering = vm.createContext({
+  document: { getElementById: () => detailContent },
+  LINK_CONFIG: {
+    arxiv: { cls: 'link-arxiv', icon: '', label: 'arXiv' },
+    github: { cls: 'link-github', icon: '', label: 'Code' },
+  },
+  TAG_GROUP_LABELS: {},
+  getReadingDeskThumbnailUrl: thumbnail,
+  getPaperDisplayDate: paper => paper.published_date,
+  renderCatalogFitBadgeHtml: () => '',
+  renderCatalogFitNoteHtml: () => '',
+});
+vm.runInContext(html.slice(html.indexOf('function escapeHtml(str) {'), html.indexOf('function formatMetricCount(')), rendering);
+vm.runInContext(html.slice(html.indexOf('function formatMetricCount('), html.indexOf('function getCurrentDailyWatchDateString(')), rendering);
+vm.runInContext(card, rendering);
+vm.runInContext(source.slice(source.indexOf('function renderReadingDeskDetail(paper) {'), source.indexOf('function syncReadingDeskSelection(')), rendering);
+const example = {
+  id: '2301.13196', title: 'A paper', _authorsText: 'Author One, Author Two',
+  venue: 'ICML', published_date: '2026-09-16', desc: 'A complete summary.',
+  citations: 3, github_stars: 7,
+  links: { arxiv: 'https://arxiv.org/abs/2301.13196', github: 'https://github.com/example/code' },
+  community_comments: [{ label: 'A <reading> note', url: 'https://example.test/note?a=1&b=2' }],
+};
+rendering.readingDeskDetailCollapsed = false;
+const openCard = rendering.renderCard(example, '');
+rendering.readingDeskDetailCollapsed = true;
+assert.equal(rendering.renderCard(example, ''), openCard);
+for (const text of ['Author One, Author Two', '2026-09-16', '3 citations', 'A complete summary.', 'desk-card-preview']) {
+  assert.ok(openCard.includes(text));
+}
+const cardVisual = openCard.split('<div class="desk-card-content">')[0];
+assert.match(cardVisual, /class="desk-card-visual"><a[^>]*desk-card-preview[\s\S]*<\/a><div class="paper-metrics">/);
+assert.match(cardVisual, /3 citations/);
+assert.match(cardVisual, /7 stars/);
+assert.equal((openCard.match(/class="paper-metrics"/g) || []).length, 1);
+assert.doesNotMatch(openCard.split('<div class="desk-card-content">')[1], /paper-metrics/);
+const cardWithoutPreview = rendering.renderCard({ ...example, id: 'non-arxiv-paper', links: {} }, '');
+assert.doesNotMatch(cardWithoutPreview, /desk-card-preview/);
+assert.match(cardWithoutPreview, /class="desk-card-visual"><div class="paper-metrics">/);
+assert.match(cardWithoutPreview, /3 citations/);
+const cardWithZeroMetrics = rendering.renderCard({ ...example, citations: 0, github_stars: 0 }, '');
+assert.match(cardWithZeroMetrics, /0 citations/);
+assert.match(cardWithZeroMetrics, /0 stars/);
+assert.doesNotMatch(rendering.renderCard({ ...example, id: 'non-arxiv-paper', links: {}, citations: null, github_stars: null }, ''), /desk-card-visual|paper-metrics/);
+assert.match(css, /\.desk-card-visual:empty \{ display: none;/);
+assert.match(css, /\.desk-card-visual \.paper-metrics \{[^}]*flex-direction: column;[^}]*align-items: stretch;/);
+assert.match(css.slice(css.indexOf('@container paper-list')), /\.desk-card-visual \{ float: right; width: 96px;/);
+assert.match(rendering.renderPaperLinksHtml(example), /Community Comments/);
+assert.doesNotMatch(rendering.renderPaperLinksHtml(example, false), /Community Comments|reading/);
+rendering.renderReadingDeskDetail(example);
+const fixedHeader = detailContent.innerHTML.split('</header>')[0];
+const scrollableBody = detailContent.innerHTML.split('</header>')[1];
+assert.match(fixedHeader, /class="desk-detail-header"/);
+assert.match(fixedHeader, /class="desk-card-preview desk-detail-preview"/);
+assert.ok(fixedHeader.includes('src="' + thumbnail(example) + '"'));
+assert.match(fixedHeader, /loading="eager" decoding="async" referrerpolicy="no-referrer"/);
+assert.match(fixedHeader, /onerror="this\.parentElement\.remove\(\)"/);
+assert.doesNotMatch(scrollableBody, /desk-detail-preview/);
+assert.match(css, /\.desk-detail-visual \{[^}]*width: clamp\(96px, 25%, 144px\);/);
+assert.match(css, /\.desk-detail-visual:empty \{ display: none;/);
+assert.match(css, /\.reading-desk \.paper-detail \.paper-metrics \{[^}]*flex-direction: column;/);
+assert.match(fixedHeader, /class="desk-detail-visual"><a[^>]*desk-detail-preview[\s\S]*<\/a><div class="paper-metrics">/);
+assert.match(fixedHeader, /3 citations/);
+assert.match(fixedHeader, /7 stars/);
+assert.doesNotMatch(scrollableBody, /paper-metrics/);
+assert.match(fixedHeader, /Author One, Author Two/);
+assert.match(fixedHeader, /Open paper/);
+assert.doesNotMatch(fixedHeader, /<h3>Summary/);
+assert.match(scrollableBody, /^<div class="desk-detail-body" tabindex="0" role="region" aria-label="Resource details"><section class="desk-detail-section"><h3>Summary/);
+for (const title of ['Classification', 'Sources', 'Discussion']) assert.ok(scrollableBody.includes(title));
+const primaryActions = detailContent.innerHTML.split('<div class="desk-primary-actions">')[1].split('</div>')[0];
+assert.match(primaryActions, /Open paper/);
+assert.doesNotMatch(primaryActions, /github|Code/);
+assert.equal((detailContent.innerHTML.match(/https:\/\/github\.com\/example\/code/g) || []).length, 1);
+const sourcesSection = detailContent.innerHTML.split('<h3 id="desk-sources-title">')[1].split('</section>')[0];
+const discussionSection = detailContent.innerHTML.split('<h3 id="desk-discussion-title">')[1];
+assert.match(sourcesSection, /https:\/\/arxiv\.org\/abs\/2301\.13196/);
+assert.match(sourcesSection, /https:\/\/github\.com\/example\/code/);
+assert.doesNotMatch(sourcesSection, /paper-metrics/);
+assert.doesNotMatch(sourcesSection, /reading|Community Comments/);
+assert.match(discussionSection, /A &lt;reading&gt; note/);
+assert.match(discussionSection, /note\?a=1&amp;b=2/);
+assert.doesNotMatch(discussionSection, /<details|<summary/);
+rendering.renderReadingDeskDetail({ ...example, community_comments: [] });
+assert.match(detailContent.innerHTML, /No community discussion links yet\./);
+rendering.renderReadingDeskDetail({ ...example, entry_type: 'blog' });
+assert.doesNotMatch(detailContent.innerHTML, /desk-detail-preview/);
+rendering.renderReadingDeskDetail({ ...example, id: 'non-arxiv-paper', links: { paper: 'https://example.test/paper' } });
+assert.doesNotMatch(detailContent.innerHTML, /desk-detail-preview/);
+assert.match(detailContent.innerHTML.split('</header>')[0], /3 citations/);
+rendering.renderReadingDeskDetail({ ...example, citations: 0, github_stars: 0 });
+assert.match(detailContent.innerHTML, /0 citations/);
+assert.match(detailContent.innerHTML, /0 stars/);
+rendering.renderReadingDeskDetail({ ...example, id: 'non-arxiv-paper', links: {}, citations: null, github_stars: null });
+assert.doesNotMatch(detailContent.innerHTML, /desk-detail-visual|paper-metrics/);
+const modalCss = css.slice(css.indexOf('@media (max-width: 1119px)'), css.indexOf('@media (max-width: 768px)'));
+assert.match(modalCss, /\.reading-desk \.paper-detail \{[^}]*inset: 0;[^}]*margin: auto;[^}]*height: calc\(100dvh - 48px\);[^}]*max-height: calc\(100dvh - 48px\)/);
+assert.match(css, /\.reading-desk \.paper-detail \{ width: calc\(100vw - 24px\); height: calc\(100dvh - 24px\); max-height: calc\(100dvh - 24px\);/);
+assert.match(css, /\.reading-desk \.paper-detail \{[^}]*overflow: hidden;/);
+assert.match(css, /#paper-detail-content \{[^}]*display: flex;[^}]*flex-direction: column;[^}]*min-height: 0;/);
+assert.match(css, /\.desk-detail-body \{[^}]*min-height: 0;[^}]*overflow-y: auto;/);
+rendering.renderReadingDeskDetail(null);
+assert.match(detailContent.innerHTML, /class="desk-detail-header"/);
+assert.match(detailContent.innerHTML, /class="desk-detail-body"/);
+const activeTags = new Set(['mechanism::implicit-layer', 'focus::architecture']);
+const filters = vm.createContext({
+  ACTIVE_TAG_FILTERS: activeTags,
+  TAG_FILTER_OPEN: true,
+  LOCKED_TAG_FILTER_KEY: 'mechanism::implicit-layer',
+  TAG_FILTER_LOOKUP: {
+    'mechanism::implicit-layer': { displayLabel: 'implicit-layer', count: 31 },
+    'focus::architecture': { displayLabel: 'architecture <tag>', count: 186 },
+  },
+  getPaperCountForTagKey: () => 30,
+  document: { getElementById: () => ({ value: 'recurrent' }) },
+  updateTagFilterUI() {},
+  doSearch(query) { assert.equal(query, 'recurrent'); },
+  clearTagDrilldown() { assert.equal(activeTags.has('mechanism::implicit-layer'), false); },
+});
+vm.runInContext(html.slice(html.indexOf('function escapeHtml(str) {'), html.indexOf('function highlightQuery(')), filters);
+vm.runInContext(html.slice(html.indexOf('function renderActiveTagSummary() {'), html.indexOf('function renderTagFilterGroups() {')), filters);
+const tagSummary = filters.renderActiveTagSummary();
+assert.equal((tagSummary.match(/class="tag-filter-remove"/g) || []).length, 2);
+assert.match(tagSummary, /implicit-layer · 30/);
+assert.match(tagSummary, /architecture &lt;tag&gt; · 186/);
+assert.match(tagSummary, /aria-label="Remove implicit-layer filter"/);
+assert.match(tagSummary, /class="tag-filter-remove-icon" aria-hidden="true">×/);
+filters.toggleTagFilter('focus::architecture');
+assert.deepEqual([...activeTags], ['mechanism::implicit-layer']);
+filters.toggleTagFilter('mechanism::implicit-layer');
+assert.equal(activeTags.size, 0);
+assert.equal(filters.renderActiveTagSummary(), '0 active');
+const filterHeading = html.slice(html.indexOf('<div class="tag-filter-heading">'), html.indexOf('<div class="tag-filter-panel"'));
+assert.ok(filterHeading.indexOf('</button>') < filterHeading.indexOf('id="tag-filter-summary"'));
+assert.match(css, /\.reading-desk \.filter-sidebar-header \{[^}]*text-align: left;/);
+const categorySelect = { value: '', innerHTML: '' };
+const categories = vm.createContext({
+  ACTIVE_CATEGORY_FILTER: '',
+  CATEGORIES: { theory: { title: 'Theory & analysis' }, designs: { title: 'Architecture' } },
+  getNodeCount: parts => parts[0] === 'theory' ? 2 : 3,
+  document: { getElementById: () => categorySelect },
+  rerenderCurrentResults() {},
+});
+vm.runInContext(html.slice(html.indexOf('function escapeHtml(str) {'), html.indexOf('function highlightQuery(')), categories);
+vm.runInContext(html.slice(html.indexOf('function renderCategoryFilter() {'), html.indexOf('function paperMatchesActiveFilters(')), categories);
+categories.renderCategoryFilter();
+assert.match(categorySelect.innerHTML, /All categories/);
+assert.match(categorySelect.innerHTML, /Theory &amp; analysis · 2/);
+assert.equal(categories.matchCategoryFilter({ entry_type: 'blog' }), true);
+categories.setCategoryFilter('theory');
+assert.equal(categorySelect.value, 'theory');
+assert.equal(categories.matchCategoryFilter({ category: 'theory' }), true);
+assert.equal(categories.matchCategoryFilter({ category: 'designs' }), false);
+assert.equal(categories.matchCategoryFilter({ category: 'theory', entry_type: 'blog' }), false);
+categories.setCategoryFilter('designs');
+assert.equal(categories.matchCategoryFilter({}), true);
+categories.setCategoryFilter('invalid');
+assert.equal(categorySelect.value, '');
+assert.equal(categories.matchCategoryFilter({ entry_type: 'blog' }), true);
+categories.CATALOG_DATA_READY = true;
+categories.window = { requestAnimationFrame() {} };
+vm.runInContext(html.slice(html.indexOf('function restoreCategoryHashPosition(hash) {'), html.indexOf('function navigateToPaperSection(sectionId) {')), categories);
+categories.setCategoryFilter('theory');
+categories.restoreCategoryHashPosition('#section-theory');
+assert.equal(categorySelect.value, 'theory');
+categories.restoreCategoryHashPosition('#section-blogs');
+assert.equal(categorySelect.value, 'theory');
+categories.setCategoryFilter('theory');
+categories.restoreCategoryHashPosition('#section-designs');
+assert.equal(categorySelect.value, '');
+assert.match(html, /if \(!isBlogs && ACTIVE_CATEGORY_FILTER\) count \+= 1;/);
+
+// Exercise the actual scope/filter pipeline: paper-only filters cannot hide Blogs.
+Object.assign(categories, {
+  ACTIVE_TOP_LEVEL_TAB: 'papers',
+  ALL_PAPERS: [{ id: 'p', category: 'theory', venue: 'ICML', added_date: '2026-09-16' }],
+  ALL_BLOGS: [{ id: 'b', entry_type: 'blog' }],
+  ACTIVE_TAG_FILTERS: new Set(),
+  ACCEPTED_ONLY: true,
+  NEWLY_ARRIVED_ONLY: true,
+  LATEST_ADDED_DATE: '2026-09-16',
+  HAS_CODE_ONLY: false,
+  HAS_COMMENTS_ONLY: false,
+  CURRENT_SORT: 'date',
+  CURRENT_VIEW: 'category',
+  normalizeDateInputValue: value => value || null,
+  matchPublicationDate: () => true,
+  paperMatchesTagFilters: () => true,
+  paperMatchesQuery: (record, query) => !query || record.id === query,
+  getPublicationDateFilter: () => ({ active: false }),
+});
+vm.runInContext(html.slice(html.indexOf('function matchAcceptedOnly(paper) {'), html.indexOf('function renderCategoryFilter() {')), categories);
+vm.runInContext(html.slice(html.indexOf('function paperMatchesActiveFilters('), html.indexOf('function setFilterSidebarOpen(')), categories);
+vm.runInContext(html.slice(html.indexOf('function normalizeTopLevelTab(tab) {'), html.indexOf('function getTagDrilldownKeyFromUrl() {')), categories);
+categories.setCategoryFilter('theory');
+assert.equal(categories.getFilteredPapers('', {}).map(record => record.id).join(','), 'p');
+assert.equal(categories.getFilterSidebarActiveCount(), 3);
+categories.ACTIVE_TOP_LEVEL_TAB = 'blogs';
+assert.equal(categories.getFilteredPapers('', {}).map(record => record.id).join(','), 'b');
+assert.equal(categories.getFilteredPapers('p', {}).length, 0);
+assert.equal(categories.getFilterSidebarActiveCount(), 0);
+categories.ACTIVE_TOP_LEVEL_TAB = 'papers';
+assert.equal(categories.getFilteredPapers('', {}).map(record => record.id).join(','), 'p');
+assert.equal(categories.ACTIVE_CATEGORY_FILTER, 'theory');
+for (const hash of ['#blogs', '#section-blogs']) {
+  assert.equal(categories.getTopLevelTabFromHash(hash), 'blogs');
+}
+assert.equal(categories.getTopLevelTabFromHash('#section-designs'), 'papers');
+assert.equal(categories.normalizeTopLevelTab('blogs'), 'blogs');
+assert.match(html, /id="blogs-tab" role="tab" aria-controls="papers-panel"/);
+assert.doesNotMatch(html, /class="desk-blogs-link"/);
+const grids = html.slice(html.indexOf('function renderAllGrids(q) {'), html.indexOf('function createTreeNode('));
+assert.doesNotMatch(grids, /if \(!hasActiveFilter\)/);
+assert.match(grids, /syncSectionVisibility\(\);/);
+console.log('Reading desk: theme, selection, resizing, thumbnails, tags, category and isolated Blogs checks passed.');
