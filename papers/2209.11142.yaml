@@ -35,6 +35,7 @@ desc: Presents a single shared GNN processor trained jointly across all 30 CLRS 
 links:
   arxiv: https://arxiv.org/abs/2209.11142
   paper: https://proceedings.mlr.press/v198/ibarz22a.html
+  github: https://github.com/google-deepmind/clrs
 citations: 74
 citation_sources:
   semantic_scholar: 74

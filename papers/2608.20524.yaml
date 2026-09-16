@@ -24,6 +24,7 @@ desc: Unrolls an ADMM-inspired Poisson inverse-problem solver whose shared CLIP-
 links:
   arxiv: https://arxiv.org/abs/2608.20524
   alphaxiv: https://www.alphaxiv.org/abs/2608.20524
+  github: https://github.com/LauraCD2/frozen-clip-priors
 citations: 0
 citation_sources:
   semantic_scholar: 0

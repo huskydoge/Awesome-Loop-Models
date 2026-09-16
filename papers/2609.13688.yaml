@@ -1,0 +1,37 @@
+# Paper metadata for arXiv:2609.13688.
+title: 'SONAR: A Structure-Consistent Neural Operator for Null-Space-Aware Sparse
+  View CT Reconstruction'
+authors:
+- Song Ni
+- Haijun Yu
+- Haodong Li
+- Changsheng Fang
+- Shuyi Fan
+- Yixing Huang
+- Hengyong Yu
+year: 2026
+published_date: '2026-09-12'
+added_date: '2026-09-15'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- scientific-ml
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Unrolls a sparse-view CT optimizer whose shared image-domain neural operators
+  repeatedly correct measurement and pseudo-measurement residuals across reconstruction
+  stages and discretizations.
+links:
+  arxiv: https://arxiv.org/abs/2609.13688
+  alphaxiv: https://www.alphaxiv.org/abs/2609.13688
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-16'

@@ -1,0 +1,31 @@
+# Paper metadata for arXiv:2609.13920.
+title: Finite-Time Node Separation in Recurrent Graph Neural Networks with Persistent
+  Gaussian Perturbations
+authors:
+- Mostafa Haghir Chehreghani
+year: 2026
+published_date: '2026-09-12'
+added_date: '2026-09-15'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- graph-data
+- theory
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Proves finite-time separation, near-collision bounds, and distributional equivariance
+  for recurrent GNNs that reuse one message-passing operator with persistent Gaussian
+  perturbations.
+links:
+  arxiv: https://arxiv.org/abs/2609.13920
+  alphaxiv: https://www.alphaxiv.org/abs/2609.13920
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-16'
