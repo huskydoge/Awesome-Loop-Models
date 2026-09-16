@@ -707,10 +707,11 @@ function doSearch(query) {{ searchCalls.push(query); }}
         self.assertNotIn('>Year</button>', html)
 
     def test_publication_date_filter_controls_use_date_range_inputs(self):
+        """Date range inputs must retain their native type and accessible labels."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("Publication date:", html)
-        self.assertIn('<input type="date" id="publication-date-start" class="date-input" placeholder="Start" />', html)
-        self.assertIn('<input type="date" id="publication-date-end" class="date-input" placeholder="End" />', html)
+        self.assertIn('<input type="date" id="publication-date-start" class="date-input" placeholder="Start" aria-label="Publication start date" />', html)
+        self.assertIn('<input type="date" id="publication-date-end" class="date-input" placeholder="End" aria-label="Publication end date" />', html)
         self.assertIn('<button type="button" id="publication-date-clear" class="date-clear-btn">Clear</button>', html)
         self.assertNotIn("Filter year:", html)
         self.assertNotIn("year-start", html)
