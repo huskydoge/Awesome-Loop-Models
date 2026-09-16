@@ -1849,9 +1849,9 @@ setTimeout(function() {
             'id="daily-watch-countdown"',
             'id="research-prompt-launch"',
             'href="submit.html"',
-            'data-theme-choice="system"',
-            'data-theme-choice="light"',
-            'data-theme-choice="dark"',
+            'id="desk-theme-toggle"',
+            'class="desk-theme-moon"',
+            'class="desk-theme-sun"',
         ):
             self.assertIn(marker, sidebar)
         for marker in (
@@ -3149,8 +3149,8 @@ process.stdout.write(JSON.stringify({{
         self.assertIn(':root[data-theme="dark"]', desk_style)
         self.assertIn("color-scheme: light;", desk_style)
         self.assertIn("color-scheme: dark;", desk_style)
-        self.assertIn("document.documentElement.dataset.theme = resolveReadingDeskTheme", desk_script)
-        self.assertIn("window.matchMedia('(prefers-color-scheme: dark)')", desk_script)
+        self.assertIn("document.documentElement.dataset.theme = readingDeskTheme", desk_script)
+        self.assertNotIn("prefers-color-scheme", desk_script)
 
     def test_stats_small_text_uses_accessible_muted_color(self):
         """Small Stats labels must avoid the lower-contrast decorative text token."""

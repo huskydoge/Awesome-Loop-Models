@@ -45,9 +45,17 @@
   position: relative; width: 100%; max-width: none; height: 100dvh; min-height: 0; margin: 0; padding: 0; gap: 0; overflow: hidden;
 }
 .reading-desk .sidebar, .reading-desk.stats-mode .sidebar, .reading-desk .table-view-active .sidebar {
+  --scrollbar-thumb: color-mix(in srgb, var(--text-muted) 20%, transparent);
+  --scrollbar-thumb-hover: color-mix(in srgb, var(--text-muted) 40%, transparent);
   display: flex; flex-direction: column; position: relative; inset: auto; width: auto;
   min-width: 0; max-height: none; padding: 26px 18px 18px; background: var(--surface2);
   border: 0; border-right: 1px solid var(--border); overflow-y: auto; gap: 0;
+}
+/* Keep a 4px thumb in a 6px gutter; other engines retain the native thin scrollbar. */
+@supports selector(::-webkit-scrollbar-thumb) {
+  .reading-desk .sidebar { scrollbar-width: auto; scrollbar-color: auto; }
+  .reading-desk .sidebar::-webkit-scrollbar { width: 6px; height: 6px; }
+  .reading-desk .sidebar::-webkit-scrollbar-thumb { border-width: 1px; }
 }
 .reading-desk .sidebar > * { flex-shrink: 0; }
 .reading-desk .site-brand { margin-bottom: 24px; }
@@ -68,34 +76,36 @@
 .reading-desk .tree-spacer { display: none; }
 .reading-desk .tree-node[data-node-key="blogs"] { display: none; }
 .desk-watch { font-size: 14px; line-height: 1.6; color: var(--text); margin: 0 0 20px; padding: 0 4px; min-width: 0; }
-.desk-sidebar-bottom { margin-top: auto; padding-top: 36px; }
-.reading-desk .header-actions { display: flex; flex-wrap: wrap; align-items: stretch; gap: 6px; justify-content: start; }
-.reading-desk .header-actions a, .reading-desk .research-prompt-launch { background: transparent; color: var(--text-muted); border: 0; padding: 8px; box-shadow: none; min-height: 40px; }
-.reading-desk .research-prompt-launch { width: 100%; justify-content: start; font-size: 12px; }
-.reading-desk .research-prompt-launch-language { margin-left: auto; }
-.reading-desk .research-prompt-launch-label { font-size: 12px; }
+.desk-sidebar-bottom { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); }
+.reading-desk .header-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; justify-content: start; width: 100%; margin: 0; }
+.reading-desk .header-actions a, .reading-desk .research-prompt-launch { background: transparent; color: var(--text-muted); border: 0; padding: 8px 4px; box-shadow: none; min-height: 44px; }
+.reading-desk .header-actions a { padding: 8px 0; gap: 4px; min-width: 44px; }
+.reading-desk .header-actions a:first-of-type { margin-right: auto; }
+.reading-desk .research-prompt-launch { display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; flex: 0 0 100%; width: 100%; gap: 6px; text-align: left; font-size: 12px; }
+.reading-desk .research-prompt-launch-language { display: inline; margin: 0; padding: 0; border: 0; }
+.reading-desk .research-prompt-launch-label { display: block; font-size: 12px; white-space: normal; }
 .reading-desk .research-prompt-launch-label::after { content: none; }
-.desk-theme { border: 0; border-top: 1px solid var(--border); padding: 16px 0 0; margin-top: 18px; }
-.desk-theme legend { float: left; width: 100%; font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
-.desk-theme > div { display: flex; clear: both; gap: 4px; }
-.desk-theme button { flex: 1; padding: 6px 4px; min-height: 34px; font-size: 12px; background: transparent; color: var(--text-muted); border: 1px solid var(--border); border-radius: 4px; cursor: pointer; }
-.desk-theme button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: var(--desk-selected); }
-.desk-footnote { font-size: 11px; color: var(--text-dim); margin: 18px 0 0; }
+.desk-theme { display: flex; flex-shrink: 0; margin-left: auto; }
+.desk-theme button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; background: transparent; color: var(--text-muted); border: 1px solid var(--border); border-radius: 50%; cursor: pointer; }
+.desk-theme button:hover { color: var(--accent); border-color: var(--accent); background: var(--desk-selected); }
+.desk-theme-sun, :root[data-theme="dark"] .desk-theme-moon { display: none; }
+:root[data-theme="dark"] .desk-theme-sun { display: block; }
+.desk-footnote { font-size: 11px; color: var(--text-dim); margin: 12px 0 0; }
 .reading-desk main, .reading-desk.stats-mode main, .reading-desk .table-view-active main {
   display: block; min-width: 0; height: 100%; min-height: 0; padding: 0; overflow: auto; overscroll-behavior: contain;
 }
 .reading-desk .catalog-toolbar-shell { position: sticky; top: 0; z-index: 20; padding: 0 24px; background: var(--bg); border-bottom: 1px solid var(--border); }
-.reading-desk .header-inner { max-width: none; }
+.reading-desk .header-inner { max-width: 920px; }
 .reading-desk .papers-only-tools, .reading-desk:not(.stats-mode) .papers-only-tools {
   display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px 20px; padding: 25px 0 16px; max-width: none; width: 100%; margin: 0;
 }
 .desk-page-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
 .desk-page-heading h2 { font-size: 29px; font-weight: 700; line-height: 1.15; letter-spacing: -.025em; }
 .desk-page-heading span { display: none; }
-.reading-desk .search-wrap { margin: 0; width: 100%; max-width: none; }
+body.reading-desk .search-wrap { margin: 0; width: 100%; max-width: none; }
 .reading-desk #search { min-height: 42px; width: 100%; font-size: 14px; padding-left: 38px; padding-right: 85px; background: var(--search-bg); border-radius: 5px; }
 .reading-desk .search-count { font-size: 10px; max-width: 85px; padding-left: 8px; color: var(--text-dim); }
-.reading-desk .filter-sidebar-toggle-row { display: flex; gap: 12px; margin: 0; align-items: center; grid-column: 1 / -1; }
+.reading-desk .filter-sidebar-toggle-row { display: flex; gap: 12px; margin: 0; width: 100%; align-items: center; grid-column: 1 / -1; }
 .reading-desk .filter-sidebar-toggle-row .filter-sidebar-toggle { flex: 0 0 auto; width: auto; min-height: 34px; padding: 5px 10px; font-size: 12px; gap: 6px; margin: 0; }
 .reading-desk .filter-sidebar-toggle-meta { font-size: 10px; }
 .desk-sort { display: flex; gap: 4px; align-items: center; margin-left: auto; font-size: 12px; color: var(--text-muted); }
@@ -219,8 +229,6 @@
   .reading-desk .sidebar { padding-top: 18px; }
   .reading-desk .site-brand { margin-bottom: 16px; }
   .reading-desk .sidebar-title { padding-top: 14px; }
-  .desk-sidebar-bottom { padding-top: 18px; }
-  .desk-theme { margin-top: 10px; padding-top: 10px; }
   .desk-footnote { display: none; }
 }
 @media (min-width: 1600px) {
@@ -241,7 +249,7 @@
   .reading-desk, html:has(.reading-desk), body.reading-desk.stats-mode { height: auto; min-height: 100%; overflow: auto; }
   .reading-desk .layout, .reading-desk.stats-mode .layout, .reading-desk .layout.table-view-active { display: block; height: auto; min-height: 100dvh; overflow: visible; }
   .reading-desk .sidebar, .reading-desk.stats-mode .sidebar, .reading-desk .table-view-active .sidebar { display: grid; grid-template-columns: 1fr auto; padding: 16px; border: 0; border-bottom: 1px solid var(--border); gap: 12px; overflow: visible; }
-  .reading-desk .site-brand { margin-bottom: 0; }
+  .reading-desk .site-brand { margin-bottom: 0; grid-column: 1 / -1; }
   .reading-desk .site-brand h1 { font-size: 16px; }
   .reading-desk .site-brand-mark { flex-basis: 24px; width: 24px; height: 24px; }
   .reading-desk .top-level-tabs { flex-direction: row; grid-column: 1 / -1; gap: 2px; margin-bottom: 0; }
@@ -250,10 +258,6 @@
   .desk-watch { margin: 0; grid-row: 4; grid-column: 1 / -1; }
   .desk-sidebar-bottom { display: contents; }
   .reading-desk .header-actions { display: flex; grid-column: 1 / -1; grid-row: 3; align-items: center; border-top: 1px solid var(--border); padding-top: 6px; }
-  .reading-desk .research-prompt-launch { width: auto; margin-right: auto; }
-  .desk-theme { grid-column: 2; grid-row: 1; margin: 0; padding: 0; border: 0; }
-  .desk-theme legend { display: none; }
-  .desk-theme button { min-height: 44px; padding: 6px; font-size: 11px; }
   .reading-desk main, .reading-desk.stats-mode main, .reading-desk .table-view-active main { height: auto; overflow: visible; }
   .reading-desk .catalog-toolbar-shell { position: relative; top: auto; padding: 0 18px; }
   .reading-desk .papers-only-tools, .reading-desk:not(.stats-mode) .papers-only-tools { grid-template-columns: 1fr; padding: 22px 0 14px; gap: 14px; }

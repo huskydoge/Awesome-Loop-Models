@@ -1,6 +1,5 @@
-/* Reading-desk selection, resizable columns and system-aware color preference. No dependencies. */
-let readingDeskTheme = 'system';
-const readingDeskSystemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+/* Reading-desk selection, resizable columns and saved light/dark preference. No dependencies. */
+let readingDeskTheme = 'light';
 const readingDeskWide = window.matchMedia('(min-width: 1120px)');
 let readingDeskSelectedId = '';
 let readingDeskSplit = 47.5;
@@ -8,22 +7,30 @@ let readingDeskDetailCollapsed = false;
 const READING_DESK_COLLAPSE_WIDTH = 220;
 
 /** Resolve a saved preference, including invalid or missing storage values. */
-function resolveReadingDeskTheme(preference, systemDark) {
-  return preference === 'dark' || (preference !== 'light' && systemDark) ? 'dark' : 'light';
+function resolveReadingDeskTheme(preference) {
+  return preference === 'dark' ? 'dark' : 'light';
 }
 
 /** Apply before first paint; storage failure must not prevent manual switching. */
 function applyReadingDeskTheme(preference) {
-  readingDeskTheme = ['system', 'light', 'dark'].includes(preference) ? preference : 'system';
-  document.documentElement.dataset.theme = resolveReadingDeskTheme(readingDeskTheme, readingDeskSystemTheme.matches);
-  document.querySelectorAll('[data-theme-choice]').forEach(function(button) {
-    button.setAttribute('aria-pressed', String(button.dataset.themeChoice === readingDeskTheme));
-  });
+  readingDeskTheme = resolveReadingDeskTheme(preference);
+  document.documentElement.dataset.theme = readingDeskTheme;
+  const button = document.getElementById('desk-theme-toggle');
+  if (button) {
+    const label = readingDeskTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    button.setAttribute('aria-label', label);
+    button.setAttribute('title', label);
+  }
 }
 
-try { readingDeskTheme = localStorage.getItem('loop-models-theme') || 'system'; } catch (_) { /* Private browsing may deny storage. */ }
+/** Toggle the two themes even when browser storage is unavailable. */
+function toggleReadingDeskTheme() {
+  applyReadingDeskTheme(readingDeskTheme === 'dark' ? 'light' : 'dark');
+  try { localStorage.setItem('loop-models-theme', readingDeskTheme); } catch (_) { /* Switching still works without persistence. */ }
+}
+
+try { readingDeskTheme = localStorage.getItem('loop-models-theme') || 'light'; } catch (_) { /* Private browsing may deny storage. */ }
 applyReadingDeskTheme(readingDeskTheme);
-readingDeskSystemTheme.addEventListener('change', function() { applyReadingDeskTheme(readingDeskTheme); });
 
 /** Retain a visible selection, otherwise use the first displayed record. */
 function chooseReadingDeskPaper(papers, selectedId) {
@@ -257,12 +264,7 @@ function initReadingDeskResize() {
 /** Bind once; native buttons supply keyboard activation and the dialog handles Escape. */
 function initReadingDesk() {
   applyReadingDeskTheme(readingDeskTheme);
-  document.querySelectorAll('[data-theme-choice]').forEach(function(button) {
-    button.addEventListener('click', function() {
-      applyReadingDeskTheme(button.dataset.themeChoice);
-      try { localStorage.setItem('loop-models-theme', readingDeskTheme); } catch (_) { /* Switching still works without persistence. */ }
-    });
-  });
+  document.getElementById('desk-theme-toggle').addEventListener('click', toggleReadingDeskTheme);
   document.getElementById('sections-container').addEventListener('click', function(event) {
     const card = event.target.closest('.paper-card');
     const tagToggle = event.target.closest('.paper-tag-overflow');

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Awesome Loop Models</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <script src="assets/reading-desk.js"></script>
+  <script src="assets/reading-desk.js?v=2"></script>
   <style>
     /* ── Light theme (default) ── */
     :root {
@@ -5177,7 +5177,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="assets/reading-desk.css" />
+  <link rel="stylesheet" href="assets/reading-desk.css?v=2" />
 </head>
 <body class="reading-desk">
 
@@ -5241,15 +5241,13 @@
           GitHub
         </a>
         <a class="contribute-btn" href="submit.html">Submit</a>
-      </div>
-      <fieldset class="desk-theme">
-        <legend>Appearance</legend>
-        <div role="group" aria-label="Color theme">
-          <button type="button" data-theme-choice="system" aria-pressed="true">System</button>
-          <button type="button" data-theme-choice="light" aria-pressed="false">Light</button>
-          <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+        <div class="desk-theme">
+          <button type="button" id="desk-theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+            <svg class="desk-theme-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"/></svg>
+            <svg class="desk-theme-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          </button>
         </div>
-      </fieldset>
+      </div>
       <p class="desk-footnote">Shared weights. Deeper thinking.</p>
     </div>
   </aside>

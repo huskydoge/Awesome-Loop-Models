@@ -11,26 +11,50 @@ const css = fs.readFileSync(path.join(root, 'assets/reading-desk.css'), 'utf8');
 /** Boot the real script with the minimal browser surface needed before first paint. */
 function boot(preference, dark, denyStorage = false) {
   const rootElement = { dataset: {} };
+  const themeButton = { setAttribute(name, value) { this[name] = value; } };
   const media = { matches: dark, addEventListener() {} };
+  const storage = {
+    value: preference,
+    getItem() { if (denyStorage) throw new Error('Denied'); return this.value; },
+    setItem(key, value) { if (denyStorage) throw new Error('Denied'); this.value = value; },
+  };
   const context = vm.createContext({
     window: { matchMedia: () => media },
-    document: { documentElement: rootElement, querySelectorAll: () => [] },
-    localStorage: { getItem() { if (denyStorage) throw new Error('Denied'); return preference; } },
+    document: { documentElement: rootElement, getElementById: () => themeButton, querySelectorAll: () => [] },
+    localStorage: storage,
   });
   vm.runInContext(source, context);
-  return { context, rootElement, media };
+  return { context, rootElement, media, themeButton, storage };
 }
 
 for (const [preference, dark, expected] of [
-  ['system', true, 'dark'], ['system', false, 'light'],
-  ['light', true, 'light'], ['dark', false, 'dark'], ['invalid', true, 'dark'],
+  ['system', true, 'light'], ['system', false, 'light'], [null, true, 'light'],
+  ['light', true, 'light'], ['dark', false, 'dark'], ['invalid', true, 'light'],
 ]) {
   assert.equal(boot(preference, dark).rootElement.dataset.theme, expected);
 }
 const denied = boot(null, true, true);
-assert.equal(denied.rootElement.dataset.theme, 'dark');
-denied.context.applyReadingDeskTheme('light');
 assert.equal(denied.rootElement.dataset.theme, 'light');
+denied.context.toggleReadingDeskTheme();
+assert.equal(denied.rootElement.dataset.theme, 'dark');
+denied.context.toggleReadingDeskTheme();
+assert.equal(denied.rootElement.dataset.theme, 'light');
+const theme = boot('light', false);
+theme.context.toggleReadingDeskTheme();
+assert.equal(theme.rootElement.dataset.theme, 'dark');
+assert.equal(theme.themeButton['aria-label'], 'Switch to light mode');
+assert.equal(theme.storage.value, 'dark');
+assert.equal(boot(theme.storage.value, false).rootElement.dataset.theme, 'dark');
+theme.context.toggleReadingDeskTheme();
+assert.equal(theme.rootElement.dataset.theme, 'light');
+assert.equal(theme.themeButton.title, 'Switch to dark mode');
+assert.equal(theme.storage.value, 'light');
+assert.equal((html.match(/id="desk-theme-toggle"/g) || []).length, 1);
+assert.doesNotMatch(html, /data-theme-choice/);
+assert.doesNotMatch(source, /prefers-color-scheme/);
+assert.match(css, /\.reading-desk \.research-prompt-launch-label \{[^}]*display: block;[^}]*white-space: normal;/);
+assert.match(css, /\.desk-sidebar-bottom \{ margin-top: auto;/);
+assert.match(html, /<div class="header-actions">[\s\S]*?<div class="desk-theme">[\s\S]*?id="desk-theme-toggle"[\s\S]*?<\/button>\s*<\/div>\s*<\/div>/);
 
 const choose = denied.context.chooseReadingDeskPaper;
 const records = [{ id: 'first' }, { id: 'second' }];
