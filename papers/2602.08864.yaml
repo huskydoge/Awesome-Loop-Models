@@ -8,7 +8,7 @@ authors:
 year: 2026
 published_date: '2026-02-09'
 added_date: '2026-04-24'
-venue: arXiv
+venue: ICML
 category: analysis
 mechanism_tags:
 - flat-loop
@@ -27,6 +27,8 @@ desc: Uses ANIRA as a controlled recurrent-Transformer framework to study per-to
   while failing to extrapolate to longer algorithmic inputs.
 links:
   arxiv: https://arxiv.org/abs/2602.08864
+  paper: https://icml.cc/virtual/2026/poster/60858
+  github: https://github.com/merlresearch/ANIRA
   comment:
   - label: Benhao's reading note
     url: https://x.com/huskydogewoof/status/2031044736182616081?s=20

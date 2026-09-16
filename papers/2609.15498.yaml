@@ -1,0 +1,36 @@
+# Paper metadata for arXiv:2609.15498.
+title: 'Same path, different: a mechanistic comparison of looped and stacked transformer
+  encoders on 12-lead ECG'
+authors:
+- Pawel Olszowiec
+- Michal Byra
+- Grzegorz Gruszczynski
+- Grzegorz Stefanski
+- Alberto Presta
+year: 2026
+published_date: '2026-09-14'
+added_date: '2026-09-15'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- scientific-ml
+- sequence-modeling
+- efficiency
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Compares a Transformer block reused twelve times with a twelve-layer untied
+  encoder on ECG classification, finding parameter-efficient accuracy parity but distinct
+  representation dynamics.
+links:
+  arxiv: https://arxiv.org/abs/2609.15498
+  alphaxiv: https://www.alphaxiv.org/abs/2609.15498
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-16'

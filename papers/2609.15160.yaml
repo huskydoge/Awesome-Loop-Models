@@ -1,0 +1,39 @@
+# Paper metadata for arXiv:2609.15160.
+title: 'T-LoopFormer: Token-Level Elastic-Depth Looped Transformers for Latent Reasoning
+  With Dynamic Routing'
+authors:
+- Mingqian Yu
+- Wenpeng Zhang
+- Peilin Zhao
+year: 2026
+published_date: '2026-09-14'
+added_date: '2026-09-15'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- adaptive-compute
+- efficiency
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Reuses a shared Transformer stack while routing each token to its own recursion
+  depth, with recursion-wise KV caches that avoid recomputing tokens after they exit.
+links:
+  arxiv: https://arxiv.org/abs/2609.15160
+  alphaxiv: https://www.alphaxiv.org/abs/2609.15160
+  github: https://github.com/YuMingQian1234/T-LoopFormer
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-09-16'

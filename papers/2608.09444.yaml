@@ -23,6 +23,7 @@ desc: Introduces continuous depth batching for looped language models, schedulin
 links:
   arxiv: https://arxiv.org/abs/2608.09444
   alphaxiv: https://www.alphaxiv.org/abs/2608.09444
+  github: https://github.com/kschwethelm/continuous-depth-batching
 citations: 0
 citation_sources:
   semantic_scholar: 0

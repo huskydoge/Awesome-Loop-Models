@@ -204,6 +204,13 @@
     "papers/2609.09691.yaml",
     "papers/2609.11516.yaml",
     "papers/2609.11801.yaml",
+    "papers/2609.13640.yaml",
+    "papers/2609.13688.yaml",
+    "papers/2609.13899.yaml",
+    "papers/2609.13920.yaml",
+    "papers/2609.15160.yaml",
+    "papers/2609.15498.yaml",
+    "papers/2609.15932.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -215,7 +222,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 174
+        "count": 181
       },
       {
         "label": "implicit-layer",
@@ -233,19 +240,19 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 178
+        "count": 185
       },
       {
         "label": "inference-algorithm",
-        "count": 140
+        "count": 146
       },
       {
         "label": "training-algorithm",
-        "count": 99
+        "count": 100
       },
       {
         "label": "objective-loss",
-        "count": 27
+        "count": 28
       },
       {
         "label": "data",
@@ -255,15 +262,15 @@
     "domain": [
       {
         "label": "efficiency",
-        "count": 107
+        "count": 111
       },
       {
         "label": "language-modeling",
-        "count": 98
+        "count": 100
       },
       {
         "label": "reasoning",
-        "count": 98
+        "count": 99
       },
       {
         "label": "algorithmic-reasoning",
@@ -271,6 +278,10 @@
       },
       {
         "label": "adaptive-compute",
+        "count": 32
+      },
+      {
+        "label": "vision",
         "count": 31
       },
       {
@@ -278,12 +289,8 @@
         "count": 30
       },
       {
-        "label": "vision",
-        "count": 30
-      },
-      {
         "label": "theory",
-        "count": 28
+        "count": 30
       },
       {
         "label": "memory-efficiency",
@@ -291,11 +298,15 @@
       },
       {
         "label": "graph-data",
-        "count": 12
+        "count": 14
       },
       {
         "label": "sequence-modeling",
-        "count": 10
+        "count": 12
+      },
+      {
+        "label": "scientific-ml",
+        "count": 7
       },
       {
         "label": "machine-translation",
@@ -310,12 +321,8 @@
         "count": 4
       },
       {
-        "label": "scientific-ml",
-        "count": 4
-      },
-      {
         "label": "hardware-aware",
-        "count": 2
+        "count": 3
       },
       {
         "label": "recommendation",

@@ -31,6 +31,7 @@ desc: Retrofits frozen pretrained transformers with a training-free inference wr
 links:
   arxiv: https://arxiv.org/abs/2605.23872
   alphaxiv: https://www.alphaxiv.org/abs/2605.23872
+  github: https://github.com/L-z-Chen/Training-Free-Looped-Transformer
 citations: 6
 citation_sources:
   semantic_scholar: 6

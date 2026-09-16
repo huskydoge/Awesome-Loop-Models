@@ -1,0 +1,30 @@
+# Paper metadata for arXiv:2609.15932.
+title: Recurrent Graph Neural Networks with Set-Based Aggregation
+authors:
+- Blai Bonet
+year: 2026
+published_date: '2026-09-14'
+added_date: '2026-09-15'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- graph-data
+- theory
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Characterizes set-aggregation recurrent GNNs that iterate one shared block to
+  convergence through an effective two-way equivalence with a fixed-point logic fragment
+  supporting reachability and safety.
+links:
+  arxiv: https://arxiv.org/abs/2609.15932
+  alphaxiv: https://www.alphaxiv.org/abs/2609.15932
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-16'
