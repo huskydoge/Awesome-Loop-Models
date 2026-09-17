@@ -21,6 +21,7 @@ desc: Analyzes pre-LayerNorm looped Transformers as recurrent systems, arguing t
 links:
   arxiv: https://arxiv.org/abs/2607.10681
   alphaxiv: https://www.alphaxiv.org/abs/2607.10681
+  github: https://github.com/clojure-finance/mythjure/tree/paper-v1
 citations: 0
 citation_sources:
   semantic_scholar: 0

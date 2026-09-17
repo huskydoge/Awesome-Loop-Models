@@ -31,6 +31,7 @@ desc: Combines in-context learning with recurrent latent memory and iterative la
 links:
   arxiv: https://arxiv.org/abs/2608.09888
   alphaxiv: https://www.alphaxiv.org/abs/2608.09888
+  github: https://github.com/pathwaycom/arc-task-gen
 citations: 0
 citation_sources:
   semantic_scholar: 0

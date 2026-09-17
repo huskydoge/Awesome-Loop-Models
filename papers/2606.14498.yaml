@@ -30,6 +30,8 @@ desc: Introduces HamEvo, a fixed-point neural operator for Kohn-Sham Hamiltonian
 links:
   arxiv: https://arxiv.org/abs/2606.14498
   alphaxiv: https://www.alphaxiv.org/abs/2606.14498
+  github: https://github.com/axdfhj/HamEvo_official
+  hf: https://huggingface.co/datasets/ZJUSCL/hamevo-data
 citations: 0
 citation_sources:
   semantic_scholar: 0

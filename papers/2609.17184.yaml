@@ -1,0 +1,27 @@
+title: 'LoopSpec: Pipelined Self-Speculative Decoding for Looped Transformers'
+authors:
+- SangLyul Cho
+- Langqing Cui
+- Sehoon Kim
+- Dongsu Han
+- Insu Han
+year: 2026
+published_date: '2026-09-15'
+added_date: '2026-09-16'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- efficiency
+focus_tags:
+- inference-algorithm
+desc: Introduces a training-free self-speculative decoding pipeline for looped Transformers
+  that drafts from intermediate recurrent states, overlaps drafting with final-depth
+  verification, and preserves the target distribution while substantially reducing latency.
+links:
+  arxiv: https://arxiv.org/abs/2609.17184
+  alphaxiv: https://www.alphaxiv.org/abs/2609.17184

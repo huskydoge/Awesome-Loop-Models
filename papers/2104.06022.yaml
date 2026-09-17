@@ -22,6 +22,7 @@ desc: Introduces Sequence, Cycle, and Cycle-reverse strategies for reusing Trans
   quality.
 links:
   arxiv: https://arxiv.org/abs/2104.06022
+  paper: https://aclanthology.org/2023.sustainlp-1.5/
   github: https://github.com/takase/share_layer_params
 citation_source_best: semantic_scholar
 citations: 132

@@ -1,0 +1,28 @@
+title: 'Right Direction, Wrong Step: Geometric Analysis of Finite-Step Failure in Looped Transformers'
+authors:
+- Zhihao Guo
+- Zonghan Wu
+- Haizhou Du
+- Huan Huo
+- Yilei Shao
+- Athanasios V. Vasilakos
+- Qingsong Wen
+year: 2026
+published_date: '2026-09-15'
+added_date: '2026-09-16'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- theory
+focus_tags:
+- inference-algorithm
+desc: Separates update direction from displacement scale in looped Transformers, showing
+  that some harmful full recurrent steps begin along locally useful directions and can
+  recover reference utility when shortened.
+links:
+  arxiv: https://arxiv.org/abs/2609.16665
+  alphaxiv: https://www.alphaxiv.org/abs/2609.16665
