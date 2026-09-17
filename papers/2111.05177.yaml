@@ -8,7 +8,7 @@ authors:
 year: 2021
 published_date: '2021-11-09'
 added_date: '2026-04-24'
-venue: NeurIPS
+venue: "NeurIPS"
 category: designs
 domain_tags:
 - efficiency
@@ -38,3 +38,5 @@ star_source_best: github_api
 github_stars: 7
 star_sources:
   github_api: 7
+peer_reviewed: true
+venue_source: "https://proceedings.neurips.cc/paper_files/paper/2021/hash/cb8da6767461f2812ae4290eac7cbc42-Abstract.html"

@@ -5,7 +5,7 @@ authors:
 year: 2017
 published_date: '2017-07-30'
 added_date: '2026-09-06'
-venue: ACL
+venue: "ACL"
 category: designs
 mechanism_tags:
 - implicit-layer
@@ -25,3 +25,5 @@ citations: 4
 citation_sources:
   semantic_scholar: 4
 metrics_updated: '2026-09-07'
+peer_reviewed: true
+venue_source: "https://aclanthology.org/P17-2027/"

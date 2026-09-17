@@ -6,7 +6,7 @@ authors:
 year: 2020
 published_date: '2020-06-15'
 added_date: '2026-04-24'
-venue: NeurIPS
+venue: "NeurIPS"
 category: designs
 mechanism_tags:
 - implicit-layer
@@ -35,3 +35,5 @@ github_stars: 237
 star_sources:
   github_api: 237
 star_source_best: github_api
+peer_reviewed: true
+venue_source: "https://proceedings.neurips.cc/paper_files/paper/2020/hash/3812f9a59b634c2a9c574610eaba5bed-Abstract.html"

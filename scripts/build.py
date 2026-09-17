@@ -515,6 +515,24 @@ def normalize_venue_class(venue: str, entry_type: str) -> str:
     return VENUE_CLASSES.get(venue, "venue-other")
 
 
+def validate_publication_metadata(data: dict, source: str) -> None:
+    """Require explicit, attributable evidence without inferring review from venue names."""
+    if "peer_reviewed" in data and not isinstance(data["peer_reviewed"], bool):
+        raise ValueError(f"{source}: peer_reviewed must be a boolean")
+    evidence = data.get("venue_source")
+    if evidence is not None:
+        if not isinstance(evidence, str):
+            raise ValueError(f"{source}: venue_source must be an HTTPS URL")
+        parsed = urlparse(evidence)
+        if (parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password
+                or any(char.isspace() for char in evidence)):
+            raise ValueError(f"{source}: venue_source must be an HTTPS URL without credentials")
+    if data.get("peer_reviewed") is True:
+        venue = data.get("venue")
+        if not isinstance(venue, str) or not venue.strip() or venue.strip().lower() == "arxiv" or not evidence:
+            raise ValueError(f"{source}: peer_reviewed requires a publication venue and venue_source")
+
+
 def normalize_focus_tags(raw_focus_tags: object, source: str) -> list[str]:
     focus_tags = normalize_str_list(raw_focus_tags)
     invalid = [tag for tag in focus_tags if tag not in VALID_FOCUS_TAGS]
@@ -570,6 +588,7 @@ def load_papers() -> list[dict]:
             continue
 
         data = yaml.safe_load(yaml_file.read_text(encoding="utf-8")) or {}
+        validate_publication_metadata(data, yaml_file.name)
         taxonomy = normalize_paper_taxonomy_fields(data, yaml_file.name)
         category_id = taxonomy["category"]
         foundation = taxonomy["foundation"]
@@ -816,6 +835,8 @@ def serialize_browser_entry(entry: dict) -> dict:
         "authors_list",
         "venue",
         "venueClass",
+        "peer_reviewed",
+        "venue_source",
         "year",
         "published_date",
         "added_date",

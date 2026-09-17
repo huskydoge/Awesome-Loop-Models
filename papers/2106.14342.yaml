@@ -6,7 +6,7 @@ authors:
 year: 2021
 published_date: '2021-06-28'
 added_date: '2026-09-06'
-venue: ICML
+venue: "ICML"
 category: designs
 mechanism_tags:
 - implicit-layer
@@ -37,3 +37,5 @@ github_stars: 808
 star_sources:
   github_api: 808
 metrics_updated: '2026-09-16'
+peer_reviewed: true
+venue_source: "https://proceedings.mlr.press/v139/bai21b.html"

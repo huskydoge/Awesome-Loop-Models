@@ -5,7 +5,7 @@ authors:
 - Fabio Carrara
 - Claudio Gennaro
 - Fabrizio Falchi
-year: 2021
+year: 2022
 published_date: '2021-11-29'
 added_date: '2026-09-06'
 venue: ICIAP
@@ -25,6 +25,7 @@ desc: Introduces RViT, a CNN-Transformer hybrid that shares weights across depth
   uses feedback connections to iteratively refine representations for visual same-different
   reasoning.
 links:
+  paper: https://link.springer.com/chapter/10.1007/978-3-031-06433-3_5
   arxiv: https://arxiv.org/abs/2111.14576
   github: https://github.com/mesnico/recurrent_vision_transformer_visual_reasoning
 citation_source_best: semantic_scholar

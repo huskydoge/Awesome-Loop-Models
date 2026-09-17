@@ -11,7 +11,7 @@ authors:
 year: 2018
 published_date: '2018-03-16'
 added_date: '2026-09-06'
-venue: ICML
+venue: "ICML"
 category: designs
 mechanism_tags:
 - implicit-layer
@@ -41,3 +41,5 @@ github_stars: 42
 star_sources:
   github_api: 42
 metrics_updated: '2026-09-07'
+peer_reviewed: true
+venue_source: "https://proceedings.mlr.press/v80/liao18c.html"

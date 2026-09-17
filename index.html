@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Awesome Loop Models</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <script src="assets/reading-desk.js?v=2"></script>
+  <script src="assets/reading-desk.js?v=3"></script>
   <style>
     /* ── Light theme (default) ── */
     :root {
@@ -5177,7 +5177,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="assets/reading-desk.css?v=2" />
+  <link rel="stylesheet" href="assets/reading-desk.css?v=4" />
 </head>
 <body class="reading-desk">
 
@@ -5316,7 +5316,7 @@
           </div>
           <div class="quick-filter-bar">
             <span class="sort-label">Watch:</span>
-            <button type="button" class="sort-btn" id="accepted-only-toggle" aria-pressed="false" onclick="toggleAcceptedOnly()">Accepted only</button>
+            <button type="button" class="sort-btn" id="accepted-only-toggle" aria-pressed="false" title="Conference, workshop, or journal publication recorded in the catalog or verified from an official source. Metadata lookup failures do not remove existing publication records." onclick="toggleAcceptedOnly()">Peer-reviewed</button>
             <button type="button" class="sort-btn" id="newly-arrived-only-toggle" aria-pressed="false" onclick="toggleNewlyArrivedOnly()">Newly Arrived</button>
             <button type="button" class="sort-btn" id="has-code-toggle" aria-pressed="false" onclick="toggleHasCodeOnly()">w/ code</button>
             <button type="button" class="sort-btn" id="has-comments-toggle" aria-pressed="false" onclick="toggleHasCommentsOnly()">w/ comments</button>
@@ -6383,6 +6383,15 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+/** Display the recorded publication year, never substituting the preprint release date. */
+function getPaperVenueLabel(paper) {
+  const venue = String(paper.venue || '').trim();
+  const year = String(paper.year || '');
+  if (!venue || paper.entry_type === 'blog' || /^arxiv$/i.test(venue)
+      || /\b(?:19|20)\d{2}\b/.test(venue) || !/^(?:19|20)\d{2}$/.test(year)) return venue;
+  return venue + ' ' + year;
+}
+
 function highlightQuery(str, query) {
   if (!query || !str) return String(str || '');
   const re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
@@ -6450,11 +6459,35 @@ function formatMetricCount(value) {
   return value >= 1000 ? (value / 1000).toFixed(1) + 'k' : String(value);
 }
 
+/** Explain citations strictly above whole UTC calendar months, clamping month-end anniversaries. */
+function renderInfluenceBadgeHtml(paper, now = new Date()) {
+  if (!paper || paper.entry_type === 'blog' || !Number.isInteger(paper.citations) || paper.citations < 0) return '';
+  const published = parseIsoDate(paper.published_date);
+  const today = parseIsoDate(formatIsoDateUtc(now));
+  if (!published || !today || published > today) return '';
+  const monthEnd = new Date(today);
+  monthEnd.setUTCMonth(today.getUTCMonth() + 1, 0);
+  const anniversaryDay = Math.min(published.getUTCDate(), monthEnd.getUTCDate());
+  const completedMonths = (today.getUTCFullYear() - published.getUTCFullYear()) * 12
+    + today.getUTCMonth() - published.getUTCMonth() - (today.getUTCDate() < anniversaryDay ? 1 : 0);
+  const threshold = Math.max(1, completedMonths);
+  if (paper.citations <= threshold) return '';
+  const explanation = 'High influence: ' + paper.citations + ' citations > ' + threshold
+    + ' = max(1, completed months). First published ' + paper.published_date
+    + '; ' + completedMonths + ' completed months as of ' + formatIsoDateUtc(today)
+    + ' UTC (month-end clamped). Citation-age heuristic, not a quality assessment.';
+  return '<button type="button" class="metric-badge metric-influence" title="' + escapeHtml(explanation)
+    + '" aria-label="' + escapeHtml(explanation) + '">High influence'
+    + '<span class="influence-explanation" aria-hidden="true">' + escapeHtml(explanation) + '</span></button>';
+}
+
 function renderMetricsHtml(paper) {
   const parts = [];
   if (paper.citations != null) {
     parts.push('<span class="metric-badge metric-citations">&#128218; ' + formatMetricCount(paper.citations) + ' citations</span>');
   }
+  const influenceHtml = renderInfluenceBadgeHtml(paper);
+  if (influenceHtml) parts.push(influenceHtml);
   if (paper.github_stars != null) {
     parts.push('<span class="metric-badge metric-stars">&#11088; ' + formatMetricCount(paper.github_stars) + ' stars</span>');
   }
@@ -6572,7 +6605,7 @@ function renderTableRow(paper, query) {
   const detailMetaParts = [];
   if (paper.venue || paperDisplayDate) {
     detailMetaParts.push('<span class="paper-table-detail-pill">'
-      + escapeHtml([paper.venue || '', paperDisplayDate || ''].filter(Boolean).join(' · '))
+      + escapeHtml([getPaperVenueLabel(paper), paperDisplayDate || ''].filter(Boolean).join(' · '))
       + '</span>');
   }
   if (paper._categoryTrailLabel) {
@@ -6594,11 +6627,11 @@ function renderTableRow(paper, query) {
   return '<tr class="paper-table-row' + (expanded ? ' is-expanded' : '') + '" data-paper-id="' + paperId + '">'
     + '<td class="paper-table-title-cell"><button type="button" class="paper-table-disclosure" data-paper-id="' + paperId + '" aria-expanded="' + (expanded ? 'true' : 'false') + '" aria-controls="' + detailRowId + '"><span class="paper-table-title-wrap"><span class="paper-table-caret">' + (expanded ? '⌄' : '▸') + '</span><span class="paper-table-title-text">' + mustReadMarkerHtml + '<span>' + highlightQuery(paper.title, query) + '</span>' + foundationBadgeHtml + catalogFitBadgeHtml + '</span></span></button></td>'
     + '<td class="paper-table-number">' + formatTableText(getPaperDisplayDate(paper)) + '</td>'
-    + '<td><span class="paper-venue ' + (paper.venueClass || 'venue-arxiv') + '">' + escapeHtml(paper.venue || '—') + '</span></td>'
+    + '<td><span class="paper-venue ' + (paper.venueClass || 'venue-arxiv') + '">' + escapeHtml(getPaperVenueLabel(paper) || '—') + '</span></td>'
     + '<td class="paper-table-links-cell">' + compactLinksHtml + '</td>'
     + '<td class="paper-table-meta-cell">' + formatTableText(paper._focusLabel) + '</td>'
     + '<td class="paper-table-meta-cell">' + formatTableText(paper._domainLabel) + '</td>'
-    + '<td class="paper-table-number">' + formatTableNumber(paper.citations) + '</td>'
+    + '<td class="paper-table-number">' + formatTableNumber(paper.citations) + renderInfluenceBadgeHtml(paper) + '</td>'
     + '<td class="paper-table-number">' + formatTableNumber(paper.github_stars) + '</td>'
     + '</tr>'
     + '<tr class="paper-table-detail-row' + (expanded ? ' is-open' : '') + '" id="' + detailRowId + '" data-paper-id="' + paperId + '" aria-hidden="' + (expanded ? 'false' : 'true') + '"' + (expanded ? '' : ' hidden') + '>'
@@ -6643,7 +6676,7 @@ function renderCard(paper, query) {
     + '<div class="desk-card-content">'
     + '<div class="desk-card-heading"><h3 class="paper-title"><button type="button" class="desk-paper-select" data-paper-id="' + escapeHtml(paper.id)
     + '" aria-controls="paper-detail" aria-pressed="false" aria-expanded="false">' + title + '</button></h3>'
-    + '<span class="paper-venue ' + escapeHtml(paper.venueClass || 'venue-arxiv') + '">' + escapeHtml(paper.venue || 'Unspecified venue') + '</span></div>'
+    + '<span class="paper-venue ' + escapeHtml(paper.venueClass || 'venue-arxiv') + '">' + escapeHtml(getPaperVenueLabel(paper) || 'Unspecified venue') + '</span></div>'
     + '<div class="paper-meta">' + highlightQuery(escapeHtml(paper._authorsText), query)
     + '<span class="desk-card-date"> · <time>' + escapeHtml(getPaperDisplayDate(paper)) + '</time></span></div>'
     + '<div class="desk-card-signals">'
@@ -7607,8 +7640,13 @@ function matchPublicationDate(paper, publicationDateFilter) {
   return true;
 }
 
+/** Respect explicit review status; otherwise retain the catalog's curated publication venue. */
 function matchAcceptedOnly(paper) {
-  return !ACCEPTED_ONLY || (paper.entry_type !== 'blog' && paper.venue !== 'arXiv');
+  if (!ACCEPTED_ONLY) return true;
+  if (paper.entry_type === 'blog') return false;
+  if (paper.peer_reviewed != null) return paper.peer_reviewed === true;
+  const venue = String(paper.venue || '').trim();
+  return Boolean(venue) && !/\b(?:arxiv|preprint|unpublished|submitted|submission|under[\s-]?review|withdrawn|rejected|unknown|n\/a)\b/i.test(venue);
 }
 
 /** Match papers in the newest catalog intake batch. */
@@ -7850,7 +7888,7 @@ function getActiveFilterLabel(query, publicationDateFilter) {
       labels.push('published <= ' + publicationDateFilter.end);
     }
   }
-  if (!isBlogs && ACCEPTED_ONLY) labels.push('accepted only');
+  if (!isBlogs && ACCEPTED_ONLY) labels.push('peer-reviewed');
   if (!isBlogs && NEWLY_ARRIVED_ONLY) labels.push('newly arrived');
   if (HAS_CODE_ONLY) labels.push('w/ code');
   if (HAS_COMMENTS_ONLY) labels.push('w/ comments');

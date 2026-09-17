@@ -6,7 +6,7 @@ authors:
 year: 2025
 published_date: '2024-10-02'
 added_date: '2026-04-21'
-venue: ICML
+venue: "ICML"
 category: analysis
 mechanism_tags:
 - flat-loop
@@ -39,3 +39,5 @@ github_stars: 9
 star_sources:
   github_api: 9
 star_source_best: github_api
+peer_reviewed: true
+venue_source: "https://proceedings.mlr.press/v267/xu25x.html"

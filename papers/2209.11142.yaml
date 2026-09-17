@@ -18,7 +18,7 @@ authors:
 year: 2022
 published_date: '2022-09-22'
 added_date: '2026-04-24'
-venue: LoG
+venue: "Learning on Graphs Conference"
 category: designs
 mechanism_tags:
 - flat-loop
@@ -47,3 +47,5 @@ star_source_best: github_api
 github_stars: 547
 star_sources:
   github_api: 547
+peer_reviewed: true
+venue_source: "https://proceedings.mlr.press/v198/ibarz22a.html"

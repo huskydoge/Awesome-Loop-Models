@@ -202,6 +202,7 @@ assert.match(css, /\.desk-detail-close \{ display: grid;/);
 // Use real card/link/metric/detail renderers; only unrelated taxonomy helpers are stubbed.
 const detailContent = { innerHTML: '' };
 const rendering = vm.createContext({
+  Date,
   document: { getElementById: () => detailContent },
   LINK_CONFIG: {
     arxiv: { cls: 'link-arxiv', icon: '', label: 'arXiv' },
@@ -213,19 +214,71 @@ const rendering = vm.createContext({
   renderCatalogFitBadgeHtml: () => '',
   renderCatalogFitNoteHtml: () => '',
 });
+vm.runInContext(html.slice(html.indexOf('function parseIsoDate(value) {'), html.indexOf('function buildDailyPublicationSeries(')), rendering);
 vm.runInContext(html.slice(html.indexOf('function escapeHtml(str) {'), html.indexOf('function formatMetricCount(')), rendering);
 vm.runInContext(html.slice(html.indexOf('function formatMetricCount('), html.indexOf('function getCurrentDailyWatchDateString(')), rendering);
 vm.runInContext(card, rendering);
 vm.runInContext(source.slice(source.indexOf('function renderReadingDeskDetail(paper) {'), source.indexOf('function syncReadingDeskSelection(')), rendering);
+assert.match(rendering.renderMetricsHtml({ published_date: '2026-01-01', citations: 1000 }), /High influence/);
+const influence = rendering.renderInfluenceBadgeHtml;
+const influenceNow = new Date('2026-09-17T23:59:59Z');
+assert.equal(influence({ published_date: '2026-04-17', citations: 5 }, influenceNow), '');
+const highInfluence = influence({ published_date: '2026-04-17', citations: 6 }, influenceNow);
+for (const text of ['6 citations', '5 completed months', '2026-04-17', '2026-09-17', 'max(1, completed months)', 'not a quality assessment']) {
+  assert.ok(highInfluence.includes(text), text);
+}
+assert.match(highInfluence, /<button type="button"[^>]*title="[^>]*aria-label="/);
+assert.match(css, /\.metric-influence:focus-visible \.influence-explanation/);
+assert.match(css, /\.desk-detail-visual \.influence-explanation \{[^}]*top: auto;[^}]*bottom: calc\(100% \+ 6px\);/);
+for (const [published_date, now, months] of [
+  ['2026-09-17', influenceNow, 1], ['2026-09-01', influenceNow, 1],
+  ['2026-04-18', influenceNow, 4], ['2026-12-31', new Date('2027-02-28T00:00:00Z'), 2],
+  ['2023-12-31', new Date('2024-02-29T00:00:00Z'), 2],
+  ['2023-12-31', new Date('2024-02-28T23:59:59Z'), 1],
+]) {
+  assert.equal(influence({ published_date, citations: months }, now), '', published_date);
+  assert.match(influence({ published_date, citations: months + 1 }, now), /High influence/, published_date);
+}
+for (const citations of [null, undefined, '', '1000', -1, NaN, Infinity, 1.5]) {
+  assert.equal(influence({ published_date: '2026-04-17', citations }, influenceNow), '');
+}
+for (const published_date of [null, '', '2026-02-30', '2026', '2026-09-18']) {
+  assert.equal(influence({ published_date, citations: 1000 }, influenceNow), '');
+}
+assert.equal(influence({ entry_type: 'blog', published_date: '2026-04-17', citations: 1000 }, influenceNow), '');
+assert.equal(influence({ published_date: '2026-04-17', citations: 1000 }, new Date(NaN)), '');
+Object.assign(rendering, { EXPANDED_TABLE_ROWS: new Set() });
+vm.runInContext(html.slice(html.indexOf('function formatTableText('), html.indexOf('function getPaperDisplayDate(')), rendering);
+vm.runInContext(html.slice(html.indexOf('function renderTableRow('), html.indexOf('function renderTableView(')), rendering);
 const example = {
   id: '2301.13196', title: 'A paper', _authorsText: 'Author One, Author Two',
-  venue: 'ICML', published_date: '2026-09-16', desc: 'A complete summary.',
+  venue: 'ICML', year: 2026, published_date: '2026-09-16', desc: 'A complete summary.',
   citations: 3, github_stars: 7,
   links: { arxiv: 'https://arxiv.org/abs/2301.13196', github: 'https://github.com/example/code' },
   community_comments: [{ label: 'A <reading> note', url: 'https://example.test/note?a=1&b=2' }],
 };
 rendering.readingDeskDetailCollapsed = false;
 const openCard = rendering.renderCard(example, '');
+assert.match(openCard, />ICML 2026<\/span>/);
+assert.match(rendering.renderTableRow(example, ''), />ICML 2026<\/span>/);
+assert.match(rendering.renderTableRow(example, ''), /ICML 2026 · 2026-09-16/);
+rendering.renderReadingDeskDetail(example);
+assert.match(detailContent.innerHTML, />ICML 2026<\/span>/);
+for (const [paper, expected] of [
+  [{ venue: 'ICLR', year: 2019, published_date: '2018-07-10' }, 'ICLR 2019'],
+  [{ venue: 'Findings of ACL', year: 2026, published_date: '2025-08-22' }, 'Findings of ACL 2026'],
+  [{ venue: 'COLM 2025 Workshop', year: 2025 }, 'COLM 2025 Workshop'],
+  [{ venue: 'arXiv', year: 2026 }, 'arXiv'],
+  [{ entry_type: 'blog', venue: 'Lab Blog', year: 2026 }, 'Lab Blog'],
+  [{ venue: 'ICML', published_date: '2026-05-20' }, 'ICML'],
+  [{ venue: 'ICML', year: 'invalid' }, 'ICML'],
+  [{ year: 2026 }, ''],
+]) assert.equal(rendering.getPaperVenueLabel(paper), expected);
+const influentialExample = { ...example, published_date: '2026-01-01', citations: 1000 };
+assert.match(rendering.renderCard(influentialExample, ''), /High influence/);
+assert.match(rendering.renderTableRow(influentialExample, ''), /High influence/);
+rendering.renderReadingDeskDetail(influentialExample);
+assert.match(detailContent.innerHTML.split('</header>')[0], /High influence/);
 rendering.readingDeskDetailCollapsed = true;
 assert.equal(rendering.renderCard(example, ''), openCard);
 for (const text of ['Author One, Author Two', '2026-09-16', '3 citations', 'A complete summary.', 'desk-card-preview']) {
@@ -376,7 +429,7 @@ assert.match(html, /if \(!isBlogs && ACTIVE_CATEGORY_FILTER\) count \+= 1;/);
 // Exercise the actual scope/filter pipeline: paper-only filters cannot hide Blogs.
 Object.assign(categories, {
   ACTIVE_TOP_LEVEL_TAB: 'papers',
-  ALL_PAPERS: [{ id: 'p', category: 'theory', venue: 'ICML', added_date: '2026-09-16' }],
+  ALL_PAPERS: [{ id: 'p', category: 'theory', venue: 'ICML', peer_reviewed: true, added_date: '2026-09-16' }],
   ALL_BLOGS: [{ id: 'b', entry_type: 'blog' }],
   ACTIVE_TAG_FILTERS: new Set(),
   ACCEPTED_ONLY: true,
@@ -395,6 +448,26 @@ Object.assign(categories, {
 vm.runInContext(html.slice(html.indexOf('function matchAcceptedOnly(paper) {'), html.indexOf('function renderCategoryFilter() {')), categories);
 vm.runInContext(html.slice(html.indexOf('function paperMatchesActiveFilters('), html.indexOf('function setFilterSidebarOpen(')), categories);
 vm.runInContext(html.slice(html.indexOf('function normalizeTopLevelTab(tab) {'), html.indexOf('function getTagDrilldownKeyFromUrl() {')), categories);
+assert.match(filterPanel, /id="accepted-only-toggle"[^>]*>Peer-reviewed<\/button>/);
+assert.doesNotMatch(html, /Accepted only|accepted only/);
+for (const [paper, expected] of [
+  [{ venue: 'ICML', peer_reviewed: true }, true],
+  [{ venue: 'ICML' }, true], [{ venue: 'ICLR' }, true],
+  [{ venue: 'CompLearn Workshop @ ICML' }, true], [{ venue: 'IEEE Access' }, true],
+  [{ venue: 'ICML', peer_reviewed: false }, false], [{ venue: 'Workshop', peer_reviewed: 'true' }, false],
+  [{ venue: 'arXiv' }, false], [{ venue: ' arxiv ' }, false], [{ venue: 'Preprint' }, false],
+  [{ venue: 'ICML (submitted)' }, false], [{ venue: 'Under review' }, false],
+  [{ venue: 'Unknown' }, false], [{ venue: '' }, false], [{}, false],
+  [{ entry_type: 'blog', venue: 'ICML' }, false],
+  [{ venue: 'arXiv', peer_reviewed: false }, false], [{ entry_type: 'blog', peer_reviewed: true }, false],
+]) assert.equal(categories.matchAcceptedOnly(paper), expected);
+const catalogPapers = JSON.parse(fs.readFileSync(path.join(root, 'papers.json'), 'utf8')).papers;
+const eqr = catalogPapers.find(paper => paper.id === '2605.21488');
+assert.ok(eqr, 'EqR must be present in the canonical catalog');
+assert.equal(categories.matchAcceptedOnly(eqr), true, 'EqR must not need a successful metadata refresh to retain its ICML status');
+for (const paper of catalogPapers.filter(paper => paper.venue && paper.venue !== 'arXiv' && paper.peer_reviewed !== false)) {
+  assert.equal(categories.matchAcceptedOnly(paper), true, paper.id + ': retain the curated publication venue');
+}
 categories.setCategoryFilter('theory');
 assert.equal(categories.getFilteredPapers('', {}).map(record => record.id).join(','), 'p');
 assert.equal(categories.getFilterSidebarActiveCount(), 3);
@@ -415,4 +488,4 @@ assert.doesNotMatch(html, /class="desk-blogs-link"/);
 const grids = html.slice(html.indexOf('function renderAllGrids(q) {'), html.indexOf('function createTreeNode('));
 assert.doesNotMatch(grids, /if \(!hasActiveFilter\)/);
 assert.match(grids, /syncSectionVisibility\(\);/);
-console.log('Reading desk: theme, selection, resizing, thumbnails, tags, category and isolated Blogs checks passed.');
+console.log('Reading desk: theme, selection, resizing, thumbnails, tags, category, isolated Blogs, peer-review and influence checks passed.');

@@ -5,6 +5,8 @@ year: 2026
 published_date: '2026-06-02'
 added_date: '2026-06-11'
 venue: CompLearn Workshop @ ICML
+peer_reviewed: true
+venue_source: https://compositional-learning.github.io/
 category: designs
 foundation: false
 mechanism_tags:
@@ -21,6 +23,7 @@ desc: Extends hierarchical latent reasoning with a slow manager module whose dir
   subgoal persists across several low-level hidden-state update steps, making subgoal
   duration a central design knob.
 links:
+  openreview: https://openreview.net/forum?id=7n485sq1xH
   arxiv: https://arxiv.org/abs/2606.03741
   alphaxiv: https://www.alphaxiv.org/abs/2606.03741
 citations: 1

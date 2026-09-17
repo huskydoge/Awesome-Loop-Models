@@ -16,9 +16,9 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 import yaml
 
 try:
-    from scripts.build import CATEGORIES, VALID_FOCUS_TAGS, VALID_MECHANISM_TAGS
+    from scripts.build import CATEGORIES, VALID_FOCUS_TAGS, VALID_MECHANISM_TAGS, validate_publication_metadata
 except ModuleNotFoundError:  # Support ``python scripts/audit_catalog.py``.
-    from build import CATEGORIES, VALID_FOCUS_TAGS, VALID_MECHANISM_TAGS
+    from build import CATEGORIES, VALID_FOCUS_TAGS, VALID_MECHANISM_TAGS, validate_publication_metadata
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -48,6 +48,8 @@ ALLOWED_FIELDS = frozenset(
         "github_stars",
         "metrics_updated",
         "must_read",
+        "peer_reviewed",
+        "venue_source",
         "star_source_best",
         "star_sources",
         "tags",
@@ -234,6 +236,10 @@ def _is_non_negative_int(value: object) -> bool:
 
 def _validate_optional_fields(data: dict, source: str, findings: list[Finding]) -> None:
     """Validate every allowed optional scalar and metric mapping raw type."""
+    try:
+        validate_publication_metadata(data, source)
+    except ValueError as error:
+        _add(findings, "error", "invalid-publication", source, "peer_reviewed", str(error))
     for field in ("foundation", "must_read"):
         if field in data and not isinstance(data[field], bool):
             _add(

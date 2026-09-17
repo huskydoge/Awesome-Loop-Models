@@ -205,7 +205,11 @@ Notes for papers:
 - use `category: applications` when the main reader takeaway is task/domain performance in a concrete external setting
 - omit `category_path` in new canonical paper YAML
 - use `foundation: true` only for canonical anchor papers; do not use it just to mean "important"
+- for published papers, `year` is the conference/workshop edition or journal publication year shown in venue labels (for example, `ICML 2026`). Keep `published_date` as the first public release date, even when it is an earlier year. arXiv labels remain `arXiv`, and venue names already containing a year do not repeat it.
 - if a shelf choice is ambiguous, follow the tie-break rules in [TAXONOMY.md](TAXONOMY.md)
+- use `venue: arXiv` when no publication venue is known. Set `peer_reviewed: true` only with an official conference, workshop, or journal acceptance/publication record, and save its HTTPS URL in `venue_source`. Submission pages alone are not acceptance evidence; a reviewed non-archival workshop still counts.
+- `python3 scripts/fetch_publication.py` previews verified venue updates; add `--write` to save them or `--only <paper-id>` to limit the check. The daily metrics workflow also refreshes these fields. Failed or inconclusive lookups preserve curated metadata; a missing flag means unverified, not rejected.
+- The website's **Peer-reviewed** filter respects an explicit boolean status when present; otherwise it uses the catalog's curated conference, workshop, or journal venue. Missing crawler evidence does not erase an existing publication record. arXiv, unknown, and submission-only records are excluded. **High influence** is independent: citations must strictly exceed `max(1, completed months since published_date)`, using UTC dates and month-end-clamped anniversaries. It is a citation-age heuristic, not a quality assessment. Never reset `published_date` when a preprint is accepted.
 
 Notes for blogs:
 - blogs do not use `category`, `category_path`, or `foundation`

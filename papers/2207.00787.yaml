@@ -7,7 +7,7 @@ authors:
 year: 2022
 published_date: '2022-07-02'
 added_date: '2026-09-06'
-venue: NeurIPS
+venue: "NeurIPS"
 category: designs
 mechanism_tags:
 - implicit-layer
@@ -33,3 +33,5 @@ citation_sources:
   openalex: 5
   opencitations: 0
 metrics_updated: '2026-09-07'
+peer_reviewed: true
+venue_source: "https://proceedings.neurips.cc/paper_files/paper/2022/hash/d301e2878a7ebadf1a95029e904fc7d0-Abstract-Conference.html"

@@ -71,7 +71,7 @@ function renderReadingDeskDetail(paper) {
     + metricsHtml + (thumbnailUrl || metricsHtml ? '</div>' : '')
     + '<h2 id="paper-detail-title">' + escapeHtml(paper.title) + '</h2>'
     + '<p class="desk-detail-authors">' + escapeHtml(paper._authorsText) + '</p>'
-    + '<div class="desk-detail-meta"><span>' + escapeHtml(paper.venue) + '</span><time>' + escapeHtml(getPaperDisplayDate(paper)) + '</time>'
+    + '<div class="desk-detail-meta"><span>' + escapeHtml(getPaperVenueLabel(paper)) + '</span><time>' + escapeHtml(getPaperDisplayDate(paper)) + '</time>'
     + (paper.must_read ? '<span class="desk-must-read">Must read</span>' : '')
     + (paper.foundation ? '<span class="foundation-badge">Foundation</span>' : '') + renderCatalogFitBadgeHtml(paper) + '</div>'
     + '<div class="desk-primary-actions">'

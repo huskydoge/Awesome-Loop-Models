@@ -37,6 +37,22 @@ FAVICON_PATH = REPO_ROOT / "assets" / "favicon.png"
 
 
 class BuildTaxonomyTests(unittest.TestCase):
+    def test_peer_review_requires_a_boolean_and_publication_source(self):
+        """A venue name or truthy string cannot stand in for verified evidence."""
+        valid = {
+            "venue": "ICML", "peer_reviewed": True,
+            "venue_source": "https://proceedings.mlr.press/v267/schone25a.html",
+        }
+        build.validate_publication_metadata(valid, "paper.yaml")
+        build.validate_publication_metadata({"venue": "arXiv"}, "paper.yaml")
+        for overrides in (
+            {"peer_reviewed": "true"}, {"venue": "arXiv"},
+            {"venue_source": ""}, {"venue_source": "javascript:alert(1)"},
+            {"venue_source": "https://user:password@example.org/paper"},
+        ):
+            with self.subTest(overrides=overrides), self.assertRaises(ValueError):
+                build.validate_publication_metadata({**valid, **overrides}, "paper.yaml")
+
     def test_colm_workshop_uses_colm_venue_class(self):
         """A COLM workshop must not fall back to the arXiv badge class."""
         self.assertEqual(
@@ -299,8 +315,10 @@ class DailyBriefingBuildTests(unittest.TestCase):
                     "title": "A paper",
                     "authors": "A. Author",
                     "authors_list": ["A. Author"],
-                    "venue": "arXiv",
-                    "venueClass": "venue-arxiv",
+                    "venue": "ICML",
+                    "venueClass": "venue-icml",
+                    "peer_reviewed": True,
+                    "venue_source": "https://proceedings.mlr.press/v267/schone25a.html",
                     "year": 2026,
                     "published_date": "2026-04-28",
                     "added_date": "2026-04-28",
@@ -384,6 +402,7 @@ class DailyBriefingBuildTests(unittest.TestCase):
 
         browser_fields = (
             "id", "entry_type", "title", "authors", "authors_list", "venue", "venueClass",
+            "peer_reviewed", "venue_source",
             "year", "published_date", "added_date", "desc", "links", "category", "foundation",
             "catalog_fit", "mechanism_tags", "focus_tags", "domain_tags", "must_read", "citations",
             "github_stars", "community_comments", "comments",
@@ -1745,7 +1764,7 @@ setTimeout(function() {
         """Expose the supported quick filters alongside both catalog views."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         for snippet in (
-            "Accepted only",
+            "Peer-reviewed",
             "w/ code",
             "w/ comments",
             "Category view",
@@ -3401,7 +3420,9 @@ process.stdout.write(JSON.stringify({{
     def test_quick_filters_and_table_view_have_frontend_hooks(self):
         """Wire the newest-intake state through the existing filter hooks."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn("paper.entry_type !== 'blog' && paper.venue !== 'arXiv'", html)
+        self.assertIn("if (paper.entry_type === 'blog') return false;", html)
+        self.assertIn("if (paper.peer_reviewed != null) return paper.peer_reviewed === true;", html)
+        self.assertIn("const venue = String(paper.venue || '').trim();", html)
         self.assertIn("let NEWLY_ARRIVED_ONLY = false;", html)
         self.assertIn("let LATEST_ADDED_DATE = '';", html)
         self.assertIn("function getLatestAddedDateValue(papers) {", html)

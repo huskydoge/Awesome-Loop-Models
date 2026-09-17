@@ -12,7 +12,7 @@ authors:
 year: 2025
 published_date: '2025-02-07'
 added_date: '2026-04-24'
-venue: NeurIPS
+venue: "NeurIPS"
 must_read: true
 category: designs
 mechanism_tags:
@@ -48,3 +48,5 @@ star_sources:
   github_api: 961
 star_source_best: github_api
 metrics_updated: '2026-09-16'
+peer_reviewed: true
+venue_source: "https://proceedings.neurips.cc/paper_files/paper/2025/hash/3b01972cf31e6fa0fe29e4b8b5c2a0a1-Abstract-Conference.html"

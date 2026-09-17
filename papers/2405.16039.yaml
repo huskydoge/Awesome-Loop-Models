@@ -8,7 +8,7 @@ authors:
 year: 2024
 published_date: '2024-05-25'
 added_date: '2026-04-20'
-venue: NeurIPS
+venue: "NeurIPS"
 category: designs
 mechanism_tags:
 - flat-loop
@@ -40,3 +40,5 @@ github_stars: 93
 star_sources:
   github_api: 93
 star_source_best: github_api
+peer_reviewed: true
+venue_source: "https://proceedings.neurips.cc/paper_files/paper/2024/hash/321387ba926b8e58d3591c0aeb52ffc2-Abstract-Conference.html"

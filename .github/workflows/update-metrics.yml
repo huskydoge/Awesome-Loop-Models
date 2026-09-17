@@ -45,6 +45,11 @@ jobs:
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
         run: python3 scripts/fetch_metrics.py --strict
 
+      - name: Refresh verified publication venues
+        env:
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+        run: python3 scripts/fetch_publication.py --write
+
       - name: Rebuild generated outputs
         run: python3 scripts/build.py
 

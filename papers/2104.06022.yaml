@@ -2,10 +2,10 @@ title: Lessons on Parameter Sharing across Layers in Transformers
 authors:
 - Sho Takase
 - Shun Kiyono
-year: 2021
+year: 2023
 published_date: '2021-04-13'
 added_date: '2026-09-06'
-venue: SustaiNLP
+venue: "Fourth Workshop on Simple and Efficient Natural Language Processing (SustaiNLP)"
 category: designs
 mechanism_tags:
 - flat-loop
@@ -35,3 +35,5 @@ github_stars: 28
 star_sources:
   github_api: 28
 metrics_updated: '2026-09-16'
+peer_reviewed: true
+venue_source: "https://aclanthology.org/2023.sustainlp-1.5/"
