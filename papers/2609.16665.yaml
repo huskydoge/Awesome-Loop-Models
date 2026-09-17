@@ -1,4 +1,5 @@
-title: 'Right Direction, Wrong Step: Geometric Analysis of Finite-Step Failure in Looped Transformers'
+title: 'Right Direction, Wrong Step: Geometric Analysis of Finite-Step Failure in
+  Looped Transformers'
 authors:
 - Zhihao Guo
 - Zonghan Wu
@@ -21,8 +22,14 @@ domain_tags:
 focus_tags:
 - inference-algorithm
 desc: Separates update direction from displacement scale in looped Transformers, showing
-  that some harmful full recurrent steps begin along locally useful directions and can
-  recover reference utility when shortened.
+  that some harmful full recurrent steps begin along locally useful directions and
+  can recover reference utility when shortened.
 links:
   arxiv: https://arxiv.org/abs/2609.16665
   alphaxiv: https://www.alphaxiv.org/abs/2609.16665
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-17'

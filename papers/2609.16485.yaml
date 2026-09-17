@@ -1,4 +1,5 @@
-title: 'Certified Inference and Training for Deep Equilibrium Networks: A Continuation Framework with Polynomial Complexity Guarantees'
+title: 'Certified Inference and Training for Deep Equilibrium Networks: A Continuation
+  Framework with Polynomial Complexity Guarantees'
 authors:
 - Alex Borisevich
 year: 2026
@@ -21,3 +22,9 @@ desc: Develops a certified continuation framework for deep equilibrium inference
 links:
   arxiv: https://arxiv.org/abs/2609.16485
   alphaxiv: https://www.alphaxiv.org/abs/2609.16485
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-17'
