@@ -9,7 +9,7 @@ authors:
 year: 2025
 published_date: '2024-10-15'
 added_date: '2026-09-06'
-venue: AISTATS
+venue: "International Conference on Artificial Intelligence and Statistics"
 category: analysis
 mechanism_tags:
 - flat-loop
@@ -35,3 +35,5 @@ citation_sources:
   openalex: 2
   opencitations: 0
 metrics_updated: '2026-09-07'
+peer_reviewed: true
+venue_source: "https://proceedings.mlr.press/v258/chen25i.html"
