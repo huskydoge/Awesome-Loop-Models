@@ -893,6 +893,7 @@ ACTIVE_TAG_FILTERS = new Set(['focus::architecture']);
 publicationDateStart.value = '2025-01-01';
 publicationDateEnd.value = '2026-01-01';
 ACCEPTED_ONLY = true;
+HIGH_INFLUENCE_ONLY = true;
 NEWLY_ARRIVED_ONLY = true;
 HAS_CODE_ONLY = true;
 HAS_COMMENTS_ONLY = true;
@@ -906,7 +907,7 @@ const entered = {
   placeholder: searchInput.placeholder,
   query: searchInput.value,
   dates: [publicationDateStart.value, publicationDateEnd.value],
-  quickFilters: [ACCEPTED_ONLY, NEWLY_ARRIVED_ONLY, HAS_CODE_ONLY, HAS_COMMENTS_ONLY],
+  quickFilters: [ACCEPTED_ONLY, HIGH_INFLUENCE_ONLY, NEWLY_ARRIVED_ONLY, HAS_CODE_ONLY, HAS_COMMENTS_ONLY],
   panels: [FILTER_SIDEBAR_OPEN, TAG_FILTER_OPEN],
   visibleCount: ALL_PAPERS.filter(function(paper) {
     return Array.from(ACTIVE_TAG_FILTERS).every(function(key) { return paper._tagKeySet.has(key); });
@@ -947,7 +948,7 @@ process.stdout.write(JSON.stringify({
                     "placeholder": "Search papers, authors, keywords…",
                     "query": "",
                     "dates": ["", ""],
-                    "quickFilters": [False, False, False, False],
+                    "quickFilters": [False, False, False, False, False],
                     "panels": [True, False],
                     "visibleCount": 2,
                     "searchCall": "",

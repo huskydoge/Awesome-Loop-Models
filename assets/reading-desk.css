@@ -67,7 +67,7 @@
 .reading-desk .top-level-tab.active { background: var(--desk-selected); color: var(--accent); font-weight: 700; text-decoration: none; }
 .reading-desk .top-level-tab:hover { background: var(--card-hover); }
 .reading-desk.blogs-mode .category-filter-bar,
-.blogs-mode #accepted-only-toggle, .blogs-mode #newly-arrived-only-toggle,
+.blogs-mode #accepted-only-toggle, .blogs-mode #high-influence-only-toggle, .blogs-mode #newly-arrived-only-toggle,
 .blogs-mode #section-blogs > .category-header { display: none; }
 .reading-desk .sidebar-title { border-top: 1px solid var(--border); padding: 22px 8px 8px; margin: 0; font-size: 10px; letter-spacing: .09em; }
 .reading-desk .tree-link { padding: 9px 8px; font-size: 13px; line-height: 1.35; min-height: 42px; }
@@ -178,10 +178,13 @@ body.reading-desk .search-wrap { margin: 0; width: 100%; max-width: none; }
 .metric-influence { position: relative; font: inherit; cursor: help; color: var(--accent); background: var(--desk-selected); border-color: var(--tag-border); }
 .metric-influence:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .influence-explanation { display: none; position: absolute; z-index: 10; top: 100%; right: 0; width: 260px; max-width: calc(100vw - 48px); padding: 10px; border: 1px solid var(--border); border-radius: 5px; background: var(--surface); color: var(--text); box-shadow: 0 4px 18px #0002; font-size: 12px; line-height: 1.5; font-weight: 400; white-space: normal; text-align: left; }
+.metric-influence:hover .influence-explanation,
 .metric-influence:focus-visible .influence-explanation { display: block; }
 .desk-card-visual .influence-explanation { left: 0; right: auto; }
 .desk-detail-visual .influence-explanation { top: auto; bottom: calc(100% + 6px); }
 .paper-table-number .metric-influence { display: flex; margin-top: 5px; }
+/* Viewport coordinates follow the badge even after horizontal scrolling. */
+.paper-table-number .influence-explanation { position: fixed; inset: auto; }
 .reading-desk #papers-panel .paper-tag-overflow { display: inline-flex; }
 .reading-desk #papers-panel .desk-card-summary { margin: 10px 0 14px; color: var(--text-muted); font-size: 17px; line-height: 1.6; overflow-wrap: anywhere; }
 .desk-divider { position: relative; z-index: 30; background: var(--border); cursor: col-resize; touch-action: none; }

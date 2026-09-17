@@ -37,6 +37,16 @@ function chooseReadingDeskPaper(papers, selectedId) {
   return papers.find(function(paper) { return paper.id === selectedId; }) || papers[0] || null;
 }
 
+/** Position table explanations in the viewport, outside the horizontal scroll clip. */
+function positionInfluenceExplanation(button) {
+  if (!button.closest('.paper-table-number')) return;
+  const box = button.querySelector('.influence-explanation');
+  const rect = button.getBoundingClientRect();
+  box.style.left = Math.max(12, Math.min(rect.right - box.offsetWidth, window.innerWidth - box.offsetWidth - 12)) + 'px';
+  box.style.top = (rect.bottom + box.offsetHeight <= window.innerHeight - 12
+    ? rect.bottom : Math.max(12, rect.top - box.offsetHeight)) + 'px';
+}
+
 /** Build a best-effort alphaXiv image URL only from a validated arXiv identifier. */
 function getReadingDeskThumbnailUrl(paper) {
   if (paper.entry_type === 'blog') return '';
@@ -264,6 +274,10 @@ function initReadingDeskResize() {
 /** Bind once; native buttons supply keyboard activation and the dialog handles Escape. */
 function initReadingDesk() {
   applyReadingDeskTheme(readingDeskTheme);
+  document.addEventListener('scroll', function() {
+    document.querySelectorAll('.paper-table-number .metric-influence:hover, .paper-table-number .metric-influence:focus-visible')
+      .forEach(positionInfluenceExplanation);
+  }, true);
   document.getElementById('desk-theme-toggle').addEventListener('click', toggleReadingDeskTheme);
   document.getElementById('sections-container').addEventListener('click', function(event) {
     const card = event.target.closest('.paper-card');

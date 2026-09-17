@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Awesome Loop Models</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <script src="assets/reading-desk.js?v=3"></script>
+  <script src="assets/reading-desk.js?v=4"></script>
   <style>
     /* ── Light theme (default) ── */
     :root {
@@ -5177,7 +5177,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="assets/reading-desk.css?v=4" />
+  <link rel="stylesheet" href="assets/reading-desk.css?v=5" />
 </head>
 <body class="reading-desk">
 
@@ -5317,6 +5317,7 @@
           <div class="quick-filter-bar">
             <span class="sort-label">Watch:</span>
             <button type="button" class="sort-btn" id="accepted-only-toggle" aria-pressed="false" title="Conference, workshop, or journal publication recorded in the catalog or verified from an official source. Metadata lookup failures do not remove existing publication records." onclick="toggleAcceptedOnly()">Peer-reviewed</button>
+            <button type="button" class="sort-btn" id="high-influence-only-toggle" aria-pressed="false" title="Citations exceed completed months since first public release (UTC). Uses the same rule as the High influence badge." onclick="toggleHighInfluenceOnly()">High influence</button>
             <button type="button" class="sort-btn" id="newly-arrived-only-toggle" aria-pressed="false" onclick="toggleNewlyArrivedOnly()">Newly Arrived</button>
             <button type="button" class="sort-btn" id="has-code-toggle" aria-pressed="false" onclick="toggleHasCodeOnly()">w/ code</button>
             <button type="button" class="sort-btn" id="has-comments-toggle" aria-pressed="false" onclick="toggleHasCommentsOnly()">w/ comments</button>
@@ -6459,25 +6460,30 @@ function formatMetricCount(value) {
   return value >= 1000 ? (value / 1000).toFixed(1) + 'k' : String(value);
 }
 
-/** Explain citations strictly above whole UTC calendar months, clamping month-end anniversaries. */
-function renderInfluenceBadgeHtml(paper, now = new Date()) {
-  if (!paper || paper.entry_type === 'blog' || !Number.isInteger(paper.citations) || paper.citations < 0) return '';
+/** Return whole UTC months for a high-influence paper, or null when it does not qualify. */
+function getHighInfluenceMonths(paper, now = new Date()) {
+  if (!paper || paper.entry_type === 'blog' || !Number.isInteger(paper.citations) || paper.citations < 0) return null;
   const published = parseIsoDate(paper.published_date);
   const today = parseIsoDate(formatIsoDateUtc(now));
-  if (!published || !today || published > today) return '';
+  if (!published || !today || published > today) return null;
   const monthEnd = new Date(today);
   monthEnd.setUTCMonth(today.getUTCMonth() + 1, 0);
   const anniversaryDay = Math.min(published.getUTCDate(), monthEnd.getUTCDate());
   const completedMonths = (today.getUTCFullYear() - published.getUTCFullYear()) * 12
     + today.getUTCMonth() - published.getUTCMonth() - (today.getUTCDate() < anniversaryDay ? 1 : 0);
-  const threshold = Math.max(1, completedMonths);
-  if (paper.citations <= threshold) return '';
-  const explanation = 'High influence: ' + paper.citations + ' citations > ' + threshold
-    + ' = max(1, completed months). First published ' + paper.published_date
-    + '; ' + completedMonths + ' completed months as of ' + formatIsoDateUtc(today)
+  return paper.citations > completedMonths ? completedMonths : null;
+}
+
+/** Explain the same citation-age rule used by the High influence filter. */
+function renderInfluenceBadgeHtml(paper, now = new Date()) {
+  const completedMonths = getHighInfluenceMonths(paper, now);
+  if (completedMonths === null) return '';
+  const explanation = 'High influence: ' + paper.citations + ' citations > ' + completedMonths
+    + ' completed months. First published ' + paper.published_date
+    + '; age as of ' + formatIsoDateUtc(now)
     + ' UTC (month-end clamped). Citation-age heuristic, not a quality assessment.';
   return '<button type="button" class="metric-badge metric-influence" title="' + escapeHtml(explanation)
-    + '" aria-label="' + escapeHtml(explanation) + '">High influence'
+    + '" aria-label="' + escapeHtml(explanation) + '" onpointerenter="positionInfluenceExplanation(this)" onfocus="positionInfluenceExplanation(this)">High influence'
     + '<span class="influence-explanation" aria-hidden="true">' + escapeHtml(explanation) + '</span></button>';
 }
 
@@ -6717,6 +6723,7 @@ let TAG_FILTER_LOOKUP = {};
 let TAG_FILTER_OPEN = false;
 let TAG_DRILLDOWN_INTERACTIONS_BOUND = false;
 let ACCEPTED_ONLY = false;
+let HIGH_INFLUENCE_ONLY = false;
 let NEWLY_ARRIVED_ONLY = false;
 let LATEST_ADDED_DATE = '';
 let HAS_CODE_ONLY = false;
@@ -7088,6 +7095,7 @@ function navigateToTagDrilldown(tagKey) {
   if (startDate) startDate.value = '';
   if (endDate) endDate.value = '';
   ACCEPTED_ONLY = false;
+  HIGH_INFLUENCE_ONLY = false;
   NEWLY_ARRIVED_ONLY = false;
   HAS_CODE_ONLY = false;
   HAS_COMMENTS_ONLY = false;
@@ -7658,6 +7666,11 @@ function matchNewlyArrivedOnly(paper) {
   );
 }
 
+/** Keep filter membership identical to the visible High influence badge. */
+function matchHighInfluenceOnly(paper) {
+  return !HIGH_INFLUENCE_ONLY || getHighInfluenceMonths(paper) !== null;
+}
+
 function matchHasCodeOnly(paper) {
   return !HAS_CODE_ONLY || Boolean((paper.links && (paper.links.github || paper.links.hf)));
 }
@@ -7697,7 +7710,7 @@ function matchCategoryFilter(paper) {
 
 function paperMatchesActiveFilters(paper, query, publicationDateFilter) {
   const isBlogs = ACTIVE_TOP_LEVEL_TAB === 'blogs';
-  return (isBlogs || (matchCategoryFilter(paper) && matchAcceptedOnly(paper) && matchNewlyArrivedOnly(paper)))
+  return (isBlogs || (matchCategoryFilter(paper) && matchAcceptedOnly(paper) && matchHighInfluenceOnly(paper) && matchNewlyArrivedOnly(paper)))
     && matchPublicationDate(paper, publicationDateFilter)
     && paperMatchesTagFilters(paper)
     && paperMatchesQuery(paper, query)
@@ -7718,6 +7731,7 @@ function getFilterSidebarActiveCount() {
   if (!isBlogs && ACTIVE_CATEGORY_FILTER) count += 1;
   if (publicationDateFilter.active) count += 1;
   if (!isBlogs && ACCEPTED_ONLY) count += 1;
+  if (!isBlogs && HIGH_INFLUENCE_ONLY) count += 1;
   if (!isBlogs && NEWLY_ARRIVED_ONLY) count += 1;
   if (HAS_CODE_ONLY) count += 1;
   if (HAS_COMMENTS_ONLY) count += 1;
@@ -7785,6 +7799,7 @@ function setToggleButtonState(id, isActive) {
 
 function updateQuickFilterButtons() {
   setToggleButtonState('accepted-only-toggle', ACCEPTED_ONLY);
+  setToggleButtonState('high-influence-only-toggle', HIGH_INFLUENCE_ONLY);
   setToggleButtonState('newly-arrived-only-toggle', NEWLY_ARRIVED_ONLY);
   setToggleButtonState('has-code-toggle', HAS_CODE_ONLY);
   setToggleButtonState('has-comments-toggle', HAS_COMMENTS_ONLY);
@@ -7814,6 +7829,13 @@ function applyViewMode() {
 
 function toggleAcceptedOnly() {
   ACCEPTED_ONLY = !ACCEPTED_ONLY;
+  updateQuickFilterButtons();
+  rerenderCurrentResults();
+}
+
+/** Toggle citation-age filtering without changing any other active filters. */
+function toggleHighInfluenceOnly() {
+  HIGH_INFLUENCE_ONLY = !HIGH_INFLUENCE_ONLY;
   updateQuickFilterButtons();
   rerenderCurrentResults();
 }
@@ -7889,6 +7911,7 @@ function getActiveFilterLabel(query, publicationDateFilter) {
     }
   }
   if (!isBlogs && ACCEPTED_ONLY) labels.push('peer-reviewed');
+  if (!isBlogs && HIGH_INFLUENCE_ONLY) labels.push('high influence');
   if (!isBlogs && NEWLY_ARRIVED_ONLY) labels.push('newly arrived');
   if (HAS_CODE_ONLY) labels.push('w/ code');
   if (HAS_COMMENTS_ONLY) labels.push('w/ comments');

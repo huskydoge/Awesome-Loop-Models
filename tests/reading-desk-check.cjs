@@ -224,14 +224,32 @@ const influence = rendering.renderInfluenceBadgeHtml;
 const influenceNow = new Date('2026-09-17T23:59:59Z');
 assert.equal(influence({ published_date: '2026-04-17', citations: 5 }, influenceNow), '');
 const highInfluence = influence({ published_date: '2026-04-17', citations: 6 }, influenceNow);
-for (const text of ['6 citations', '5 completed months', '2026-04-17', '2026-09-17', 'max(1, completed months)', 'not a quality assessment']) {
+for (const text of ['6 citations', '5 completed months', '2026-04-17', '2026-09-17', 'not a quality assessment']) {
   assert.ok(highInfluence.includes(text), text);
 }
 assert.match(highInfluence, /<button type="button"[^>]*title="[^>]*aria-label="/);
+assert.match(css, /\.metric-influence:hover \.influence-explanation\s*,\s*\.metric-influence:focus-visible \.influence-explanation\s*\{\s*display: block;/, 'Show the explanation on mouse hover as well as keyboard focus');
 assert.match(css, /\.metric-influence:focus-visible \.influence-explanation/);
 assert.match(css, /\.desk-detail-visual \.influence-explanation \{[^}]*top: auto;[^}]*bottom: calc\(100% \+ 6px\);/);
+assert.match(css, /\.paper-table-number \.influence-explanation \{[^}]*position: fixed;[^}]*inset: auto;/, 'Table explanations must escape the table scroll clip');
+const positioning = boot(null, false).context;
+assert.equal(typeof positioning.positionInfluenceExplanation, 'function');
+Object.assign(positioning.window, { innerWidth: 390, innerHeight: 600 });
+const explanationBox = { offsetWidth: 260, offsetHeight: 110, style: {} };
+const influenceButton = {
+  closest: () => ({}), querySelector: () => explanationBox,
+  getBoundingClientRect: () => ({ top: 230, bottom: 250, right: 380 }),
+};
+positioning.positionInfluenceExplanation(influenceButton);
+assert.equal(explanationBox.style.left, '118px');
+assert.equal(explanationBox.style.top, '250px');
+influenceButton.getBoundingClientRect = () => ({ top: 560, bottom: 580, right: 100 });
+positioning.positionInfluenceExplanation(influenceButton);
+assert.equal(explanationBox.style.left, '12px');
+assert.equal(explanationBox.style.top, '450px');
 for (const [published_date, now, months] of [
-  ['2026-09-17', influenceNow, 1], ['2026-09-01', influenceNow, 1],
+  ['2026-09-17', influenceNow, 0], ['2026-09-01', influenceNow, 0],
+  ['2026-08-18', influenceNow, 0], ['2026-08-17', influenceNow, 1],
   ['2026-04-18', influenceNow, 4], ['2026-12-31', new Date('2027-02-28T00:00:00Z'), 2],
   ['2023-12-31', new Date('2024-02-29T00:00:00Z'), 2],
   ['2023-12-31', new Date('2024-02-28T23:59:59Z'), 1],
@@ -246,6 +264,7 @@ for (const published_date of [null, '', '2026-02-30', '2026', '2026-09-18']) {
   assert.equal(influence({ published_date, citations: 1000 }, influenceNow), '');
 }
 assert.equal(influence({ entry_type: 'blog', published_date: '2026-04-17', citations: 1000 }, influenceNow), '');
+assert.match(influence({ venue: 'arXiv', peer_reviewed: false, published_date: '2026-04-17', citations: 6 }, influenceNow), /High influence/, 'Citation influence is independent of peer-review status');
 assert.equal(influence({ published_date: '2026-04-17', citations: 1000 }, new Date(NaN)), '');
 Object.assign(rendering, { EXPANDED_TABLE_ROWS: new Set() });
 vm.runInContext(html.slice(html.indexOf('function formatTableText('), html.indexOf('function getPaperDisplayDate(')), rendering);
@@ -433,6 +452,8 @@ Object.assign(categories, {
   ALL_BLOGS: [{ id: 'b', entry_type: 'blog' }],
   ACTIVE_TAG_FILTERS: new Set(),
   ACCEPTED_ONLY: true,
+  HIGH_INFLUENCE_ONLY: false,
+  getHighInfluenceMonths: paper => rendering.getHighInfluenceMonths(paper, influenceNow),
   NEWLY_ARRIVED_ONLY: true,
   LATEST_ADDED_DATE: '2026-09-16',
   HAS_CODE_ONLY: false,
@@ -449,6 +470,8 @@ vm.runInContext(html.slice(html.indexOf('function matchAcceptedOnly(paper) {'), 
 vm.runInContext(html.slice(html.indexOf('function paperMatchesActiveFilters('), html.indexOf('function setFilterSidebarOpen(')), categories);
 vm.runInContext(html.slice(html.indexOf('function normalizeTopLevelTab(tab) {'), html.indexOf('function getTagDrilldownKeyFromUrl() {')), categories);
 assert.match(filterPanel, /id="accepted-only-toggle"[^>]*>Peer-reviewed<\/button>/);
+assert.match(filterPanel, /id="high-influence-only-toggle"[^>]*aria-pressed="false"[^>]*onclick="toggleHighInfluenceOnly\(\)"[^>]*>High influence<\/button>/);
+assert.match(css, /\.blogs-mode #high-influence-only-toggle/);
 assert.doesNotMatch(html, /Accepted only|accepted only/);
 for (const [paper, expected] of [
   [{ venue: 'ICML', peer_reviewed: true }, true],
@@ -478,6 +501,39 @@ assert.equal(categories.getFilterSidebarActiveCount(), 0);
 categories.ACTIVE_TOP_LEVEL_TAB = 'papers';
 assert.equal(categories.getFilteredPapers('', {}).map(record => record.id).join(','), 'p');
 assert.equal(categories.ACTIVE_CATEGORY_FILTER, 'theory');
+
+// The filter and badge share one rule, including zero completed months.
+const highPaper = { id: 'high', category: 'theory', venue: 'ICML', published_date: '2026-04-17', citations: 6 };
+categories.ALL_PAPERS = [highPaper,
+  { ...highPaper, id: 'equal', citations: 5 },
+  { ...highPaper, id: 'preprint', venue: 'arXiv' },
+  { ...highPaper, id: 'other-category', category: 'designs' },
+];
+categories.NEWLY_ARRIVED_ONLY = false;
+const quickFilterStates = {};
+categories.setToggleButtonState = (id, active) => { quickFilterStates[id] = active; };
+vm.runInContext(html.slice(html.indexOf('function updateQuickFilterButtons() {'), html.indexOf('function updateViewToggleButtons() {')), categories);
+vm.runInContext(html.slice(html.indexOf('function toggleAcceptedOnly() {'), html.indexOf('function setView(view) {')), categories);
+vm.runInContext(html.slice(html.indexOf('function getActiveFilterLabel('), html.indexOf('function sortPapers(')), categories);
+categories.toggleHighInfluenceOnly();
+assert.equal(quickFilterStates['high-influence-only-toggle'], true);
+assert.equal(categories.getFilteredPapers('', {}).map(record => record.id).join(','), 'high');
+assert.equal(categories.getFilterSidebarActiveCount(), 3);
+assert.match(categories.getActiveFilterLabel('', {}), /high influence/);
+categories.toggleAcceptedOnly();
+assert.equal(categories.getFilteredPapers('', {}).map(record => record.id).join(','), 'high,preprint');
+for (const paper of catalogPapers) {
+  assert.equal(categories.matchHighInfluenceOnly(paper), Boolean(influence(paper, influenceNow)), paper.id + ': filter must match the badge');
+}
+assert.equal(rendering.getHighInfluenceMonths({ published_date: '2026-09-17', citations: 1 }, influenceNow), 0);
+categories.ACTIVE_TOP_LEVEL_TAB = 'blogs';
+assert.equal(categories.getFilteredPapers('', {}).map(record => record.id).join(','), 'b');
+assert.equal(categories.getFilterSidebarActiveCount(), 0);
+assert.doesNotMatch(categories.getActiveFilterLabel('', {}), /high influence/);
+categories.ACTIVE_TOP_LEVEL_TAB = 'papers';
+categories.toggleHighInfluenceOnly();
+assert.equal(quickFilterStates['high-influence-only-toggle'], false);
+assert.equal(categories.getFilteredPapers('', {}).length, 3);
 for (const hash of ['#blogs', '#section-blogs']) {
   assert.equal(categories.getTopLevelTabFromHash(hash), 'blogs');
 }

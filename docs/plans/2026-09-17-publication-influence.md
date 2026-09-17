@@ -12,8 +12,9 @@
 
 - Publication evidence and citation influence are independent. Blogs get neither signal.
 - Peer-reviewed includes curated conference/workshop/journal venues already recorded in the catalog, plus newly verified publications. Explicit boolean status takes precedence; missing crawler evidence must not exclude existing publication records (user correction: EqR/ICML). Submission pages alone do not count. Unresolved preprints remain arXiv.
-- High influence means citations strictly exceed completed calendar months since first public release (`published_date`), with a minimum of one month. UTC date boundaries, month-end anniversaries clamped to the last day of the month. Missing/invalid/future dates or citation counts yield no badge.
+- High influence means citations strictly exceed completed calendar months since first public release (`published_date`), with no extra minimum-month threshold. Under one month counts as zero completed months, so one citation qualifies. UTC date boundaries, month-end anniversaries clamped to the last day of the month. Missing/invalid/future dates or citation counts yield no badge.
 - The badge appears beside citation counts in cards, detail and table views. Hover and keyboard focus reveal the raw count, start date, as-of date and exact threshold; it is a citation-rate heuristic, not a quality judgment.
+- Filters includes a High influence toggle using the same shared predicate as the badge. It intersects with other active paper filters, contributes to the active count, resets on tag navigation, and does not affect Blogs.
 - Venue labels share one formatter across cards, details, and tables: append the recorded publication `year`, leave arXiv/blog labels unchanged, and avoid duplicate years. Correct cross-year venue metadata from official sources without changing `published_date` or influence calculations.
 
 ## Task 1: Browser signals
