@@ -526,6 +526,10 @@ process.stdout.write(JSON.stringify(result));
         block_end = html.index("initResearchPrompt();", block_start)
         toggle_start = html.index("function toggleTagFilter(tagKey) {")
         toggle_end = html.index("function renderTagFilterGroups() {", toggle_start)
+        category_start = html.index("function renderCategoryFilter() {")
+        category_end = html.index("function paperMatchesActiveFilters(", category_start)
+        rerender_start = html.index("function rerenderCurrentResults() {")
+        rerender_end = html.index("function setToggleButtonState(", rerender_start)
         query_start = html.find("function syncSearchQueryToUrl(query) {")
         query_block = ""
         if query_start >= 0:
@@ -535,6 +539,8 @@ process.stdout.write(JSON.stringify(result));
             html[state_start:state_end]
             + html[block_start:block_end]
             + html[toggle_start:toggle_end]
+            + html[category_start:category_end]
+            + html[rerender_start:rerender_end]
             + query_block
         )
         script = f"""
@@ -613,6 +619,8 @@ const tabs = [makeTab('papers-tab', true, 0), makeTab('stats-tab', false, -1), m
 const papersPanel = makeStaticElement(false);
 const statsPanel = makeStaticElement(true);
 const catalogHeading = makeStaticElement(false);
+const categoryFilter = makeStaticElement(false);
+categoryFilter.value = '';
 const bodyClasses = {{}};
 const elements = {{
   'papers-tab': tabs[0],
@@ -624,7 +632,8 @@ const elements = {{
   'search': searchInput,
   'publication-date-start': publicationDateStart,
   'publication-date-end': publicationDateEnd,
-  'section-designs': {{}},
+  'category-filter': categoryFilter,
+  'papers-grid': {{}},
   'section-blogs': {{}}
 }};
 const document = {{
@@ -711,6 +720,7 @@ function updateQuickFilterButtons() {{ quickFilterUiUpdates += 1; }}
 function doSearch(query) {{ searchCalls.push(query); }}
 
 {production_block}
+CATEGORIES = {{ designs: {{ title: 'Architecture' }} }};
 {test_body}
 """
         output = subprocess.check_output(["node", "-e", script], text=True)
@@ -1586,31 +1596,31 @@ setTimeout(function() {
         self.assertIn("blogs-grid", html)
 
     def test_catalog_section_builders_create_empty_grid_shells(self):
-        """Keep section construction free of eager catalog card rendering."""
+        """Create one empty paper list and a separate lazy-rendered Blogs section."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        category_start = html.index("function createCategorySection(node, pathParts, depth) {")
-        category_end = html.index("function createBlogSection()", category_start)
-        category_builder = html[category_start:category_end]
-        blog_start = category_end
+        build_start = html.index("function buildDOM(data) {")
+        build_end = html.index("// ── Search", build_start)
+        list_builder = html[build_start:build_end]
+        blog_start = html.index("function createBlogSection()")
         blog_end = html.index("function renderTreeInto(container)", blog_start)
         blog_builder = html[blog_start:blog_end]
         renderer_start = html.index("function renderAllGrids(q) {")
         renderer_end = html.index("function updateDailyBriefingNotice(briefing)", renderer_start)
         renderer = html[renderer_start:renderer_end]
 
-        self.assertIn('grid.dataset.nodeKey = getNodeKey(pathParts);', category_builder)
-        self.assertIn('grid.id = "grid-" + pathParts.join("__");', category_builder)
+        self.assertIn('<div class="papers-grid" id="papers-grid"></div>', list_builder)
+        self.assertNotIn("createCategorySection", html)
         self.assertIn("grid.id = 'blogs-grid';", blog_builder)
-        for builder in (category_builder, blog_builder):
+        for builder in (list_builder, blog_builder):
             self.assertNotIn("grid.innerHTML", builder)
             self.assertNotIn("renderCard(", builder)
 
         self.assertIn(
-            "grid.innerHTML = papers.map(function(paper) { return renderCard(paper, query); }).join('');",
+            "grid.innerHTML = isBlogs ? '' : filteredPapers.map(function(paper) { return renderCard(paper, query); }).join('');",
             renderer,
         )
         self.assertIn(
-            "blogsGrid.innerHTML = blogs.map(function(blog) { return renderCard(blog, query); }).join('');",
+            "blogsGrid.innerHTML = isBlogs ? filteredPapers.map(function(blog) { return renderCard(blog, query); }).join('') : '';",
             renderer,
         )
         self.assertEqual(html.count("grid.innerHTML ="), 1)
@@ -1681,7 +1691,7 @@ setTimeout(function() {
         self.assertNotIn("getRepoTodayString()", updater)
 
         stale_start = updater_end
-        stale_end = html.index("function createCategorySection(", stale_start)
+        stale_end = html.index("function createBlogSection(", stale_start)
         stale_helper = html[stale_start:stale_end]
         self.assertIn("if (!notice || notice.hidden) return;", stale_helper)
         self.assertIn("notice.dataset.briefingDate !== currentDate", stale_helper)
@@ -1755,11 +1765,11 @@ setTimeout(function() {
         meta_end = html.index("}", meta_start)
         self.assertIn("display: none;", html[meta_start:meta_end])
 
-    def test_category_section_counts_render_as_numbers_only(self):
+    def test_papers_list_does_not_generate_category_groups(self):
+        """Categories belong in Filters, not in the globally sorted paper list."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn("'<span class=\"category-count\">' + count + '</span>'", html)
-        self.assertIn("'<span class=\"category-node-count\">' + count + '</span>'", html)
-        self.assertNotIn("count + ' paper' + (count !== 1 ? 's' : '')", html)
+        self.assertNotIn("function createCategorySection", html)
+        self.assertIn('id="category-filter" onchange="setCategoryFilter(this.value)"', html)
 
     def test_quick_filter_controls_and_table_view_markup_exist(self):
         """Expose the supported quick filters alongside both catalog views."""
@@ -1768,7 +1778,7 @@ setTimeout(function() {
             "Peer-reviewed",
             "w/ code",
             "w/ comments",
-            "Category view",
+            "List view",
             "Table view",
             "table-view-shell",
             "papers-table-body",
@@ -1828,7 +1838,7 @@ setTimeout(function() {
             "let ACTIVE_TOP_LEVEL_TAB = 'papers';",
             "function setTopLevelTab(tab, options) {",
             "function applyTopLevelTab() {",
-            "Category view",
+            "List view",
             "Table view",
         ):
             self.assertIn(snippet, html)
@@ -1988,7 +1998,7 @@ setTimeout(function() {
         build_end = html.index("// ── Search", build_start)
         build_helper = html[build_start:build_end]
         data_ready_index = build_helper.index("CATALOG_DATA_READY = true;")
-        sections_created_index = build_helper.index("container.appendChild(section)")
+        sections_created_index = build_helper.index('id="papers-grid"')
         restore_index = build_helper.index("restoreTopLevelTabAfterCatalogLoad();")
         category_restore_index = build_helper.index("restoreCategoryHashPosition(window.location.hash);")
         self.assertLess(data_ready_index, restore_index)
@@ -2196,7 +2206,7 @@ process.stdout.write(JSON.stringify(result));
         )
 
     def test_top_level_click_history_reconcile_and_category_restore_behavior(self):
-        """Clicks write once; history restores state and section position without rewriting."""
+        """History maps old category links to Filters and the visible list without rewriting."""
         result = self.run_top_level_tab_block("", """
 tabs[1].listeners.click[0]();
 const firstClick = { active: ACTIVE_TOP_LEVEL_TAB, writes: hashWrites.slice() };
@@ -2209,10 +2219,13 @@ dispatchWindowEvent('hashchange');
 const statsHistory = { active: ACTIVE_TOP_LEVEL_TAB, writes: hashWrites.slice() };
 
 CATALOG_DATA_READY = true;
+CURRENT_VIEW = 'table';
 setBrowserHash('#section-designs');
 dispatchWindowEvent('hashchange');
 const categoryHistoryBeforeFrame = {
   active: ACTIVE_TOP_LEVEL_TAB,
+  category: ACTIVE_CATEGORY_FILTER,
+  view: CURRENT_VIEW,
   hash: window.location.hash,
   writes: hashWrites.slice(),
   queuedFrames: animationFrameCallbacks.length,
@@ -2250,13 +2263,15 @@ process.stdout.write(JSON.stringify(result));
             result["categoryHistoryBeforeFrame"],
             {
                 "active": "papers",
+                "category": "designs",
+                "view": "category",
                 "hash": "#section-designs",
                 "writes": [],
                 "queuedFrames": 1,
                 "scrolls": [],
             },
         )
-        self.assertEqual(result["categoryHistoryAfterFrame"], {"scrolls": ["section-designs"]})
+        self.assertEqual(result["categoryHistoryAfterFrame"], {"scrolls": ["papers-grid"]})
         self.assertEqual(
             result["staleCategoryFrame"],
             {"active": "stats", "hash": "#stats", "scrolls": []},
@@ -2346,7 +2361,7 @@ process.stdout.write(JSON.stringify({
                 "queuedFrames": 0,
             },
         )
-        self.assertEqual(result["firstScrolls"], ["section-designs"])
+        self.assertEqual(result["firstScrolls"], ["papers-grid"])
         self.assertEqual(
             result["repeatedNavigation"],
             {
@@ -2356,7 +2371,7 @@ process.stdout.write(JSON.stringify({
                 "queuedFrames": 1,
             },
         )
-        self.assertEqual(result["repeatedScrolls"], ["section-designs"])
+        self.assertEqual(result["repeatedScrolls"], ["papers-grid"])
 
     def test_stats_series_helpers_use_strict_utc_date_parsing(self):
         """Stats helpers must reject normalized-looking but impossible dates."""

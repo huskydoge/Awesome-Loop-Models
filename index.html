@@ -5324,7 +5324,7 @@
           </div>
           <div class="view-toggle-bar">
             <span class="sort-label">View:</span>
-            <button type="button" class="sort-btn active" id="view-category-toggle" data-view="category" aria-pressed="true" onclick="setView('category')">Category view</button>
+            <button type="button" class="sort-btn active" id="view-category-toggle" data-view="category" aria-pressed="true" onclick="setView('category')">List view</button>
             <button type="button" class="sort-btn" id="view-table-toggle" data-view="table" aria-pressed="false" onclick="setView('table')">Table view</button>
           </div>
         </div>
@@ -7184,8 +7184,6 @@ function applyTopLevelTab() {
     search.setAttribute('aria-label', isBlogs ? 'Search blogs' : 'Search papers');
     search.placeholder = isBlogs ? 'Search blogs, authors, keywords…' : 'Search papers, authors, keywords…';
   }
-  const listView = document.getElementById('view-category-toggle');
-  if (listView) listView.textContent = isBlogs ? 'List view' : 'Category view';
   syncReadingDeskPanel();
 }
 
@@ -7241,22 +7239,20 @@ function handleTopLevelTabKeydown(event) {
 }
 
 /**
- * Restores a catalog section fragment after dynamic paper sections are available.
- * @param {string} hash URL fragment that may identify a generated catalog section.
+ * Restore legacy category links as a filter on the unified paper list.
+ * @param {string} hash URL fragment that may identify a catalog category.
  * @returns {void}
  */
 function restoreCategoryHashPosition(hash) {
   if (hash === '#section-blogs') return;
   if (!CATALOG_DATA_READY || typeof hash !== 'string' || !hash.startsWith('#section-')) return;
-  const sectionId = hash.slice(1);
-  if (!document.getElementById(sectionId)) return;
-  if (ACTIVE_CATEGORY_FILTER && sectionId.split('__')[0] !== 'section-' + ACTIVE_CATEGORY_FILTER) {
-    setCategoryFilter('');
-  }
+  const category = hash.slice('#section-'.length).split('__')[0];
+  if (!Object.prototype.hasOwnProperty.call(CATEGORIES, category)) return;
+  if (CURRENT_VIEW === 'table') setView('category');
+  if (ACTIVE_CATEGORY_FILTER !== category) setCategoryFilter(category);
   window.requestAnimationFrame(function() {
     if (window.location.hash !== hash || ACTIVE_TOP_LEVEL_TAB !== 'papers') return;
-    if (!document.getElementById(sectionId)) return;
-    scrollToSection(sectionId);
+    scrollToSection('papers-grid');
   });
 }
 
@@ -8037,22 +8033,15 @@ function renderAllGrids(q) {
   const publicationDateFilter = getPublicationDateFilter();
   updateSortButtons();
   const filteredPapers = sortPapers(getFilteredPapers(query, publicationDateFilter), CURRENT_SORT);
-  const filteredPaperIds = new Set(filteredPapers.map(function(paper) { return paper.id; }));
-
-  document.querySelectorAll('.papers-grid[data-node-key]').forEach(function(grid) {
-    const nodeKey = grid.dataset.nodeKey || '';
-    const papers = sortPapers((DIRECT_PAPERS_BY_NODE[nodeKey] || []).filter(function(paper) {
-      return filteredPaperIds.has(paper.id);
-    }), CURRENT_SORT);
-    grid.innerHTML = papers.map(function(paper) { return renderCard(paper, query); }).join('');
-  });
+  const isBlogs = ACTIVE_TOP_LEVEL_TAB === 'blogs';
+  const grid = document.getElementById('papers-grid');
+  if (grid) {
+    grid.innerHTML = isBlogs ? '' : filteredPapers.map(function(paper) { return renderCard(paper, query); }).join('');
+  }
 
   const blogsGrid = document.getElementById('blogs-grid');
   if (blogsGrid) {
-    const blogs = sortPapers(ALL_BLOGS.filter(function(blog) {
-      return filteredPaperIds.has(blog.id);
-    }), CURRENT_SORT);
-    blogsGrid.innerHTML = blogs.map(function(blog) { return renderCard(blog, query); }).join('');
+    blogsGrid.innerHTML = isBlogs ? filteredPapers.map(function(blog) { return renderCard(blog, query); }).join('') : '';
   }
 
   if (CURRENT_VIEW === 'table') {
@@ -8220,60 +8209,6 @@ function hideStaleDailyBriefingNotice() {
 
 setInterval(hideStaleDailyBriefingNotice, 60_000);
 
-function createCategorySection(node, pathParts, depth) {
-  const count = getNodeCount(pathParts);
-  if (!count) return null;
-
-  const isTopLevel = depth === 0;
-  const section = document.createElement("section");
-  section.className = isTopLevel ? "category" : "category-node";
-  section.id = getSectionId(pathParts);
-  section.dataset.depth = String(depth);
-  section.dataset.nodeKey = getNodeKey(pathParts);
-  section.style.setProperty("--depth", String(Math.max(depth - 1, 0)));
-
-  if (isTopLevel) {
-    section.innerHTML =
-      '<div class="category-header">'
-      + '<span class="category-icon">' + (node.icon || "•") + '</span>'
-      + '<div class="category-copy">'
-      + '<div class="category-title">' + node.title + '</div>'
-      + '<div class="category-desc">' + (node.desc || "") + '</div>'
-      + '</div>'
-      + '<span class="category-count">' + count + '</span>'
-      + '</div>';
-  } else {
-    section.innerHTML =
-      '<div class="category-node-header">'
-      + '<div>'
-      + '<div class="category-node-title">' + node.title + '</div>'
-      + (node.desc ? '<div class="category-node-desc">' + node.desc + '</div>' : '')
-      + '</div>'
-      + '<span class="category-node-count">' + count + '</span>'
-      + '</div>';
-  }
-
-  const body = document.createElement("div");
-  body.className = isTopLevel ? "category-body" : "category-node-body";
-
-  Object.entries(node.children || {}).forEach(function(entry) {
-    const childSection = createCategorySection(entry[1], pathParts.concat(entry[0]), depth + 1);
-    if (childSection) body.appendChild(childSection);
-  });
-
-  const directPapers = getDirectPapers(pathParts);
-  if (directPapers.length) {
-    const grid = document.createElement("div");
-    grid.className = "papers-grid";
-    grid.dataset.nodeKey = getNodeKey(pathParts);
-    grid.id = "grid-" + pathParts.join("__");
-    body.appendChild(grid);
-  }
-
-  section.appendChild(body);
-  return section;
-}
-
 function createBlogSection() {
   if (!ALL_BLOGS.length) return null;
 
@@ -8341,13 +8276,7 @@ function buildDOM(data) {
   buildCategoryIndex();
 
   const container = document.getElementById("sections-container");
-  container.innerHTML = "";
-
-  Object.entries(CATEGORIES).forEach(function(entry) {
-    const catId = entry[0];
-    const section = createCategorySection(entry[1], [catId], 0);
-    if (section) container.appendChild(section);
-  });
+  container.innerHTML = '<div class="papers-grid" id="papers-grid"></div>';
 
   const blogSection = createBlogSection();
   if (blogSection) container.appendChild(blogSection);

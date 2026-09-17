@@ -433,6 +433,7 @@ categories.setCategoryFilter('invalid');
 assert.equal(categorySelect.value, '');
 assert.equal(categories.matchCategoryFilter({ entry_type: 'blog' }), true);
 categories.CATALOG_DATA_READY = true;
+categories.CURRENT_VIEW = 'category';
 categories.window = { requestAnimationFrame() {} };
 vm.runInContext(html.slice(html.indexOf('function restoreCategoryHashPosition(hash) {'), html.indexOf('function navigateToPaperSection(sectionId) {')), categories);
 categories.setCategoryFilter('theory');
@@ -442,7 +443,9 @@ categories.restoreCategoryHashPosition('#section-blogs');
 assert.equal(categorySelect.value, 'theory');
 categories.setCategoryFilter('theory');
 categories.restoreCategoryHashPosition('#section-designs');
-assert.equal(categorySelect.value, '');
+assert.equal(categorySelect.value, 'designs');
+categories.restoreCategoryHashPosition('#section-missing');
+assert.equal(categorySelect.value, 'designs');
 assert.match(html, /if \(!isBlogs && ACTIVE_CATEGORY_FILTER\) count \+= 1;/);
 
 // Exercise the actual scope/filter pipeline: paper-only filters cannot hide Blogs.
@@ -541,7 +544,57 @@ assert.equal(categories.getTopLevelTabFromHash('#section-designs'), 'papers');
 assert.equal(categories.normalizeTopLevelTab('blogs'), 'blogs');
 assert.match(html, /id="blogs-tab" role="tab" aria-controls="papers-panel"/);
 assert.doesNotMatch(html, /class="desk-blogs-link"/);
+assert.doesNotMatch(html, /Category view|function createCategorySection/);
+assert.match(html, /id="view-category-toggle"[^>]*>List view<\/button>/);
 const grids = html.slice(html.indexOf('function renderAllGrids(q) {'), html.indexOf('function createTreeNode('));
 assert.doesNotMatch(grids, /if \(!hasActiveFilter\)/);
 assert.match(grids, /syncSectionVisibility\(\);/);
+
+// Render the same globally sorted results in list and table views, across categories.
+const listElements = {
+  'papers-grid': { innerHTML: '' }, 'blogs-grid': { innerHTML: '' },
+  'papers-table-body': { children: [], textContent: '' },
+  'search-count': {}, 'no-results': { style: {} }, 'no-results-query': {},
+  'search': { value: '' }, 'category-filter': categorySelect,
+};
+let tableOrder = '';
+Object.assign(categories, {
+  ACTIVE_CATEGORY_FILTER: '', SORT_DIRECTIONS: {},
+  ALL_PAPERS: [
+    { id: 'a', category: 'theory', published_date: '2026-09-17', citations: 2, github_stars: 10 },
+    { id: 'b', category: 'designs', published_date: '2026-09-15', citations: 5, github_stars: 30, foundation: true },
+    { id: 'c', category: 'theory', published_date: '2026-09-16', citations: 1, github_stars: 20 },
+    { id: 'd', category: 'designs' },
+  ],
+  document: { getElementById: id => listElements[id] || null, querySelectorAll: () => [] },
+  updateSortButtons() {}, syncDynamicCounts() {}, syncReadingDeskSelection() {},
+  syncSectionVisibility() {}, syncTreeVisibility() {}, updateFilterSidebarSummary() {}, applyViewMode() {},
+  renderCard: paper => paper.id + ';',
+  renderTableView: (query, papers) => { tableOrder = papers.map(paper => paper.id + ';').join(''); },
+});
+vm.runInContext(html.slice(html.indexOf('function getPaperSortDateValue('), html.indexOf('function updateSortButtons(')), categories);
+vm.runInContext(html.slice(html.indexOf('function sortPapers('), html.indexOf('function setSort(')), categories);
+vm.runInContext(grids, categories);
+for (const [sort, order] of [['date', 'a;c;b;d;'], ['stars', 'b;c;a;d;'], ['citations', 'b;a;c;d;'], ['default', 'b;a;c;d;']]) {
+  categories.CURRENT_SORT = sort;
+  categories.CURRENT_VIEW = 'category';
+  categories.renderAllGrids('');
+  assert.equal(listElements['papers-grid'].innerHTML, order, sort + ': list must sort across category boundaries');
+  categories.CURRENT_VIEW = 'table';
+  categories.renderAllGrids('');
+  assert.equal(tableOrder, order, sort + ': list and table must agree');
+}
+categories.CURRENT_SORT = 'stars';
+categories.setCategoryFilter('theory');
+categories.renderAllGrids('');
+assert.equal(listElements['papers-grid'].innerHTML, 'c;a;', 'Category remains a filter on the unified list');
+categories.ACTIVE_TOP_LEVEL_TAB = 'blogs';
+categories.renderAllGrids('');
+assert.equal(listElements['papers-grid'].innerHTML, '');
+assert.equal(listElements['blogs-grid'].innerHTML, 'b;');
+categories.ACTIVE_TOP_LEVEL_TAB = 'papers';
+categories.renderAllGrids('missing');
+assert.equal(listElements['papers-grid'].innerHTML, '');
+assert.equal(listElements['blogs-grid'].innerHTML, '');
+assert.equal(listElements['no-results'].style.display, 'block');
 console.log('Reading desk: theme, selection, resizing, thumbnails, tags, category, isolated Blogs, peer-review and influence checks passed.');
