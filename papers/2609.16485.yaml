@@ -1,0 +1,23 @@
+title: 'Certified Inference and Training for Deep Equilibrium Networks: A Continuation Framework with Polynomial Complexity Guarantees'
+authors:
+- Alex Borisevich
+year: 2026
+published_date: '2026-09-15'
+added_date: '2026-09-16'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- theory
+- efficiency
+focus_tags:
+- training-algorithm
+- inference-algorithm
+desc: Develops a certified continuation framework for deep equilibrium inference and
+  training, using homotopy and rounded Newton tracking to obtain polynomial bit-complexity
+  guarantees on a formally specified promise class.
+links:
+  arxiv: https://arxiv.org/abs/2609.16485
+  alphaxiv: https://www.alphaxiv.org/abs/2609.16485

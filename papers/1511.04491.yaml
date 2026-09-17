@@ -23,6 +23,7 @@ desc: Introduces DRCN, which applies one convolutional layer recursively up to 1
   super-resolution model without depth-proportional parameters.
 links:
   arxiv: https://arxiv.org/abs/1511.04491
+  paper: https://openaccess.thecvf.com/content_cvpr_2016/html/Kim_Deeply-Recursive_Convolutional_Network_CVPR_2016_paper.html
 citation_source_best: semantic_scholar
 citations: 2793
 citation_sources:
