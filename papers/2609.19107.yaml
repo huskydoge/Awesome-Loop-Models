@@ -1,4 +1,4 @@
-title: 'How Model Growth, Recursion, and Boundary Operators Influence Scaling Exponents'
+title: How Model Growth, Recursion, and Boundary Operators Influence Scaling Exponents
 authors:
 - Zixi Chen
 - Akshay Vegesna
@@ -27,3 +27,13 @@ links:
   arxiv: https://arxiv.org/abs/2609.19107
   alphaxiv: https://www.alphaxiv.org/abs/2609.19107
   github: https://github.com/qlabs-eng/scaling-exponents
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 8
+star_sources:
+  github_api: 8
+metrics_updated: '2026-09-18'
