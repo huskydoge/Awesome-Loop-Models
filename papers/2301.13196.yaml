@@ -9,7 +9,7 @@ authors:
 year: 2023
 published_date: '2023-01-30'
 added_date: '2026-04-24'
-venue: "ICML"
+venue: ICML
 category: analysis
 mechanism_tags:
 - flat-loop
@@ -30,12 +30,12 @@ links:
   comment:
   - label: Reza Bayat reading list (#4)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20
-citations: 243
+citations: 244
 citation_sources:
-  semantic_scholar: 243
+  semantic_scholar: 244
   openalex: 3
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-09-16'
+metrics_updated: '2026-09-18'
 peer_reviewed: true
-venue_source: "https://proceedings.mlr.press/v202/giannou23a.html"
+venue_source: https://proceedings.mlr.press/v202/giannou23a.html
