@@ -26,10 +26,10 @@ desc: Introduces MixerLoop, which repeatedly applies each shared Gated DeltaNet 
 links:
   arxiv: https://arxiv.org/abs/2608.18230
   alphaxiv: https://www.alphaxiv.org/abs/2608.18230
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-08-24'
+metrics_updated: '2026-09-19'

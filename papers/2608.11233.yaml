@@ -25,10 +25,10 @@ desc: Retrofits Qwen2.5-0.5B with a weight-tied recurrent middle block and re-en
 links:
   arxiv: https://arxiv.org/abs/2608.11233
   alphaxiv: https://www.alphaxiv.org/abs/2608.11233
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-08-15'
+metrics_updated: '2026-09-19'

@@ -29,10 +29,10 @@ desc: Characterizes recurrent operators as settling, marginal, or drifting, deri
 links:
   arxiv: https://arxiv.org/abs/2608.18222
   alphaxiv: https://www.alphaxiv.org/abs/2608.18222
-citations: 1
+citations: 2
 citation_sources:
-  semantic_scholar: 1
+  semantic_scholar: 2
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-09-16'
+metrics_updated: '2026-09-19'

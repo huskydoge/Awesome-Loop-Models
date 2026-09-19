@@ -5,7 +5,7 @@ authors:
 year: 2020
 published_date: '2020-06-15'
 added_date: '2026-09-06'
-venue: "NeurIPS"
+venue: NeurIPS
 category: designs
 mechanism_tags:
 - implicit-layer
@@ -27,15 +27,15 @@ links:
   paper: https://proceedings.neurips.cc/paper_files/paper/2020/hash/798d1c2813cbdf8bcdb388db0e32d496-Abstract.html
   github: https://github.com/locuslab/monotone_op_net
 citation_source_best: semantic_scholar
-citations: 176
+citations: 177
 citation_sources:
-  semantic_scholar: 176
+  semantic_scholar: 177
   openalex: 13
   opencitations: 0
 star_source_best: github_api
 github_stars: 54
 star_sources:
   github_api: 54
-metrics_updated: '2026-09-16'
+metrics_updated: '2026-09-19'
 peer_reviewed: true
-venue_source: "https://proceedings.neurips.cc/paper_files/paper/2020/hash/798d1c2813cbdf8bcdb388db0e32d496-Abstract.html"
+venue_source: https://proceedings.neurips.cc/paper_files/paper/2020/hash/798d1c2813cbdf8bcdb388db0e32d496-Abstract.html
