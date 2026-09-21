@@ -31,6 +31,7 @@ desc: Introduces a recall architecture and progressive training objective that p
 links:
   arxiv: https://arxiv.org/abs/2202.05826
   github: https://github.com/aks2203/deep-thinking
+  paper: https://proceedings.neurips.cc/paper_files/paper/2022/hash/7f70331dbe58ad59d83941dfa7d975aa-Abstract-Conference.html
 citation_source_best: semantic_scholar
 citations: 30
 citation_sources:
