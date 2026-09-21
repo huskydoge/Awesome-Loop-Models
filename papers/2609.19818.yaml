@@ -8,7 +8,7 @@ authors:
 - Zhizheng Wu
 year: 2026
 published_date: '2026-09-17'
-added_date: "2026-09-20"
+added_date: '2026-09-20'
 venue: arXiv
 category: applications
 foundation: false
@@ -28,3 +28,10 @@ desc: Reuses a frozen audio encoder core through bridged, gated recurrent passes
 links:
   arxiv: https://arxiv.org/abs/2609.19818
   alphaxiv: https://www.alphaxiv.org/abs/2609.19818
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-21'
