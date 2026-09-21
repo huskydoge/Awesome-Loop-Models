@@ -21,6 +21,8 @@ desc: Introduces Neural GPUs, a recurrent convolutional architecture that learns
   convolutional recurrent block.
 links:
   arxiv: https://arxiv.org/abs/1511.08228
+  github: https://github.com/openai/neural-gpu
+  paper: https://research.google/pubs/neural-gpus-learn-algorithms/
 citations: 407
 citation_sources:
   semantic_scholar: 407

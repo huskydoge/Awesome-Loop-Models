@@ -22,6 +22,7 @@ desc: Introduces RAFT, which builds an all-pairs correlation volume and repeated
 links:
   arxiv: https://arxiv.org/abs/2003.12039
   github: https://github.com/princeton-vl/RAFT
+  paper: https://www.ecva.net/papers/eccv_2020/papers_ECCV/html/3526_ECCV_2020_paper.php
 citation_source_best: semantic_scholar
 citations: 4194
 citation_sources:

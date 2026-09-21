@@ -10,7 +10,7 @@ authors:
 year: 2026
 published_date: '2026-04-20'
 added_date: '2026-04-26'
-venue: arXiv
+venue: LIT Workshop @ ICLR
 category: designs
 mechanism_tags:
 - flat-loop
@@ -32,6 +32,7 @@ desc: Introduces Denoising Recursion Models, a looped-transformer training metho
 links:
   arxiv: https://arxiv.org/abs/2604.18839
   github: https://github.com/wwwwwwwwz/DenoisingRecursionModels
+  openreview: https://openreview.net/forum?id=o1KnUEh8Nj
 citations: 3
 citation_sources:
   semantic_scholar: 3

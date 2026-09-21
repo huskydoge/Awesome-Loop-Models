@@ -218,6 +218,9 @@
     "papers/2609.17184.yaml",
     "papers/2609.17251.yaml",
     "papers/2609.19107.yaml",
+    "papers/2609.19521.yaml",
+    "papers/2609.19818.yaml",
+    "papers/2609.19934.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -229,7 +232,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 187
+        "count": 190
       },
       {
         "label": "implicit-layer",
@@ -247,15 +250,15 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 188
+        "count": 190
       },
       {
         "label": "inference-algorithm",
-        "count": 151
+        "count": 153
       },
       {
         "label": "training-algorithm",
-        "count": 102
+        "count": 104
       },
       {
         "label": "objective-loss",
@@ -269,27 +272,27 @@
     "domain": [
       {
         "label": "efficiency",
-        "count": 115
-      },
-      {
-        "label": "language-modeling",
-        "count": 103
+        "count": 116
       },
       {
         "label": "reasoning",
-        "count": 103
+        "count": 105
+      },
+      {
+        "label": "language-modeling",
+        "count": 104
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 52
+        "count": 53
       },
       {
         "label": "adaptive-compute",
-        "count": 33
+        "count": 35
       },
       {
         "label": "theory",
-        "count": 32
+        "count": 33
       },
       {
         "label": "scaling",
@@ -301,15 +304,15 @@
       },
       {
         "label": "memory-efficiency",
-        "count": 23
+        "count": 24
+      },
+      {
+        "label": "sequence-modeling",
+        "count": 15
       },
       {
         "label": "graph-data",
         "count": 14
-      },
-      {
-        "label": "sequence-modeling",
-        "count": 13
       },
       {
         "label": "scientific-ml",

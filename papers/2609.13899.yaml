@@ -22,6 +22,7 @@ desc: Recirculates each token through one shared spiking connectome to a fixed p
 links:
   arxiv: https://arxiv.org/abs/2609.13899
   alphaxiv: https://www.alphaxiv.org/abs/2609.13899
+  hf: https://huggingface.co/URCHINBABY/URCHIN_BabyLM2026_Multilingual
 citation_source_best: semantic_scholar
 citations: 0
 citation_sources:
