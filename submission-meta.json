@@ -221,6 +221,16 @@
     "papers/2609.19521.yaml",
     "papers/2609.19818.yaml",
     "papers/2609.19934.yaml",
+    "papers/2609.20623.yaml",
+    "papers/2609.21108.yaml",
+    "papers/2609.21383.yaml",
+    "papers/2609.21870.yaml",
+    "papers/2609.22197.yaml",
+    "papers/2609.23033.yaml",
+    "papers/2609.24042.yaml",
+    "papers/2609.24196.yaml",
+    "papers/2609.25778.yaml",
+    "papers/2609.26487.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -232,33 +242,33 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 190
+        "count": 199
       },
       {
         "label": "implicit-layer",
-        "count": 31
+        "count": 32
       },
       {
         "label": "hierarchical-loop",
-        "count": 23
+        "count": 24
       },
       {
         "label": "parallel-loop",
-        "count": 6
+        "count": 7
       }
     ],
     "focus": [
       {
         "label": "architecture",
-        "count": 190
+        "count": 195
       },
       {
         "label": "inference-algorithm",
-        "count": 153
+        "count": 159
       },
       {
         "label": "training-algorithm",
-        "count": 104
+        "count": 105
       },
       {
         "label": "objective-loss",
@@ -272,19 +282,19 @@
     "domain": [
       {
         "label": "efficiency",
-        "count": 116
+        "count": 119
       },
       {
         "label": "reasoning",
-        "count": 105
+        "count": 109
       },
       {
         "label": "language-modeling",
-        "count": 104
+        "count": 107
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 53
+        "count": 55
       },
       {
         "label": "adaptive-compute",
@@ -292,23 +302,23 @@
       },
       {
         "label": "theory",
+        "count": 34
+      },
+      {
+        "label": "vision",
         "count": 33
       },
       {
         "label": "scaling",
-        "count": 31
-      },
-      {
-        "label": "vision",
-        "count": 31
+        "count": 32
       },
       {
         "label": "memory-efficiency",
-        "count": 24
+        "count": 25
       },
       {
         "label": "sequence-modeling",
-        "count": 15
+        "count": 16
       },
       {
         "label": "graph-data",
@@ -336,6 +346,10 @@
       },
       {
         "label": "recommendation",
+        "count": 2
+      },
+      {
+        "label": "rl-control",
         "count": 2
       },
       {
@@ -380,10 +394,6 @@
       },
       {
         "label": "retrieval",
-        "count": 1
-      },
-      {
-        "label": "rl-control",
         "count": 1
       },
       {

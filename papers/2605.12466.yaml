@@ -5,7 +5,7 @@ authors:
 year: 2026
 published_date: '2026-05-12'
 added_date: '2026-05-12'
-venue: arXiv
+venue: FoGen Workshop @ ICML
 category: designs
 mechanism_tags:
 - flat-loop
@@ -30,6 +30,8 @@ links:
   arxiv: https://arxiv.org/abs/2605.12466
   project: https://attractor-models.github.io/
   github: https://github.com/jacobfa/Attractor
+  hf: https://huggingface.co/jacobfa1/attractor-770m
+  openreview: https://openreview.net/forum?id=AlZtpLVXKf
 citations: 6
 citation_sources:
   semantic_scholar: 6

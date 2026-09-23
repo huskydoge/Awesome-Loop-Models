@@ -32,6 +32,7 @@ links:
   arxiv: https://arxiv.org/abs/2606.18206
   alphaxiv: https://www.alphaxiv.org/abs/2606.18206
   github: https://github.com/nilskiKonjIzDunava/fprm
+  hf: https://huggingface.co/fixed-point-reasoners/fprm
 citations: 11
 citation_sources:
   semantic_scholar: 11

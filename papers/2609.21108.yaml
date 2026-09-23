@@ -1,0 +1,24 @@
+title: 'REFINEPPO: Learning Continuous Control Policies by Iterative Action Refinement'
+authors:
+- Sachini Weerasekara
+- Sagar Kamarthi
+- Jacqueline Isaacs
+year: 2026
+published_date: '2026-09-17'
+added_date: "2026-09-23"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- rl-control
+focus_tags:
+- architecture
+- training-algorithm
+desc: Extends PPO with a shared residual policy network that repeatedly refines an
+  action proposal within one policy forward process, improving performance on 13 of
+  14 continuous-control tasks in the reported evaluation.
+links:
+  arxiv: https://arxiv.org/abs/2609.21108
+  alphaxiv: https://www.alphaxiv.org/abs/2609.21108
