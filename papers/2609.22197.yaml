@@ -1,0 +1,25 @@
+title: 'Dissecting Hierarchical Reasoning Models: A Mechanistic Study'
+authors:
+- Leo Raphael Rodrigues
+- Jian Kang
+year: 2026
+published_date: '2026-08-30'
+added_date: "2026-09-23"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- hierarchical-loop
+- flat-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+focus_tags:
+- architecture
+desc: Uses causal state interventions, probes, and sparse autoencoders to analyze
+  hierarchical recurrent reasoning, finding constraint-aware iterative refinement
+  while showing that a simpler single-state recurrent Transformer can attain comparable
+  behavior.
+links:
+  arxiv: https://arxiv.org/abs/2609.22197
+  alphaxiv: https://www.alphaxiv.org/abs/2609.22197
