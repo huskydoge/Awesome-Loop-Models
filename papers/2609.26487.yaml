@@ -1,4 +1,4 @@
-title: 'When Recursive Models Finish Computing'
+title: When Recursive Models Finish Computing
 authors:
 - Hare Krishna
 - Shubham Singh
@@ -6,7 +6,7 @@ authors:
 - Hao-Yu Sun
 year: 2026
 published_date: '2026-09-22'
-added_date: "2026-09-23"
+added_date: '2026-09-23'
 venue: arXiv
 category: analysis
 foundation: false
@@ -24,3 +24,9 @@ desc: Studies when Tiny Recursive Models have effectively completed their comput
 links:
   arxiv: https://arxiv.org/abs/2609.26487
   alphaxiv: https://www.alphaxiv.org/abs/2609.26487
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-23'

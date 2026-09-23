@@ -11,7 +11,7 @@ authors:
 year: 2022
 published_date: '2022-11-18'
 added_date: '2026-09-06'
-venue: "NeurIPS"
+venue: NeurIPS
 category: analysis
 mechanism_tags:
 - implicit-layer
@@ -32,11 +32,11 @@ links:
   arxiv: https://arxiv.org/abs/2211.09961
   paper: https://proceedings.neurips.cc/paper_files/paper/2022/hash/331c41353b053683e17f7c88a797701d-Abstract-Conference.html
 citation_source_best: semantic_scholar
-citations: 39
+citations: 40
 citation_sources:
-  semantic_scholar: 39
+  semantic_scholar: 40
   openalex: 3
   opencitations: 0
-metrics_updated: '2026-09-12'
+metrics_updated: '2026-09-23'
 peer_reviewed: true
-venue_source: "https://proceedings.neurips.cc/paper_files/paper/2022/hash/331c41353b053683e17f7c88a797701d-Abstract-Conference.html"
+venue_source: https://proceedings.neurips.cc/paper_files/paper/2022/hash/331c41353b053683e17f7c88a797701d-Abstract-Conference.html

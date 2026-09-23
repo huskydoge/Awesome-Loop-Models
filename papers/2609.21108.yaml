@@ -5,7 +5,7 @@ authors:
 - Jacqueline Isaacs
 year: 2026
 published_date: '2026-09-17'
-added_date: "2026-09-23"
+added_date: '2026-09-23'
 venue: arXiv
 category: designs
 foundation: false
@@ -22,3 +22,10 @@ desc: Extends PPO with a shared residual policy network that repeatedly refines 
 links:
   arxiv: https://arxiv.org/abs/2609.21108
   alphaxiv: https://www.alphaxiv.org/abs/2609.21108
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-23'

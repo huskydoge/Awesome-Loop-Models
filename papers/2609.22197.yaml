@@ -4,7 +4,7 @@ authors:
 - Jian Kang
 year: 2026
 published_date: '2026-08-30'
-added_date: "2026-09-23"
+added_date: '2026-09-23'
 venue: arXiv
 category: analysis
 foundation: false
@@ -23,3 +23,10 @@ desc: Uses causal state interventions, probes, and sparse autoencoders to analyz
 links:
   arxiv: https://arxiv.org/abs/2609.22197
   alphaxiv: https://www.alphaxiv.org/abs/2609.22197
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-23'

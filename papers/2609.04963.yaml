@@ -29,13 +29,13 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2609.04963
   github: https://github.com/GilpinLab/loopscape
 citation_source_best: semantic_scholar
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   opencitations: 0
   openalex: 0
 star_source_best: github_api
 github_stars: 80
 star_sources:
   github_api: 80
-metrics_updated: '2026-09-22'
+metrics_updated: '2026-09-23'
