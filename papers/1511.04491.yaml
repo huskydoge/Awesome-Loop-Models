@@ -25,9 +25,9 @@ links:
   arxiv: https://arxiv.org/abs/1511.04491
   paper: https://openaccess.thecvf.com/content_cvpr_2016/html/Kim_Deeply-Recursive_Convolutional_Network_CVPR_2016_paper.html
 citation_source_best: semantic_scholar
-citations: 2794
+citations: 2795
 citation_sources:
-  semantic_scholar: 2794
+  semantic_scholar: 2795
   openalex: 49
   opencitations: 5
-metrics_updated: '2026-09-21'
+metrics_updated: '2026-09-24'

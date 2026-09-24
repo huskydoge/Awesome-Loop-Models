@@ -16,7 +16,7 @@ authors:
 year: 2026
 published_date: '2025-08-22'
 added_date: '2026-09-16'
-venue: "Findings of ACL"
+venue: Findings of ACL
 category: analysis
 foundation: false
 mechanism_tags:
@@ -40,14 +40,14 @@ links:
   paper: https://aclanthology.org/2026.findings-acl.2103/
   github: https://github.com/RodkinIvan/associative-recurrent-memory-transformer/tree/ACT
 citation_source_best: semantic_scholar
-citations: 4
+citations: 5
 citation_sources:
-  semantic_scholar: 4
+  semantic_scholar: 5
   opencitations: 0
 star_source_best: github_api
 github_stars: 68
 star_sources:
   github_api: 68
-metrics_updated: '2026-09-16'
+metrics_updated: '2026-09-24'
 peer_reviewed: true
-venue_source: "https://aclanthology.org/2026.findings-acl.2103/"
+venue_source: https://aclanthology.org/2026.findings-acl.2103/
