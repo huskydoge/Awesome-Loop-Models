@@ -2479,7 +2479,9 @@ process.stdout.write(JSON.stringify({
             "buildDailyPublicationSeries",
             "buildMonthlyPublicationSeries",
             "addTrailingAverage",
+            "aggregateWeeklySeries",
             "slicePublicationRange",
+            "buildReleasePulseFacts",
             "buildReleaseStatsSummary",
             "buildStatsDistribution",
             "buildRecentStatsDistribution",
@@ -2489,7 +2491,8 @@ process.stdout.write(JSON.stringify({
         self.assertIn("range === '90d'", helpers)
         self.assertIn("range === 'all'", helpers)
         self.assertIn("windowSize = 14", helpers)
-        self.assertIn("windowSize = 30", helpers)
+        self.assertIn("windowSize = 4", helpers)
+        self.assertIn("aggregateWeeklySeries(daily.slice(-364))", helpers)
         self.assertIn("windowSize = 6", helpers)
 
     def test_stats_helpers_execute_date_series_and_summary_boundaries(self):
@@ -2670,12 +2673,12 @@ process.stdout.write(JSON.stringify({
                 },
                 "oneYear": {
                     "range": "1y",
-                    "granularity": "day",
-                    "windowSize": 30,
-                    "length": 365,
-                    "firstKey": "d35",
-                    "lastKey": "d399",
-                    "firstAverages": [8, 5],
+                    "granularity": "week",
+                    "windowSize": 4,
+                    "length": 52,
+                    "firstKey": "d36",
+                    "lastKey": "d393",
+                    "firstAverages": [2, 1],
                 },
                 "allTime": {
                     "range": "all",
@@ -2690,7 +2693,7 @@ process.stdout.write(JSON.stringify({
         )
         self.assertEqual(
             result["emptyRange"],
-            {"range": "1y", "granularity": "day", "windowSize": 30, "series": []},
+            {"range": "1y", "granularity": "week", "windowSize": 4, "series": []},
         )
         self.assertEqual(result["summary"]["totalPapers"], 11)
         self.assertEqual(result["summary"]["releasesLast30Days"], 3)
@@ -2733,6 +2736,58 @@ process.stdout.write(JSON.stringify({
                 ],
             },
         )
+
+    def test_weekly_release_series_facts_and_axis_are_exact(self):
+        """1Y uses gap-free weekly sums, headline facts, and clean integer axis steps."""
+        result = self.run_stats_series_helpers("""(function() {
+  const daily = Array.from({ length: 16 }, function(_, index) {
+    return { key: 'd' + index, label: 'd' + index, count: index % 5 === 0 ? 2 : 0, cumulative: index };
+  });
+  const weeks = aggregateWeeklySeries(daily);
+  const facts = buildReleasePulseFacts({ series: weeks });
+  return {
+    weeks: weeks.map(function(week) { return [week.key, week.endKey, week.count, week.cumulative]; }),
+    facts: facts,
+    emptyFacts: buildReleasePulseFacts(null),
+    emptyWeeks: aggregateWeeklySeries(null)
+  };
+})()""")
+        self.assertEqual(result["weeks"], [["d0", "d6", 4, 6], ["d7", "d13", 2, 13], ["d14", "d15", 2, 15]])
+        self.assertEqual(result["facts"], {"total": 8, "peak": {"key": "d0", "count": 4}, "average": 8 / 3, "periods": 3})
+        self.assertEqual(result["emptyFacts"], {"total": 0, "peak": None, "average": 0, "periods": 0})
+        self.assertEqual(result["emptyWeeks"], [])
+
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        axis_start = html.index("function niceStatsAxis(")
+        axis_end = html.index("function selectTimelineTickIndices(", axis_start)
+        script = html[axis_start:axis_end] + """
+process.stdout.write(JSON.stringify([niceStatsAxis(17, 4), niceStatsAxis(45, 4), niceStatsAxis(0, 4), niceStatsAxis(3, 4)]));
+"""
+        axes = json.loads(subprocess.check_output(["node", "-e", script], text=True))
+        self.assertEqual(axes, [{"max": 20, "step": 5}, {"max": 50, "step": 10}, {"max": 1, "step": 1}, {"max": 3, "step": 1}])
+
+    def test_release_chart_exposes_hover_and_keyboard_readout(self):
+        """Every plotted period is readable by pointer or keyboard without innerHTML."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        render_start = html.index("function renderReleasePulseChart(container, series, options) {")
+        render_end = html.index("function renderStatsSparkline(", render_start)
+        render_source = html[render_start:render_end]
+        for marker in (
+            "stats-chart-tooltip",
+            "timeline-crosshair",
+            "'pointermove'",
+            "'keydown'",
+            "ArrowLeft",
+            "ArrowRight",
+            "describeStatsPeriod(point.bucket, granularity)",
+            "tabindex: 0",
+        ):
+            self.assertIn(marker, render_source)
+        self.assertNotIn("innerHTML", render_source)
+        stats_start = html.index('<section class="top-level-panel stats-panel"')
+        stats_markup = html[stats_start:html.index("</section>", stats_start)]
+        for marker in ('id="release-pulse-facts"', 'id="release-pulse-peak"', 'id="stats-latest-thirty-spark"'):
+            self.assertIn(marker, stats_markup)
 
     def test_stats_panel_has_catalog_intelligence_dashboard(self):
         """Stats markup must expose the approved editorial Research Landscape."""
@@ -3021,7 +3076,8 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("count / maxValue * plotHeight", render_source)
         self.assertIn("average / maxValue * plotHeight", render_source)
         self.assertIn("Number(container.clientWidth)", render_source)
-        self.assertIn("var chartHeight = 250;", render_source)
+        self.assertIn("Number(container.clientHeight)", render_source)
+        self.assertIn("niceStatsAxis(rawMax", render_source)
         self.assertNotIn("maxAverage", render_source)
         self.assertNotIn("timeline-axis-average", render_source)
         self.assertNotIn("Math.max(760", render_source)
@@ -3130,13 +3186,13 @@ process.stdout.write(JSON.stringify({{
 
         self.assertIn("grid-template-columns: repeat(12, minmax(0, 1fr));", dashboard_rule)
         self.assertIn("align-items: start;", dashboard_rule)
-        self.assertIn(".stats-pulse-card", stats_css)
-        self.assertIn("grid-column: span 7;", stats_css)
-        self.assertIn(".stats-composition-card", stats_css)
-        self.assertIn("grid-column: span 5;", stats_css)
-        self.assertIn(".stats-mechanism-card", stats_css)
-        self.assertIn(".stats-directions-card", stats_css)
-        self.assertIn(".stats-category-donut", stats_css)
+        self.assertIn(".stats-pulse-card {\n      grid-column: 1 / -1;", stats_css)
+        self.assertIn(
+            ".stats-composition-card,\n    .stats-mechanism-card,\n    .stats-directions-card {\n      grid-column: span 4;",
+            stats_css,
+        )
+        self.assertIn(".stats-category-stack", stats_css)
+        self.assertNotIn(".stats-category-donut", stats_css)
         self.assertIn("grid-template-columns: repeat(2, minmax(0, 1fr));", stats_css)
         self.assertIn("a.stats-distribution-row {\n      min-height: 0;", stats_css)
         chart_scroll_css = stats_css[stats_css.index("    .stats-chart-scroll {"):]
@@ -3144,7 +3200,8 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("height: clamp(220px, 27vh, 250px);", chart_scroll_css)
         self.assertIn("background: transparent;", stats_css)
         self.assertIn("border-top: 1px solid var(--border);", stats_css)
-        self.assertIn("--stats-observatory-bg:", stats_css)
+        self.assertNotIn("--stats-observatory", stats_css)
+        self.assertIn(".stats-chart-tooltip", stats_css)
         self.assertIn("animation: stats-bar-rise", bar_rule)
         self.assertIn("stroke-dasharray: 1;", line_rule)
         self.assertIn("animation: stats-line-draw", line_rule)
@@ -3173,6 +3230,7 @@ process.stdout.write(JSON.stringify({{
         self.assertIn(
             ".stats-primary-chart .stats-range-button,\n"
             "      .stats-direction-tabs button {\n"
+            "        flex: 1 1 0;\n"
             "        min-height: 44px;",
             mobile_css,
         )
@@ -3200,15 +3258,14 @@ process.stdout.write(JSON.stringify({{
         desktop_start = stats_css.index("@media (min-width: 1180px) and (min-height: 700px)")
         desktop_end = stats_css.index("@media (max-width: 1020px)", desktop_start)
         desktop_css = stats_css[desktop_start:desktop_end]
-        self.assertIn("min-height: 64px;", desktop_css)
-        self.assertIn(".stats-metric-note {\n        display: none;", desktop_css)
-        self.assertIn("height: clamp(200px, 24vh, 220px);", desktop_css)
-        self.assertIn(".stats-landscape-secondary {\n        margin-bottom: 0;", desktop_css)
+        self.assertIn("body.stats-mode .layout {\n        padding-top: 14px;", desktop_css)
+        self.assertNotIn(".stats-metric-note {\n        display: none;", stats_css)
 
         footer_media_start = stats_css.index("@media (min-width: 1180px) and (min-height: 860px)")
         footer_media_end = stats_css.index("@media (max-width: 1020px)", footer_media_start)
         footer_media_css = stats_css[footer_media_start:footer_media_end]
-        self.assertIn("body.stats-mode footer,\n      .stats-scope {\n        display: none;", footer_media_css)
+        self.assertIn("body.stats-mode footer {\n        display: none;", footer_media_css)
+        self.assertNotIn(".stats-scope {\n        display: none;", stats_css)
         self.assertNotIn("body.stats-mode footer", stats_css[:footer_media_start])
 
     def test_stats_dashboard_refines_light_and_dark_theme_tokens(self):
@@ -3258,8 +3315,8 @@ process.stdout.write(JSON.stringify({{
         self.assertNotIn("var(--text-dim)", note_rule)
         self.assertIn("fill: var(--text-muted);", ticks_rule)
         self.assertNotIn("var(--text-dim)", ticks_rule)
-        self.assertIn("color: var(--stats-observatory-muted);", empty_rule)
-        self.assertIn("border-color: var(--stats-observatory-border);", empty_rule)
+        self.assertIn("color: var(--text-muted);", empty_rule)
+        self.assertIn("border-color: var(--border);", empty_rule)
 
     def test_table_header_sort_buttons_exist_for_date_citations_and_stars_with_direction_controls(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
