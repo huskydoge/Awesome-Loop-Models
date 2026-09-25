@@ -28,8 +28,9 @@ desc: Modifies the Hierarchical Reasoning Model into a multi-stream recursive ar
 links:
   arxiv: https://arxiv.org/abs/2609.28809
   alphaxiv: https://www.alphaxiv.org/abs/2609.28809
-citation_source_best: opencitations
+citation_source_best: semantic_scholar
 citations: 0
 citation_sources:
   opencitations: 0
+  semantic_scholar: 0
 metrics_updated: '2026-09-25'
