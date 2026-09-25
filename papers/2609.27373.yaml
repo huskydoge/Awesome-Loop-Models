@@ -1,10 +1,11 @@
-title: 'Attention Routing Stabilizes Early: Working-Set Inference for Recurrent Language Models'
+title: 'Attention Routing Stabilizes Early: Working-Set Inference for Recurrent Language
+  Models'
 authors:
-- 'Ke Wan'
-- 'Chen Chen'
+- Ke Wan
+- Chen Chen
 year: 2026
 published_date: '2026-09-23'
-added_date: "2026-09-24"
+added_date: '2026-09-24'
 venue: arXiv
 category: designs
 foundation: false
@@ -15,11 +16,24 @@ domain_tags:
 - reasoning
 - efficiency
 tags:
-- 'WISE'
+- WISE
 focus_tags:
 - inference-algorithm
-desc: 'Finds that attention support in recurrent-depth language models stabilizes earlier than hidden states and introduces WISE, a training-free method that uses global attention in early recurrent steps and reuses the discovered sparse working set later, reaching up to 1.76 times attention speedup at 4K context.'
+desc: Finds that attention support in recurrent-depth language models stabilizes earlier
+  than hidden states and introduces WISE, a training-free method that uses global
+  attention in early recurrent steps and reuses the discovered sparse working set
+  later, reaching up to 1.76 times attention speedup at 4K context.
 links:
   arxiv: https://arxiv.org/abs/2609.27373
   alphaxiv: https://www.alphaxiv.org/abs/2609.27373
   github: https://github.com/tbn5pj/WISE_code
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 3
+star_sources:
+  github_api: 3
+metrics_updated: '2026-09-25'
