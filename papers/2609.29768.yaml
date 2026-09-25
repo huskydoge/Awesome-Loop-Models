@@ -1,0 +1,26 @@
+title: 'Depth through recurrence: Looped transformers for flow-matching TTS'
+authors:
+- 'Jiabao Ai'
+- 'Peng Han'
+- 'Yuchen Song'
+- 'Zhengjun Yue'
+year: 2026
+published_date: '2026-09-24'
+added_date: "2026-09-24"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- speech-synthesis
+- efficiency
+tags:
+- 'TTS'
+- 'flow matching'
+focus_tags:
+- architecture
+desc: 'Compares seven weight-reuse layouts for flow-matching text-to-speech Transformers at a fixed 18 block calls, finding that applying nine blocks twice keeps competitive intelligibility and speaker similarity with 47.1 percent fewer parameters, and that reuse order and placement shape quality across sampling budgets.'
+links:
+  arxiv: https://arxiv.org/abs/2609.29768
+  alphaxiv: https://www.alphaxiv.org/abs/2609.29768

@@ -1,0 +1,27 @@
+title: 'Stream Recursion Model (SRM)'
+authors:
+- 'Asael Sorensen'
+- 'Charles Brock'
+- 'David Chamberlain'
+- 'Jennifer Minnich'
+- 'Matthew Hoffman'
+- 'Ramyaa Ramyaa'
+year: 2026
+published_date: '2026-09-23'
+added_date: "2026-09-24"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+tags:
+- 'SRM'
+- 'HRM'
+focus_tags:
+- architecture
+desc: 'Modifies the Hierarchical Reasoning Model into a multi-stream recursive architecture whose layers repeatedly call shared per-stream step functions, aiming at scalable mechanistic interpretability while matching GPT-2 on a per-parameter basis and revealing specialized stream dynamics.'
+links:
+  arxiv: https://arxiv.org/abs/2609.28809
+  alphaxiv: https://www.alphaxiv.org/abs/2609.28809

@@ -231,6 +231,12 @@
     "papers/2609.24196.yaml",
     "papers/2609.25778.yaml",
     "papers/2609.26487.yaml",
+    "papers/2609.27032.yaml",
+    "papers/2609.27373.yaml",
+    "papers/2609.28809.yaml",
+    "papers/2609.29755.yaml",
+    "papers/2609.29768.yaml",
+    "papers/2609.29812.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -242,7 +248,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 199
+        "count": 205
       },
       {
         "label": "implicit-layer",
@@ -260,11 +266,11 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 195
+        "count": 199
       },
       {
         "label": "inference-algorithm",
-        "count": 159
+        "count": 161
       },
       {
         "label": "training-algorithm",
@@ -282,15 +288,15 @@
     "domain": [
       {
         "label": "efficiency",
-        "count": 119
-      },
-      {
-        "label": "reasoning",
-        "count": 109
+        "count": 122
       },
       {
         "label": "language-modeling",
-        "count": 107
+        "count": 110
+      },
+      {
+        "label": "reasoning",
+        "count": 110
       },
       {
         "label": "algorithmic-reasoning",
@@ -314,7 +320,7 @@
       },
       {
         "label": "memory-efficiency",
-        "count": 25
+        "count": 26
       },
       {
         "label": "sequence-modeling",
@@ -326,7 +332,7 @@
       },
       {
         "label": "scientific-ml",
-        "count": 7
+        "count": 8
       },
       {
         "label": "machine-translation",
@@ -373,6 +379,10 @@
         "count": 1
       },
       {
+        "label": "biology",
+        "count": 1
+      },
+      {
         "label": "electronic-structure",
         "count": 1
       },
@@ -385,6 +395,10 @@
         "count": 1
       },
       {
+        "label": "multilingual",
+        "count": 1
+      },
+      {
         "label": "neuroscience",
         "count": 1
       },
@@ -394,6 +408,14 @@
       },
       {
         "label": "retrieval",
+        "count": 1
+      },
+      {
+        "label": "speech-synthesis",
+        "count": 1
+      },
+      {
+        "label": "summarization",
         "count": 1
       },
       {
