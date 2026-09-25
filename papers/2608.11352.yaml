@@ -6,6 +6,8 @@ year: 2026
 published_date: '2026-08-11'
 added_date: '2026-08-12'
 venue: ACVR Workshop @ ECCV
+peer_reviewed: true
+venue_source: https://iplab.dmi.unict.it/acvr2026/program.html
 category: designs
 foundation: false
 mechanism_tags:

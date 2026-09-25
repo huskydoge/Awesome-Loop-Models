@@ -56,6 +56,7 @@ links:
 # - `links.blog` is required for blogs.
 # - `published_date` is required for all blogs. Use the original release date
 #   and keep it as a quoted `YYYY-MM-DD` string.
-# - `added_date` is the repo intake date used by the daily feed / Today-style
-#   filtering; when present, keep it as a quoted `YYYY-MM-DD` string.
+# - `added_date` is the repo intake date used by the daily feed; blogs are
+#   excluded from `Newly Arrived`. When present, keep it as a quoted
+#   `YYYY-MM-DD` string.
 # - Blogs do not use `category`, `category_path`, or `foundation`.

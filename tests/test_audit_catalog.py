@@ -42,6 +42,25 @@ def write_paper(root: Path, filename: str, paper: object) -> Path:
 class CatalogAuditTests(unittest.TestCase):
     """Exercise raw YAML, schema, identity, tag, and prose findings."""
 
+    def test_peer_review_provenance_is_validated(self):
+        """Verified papers need a real venue, boolean flag and safe source URL."""
+        valid = {
+            "venue": "ICML", "peer_reviewed": True,
+            "venue_source": "https://proceedings.mlr.press/v267/schone25a.html",
+        }
+        for overrides, expected_errors in (
+            ({}, False), ({"peer_reviewed": "true"}, True),
+            ({"venue": "arXiv"}, True), ({"venue_source": ""}, True),
+            ({"venue_source": "javascript:alert(1)"}, True),
+        ):
+            with self.subTest(overrides=overrides), TemporaryDirectory() as tmpdir:
+                root = Path(tmpdir)
+                write_paper(root, "2601.00001.yaml", {**valid_paper(), **valid, **overrides})
+                errors = [item for item in audit_catalog.audit_catalog(root) if item.severity == "error"]
+                self.assertEqual(bool(errors), expected_errors)
+                if errors:
+                    self.assertIn("invalid-publication", {item.code for item in errors})
+
     def test_valid_catalog_has_no_findings_and_skips_templates(self):
         """A valid paper should pass while template-prefixed YAML stays out of scope."""
         with TemporaryDirectory() as tmpdir:

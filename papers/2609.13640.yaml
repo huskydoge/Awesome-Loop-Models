@@ -1,0 +1,39 @@
+title: 'FlowTSFM: Turning Encoder Depth into Quantile Transport'
+authors:
+- Bahaeddine Abdessalem
+- Shifeng Xie
+- Zehao Xiao
+- Youssef Attia El Hili
+- Ambroise Odonnat
+- Jianfeng Zhang
+- Lujia Pan
+- Keli Zhang
+- Malik Tiomoko
+year: 2026
+published_date: '2026-09-12'
+added_date: '2026-09-15'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- sequence-modeling
+- efficiency
+- scientific-ml
+focus_tags:
+- objective-loss
+- architecture
+- training-algorithm
+desc: Iterates one shared Transformer block as a quantile-transport trajectory and
+  supervises intermediate recurrent states with forecasting and path-position losses.
+links:
+  arxiv: https://arxiv.org/abs/2609.13640
+  alphaxiv: https://www.alphaxiv.org/abs/2609.13640
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+metrics_updated: '2026-09-16'

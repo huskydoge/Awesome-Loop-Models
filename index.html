@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Awesome Loop Models</title>
   <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <script src="assets/reading-desk.js?v=4"></script>
   <style>
     /* ── Light theme (default) ── */
     :root {
@@ -33,9 +34,9 @@
       --font-body: Charter, Georgia, "Times New Roman", "Songti SC", STSong, serif;
     }
 
-    /* ── Dark theme (follows system) ── */
-    @media (prefers-color-scheme: dark) {
-      :root {
+    /* ── Dark theme (resolved system or manual preference) ── */
+    :where(html[data-theme="dark"]) {
+      & {
         --bg: #1d1e20;
         --surface: #1d1e20;
         --surface2: #2b2c2f;
@@ -311,8 +312,7 @@
 
     body.filter-sidebar-open .header-sub,
     body.filter-sidebar-open .filter-sidebar-toggle-row,
-    body.filter-sidebar-open .daily-briefing-notice,
-    body.filter-sidebar-open .daily-watch-countdown {
+    body.filter-sidebar-open .daily-status-row {
       display: none;
     }
 
@@ -503,22 +503,6 @@
       color: var(--text-muted);
       margin-bottom: 14px;
       line-height: 1.5;
-    }
-
-    .category-disclaimer {
-      margin-bottom: 18px;
-      padding: 11px 12px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      background: linear-gradient(180deg, rgba(9,105,218,0.04), transparent), var(--surface);
-      color: var(--text-muted);
-      font-size: 12px;
-      line-height: 1.55;
-    }
-
-    .category-disclaimer strong {
-      color: var(--text);
-      font-weight: 700;
     }
 
     .sidebar-nav {
@@ -1331,7 +1315,7 @@
       }
     }
 
-    @media (prefers-color-scheme: dark) {
+    :where(html[data-theme="dark"]) {
       .stats-panel {
         --stats-card-bg: #111923;
         --stats-card-border: #2e3a49;
@@ -1572,7 +1556,7 @@
     .venue-arxiv   { background: rgba(101,109,118,0.12); color: #656d76; }
     .venue-other   { background: rgba(101,109,118,0.12); color: #656d76; }
 
-    @media (prefers-color-scheme: dark) {
+    :where(html[data-theme="dark"]) {
       .venue-neurips { background: rgba(88,166,255,0.15); color: #79c0ff; }
       .venue-iclr    { background: rgba(210,168,255,0.15); color: #d2a8ff; }
       .venue-icml    { background: rgba(63,185,80,0.15); color: #56d364; }
@@ -1747,7 +1731,7 @@
     .link-comment   { background: rgba(193,132,1,0.09); border-color: rgba(193,132,1,0.30); color: #9a6700; }
     .link-twitter   { background: rgba(9,105,218,0.07); border-color: rgba(9,105,218,0.25); color: #0969da; }
 
-    @media (prefers-color-scheme: dark) {
+    :where(html[data-theme="dark"]) {
       .link-arxiv     { background: rgba(255,123,114,0.08); border-color: rgba(255,123,114,0.3); color: #ff7b72; }
       .link-alphaxiv  { background: rgba(45,212,191,0.1); border-color: rgba(45,212,191,0.35); color: #5eead4; }
       .link-paper     { background: rgba(88,166,255,0.08); border-color: rgba(88,166,255,0.3); color: #79c0ff; }
@@ -2248,20 +2232,15 @@
       .research-copy-button { transition: none; }
     }
 
-    .daily-watch-countdown {
-      position: absolute;
-      top: 58px;
-      margin: 0;
-      border: 1px solid var(--border);
-      border-top: 0;
-      border-radius: 0 0 10px 10px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.34), transparent 32%),
-        linear-gradient(180deg, rgba(9,105,218,0.06), transparent),
-        var(--surface);
-      box-shadow: 0 14px 24px rgba(15, 23, 42, 0.10);
-      transform: none;
-      z-index: 1;
+    .daily-status-row {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto 12px;
     }
 
     .daily-briefing-notice[hidden] {
@@ -2270,22 +2249,26 @@
 
     .daily-briefing-notice {
       position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 4px 7px;
-      width: fit-content;
+      display: block;
+      flex: 0 1 auto;
+      width: 100%;
       max-width: 100%;
-      margin: 0 auto 12px;
-      padding: 6px 10px;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
       border: 1px solid var(--border);
-      border-radius: 999px;
+      border-radius: 6px;
       background: color-mix(in srgb, var(--surface) 94%, var(--accent) 6%);
       color: var(--text);
       font-size: 11px;
       line-height: 1.3;
       text-align: left;
+    }
+
+    .daily-briefing-summary {
+      padding: 12px;
+      box-sizing: border-box;
+      white-space: nowrap;
     }
 
     .daily-briefing-notice-label,
@@ -2315,81 +2298,140 @@
       color: var(--text-muted);
     }
 
-    .daily-briefing-recommended {
+    .daily-briefing-body {
+      width: auto;
+      max-width: 100%;
+      padding: 0 12px 10px;
+    }
+
+    .daily-briefing-overview {
+      margin: 0;
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
       color: var(--text-muted);
-      font-weight: 600;
-      white-space: nowrap;
+      line-height: 1.45;
+    }
+
+    .daily-briefing-papers {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .daily-briefing-paper {
+      padding: 8px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .daily-briefing-paper-title {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .daily-briefing-paper-title:hover {
+      text-decoration: underline;
+    }
+
+    .daily-briefing-paper-desc {
+      margin: 3px 0 0;
+      color: var(--text-muted);
+      line-height: 1.45;
+      overflow-wrap: anywhere;
     }
 
     .daily-watch-countdown {
-      right: 32px;
-      width: 236px;
-      padding: 15px 13px 11px;
-      text-align: center;
+      position: relative;
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      width: max-content;
+      max-width: 100%;
+      min-width: 0;
+      min-height: 46px;
+      margin: 0;
+      padding: 7px 10px;
+      box-sizing: border-box;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--surface) 96%, var(--accent) 4%);
+      box-shadow: none;
+      text-align: left;
     }
 
-    .daily-watch-countdown::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 28px;
-      right: 28px;
-      height: 7px;
-      border-left: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      pointer-events: none;
+    .daily-watch-clock {
+      position: relative;
+      display: block;
+      flex: 0 0 26px;
+      width: 26px;
+      height: 26px;
+      border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--border));
+      border-radius: 50%;
+      background: radial-gradient(circle at center, var(--accent) 0 1.5px, transparent 1.8px);
+      box-sizing: border-box;
     }
 
-    .daily-watch-countdown::after {
+    .daily-watch-clock::before,
+    .daily-watch-clock::after {
       content: "";
       position: absolute;
-      top: 6px;
-      left: 14px;
-      right: 14px;
-      border-top: 1px dashed rgba(101,109,118,0.32);
-      pointer-events: none;
+      left: 50%;
+      bottom: 50%;
+      width: 1px;
+      transform-origin: 50% 100%;
+    }
+
+    .daily-watch-clock::before {
+      height: 6px;
+      background: var(--text-muted);
+      transform: translateX(-50%) rotate(-42deg);
+    }
+
+    .daily-watch-clock::after {
+      height: 9px;
+      background: var(--accent);
+      animation: daily-watch-clock-spin 60s steps(60, end) infinite;
+    }
+
+    @keyframes daily-watch-clock-spin {
+      from { transform: translateX(-50%) rotate(0deg); }
+      to { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    .daily-watch-countdown-copy {
+      display: grid;
+      gap: 1px;
+      line-height: 1.05;
     }
 
     .daily-watch-countdown-label {
-      font-size: 9.5px;
+      font-size: 8.5px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 3px;
+      margin: 0;
+      white-space: nowrap;
     }
 
     .daily-watch-countdown-value {
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--text);
       font-variant-numeric: tabular-nums;
-      margin-bottom: 3px;
+      margin: 0;
+      white-space: nowrap;
     }
 
     .daily-watch-countdown-meta {
-      font-size: 10.5px;
-      line-height: 1.4;
-      color: var(--text-muted);
+      display: none;
     }
 
-    @media (max-width: 1344px) {
-      .daily-watch-countdown {
-        position: relative;
-        top: auto;
-        left: auto;
-        right: auto;
-        width: min(560px, 100%);
-        margin: 0 auto 12px;
-        border-top: 1px solid var(--border);
-        border-radius: 10px;
-        transform: none;
-      }
-
-      .daily-watch-countdown {
-        margin-bottom: 18px;
-      }
-
+    @media (prefers-reduced-motion: reduce) {
+      .daily-watch-clock::after { animation: none; }
     }
 
     /* ── Sidebar contribute link ── */
@@ -2416,7 +2458,7 @@
 
     .sidebar-contribute a:hover { opacity: 0.8; }
 
-    @media (prefers-color-scheme: dark) {
+    :where(html[data-theme="dark"]) {
       .contribute-btn {
         color: #3fb950;
         border-color: rgba(63,185,80,0.3);
@@ -2573,12 +2615,6 @@
         display: block;
         margin-bottom: 14px;
       }
-      .category-disclaimer {
-        margin-bottom: 12px;
-        padding: 10px 11px;
-        font-size: 11.5px;
-        line-height: 1.5;
-      }
       .category-header {
         padding: 16px;
       }
@@ -2599,7 +2635,7 @@
       padding: 0 1px;
     }
 
-    @media (prefers-color-scheme: dark) {
+    :where(html[data-theme="dark"]) {
       mark {
         background: rgba(255,166,87,0.25);
         color: var(--accent4);
@@ -2644,7 +2680,7 @@
     }
     .sort-btn:hover { border-color: var(--accent); color: var(--accent); }
     .sort-btn.active { background: var(--accent); border-color: var(--accent); color: #ffffff; }
-    @media (prefers-color-scheme: dark) { .sort-btn.active { color: #0d1117; } }
+    :where(html[data-theme="dark"]) { .sort-btn.active { color: #0d1117; } }
     .table-sort-header {
       display: inline-flex;
       align-items: center;
@@ -3353,7 +3389,7 @@
       border-color: rgba(154,103,0,0.2);
       color: #7d4e00;
     }
-    @media (prefers-color-scheme: dark) {
+    :where(html[data-theme="dark"]) {
       .metric-citations { background: rgba(88,166,255,0.08); border-color: rgba(88,166,255,0.25); color: #79c0ff; }
       .metric-stars { background: rgba(255,212,0,0.08); border-color: rgba(255,212,0,0.25); color: #e3b341; }
     }
@@ -3524,12 +3560,13 @@
         margin-top: 12px;
       }
       .papers-only-tools > .header-sub { order: 1; }
-      .papers-only-tools > .search-wrap { order: 2; }
-      .papers-only-tools > .filter-sidebar-toggle-row { order: 3; }
-      .papers-only-tools > .daily-briefing-notice { order: 4; }
-      .papers-only-tools > .daily-watch-countdown { order: 5; }
-      .papers-only-tools > .filter-sidebar { order: 6; }
+      .papers-only-tools > .daily-status-row { order: 2; }
+      .papers-only-tools > .search-wrap { order: 3; }
+      .papers-only-tools > .filter-sidebar-toggle-row { order: 4; }
+      .papers-only-tools > .filter-sidebar { order: 5; }
       .search-wrap {
+        width: 100%;
+        margin: 0;
         flex-wrap: wrap;
       }
       .search-field {
@@ -3541,24 +3578,29 @@
       body.stats-mode .layout {
         padding: 18px 12px 28px;
       }
-      .daily-watch-countdown {
+      .daily-status-row {
+        align-items: flex-start;
+        gap: 8px;
         width: 100%;
         max-width: none;
-        margin: 10px 0 0;
-        box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+        margin: 0 0 10px;
+      }
+      .daily-briefing-notice,
+      .daily-watch-countdown {
+        flex: 0 0 auto;
+        width: fit-content;
+        max-width: 100%;
+        margin: 0;
       }
       .daily-briefing-notice {
-        margin: 10px auto 0;
+        width: 100%;
       }
       .daily-watch-countdown {
-        padding: 11px 12px 10px;
+        padding: 7px 10px;
       }
       .mobile-directory {
         display: block;
         margin-bottom: 12px;
-      }
-      .category-disclaimer {
-        display: none;
       }
       .category-header {
         padding: 12px 14px;
@@ -3712,11 +3754,9 @@
       .filter-sidebar-controls .date-clear-btn {
         padding: 4px 8px;
       }
-      .daily-briefing-notice {
-        padding: 6px 9px;
-      }
       .daily-watch-countdown {
-        padding: 10px;
+        min-height: 46px;
+        padding: 7px 10px;
       }
       .daily-briefing-notice-label,
       .daily-watch-countdown-label {
@@ -3942,39 +3982,6 @@
       #papers-panel[data-card-density="compact"] .paper-card .link-btn {
         padding: 2px 7px;
         font-size: 10.5px;
-      }
-    }
-
-    @media (min-width: 769px) and (max-width: 1344px) {
-      body:not(.stats-mode) .papers-only-tools {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-areas:
-          "subtitle subtitle"
-          "briefing countdown"
-          "search search"
-          "controls controls"
-          "filters filters";
-        gap: 8px 10px;
-      }
-
-      body:not(.stats-mode) .header-sub { grid-area: subtitle; }
-      body:not(.stats-mode) .daily-briefing-notice { grid-area: briefing; }
-      body:not(.stats-mode) .daily-watch-countdown { grid-area: countdown; }
-      body:not(.stats-mode) .search-wrap { grid-area: search; width: 100%; }
-      body:not(.stats-mode) .filter-sidebar-toggle-row { grid-area: controls; }
-      body:not(.stats-mode) .filter-sidebar { grid-area: filters; }
-
-      body:not(.stats-mode) .daily-watch-countdown {
-        width: 100%;
-        margin: 0;
-      }
-
-      body:not(.stats-mode) .daily-briefing-notice {
-        width: fit-content;
-        margin: 0 auto;
-        align-self: start;
-        justify-self: center;
       }
     }
 
@@ -4231,17 +4238,6 @@
       font-variant-numeric: tabular-nums;
     }
 
-    .category-disclaimer {
-      margin-bottom: 32px;
-      padding: 12px 0 12px 16px;
-      border: 0;
-      border-left: 2px solid var(--text);
-      border-radius: 0;
-      background: transparent;
-      color: var(--text-muted);
-      font-size: 14px;
-    }
-
     .category {
       margin-bottom: 46px;
     }
@@ -4402,6 +4398,13 @@
       --stats-data-1: #315f78;
       --stats-data-2: #7f756c;
       --stats-data-3: #a39a90;
+      --stats-observatory-bg: #0f1929;
+      --stats-observatory-border: #2b405d;
+      --stats-observatory-grid: rgba(170, 194, 222, 0.12);
+      --stats-observatory-text: #f4f8ff;
+      --stats-observatory-muted: #aab8ca;
+      --stats-observatory-bar: #65aefc;
+      --stats-observatory-trend: #77dfa6;
       background: transparent;
       padding: 0;
     }
@@ -4522,7 +4525,34 @@
     }
 
     .stats-primary-chart {
-      padding-top: 14px;
+      padding: 18px 18px 0;
+      border: 1px solid var(--stats-observatory-border);
+      border-radius: 6px;
+      background:
+        radial-gradient(circle at 86% -18%, rgba(101, 174, 252, 0.18), transparent 38%),
+        repeating-linear-gradient(0deg, var(--stats-observatory-grid) 0 1px, transparent 1px 32px),
+        repeating-linear-gradient(90deg, var(--stats-observatory-grid) 0 1px, transparent 1px 32px),
+        var(--stats-observatory-bg);
+      color: var(--stats-observatory-text);
+      box-shadow: 0 14px 30px rgba(15, 25, 41, 0.16);
+      overflow: hidden;
+    }
+
+    .stats-primary-chart::after {
+      position: absolute;
+      inset: 8px;
+      background:
+        linear-gradient(var(--stats-observatory-bar) 0 0) top left / 12px 1px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) top left / 1px 12px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) top right / 12px 1px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) top right / 1px 12px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) bottom left / 12px 1px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) bottom left / 1px 12px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) bottom right / 12px 1px no-repeat,
+        linear-gradient(var(--stats-observatory-bar) 0 0) bottom right / 1px 12px no-repeat;
+      content: '';
+      opacity: 0.38;
+      pointer-events: none;
     }
 
     .stats-card-header {
@@ -4556,6 +4586,20 @@
       color: var(--text-muted);
     }
 
+    .stats-primary-chart .stats-section-index {
+      color: var(--stats-observatory-bar);
+    }
+
+    .stats-primary-chart .stats-chart-heading h3 {
+      color: var(--stats-observatory-text);
+    }
+
+    .stats-primary-chart .stats-chart-heading p,
+    .stats-primary-chart .stats-chart-legend,
+    .stats-primary-chart .stats-period-summary {
+      color: var(--stats-observatory-muted);
+    }
+
     .stats-range-control,
     .stats-primary-chart .stats-range-control {
       padding: 0;
@@ -4583,6 +4627,36 @@
     .stats-direction-tabs button[aria-pressed="true"] {
       background: var(--text);
       color: var(--bg);
+    }
+
+    .stats-primary-chart .stats-range-control {
+      border-color: var(--stats-observatory-border);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .stats-primary-chart .stats-range-button {
+      color: var(--stats-observatory-muted);
+    }
+
+    .stats-primary-chart .stats-range-button:hover {
+      color: var(--stats-observatory-text);
+    }
+
+    .stats-primary-chart .stats-range-button[aria-pressed="true"] {
+      background: var(--stats-observatory-bar);
+      color: var(--stats-observatory-bg);
+    }
+
+    .stats-primary-chart .stats-range-button:focus-visible {
+      outline-color: var(--stats-observatory-trend);
+    }
+
+    .stats-primary-chart .stats-legend-swatch {
+      background: var(--stats-observatory-bar);
+    }
+
+    .stats-primary-chart .stats-legend-line {
+      border-color: var(--stats-observatory-trend);
     }
 
     .stats-chart-scroll {
@@ -4622,6 +4696,49 @@
 
     .stats-panel .timeline-line {
       stroke: var(--text);
+    }
+
+    .stats-primary-chart .timeline-grid {
+      stroke: var(--stats-observatory-grid);
+    }
+
+    .stats-primary-chart .timeline-axis-label,
+    .stats-primary-chart .timeline-tick-label {
+      fill: var(--stats-observatory-muted);
+    }
+
+    .stats-primary-chart .timeline-axis-count {
+      fill: var(--stats-observatory-bar);
+    }
+
+    .stats-primary-chart .timeline-bar {
+      fill: var(--stats-observatory-bar);
+      opacity: 0.88;
+      transform-box: fill-box;
+      transform-origin: center bottom;
+      animation: stats-bar-rise 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .stats-primary-chart .timeline-line {
+      stroke: var(--stats-observatory-trend);
+      stroke-dasharray: 1;
+      filter: none;
+      animation: stats-line-draw 820ms ease-out 120ms both;
+    }
+
+    .stats-primary-chart .timeline-empty {
+      color: var(--stats-observatory-muted);
+      border-color: var(--stats-observatory-border);
+    }
+
+    @keyframes stats-bar-rise {
+      from { transform: scaleY(0); }
+      to { transform: scaleY(1); }
+    }
+
+    @keyframes stats-line-draw {
+      from { stroke-dashoffset: 1; }
+      to { stroke-dashoffset: 0; }
     }
 
     .stats-category-composition {
@@ -4882,6 +4999,10 @@
         padding: 18px 12px 16px;
       }
 
+      .filter-sidebar-toggle {
+        min-height: 44px;
+      }
+
       .layout,
       body.stats-mode .layout {
         width: 100%;
@@ -4955,6 +5076,10 @@
         min-height: 44px;
       }
 
+      .stats-primary-chart {
+        padding: 14px 12px 0;
+      }
+
       a.stats-distribution-row {
         min-height: 44px;
         margin: -4px -8px;
@@ -5013,7 +5138,14 @@
       }
     }
 
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-reduced-motion: reduce) {
+      .stats-primary-chart .timeline-bar,
+      .stats-primary-chart .timeline-line {
+        animation: none;
+      }
+    }
+
+    :where(html[data-theme="dark"]) {
       body > header {
         background: color-mix(in srgb, var(--bg) 92%, transparent);
       }
@@ -5022,33 +5154,69 @@
         --stats-data-1: #9eb9ca;
         --stats-data-2: #aaa098;
         --stats-data-3: #77736e;
+        --stats-observatory-bg: #0b1422;
+        --stats-observatory-border: #385273;
+        --stats-observatory-grid: rgba(181, 205, 232, 0.14);
+        --stats-observatory-text: #f5f8fc;
+        --stats-observatory-muted: #b8c6d8;
+        --stats-observatory-bar: #75b8ff;
+        --stats-observatory-trend: #86e2ad;
       }
 
       .stats-dashboard-card,
-      .stats-primary-chart,
-      .stats-metric-rail,
-      .stats-panel .stats-primary-chart {
+      .stats-metric-rail {
         background: transparent;
         box-shadow: none;
       }
     }
   </style>
+  <link rel="stylesheet" href="assets/reading-desk.css?v=5" />
 </head>
-<body>
+<body class="reading-desk">
 
-<header>
-  <div class="header-inner">
-    <div class="site-masthead">
+<div class="layout">
+  <aside class="sidebar" id="desk-sidebar" aria-label="Collection navigation">
       <div class="site-brand">
         <h1>
-          <span class="site-brand-mark" aria-hidden="true">LM</span>
+          <svg class="site-brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 12c-2.5-3.5-4-5-6-5a5 5 0 0 0 0 10c2 0 3.5-1.5 6-5s4-5 6-5a5 5 0 0 1 0 10c-2 0-3.5-1.5-6-5Z"/>
+          </svg>
           <span class="site-brand-name">Awesome Loop Models</span>
         </h1>
       </div>
-      <div class="top-level-tabs" role="tablist" aria-label="Site sections">
+
+      <div class="top-level-tabs" role="tablist" aria-label="Site sections" aria-orientation="vertical">
         <button type="button" class="top-level-tab active" id="papers-tab" role="tab" aria-controls="papers-panel" aria-selected="true" tabindex="0">Papers</button>
         <button type="button" class="top-level-tab" id="stats-tab" role="tab" aria-controls="stats-panel" aria-selected="false" tabindex="-1">Stats</button>
+        <button type="button" class="top-level-tab" id="blogs-tab" role="tab" aria-controls="papers-panel" aria-selected="false" tabindex="-1">Blogs</button>
       </div>
+
+    <section class="desk-watch" aria-label="Catalog watch">
+    <div class="daily-status-row">
+      <div class="daily-briefing-notice"
+         id="daily-briefing-notice"
+         role="group"
+         aria-label="Today's catalog update"
+         hidden>
+        <div class="daily-briefing-summary">
+          <span class="daily-briefing-notice-label">Today</span>
+          <span class="daily-briefing-separator" aria-hidden="true">·</span>
+          <strong class="daily-briefing-today-count" id="daily-briefing-today-count" aria-live="polite">0 papers</strong>
+        </div>
+        <div class="daily-briefing-body" id="daily-briefing-body"></div>
+      </div>
+      <div class="daily-watch-countdown" id="daily-watch-countdown">
+        <span class="daily-watch-clock" aria-hidden="true"></span>
+        <div class="daily-watch-countdown-copy">
+          <div class="daily-watch-countdown-label">Next paper watch</div>
+          <div class="daily-watch-countdown-value" id="daily-watch-countdown-value">Calculating…</div>
+          <div class="daily-watch-countdown-meta" id="daily-watch-countdown-meta">20:15 ET Sunday–Thursday · about 15 minutes after arXiv's daily announcement.</div>
+        </div>
+      </div>
+    </div>
+
+    </section>
+    <div class="desk-sidebar-bottom">
       <div class="header-actions">
         <button type="button" class="research-prompt-launch" id="research-prompt-launch" aria-haspopup="dialog" aria-controls="research-prompt-dialog">
           <svg class="research-prompt-launch-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -5065,58 +5233,66 @@
           <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
           GitHub
         </a>
-        <a class="contribute-btn" href="submit.html">📄 Submit</a>
+        <a class="contribute-btn" href="submit.html">Submit</a>
+        <div class="desk-theme">
+          <button type="button" id="desk-theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+            <svg class="desk-theme-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"/></svg>
+            <svg class="desk-theme-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          </button>
+        </div>
       </div>
+      <p class="desk-footnote">Shared weights. Deeper thinking.</p>
     </div>
-  </div>
-</header>
-
+  </aside>
+  <div id="desk-sidebar-divider" class="desk-divider desk-sidebar-divider" role="separator" tabindex="0" aria-label="Resize collection navigation" aria-description="Drag or use arrow keys to resize. The navigation always stays visible. Double-click resets the width." aria-orientation="vertical" aria-controls="desk-sidebar" aria-valuemin="200" aria-valuemax="420" aria-valuenow="236" title="Drag to resize navigation; double-click to reset"></div>
+  <main id="main">
 <div class="catalog-toolbar-shell">
   <div class="header-inner">
     <div class="papers-only-tools" id="papers-only-tools">
-      <p class="header-sub">
-        A curated list of papers and selected technical blogs on Loop Models.
-      </p>
-    <aside class="daily-briefing-notice"
-       id="daily-briefing-notice"
-       aria-label="Today's catalog update"
-       aria-live="polite"
-       hidden>
-      <span class="daily-briefing-notice-label">Today</span>
-      <strong class="daily-briefing-today-count" id="daily-briefing-today-count">0 papers</strong>
-      <span class="daily-briefing-separator" aria-hidden="true">·</span>
-      <span class="daily-briefing-recommended" id="daily-briefing-recommended">Husky recommended: No</span>
-    </aside>
-    <div class="daily-watch-countdown" id="daily-watch-countdown">
-      <div class="daily-watch-countdown-label">Today papers refresh</div>
-      <div class="daily-watch-countdown-value" id="daily-watch-countdown-value" aria-live="polite">Calculating…</div>
-      <div class="daily-watch-countdown-meta" id="daily-watch-countdown-meta">20:05 ET Sunday–Thursday · about 5 minutes after arXiv's daily announcement.</div>
-    </div>
+      <div class="desk-page-heading"><h2 id="catalog-heading">Papers</h2><span>A curated reading desk</span></div>
     <div class="search-wrap">
       <div class="search-field">
         <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
           <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
         </svg>
-        <input type="text" id="search" aria-label="Search papers or blogs" placeholder="Search papers or blogs by title, author, venue, keyword…" autocomplete="off" />
+        <input type="text" id="search" aria-label="Search papers" placeholder="Search papers, authors, keywords…" autocomplete="off" />
         <span class="search-count" id="search-count" aria-live="polite"></span>
       </div>
     </div>
     <div class="filter-sidebar-toggle-row">
       <button type="button" class="filter-sidebar-toggle" id="filter-sidebar-toggle" aria-expanded="false" aria-controls="filter-sidebar-panel">
         <span>Filters</span>
-        <span class="filter-sidebar-toggle-meta" id="filter-sidebar-summary">Sort, date, tags</span>
+        <span class="filter-sidebar-toggle-meta" id="filter-sidebar-summary">Category, date, tags</span>
       </button>
+      <label class="desk-sort">Sort
+        <select id="desk-sort" aria-label="Sort resources" onchange="setSort(this.value)">
+          <option value="date">Publication date</option><option value="citations">Citations</option>
+          <option value="stars">GitHub stars</option><option value="default">Curated</option>
+        </select>
+      </label>
+      <label class="desk-view"><span class="sr-only">View</span>
+        <select id="desk-view" aria-label="Resource view" onchange="setView(this.value)">
+          <option value="category">List</option><option value="table">Table</option>
+        </select>
+      </label>
+      <button type="button" id="desk-show-details" class="desk-show-details" aria-controls="paper-detail" hidden>Show details</button>
     </div>
     <aside class="filter-sidebar" id="filter-sidebar-panel" aria-hidden="true" hidden>
       <div class="filter-sidebar-header">
         <div>
           <div class="filter-sidebar-title">Filters</div>
-          <div class="filter-sidebar-subtitle">Sort, publication date, watch toggles, view mode, and tags.</div>
+          <div class="filter-sidebar-subtitle">Publication date, tags, and display options.</div>
         </div>
         <button type="button" class="filter-sidebar-close" id="filter-sidebar-close" aria-label="Close filters">✕</button>
       </div>
       <div class="filter-sidebar-body">
         <div class="controls-bar filter-sidebar-controls">
+          <div class="category-filter-bar">
+            <label for="category-filter" class="sort-label">Category</label>
+            <select id="category-filter" onchange="setCategoryFilter(this.value)">
+              <option value="">All categories</option>
+            </select>
+          </div>
           <div class="sort-bar">
             <span class="sort-label">Sort by:</span>
             <button class="sort-btn" data-sort="default" onclick="setSort('default')">Curated</button>
@@ -5126,21 +5302,22 @@
           </div>
           <div class="date-filter-bar">
             <span class="date-filter-label">Publication date:</span>
-            <input type="date" id="publication-date-start" class="date-input" placeholder="Start" />
+            <input type="date" id="publication-date-start" class="date-input" placeholder="Start" aria-label="Publication start date" />
             <span class="date-sep">→</span>
-            <input type="date" id="publication-date-end" class="date-input" placeholder="End" />
+            <input type="date" id="publication-date-end" class="date-input" placeholder="End" aria-label="Publication end date" />
             <button type="button" id="publication-date-clear" class="date-clear-btn">Clear</button>
           </div>
           <div class="quick-filter-bar">
             <span class="sort-label">Watch:</span>
-            <button type="button" class="sort-btn" id="accepted-only-toggle" aria-pressed="false" onclick="toggleAcceptedOnly()">Accepted only</button>
-            <button type="button" class="sort-btn" id="today-only-toggle" aria-pressed="false" onclick="toggleTodayOnly()">Today</button>
+            <button type="button" class="sort-btn" id="accepted-only-toggle" aria-pressed="false" title="Conference, workshop, or journal publication recorded in the catalog or verified from an official source. Metadata lookup failures do not remove existing publication records." onclick="toggleAcceptedOnly()">Peer-reviewed</button>
+            <button type="button" class="sort-btn" id="high-influence-only-toggle" aria-pressed="false" title="Citations exceed completed months since first public release (UTC). Uses the same rule as the High influence badge." onclick="toggleHighInfluenceOnly()">High influence</button>
+            <button type="button" class="sort-btn" id="newly-arrived-only-toggle" aria-pressed="false" onclick="toggleNewlyArrivedOnly()">Newly Arrived</button>
             <button type="button" class="sort-btn" id="has-code-toggle" aria-pressed="false" onclick="toggleHasCodeOnly()">w/ code</button>
             <button type="button" class="sort-btn" id="has-comments-toggle" aria-pressed="false" onclick="toggleHasCommentsOnly()">w/ comments</button>
           </div>
           <div class="view-toggle-bar">
             <span class="sort-label">View:</span>
-            <button type="button" class="sort-btn active" id="view-category-toggle" data-view="category" aria-pressed="true" onclick="setView('category')">Category view</button>
+            <button type="button" class="sort-btn active" id="view-category-toggle" data-view="category" aria-pressed="true" onclick="setView('category')">List view</button>
             <button type="button" class="sort-btn" id="view-table-toggle" data-view="table" aria-pressed="false" onclick="setView('table')">Table view</button>
           </div>
         </div>
@@ -5165,38 +5342,7 @@
   </div>
 </div>
 
-<div class="layout">
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-title">Browse the Collection</div>
-    <p class="sidebar-subtitle">Browse paper categories plus the flat Blogs section.</p>
-    <div class="sidebar-nav" id="sidebar-nav">
-      <!-- dynamically populated -->
-    </div>
-    <div class="sidebar-contribute">
-      <a href="submit.html">
-        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-        📄 Submit
-      </a>
-    </div>
-  </aside>
-
-  <!-- Main -->
-  <main id="main">
-
     <div class="top-level-panel" id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0" data-card-density="compact">
-
-      <div class="category-disclaimer" id="category-disclaimer">
-        <strong>Classification note.</strong> The paper shelves are intentionally coarse: Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure.
-      </div>
-
-      <div class="mobile-directory" id="mobile-directory">
-        <button type="button" class="mobile-directory-toggle" id="mobile-directory-toggle" aria-expanded="false">
-          <span>Browse Sections</span>
-          <span class="mobile-directory-hint">tap to expand</span>
-        </button>
-        <div class="mobile-directory-body" id="mobile-directory-tree"></div>
-      </div>
 
       <!-- Sections rendered dynamically by JS -->
       <div id="sections-container"></div>
@@ -5326,6 +5472,11 @@
     </section>
 
   </main>
+  <div id="desk-divider" class="desk-divider" role="separator" tabindex="0" aria-label="Resize paper list and details" aria-description="Drag right to collapse details. End collapses; double-click resets the width." aria-orientation="vertical" aria-controls="main paper-detail" aria-valuemin="0" aria-valuemax="100" aria-valuenow="47.5" title="Drag right to collapse details; use arrow keys to resize" hidden></div>
+  <dialog class="paper-detail" id="paper-detail" aria-labelledby="paper-detail-title">
+    <button type="button" class="desk-detail-close" aria-label="Close paper details" title="Close paper details" autofocus onclick="closeReadingDeskDetail()"><span aria-hidden="true">×</span></button>
+    <div id="paper-detail-content"><header class="desk-detail-header"><h2 id="paper-detail-title">Your reading desk</h2></header><div class="desk-detail-body" tabindex="0" role="region" aria-label="Resource details"><p>Select a paper to read its summary and explore the sources.</p></div></div>
+  </dialog>
 </div>
 
 <dialog class="research-prompt-dialog" id="research-prompt-dialog" aria-labelledby="research-prompt-title">
@@ -5905,6 +6056,7 @@ function renderReleasePulseChart(container, series, options) {
   });
   svg.appendChild(createStatsSvgElement('polyline', {
     class: 'timeline-line',
+    'pathLength': 1,
     points: averagePoints.join(' ')
   }));
 
@@ -6225,6 +6377,15 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+/** Display the recorded publication year, never substituting the preprint release date. */
+function getPaperVenueLabel(paper) {
+  const venue = String(paper.venue || '').trim();
+  const year = String(paper.year || '');
+  if (!venue || paper.entry_type === 'blog' || /^arxiv$/i.test(venue)
+      || /\b(?:19|20)\d{2}\b/.test(venue) || !/^(?:19|20)\d{2}$/.test(year)) return venue;
+  return venue + ' ' + year;
+}
+
 function highlightQuery(str, query) {
   if (!query || !str) return String(str || '');
   const re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
@@ -6253,26 +6414,29 @@ function getCommunityComments(paper) {
     .filter(function(comment) { return comment && comment.url; });
 }
 
-function renderCommunityCommentsHtml(paper) {
+/** Render comments as a compact disclosure, or a visible list inside full details. */
+function renderCommunityCommentsHtml(paper, expanded = false) {
   const communityComments = getCommunityComments(paper);
-  if (communityComments.length === 0) return '';
+  if (communityComments.length === 0) return expanded ? '<p class="desk-discussion-empty">No community discussion links yet.</p>' : '';
   const items = communityComments.map(function(comment, idx) {
     const label = comment.label || ('Comment ' + (idx + 1));
-    return '<a class="community-comment-item" href="' + comment.url + '" target="_blank" rel="noopener">' + escapeHtml(label) + '</a>';
+    return '<a class="community-comment-item" href="' + escapeHtml(comment.url) + '" target="_blank" rel="noopener">' + escapeHtml(label) + '</a>';
   }).join('');
+  if (expanded) return '<div class="community-comments-list">' + items + '</div>';
   return '<details class="community-comments">'
     + '<summary class="link-btn link-comment">&#128172; Community Comments (' + communityComments.length + ')</summary>'
     + '<div class="community-comments-menu">' + items + '</div>'
     + '</details>';
 }
 
-function renderPaperLinksHtml(paper) {
+/** Preserve compact combined links while allowing full details to separate discussion. */
+function renderPaperLinksHtml(paper, includeComments = true) {
   const linksHtml = Object.entries(paper.links || {})
     .filter(function(entry) { return entry[1]; })
     .map(function(entry) {
       return renderLink(entry[0], entry[1]);
     }).join('');
-  return linksHtml + renderCommunityCommentsHtml(paper);
+  return linksHtml + (includeComments ? renderCommunityCommentsHtml(paper) : '');
 }
 
 function renderCompactPaperLinksHtml(paper) {
@@ -6289,26 +6453,55 @@ function formatMetricCount(value) {
   return value >= 1000 ? (value / 1000).toFixed(1) + 'k' : String(value);
 }
 
+/** Return whole UTC months for a high-influence paper, or null when it does not qualify. */
+function getHighInfluenceMonths(paper, now = new Date()) {
+  if (!paper || paper.entry_type === 'blog' || !Number.isInteger(paper.citations) || paper.citations < 0) return null;
+  const published = parseIsoDate(paper.published_date);
+  const today = parseIsoDate(formatIsoDateUtc(now));
+  if (!published || !today || published > today) return null;
+  const monthEnd = new Date(today);
+  monthEnd.setUTCMonth(today.getUTCMonth() + 1, 0);
+  const anniversaryDay = Math.min(published.getUTCDate(), monthEnd.getUTCDate());
+  const completedMonths = (today.getUTCFullYear() - published.getUTCFullYear()) * 12
+    + today.getUTCMonth() - published.getUTCMonth() - (today.getUTCDate() < anniversaryDay ? 1 : 0);
+  return paper.citations > completedMonths ? completedMonths : null;
+}
+
+/** Explain the same citation-age rule used by the High influence filter. */
+function renderInfluenceBadgeHtml(paper, now = new Date()) {
+  const completedMonths = getHighInfluenceMonths(paper, now);
+  if (completedMonths === null) return '';
+  const explanation = 'High influence: ' + paper.citations + ' citations > ' + completedMonths
+    + ' completed months. First published ' + paper.published_date
+    + '; age as of ' + formatIsoDateUtc(now)
+    + ' UTC (month-end clamped). Citation-age heuristic, not a quality assessment.';
+  return '<button type="button" class="metric-badge metric-influence" title="' + escapeHtml(explanation)
+    + '" aria-label="' + escapeHtml(explanation) + '" onpointerenter="positionInfluenceExplanation(this)" onfocus="positionInfluenceExplanation(this)">High influence'
+    + '<span class="influence-explanation" aria-hidden="true">' + escapeHtml(explanation) + '</span></button>';
+}
+
 function renderMetricsHtml(paper) {
   const parts = [];
   if (paper.citations != null) {
     parts.push('<span class="metric-badge metric-citations">&#128218; ' + formatMetricCount(paper.citations) + ' citations</span>');
   }
+  const influenceHtml = renderInfluenceBadgeHtml(paper);
+  if (influenceHtml) parts.push(influenceHtml);
   if (paper.github_stars != null) {
     parts.push('<span class="metric-badge metric-stars">&#11088; ' + formatMetricCount(paper.github_stars) + ' stars</span>');
   }
   return parts.length ? '<div class="paper-metrics">' + parts.join('') + '</div>' : '';
 }
 
-function getBrowserTodayString() {
-  const today = new Date();
-  return today.getFullYear()
-    + '-' + String(today.getMonth() + 1).padStart(2, '0')
-    + '-' + String(today.getDate()).padStart(2, '0');
-}
-
-function getRepoTodayString() {
-  return REPO_TODAY || getBrowserTodayString();
+/** Return today's America/New_York date from the shared daily-watch helper. */
+function getCurrentDailyWatchDateString() {
+  if (!window.DAILY_WATCH_COUNTDOWN
+      || typeof window.DAILY_WATCH_COUNTDOWN.getDailyWatchParts !== 'function') return '';
+  const parts = window.DAILY_WATCH_COUNTDOWN.getDailyWatchParts(new Date());
+  if (!parts || !Number.isInteger(parts.year) || !Number.isInteger(parts.month) || !Number.isInteger(parts.day)) return '';
+  return String(parts.year).padStart(4, '0')
+    + '-' + String(parts.month).padStart(2, '0')
+    + '-' + String(parts.day).padStart(2, '0');
 }
 
 function formatTableText(value) {
@@ -6368,6 +6561,7 @@ function comparePapersByDateDesc(a, b) {
 }
 
 function updateSortButtons() {
+  document.getElementById('desk-sort').value = CURRENT_SORT;
   document.querySelectorAll('.sort-btn[data-sort]').forEach(function(btn) {
     btn.classList.toggle('active', btn.dataset.sort === CURRENT_SORT);
   });
@@ -6418,7 +6612,7 @@ function renderTableRow(paper, query) {
   const detailMetaParts = [];
   if (paper.venue || paperDisplayDate) {
     detailMetaParts.push('<span class="paper-table-detail-pill">'
-      + escapeHtml([paper.venue || '', paperDisplayDate || ''].filter(Boolean).join(' · '))
+      + escapeHtml([getPaperVenueLabel(paper), paperDisplayDate || ''].filter(Boolean).join(' · '))
       + '</span>');
   }
   if (paper._categoryTrailLabel) {
@@ -6440,11 +6634,11 @@ function renderTableRow(paper, query) {
   return '<tr class="paper-table-row' + (expanded ? ' is-expanded' : '') + '" data-paper-id="' + paperId + '">'
     + '<td class="paper-table-title-cell"><button type="button" class="paper-table-disclosure" data-paper-id="' + paperId + '" aria-expanded="' + (expanded ? 'true' : 'false') + '" aria-controls="' + detailRowId + '"><span class="paper-table-title-wrap"><span class="paper-table-caret">' + (expanded ? '⌄' : '▸') + '</span><span class="paper-table-title-text">' + mustReadMarkerHtml + '<span>' + highlightQuery(paper.title, query) + '</span>' + foundationBadgeHtml + catalogFitBadgeHtml + '</span></span></button></td>'
     + '<td class="paper-table-number">' + formatTableText(getPaperDisplayDate(paper)) + '</td>'
-    + '<td><span class="paper-venue ' + (paper.venueClass || 'venue-arxiv') + '">' + escapeHtml(paper.venue || '—') + '</span></td>'
+    + '<td><span class="paper-venue ' + (paper.venueClass || 'venue-arxiv') + '">' + escapeHtml(getPaperVenueLabel(paper) || '—') + '</span></td>'
     + '<td class="paper-table-links-cell">' + compactLinksHtml + '</td>'
     + '<td class="paper-table-meta-cell">' + renderTableTagLinksHtml(paper, 'focus') + '</td>'
     + '<td class="paper-table-meta-cell">' + renderTableTagLinksHtml(paper, 'domain') + '</td>'
-    + '<td class="paper-table-number">' + formatTableNumber(paper.citations) + '</td>'
+    + '<td class="paper-table-number">' + formatTableNumber(paper.citations) + renderInfluenceBadgeHtml(paper) + '</td>'
     + '<td class="paper-table-number">' + formatTableNumber(paper.github_stars) + '</td>'
     + '</tr>'
     + '<tr class="paper-table-detail-row' + (expanded ? ' is-open' : '') + '" id="' + detailRowId + '" data-paper-id="' + paperId + '" aria-hidden="' + (expanded ? 'false' : 'true') + '"' + (expanded ? '' : ' hidden') + '>'
@@ -6471,77 +6665,37 @@ function renderPaperTagHtml(entry, extraClass) {
   return '<a href="' + escapeHtml(getTagDrilldownHref(getTagDrilldownKeysWith(entry.key))) + '" class="' + classes.join(' ') + '" data-tag-key="' + escapeHtml(entry.key) + '" data-tag-group="' + escapeHtml(entry.group) + '">' + label + '</a>';
 }
 
+/** Keep card content identical while CSS reflows it with the available list width. */
 function renderCard(paper, query) {
-  query = query || '';
-  const authorsStr = paper._authorsText || '';
+  const title = highlightQuery(escapeHtml(paper.title), query);
   const linksHtml = renderPaperLinksHtml(paper);
-  const paperDisplayDate = getPaperDisplayDate(paper);
-  const authorsMetaText = authorsStr && paperDisplayDate
-    ? authorsStr + ' · ' + paperDisplayDate
-    : (authorsStr || paperDisplayDate);
-  const titleUrl = getPrimaryPaperUrl(paper);
-  const mustReadMarkerHtml = paper.must_read ? '<span class="must-read-marker" aria-label="Must read">🌟</span>' : '';
-  const foundationBadgeHtml = paper.foundation ? '<span class="foundation-badge">Foundation</span>' : '';
-  const catalogFitBadgeHtml = renderCatalogFitBadgeHtml(paper);
-  const catalogFitNoteHtml = renderCatalogFitNoteHtml(paper);
-  const titleTextHtml = titleUrl
-    ? '<a class="paper-title-link" href="' + escapeHtml(titleUrl) + '" target="_blank" rel="noopener">' + highlightQuery(paper.title, query) + '</a>'
-    : highlightQuery(paper.title, query);
-  const titleHtml = mustReadMarkerHtml + titleTextHtml + foundationBadgeHtml + catalogFitBadgeHtml;
-  const authorsHtml = authorsStr
-    ? '<div class="paper-meta">' + highlightQuery(authorsMetaText, query) + '</div>'
-    : '<div class="paper-meta">' + paperDisplayDate + '</div>';
-
-  function visibleEntries(entries) {
-    return entries.filter(function(entry) {
-      return !titleLower.includes((entry.displayLabel || entry.label).toLowerCase());
-    });
-  }
-
-  const tagEntries = Array.isArray(paper._tagEntries) ? paper._tagEntries : getPaperTagEntries(paper);
-  const allTags = tagEntries.map(function(entry) { return entry.label; });
-  const titleLower = (paper.title || '').toLowerCase();
-  const displayMechanismEntries = visibleEntries(tagEntries.filter(function(entry) { return entry.group === 'mechanism'; }));
-  const displayFocusEntries = visibleEntries(tagEntries.filter(function(entry) { return entry.group === 'focus'; }));
-  const displayDomainEntries = visibleEntries(tagEntries.filter(function(entry) { return entry.group === 'domain'; }));
-  const displayTagCount = displayMechanismEntries.length + displayFocusEntries.length + displayDomainEntries.length;
-  const hiddenCompactTagCount = Math.max(0, displayTagCount - 4);
-  const tagOverflowHtml = hiddenCompactTagCount
-    ? '<button type="button" class="paper-tag-overflow" aria-expanded="false" data-hidden-tag-count="' + hiddenCompactTagCount + '" aria-label="Show ' + hiddenCompactTagCount + ' more tags for this paper" onclick="togglePaperTagOverflow(this)">+' + hiddenCompactTagCount + ' tags</button>'
-    : '';
-  const tagsHtml = (displayMechanismEntries.length || displayFocusEntries.length || displayDomainEntries.length)
-    ? '<div class="paper-tags">'
-      + displayMechanismEntries.map(function(entry) { return renderPaperTagHtml(entry, 'paper-tag-mechanism'); }).join('')
-      + displayFocusEntries.map(function(entry) { return renderPaperTagHtml(entry, 'paper-tag-focus'); }).join('')
-      + displayDomainEntries.map(function(entry) { return renderPaperTagHtml(entry, 'paper-tag-domain'); }).join('')
-      + tagOverflowHtml
-      + '</div>'
-    : '';
+  const thumbnailUrl = getReadingDeskThumbnailUrl(paper);
   const metricsHtml = renderMetricsHtml(paper);
-  const signalRowHtml = metricsHtml || tagsHtml
-    ? '<div class="paper-signal-row">' + metricsHtml + tagsHtml + '</div>'
-    : '';
-
-  return '<div class="paper-card"'
-    + ' data-id="' + (paper.id || '') + '"'
-    + ' data-title="' + (paper.title || '').toLowerCase() + '"'
-    + ' data-authors="' + authorsStr.toLowerCase() + '"'
-    + ' data-venue="' + (paper.venue || '').toLowerCase() + '"'
-    + ' data-desc="' + (paper.desc || '').toLowerCase() + '"'
-    + ' data-tags="' + allTags.join(' ').toLowerCase() + '"'
-    + ' data-citations="' + (paper.citations != null ? paper.citations : -1) + '"'
-    + ' data-stars="' + (paper.github_stars != null ? paper.github_stars : -1) + '"'
-    + ' data-year="' + (paper.year || 0) + '">'
-    + '<div class="paper-top">'
-    + '<div class="paper-title">' + titleHtml + '</div>'
-    + '<span class="paper-venue ' + (paper.venueClass || 'venue-arxiv') + '">' + paper.venue + '</span>'
-    + '</div>'
-    + authorsHtml
-    + signalRowHtml
-    + catalogFitNoteHtml
-    + (paper.desc ? '<div class="paper-desc">' + highlightQuery(paper.desc, query) + '</div>' : '')
-    + '<div class="paper-links">' + linksHtml + '</div>'
-    + '</div>';
+  const tags = paper._tagEntries || [];
+  const badgesHtml = (paper.must_read ? '<span class="desk-must-read">Must read</span>' : '')
+    + (paper.foundation ? '<span class="foundation-badge">Foundation</span>' : '') + renderCatalogFitBadgeHtml(paper);
+  return '<article class="paper-card" data-id="' + escapeHtml(paper.id) + '">'
+    + (thumbnailUrl || metricsHtml ? '<div class="desk-card-visual">' : '')
+    + (thumbnailUrl ? '<a class="desk-card-preview" href="' + escapeHtml(getPrimaryPaperUrl(paper) || thumbnailUrl)
+      + '" target="_blank" rel="noopener noreferrer" aria-label="Open paper: ' + escapeHtml(paper.title) + '">'
+      + '<img src="' + thumbnailUrl + '" alt="" width="144" height="186" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentElement.remove()"></a>' : '')
+    + metricsHtml + (thumbnailUrl || metricsHtml ? '</div>' : '')
+    + '<div class="desk-card-content">'
+    + '<div class="desk-card-heading"><h3 class="paper-title"><button type="button" class="desk-paper-select" data-paper-id="' + escapeHtml(paper.id)
+    + '" aria-controls="paper-detail" aria-pressed="false" aria-expanded="false">' + title + '</button></h3>'
+    + '<span class="paper-venue ' + escapeHtml(paper.venueClass || 'venue-arxiv') + '">' + escapeHtml(getPaperVenueLabel(paper) || 'Unspecified venue') + '</span></div>'
+    + '<div class="paper-meta">' + highlightQuery(escapeHtml(paper._authorsText), query)
+    + '<span class="desk-card-date"> · <time>' + escapeHtml(getPaperDisplayDate(paper)) + '</time></span></div>'
+    + '<div class="desk-card-signals">'
+    + '<div class="paper-tags" id="desk-card-tags-' + escapeHtml(paper.id) + '">'
+    + tags.map(function(entry) { return renderPaperTagHtml(entry, 'paper-tag-' + entry.group); }).join('')
+    + (tags.length > 4 ? '<button type="button" class="paper-tag-overflow" data-extra-tags="' + (tags.length - 4)
+      + '" aria-expanded="false" aria-controls="desk-card-tags-' + escapeHtml(paper.id) + '">+' + (tags.length - 4) + ' tags</button>' : '')
+    + '</div>' + badgesHtml + '</div>'
+    + (paper.desc ? '<p class="desk-card-summary">' + highlightQuery(escapeHtml(paper.desc), query) + '</p>' : '')
+    + '<div class="desk-card-scope">' + renderCatalogFitNoteHtml(paper) + '</div>'
+    + (linksHtml ? '<div class="paper-links desk-list-links">' + linksHtml + '</div>' : '')
+    + '</div></article>';
 }
 
 // ── State & Category Tree ────────────────────────────────────────────────────
@@ -6560,6 +6714,7 @@ let DIRECT_PAPERS_BY_NODE = {};
 let NODE_COUNTS = {};
 let SECTION_OBSERVER = null;
 let ACTIVE_TAG_FILTERS = new Set();
+let ACTIVE_CATEGORY_FILTER = '';
 let URL_TAG_FILTER_KEYS = new Set();
 let ROUTE_OWNED_TAG_FILTER_KEYS = new Set();
 let HAS_RESTORED_TAG_DRILLDOWN_URL = false;
@@ -6569,7 +6724,9 @@ let TAG_FILTER_LOOKUP = {};
 let TAG_FILTER_OPEN = false;
 let TAG_DRILLDOWN_INTERACTIONS_BOUND = false;
 let ACCEPTED_ONLY = false;
-let TODAY_ONLY = false;
+let HIGH_INFLUENCE_ONLY = false;
+let NEWLY_ARRIVED_ONLY = false;
+let LATEST_ADDED_DATE = '';
 let HAS_CODE_ONLY = false;
 let HAS_COMMENTS_ONLY = false;
 let ACTIVE_TOP_LEVEL_TAB = 'papers';
@@ -6589,7 +6746,6 @@ let CATALOG_GENERATED_AT = '';
 let CURRENT_VIEW = 'category';
 let FILTER_SIDEBAR_OPEN = false;
 let EXPANDED_TABLE_ROWS = new Set();
-let REPO_TODAY = '';
 let RESEARCH_PROMPT_LANGUAGE = 'en';
 let RESEARCH_PROMPT_LAST_TRIGGER = null;
 let RESEARCH_PROMPT_COPY_TIMER = null;
@@ -6875,18 +7031,19 @@ function initResearchPrompt() {
 /**
  * Coerces a requested top-level tab to a supported tab identifier.
  * @param {string} tab Requested tab identifier.
- * @returns {'papers'|'stats'} A supported tab identifier.
+ * @returns {'papers'|'stats'|'blogs'} A supported tab identifier.
  */
 function normalizeTopLevelTab(tab) {
-  return tab === 'stats' ? 'stats' : 'papers';
+  return tab === 'stats' || tab === 'blogs' ? tab : 'papers';
 }
 
 /**
  * Maps the current URL fragment to a top-level tab without consuming category hashes.
  * @param {string} hash URL fragment, including the leading hash marker.
- * @returns {'papers'|'stats'} The tab represented by the fragment.
+ * @returns {'papers'|'stats'|'blogs'} The tab represented by the fragment.
  */
 function getTopLevelTabFromHash(hash) {
+  if (hash === '#blogs' || hash === '#section-blogs') return 'blogs';
   return hash === '#stats' ? 'stats' : 'papers';
 }
 
@@ -6896,6 +7053,7 @@ function getTopLevelTabFromHash(hash) {
  */
 function getTagDrilldownKeysFromUrl() {
   const hash = window.location.hash;
+  if (getTopLevelTabFromHash(hash) !== 'papers') return new Set();
   if (hash !== '#papers' && !hash.startsWith('#section-')) return new Set();
   const tagKeys = new URLSearchParams(window.location.search).getAll('tag').filter(Boolean);
   const uniqueTagKeys = new Set(tagKeys);
@@ -6951,12 +7109,16 @@ function navigateToTagDrilldown(tagKey) {
   ACTIVE_TAG_FILTERS.forEach(function(activeTagKey) {
     if (!getPaperCountForTagKey(activeTagKey)) ACTIVE_TAG_FILTERS.delete(activeTagKey);
   });
+  ACTIVE_CATEGORY_FILTER = '';
+  const categoryFilter = document.getElementById('category-filter');
+  if (categoryFilter) categoryFilter.value = '';
   const startDate = document.getElementById('publication-date-start');
   const endDate = document.getElementById('publication-date-end');
   if (startDate) startDate.value = '';
   if (endDate) endDate.value = '';
   ACCEPTED_ONLY = false;
-  TODAY_ONLY = false;
+  HIGH_INFLUENCE_ONLY = false;
+  NEWLY_ARRIVED_ONLY = false;
   HAS_CODE_ONLY = false;
   HAS_COMMENTS_ONLY = false;
   updateQuickFilterButtons();
@@ -7005,24 +7167,34 @@ function restoreTagDrilldownFromUrl() {
 /** Synchronizes top-level tab controls and panels with the active tab state. */
 function applyTopLevelTab() {
   const isStats = ACTIVE_TOP_LEVEL_TAB === 'stats';
-  const papersTab = document.getElementById('papers-tab');
-  const statsTab = document.getElementById('stats-tab');
+  const isBlogs = ACTIVE_TOP_LEVEL_TAB === 'blogs';
   const papersPanel = document.getElementById('papers-panel');
   const statsPanel = document.getElementById('stats-panel');
 
   document.body.classList.toggle('stats-mode', isStats);
-  if (papersTab) {
-    papersTab.classList.toggle('active', !isStats);
-    papersTab.setAttribute('aria-selected', isStats ? 'false' : 'true');
-    papersTab.tabIndex = isStats ? -1 : 0;
+  document.body.classList.toggle('blogs-mode', isBlogs);
+  ['papers', 'stats', 'blogs'].forEach(function(name) {
+    const tab = document.getElementById(name + '-tab');
+    if (!tab) return;
+    const selected = ACTIVE_TOP_LEVEL_TAB === name;
+    tab.classList.toggle('active', selected);
+    tab.setAttribute('aria-selected', String(selected));
+    tab.tabIndex = selected ? 0 : -1;
+  });
+  // Papers and Blogs share the catalog renderer, but never its resource scope.
+  if (papersPanel) {
+    papersPanel.hidden = isStats;
+    papersPanel.setAttribute('aria-labelledby', isBlogs ? 'blogs-tab' : 'papers-tab');
   }
-  if (statsTab) {
-    statsTab.classList.toggle('active', isStats);
-    statsTab.setAttribute('aria-selected', isStats ? 'true' : 'false');
-    statsTab.tabIndex = isStats ? 0 : -1;
-  }
-  if (papersPanel) papersPanel.hidden = isStats;
   if (statsPanel) statsPanel.hidden = !isStats;
+  const heading = document.getElementById('catalog-heading');
+  if (heading) heading.textContent = isBlogs ? 'Blogs' : 'Papers';
+  const search = document.getElementById('search');
+  if (search) {
+    search.setAttribute('aria-label', isBlogs ? 'Search blogs' : 'Search papers');
+    search.placeholder = isBlogs ? 'Search blogs, authors, keywords…' : 'Search papers, authors, keywords…';
+  }
+  syncReadingDeskPanel();
 }
 
 /**
@@ -7033,6 +7205,7 @@ function applyTopLevelTab() {
 function setTopLevelTab(tab, options) {
   const settings = options || {};
   if (settings.userInitiated) HAS_USER_SELECTED_TOP_LEVEL_TAB = true;
+  const previousTab = ACTIVE_TOP_LEVEL_TAB;
   ACTIVE_TOP_LEVEL_TAB = normalizeTopLevelTab(tab);
   applyTopLevelTab();
 
@@ -7045,6 +7218,9 @@ function setTopLevelTab(tab, options) {
     if (window.location.hash !== nextHash) {
       window.location.hash = nextHash;
     }
+  }
+  if (CATALOG_DATA_READY && previousTab !== ACTIVE_TOP_LEVEL_TAB && ACTIVE_TOP_LEVEL_TAB !== 'stats') {
+    doSearch(document.getElementById('search').value || '');
   }
 }
 
@@ -7059,32 +7235,34 @@ function handleTopLevelTabKeydown(event) {
   if (currentIndex < 0 || tabs.length === 0) return;
 
   let nextIndex = null;
-  if (event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-  if (event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % tabs.length;
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+  if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (currentIndex + 1) % tabs.length;
   if (event.key === 'Home') nextIndex = 0;
   if (event.key === 'End') nextIndex = tabs.length - 1;
   if (nextIndex === null) return;
 
   event.preventDefault();
   const nextTab = tabs[nextIndex];
-  const nextTabName = nextTab.id === 'stats-tab' ? 'stats' : 'papers';
+  const nextTabName = nextTab.id.replace('-tab', '');
   setTopLevelTab(nextTabName, { userInitiated: true });
   nextTab.focus();
 }
 
 /**
- * Restores a catalog section fragment after dynamic paper sections are available.
- * @param {string} hash URL fragment that may identify a generated catalog section.
+ * Restore legacy category links as a filter on the unified paper list.
+ * @param {string} hash URL fragment that may identify a catalog category.
  * @returns {void}
  */
 function restoreCategoryHashPosition(hash) {
+  if (hash === '#section-blogs') return;
   if (!CATALOG_DATA_READY || typeof hash !== 'string' || !hash.startsWith('#section-')) return;
-  const sectionId = hash.slice(1);
-  if (!document.getElementById(sectionId)) return;
+  const category = hash.slice('#section-'.length).split('__')[0];
+  if (!Object.prototype.hasOwnProperty.call(CATEGORIES, category)) return;
+  if (CURRENT_VIEW === 'table') setView('category');
+  if (ACTIVE_CATEGORY_FILTER !== category) setCategoryFilter(category);
   window.requestAnimationFrame(function() {
     if (window.location.hash !== hash || ACTIVE_TOP_LEVEL_TAB !== 'papers') return;
-    if (!document.getElementById(sectionId)) return;
-    scrollToSection(sectionId);
+    scrollToSection('papers-grid');
   });
 }
 
@@ -7095,6 +7273,11 @@ function restoreCategoryHashPosition(hash) {
  */
 function navigateToPaperSection(sectionId) {
   if (typeof sectionId !== 'string' || !sectionId) return;
+  if (sectionId === 'section-blogs') {
+    setTopLevelTab('blogs', { userInitiated: true });
+    return;
+  }
+  if (CURRENT_VIEW === 'table') setView('category');
   setTopLevelTab('papers', { updateHash: false, userInitiated: true });
   const nextHash = '#' + sectionId;
   if (window.location.hash === nextHash) {
@@ -7108,7 +7291,7 @@ function navigateToPaperSection(sectionId) {
 function initTopLevelTabInteractions() {
   document.querySelectorAll('.top-level-tab[role="tab"]').forEach(function(tab) {
     tab.addEventListener('click', function() {
-      setTopLevelTab(tab.id === 'stats-tab' ? 'stats' : 'papers', { userInitiated: true });
+      setTopLevelTab(tab.id.replace('-tab', ''), { userInitiated: true });
     });
     tab.addEventListener('keydown', handleTopLevelTabKeydown);
   });
@@ -7449,6 +7632,14 @@ function normalizeDateInputValue(raw) {
   return /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
 }
 
+/** Return the greatest valid paper intake date, or an empty string. */
+function getLatestAddedDateValue(papers) {
+  return papers.reduce(function(latest, paper) {
+    const addedDate = normalizeDateInputValue(paper && paper.added_date) || '';
+    return addedDate > latest ? addedDate : latest;
+  }, '');
+}
+
 function getPublicationDateFilter() {
   const startRaw = normalizeDateInputValue(document.getElementById("publication-date-start").value);
   const endRaw = normalizeDateInputValue(document.getElementById("publication-date-end").value);
@@ -7481,12 +7672,27 @@ function matchPublicationDate(paper, publicationDateFilter) {
   return true;
 }
 
+/** Respect explicit review status; otherwise retain the catalog's curated publication venue. */
 function matchAcceptedOnly(paper) {
-  return !ACCEPTED_ONLY || (paper.entry_type !== 'blog' && paper.venue !== 'arXiv');
+  if (!ACCEPTED_ONLY) return true;
+  if (paper.entry_type === 'blog') return false;
+  if (paper.peer_reviewed != null) return paper.peer_reviewed === true;
+  const venue = String(paper.venue || '').trim();
+  return Boolean(venue) && !/\b(?:arxiv|preprint|unpublished|submitted|submission|under[\s-]?review|withdrawn|rejected|unknown|n\/a)\b/i.test(venue);
 }
 
-function matchTodayOnly(paper) {
-  return !TODAY_ONLY || (getPaperPublicationDateValue(paper) === getRepoTodayString());
+/** Match papers in the newest catalog intake batch. */
+function matchNewlyArrivedOnly(paper) {
+  return !NEWLY_ARRIVED_ONLY || (
+    paper.entry_type !== 'blog'
+    && Boolean(LATEST_ADDED_DATE)
+    && normalizeDateInputValue(paper.added_date) === LATEST_ADDED_DATE
+  );
+}
+
+/** Keep filter membership identical to the visible High influence badge. */
+function matchHighInfluenceOnly(paper) {
+  return !HIGH_INFLUENCE_ONLY || getHighInfluenceMonths(paper) !== null;
 }
 
 function matchHasCodeOnly(paper) {
@@ -7502,28 +7708,55 @@ function matchHasCommentsOnly(paper) {
   return !HAS_COMMENTS_ONLY || paperHasCommunityComments(paper);
 }
 
+/** Populate canonical category choices once, keeping every option available during filtering. */
+function renderCategoryFilter() {
+  const select = document.getElementById('category-filter');
+  if (!select) return;
+  select.innerHTML = '<option value="">All categories</option>' + Object.entries(CATEGORIES).map(function(entry) {
+    return '<option value="' + escapeHtml(entry[0]) + '">'
+      + escapeHtml(entry[1].title || entry[0]) + ' · ' + getNodeCount([entry[0]]) + '</option>';
+  }).join('');
+  select.value = ACTIVE_CATEGORY_FILTER;
+}
+
+/** Change only the category; all other active filters keep their current values. */
+function setCategoryFilter(category) {
+  ACTIVE_CATEGORY_FILTER = Object.prototype.hasOwnProperty.call(CATEGORIES, category) ? category : '';
+  const select = document.getElementById('category-filter');
+  if (select) select.value = ACTIVE_CATEGORY_FILTER;
+  rerenderCurrentResults();
+}
+
+/** Match a paper category; the Blogs view bypasses this paper-only filter. */
+function matchCategoryFilter(paper) {
+  return !ACTIVE_CATEGORY_FILTER || (paper.entry_type !== 'blog' && (paper.category || 'designs') === ACTIVE_CATEGORY_FILTER);
+}
+
 function paperMatchesActiveFilters(paper, query, publicationDateFilter) {
-  return matchPublicationDate(paper, publicationDateFilter)
+  const isBlogs = ACTIVE_TOP_LEVEL_TAB === 'blogs';
+  return (isBlogs || (matchCategoryFilter(paper) && matchAcceptedOnly(paper) && matchHighInfluenceOnly(paper) && matchNewlyArrivedOnly(paper)))
+    && matchPublicationDate(paper, publicationDateFilter)
     && paperMatchesTagFilters(paper)
     && paperMatchesQuery(paper, query)
-    && matchAcceptedOnly(paper)
-    && matchTodayOnly(paper)
     && matchHasCodeOnly(paper)
     && matchHasCommentsOnly(paper);
 }
 
 function getFilteredPapers(query, publicationDateFilter) {
-  return (URL_TAG_FILTER_KEYS.size ? ALL_PAPERS : ALL_RESOURCES).filter(function(paper) {
+  return (ACTIVE_TOP_LEVEL_TAB === 'blogs' ? ALL_BLOGS : ALL_PAPERS).filter(function(paper) {
     return paperMatchesActiveFilters(paper, query, publicationDateFilter);
   });
 }
 
 function getFilterSidebarActiveCount() {
   const publicationDateFilter = getPublicationDateFilter();
+  const isBlogs = ACTIVE_TOP_LEVEL_TAB === 'blogs';
   let count = ACTIVE_TAG_FILTERS.size;
+  if (!isBlogs && ACTIVE_CATEGORY_FILTER) count += 1;
   if (publicationDateFilter.active) count += 1;
-  if (ACCEPTED_ONLY) count += 1;
-  if (TODAY_ONLY) count += 1;
+  if (!isBlogs && ACCEPTED_ONLY) count += 1;
+  if (!isBlogs && HIGH_INFLUENCE_ONLY) count += 1;
+  if (!isBlogs && NEWLY_ARRIVED_ONLY) count += 1;
   if (HAS_CODE_ONLY) count += 1;
   if (HAS_COMMENTS_ONLY) count += 1;
   if (CURRENT_VIEW !== 'category') count += 1;
@@ -7535,7 +7768,7 @@ function updateFilterSidebarSummary() {
   const summary = document.getElementById('filter-sidebar-summary');
   if (!summary) return;
   const activeCount = getFilterSidebarActiveCount();
-  summary.textContent = activeCount ? activeCount + ' active' : 'Sort, date, tags';
+  summary.textContent = activeCount ? activeCount + ' active' : (ACTIVE_TOP_LEVEL_TAB === 'blogs' ? 'Date, tags' : 'Category, date, tags');
 }
 
 function setFilterSidebarOpen(isOpen) {
@@ -7547,6 +7780,8 @@ function setFilterSidebarOpen(isOpen) {
   if (panel) {
     panel.hidden = !isOpen;
     panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    if (isOpen) document.getElementById('filter-sidebar-close').focus();
+    else if (panel.contains(document.activeElement) && toggle) toggle.focus();
   }
   updateFilterSidebarSummary();
 }
@@ -7588,7 +7823,8 @@ function setToggleButtonState(id, isActive) {
 
 function updateQuickFilterButtons() {
   setToggleButtonState('accepted-only-toggle', ACCEPTED_ONLY);
-  setToggleButtonState('today-only-toggle', TODAY_ONLY);
+  setToggleButtonState('high-influence-only-toggle', HIGH_INFLUENCE_ONLY);
+  setToggleButtonState('newly-arrived-only-toggle', NEWLY_ARRIVED_ONLY);
   setToggleButtonState('has-code-toggle', HAS_CODE_ONLY);
   setToggleButtonState('has-comments-toggle', HAS_COMMENTS_ONLY);
   updateFilterSidebarSummary();
@@ -7600,30 +7836,19 @@ function updateViewToggleButtons() {
   updateFilterSidebarSummary();
 }
 
-/** Toggle hidden tags on one compact paper card. */
-function togglePaperTagOverflow(button) {
-  const card = button.closest('.paper-card');
-  if (!card) return;
-  const expanded = card.classList.toggle('show-all-tags');
-  const hiddenCount = Number(button.dataset.hiddenTagCount) || 0;
-  button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-  button.setAttribute('aria-label', expanded ? 'Hide extra tags for this paper' : 'Show ' + hiddenCount + ' more tags for this paper');
-  button.textContent = expanded ? 'Fewer tags' : '+' + hiddenCount + ' tags';
-}
-
 function applyViewMode() {
   const layout = document.querySelector('.layout');
   const sectionsContainer = document.getElementById('sections-container');
   const tableShell = document.getElementById('table-view-shell');
-  const disclaimer = document.getElementById('category-disclaimer');
   const mobileDirectory = document.getElementById('mobile-directory');
   const isTableView = CURRENT_VIEW === 'table';
 
   if (layout) layout.classList.toggle('table-view-active', isTableView);
   if (sectionsContainer) sectionsContainer.hidden = isTableView;
   if (tableShell) tableShell.hidden = !isTableView;
-  if (disclaimer) disclaimer.hidden = isTableView;
   if (mobileDirectory) mobileDirectory.hidden = isTableView;
+  document.getElementById('desk-view').value = CURRENT_VIEW;
+  syncReadingDeskPanel();
 }
 
 function toggleAcceptedOnly() {
@@ -7632,8 +7857,15 @@ function toggleAcceptedOnly() {
   rerenderCurrentResults();
 }
 
-function toggleTodayOnly() {
-  TODAY_ONLY = !TODAY_ONLY;
+/** Toggle citation-age filtering without changing any other active filters. */
+function toggleHighInfluenceOnly() {
+  HIGH_INFLUENCE_ONLY = !HIGH_INFLUENCE_ONLY;
+  updateQuickFilterButtons();
+  rerenderCurrentResults();
+}
+
+function toggleNewlyArrivedOnly() {
+  NEWLY_ARRIVED_ONLY = !NEWLY_ARRIVED_ONLY;
   updateQuickFilterButtons();
   rerenderCurrentResults();
 }
@@ -7684,6 +7916,8 @@ function toggleTableRow(paperId) {
 
 function getActiveFilterLabel(query, publicationDateFilter) {
   const labels = [];
+  const isBlogs = ACTIVE_TOP_LEVEL_TAB === 'blogs';
+  if (!isBlogs && ACTIVE_CATEGORY_FILTER) labels.push('category: ' + (CATEGORIES[ACTIVE_CATEGORY_FILTER].title || ACTIVE_CATEGORY_FILTER));
   const rawQuery = (document.getElementById('search').value || '').trim();
   if (rawQuery) labels.push(rawQuery);
   if (ACTIVE_TAG_FILTERS.size) {
@@ -7700,8 +7934,9 @@ function getActiveFilterLabel(query, publicationDateFilter) {
       labels.push('published <= ' + publicationDateFilter.end);
     }
   }
-  if (ACCEPTED_ONLY) labels.push('accepted only');
-  if (TODAY_ONLY) labels.push('today');
+  if (!isBlogs && ACCEPTED_ONLY) labels.push('peer-reviewed');
+  if (!isBlogs && HIGH_INFLUENCE_ONLY) labels.push('high influence');
+  if (!isBlogs && NEWLY_ARRIVED_ONLY) labels.push('newly arrived');
   if (HAS_CODE_ONLY) labels.push('w/ code');
   if (HAS_COMMENTS_ONLY) labels.push('w/ comments');
   if (labels.length === 0 && query) labels.push(query);
@@ -7826,22 +8061,15 @@ function renderAllGrids(q) {
   const publicationDateFilter = getPublicationDateFilter();
   updateSortButtons();
   const filteredPapers = sortPapers(getFilteredPapers(query, publicationDateFilter), CURRENT_SORT);
-  const filteredPaperIds = new Set(filteredPapers.map(function(paper) { return paper.id; }));
-
-  document.querySelectorAll('.papers-grid[data-node-key]').forEach(function(grid) {
-    const nodeKey = grid.dataset.nodeKey || '';
-    const papers = sortPapers((DIRECT_PAPERS_BY_NODE[nodeKey] || []).filter(function(paper) {
-      return filteredPaperIds.has(paper.id);
-    }), CURRENT_SORT);
-    grid.innerHTML = papers.map(function(paper) { return renderCard(paper, query); }).join('');
-  });
+  const isBlogs = ACTIVE_TOP_LEVEL_TAB === 'blogs';
+  const grid = document.getElementById('papers-grid');
+  if (grid) {
+    grid.innerHTML = isBlogs ? '' : filteredPapers.map(function(paper) { return renderCard(paper, query); }).join('');
+  }
 
   const blogsGrid = document.getElementById('blogs-grid');
   if (blogsGrid) {
-    const blogs = sortPapers(ALL_BLOGS.filter(function(blog) {
-      return filteredPaperIds.has(blog.id);
-    }), CURRENT_SORT);
-    blogsGrid.innerHTML = blogs.map(function(blog) { return renderCard(blog, query); }).join('');
+    blogsGrid.innerHTML = isBlogs ? filteredPapers.map(function(blog) { return renderCard(blog, query); }).join('') : '';
   }
 
   if (CURRENT_VIEW === 'table') {
@@ -7851,9 +8079,8 @@ function renderAllGrids(q) {
     if (tableBody && tableBody.children.length) tableBody.textContent = '';
   }
   syncDynamicCounts(filteredPapers);
+  syncReadingDeskSelection(filteredPapers);
 
-  const hasQuery = Boolean(query);
-  const hasActiveFilter = hasQuery || publicationDateFilter.active || ACTIVE_TAG_FILTERS.size > 0 || ACCEPTED_ONLY || TODAY_ONLY || HAS_CODE_ONLY || HAS_COMMENTS_ONLY;
   const total = filteredPapers.length;
   const searchCount = document.getElementById('search-count');
   if (searchCount) {
@@ -7868,17 +8095,8 @@ function renderAllGrids(q) {
     document.getElementById('no-results-query').textContent = getActiveFilterLabel(query, publicationDateFilter) || 'the current filters';
   }
 
-  if (!hasActiveFilter) {
-    document.querySelectorAll('.category, .category-node').forEach(function(section) {
-      section.style.display = '';
-    });
-    document.querySelectorAll('.tree-node').forEach(function(node) {
-      node.classList.remove('tree-hidden');
-    });
-  } else {
-    syncSectionVisibility();
-    syncTreeVisibility(CURRENT_VIEW === 'category');
-  }
+  syncSectionVisibility();
+  syncTreeVisibility(CURRENT_VIEW === 'category');
 
   updateFilterSidebarSummary();
   applyViewMode();
@@ -7968,80 +8186,56 @@ function createBlogTreeNode() {
   return wrapper;
 }
 
-function updateDailyBriefingNotice() {
+function updateDailyBriefingNotice(briefing) {
   const notice = document.getElementById('daily-briefing-notice');
   if (!notice) return;
+  notice.dataset.briefingDate = briefing && typeof briefing.date === 'string' ? briefing.date : '';
 
-  const todayPapers = ALL_PAPERS.filter(function(paper) {
-    return paper._addedDate === getRepoTodayString();
-  });
-  const recommendedCount = todayPapers.filter(function(paper) {
-    return paper.must_read === true;
-  }).length;
+  const candidates = briefing && Array.isArray(briefing.candidates) ? briefing.candidates : [];
+  const papersById = new Map(ALL_PAPERS.map(function(paper) {
+    return [String(paper.id || ''), paper];
+  }));
+  const addedPapers = candidates
+    .filter(function(candidate) { return candidate && candidate.verdict === 'added'; })
+    .map(function(candidate) { return papersById.get(String(candidate.id || '')); })
+    .filter(Boolean);
   const countEl = document.getElementById('daily-briefing-today-count');
-  const recommendedEl = document.getElementById('daily-briefing-recommended');
+  const bodyEl = document.getElementById('daily-briefing-body');
   if (countEl) {
-    countEl.textContent = todayPapers.length + ' paper' + (todayPapers.length === 1 ? '' : 's');
+    countEl.textContent = addedPapers.length + ' paper' + (addedPapers.length === 1 ? '' : 's');
   }
-  if (recommendedEl) {
-    recommendedEl.textContent = 'Husky recommended: ' + (recommendedCount ? 'Yes' : 'No');
+  if (bodyEl) {
+    const summary = briefing && typeof briefing.summary === 'string' ? briefing.summary.trim() : '';
+    const paperRows = addedPapers.map(function(paper) {
+      const star = paper.must_read === true
+        ? '<span class="daily-briefing-star" role="img" aria-label="Must read">🌟</span> '
+        : '';
+      const title = star + escapeHtml(paper.title || paper.id || 'Untitled paper');
+      const url = getPrimaryPaperUrl(paper);
+      const titleHtml = url
+        ? '<a class="daily-briefing-paper-title" href="' + escapeHtml(url) + '" target="_blank" rel="noopener">' + title + '</a>'
+        : '<strong class="daily-briefing-paper-title">' + title + '</strong>';
+      return '<li class="daily-briefing-paper">' + titleHtml
+        + (paper.desc ? '<p class="daily-briefing-paper-desc">' + escapeHtml(paper.desc) + '</p>' : '')
+        + '</li>';
+    }).join('');
+    bodyEl.innerHTML = (summary ? '<p class="daily-briefing-overview">' + escapeHtml(summary) + '</p>' : '')
+      + (paperRows ? '<ul class="daily-briefing-papers">' + paperRows + '</ul>' : '');
   }
-  notice.hidden = false;
+  notice.hidden = !briefing;
 }
 
-function createCategorySection(node, pathParts, depth) {
-  const count = getNodeCount(pathParts);
-  if (!count) return null;
-
-  const isTopLevel = depth === 0;
-  const section = document.createElement("section");
-  section.className = isTopLevel ? "category" : "category-node";
-  section.id = getSectionId(pathParts);
-  section.dataset.depth = String(depth);
-  section.dataset.nodeKey = getNodeKey(pathParts);
-  section.style.setProperty("--depth", String(Math.max(depth - 1, 0)));
-
-  if (isTopLevel) {
-    section.innerHTML =
-      '<div class="category-header">'
-      + '<span class="category-icon">' + (node.icon || "•") + '</span>'
-      + '<div class="category-copy">'
-      + '<div class="category-title">' + node.title + '</div>'
-      + '<div class="category-desc">' + (node.desc || "") + '</div>'
-      + '</div>'
-      + '<span class="category-count">' + count + '</span>'
-      + '</div>';
-  } else {
-    section.innerHTML =
-      '<div class="category-node-header">'
-      + '<div>'
-      + '<div class="category-node-title">' + node.title + '</div>'
-      + (node.desc ? '<div class="category-node-desc">' + node.desc + '</div>' : '')
-      + '</div>'
-      + '<span class="category-node-count">' + count + '</span>'
-      + '</div>';
+/** Hide the Today bulletin after the New York calendar date changes. */
+function hideStaleDailyBriefingNotice() {
+  const notice = document.getElementById('daily-briefing-notice');
+  if (!notice || notice.hidden) return;
+  const currentDate = getCurrentDailyWatchDateString();
+  if (!currentDate || notice.dataset.briefingDate !== currentDate) {
+    notice.hidden = true;
   }
-
-  const body = document.createElement("div");
-  body.className = isTopLevel ? "category-body" : "category-node-body";
-
-  Object.entries(node.children || {}).forEach(function(entry) {
-    const childSection = createCategorySection(entry[1], pathParts.concat(entry[0]), depth + 1);
-    if (childSection) body.appendChild(childSection);
-  });
-
-  const directPapers = getDirectPapers(pathParts);
-  if (directPapers.length) {
-    const grid = document.createElement("div");
-    grid.className = "papers-grid";
-    grid.dataset.nodeKey = getNodeKey(pathParts);
-    grid.id = "grid-" + pathParts.join("__");
-    body.appendChild(grid);
-  }
-
-  section.appendChild(body);
-  return section;
 }
+
+setInterval(hideStaleDailyBriefingNotice, 60_000);
 
 function createBlogSection() {
   if (!ALL_BLOGS.length) return null;
@@ -8087,7 +8281,6 @@ function renderTreeInto(container) {
 
 // ── Build DOM from papers.json data ──────────────────────────────────────────
 function buildDOM(data) {
-  REPO_TODAY = (data.meta && data.meta.generated_local_date) || '';
   CATALOG_GENERATED_AT = (data.meta && data.meta.generated) || '';
   CATEGORIES = data.categories || {};
   BLOG_SECTION_META = {
@@ -8095,42 +8288,34 @@ function buildDOM(data) {
     desc: (data.meta && data.meta.blog_section_desc) || ''
   };
   ALL_PAPERS = (data.papers || []).map(preparePaperRecord);
+  LATEST_ADDED_DATE = getLatestAddedDateValue(ALL_PAPERS);
   CATALOG_DATA_ERROR = false;
   CATALOG_DATA_READY = true;
   ALL_BLOGS = (data.blogs || []).map(preparePaperRecord);
-  updateDailyBriefingNotice();
+  const latestBriefing = Array.isArray(data.briefings) ? data.briefings[0] : null;
+  const currentDailyWatchDate = getCurrentDailyWatchDateString();
+  updateDailyBriefingNotice(
+    latestBriefing && currentDailyWatchDate && latestBriefing.date === currentDailyWatchDate
+      ? latestBriefing
+      : null
+  );
   ALL_RESOURCES = ALL_PAPERS.concat(ALL_BLOGS);
   TAG_FILTER_GROUPS = buildTagFilterGroups(ALL_RESOURCES);
   buildCategoryIndex();
 
-  const disclaimer = (data.meta && data.meta.category_disclaimer) || '';
-  const disclaimerEl = document.getElementById('category-disclaimer');
-  if (disclaimerEl && disclaimer) {
-    disclaimerEl.innerHTML = '<strong>Classification note.</strong> ' + disclaimer;
-  }
-
   const container = document.getElementById("sections-container");
-  container.innerHTML = "";
-
-  Object.entries(CATEGORIES).forEach(function(entry) {
-    const catId = entry[0];
-    const section = createCategorySection(entry[1], [catId], 0);
-    if (section) container.appendChild(section);
-  });
+  container.innerHTML = '<div class="papers-grid" id="papers-grid"></div>';
 
   const blogSection = createBlogSection();
   if (blogSection) container.appendChild(blogSection);
 
-  renderTreeInto(document.getElementById("sidebar-nav"));
-  renderTreeInto(document.getElementById("mobile-directory-tree"));
+  renderCategoryFilter();
   initFilterSidebarControls();
   initSearch();
   initPublicationDateFilter();
   initTagFilterControls();
   initPaperTagInteractions();
   initTableInteractions();
-  initTreeInteractions();
-  initScrollObserver();
   updateQuickFilterButtons();
   updateViewToggleButtons();
   applyViewMode();
@@ -8142,6 +8327,7 @@ function buildDOM(data) {
 // ── Search ────────────────────────────────────────────────────────────────────
 function doSearch(query) {
   renderAllGrids(query.trim().toLowerCase());
+  if (window.innerWidth > 768) document.getElementById('main').scrollTop = 0;
 }
 
 /** Synchronizes the free-text query with the current URL without adding history. */
@@ -8295,6 +8481,7 @@ function scrollToSection(sectionId) {
   const offsetTop = target.getBoundingClientRect().top
     - scrollRoot.getBoundingClientRect().top
     + scrollRoot.scrollTop
+    - document.querySelector('.catalog-toolbar-shell').getBoundingClientRect().height
     - 14;
 
   scrollRoot.scrollTo({ top: offsetTop, behavior: "smooth" });
@@ -8358,6 +8545,8 @@ function initScrollObserver() {
   });
 }
 
+initReadingDesk();
+
 // ── Bootstrap: fetch papers.json ─────────────────────────────────────────────
 fetch("papers.json")
   .then(function(r) {
@@ -8368,6 +8557,8 @@ fetch("papers.json")
   .catch(function(err) {
     console.error("Failed to load papers.json:", err);
     CATALOG_DATA_ERROR = true;
+    document.getElementById('paper-detail-content').innerHTML =
+      '<header class="desk-detail-header"><h2 id="paper-detail-title">Catalog unavailable</h2></header><div class="desk-detail-body" tabindex="0" role="region" aria-label="Resource details"><p>Please refresh to try loading the reading desk again.</p></div>';
     restoreTopLevelTabAfterCatalogLoad();
     document.getElementById("sections-container").innerHTML =
       "<p style=\"color:var(--accent5);padding:20px\">Failed to load resource data. Please refresh or check the console.</p>";

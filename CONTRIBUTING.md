@@ -205,7 +205,11 @@ Notes for papers:
 - use `category: applications` when the main reader takeaway is task/domain performance in a concrete external setting
 - omit `category_path` in new canonical paper YAML
 - use `foundation: true` only for canonical anchor papers; do not use it just to mean "important"
+- for published papers, `year` is the conference/workshop edition or journal publication year shown in venue labels (for example, `ICML 2026`). Keep `published_date` as the first public release date, even when it is an earlier year. arXiv labels remain `arXiv`, and venue names already containing a year do not repeat it.
 - if a shelf choice is ambiguous, follow the tie-break rules in [TAXONOMY.md](TAXONOMY.md)
+- use `venue: arXiv` when no publication venue is known. Set `peer_reviewed: true` only with an official conference, workshop, or journal acceptance/publication record, and save its HTTPS URL in `venue_source`. Submission pages alone are not acceptance evidence; a reviewed non-archival workshop still counts.
+- `python3 scripts/fetch_publication.py` previews verified venue updates; add `--write` to save them or `--only <paper-id>` to limit the check. The daily metrics workflow also refreshes these fields. Failed or inconclusive lookups preserve curated metadata; a missing flag means unverified, not rejected.
+- The website's **Peer-reviewed** filter respects an explicit boolean status when present; otherwise it uses the catalog's curated conference, workshop, or journal venue. Missing crawler evidence does not erase an existing publication record. arXiv, unknown, and submission-only records are excluded. The **High influence** badge and filter share one independent rule: citations must strictly exceed completed months since `published_date`, using UTC dates and month-end-clamped anniversaries. A paper less than one month old has zero completed months, so one citation qualifies. It can be combined with Peer-reviewed and other filters; Blogs are unaffected. It is a citation-age heuristic, not a quality assessment. Never reset `published_date` when a preprint is accepted.
 
 Notes for blogs:
 - blogs do not use `category`, `category_path`, or `foundation`
@@ -214,7 +218,7 @@ Notes for blogs:
 
 Notes for both papers and blogs:
 - `published_date` is required for all papers and blogs; use the original release date and keep it as a quoted `YYYY-MM-DD` string
-- `added_date` is the repo intake date used by the daily feed / Today-style filtering; when included, keep it as a quoted `YYYY-MM-DD` string
+- `added_date` is required for new paper entries and optional for blogs; it is the repo intake date used by the daily feed, and the greatest valid paper value defines the `Newly Arrived` batch while blogs are excluded; keep it as a quoted `YYYY-MM-DD` string
 
 ### Filename Rules
 
@@ -292,7 +296,6 @@ The checker reports every measured value alongside its limit and lists all viola
 
 | Asset or schema contract | Limit |
 |---|---:|
-| `papers.json` raw size | 280,000 bytes |
 | `papers.json` deterministic gzip size (`mtime=0`) | 60,000 bytes |
 | `papers.json.briefings` | At most 1 item |
 | `content` keys anywhere within browser briefings | 0 |
@@ -301,7 +304,9 @@ The checker reports every measured value alongside its limit and lists all viola
 
 Missing files, malformed JSON, and invalid generated JSON schemas also fail the check. On every pull request, CI regenerates the offline artifacts, checks these budgets, and runs the unit tests. Citation metrics fetching and generated-file commits remain disabled for pull requests, so the PR gate performs no metrics network access and does not write back to the branch. Do not evaluate the checker against stale generated files locally.
 
-If a budget must change intentionally, first confirm that payload or image reduction is not practical. Then explain the measured change and rationale in the pull request, and update the checker constant, its contract tests, and this table together. Budget increases require maintainer review; do not raise a limit only to make CI green.
+GitHub Pages transfers `papers.json` compressed, so its deterministic gzip size is the catalog's network budget; a separate raw-byte cap would only limit harmless formatting and repetition. If the compressed catalog reaches 60,000 bytes, migrate it to a small manifest plus bounded, lazy-loaded static chunks instead of raising the limit.
+
+If another budget must change intentionally, first confirm that payload or image reduction is not practical. Then explain the measured change and rationale in the pull request, and update the checker constant, its contract tests, and this table together. Budget increases require maintainer review; do not raise a limit only to make CI green.
 
 ---
 

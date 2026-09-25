@@ -1,9 +1,11 @@
 import json
 import subprocess
 import unittest
+from datetime import datetime
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
+from zoneinfo import ZoneInfo
 
 import yaml
 
@@ -19,6 +21,8 @@ ISSUE_TEMPLATE_CONFIG_TEMPLATE_PATH = REPO_ROOT / ".github" / "ISSUE_TEMPLATE" /
 FIX_ERROR_TEMPLATE_PATH = REPO_ROOT / ".github" / "ISSUE_TEMPLATE" / "fix_error.yml"
 PR_TEMPLATE_PATH = REPO_ROOT / ".github" / "pull_request_template.md"
 INDEX_HTML_PATH = REPO_ROOT / "index.html"
+READING_DESK_JS_PATH = REPO_ROOT / "assets" / "reading-desk.js"
+READING_DESK_CSS_PATH = REPO_ROOT / "assets" / "reading-desk.css"
 SUBMIT_PAGE_PATH = REPO_ROOT / "submit.html"
 CONTRIBUTING_PATH = REPO_ROOT / "CONTRIBUTING.md"
 README_HEADER_PATH = REPO_ROOT / "scripts" / "README_HEADER.md"
@@ -33,6 +37,22 @@ FAVICON_PATH = REPO_ROOT / "assets" / "favicon.png"
 
 
 class BuildTaxonomyTests(unittest.TestCase):
+    def test_peer_review_requires_a_boolean_and_publication_source(self):
+        """A venue name or truthy string cannot stand in for verified evidence."""
+        valid = {
+            "venue": "ICML", "peer_reviewed": True,
+            "venue_source": "https://proceedings.mlr.press/v267/schone25a.html",
+        }
+        build.validate_publication_metadata(valid, "paper.yaml")
+        build.validate_publication_metadata({"venue": "arXiv"}, "paper.yaml")
+        for overrides in (
+            {"peer_reviewed": "true"}, {"venue": "arXiv"},
+            {"venue_source": ""}, {"venue_source": "javascript:alert(1)"},
+            {"venue_source": "https://user:password@example.org/paper"},
+        ):
+            with self.subTest(overrides=overrides), self.assertRaises(ValueError):
+                build.validate_publication_metadata({**valid, **overrides}, "paper.yaml")
+
     def test_colm_workshop_uses_colm_venue_class(self):
         """A COLM workshop must not fall back to the arXiv badge class."""
         self.assertEqual(
@@ -288,8 +308,63 @@ class DailyBriefingBuildTests(unittest.TestCase):
     def test_build_json_trims_briefings_for_browser_without_changing_catalog_entries(self):
         with TemporaryDirectory() as tmpdir:
             json_out = Path(tmpdir) / "papers.json"
-            papers = [{"id": "2604.21999", "title": "A paper"}]
-            blogs = [{"id": "blog-1", "title": "A blog"}]
+            papers = [
+                {
+                    "id": "2604.21999",
+                    "entry_type": "paper",
+                    "title": "A paper",
+                    "authors": "A. Author",
+                    "authors_list": ["A. Author"],
+                    "venue": "ICML",
+                    "venueClass": "venue-icml",
+                    "peer_reviewed": True,
+                    "venue_source": "https://proceedings.mlr.press/v267/schone25a.html",
+                    "year": 2026,
+                    "published_date": "2026-04-28",
+                    "added_date": "2026-04-28",
+                    "desc": "A reader-facing summary.",
+                    "links": {"arxiv": "https://arxiv.org/abs/2604.21999"},
+                    "category": "designs",
+                    "foundation": False,
+                    "catalog_fit": "adjacent",
+                    "mechanism_tags": [],
+                    "focus_tags": ["architecture"],
+                    "domain_tags": ["reasoning"],
+                    "must_read": True,
+                    "citations": 12,
+                    "github_stars": 34,
+                    "community_comments": [{"label": "Review", "url": "https://example.com/review"}],
+                    "comments": [{"label": "Review", "url": "https://example.com/review"}],
+                    "source_file": "2604.21999.yaml",
+                    "source_path": "papers/2604.21999.yaml",
+                    "citation_source_best": "semantic_scholar",
+                    "citation_sources": {"semantic_scholar": 12},
+                    "star_source_best": "github",
+                    "star_sources": {"github": 34},
+                    "metrics_updated": "2026-04-28T00:00:00Z",
+                }
+            ]
+            blogs = [
+                {
+                    "id": "blog-1",
+                    "entry_type": "blog",
+                    "title": "A blog",
+                    "authors": "B. Author",
+                    "authors_list": ["B. Author"],
+                    "published_date": "2026-04-27",
+                    "desc": "A blog summary.",
+                    "links": {"blog": "https://example.com/blog"},
+                    "mechanism_tags": ["flat-loop"],
+                    "focus_tags": [],
+                    "domain_tags": [],
+                    "source_file": "blog-1.yaml",
+                    "source_path": "blogs/blog-1.yaml",
+                    "citation_sources": {"internal": 1},
+                    "metrics_updated": "2026-04-28T00:00:00Z",
+                }
+            ]
+            papers_before = json.loads(json.dumps(papers))
+            blogs_before = json.loads(json.dumps(blogs))
             briefings = [
                 {
                     "date": "2026-04-27",
@@ -322,13 +397,44 @@ class DailyBriefingBuildTests(unittest.TestCase):
             ]
             with patch.object(build, "JSON_OUT", json_out):
                 build.build_json(papers, blogs, briefings)
-            payload = json.loads(json_out.read_text(encoding="utf-8"))
+            raw_payload = json_out.read_text(encoding="utf-8")
+            payload = json.loads(raw_payload)
 
-        self.assertEqual(payload["papers"], papers)
-        self.assertEqual(payload["blogs"], blogs)
+        browser_fields = (
+            "id", "entry_type", "title", "authors", "authors_list", "venue", "venueClass",
+            "peer_reviewed", "venue_source",
+            "year", "published_date", "added_date", "desc", "links", "category", "foundation",
+            "catalog_fit", "mechanism_tags", "focus_tags", "domain_tags", "must_read", "citations",
+            "github_stars", "community_comments", "comments",
+        )
+        self.assertEqual(
+            payload["papers"],
+            [{field: papers_before[0][field] for field in browser_fields if field in papers_before[0]}],
+        )
+        self.assertEqual(
+            payload["blogs"],
+            [{field: blogs_before[0][field] for field in browser_fields if field in blogs_before[0]}],
+        )
+        self.assertEqual(papers, papers_before)
+        self.assertEqual(blogs, blogs_before)
+        for entry in [*payload["papers"], *payload["blogs"]]:
+            for field in (
+                "source_file", "source_path", "citation_source_best", "citation_sources",
+                "star_source_best", "star_sources", "metrics_updated",
+            ):
+                self.assertNotIn(field, entry)
+        self.assertEqual(raw_payload, json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
         self.assertEqual(payload["meta"]["briefing_total"], 2)
         self.assertEqual(payload["meta"]["latest_briefing_date"], "2026-04-28")
         self.assertEqual(payload["meta"]["briefing_section_title"], "Daily Briefing")
+        self.assertEqual(build.CATALOG_TIME_ZONE.key, "America/New_York")
+        self.assertEqual(
+            payload["meta"]["generated_local_date"],
+            datetime.fromisoformat(payload["meta"]["generated"])
+            .astimezone(ZoneInfo("America/New_York"))
+            .date()
+            .isoformat(),
+        )
         self.assertEqual(
             payload["briefings"],
             [
@@ -415,11 +521,15 @@ process.stdout.write(JSON.stringify(result));
         """Evaluate the complete production tab state and interaction block in Node."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         state_start = html.index("let ALL_PAPERS = [];")
-        state_end = html.index("let CURRENT_VIEW = 'category';", state_start)
+        state_end = html.index("let CURRENT_VIEW = 'category';", state_start) + len("let CURRENT_VIEW = 'category';")
         block_start = html.index("function normalizeTopLevelTab(tab) {")
         block_end = html.index("initResearchPrompt();", block_start)
         toggle_start = html.index("function removeTagFilter(tagKey) {")
         toggle_end = html.index("function renderTagFilterGroups() {", toggle_start)
+        category_start = html.index("function renderCategoryFilter() {")
+        category_end = html.index("function paperMatchesActiveFilters(", category_start)
+        rerender_start = html.index("function rerenderCurrentResults() {")
+        rerender_end = html.index("function setToggleButtonState(", rerender_start)
         query_start = html.find("function syncSearchQueryToUrl(query) {")
         query_block = ""
         if query_start >= 0:
@@ -429,6 +539,8 @@ process.stdout.write(JSON.stringify(result));
             html[state_start:state_end]
             + html[block_start:block_end]
             + html[toggle_start:toggle_end]
+            + html[category_start:category_end]
+            + html[rerender_start:rerender_end]
             + query_block
         )
         script = f"""
@@ -443,7 +555,7 @@ const replaceStateCalls = [];
 const pushStateCalls = [];
 const searchInput = {{
   value: '',
-  placeholder: 'Search papers or blogs by title, author, venue, keyword…',
+  placeholder: 'Search papers, authors, keywords…',
   attributes: {{}},
   listeners: {{}},
   setAttribute: function(name, value) {{
@@ -503,19 +615,25 @@ function makeTab(id, selected, tabIndex) {{
   }};
 }}
 
-const tabs = [makeTab('papers-tab', true, 0), makeTab('stats-tab', false, -1)];
-const papersPanel = {{ hidden: false }};
-const statsPanel = {{ hidden: true }};
+const tabs = [makeTab('papers-tab', true, 0), makeTab('stats-tab', false, -1), makeTab('blogs-tab', false, -1)];
+const papersPanel = makeStaticElement(false);
+const statsPanel = makeStaticElement(true);
+const catalogHeading = makeStaticElement(false);
+const categoryFilter = makeStaticElement(false);
+categoryFilter.value = '';
 const bodyClasses = {{}};
 const elements = {{
   'papers-tab': tabs[0],
   'stats-tab': tabs[1],
+  'blogs-tab': tabs[2],
   'papers-panel': papersPanel,
   'stats-panel': statsPanel,
+  'catalog-heading': catalogHeading,
   'search': searchInput,
   'publication-date-start': publicationDateStart,
   'publication-date-end': publicationDateEnd,
-  'section-designs': {{}},
+  'category-filter': categoryFilter,
+  'papers-grid': {{}},
   'section-blogs': {{}}
 }};
 const document = {{
@@ -584,6 +702,10 @@ function renderStatsPanel() {{
   renderStatsCalls.push({{ ready: CATALOG_DATA_READY, error: CATALOG_DATA_ERROR }});
 }}
 function scrollToSection(sectionId) {{ scrollRequests.push(sectionId); }}
+/** Keep this tab harness independent of detail-pane rendering. */
+function syncReadingDeskPanel() {{}}
+/** Preserve view transitions without rendering the catalog in this harness. */
+function setView(view) {{ CURRENT_VIEW = view; }}
 function updateTagFilterUI() {{ uiUpdates += 1; }}
 function setFilterSidebarOpen(isOpen) {{
   FILTER_SIDEBAR_OPEN = Boolean(isOpen);
@@ -598,6 +720,7 @@ function updateQuickFilterButtons() {{ quickFilterUiUpdates += 1; }}
 function doSearch(query) {{ searchCalls.push(query); }}
 
 {production_block}
+CATEGORIES = {{ designs: {{ title: 'Architecture' }} }};
 {test_body}
 """
         output = subprocess.check_output(["node", "-e", script], text=True)
@@ -613,10 +736,11 @@ function doSearch(query) {{ searchCalls.push(query); }}
         self.assertNotIn('>Year</button>', html)
 
     def test_publication_date_filter_controls_use_date_range_inputs(self):
+        """Date range inputs must retain their native type and accessible labels."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("Publication date:", html)
-        self.assertIn('<input type="date" id="publication-date-start" class="date-input" placeholder="Start" />', html)
-        self.assertIn('<input type="date" id="publication-date-end" class="date-input" placeholder="End" />', html)
+        self.assertIn('<input type="date" id="publication-date-start" class="date-input" placeholder="Start" aria-label="Publication start date" />', html)
+        self.assertIn('<input type="date" id="publication-date-end" class="date-input" placeholder="End" aria-label="Publication end date" />', html)
         self.assertIn('<button type="button" id="publication-date-clear" class="date-clear-btn">Clear</button>', html)
         self.assertNotIn("Filter year:", html)
         self.assertNotIn("year-start", html)
@@ -1027,7 +1151,7 @@ process.stdout.write(JSON.stringify({{ blogOnly: blogOnly, shared: shared }}));
             "let ROUTE_OWNED_TAG_FILTER_KEYS = new Set();",
             "function getTagDrilldownKeysFromUrl() {",
             "function restoreTagDrilldownFromUrl() {",
-            "URL_TAG_FILTER_KEYS.size ? ALL_PAPERS : ALL_RESOURCES",
+            "ACTIVE_TOP_LEVEL_TAB === 'blogs' ? ALL_BLOGS : ALL_PAPERS",
             "window.addEventListener('popstate', restoreTagDrilldownFromUrl);",
         ):
             self.assertIn(snippet, html)
@@ -1073,6 +1197,8 @@ const parsed = {
   unknown: parse('?tag=domain%3A%3Aunknown', '#papers'),
   malformed: parse('?tag=mechanism%3Aflat-loop', '#papers'),
   nonPaper: parse('?tag=domain%3A%3Ablog-only', '#papers'),
+  blogs: parse('?tag=mechanism%3A%3Aflat-loop', '#blogs'),
+  legacyBlogs: parse('?tag=mechanism%3A%3Aflat-loop', '#section-blogs'),
   stats: parse('?tag=mechanism%3A%3Aflat-loop', '#stats')
 };
 
@@ -1141,6 +1267,8 @@ process.stdout.write(JSON.stringify({
                 "unknown": [],
                 "malformed": [],
                 "nonPaper": [],
+                "blogs": [],
+                "legacyBlogs": [],
                 "stats": [],
             },
         )
@@ -1418,19 +1546,32 @@ setTimeout(function() {
         self.assertNotIn("family: 'Family Tags'", html)
         self.assertNotIn("paper.family_tags", html)
 
-    def test_paper_titles_link_to_primary_paper_pages(self):
+    def test_paper_titles_select_details_and_keep_primary_source_links(self):
+        """Reading-desk titles select a resource while sources remain native links."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        desk = READING_DESK_JS_PATH.read_text(encoding="utf-8")
+        render_start = html.index("function renderCard(paper, query) {")
+        render_end = html.index("// ── State & Category Tree", render_start)
+        card = html[render_start:render_end]
         self.assertIn("function getPrimaryPaperUrl(paper)", html)
         self.assertIn("paper.links.blog", html)
         self.assertIn("paper.links.arxiv", html)
         self.assertIn("paper.links.paper", html)
-        self.assertIn('class=\"paper-title-link\"', html)
+        self.assertIn('class="desk-paper-select"', card)
+        self.assertIn('aria-controls="paper-detail" aria-pressed="false"', card)
+        self.assertIn("renderPaperLinksHtml(paper)", card)
+        self.assertIn('class="paper-links desk-list-links"', card)
+        self.assertIn('class="desk-open-paper"', desk)
+        self.assertIn("getPrimaryPaperUrl(paper)", desk)
+        self.assertIn("escapeHtml(primaryUrl)", desk)
 
-    def test_foundation_badge_and_category_disclaimer_are_rendered(self):
+    def test_foundation_badge_remains_without_classification_disclosure(self):
+        """Removing the classification explanation does not remove paper status."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn("foundation-badge", html)
-        self.assertIn("Theoretical and Mechanical Analysis, Architecture and Algorithm Designs, and Applications Focused", html)
-        self.assertIn("category-disclaimer", html)
+        self.assertNotIn("category-disclaimer", html)
+        self.assertNotIn("desk-scope", html)
+        self.assertNotIn("About the classification", html)
 
     def test_adjacent_work_is_labeled_across_catalog_and_stats_views(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -1440,12 +1581,18 @@ setTimeout(function() {
         self.assertIn("outside the strict single-forward loop-model scope", html)
         self.assertIn('id="stats-total-papers-note"', html)
 
-    def test_must_read_star_marker_is_rendered_in_frontend_titles(self):
+    def test_must_read_status_is_rendered_in_cards_details_and_table_titles(self):
+        """The reading desk uses a text status while table titles retain their star."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        desk = READING_DESK_JS_PATH.read_text(encoding="utf-8")
+        render_start = html.index("function renderCard(paper, query) {")
+        render_end = html.index("// ── State & Category Tree", render_start)
+        marker = '(paper.must_read ? \'<span class="desk-must-read">Must read</span>\' : \'\')'
+        self.assertIn(marker, html[render_start:render_end])
+        self.assertIn(marker, desk)
         self.assertIn("must-read-marker", html)
         self.assertIn("paper.must_read", html)
         self.assertIn("🌟", html)
-        self.assertIn("const titleHtml = mustReadMarkerHtml + titleTextHtml + foundationBadgeHtml + catalogFitBadgeHtml;", html)
         self.assertIn("mustReadMarkerHtml + '<span>' + highlightQuery(paper.title, query) + '</span>' + foundationBadgeHtml + catalogFitBadgeHtml", html)
 
     def test_filter_sidebar_hooks_exist_and_top_panel_resizer_is_removed(self):
@@ -1497,31 +1644,31 @@ setTimeout(function() {
         self.assertIn("blogs-grid", html)
 
     def test_catalog_section_builders_create_empty_grid_shells(self):
-        """Keep section construction free of eager catalog card rendering."""
+        """Create one empty paper list and a separate lazy-rendered Blogs section."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        category_start = html.index("function createCategorySection(node, pathParts, depth) {")
-        category_end = html.index("function createBlogSection()", category_start)
-        category_builder = html[category_start:category_end]
-        blog_start = category_end
+        build_start = html.index("function buildDOM(data) {")
+        build_end = html.index("// ── Search", build_start)
+        list_builder = html[build_start:build_end]
+        blog_start = html.index("function createBlogSection()")
         blog_end = html.index("function renderTreeInto(container)", blog_start)
         blog_builder = html[blog_start:blog_end]
         renderer_start = html.index("function renderAllGrids(q) {")
-        renderer_end = html.index("function updateDailyBriefingNotice()", renderer_start)
+        renderer_end = html.index("function updateDailyBriefingNotice(briefing)", renderer_start)
         renderer = html[renderer_start:renderer_end]
 
-        self.assertIn('grid.dataset.nodeKey = getNodeKey(pathParts);', category_builder)
-        self.assertIn('grid.id = "grid-" + pathParts.join("__");', category_builder)
+        self.assertIn('<div class="papers-grid" id="papers-grid"></div>', list_builder)
+        self.assertNotIn("createCategorySection", html)
         self.assertIn("grid.id = 'blogs-grid';", blog_builder)
-        for builder in (category_builder, blog_builder):
+        for builder in (list_builder, blog_builder):
             self.assertNotIn("grid.innerHTML", builder)
             self.assertNotIn("renderCard(", builder)
 
         self.assertIn(
-            "grid.innerHTML = papers.map(function(paper) { return renderCard(paper, query); }).join('');",
+            "grid.innerHTML = isBlogs ? '' : filteredPapers.map(function(paper) { return renderCard(paper, query); }).join('');",
             renderer,
         )
         self.assertIn(
-            "blogsGrid.innerHTML = blogs.map(function(blog) { return renderCard(blog, query); }).join('');",
+            "blogsGrid.innerHTML = isBlogs ? filteredPapers.map(function(blog) { return renderCard(blog, query); }).join('') : '';",
             renderer,
         )
         self.assertEqual(html.count("grid.innerHTML ="), 1)
@@ -1531,7 +1678,7 @@ setTimeout(function() {
         """Preserve lazy table rendering when view modes change."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         renderer_start = html.index("function renderAllGrids(q) {")
-        renderer_end = html.index("function updateDailyBriefingNotice()", renderer_start)
+        renderer_end = html.index("function updateDailyBriefingNotice(briefing)", renderer_start)
         renderer = html[renderer_start:renderer_end]
 
         self.assertIn(
@@ -1541,99 +1688,155 @@ setTimeout(function() {
         self.assertIn("if (tableBody && tableBody.children.length) tableBody.textContent = '';", renderer)
         self.assertEqual(renderer.count("renderTableView(query, filteredPapers);"), 1)
 
-    def test_daily_briefing_notice_is_a_compact_today_status_in_document_flow(self):
+    def test_daily_briefing_notice_is_a_static_bulletin_in_document_flow(self):
+        """Catalog updates stay visible without nested disclosure controls."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn('<aside class="daily-briefing-notice"', html)
+        self.assertIn('<div class="daily-status-row">', html)
+        self.assertIn('<div class="daily-briefing-notice"', html)
         self.assertIn('id="daily-briefing-notice"', html)
+        self.assertIn('<div class="daily-briefing-summary">', html)
         self.assertIn('<span class="daily-briefing-notice-label">Today</span>', html)
-        self.assertIn('id="daily-briefing-today-count">0 papers</strong>', html)
         self.assertIn('class="daily-briefing-separator" aria-hidden="true">·</span>', html)
-        self.assertIn('id="daily-briefing-recommended">Husky recommended: No</span>', html)
-        self.assertIn("function updateDailyBriefingNotice()", html)
-        self.assertIn("updateDailyBriefingNotice();", html)
-
-        updater_start = html.index("function updateDailyBriefingNotice() {")
-        updater_end = html.index("function createCategorySection(", updater_start)
+        self.assertIn('id="daily-briefing-today-count" aria-live="polite">0 papers</strong>', html)
+        self.assertIn('id="daily-briefing-body"', html)
+        self.assertIn("function updateDailyBriefingNotice(briefing)", html)
+        self.assertIn("function getCurrentDailyWatchDateString()", html)
+        self.assertIn("window.DAILY_WATCH_COUNTDOWN.getDailyWatchParts(new Date())", html)
+        helper_start = html.index("function getCurrentDailyWatchDateString() {")
+        helper_end = html.index("function formatTableText(value)", helper_start)
+        helper = html[helper_start:helper_end]
+        self.assertIn("typeof window.DAILY_WATCH_COUNTDOWN.getDailyWatchParts !== 'function'", helper)
+        self.assertIn("return '';", helper)
+        self.assertIn(
+            "const latestBriefing = Array.isArray(data.briefings) ? data.briefings[0] : null;",
+            html,
+        )
+        self.assertIn(
+            "const currentDailyWatchDate = getCurrentDailyWatchDateString();",
+            html,
+        )
+        build_dom_start = html.index("function buildDOM(data) {")
+        build_dom_end = html.index("// ── Search", build_dom_start)
+        build_dom = html[build_dom_start:build_dom_end]
+        self.assertIn("latestBriefing && currentDailyWatchDate", build_dom)
+        self.assertIn("latestBriefing.date === currentDailyWatchDate", build_dom)
+        self.assertNotIn("getRepoTodayString()", build_dom)
+        updater_start = html.index("function updateDailyBriefingNotice(briefing) {")
+        updater_end = html.index("function hideStaleDailyBriefingNotice()", updater_start)
         updater = html[updater_start:updater_end]
-        self.assertIn("paper._addedDate === getRepoTodayString()", updater)
+        self.assertIn("notice.dataset.briefingDate", updater)
+        self.assertIn("Array.isArray(briefing.candidates)", updater)
+        self.assertIn("candidate.verdict === 'added'", updater)
+        self.assertIn("new Map(ALL_PAPERS.map", updater)
+        self.assertIn("papersById.get(String(candidate.id || ''))", updater)
+        self.assertIn("briefing.summary", updater)
+        self.assertIn("paper.desc", updater)
         self.assertIn("paper.must_read === true", updater)
-        self.assertIn("todayPapers.length + ' paper'", updater)
-        self.assertIn("recommendedCount ? 'Yes' : 'No'", updater)
+        self.assertIn("getPrimaryPaperUrl(paper)", updater)
+        self.assertIn("escapeHtml(summary)", updater)
+        self.assertIn("escapeHtml(paper.desc)", updater)
+        self.assertNotIn("_addedDate", updater)
+        self.assertNotIn("getRepoTodayString()", updater)
+
+        stale_start = updater_end
+        stale_end = html.index("function createBlogSection(", stale_start)
+        stale_helper = html[stale_start:stale_end]
+        self.assertIn("if (!notice || notice.hidden) return;", stale_helper)
+        self.assertIn("notice.dataset.briefingDate !== currentDate", stale_helper)
+        self.assertIn("notice.hidden = true;", stale_helper)
+        self.assertNotIn("notice.open", stale_helper)
+        self.assertEqual(html.count("setInterval(hideStaleDailyBriefingNotice, 60_000);"), 1)
+
+        watch_start = html.index('<section class="desk-watch"')
+        status_start = html.index('<div class="daily-status-row">', watch_start)
+        notice_markup = html.index('<div class="daily-briefing-notice"', status_start)
+        countdown_markup = html.index('<div class="daily-watch-countdown"', notice_markup)
+        watch_end = html.index('</section>', countdown_markup)
+        sidebar_end = html.index('</aside>', watch_start)
+        self.assertIn('aria-label="Catalog watch"', html[watch_start:status_start])
+        self.assertNotIn('desk-watch-title', html)
+        self.assertNotIn('<details', html[watch_start:watch_end])
+        self.assertLess(status_start, notice_markup)
+        self.assertLess(notice_markup, countdown_markup)
+        self.assertLess(countdown_markup, watch_end)
+        self.assertLess(watch_end, sidebar_end)
+
+        status_css_start = html.index("\n    .daily-status-row {\n") + 1
+        status_css_end = html.index("}", status_css_start)
+        status_css = html[status_css_start:status_css_end]
+        for declaration in (
+            "display: flex;",
+            "align-items: flex-start;",
+            "flex-wrap: wrap;",
+            "justify-content: center;",
+            "width: 100%;",
+        ):
+            self.assertIn(declaration, status_css)
 
         css_start = html.index(".daily-briefing-notice {\n")
         css_end = html.index("}", css_start)
         notice_css = html[css_start:css_end]
         for declaration in (
             "position: relative;",
-            "display: flex;",
-            "flex-wrap: wrap;",
-            "width: fit-content;",
-            "max-width: 100%;",
+            "display: block;",
+            "flex: 0 1 auto;",
+            "width: 100%;",
+            "min-width: 0;",
         ):
             self.assertIn(declaration, notice_css)
         self.assertNotIn("position: absolute;", notice_css)
+        self.assertNotIn(".daily-briefing-notice {\n        padding:", html)
 
-        for removed_ui in (
-            "daily-briefing-notice-detail",
-            "daily-briefing-notice-toggle",
-            "daily-briefing-notice-candidate",
-            "function renderDailyBriefingNoticeCandidate",
-            "function setDailyBriefingNoticeExpanded",
-            "ALL_BRIEFINGS",
-        ):
-            self.assertNotIn(removed_ui, html)
+        self.assertNotIn(".daily-briefing-notice[open]", html)
 
-    def test_countdown_reflows_before_it_can_overlap_masthead_tools(self):
-        """The remaining absolute side widget must rejoin flow at mid widths."""
+        summary_start = html.index(".daily-briefing-summary {\n")
+        summary_end = html.index("}", summary_start)
+        self.assertNotIn("cursor: pointer;", html[summary_start:summary_end])
+
+    def test_daily_status_row_reflows_without_detached_positioning(self):
+        """Daily status remains in flow and becomes compact on phones."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        media_start = html.index("@media (max-width: 1344px) {")
-        media_end = html.index("/* ── Sidebar contribute link ── */", media_start)
-        media_css = html[media_start:media_end]
+        self.assertNotIn("position: absolute;\n      top: 58px;", html)
+        self.assertNotIn('id="daily-watch-countdown-value" aria-live=', html)
+        self.assertIn('id="daily-watch-countdown-value">Calculating…</div>', html)
+        self.assertIn('<span class="daily-watch-clock" aria-hidden="true"></span>', html)
+        self.assertIn('<div class="daily-watch-countdown-copy">', html)
+        self.assertIn('<div class="daily-watch-countdown-label">Next paper watch</div>', html)
+        self.assertNotIn('"briefing countdown"', html)
+        self.assertIn(".papers-only-tools > .daily-status-row { order: 2; }", html)
+        self.assertIn(".papers-only-tools > .search-wrap { order: 3; }", html)
+        self.assertIn("@keyframes daily-watch-clock-spin", html)
+        self.assertIn("animation: daily-watch-clock-spin 60s steps(60, end) infinite;", html)
+        self.assertIn(".daily-watch-clock::after { animation: none; }", html)
+        self.assertIn(".daily-briefing-notice {\n        width: 100%;", html)
+        meta_start = html.index(".daily-watch-countdown-meta {\n")
+        meta_end = html.index("}", meta_start)
+        self.assertIn("display: none;", html[meta_start:meta_end])
 
-        self.assertIn(".daily-watch-countdown {", media_css)
-        for declaration in (
-            "position: relative;",
-            "top: auto;",
-            "left: auto;",
-            "right: auto;",
-            "width: min(560px, 100%);",
-        ):
-            self.assertIn(declaration, media_css)
-        self.assertNotIn("@media (max-width: 1080px)", html)
-
-        grid_start = html.index("@media (min-width: 769px) and (max-width: 1344px) {")
-        grid_end = html.index("@media (min-width: 769px) and (max-width: 1100px) {", grid_start)
-        grid_css = html[grid_start:grid_end]
-        board_start = grid_css.rindex("body:not(.stats-mode) .daily-briefing-notice {")
-        board_end = grid_css.index("}", board_start)
-        board_css = grid_css[board_start:board_end]
-        for declaration in (
-            "width: fit-content;",
-            "margin: 0 auto;",
-            "align-self: start;",
-            "justify-self: center;",
-        ):
-            self.assertIn(declaration, board_css)
-
-    def test_category_section_counts_render_as_numbers_only(self):
+    def test_papers_list_does_not_generate_category_groups(self):
+        """Categories belong in Filters, not in the globally sorted paper list."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn("'<span class=\"category-count\">' + count + '</span>'", html)
-        self.assertIn("'<span class=\"category-node-count\">' + count + '</span>'", html)
-        self.assertNotIn("count + ' paper' + (count !== 1 ? 's' : '')", html)
+        self.assertNotIn("function createCategorySection", html)
+        self.assertIn('id="category-filter" onchange="setCategoryFilter(this.value)"', html)
 
-    def test_daily_watch_filter_controls_and_table_view_markup_exist(self):
+    def test_quick_filter_controls_and_table_view_markup_exist(self):
+        """Expose the supported quick filters alongside both catalog views."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         for snippet in (
-            "Accepted only",
-            "Today",
+            "Peer-reviewed",
             "w/ code",
             "w/ comments",
-            "Category view",
+            "List view",
             "Table view",
             "table-view-shell",
             "papers-table-body",
         ):
             self.assertIn(snippet, html)
+        self.assertIn(
+            '<button type="button" class="sort-btn" id="newly-arrived-only-toggle" '
+            'aria-pressed="false" onclick="toggleNewlyArrivedOnly()">Newly Arrived</button>',
+            html,
+        )
 
         header_start = html.index('<table class="papers-table" aria-label="Table view of loop-model resources">')
         header_end = html.index("</thead>", header_start)
@@ -1666,11 +1869,13 @@ setTimeout(function() {
         self.assertNotIn("Category / Subcategory", header_snippet)
         self.assertNotIn("Added", header_snippet)
 
-    def test_top_level_papers_and_stats_tab_shell_exists(self):
+    def test_top_level_papers_stats_and_blogs_tab_shell_exists(self):
+        """All three navigation choices expose their tab and panel relationships."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         for snippet in (
             '<button type="button" class="top-level-tab active" id="papers-tab" role="tab" aria-controls="papers-panel" aria-selected="true" tabindex="0"',
             '<button type="button" class="top-level-tab" id="stats-tab" role="tab" aria-controls="stats-panel" aria-selected="false" tabindex="-1"',
+            '<button type="button" class="top-level-tab" id="blogs-tab" role="tab" aria-controls="papers-panel" aria-selected="false" tabindex="-1"',
             '<div class="top-level-panel" id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0"',
             '<section class="top-level-panel stats-panel" id="stats-panel" role="tabpanel" aria-labelledby="stats-tab" tabindex="0" hidden>',
         ):
@@ -1681,43 +1886,59 @@ setTimeout(function() {
             "let ACTIVE_TOP_LEVEL_TAB = 'papers';",
             "function setTopLevelTab(tab, options) {",
             "function applyTopLevelTab() {",
-            "Category view",
+            "List view",
             "Table view",
         ):
             self.assertIn(snippet, html)
 
-    def test_top_level_tabs_are_a_global_masthead_mode_switch(self):
-        """The site mode switch belongs to the masthead and owns the page layout."""
+    def test_top_level_tabs_and_tools_use_the_three_column_reading_desk(self):
+        """The rail owns navigation while search and details occupy separate columns."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        header_start = html.index("<header>")
-        header_end = html.index("</header>", header_start)
-        header = html[header_start:header_end]
-        masthead_start = header.index('<div class="site-masthead">')
-        masthead = header[masthead_start:]
-        tools_start = html.index('<div class="catalog-toolbar-shell">', header_end)
-        tools_end = html.index('<div class="layout">', tools_start)
-        tools = html[tools_start:tools_end]
+        style = READING_DESK_CSS_PATH.read_text(encoding="utf-8")
+        sidebar_start = html.index('<aside class="sidebar"')
+        sidebar_end = html.index('</aside>', sidebar_start)
+        sidebar = html[sidebar_start:sidebar_end]
         main_start = html.index('<main id="main">')
         main_end = html.index("</main>", main_start)
         main = html[main_start:main_end]
+        tools_start = main.index('<div class="catalog-toolbar-shell">')
+        tools_end = main.index('id="papers-panel"', tools_start)
+        tools = main[tools_start:tools_end]
+        detail_start = html.index('<dialog class="paper-detail"', main_end)
 
-        self.assertIn('<div class="site-brand">', masthead)
-        self.assertIn('<span class="site-brand-mark" aria-hidden="true">LM</span>', masthead)
-        self.assertIn('<div class="top-level-tabs" role="tablist"', masthead)
-        self.assertIn('<div class="header-actions">', masthead)
-        brand_index = masthead.index('<div class="site-brand">')
-        tabs_index = masthead.index('<div class="top-level-tabs" role="tablist"')
-        actions_index = masthead.index('<div class="header-actions">')
+        self.assertLess(sidebar_end, main_start)
+        self.assertLess(main_end, detail_start)
+        self.assertIn('<div class="site-brand">', sidebar)
+        self.assertIn('<svg class="site-brand-mark"', sidebar)
+        self.assertNotIn('A field guide to recurrent depth', sidebar)
+        self.assertNotIn('id="sidebar-nav"', sidebar)
+        self.assertIn('id="category-filter"', tools)
+        self.assertNotIn('id="mobile-directory"', html)
+        self.assertIn('<div class="top-level-tabs" role="tablist"', sidebar)
+        self.assertIn('<div class="header-actions">', sidebar)
+        self.assertIn('aria-orientation="vertical"', sidebar)
+        brand_index = sidebar.index('<div class="site-brand">')
+        tabs_index = sidebar.index('<div class="top-level-tabs" role="tablist"')
+        actions_index = sidebar.index('<div class="header-actions">')
         self.assertLess(brand_index, tabs_index)
         self.assertLess(tabs_index, actions_index)
         self.assertNotIn("top-level-tabs", main)
         for marker in (
-            'class="header-sub"',
             'id="daily-briefing-notice"',
             'id="daily-watch-countdown"',
+            'id="research-prompt-launch"',
+            'href="submit.html"',
+            'id="desk-theme-toggle"',
+            'class="desk-theme-moon"',
+            'class="desk-theme-sun"',
+        ):
+            self.assertIn(marker, sidebar)
+        for marker in (
             'class="search-wrap"',
             'id="filter-sidebar-toggle"',
             'id="filter-sidebar-panel"',
+            'id="desk-sort"',
+            'id="desk-view"',
         ):
             self.assertIn(marker, tools)
         for element_id in (
@@ -1733,28 +1954,19 @@ setTimeout(function() {
         apply_end = html.index("function setTopLevelTab(tab, options) {", apply_start)
         apply_helper = html[apply_start:apply_end]
         self.assertIn("document.body.classList.toggle('stats-mode', isStats);", apply_helper)
+        self.assertIn("syncReadingDeskPanel();", apply_helper)
 
-        style = html[html.index("<style>"):html.index("</style>")]
-        for selector in (
-            "body.stats-mode .papers-only-tools",
-            "body.stats-mode .sidebar",
-            "body.stats-mode .layout",
-            "body.stats-mode main",
-            "body.stats-mode .stats-panel",
-        ):
-            self.assertIn(selector, style)
-        editorial_start = style.index("/* ── Personal-site-aligned editorial system ── */")
-        mobile_start = style.index("@media (max-width: 768px)", editorial_start)
+        self.assertRegex(style, r"grid-template-columns:\s*var\(--desk-rail\)\s+minmax\([^;]+\)\s+1px\s+minmax\([^;]+\);")
+        self.assertIn(".reading-desk.stats-mode .layout", style)
+        self.assertIn(".reading-desk .layout.table-view-active", style)
+        self.assertIn("grid-template-columns: var(--desk-rail) minmax(0, 1fr);", style)
+        self.assertIn(".reading-desk .catalog-toolbar-shell { position: sticky;", style)
+        mobile_start = style.index("@media (max-width: 768px)")
         mobile_css = style[mobile_start:]
-        self.assertIn(".site-masthead", mobile_css)
-        self.assertIn(".top-level-tabs", mobile_css)
-        self.assertIn(".site-masthead {\n        display: grid;", mobile_css)
-        self.assertIn("grid-template-columns: minmax(0, 1fr) auto;", mobile_css)
-        self.assertIn("min-width: max-content;", mobile_css)
-        self.assertIn(".site-brand-name {\n        display: block;", mobile_css)
-        self.assertIn("text-overflow: ellipsis;", mobile_css)
-        self.assertIn(".site-masthead .header-actions {\n        display: none;", mobile_css)
-        self.assertIn("position: sticky;", mobile_css)
+        self.assertIn(".reading-desk .top-level-tabs { flex-direction: row;", mobile_css)
+        self.assertIn(".reading-desk .header-actions { display: flex;", mobile_css)
+        self.assertIn(".desk-watch { margin: 0; grid-row: 4; grid-column: 1 / -1;", mobile_css)
+        self.assertIn(".reading-desk .paper-detail { width: calc(100vw - 24px);", mobile_css)
 
     def test_editorial_masthead_is_compact_on_desktop_without_shrinking_mobile_targets(self):
         """Desktop chrome should be shorter while mobile keeps its existing tap targets."""
@@ -1805,7 +2017,9 @@ setTimeout(function() {
         hash_start = html.index("function getTopLevelTabFromHash(hash) {")
         hash_end = html.index("function applyTopLevelTab() {", hash_start)
         hash_helper = html[hash_start:hash_end]
-        self.assertIn("return hash === '#stats' ? 'stats' : 'papers';", hash_helper)
+        self.assertIn("hash === '#stats'", hash_helper)
+        self.assertIn("hash === '#blogs'", hash_helper)
+        self.assertIn("hash === '#section-blogs'", hash_helper)
 
         keyboard_start = html.index("function handleTopLevelTabKeydown(event) {")
         init_start = html.index("function initTopLevelTabInteractions() {", keyboard_start)
@@ -1832,7 +2046,7 @@ setTimeout(function() {
         build_end = html.index("// ── Search", build_start)
         build_helper = html[build_start:build_end]
         data_ready_index = build_helper.index("CATALOG_DATA_READY = true;")
-        sections_created_index = build_helper.index("container.appendChild(section)")
+        sections_created_index = build_helper.index('id="papers-grid"')
         restore_index = build_helper.index("restoreTopLevelTabAfterCatalogLoad();")
         category_restore_index = build_helper.index("restoreCategoryHashPosition(window.location.hash);")
         self.assertLess(data_ready_index, restore_index)
@@ -1854,9 +2068,9 @@ setTimeout(function() {
         self.assertIn("window.location.hash = nextHash", setter_helper)
 
     def test_top_level_hash_mapping_behavior(self):
-        """Only the dedicated Stats hash may select Stats; all other hashes select Papers."""
+        """Blogs has its own route while legacy category hashes remain compatible."""
         result = self.run_top_level_tab_block("", """
-const hashes = ['#stats', '#papers', '', '#section-designs'];
+const hashes = ['#stats', '#papers', '#blogs', '#section-blogs', '', '#section-designs'];
 const result = hashes.map(function(hash) {
   return { hash: hash, tab: getTopLevelTabFromHash(hash) };
 });
@@ -1867,16 +2081,65 @@ process.stdout.write(JSON.stringify(result));
             [
                 {"hash": "#stats", "tab": "stats"},
                 {"hash": "#papers", "tab": "papers"},
+                {"hash": "#blogs", "tab": "blogs"},
+                {"hash": "#section-blogs", "tab": "blogs"},
                 {"hash": "", "tab": "papers"},
                 {"hash": "#section-designs", "tab": "papers"},
             ],
         )
 
+    def test_blogs_navigation_rerenders_and_legacy_route_does_not_scroll(self):
+        """Blogs owns the shared content panel and legacy links never scroll Papers."""
+        result = self.run_top_level_tab_block("#papers", """
+CATALOG_DATA_READY = true;
+HAS_RESTORED_TAG_DRILLDOWN_URL = true;
+ACTIVE_CATEGORY_FILTER = 'designs';
+LAST_RESTORED_SEARCH_QUERY = 'depth';
+searchInput.value = 'depth';
+window.location.search = '?q=depth';
+tabs[2].listeners.click[0]();
+dispatchWindowEvent('hashchange');
+const entered = {
+  active: ACTIVE_TOP_LEVEL_TAB,
+  hash: window.location.hash,
+  selected: tabs.map(tab => tab.attributes['aria-selected']),
+  tabStops: tabs.map(tab => tab.tabIndex),
+  labelledBy: papersPanel.attributes['aria-labelledby'],
+  heading: catalogHeading.textContent,
+  searchLabel: searchInput.attributes['aria-label'],
+  placeholder: searchInput.placeholder,
+  panels: [papersPanel.hidden, statsPanel.hidden],
+  searches: searchCalls.slice()
+};
+setBrowserHash('#section-blogs');
+dispatchWindowEvent('hashchange');
+flushAnimationFrames();
+process.stdout.write(JSON.stringify({
+  entered,
+  legacy: { active: ACTIVE_TOP_LEVEL_TAB, category: ACTIVE_CATEGORY_FILTER, scrolls: scrollRequests }
+}));
+""")
+        self.assertEqual(result["entered"], {
+            "active": "blogs",
+            "hash": "#blogs",
+            "selected": ["false", "false", "true"],
+            "tabStops": [-1, -1, 0],
+            "labelledBy": "blogs-tab",
+            "heading": "Blogs",
+            "searchLabel": "Search blogs",
+            "placeholder": "Search blogs, authors, keywords…",
+            "panels": [False, True],
+            "searches": ["depth"],
+        })
+        self.assertEqual(result["legacy"], {
+            "active": "blogs", "category": "designs", "scrolls": [],
+        })
+
     def test_top_level_keyboard_navigation_behavior(self):
         """Arrow/Home/End activate and focus tabs while Enter/Space retain native click."""
         result = self.run_top_level_tab_block("", """
 function runKey(tabIndex, key) {
-  setBrowserHash(tabIndex === 0 ? '#papers' : '#stats');
+  setBrowserHash('#' + tabs[tabIndex].id.replace('-tab', ''));
   dispatchWindowEvent('hashchange');
   focusedTabId = null;
   hashWrites.length = 0;
@@ -1899,8 +2162,10 @@ function runKey(tabIndex, key) {
 const result = [
   runKey(0, 'ArrowRight'),
   runKey(1, 'ArrowRight'),
+  runKey(2, 'ArrowRight'),
   runKey(0, 'ArrowLeft'),
   runKey(1, 'ArrowLeft'),
+  runKey(2, 'ArrowLeft'),
   runKey(1, 'Home'),
   runKey(0, 'End'),
   runKey(0, 'Enter'),
@@ -1911,11 +2176,13 @@ process.stdout.write(JSON.stringify(result));
         expected = []
         for key, source, target in (
             ("ArrowRight", "papers-tab", "stats"),
-            ("ArrowRight", "stats-tab", "papers"),
-            ("ArrowLeft", "papers-tab", "stats"),
+            ("ArrowRight", "stats-tab", "blogs"),
+            ("ArrowRight", "blogs-tab", "papers"),
+            ("ArrowLeft", "papers-tab", "blogs"),
             ("ArrowLeft", "stats-tab", "papers"),
+            ("ArrowLeft", "blogs-tab", "stats"),
             ("Home", "stats-tab", "papers"),
-            ("End", "papers-tab", "stats"),
+            ("End", "papers-tab", "blogs"),
         ):
             expected.append(
                 {
@@ -1987,7 +2254,7 @@ process.stdout.write(JSON.stringify(result));
         )
 
     def test_top_level_click_history_reconcile_and_category_restore_behavior(self):
-        """Clicks write once; history restores state and section position without rewriting."""
+        """History maps old category links to Filters and the visible list without rewriting."""
         result = self.run_top_level_tab_block("", """
 tabs[1].listeners.click[0]();
 const firstClick = { active: ACTIVE_TOP_LEVEL_TAB, writes: hashWrites.slice() };
@@ -2000,10 +2267,13 @@ dispatchWindowEvent('hashchange');
 const statsHistory = { active: ACTIVE_TOP_LEVEL_TAB, writes: hashWrites.slice() };
 
 CATALOG_DATA_READY = true;
+CURRENT_VIEW = 'table';
 setBrowserHash('#section-designs');
 dispatchWindowEvent('hashchange');
 const categoryHistoryBeforeFrame = {
   active: ACTIVE_TOP_LEVEL_TAB,
+  category: ACTIVE_CATEGORY_FILTER,
+  view: CURRENT_VIEW,
   hash: window.location.hash,
   writes: hashWrites.slice(),
   queuedFrames: animationFrameCallbacks.length,
@@ -2041,13 +2311,15 @@ process.stdout.write(JSON.stringify(result));
             result["categoryHistoryBeforeFrame"],
             {
                 "active": "papers",
+                "category": "designs",
+                "view": "category",
                 "hash": "#section-designs",
                 "writes": [],
                 "queuedFrames": 1,
                 "scrolls": [],
             },
         )
-        self.assertEqual(result["categoryHistoryAfterFrame"], {"scrolls": ["section-designs"]})
+        self.assertEqual(result["categoryHistoryAfterFrame"], {"scrolls": ["papers-grid"]})
         self.assertEqual(
             result["staleCategoryFrame"],
             {"active": "stats", "hash": "#stats", "scrolls": []},
@@ -2087,7 +2359,7 @@ process.stdout.write(JSON.stringify({
                 "emptyHashAfterClick": "stats",
                 "explicitPapers": "papers",
                 "explicitStats": "stats",
-                "explicitCategory": "papers",
+                "explicitCategory": "blogs",
             },
         )
 
@@ -2137,7 +2409,7 @@ process.stdout.write(JSON.stringify({
                 "queuedFrames": 0,
             },
         )
-        self.assertEqual(result["firstScrolls"], ["section-designs"])
+        self.assertEqual(result["firstScrolls"], ["papers-grid"])
         self.assertEqual(
             result["repeatedNavigation"],
             {
@@ -2147,7 +2419,7 @@ process.stdout.write(JSON.stringify({
                 "queuedFrames": 1,
             },
         )
-        self.assertEqual(result["repeatedScrolls"], ["section-designs"])
+        self.assertEqual(result["repeatedScrolls"], ["papers-grid"])
 
     def test_stats_series_helpers_use_strict_utc_date_parsing(self):
         """Stats helpers must reject normalized-looking but impossible dates."""
@@ -2781,7 +3053,12 @@ process.stdout.write(JSON.stringify({{
             "renderStatsActiveDirections",
         ):
             self.assertIn(marker, timeline_source)
+        line_start = timeline_source.index("createStatsSvgElement('polyline'")
+        line_end = timeline_source.index("}));", line_start)
+        line_source = timeline_source[line_start:line_end]
         self.assertIn("setAttribute", timeline_source)
+        self.assertIn("class: 'timeline-line'", line_source)
+        self.assertIn("'pathLength': 1", line_source)
         self.assertNotIn("innerHTML", timeline_source)
         self.assertNotIn("innerHTML", stats_source)
         self.assertIn("buildDailyPublicationSeries(ALL_PAPERS)", stats_source)
@@ -2826,6 +3103,30 @@ process.stdout.write(JSON.stringify({{
         dashboard_start = stats_css.index("    .stats-dashboard-grid {")
         dashboard_end = stats_css.index("\n    }", dashboard_start)
         dashboard_rule = stats_css[dashboard_start:dashboard_end]
+        reduced_motion_start = stats_css.rindex("    @media (prefers-reduced-motion: reduce)")
+        bar_selector = "    .stats-primary-chart .timeline-bar {"
+        bar_start = stats_css.rindex(bar_selector, 0, reduced_motion_start)
+        bar_end = stats_css.index("\n    }", bar_start)
+        bar_rule = stats_css[bar_start:bar_end]
+        line_selector = "    .stats-primary-chart .timeline-line {"
+        line_start = stats_css.rindex(line_selector, 0, reduced_motion_start)
+        line_end = stats_css.index("\n    }", line_start)
+        line_rule = stats_css[line_start:line_end]
+        reduced_motion_end = stats_css.index(
+            '    :where(html[data-theme="dark"])', reduced_motion_start
+        )
+        reduced_motion_css = stats_css[reduced_motion_start:reduced_motion_end]
+        reduced_motion_selector = (
+            "      .stats-primary-chart .timeline-bar,\n"
+            "      .stats-primary-chart .timeline-line {"
+        )
+        reduced_motion_rule_start = reduced_motion_css.index(reduced_motion_selector)
+        reduced_motion_rule_end = reduced_motion_css.index(
+            "\n      }", reduced_motion_rule_start
+        )
+        reduced_motion_rule = reduced_motion_css[
+            reduced_motion_rule_start:reduced_motion_rule_end
+        ]
 
         self.assertIn("grid-template-columns: repeat(12, minmax(0, 1fr));", dashboard_rule)
         self.assertIn("align-items: start;", dashboard_rule)
@@ -2843,7 +3144,15 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("height: clamp(220px, 27vh, 250px);", chart_scroll_css)
         self.assertIn("background: transparent;", stats_css)
         self.assertIn("border-top: 1px solid var(--border);", stats_css)
-        self.assertNotIn("animation:", stats_css)
+        self.assertIn("--stats-observatory-bg:", stats_css)
+        self.assertIn("animation: stats-bar-rise", bar_rule)
+        self.assertIn("stroke-dasharray: 1;", line_rule)
+        self.assertIn("animation: stats-line-draw", line_rule)
+        self.assertIn("@keyframes stats-bar-rise", stats_css)
+        self.assertIn("@keyframes stats-line-draw", stats_css)
+        self.assertIn(".stats-primary-chart .timeline-bar,", reduced_motion_rule)
+        self.assertIn(".stats-primary-chart .timeline-line {", reduced_motion_rule)
+        self.assertIn("animation: none;", reduced_motion_rule)
         self.assertIn("@media (max-width: 768px)", stats_css)
         self.assertIn("min-height: 44px;", stats_css)
 
@@ -2913,11 +3222,19 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("--stats-card-border:", stats_css)
         self.assertIn("--stats-track-bg:", stats_css)
         self.assertIn("--stats-data-1:", stats_css)
-        dark_start = stats_css.index("@media (prefers-color-scheme: dark)")
+        dark_start = stats_css.index(':where(html[data-theme="dark"])')
         dark_source = stats_css[dark_start:]
         self.assertIn(".stats-panel", dark_source)
         self.assertIn("--stats-data-1:", dark_source)
         self.assertIn("background: transparent;", dark_source)
+        self.assertNotIn("@media (prefers-color-scheme: dark)", html)
+        desk_style = READING_DESK_CSS_PATH.read_text(encoding="utf-8")
+        desk_script = READING_DESK_JS_PATH.read_text(encoding="utf-8")
+        self.assertIn(':root[data-theme="dark"]', desk_style)
+        self.assertIn("color-scheme: light;", desk_style)
+        self.assertIn("color-scheme: dark;", desk_style)
+        self.assertIn("document.documentElement.dataset.theme = readingDeskTheme", desk_script)
+        self.assertNotIn("prefers-color-scheme", desk_script)
 
     def test_stats_small_text_uses_accessible_muted_color(self):
         """Small Stats labels must avoid the lower-contrast decorative text token."""
@@ -2931,11 +3248,18 @@ process.stdout.write(JSON.stringify({{
         ticks_start = stats_css.index("    .stats-panel .timeline-axis-label,")
         ticks_end = stats_css.index("\n    }", ticks_start)
         ticks_rule = stats_css[ticks_start:ticks_end]
+        empty_selector = "    .stats-primary-chart .timeline-empty {"
+        self.assertIn(empty_selector, stats_css)
+        empty_start = stats_css.index(empty_selector)
+        empty_end = stats_css.index("\n    }", empty_start)
+        empty_rule = stats_css[empty_start:empty_end]
 
         self.assertIn("color: var(--text-muted);", note_rule)
         self.assertNotIn("var(--text-dim)", note_rule)
         self.assertIn("fill: var(--text-muted);", ticks_rule)
         self.assertNotIn("var(--text-dim)", ticks_rule)
+        self.assertIn("color: var(--stats-observatory-muted);", empty_rule)
+        self.assertIn("border-color: var(--stats-observatory-border);", empty_rule)
 
     def test_table_header_sort_buttons_exist_for_date_citations_and_stars_with_direction_controls(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -2977,14 +3301,39 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("labels.push('w/ code');", html)
         self.assertIn("labels.push('w/ comments');", html)
 
-    def test_today_filter_uses_published_date_not_added_date(self):
+    def test_newly_arrived_filter_uses_latest_valid_added_date(self):
+        """Only papers in the newest valid intake batch match while active."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn("function matchTodayOnly(paper) {", html)
-        matcher_start = html.index("function matchTodayOnly(paper) {")
+        date_start = html.index("function normalizeDateInputValue(raw) {")
+        date_end = html.index("function getPublicationDateFilter()", date_start)
+        matcher_start = html.index("function matchNewlyArrivedOnly(paper) {")
         matcher_end = html.index("function matchHasCodeOnly(paper)", matcher_start)
-        matcher_snippet = html[matcher_start:matcher_end]
-        self.assertIn("getPaperPublicationDateValue(paper) === getRepoTodayString()", matcher_snippet)
-        self.assertNotIn("paper.added_date", matcher_snippet)
+
+        script = f"""
+{html[date_start:date_end]}
+let NEWLY_ARRIVED_ONLY = true;
+const papers = [
+  {{ entry_type: 'paper', added_date: '2026-09-01' }},
+  {{ entry_type: 'paper', added_date: 'invalid' }},
+  {{ entry_type: 'paper', added_date: '2026-09-03' }}
+];
+const blog = {{ entry_type: 'blog', added_date: '2026-09-03' }};
+let LATEST_ADDED_DATE = getLatestAddedDateValue(papers);
+{html[matcher_start:matcher_end]}
+const active = papers.concat([blog]).map(matchNewlyArrivedOnly);
+NEWLY_ARRIVED_ONLY = false;
+process.stdout.write(JSON.stringify({{
+  latest: LATEST_ADDED_DATE,
+  active,
+  inactive: matchNewlyArrivedOnly(blog)
+}}));
+"""
+        output = subprocess.check_output(["node", "-e", script], text=True)
+        self.assertEqual(json.loads(output), {
+            "latest": "2026-09-03",
+            "active": [False, False, True, False],
+            "inactive": True,
+        })
 
     def test_daily_watch_countdown_widget_and_schedule_logic_exist(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -2992,7 +3341,7 @@ process.stdout.write(JSON.stringify({{
         self.assertIn('id="daily-watch-countdown"', html)
         self.assertIn('id="daily-watch-countdown-value"', html)
         self.assertIn('id="daily-watch-countdown-meta"', html)
-        self.assertIn("20:05 ET Sunday–Thursday", html)
+        self.assertIn("20:15 ET Sunday–Thursday", html)
         self.assertIn("DAILY_WATCH_COUNTDOWN.startDailyWatchCountdown();", html)
         self.assertIn("DAILY_WATCH_COUNTDOWN.updateDailyWatchCountdown();", html)
         self.assertIn(".daily-watch-countdown", html)
@@ -3020,20 +3369,27 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("bDate.localeCompare(aDate)", html)
 
     def test_card_view_entries_show_full_publication_date(self):
+        """Cards show one publication date beside the authors, independent of detail state."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        desk = READING_DESK_JS_PATH.read_text(encoding="utf-8")
         render_start = html.index("function renderCard(paper, query) {")
         render_end = html.index("// ── State & Category Tree", render_start)
         render_snippet = html[render_start:render_end]
 
-        self.assertIn("const paperDisplayDate = getPaperDisplayDate(paper);", render_snippet)
-        self.assertIn("authorsStr + ' · ' + paperDisplayDate", render_snippet)
-        self.assertIn("'<div class=\"paper-meta\">' + paperDisplayDate + '</div>'", render_snippet)
-        self.assertNotIn("authorsStr + ' · ' + paper.year", render_snippet)
+        self.assertIn('class="desk-card-date"', render_snippet)
+        self.assertNotIn("desk-paper-footer", render_snippet)
+        self.assertEqual(render_snippet.count("getPaperDisplayDate(paper)"), 1)
+        self.assertIn("<time>' + escapeHtml(getPaperDisplayDate(paper))", render_snippet)
+        self.assertIn("<time>' + escapeHtml(getPaperDisplayDate(paper)) + '</time>'", desk)
+        self.assertNotIn("paper.year", render_snippet)
+        self.assertNotIn("paper.added_date", render_snippet)
 
-    def test_paper_cards_use_fixed_compact_density_with_local_tag_disclosure(self):
-        """Paper cards should stay compact while hidden tags expand per card."""
+    def test_paper_cards_keep_content_when_the_detail_column_changes(self):
+        """The same full cards reflow with list width without conditional content hiding."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn("<body>", html)
+        desk = READING_DESK_JS_PATH.read_text(encoding="utf-8")
+        style = READING_DESK_CSS_PATH.read_text(encoding="utf-8")
+        self.assertIn('<body class="reading-desk">', html)
         self.assertIn('id="papers-panel" role="tabpanel" aria-labelledby="papers-tab" tabindex="0" data-card-density="compact"', html)
         self.assertNotIn("paper-density-toggle", html)
         self.assertNotIn("paper-density-compact", html)
@@ -3047,30 +3403,49 @@ process.stdout.write(JSON.stringify({{
         render_start = html.index("function renderCard(paper, query) {")
         render_end = html.index("// ── State & Category Tree", render_start)
         render_snippet = html[render_start:render_end]
-        self.assertIn('class="paper-signal-row"', render_snippet)
-        self.assertIn('class="paper-tag-overflow"', render_snippet)
-        self.assertIn('aria-expanded="false"', render_snippet)
-        self.assertIn('data-hidden-tag-count="', render_snippet)
-        self.assertIn("togglePaperTagOverflow(this)", render_snippet)
-        self.assertIn("function togglePaperTagOverflow(button) {", html)
-        self.assertIn("card.classList.toggle('show-all-tags')", html)
-
-        style = html[html.index("<style>"):html.index("</style>")]
-        self.assertIn("#papers-panel[data-card-density=\"compact\"] .paper-card", style)
-        self.assertIn("#papers-panel[data-card-density=\"compact\"] .paper-desc", style)
-        self.assertIn("#papers-panel[data-card-density=\"compact\"] .category-copy", style)
-        self.assertIn("#papers-panel[data-card-density=\"compact\"] .paper-card .link-btn", style)
-        self.assertIn("body:not(.stats-mode) > header", style)
-        self.assertNotIn("body.paper-density-compact:not(.stats-mode) > header", style)
-        self.assertIn("-webkit-line-clamp: 2;", style)
-        self.assertIn("@media (min-width: 769px)", style)
+        self.assertIn('<article class="paper-card"', render_snippet)
+        self.assertIn('class="desk-paper-select"', render_snippet)
+        self.assertIn('aria-controls="paper-detail" aria-pressed="false"', render_snippet)
+        self.assertIn('class="desk-card-summary"', render_snippet)
+        self.assertIn('class="desk-card-preview"', render_snippet)
+        self.assertIn('class="desk-card-signals"', render_snippet)
+        self.assertNotIn("desk-full-card", render_snippet)
+        self.assertNotIn("desk-paper-footer", render_snippet)
+        self.assertIn("highlightQuery(escapeHtml(paper.desc), query)", render_snippet)
+        self.assertIn("renderMetricsHtml(paper)", render_snippet)
+        self.assertIn("renderPaperLinksHtml(paper)", render_snippet)
+        self.assertIn('class="paper-links desk-list-links"', render_snippet)
+        self.assertIn("paper-tag-overflow", render_snippet)
+        self.assertIn("renderPaperTagHtml(entry, 'paper-tag-' + entry.group)", render_snippet)
+        self.assertIn('id="desk-show-details"', html)
+        self.assertIn("const READING_DESK_COLLAPSE_WIDTH = 220;", desk)
+        self.assertIn("wideList && readingDeskDetailCollapsed", desk)
+        self.assertIn("setReadingDeskDetailCollapsed(false);", desk)
+        self.assertIn('<dialog class="paper-detail" id="paper-detail" aria-labelledby="paper-detail-title">', html)
+        detail_start = desk.index("function renderReadingDeskDetail(paper) {")
+        detail_end = desk.index("function syncReadingDeskSelection(papers) {", detail_start)
+        detail = desk[detail_start:detail_end]
+        self.assertIn("['mechanism', 'focus', 'domain'].map", detail)
+        self.assertIn("entries.map(function(entry) { return renderPaperTagHtml", detail)
+        self.assertIn('<h3 id="desk-sources-title">Sources</h3>', detail)
+        self.assertIn("renderPaperLinksHtml(paper, false)", detail)
+        self.assertIn('<h3 id="desk-discussion-title">Discussion</h3>', detail)
+        self.assertIn("renderCommunityCommentsHtml(paper, true)", detail)
+        self.assertNotIn("Sources & discussion", detail)
+        self.assertIn("escapeHtml(paper.desc", detail)
+        self.assertNotIn(".slice(", detail)
+        self.assertIn("dialog.show();", desk)
+        self.assertIn("dialog.showModal();", desk)
+        self.assertIn(".reading-desk #papers-panel .paper-card", style)
+        self.assertNotIn("desk-full-card", style)
+        self.assertNotRegex(style, r"\.desk-detail-collapsed[^{}]*\.paper-(?:card|title|meta)")
+        self.assertIn("container: paper-list / inline-size;", style)
+        self.assertIn("@container paper-list (max-width: 640px)", style)
+        self.assertIn(".reading-desk #papers-panel .desk-list-links { display: flex; flex-wrap: wrap;", style)
+        self.assertIn(".reading-desk .paper-detail .paper-tags { display: flex; flex-wrap: wrap;", style)
+        self.assertIn("@media (max-width: 1119px)", style)
         self.assertNotIn(".paper-density-toggle", style)
         self.assertNotIn(".paper-density-button", style)
-        self.assertIn("max-width: 1640px;", style)
-        self.assertIn("width: 248px;", style)
-        self.assertIn('#papers-panel[data-card-density="compact"] .paper-tags > .paper-tag:nth-child(n+5)', style)
-        self.assertIn('#papers-panel[data-card-density="compact"] .paper-card.show-all-tags .paper-tags > .paper-tag', style)
-        self.assertNotIn('.paper-tags .paper-tag:nth-of-type(n+5)', style)
 
     def test_footer_preserves_more_vertical_space_for_papers(self):
         """The persistent footer should remain a compact single-line information bar."""
@@ -3120,15 +3495,30 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("const disclosureButton = summaryRow.querySelector('.paper-table-disclosure');", html)
         self.assertIn("if (disclosureButton) disclosureButton.setAttribute('aria-expanded', expanded ? 'true' : 'false');", html)
 
-    def test_daily_watch_filters_and_table_view_have_frontend_hooks(self):
+    def test_quick_filters_and_table_view_have_frontend_hooks(self):
+        """Wire the newest-intake state through the existing filter hooks."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
-        self.assertIn("paper.entry_type !== 'blog' && paper.venue !== 'arXiv'", html)
-        self.assertIn("function getRepoTodayString()", html)
-        self.assertIn("generated_local_date", html)
-        self.assertIn("getPaperPublicationDateValue(paper) === getRepoTodayString()", html)
+        self.assertIn("if (paper.entry_type === 'blog') return false;", html)
+        self.assertIn("if (paper.peer_reviewed != null) return paper.peer_reviewed === true;", html)
+        self.assertIn("const venue = String(paper.venue || '').trim();", html)
+        self.assertIn("let NEWLY_ARRIVED_ONLY = false;", html)
+        self.assertIn("let LATEST_ADDED_DATE = '';", html)
+        self.assertIn("function getLatestAddedDateValue(papers) {", html)
+        self.assertIn("function matchNewlyArrivedOnly(paper) {", html)
+        self.assertIn("LATEST_ADDED_DATE = getLatestAddedDateValue(ALL_PAPERS);", html)
         self.assertIn("function renderTableView(query, papers)", html)
         self.assertIn("function toggleTableRow(paperId)", html)
         self.assertIn("function setView(view)", html)
+        for obsolete_name in (
+            "TODAY_ONLY",
+            "today-only-toggle",
+            "matchTodayOnly",
+            "toggleTodayOnly",
+        ):
+            self.assertNotIn(obsolete_name, html)
+        self.assertNotIn("function getBrowserTodayString()", html)
+        self.assertNotIn("function getRepoTodayString()", html)
+        self.assertNotIn("let REPO_TODAY = '';", html)
 
     def test_mobile_compact_overrides_apply_after_base_control_styles(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
@@ -3201,21 +3591,21 @@ process.stdout.write(JSON.stringify({{
 
     def test_daily_watch_helper_keeps_same_day_fetch_before_cutoff(self):
         result = self.run_daily_watch_helper("2026-04-23T12:00:00-04:00")
-        self.assertEqual(result["iso"], "2026-04-24T00:05:00.000Z")
+        self.assertEqual(result["iso"], "2026-04-24T00:15:00.000Z")
         self.assertEqual(result["weekday"], 4)
-        self.assertEqual(result["label"], "Thu 20:05 ET")
+        self.assertEqual(result["label"], "Thu 20:15 ET")
 
     def test_daily_watch_helper_rolls_thursday_night_to_sunday(self):
         result = self.run_daily_watch_helper("2026-04-23T21:00:00-04:00")
-        self.assertEqual(result["iso"], "2026-04-27T00:05:00.000Z")
+        self.assertEqual(result["iso"], "2026-04-27T00:15:00.000Z")
         self.assertEqual(result["weekday"], 0)
-        self.assertEqual(result["label"], "Sun 20:05 ET")
+        self.assertEqual(result["label"], "Sun 20:15 ET")
 
     def test_daily_watch_helper_handles_standard_time_offset(self):
         result = self.run_daily_watch_helper("2026-01-05T12:00:00-05:00")
-        self.assertEqual(result["iso"], "2026-01-06T01:05:00.000Z")
+        self.assertEqual(result["iso"], "2026-01-06T01:15:00.000Z")
         self.assertEqual(result["weekday"], 1)
-        self.assertEqual(result["label"], "Mon 20:05 ET")
+        self.assertEqual(result["label"], "Mon 20:15 ET")
 
 
 class CanonicalPaperMetadataTests(unittest.TestCase):
@@ -3458,6 +3848,8 @@ class ReadmeRenderingTests(unittest.TestCase):
         summary_end = markdown.index("</summary>")
         summary_html = markdown[summary_start:summary_end]
 
+        self.assertTrue(markdown.startswith("<details>"))
+        self.assertNotIn("- <details>", markdown)
         self.assertIn("<summary><strong>Loop Test Paper</strong>", markdown)
         self.assertNotIn("<code>LoopTest</code>", summary_html)
         self.assertNotIn("<summary>Expand details</summary>", markdown)

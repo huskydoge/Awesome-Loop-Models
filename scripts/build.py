@@ -20,6 +20,7 @@ from datetime import date, datetime, timezone
 from html import escape
 from pathlib import Path
 from urllib.parse import quote, urlparse
+from zoneinfo import ZoneInfo
 
 import yaml
 
@@ -37,6 +38,7 @@ REPO_META_FILE = REPO_ROOT / "repo_meta.json"
 REPO_META_JS_OUT = REPO_ROOT / "assets" / "repo-meta.js"
 ISSUE_TEMPLATE_CONFIG_TEMPLATE_FILE = REPO_ROOT / ".github" / "ISSUE_TEMPLATE" / "config.template.yml"
 ISSUE_TEMPLATE_CONFIG_OUT = REPO_ROOT / ".github" / "ISSUE_TEMPLATE" / "config.yml"
+CATALOG_TIME_ZONE = ZoneInfo("America/New_York")
 
 VALID_FOCUS_TAGS = (
     "objective-loss",
@@ -513,6 +515,24 @@ def normalize_venue_class(venue: str, entry_type: str) -> str:
     return VENUE_CLASSES.get(venue, "venue-other")
 
 
+def validate_publication_metadata(data: dict, source: str) -> None:
+    """Require explicit, attributable evidence without inferring review from venue names."""
+    if "peer_reviewed" in data and not isinstance(data["peer_reviewed"], bool):
+        raise ValueError(f"{source}: peer_reviewed must be a boolean")
+    evidence = data.get("venue_source")
+    if evidence is not None:
+        if not isinstance(evidence, str):
+            raise ValueError(f"{source}: venue_source must be an HTTPS URL")
+        parsed = urlparse(evidence)
+        if (parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password
+                or any(char.isspace() for char in evidence)):
+            raise ValueError(f"{source}: venue_source must be an HTTPS URL without credentials")
+    if data.get("peer_reviewed") is True:
+        venue = data.get("venue")
+        if not isinstance(venue, str) or not venue.strip() or venue.strip().lower() == "arxiv" or not evidence:
+            raise ValueError(f"{source}: peer_reviewed requires a publication venue and venue_source")
+
+
 def normalize_focus_tags(raw_focus_tags: object, source: str) -> list[str]:
     focus_tags = normalize_str_list(raw_focus_tags)
     invalid = [tag for tag in focus_tags if tag not in VALID_FOCUS_TAGS]
@@ -568,6 +588,7 @@ def load_papers() -> list[dict]:
             continue
 
         data = yaml.safe_load(yaml_file.read_text(encoding="utf-8")) or {}
+        validate_publication_metadata(data, yaml_file.name)
         taxonomy = normalize_paper_taxonomy_fields(data, yaml_file.name)
         category_id = taxonomy["category"]
         foundation = taxonomy["foundation"]
@@ -804,6 +825,38 @@ def load_briefings() -> list[dict]:
     return sorted(briefings, key=lambda item: item["date"], reverse=True)
 
 
+def serialize_browser_entry(entry: dict) -> dict:
+    """Return a catalog entry containing only fields consumed by index.html."""
+    browser_fields = (
+        "id",
+        "entry_type",
+        "title",
+        "authors",
+        "authors_list",
+        "venue",
+        "venueClass",
+        "peer_reviewed",
+        "venue_source",
+        "year",
+        "published_date",
+        "added_date",
+        "desc",
+        "links",
+        "category",
+        "foundation",
+        "catalog_fit",
+        "mechanism_tags",
+        "focus_tags",
+        "domain_tags",
+        "must_read",
+        "citations",
+        "github_stars",
+        "community_comments",
+        "comments",
+    )
+    return {field: entry[field] for field in browser_fields if field in entry}
+
+
 def serialize_browser_briefing_candidate(candidate: dict) -> dict:
     """Return a new candidate mapping containing only fields rendered by index.html."""
     browser_fields = ("id", "title", "verdict", "url")
@@ -840,6 +893,7 @@ def serialize_browser_briefings(briefings: list[dict]) -> list[dict]:
 
 def build_json(papers: list[dict], blogs: list[dict], briefings: list[dict] | None = None) -> None:
     briefings = sorted(briefings or [], key=lambda item: item.get("date", ""), reverse=True)
+    generated_at = datetime.now(timezone.utc)
     payload = {
         "meta": {
             "total": len(papers) + len(blogs),
@@ -847,8 +901,8 @@ def build_json(papers: list[dict], blogs: list[dict], briefings: list[dict] | No
             "blog_total": len(blogs),
             "briefing_total": len(briefings),
             "latest_briefing_date": briefings[0]["date"] if briefings else None,
-            "generated": datetime.now(timezone.utc).isoformat(),
-            "generated_local_date": datetime.now().astimezone().date().isoformat(),
+            "generated": generated_at.isoformat(),
+            "generated_local_date": generated_at.astimezone(CATALOG_TIME_ZONE).date().isoformat(),
             "category_disclaimer": CATEGORY_DISCLAIMER,
             "foundation_label": FOUNDATION_LABEL,
             "blog_section_title": BLOG_SECTION_TITLE,
@@ -859,11 +913,11 @@ def build_json(papers: list[dict], blogs: list[dict], briefings: list[dict] | No
         "categories": CATEGORIES,
         "mechanism_tags": list(VALID_MECHANISM_TAGS),
         "focus_tags": list(VALID_FOCUS_TAGS),
-        "papers": papers,
-        "blogs": blogs,
+        "papers": [serialize_browser_entry(paper) for paper in papers],
+        "blogs": [serialize_browser_entry(blog) for blog in blogs],
         "briefings": serialize_browser_briefings(briefings),
     }
-    JSON_OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    JSON_OUT.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"✓ papers.json  — {len(papers)} papers, {len(blogs)} blogs, {len(briefings)} briefings")
 
 
@@ -1106,7 +1160,7 @@ def _paper_to_md(paper: dict) -> str:
     if summary_link_html:
         summary_parts.append(summary_link_html)
 
-    lines = ["- <details>", f"  <summary>{' '.join(summary_parts)}</summary>"]
+    lines = ["<details>", f"  <summary>{' '.join(summary_parts)}</summary>"]
 
     detail_lines = []
     metadata = " · ".join(str(part).strip() for part in (authors, venue_year) if str(part).strip())

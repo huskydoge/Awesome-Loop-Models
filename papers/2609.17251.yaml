@@ -1,0 +1,30 @@
+title: Persistent Recurrent Memory Between Transformer Layers - Improves Language
+  Model Generalization
+authors:
+- Eduardo Novaes Hering
+year: 2026
+published_date: '2026-09-15'
+added_date: '2026-09-16'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- sequence-modeling
+focus_tags:
+- architecture
+desc: Inserts a persistent latent state between Transformer halves and recursively
+  reuses one GRU update within each forward pass, with controlled small-scale experiments
+  attributing improved generalization to the recurrent memory topology.
+links:
+  arxiv: https://arxiv.org/abs/2609.17251
+  alphaxiv: https://www.alphaxiv.org/abs/2609.17251
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+metrics_updated: '2026-09-17'

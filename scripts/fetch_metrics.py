@@ -1384,16 +1384,6 @@ def _best_citation_source(source_counts: dict[str, int]) -> str | None:
     return max(source_counts.items(), key=lambda item: (item[1], -priority.get(item[0], 999)))[0]
 
 
-def _best_star_source(source_counts: dict[str, int]) -> str | None:
-    if not source_counts:
-        return None
-    priority = {
-        "github_api": 0,
-        "github_html": 1,
-    }
-    return max(source_counts.items(), key=lambda item: (item[1], -priority.get(item[0], 999)))[0]
-
-
 def _save_github_link_report(broken_links: list[dict], path: Path = GITHUB_LINK_REPORT_FILE) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {
@@ -1414,9 +1404,10 @@ def fetch_all(
     use_openalex: bool = True,
     use_opencitations: bool = True,
     use_crossref: bool = True,
+    strict: bool = False,
 ) -> None:
     show_progress = _resolve_progress_enabled(progress)
-    cache = _load_metrics_cache(CACHE_FILE)
+    cache = {"version": CACHE_VERSION, "papers": {}} if strict else _load_metrics_cache(CACHE_FILE)
     papers = load_papers()
     if only:
         filtered = []
@@ -1500,6 +1491,19 @@ def fetch_all(
         show_progress=show_progress,
         cache=cache,
     )
+    if strict:
+        missing_fresh_metrics = []
+        for p in papers:
+            stem = p["stem"]
+            if p.get("citations") is not None and not citation_source_maps.get(stem):
+                missing_fresh_metrics.append(f"{stem}: citations")
+            if p.get("github_stars") is not None and not star_source_maps.get(stem):
+                missing_fresh_metrics.append(f"{stem}: github_stars")
+        if missing_fresh_metrics:
+            raise RuntimeError(
+                "Strict metrics refresh failed before write; no fresh value for:\n  - "
+                + "\n  - ".join(missing_fresh_metrics)
+            )
     print(f"      Got stars for {len(stars_map)}/{len(papers)} papers.")
 
     now_str = _utcnow().strftime("%Y-%m-%d")
@@ -1508,48 +1512,48 @@ def fetch_all(
         stem = p["stem"]
         yaml_file = p["_path"]
 
-        new_citations = citations_map.get(stem)
-        new_stars = stars_map.get(stem)
-        new_citation_sources = citation_source_maps.get(stem, {})
-        best_citation_source = _best_citation_source(new_citation_sources)
-        new_star_sources = star_source_maps.get(stem, {})
-        best_star_source = _best_star_source(new_star_sources)
-
         changed = False
-        if new_citations is not None:
+        fresh_citation_sources = citation_source_maps.get(stem, {})
+        if fresh_citation_sources:
+            old_citation_sources = p.get("citation_sources")
+            old_citation_sources = old_citation_sources if isinstance(old_citation_sources, dict) else {}
+            new_citation_sources = {**old_citation_sources, **fresh_citation_sources}
+            # Preserve an aggregate only when the saved per-source counts cannot explain it.
+            legacy_citations = p.get("citations")
+            if old_citation_sources and legacy_citations is not None:
+                if legacy_citations <= max(old_citation_sources.values()):
+                    legacy_citations = None
+            new_citations = max(
+                value
+                for value in (*new_citation_sources.values(), legacy_citations)
+                if value is not None
+            )
+            if max(new_citation_sources.values()) == new_citations:
+                best_citation_source = _best_citation_source(new_citation_sources)
+                if p.get("citation_source_best") != best_citation_source:
+                    p["citation_source_best"] = best_citation_source
+                    changed = True
+            elif "citation_source_best" in p:
+                p.pop("citation_source_best")
+                changed = True
             if p.get("citations") != new_citations:
                 p["citations"] = new_citations
                 changed = True
             if p.get("citation_sources") != new_citation_sources:
                 p["citation_sources"] = new_citation_sources
                 changed = True
-            if p.get("citation_source_best") != best_citation_source:
-                p["citation_source_best"] = best_citation_source
-                changed = True
-        else:
-            if "citation_sources" in p:
-                p.pop("citation_sources", None)
-                changed = True
-            if "citation_source_best" in p:
-                p.pop("citation_source_best", None)
-                changed = True
 
-        if new_stars is not None:
-            if p.get("github_stars") != new_stars:
-                p["github_stars"] = new_stars
-                changed = True
-            if p.get("star_sources") != new_star_sources:
-                p["star_sources"] = new_star_sources
-                changed = True
+        fresh_star_sources = star_source_maps.get(stem, {})
+        if fresh_star_sources:
+            best_star_source, new_stars = next(iter(fresh_star_sources.items()))
             if p.get("star_source_best") != best_star_source:
                 p["star_source_best"] = best_star_source
                 changed = True
-        else:
-            if "star_sources" in p:
-                p.pop("star_sources", None)
+            if p.get("github_stars") != new_stars:
+                p["github_stars"] = new_stars
                 changed = True
-            if "star_source_best" in p:
-                p.pop("star_source_best", None)
+            if p.get("star_sources") != fresh_star_sources:
+                p["star_sources"] = fresh_star_sources
                 changed = True
         if changed:
             p["metrics_updated"] = now_str
@@ -1560,7 +1564,8 @@ def fetch_all(
                 yaml.dump(write_data, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
             updated += 1
 
-    _save_metrics_cache(cache, CACHE_FILE)
+    if not strict:
+        _save_metrics_cache(cache, CACHE_FILE)
     _save_github_link_report(broken_github_links, GITHUB_LINK_REPORT_FILE)
     if broken_github_links:
         print(f"      Wrote GitHub link report with {len(broken_github_links)} broken link(s) to {GITHUB_LINK_REPORT_FILE}.")
@@ -1583,6 +1588,11 @@ def fetch_all(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Fetch citation counts and GitHub stars")
     parser.add_argument("--dry-run", action="store_true", help="Print without writing")
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="Fail before writing when a previously known metric has no fresh value.",
+    )
     parser.add_argument(
         "--google-scholar",
         action="store_true",
@@ -1674,4 +1684,5 @@ if __name__ == "__main__":
         use_openalex=args.use_openalex,
         use_opencitations=args.use_opencitations,
         use_crossref=args.use_crossref,
+        strict=args.strict,
     )

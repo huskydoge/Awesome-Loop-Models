@@ -1,0 +1,30 @@
+title: 'LoopVAE: Recurrent Depth Across Scales for Visual Tokenization'
+authors:
+- Zhiying Lu
+year: 2026
+published_date: '2026-09-10'
+added_date: '2026-09-13'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- hierarchical-loop
+- flat-loop
+domain_tags:
+- vision
+- efficiency
+focus_tags:
+- architecture
+desc: Reuses separate four-block encoder and decoder cores within and across spatial
+  scales, executing 28 shared-core block applications per branch to reduce stored
+  VAE parameters while exposing higher arithmetic and latency costs.
+links:
+  arxiv: https://arxiv.org/abs/2609.11516
+  alphaxiv: https://www.alphaxiv.org/abs/2609.11516
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-14'

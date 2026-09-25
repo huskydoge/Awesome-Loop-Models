@@ -1,0 +1,42 @@
+title: Recurrent Vision Transformer for Solving Visual Reasoning Problems
+authors:
+- Nicola Messina
+- Giuseppe Amato
+- Fabio Carrara
+- Claudio Gennaro
+- Fabrizio Falchi
+year: 2022
+published_date: '2021-11-29'
+added_date: '2026-09-06'
+venue: ICIAP
+category: designs
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- reasoning
+tags:
+- universal-transformer
+- weight-tying
+focus_tags:
+- architecture
+- inference-algorithm
+desc: Introduces RViT, a CNN-Transformer hybrid that shares weights across depth and
+  uses feedback connections to iteratively refine representations for visual same-different
+  reasoning.
+links:
+  paper: https://link.springer.com/chapter/10.1007/978-3-031-06433-3_5
+  arxiv: https://arxiv.org/abs/2111.14576
+  github: https://github.com/mesnico/recurrent_vision_transformer_visual_reasoning
+citation_source_best: semantic_scholar
+citations: 14
+citation_sources:
+  semantic_scholar: 14
+  openalex: 6
+  opencitations: 5
+  crossref: 5
+star_source_best: github_api
+github_stars: 3
+star_sources:
+  github_api: 3
+metrics_updated: '2026-09-17'

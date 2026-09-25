@@ -1,0 +1,42 @@
+title: Thinking with Looped Flows
+authors:
+- Ayhan Suleymanzade
+- Chanhyuk Lee
+- Floor Eijkelboom
+- Nicholas M. Boffi
+- İsmail İlkan Ceylan
+- Jinwoo Kim
+year: 2026
+published_date: '2026-09-10'
+added_date: '2026-09-13'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+- adaptive-compute
+- scaling
+tags:
+- TRM
+- latent-refinement
+focus_tags:
+- objective-loss
+- architecture
+- training-algorithm
+- inference-algorithm
+desc: Trains a TRM-based shared recurrent network with temporally aligned local denoising
+  objectives, then couples its stateful denoiser to probability-flow integration for
+  scalable and diverse reasoning.
+links:
+  arxiv: https://arxiv.org/abs/2609.11801
+  alphaxiv: https://www.alphaxiv.org/abs/2609.11801
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-14'

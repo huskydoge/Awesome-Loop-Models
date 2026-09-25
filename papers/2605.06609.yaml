@@ -6,7 +6,7 @@ authors:
 year: 2026
 published_date: '2026-05-07'
 added_date: '2026-05-08'
-venue: arXiv
+venue: ICML
 category: analysis
 mechanism_tags:
 - flat-loop
@@ -21,6 +21,7 @@ desc: Proves that softmax transformers can implement in-context logistic regress
   layer and applies it recurrently as a looped model with convergence and OOD guarantees.
 links:
   arxiv: https://arxiv.org/abs/2605.06609
+  paper: https://icml.cc/virtual/2026/poster/62573
 citations: 1
 citation_sources:
   semantic_scholar: 1

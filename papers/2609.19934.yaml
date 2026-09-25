@@ -1,0 +1,35 @@
+title: 'Beyond Depth Truncation: Controlled Evaluation of Depth Utilization in Recursive
+  Language Models'
+authors:
+- Ha Van Dau
+- Thanh Tung Khuat
+- Nguyen Thanh Dung
+year: 2026
+published_date: '2026-09-17'
+added_date: '2026-09-20'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- theory
+- adaptive-compute
+focus_tags:
+- inference-algorithm
+- training-algorithm
+desc: Introduces the Depth Control Protocol for weight-shared recurrent language models,
+  separating block-application, distinct-depth, and readout-calibration effects that
+  ordinary inference-time truncation conflates.
+links:
+  arxiv: https://arxiv.org/abs/2609.19934
+  alphaxiv: https://www.alphaxiv.org/abs/2609.19934
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-21'

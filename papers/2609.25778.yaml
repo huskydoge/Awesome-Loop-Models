@@ -1,0 +1,31 @@
+title: Statistical Gains from Looped Estimation under Parameter Budgets
+authors:
+- Xinyu Tian
+- Xiaotong Shen
+year: 2026
+published_date: '2026-09-22'
+added_date: '2026-09-23'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- theory
+- efficiency
+- scaling
+focus_tags:
+- architecture
+desc: Establishes Hellinger-risk upper and minimax lower bounds for estimators that
+  repeatedly reuse a parameter-budgeted map, showing regimes where looped estimation
+  improves statistically over non-looped alternatives and approaches minimax rates
+  with bounded parameters.
+links:
+  arxiv: https://arxiv.org/abs/2609.25778
+  alphaxiv: https://www.alphaxiv.org/abs/2609.25778
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-23'

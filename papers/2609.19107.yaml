@@ -1,0 +1,40 @@
+title: How Model Growth, Recursion, and Boundary Operators Influence Scaling Exponents
+authors:
+- Zixi Chen
+- Akshay Vegesna
+- Samip Dahal
+- Andrew Gordon Wilson
+year: 2026
+published_date: '2026-09-16'
+added_date: '2026-09-17'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- scaling
+- efficiency
+focus_tags:
+- architecture
+- training-algorithm
+desc: Studies compute-optimal scaling in prelude-core-coda Transformers, finding that
+  tied loop growth improves the fitted scaling exponent while trailing untied growth
+  by a constant factor, and that more loops regularize data-constrained multi-epoch
+  training.
+links:
+  arxiv: https://arxiv.org/abs/2609.19107
+  alphaxiv: https://www.alphaxiv.org/abs/2609.19107
+  github: https://github.com/qlabs-eng/scaling-exponents
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+star_source_best: github_api
+github_stars: 18
+star_sources:
+  github_api: 18
+metrics_updated: '2026-09-24'

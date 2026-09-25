@@ -1,0 +1,47 @@
+title: Energy-guided Recursive Model
+authors:
+- Yifei Zhao
+- Ying Tang
+year: 2026
+published_date: '2026-07-17'
+added_date: '2026-09-16'
+venue: arXiv
+category: designs
+mechanism_tags:
+- flat-loop
+domain_tags:
+- algorithmic-reasoning
+- efficiency
+- reasoning
+focus_tags:
+- inference-algorithm
+- objective-loss
+desc: 'Recursive reasoning models address structured problems by repeatedly updating
+  latent states of small neural networks. However, their test-time scaling lacks a
+  principled inference mechanism: increasing depth or stochastic breadth generates
+  more trajectories without a clear criterion for selection, and existing methods
+  predominantly rely on additional q-heads or heuristic voting. Here, we develop the
+  \textbf{Energy-guided Recursive Model (ERM)}, which introduces an intrinsic selection
+  principle based on explicit Hopfield energies. ERM leverages Hopfield-type memories
+  of valid local or global structures to define the selector over candidate trajectories.
+  The resulting energy seamlessly integrates with energy-based techniques such as
+  parallel tempering to enhance sampling efficiency and ranking. With $D=64$ recurrent
+  steps and $K=128$ candidates, ERM reaches optimal solutions on Sudoku ($98.97\%$),
+  Pencil Puzzle Bench (PPBench, $88.04\%$) and Maze ($99.30\%$), improving upon recent
+  Probabilistic Tiny Recursive Model and Equilibrium Reasoners. These results suggest
+  that incorporating explicit energy functions into recursive reasoning offers a principled
+  path toward more effective inference.'
+links:
+  arxiv: https://arxiv.org/abs/2607.10128
+  github: https://github.com/Machine-learning-and-complex-systems/ERM
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 2
+star_sources:
+  github_api: 2
+metrics_updated: '2026-09-18'

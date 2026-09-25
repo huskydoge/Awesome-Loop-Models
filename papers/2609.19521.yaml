@@ -1,0 +1,31 @@
+title: LSTM-UT and Recurrent-Depth Transformers on Cellular Automata
+authors:
+- Aras Kavuncu
+year: 2026
+published_date: '2026-09-17'
+added_date: '2026-09-20'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- algorithmic-reasoning
+- reasoning
+- sequence-modeling
+- memory-efficiency
+focus_tags:
+- architecture
+desc: Compares recurrent-depth Transformer memory designs on cellular automata and
+  delayed recall, then introduces bounded gated LSTM-UT to improve unseen-depth extrapolation
+  and retrieval over current-state and expanding-cache baselines.
+links:
+  arxiv: https://arxiv.org/abs/2609.19521
+  alphaxiv: https://www.alphaxiv.org/abs/2609.19521
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-09-21'

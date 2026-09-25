@@ -28,14 +28,14 @@ desc: Proposes URM, a Universal Transformer-based architecture with weight tying
 links:
   arxiv: https://arxiv.org/abs/2512.14693
   github: https://github.com/UbiquantAI/URM
-citations: 6
+citations: 7
 citation_sources:
-  semantic_scholar: 6
+  semantic_scholar: 7
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-08-27'
-github_stars: 134
+metrics_updated: '2026-09-23'
+github_stars: 138
 star_sources:
-  github_api: 134
+  github_api: 138
 star_source_best: github_api
