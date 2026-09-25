@@ -688,649 +688,6 @@
       display: none;
     }
 
-    .stats-panel {
-      --stats-card-bg: #ffffff;
-      --stats-card-border: #cfd8e3;
-      --stats-track-bg: #e8eef5;
-      --stats-grid-line: rgba(73, 96, 122, 0.08);
-      width: 100%;
-      max-width: 100%;
-      overflow-x: clip;
-      padding: 4px 0 42px;
-      background-image: repeating-linear-gradient(
-        90deg,
-        transparent 0,
-        transparent calc(8.333% - 1px),
-        var(--stats-grid-line) calc(8.333% - 1px),
-        var(--stats-grid-line) 8.333%
-      );
-    }
-
-    .stats-dashboard-header {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: end;
-      gap: 32px;
-      padding: 20px 0 22px;
-      border-bottom: 1px solid var(--stats-card-border);
-    }
-
-    .stats-eyebrow {
-      margin-bottom: 5px;
-      color: var(--accent);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .stats-dashboard-header h2 {
-      color: var(--text);
-      font-family: var(--font-display);
-      font-size: clamp(30px, 3.1vw, 48px);
-      font-weight: 560;
-      letter-spacing: -0.03em;
-      line-height: 1.02;
-    }
-
-    .stats-scope {
-      max-width: 680px;
-      margin-top: 7px;
-      color: var(--text-muted);
-      font-size: 12.5px;
-      line-height: 1.5;
-    }
-
-    .stats-snapshot-block {
-      min-width: 190px;
-      padding-left: 18px;
-      border-left: 2px solid var(--accent);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      text-align: right;
-    }
-
-    .stats-snapshot-block span,
-    .stats-snapshot-block time {
-      display: block;
-    }
-
-    .stats-snapshot-block span {
-      color: var(--text-muted);
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .stats-snapshot-block time {
-      margin-top: 5px;
-      color: var(--text);
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .stats-status {
-      margin: 14px 0 0;
-      padding: 11px 14px;
-      border-left: 3px solid var(--accent);
-      background: var(--surface);
-      color: var(--text-muted);
-      font-size: 12.5px;
-    }
-
-    .stats-status[hidden] {
-      display: none;
-    }
-
-    .stats-metric-rail {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      margin: 16px 0;
-      overflow: hidden;
-      border: 1px solid var(--stats-card-border);
-      border-radius: 14px;
-      background: var(--stats-card-bg);
-      box-shadow: 0 8px 24px rgba(31, 35, 40, 0.045);
-      counter-reset: stats-metric;
-    }
-
-    .stats-metric {
-      counter-increment: stats-metric;
-      min-width: 0;
-      padding: 15px clamp(14px, 1.8vw, 24px) 16px;
-      border-left: 1px solid var(--stats-card-border);
-    }
-
-    .stats-metric:first-child {
-      border-left: 0;
-    }
-
-    .stats-metric::before {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--text-dim);
-      content: '0' counter(stats-metric);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-    }
-
-    .stats-metric-label {
-      color: var(--text-muted);
-      font-size: 10.5px;
-      font-weight: 800;
-      letter-spacing: 0.09em;
-      line-height: 1.35;
-      text-transform: uppercase;
-    }
-
-    .stats-metric-value {
-      display: block;
-      margin-top: 9px;
-      color: var(--text);
-      font-family: var(--font-display);
-      font-size: clamp(25px, 2.5vw, 38px);
-      font-variant-numeric: tabular-nums;
-      font-weight: 560;
-      letter-spacing: -0.025em;
-      line-height: 1;
-      overflow-wrap: anywhere;
-    }
-
-    .stats-metric-note {
-      margin-top: 9px;
-      color: var(--text-muted);
-      font-size: 11px;
-      line-height: 1.45;
-    }
-
-    .stats-metric-value[data-trend="positive"] {
-      color: var(--accent2);
-    }
-
-    .stats-metric-value[data-trend="negative"] {
-      color: var(--accent5);
-    }
-
-    .stats-section-index {
-      color: var(--accent);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .stats-dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .stats-dashboard-secondary {
-      margin-top: 16px;
-    }
-
-    .stats-dashboard-card {
-      min-width: 0;
-      padding: 22px;
-      border: 1px solid var(--stats-card-border);
-      border-radius: 18px;
-      background: var(--stats-card-bg);
-      box-shadow: 0 8px 24px rgba(31, 35, 40, 0.045);
-    }
-
-    .stats-pulse-card {
-      grid-column: span 8;
-    }
-
-    .stats-composition-card {
-      grid-column: span 4;
-    }
-
-    .stats-card-header {
-      margin-bottom: 18px;
-    }
-
-    .stats-card-header-inline {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .stats-card-header h3 {
-      margin-top: 4px;
-      color: var(--text);
-      font-family: var(--font-display);
-      font-size: clamp(23px, 2vw, 31px);
-      font-weight: 560;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
-
-    .stats-card-header p {
-      max-width: 430px;
-      margin-top: 5px;
-      color: var(--text-muted);
-      font-size: 11.5px;
-      line-height: 1.5;
-    }
-
-    .stats-primary-chart {
-      position: relative;
-      min-width: 0;
-      overflow: hidden;
-      padding: clamp(26px, 3.5vw, 42px) clamp(20px, 3vw, 38px) 0;
-      border: 1px solid #253650;
-      border-radius: 24px;
-      background:
-        radial-gradient(circle at 84% -12%, rgba(88, 166, 255, 0.28), transparent 34%),
-        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.028) 0 1px, transparent 1px 34px),
-        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.022) 0 1px, transparent 1px 52px),
-        #0f1929;
-      box-shadow: 0 28px 68px rgba(15, 25, 41, 0.2);
-      color: #edf5ff;
-    }
-
-    .stats-chart-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: clamp(24px, 5vw, 80px);
-      padding-bottom: 26px;
-    }
-
-    .stats-chart-heading h3 {
-      margin-top: 6px;
-      color: var(--text);
-      font-family: var(--font-display);
-      font-size: clamp(28px, 3vw, 46px);
-      font-weight: 560;
-      letter-spacing: -0.025em;
-      line-height: 1.05;
-    }
-
-    .stats-primary-chart .stats-section-index {
-      color: #75b8ff;
-    }
-
-    .stats-primary-chart .stats-chart-heading h3 {
-      color: #f4f8ff;
-    }
-
-    .stats-chart-heading p {
-      max-width: 660px;
-      margin-top: 9px;
-      color: var(--text-muted);
-      font-size: 12.5px;
-    }
-
-    .stats-primary-chart .stats-chart-heading p,
-    .stats-primary-chart .stats-chart-legend,
-    .stats-primary-chart .stats-period-summary {
-      color: #aab8ca;
-    }
-
-    .stats-chart-actions {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 14px;
-    }
-
-    .stats-range-control {
-      display: inline-flex;
-      padding: 3px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .stats-primary-chart .stats-range-control {
-      border-color: rgba(196, 214, 237, 0.2);
-      background: rgba(255, 255, 255, 0.055);
-    }
-
-    .stats-range-button {
-      min-width: 54px;
-      padding: 7px 12px;
-      border: 0;
-      background: transparent;
-      color: var(--text-muted);
-      font: inherit;
-      font-size: 10.5px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-    }
-
-    .stats-range-button:hover {
-      color: var(--text);
-    }
-
-    .stats-range-button[aria-pressed="true"] {
-      background: var(--text);
-      color: var(--bg);
-    }
-
-    .stats-primary-chart .stats-range-button {
-      color: #aab8ca;
-    }
-
-    .stats-primary-chart .stats-range-button:hover {
-      color: #ffffff;
-    }
-
-    .stats-primary-chart .stats-range-button[aria-pressed="true"] {
-      background: #65aefc;
-      color: #0b1422;
-    }
-
-    .stats-range-button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-
-    .stats-chart-legend {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 9px 15px;
-      color: var(--text-muted);
-      font-size: 10.5px;
-      white-space: nowrap;
-    }
-
-    .stats-chart-legend span {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .stats-legend-swatch {
-      width: 13px;
-      height: 7px;
-      border-radius: 1px;
-      background: var(--accent);
-    }
-
-    .stats-legend-line {
-      width: 15px;
-      border-top: 2px solid var(--accent2);
-    }
-
-    .stats-chart-scroll {
-      width: 100%;
-      max-width: 100%;
-      overflow: hidden;
-      padding: 8px 0 0;
-    }
-
-    .stats-panel .timeline-chart {
-      display: block;
-      width: 100%;
-      min-width: 0;
-      max-width: none;
-      height: auto;
-      color: var(--text-muted);
-      font-family: inherit;
-      font-size: 10.5px;
-    }
-
-    .stats-panel .timeline-grid {
-      stroke: var(--border);
-      stroke-width: 1;
-      vector-effect: non-scaling-stroke;
-    }
-
-    .stats-panel .timeline-axis-label,
-    .stats-panel .timeline-tick-label {
-      fill: var(--text-muted);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .stats-panel .timeline-axis-count {
-      fill: var(--accent);
-    }
-
-    .stats-panel .timeline-bar {
-      fill: var(--accent);
-      opacity: 0.78;
-    }
-
-    .stats-panel .timeline-line {
-      fill: none;
-      stroke: var(--accent2);
-      stroke-width: 2;
-      stroke-linejoin: round;
-      stroke-linecap: round;
-      vector-effect: non-scaling-stroke;
-    }
-
-    .stats-primary-chart .timeline-grid {
-      stroke: rgba(185, 204, 229, 0.14);
-    }
-
-    .stats-primary-chart .timeline-axis-label,
-    .stats-primary-chart .timeline-tick-label {
-      fill: #96a7bd;
-    }
-
-    .stats-primary-chart .timeline-axis-count {
-      fill: #70b7ff;
-    }
-
-    .stats-primary-chart .timeline-bar {
-      fill: #5faaff;
-      opacity: 0.92;
-    }
-
-    .stats-primary-chart .timeline-line {
-      stroke: #77dfa6;
-      filter: drop-shadow(0 0 4px rgba(119, 223, 166, 0.28));
-    }
-
-    .stats-panel .timeline-empty {
-      margin: 8px;
-      padding: 46px 18px;
-      border: 1px dashed var(--border);
-      color: var(--text-muted);
-      font-size: 12px;
-      text-align: center;
-    }
-
-    .stats-period-summary {
-      padding: 14px 0 18px;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 12px;
-      line-height: 1.55;
-    }
-
-    .stats-primary-chart .stats-period-summary {
-      border-top-color: rgba(196, 214, 237, 0.16);
-    }
-
-    .stats-period-summary strong {
-      color: var(--text);
-    }
-
-    .stats-distribution-block + .stats-distribution-block {
-      margin-top: 19px;
-      padding-top: 17px;
-      border-top: 1px solid var(--stats-card-border);
-    }
-
-    .stats-distribution-block h4 {
-      margin-bottom: 10px;
-      color: var(--text);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-    }
-
-    .stats-distribution-list {
-      display: grid;
-      gap: 9px;
-    }
-
-    .stats-distribution-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 5px 12px;
-      align-items: center;
-      color: var(--text-muted);
-      font-size: 10.5px;
-    }
-
-    a.stats-distribution-row {
-      min-height: 44px;
-      margin: -4px -8px;
-      padding: 4px 8px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.15s ease, color 0.15s ease;
-    }
-
-    a.stats-distribution-row:hover {
-      background: color-mix(in srgb, var(--accent) 8%, transparent);
-      color: var(--text);
-    }
-
-    a.stats-distribution-row:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-
-    .stats-distribution-label {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .stats-distribution-value {
-      color: var(--text);
-      font-size: 10px;
-      font-variant-numeric: tabular-nums;
-      font-weight: 750;
-    }
-
-    .stats-distribution-track {
-      grid-column: 1 / -1;
-      height: 5px;
-      overflow: hidden;
-      border-radius: 999px;
-      background: var(--stats-track-bg);
-    }
-
-    .stats-distribution-bar {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 52%, var(--accent2)));
-    }
-
-    .stats-empty-block {
-      padding: 32px 0;
-      border-top: 1px dashed var(--border);
-      color: var(--text-muted);
-      font-size: 12px;
-    }
-
-    @media (max-width: 1100px) {
-      .stats-pulse-card,
-      .stats-composition-card {
-        grid-column: span 12;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .stats-metric-rail {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .stats-metric:nth-child(3) {
-        border-left: 0;
-      }
-      .stats-metric:nth-child(n + 3) {
-        border-top: 1px solid var(--stats-card-border);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .stats-dashboard-header {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 16px;
-      }
-      .stats-snapshot-block {
-        min-width: 0;
-        text-align: left;
-      }
-      .stats-pulse-card,
-      .stats-composition-card {
-        grid-column: span 12;
-      }
-      .stats-card-header-inline {
-        display: block;
-      }
-      .stats-dashboard-card {
-        padding: 18px;
-      }
-      .stats-range-button {
-        min-height: 44px;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .stats-dashboard-header h2 {
-        font-size: 32px;
-      }
-      .stats-metric {
-        padding: 14px 12px 15px;
-      }
-      .stats-metric-value {
-        font-size: 26px;
-      }
-      .stats-chart-header {
-        display: block;
-      }
-      .stats-chart-actions {
-        align-items: stretch;
-        margin-top: 18px;
-      }
-      .stats-range-control {
-        display: flex;
-      }
-      .stats-range-button {
-        flex: 1 1 0;
-      }
-      .stats-chart-legend {
-        justify-content: flex-start;
-        white-space: normal;
-      }
-      .stats-primary-chart {
-        padding-right: 15px;
-        padding-left: 15px;
-        border-radius: 18px;
-      }
-    }
-
-    :where(html[data-theme="dark"]) {
-      .stats-panel {
-        --stats-card-bg: #111923;
-        --stats-card-border: #2e3a49;
-        --stats-track-bg: #263140;
-        --stats-grid-line: rgba(139, 161, 184, 0.055);
-      }
-      .stats-dashboard-card,
-      .stats-metric-rail {
-        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
-      }
-      .stats-primary-chart {
-        box-shadow: 0 22px 52px rgba(0, 0, 0, 0.3);
-      }
-    }
-
     /* ── Category Section ── */
     .category {
       margin-bottom: 42px;
@@ -4391,95 +3748,180 @@
     }
 
     .stats-panel {
-      --stats-card-bg: transparent;
+      --stats-card-bg: var(--surface);
       --stats-card-border: var(--border);
       --stats-track-bg: color-mix(in srgb, var(--text) 7%, transparent);
-      --stats-grid-line: color-mix(in srgb, var(--text) 8%, transparent);
-      --stats-data-1: #315f78;
-      --stats-data-2: #7f756c;
-      --stats-data-3: #a39a90;
-      --stats-observatory-bg: #0f1929;
-      --stats-observatory-border: #2b405d;
-      --stats-observatory-grid: rgba(170, 194, 222, 0.12);
-      --stats-observatory-text: #f4f8ff;
-      --stats-observatory-muted: #aab8ca;
-      --stats-observatory-bar: #65aefc;
-      --stats-observatory-trend: #77dfa6;
+      --stats-grid-line: color-mix(in srgb, var(--text) 9%, transparent);
+      --stats-axis-line: color-mix(in srgb, var(--text) 22%, transparent);
+      --stats-data-1: #2d6fa8;
+      --stats-data-2: #cc5f2c;
+      --stats-data-3: #1a9a6e;
+      --stats-bar: var(--stats-data-1);
+      --stats-bar-soft: color-mix(in srgb, var(--stats-data-1) 62%, var(--surface));
+      --stats-trend: var(--stats-data-2);
+      --stats-positive: #1f7a4d;
+      --stats-negative: #b3412f;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: clip;
+      padding-bottom: 40px;
+      color: var(--text);
       background: transparent;
-      padding: 0;
     }
 
-    .stats-dashboard-header,
-    .stats-landscape-header {
+    .stats-dashboard-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
       align-items: end;
-      padding: 0 0 12px;
+      gap: 24px;
+      padding-bottom: 22px;
       border-bottom: 1px solid var(--border);
     }
 
+    .stats-eyebrow,
+    .stats-section-index,
+    .stats-snapshot-block span,
+    .stats-metric-label,
+    .stats-period-facts dt {
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
     .stats-dashboard-header h2 {
-      margin-top: 7px;
+      margin: 8px 0 0;
+      color: var(--text);
       font-family: var(--font-display);
-      font-size: clamp(30px, 3vw, 40px);
+      font-size: clamp(34px, 4.4vw, 52px);
       font-weight: 700;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.035em;
       line-height: 1.02;
     }
 
     .stats-scope {
-      max-width: 660px;
-      margin-top: 5px;
+      max-width: 62ch;
+      margin-top: 12px;
       color: var(--text-muted);
-      font-size: 13px;
-      line-height: 1.4;
+      font-size: 16px;
+      line-height: 1.55;
     }
 
     .stats-snapshot-block {
-      padding-left: 18px;
-      border-left: 1px solid var(--border);
+      display: grid;
+      gap: 6px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .stats-snapshot-block time {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stats-status {
+      margin-top: 16px;
       color: var(--text-muted);
-      font-family: var(--font-body);
+      font-size: 14px;
     }
 
-    .stats-metric-rail {
-      margin: 0 0 16px;
-      border: 0;
-      border-bottom: 1px solid var(--border);
-      border-radius: 0;
-      background: transparent;
-      box-shadow: none;
-    }
-
-    .stats-metric {
-      min-height: 78px;
-      padding: 10px 16px 11px;
-    }
-
-    .stats-metric:first-child {
-      padding-left: 0;
-    }
-
-    .stats-metric::before {
+    .stats-status[hidden] {
       display: none;
     }
 
-    .stats-metric-label {
-      color: var(--text-dim);
-      font-size: 10px;
-      letter-spacing: 0.07em;
+    .stats-metric-rail {
+      display: grid;
+      grid-template-columns: 1.25fr repeat(3, minmax(0, 1fr));
+      margin: 26px 0 0;
+      border: 1px solid var(--stats-card-border);
+      border-radius: 14px;
+      background: var(--stats-card-bg);
+      overflow: hidden;
+    }
+
+    .stats-metric {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+      min-height: 64px;
+      padding: 20px 22px;
+      border-left: 1px solid var(--stats-card-border);
+    }
+
+    .stats-metric:first-child {
+      border-left: 0;
+    }
+
+    .stats-metric dd {
+      margin: 0;
     }
 
     .stats-metric-value {
-      margin-top: 5px;
+      color: var(--text);
       font-family: var(--font-display);
-      font-size: 27px;
+      font-size: 32px;
       font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .stats-metric-hero .stats-metric-value {
+      font-size: 52px;
+    }
+
+    .stats-metric-value[data-trend="positive"] {
+      color: var(--stats-positive);
+    }
+
+    .stats-metric-value[data-trend="negative"] {
+      color: var(--stats-negative);
+    }
+
+    .stats-metric-value[data-trend="positive"]::before {
+      content: '▲ ';
+      font-size: 0.5em;
+      vertical-align: 0.3em;
+    }
+
+    .stats-metric-value[data-trend="negative"]::before {
+      content: '▼ ';
+      font-size: 0.5em;
+      vertical-align: 0.3em;
     }
 
     .stats-metric-note {
-      margin-top: 6px;
       color: var(--text-muted);
-      font-size: 10.5px;
-      line-height: 1.3;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .stats-metric-spark {
+      margin-top: auto;
+      height: 28px;
+    }
+
+    .stats-metric-spark svg {
+      display: block;
+      width: 100%;
+      height: 28px;
+      overflow: visible;
+    }
+
+    .stats-spark-bar {
+      fill: var(--stats-bar-soft);
+    }
+
+    .stats-spark-bar.is-current {
+      fill: var(--stats-bar);
     }
 
     .stats-dashboard-grid {
@@ -4487,248 +3929,317 @@
       grid-template-columns: repeat(12, minmax(0, 1fr));
       align-items: start;
       gap: 20px;
+      margin-top: 20px;
     }
 
-    .stats-landscape-primary,
     .stats-landscape-secondary {
-      margin-top: 0;
-      margin-bottom: 16px;
+      align-items: stretch;
     }
 
     .stats-pulse-card {
-      grid-column: span 7;
+      grid-column: 1 / -1;
     }
 
-    .stats-composition-card {
-      grid-column: span 5;
-    }
-
-    .stats-mechanism-card {
-      grid-column: span 5;
-    }
-
+    .stats-composition-card,
+    .stats-mechanism-card,
     .stats-directions-card {
-      grid-column: span 7;
+      grid-column: span 4;
     }
 
-    .stats-dashboard-card,
-    .stats-primary-chart {
-      min-height: 0;
-      padding: 14px 0 0;
-      border: 0;
-      border-top: 1px solid var(--border);
-      border-radius: 0;
-      background: transparent;
+    .stats-primary-chart,
+    .stats-dashboard-card {
+      min-width: 0;
+      padding: 24px 26px;
+      border: 1px solid var(--stats-card-border);
+      border-radius: 14px;
+      background: var(--stats-card-bg);
+    }
+
+    .stats-chart-header,
+    .stats-card-header-inline {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .stats-chart-heading h3,
+    .stats-card-header h3 {
+      margin: 6px 0 0;
       color: var(--text);
-      box-shadow: none;
-      overflow: visible;
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
     }
 
-    .stats-primary-chart {
-      padding: 18px 18px 0;
-      border: 1px solid var(--stats-observatory-border);
-      border-radius: 6px;
-      background:
-        radial-gradient(circle at 86% -18%, rgba(101, 174, 252, 0.18), transparent 38%),
-        repeating-linear-gradient(0deg, var(--stats-observatory-grid) 0 1px, transparent 1px 32px),
-        repeating-linear-gradient(90deg, var(--stats-observatory-grid) 0 1px, transparent 1px 32px),
-        var(--stats-observatory-bg);
-      color: var(--stats-observatory-text);
-      box-shadow: 0 14px 30px rgba(15, 25, 41, 0.16);
-      overflow: hidden;
-    }
-
-    .stats-primary-chart::after {
-      position: absolute;
-      inset: 8px;
-      background:
-        linear-gradient(var(--stats-observatory-bar) 0 0) top left / 12px 1px no-repeat,
-        linear-gradient(var(--stats-observatory-bar) 0 0) top left / 1px 12px no-repeat,
-        linear-gradient(var(--stats-observatory-bar) 0 0) top right / 12px 1px no-repeat,
-        linear-gradient(var(--stats-observatory-bar) 0 0) top right / 1px 12px no-repeat,
-        linear-gradient(var(--stats-observatory-bar) 0 0) bottom left / 12px 1px no-repeat,
-        linear-gradient(var(--stats-observatory-bar) 0 0) bottom left / 1px 12px no-repeat,
-        linear-gradient(var(--stats-observatory-bar) 0 0) bottom right / 12px 1px no-repeat,
-        linear-gradient(var(--stats-observatory-bar) 0 0) bottom right / 1px 12px no-repeat;
-      content: '';
-      opacity: 0.38;
-      pointer-events: none;
+    .stats-chart-heading p,
+    .stats-card-header p {
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     .stats-card-header {
-      margin-bottom: 8px;
+      margin-bottom: 20px;
     }
 
-    .stats-chart-header {
-      gap: 16px;
-      padding-bottom: 8px;
-    }
-
-    .stats-chart-actions {
-      gap: 6px;
-    }
-
-    .stats-card-header h3,
-    .stats-chart-heading h3,
-    .stats-primary-chart .stats-chart-heading h3 {
-      margin-top: 4px;
-      font-family: var(--font-display);
-      font-size: 21px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .stats-card-header p,
-    .stats-chart-heading p,
-    .stats-primary-chart .stats-chart-heading p,
-    .stats-primary-chart .stats-chart-legend,
-    .stats-primary-chart .stats-period-summary {
-      color: var(--text-muted);
-    }
-
-    .stats-primary-chart .stats-section-index {
-      color: var(--stats-observatory-bar);
-    }
-
-    .stats-primary-chart .stats-chart-heading h3 {
-      color: var(--stats-observatory-text);
-    }
-
-    .stats-primary-chart .stats-chart-heading p,
-    .stats-primary-chart .stats-chart-legend,
-    .stats-primary-chart .stats-period-summary {
-      color: var(--stats-observatory-muted);
+    .stats-directions-card .stats-card-header-inline {
+      flex-direction: column;
+      align-items: flex-start;
     }
 
     .stats-range-control,
-    .stats-primary-chart .stats-range-control {
-      padding: 0;
+    .stats-direction-tabs {
+      display: inline-flex;
+      flex: 0 0 auto;
+      gap: 2px;
+      padding: 3px;
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: transparent;
+      border-radius: 999px;
+      background: var(--surface2);
     }
 
     .stats-range-button,
-    .stats-primary-chart .stats-range-button,
     .stats-direction-tabs button {
-      min-height: 36px;
-      padding: 6px 10px;
+      min-width: 52px;
+      min-height: 32px;
+      padding: 0 14px;
       border: 0;
-      border-radius: 0;
+      border-radius: 999px;
       background: transparent;
       color: var(--text-muted);
-      font-family: var(--font-body);
-      font-size: 12px;
-      font-weight: 700;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .stats-range-button:hover,
+    .stats-direction-tabs button:hover {
+      color: var(--text);
     }
 
     .stats-range-button[aria-pressed="true"],
-    .stats-primary-chart .stats-range-button[aria-pressed="true"],
     .stats-direction-tabs button[aria-pressed="true"] {
-      background: var(--text);
-      color: var(--bg);
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--border);
     }
 
-    .stats-primary-chart .stats-range-control {
-      border-color: var(--stats-observatory-border);
-      background: rgba(255, 255, 255, 0.04);
+    .stats-range-button:focus-visible,
+    .stats-direction-tabs button:focus-visible,
+    .stats-panel .timeline-chart:focus-visible,
+    a.stats-distribution-row:focus-visible,
+    .stats-category-legend a:focus-visible {
+      outline: 2px solid var(--stats-data-1);
+      outline-offset: 2px;
     }
 
-    .stats-primary-chart .stats-range-button {
-      color: var(--stats-observatory-muted);
+    .stats-chart-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px 28px;
+      margin: 22px 0 10px;
     }
 
-    .stats-primary-chart .stats-range-button:hover {
-      color: var(--stats-observatory-text);
+    .stats-period-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 36px;
+      margin: 0;
     }
 
-    .stats-primary-chart .stats-range-button[aria-pressed="true"] {
-      background: var(--stats-observatory-bar);
-      color: var(--stats-observatory-bg);
+    .stats-period-facts dd {
+      margin: 4px 0 0;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.15;
     }
 
-    .stats-primary-chart .stats-range-button:focus-visible {
-      outline-color: var(--stats-observatory-trend);
+    .stats-period-facts dd small {
+      margin-left: 6px;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 400;
     }
 
-    .stats-primary-chart .stats-legend-swatch {
-      background: var(--stats-observatory-bar);
+    .stats-chart-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      color: var(--text-muted);
+      font-size: 13px;
     }
 
-    .stats-primary-chart .stats-legend-line {
-      border-color: var(--stats-observatory-trend);
+    .stats-chart-legend > span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stats-legend-swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+      background: var(--stats-bar-soft);
+    }
+
+    .stats-legend-line {
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--stats-trend);
     }
 
     .stats-chart-scroll {
-      width: 100%;
-      min-height: 0;
+      position: relative;
+      height: clamp(220px, 27vh, 250px);
+      min-height: 220px;
       overflow: hidden;
-      padding: 0;
     }
 
     .stats-panel .timeline-chart {
       display: block;
       width: 100%;
-      min-width: 0;
-      max-width: none;
-      height: clamp(220px, 27vh, 250px);
-    }
-
-    .stats-period-summary {
-      padding: 8px 0 10px;
-      font-size: 10.5px;
-      line-height: 1.35;
+      height: 100%;
+      overflow: visible;
+      touch-action: pan-y;
     }
 
     .stats-panel .timeline-grid {
       stroke: var(--stats-grid-line);
+      stroke-width: 1;
+    }
+
+    .stats-panel .timeline-baseline {
+      stroke: var(--stats-axis-line);
+      stroke-width: 1;
     }
 
     .stats-panel .timeline-axis-label,
     .stats-panel .timeline-tick-label {
       fill: var(--text-muted);
-    }
-
-    .stats-panel .timeline-bar {
-      fill: var(--stats-data-1);
-      opacity: 0.68;
-    }
-
-    .stats-panel .timeline-line {
-      stroke: var(--text);
-    }
-
-    .stats-primary-chart .timeline-grid {
-      stroke: var(--stats-observatory-grid);
-    }
-
-    .stats-primary-chart .timeline-axis-label,
-    .stats-primary-chart .timeline-tick-label {
-      fill: var(--stats-observatory-muted);
-    }
-
-    .stats-primary-chart .timeline-axis-count {
-      fill: var(--stats-observatory-bar);
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
     }
 
     .stats-primary-chart .timeline-bar {
-      fill: var(--stats-observatory-bar);
-      opacity: 0.88;
+      fill: var(--stats-bar-soft);
       transform-box: fill-box;
-      transform-origin: center bottom;
-      animation: stats-bar-rise 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+      transform-origin: bottom;
+      animation: stats-bar-rise 0.45s ease-out both;
+      transition: fill 0.12s ease;
+    }
+
+    .stats-primary-chart .timeline-bar.is-active {
+      fill: var(--stats-bar);
     }
 
     .stats-primary-chart .timeline-line {
-      stroke: var(--stats-observatory-trend);
+      fill: none;
+      stroke: var(--stats-trend);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
       stroke-dasharray: 1;
-      filter: none;
-      animation: stats-line-draw 820ms ease-out 120ms both;
+      animation: stats-line-draw 0.8s ease-out both;
+    }
+
+    .stats-panel .timeline-crosshair {
+      stroke: var(--stats-axis-line);
+      stroke-width: 1;
+    }
+
+    .stats-panel .timeline-focus-dot {
+      fill: var(--stats-trend);
+      stroke: var(--stats-card-bg);
+      stroke-width: 2;
+    }
+
+    .stats-panel .timeline-hit {
+      fill: transparent;
+      cursor: crosshair;
+    }
+
+    .stats-chart-tooltip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      min-width: 150px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.45;
+      pointer-events: none;
+    }
+
+    .stats-chart-tooltip[hidden] {
+      display: none;
+    }
+
+    .stats-chart-tooltip-title {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .stats-chart-tooltip-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stats-chart-tooltip-row strong {
+      min-width: 2.5ch;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stats-chart-tooltip-row i {
+      width: 12px;
+      height: 2px;
+      border-radius: 2px;
+    }
+
+    .stats-chart-tooltip-row .is-bar {
+      height: 10px;
+      border-radius: 2px;
+      background: var(--stats-bar);
+    }
+
+    .stats-chart-tooltip-row .is-line {
+      background: var(--stats-trend);
     }
 
     .stats-primary-chart .timeline-empty {
-      color: var(--stats-observatory-muted);
-      border-color: var(--stats-observatory-border);
+      display: grid;
+      place-items: center;
+      height: 100%;
+      border: 1px dashed var(--border);
+      border-color: var(--border);
+      border-radius: 10px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .stats-period-summary {
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.5;
     }
 
     @keyframes stats-bar-rise {
@@ -4743,132 +4254,142 @@
 
     .stats-category-composition {
       display: grid;
-      grid-template-columns: 120px minmax(0, 1fr);
-      align-items: center;
-      gap: 16px;
-      margin-top: 12px;
+      gap: 18px;
     }
 
-    .stats-category-donut {
-      position: relative;
-      width: 120px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-    }
-
-    .stats-category-donut::after {
-      position: absolute;
-      inset: 23px;
-      border-radius: 50%;
-      background: var(--bg);
-      content: '';
-    }
-
-    .stats-category-donut > span {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
+    .stats-category-total {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--text);
+      align-items: baseline;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 14px;
     }
 
-    .stats-category-donut strong {
+    .stats-category-total strong {
+      color: var(--text);
       font-family: var(--font-display);
-      font-size: 24px;
+      font-size: 32px;
       line-height: 1;
     }
 
-    .stats-category-donut small {
-      margin-top: 4px;
-      color: var(--text-dim);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+    .stats-category-stack {
+      display: flex;
+      gap: 2px;
+      height: 14px;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .stats-category-stack span {
+      min-width: 4px;
+      height: 100%;
     }
 
     .stats-category-legend {
-      display: flex;
-      flex-direction: column;
+      display: grid;
     }
 
     .stats-category-legend a {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
       gap: 12px;
-      padding: 7px 0;
-      border-bottom: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 12px;
+      padding: 10px 0;
+      border-top: 1px solid var(--border);
+      color: var(--text);
+      font-size: 14px;
       text-decoration: none;
     }
 
-    .stats-category-legend a:hover {
-      color: var(--text);
+    .stats-category-legend a:first-child {
+      border-top: 0;
+    }
+
+    .stats-category-legend a:hover span span {
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     .stats-category-legend a > span {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      min-width: 0;
     }
 
     .stats-category-legend i {
-      width: 8px;
-      height: 8px;
       flex: 0 0 auto;
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
     }
 
-    .stats-category-legend strong {
+    .stats-category-legend strong,
+    .stats-distribution-value {
       color: var(--text);
+      font-size: 14px;
       font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }
 
-    .stats-direction-tabs {
-      display: inline-flex;
-      flex: 0 0 auto;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+    .stats-category-legend strong small,
+    .stats-distribution-value small {
+      margin-left: 6px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 400;
     }
 
     .stats-distribution-list {
-      margin-top: 8px;
+      display: grid;
+      gap: 4px;
     }
 
     .stats-distribution-row {
-      padding: 4px 0;
-      color: var(--text-muted);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: baseline;
+      gap: 6px 12px;
+      padding: 8px 0;
+      color: var(--text);
     }
 
     a.stats-distribution-row {
       min-height: 0;
-      margin: 0;
-      padding: 4px 0;
-      border-radius: 0;
-    }
-
-    .stats-directions-card .stats-distribution-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0 18px;
+      margin: 0 -8px;
+      padding: 8px;
+      border-radius: 8px;
+      text-decoration: none;
     }
 
     a.stats-distribution-row:hover {
-      background: transparent;
-      color: var(--text);
+      background: var(--card-hover);
+    }
+
+    .stats-distribution-label {
+      min-width: 0;
+      font-size: 14px;
+      overflow-wrap: anywhere;
     }
 
     .stats-distribution-track {
-      height: 3px;
-      border-radius: 0;
+      grid-column: 1 / -1;
+      height: 8px;
+      overflow: hidden;
+      border-radius: 4px;
       background: var(--stats-track-bg);
     }
 
     .stats-distribution-bar {
-      border-radius: 0;
-      background: var(--stats-data-1);
+      display: block;
+      height: 100%;
+      border-radius: 4px;
+      background: var(--stats-bar);
+    }
+
+    .stats-empty-block {
+      color: var(--text-muted);
+      font-size: 14px;
     }
 
     @media (min-width: 1180px) and (min-height: 700px) {
@@ -4876,34 +4397,22 @@
         padding-top: 14px;
         padding-bottom: 14px;
       }
-
-      .stats-metric {
-        min-height: 64px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-      }
-
-      .stats-metric-value {
-        font-size: 24px;
-      }
-
-      .stats-metric-note {
-        display: none;
-      }
-
-      .stats-panel .timeline-chart {
-        height: clamp(200px, 24vh, 220px);
-      }
-
-      .stats-landscape-secondary {
-        margin-bottom: 0;
-      }
     }
 
     @media (min-width: 1180px) and (min-height: 860px) {
-      body.stats-mode footer,
-      .stats-scope {
+      body.stats-mode footer {
         display: none;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .stats-composition-card {
+        grid-column: 1 / -1;
+      }
+
+      .stats-mechanism-card,
+      .stats-directions-card {
+        grid-column: span 6;
       }
     }
 
@@ -4917,16 +4426,6 @@
         display: none;
       }
 
-      .stats-pulse-card,
-      .stats-composition-card,
-      .stats-mechanism-card,
-      .stats-directions-card {
-        grid-column: 1 / -1;
-      }
-
-      .stats-category-composition {
-        grid-template-columns: 160px minmax(0, 1fr);
-      }
     }
 
     @media (max-width: 768px) {
@@ -5011,8 +4510,10 @@
 
       .stats-dashboard-header,
       .stats-landscape-header {
+        grid-template-columns: minmax(0, 1fr);
         align-items: start;
         gap: 18px;
+        padding-bottom: 18px;
       }
 
       .stats-dashboard-header h2 {
@@ -5024,87 +4525,89 @@
       }
 
       .stats-snapshot-block {
-        padding-left: 0;
-        border-left: 0;
+        justify-self: start;
+        text-align: left;
       }
 
       .stats-metric-rail {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 20px;
       }
 
       .stats-metric,
       .stats-metric:first-child {
-        min-height: 116px;
-        padding: 16px 12px;
+        min-height: 112px;
+        padding: 16px 14px;
       }
 
       .stats-metric:nth-child(odd) {
-        padding-left: 0;
         border-left: 0;
       }
 
       .stats-metric:nth-child(n + 3) {
-        border-top: 1px solid var(--border);
+        border-top: 1px solid var(--stats-card-border);
       }
 
-      .stats-metric-value {
-        font-size: 28px;
+      .stats-metric-value,
+      .stats-metric-hero .stats-metric-value {
+        font-size: 30px;
+      }
+
+      .stats-metric-note {
+        font-size: 12px;
       }
 
       .stats-dashboard-grid {
         display: block;
+        margin-top: 16px;
       }
 
       .stats-dashboard-card,
       .stats-primary-chart {
-        margin-bottom: 32px;
+        margin-bottom: 16px;
+        padding: 18px 16px;
       }
 
       .stats-chart-header,
       .stats-card-header-inline {
-        align-items: flex-start;
+        align-items: stretch;
         flex-direction: column;
+        gap: 14px;
       }
 
-      .stats-chart-actions {
-        width: 100%;
-        align-items: flex-start;
+      .stats-range-control,
+      .stats-direction-tabs {
+        display: flex;
       }
 
       .stats-primary-chart .stats-range-button,
       .stats-direction-tabs button {
+        flex: 1 1 0;
         min-height: 44px;
       }
 
-      .stats-primary-chart {
-        padding: 14px 12px 0;
+      .stats-period-facts {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        width: 100%;
+      }
+
+      .stats-period-facts dd {
+        font-size: 18px;
+      }
+
+      .stats-period-facts dd small {
+        display: block;
+        margin: 2px 0 0;
+      }
+
+      .stats-chart-scroll {
+        height: 220px;
       }
 
       a.stats-distribution-row {
         min-height: 44px;
-        margin: -4px -8px;
-        padding: 4px 8px;
-      }
-
-      .stats-category-composition {
-        grid-template-columns: 116px minmax(0, 1fr);
-        gap: 18px;
-      }
-
-      .stats-category-donut {
-        width: 116px;
-      }
-
-      .stats-category-donut::after {
-        inset: 23px;
-      }
-
-      .stats-category-donut strong {
-        font-size: 23px;
-      }
-
-      .stats-directions-card .stats-distribution-list {
-        grid-template-columns: minmax(0, 1fr);
       }
     }
 
@@ -5151,22 +4654,19 @@
       }
 
       .stats-panel {
-        --stats-data-1: #9eb9ca;
-        --stats-data-2: #aaa098;
-        --stats-data-3: #77736e;
-        --stats-observatory-bg: #0b1422;
-        --stats-observatory-border: #385273;
-        --stats-observatory-grid: rgba(181, 205, 232, 0.14);
-        --stats-observatory-text: #f5f8fc;
-        --stats-observatory-muted: #b8c6d8;
-        --stats-observatory-bar: #75b8ff;
-        --stats-observatory-trend: #86e2ad;
+        --stats-card-bg: color-mix(in srgb, var(--surface2) 55%, var(--surface));
+        --stats-data-1: #4f95d8;
+        --stats-data-2: #d9713d;
+        --stats-data-3: #2eab7f;
+        --stats-bar-soft: color-mix(in srgb, var(--stats-data-1) 58%, var(--surface));
+        --stats-positive: #5cc08a;
+        --stats-negative: #e88570;
+        background: transparent;
       }
 
-      .stats-dashboard-card,
-      .stats-metric-rail {
-        background: transparent;
-        box-shadow: none;
+      .stats-chart-tooltip {
+        background: var(--surface2);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
       }
     }
   </style>
@@ -5388,7 +4888,7 @@
       <p class="stats-status" id="stats-status" aria-live="polite">Loading catalog data…</p>
 
       <dl class="stats-metric-rail" aria-label="Release statistics summary">
-        <div class="stats-metric">
+        <div class="stats-metric stats-metric-hero">
           <dt class="stats-metric-label">Total papers</dt>
           <dd class="stats-metric-value" id="stats-total-papers">—</dd>
           <dd class="stats-metric-note" id="stats-total-papers-note">Strict and adjacent catalog entries</dd>
@@ -5397,6 +4897,7 @@
           <dt class="stats-metric-label">Latest 30 days</dt>
           <dd class="stats-metric-value" id="stats-latest-thirty">—</dd>
           <dd class="stats-metric-note" id="stats-latest-thirty-note">Anchored to the latest publication</dd>
+          <dd class="stats-metric-spark" id="stats-latest-thirty-spark" aria-hidden="true"></dd>
         </div>
         <div class="stats-metric">
           <dt class="stats-metric-label">Vs prior 30 days</dt>
@@ -5416,35 +4917,40 @@
             <div class="stats-chart-heading">
               <div class="stats-section-index">Publication activity</div>
               <h3 id="release-pulse-heading">Release trend</h3>
-              <p>Published papers per period, with a trailing average on the same scale.</p>
+              <p>Papers by publication date, with a trailing average on the same scale.</p>
             </div>
-            <div class="stats-chart-actions">
-              <div class="stats-range-control" role="group" aria-label="Release Pulse date range">
-                <button type="button" class="stats-range-button" data-stats-range="90d" aria-pressed="false">90D</button>
-                <button type="button" class="stats-range-button" data-stats-range="1y" aria-pressed="true">1Y</button>
-                <button type="button" class="stats-range-button" data-stats-range="all" aria-pressed="false">ALL</button>
-              </div>
-              <div class="stats-chart-legend" aria-label="Release Pulse legend">
-                <span><i class="stats-legend-swatch" aria-hidden="true"></i><span id="release-pulse-bar-label">Daily releases</span></span>
-                <span><i class="stats-legend-line" aria-hidden="true"></i><span id="release-pulse-line-label">30-day average</span></span>
-              </div>
+            <div class="stats-range-control" role="group" aria-label="Release trend date range">
+              <button type="button" class="stats-range-button" data-stats-range="90d" aria-pressed="false">90D</button>
+              <button type="button" class="stats-range-button" data-stats-range="1y" aria-pressed="true">1Y</button>
+              <button type="button" class="stats-range-button" data-stats-range="all" aria-pressed="false">ALL</button>
             </div>
           </header>
+          <div class="stats-chart-toolbar">
+            <dl class="stats-period-facts" id="release-pulse-facts" aria-live="polite">
+              <div><dt>In range</dt><dd id="release-pulse-total">—</dd></div>
+              <div><dt id="release-pulse-peak-label">Busiest week</dt><dd id="release-pulse-peak">—</dd></div>
+              <div><dt id="release-pulse-average-label">Average per week</dt><dd id="release-pulse-average">—</dd></div>
+            </dl>
+            <div class="stats-chart-legend" aria-label="Release trend legend">
+              <span><i class="stats-legend-swatch" aria-hidden="true"></i><span id="release-pulse-bar-label">Weekly releases</span></span>
+              <span><i class="stats-legend-line" aria-hidden="true"></i><span id="release-pulse-line-label">4-week average</span></span>
+            </div>
+          </div>
           <div class="stats-chart-scroll" id="release-pulse-chart" aria-label="Release trend chart"></div>
           <p class="stats-period-summary" id="release-pulse-summary" aria-live="polite">The latest publication range will appear after the catalog loads.</p>
         </article>
+      </div>
 
-        <aside class="stats-dashboard-card stats-composition-card" aria-labelledby="catalog-composition-heading">
+      <div class="stats-dashboard-grid stats-dashboard-secondary stats-landscape-secondary">
+        <article class="stats-dashboard-card stats-composition-card" aria-labelledby="catalog-composition-heading">
           <header class="stats-card-header">
             <div class="stats-section-index">Primary taxonomy</div>
             <h3 id="catalog-composition-heading">Category mix</h3>
             <p>One primary category per catalog paper.</p>
           </header>
           <div class="stats-category-composition" id="stats-category-distribution" aria-live="polite"></div>
-        </aside>
-      </div>
+        </article>
 
-      <div class="stats-dashboard-grid stats-dashboard-secondary stats-landscape-secondary">
         <article class="stats-dashboard-card stats-mechanism-card" aria-labelledby="mechanism-heading">
           <header class="stats-card-header">
             <div class="stats-section-index">Structural choices</div>
@@ -5459,6 +4965,7 @@
             <div>
               <div class="stats-section-index">Recent 90-day window</div>
               <h3 id="active-directions-heading">Active directions</h3>
+              <p>Top tags among papers from the latest 90 days.</p>
             </div>
             <div class="stats-direction-tabs" role="group" aria-label="Active direction taxonomy">
               <button type="button" data-stats-direction="focus" aria-pressed="true">Focus</button>
@@ -5712,6 +5219,31 @@ function addTrailingAverage(series, windowSize) {
 }
 
 /**
+ * Fold consecutive daily buckets into gap-free seven-day buckets.
+ * @param {Array<Object>} dailySeries Gap-free daily publication buckets, oldest first.
+ * @returns {Array<Object>} Weekly buckets keyed by their first day.
+ */
+function aggregateWeeklySeries(dailySeries) {
+  var daily = Array.isArray(dailySeries) ? dailySeries : [];
+  var weeks = [];
+  for (var start = 0; start < daily.length; start += 7) {
+    var days = daily.slice(start, start + 7);
+    var first = days[0] || {};
+    var last = days[days.length - 1] || {};
+    weeks.push({
+      key: first.key,
+      label: first.label,
+      endKey: last.key,
+      count: days.reduce(function(total, bucket) {
+        return total + normalizeReleaseCount(bucket && bucket.count);
+      }, 0),
+      cumulative: last.cumulative
+    });
+  }
+  return weeks;
+}
+
+/**
  * Select the release series and trailing-average window for a Stats range.
  * @param {Array<Object>} dailySeries Gap-free daily publication buckets.
  * @param {Array<Object>} monthlySeries Gap-free monthly publication buckets.
@@ -5737,9 +5269,9 @@ function slicePublicationRange(dailySeries, monthlySeries, requestedRange) {
     granularity = 'month';
     windowSize = 6;
   } else {
-    source = daily.slice(-365);
-    granularity = 'day';
-    windowSize = 30;
+    source = aggregateWeeklySeries(daily.slice(-364));
+    granularity = 'week';
+    windowSize = 4;
   }
 
   return {
@@ -5747,6 +5279,28 @@ function slicePublicationRange(dailySeries, monthlySeries, requestedRange) {
     granularity: granularity,
     windowSize: windowSize,
     series: addTrailingAverage(source, windowSize)
+  };
+}
+
+/**
+ * Summarize one selected release range as reader-facing headline facts.
+ * @param {Object} rangeData Selected range metadata and averaged buckets.
+ * @returns {{total: number, peak: Object|null, average: number, periods: number}} Range facts.
+ */
+function buildReleasePulseFacts(rangeData) {
+  var series = rangeData && Array.isArray(rangeData.series) ? rangeData.series : [];
+  var total = 0;
+  var peak = null;
+  series.forEach(function(bucket) {
+    var count = normalizeReleaseCount(bucket && bucket.count);
+    total += count;
+    if (count > 0 && (!peak || count >= peak.count)) peak = { key: bucket.key, count: count };
+  });
+  return {
+    total: total,
+    peak: peak,
+    average: series.length ? total / series.length : 0,
+    periods: series.length
   };
 }
 
@@ -5884,7 +5438,7 @@ function appendStatsSvgText(parent, text, attributes) {
 /**
  * Format a release bucket label for a compact chart axis.
  * @param {string} value ISO day or month key.
- * @param {'day'|'month'} granularity Bucket granularity.
+ * @param {'day'|'week'|'month'} granularity Bucket granularity.
  * @returns {string} Human-readable date label.
  */
 function formatStatsPeriodLabel(value, granularity) {
@@ -5898,28 +5452,63 @@ function formatStatsPeriodLabel(value, granularity) {
 }
 
 /**
- * Describe the active Release Pulse in visible text rather than hover-only UI.
+ * Describe one bucket in full for tooltips and screen readers.
+ * @param {Object} bucket Release bucket.
+ * @param {'day'|'week'|'month'} granularity Bucket granularity.
+ * @returns {string} Period description.
+ */
+function describeStatsPeriod(bucket, granularity) {
+  var key = bucket && bucket.key;
+  var year = String(key || '').slice(0, 4);
+  if (granularity === 'month') return formatStatsPeriodLabel(key, 'month');
+  if (granularity === 'week') {
+    return 'Week of ' + formatStatsPeriodLabel(key, 'day') + ', ' + year;
+  }
+  return formatStatsPeriodLabel(key, 'day') + ', ' + year;
+}
+
+/** Return the reader-facing unit name for a release granularity. */
+function getStatsPeriodUnit(granularity) {
+  return granularity === 'month' ? 'month' : (granularity === 'week' ? 'week' : 'day');
+}
+
+/**
+ * Describe the active release range in one visible sentence.
  * @param {Object} rangeData Selected range metadata and buckets.
- * @returns {string} Concise range, volume, trend, and latest-activity summary.
+ * @returns {string} Concise range, bucket, and average summary.
  */
 function summarizeReleasePulse(rangeData) {
   var data = rangeData || {};
   var series = Array.isArray(data.series) ? data.series : [];
   if (series.length === 0) return 'No valid publication dates are available for this range.';
-  var releases = series.reduce(function(total, bucket) {
-    return total + normalizeReleaseCount(bucket && bucket.count);
-  }, 0);
-  var recent = series.filter(function(bucket) {
-    return normalizeReleaseCount(bucket && bucket.count) > 0;
-  }).slice(-3).map(function(bucket) {
-    return bucket.key + ' (' + normalizeReleaseCount(bucket.count) + ')';
-  });
-  var rangeLabel = data.range === '90d' ? '90D' : (data.range === 'all' ? 'ALL' : '1Y');
-  var interval = data.granularity === 'month' ? 'monthly' : 'daily';
-  var averageLabel = data.windowSize + '-' + (data.granularity === 'month' ? 'month' : 'day');
-  return rangeLabel + ' view · ' + series.length + ' ' + interval + ' intervals · '
-    + releases + ' paper' + (releases === 1 ? '' : 's') + ' released · '
-    + averageLabel + ' trailing average. Latest activity: ' + (recent.join(', ') || 'none') + '.';
+  var unit = getStatsPeriodUnit(data.granularity);
+  var first = series[0];
+  var last = series[series.length - 1];
+  var describe = function(bucket) {
+    return describeStatsPeriod(bucket, data.granularity).replace(/^Week of /, 'the week of ');
+  };
+  return 'Each bar is one ' + unit + ', from ' + describe(first) + ' to ' + describe(last)
+    + '. The line is the trailing ' + data.windowSize + '-' + unit + ' average.';
+}
+
+/**
+ * Pick a clean y-axis ceiling and step for small integer paper counts.
+ * @param {number} rawMax Largest plotted value.
+ * @param {number} targetTicks Preferred number of intervals.
+ * @returns {{max: number, step: number}} Axis ceiling and tick step.
+ */
+function niceStatsAxis(rawMax, targetTicks) {
+  var value = Math.max(1, Number(rawMax) || 0);
+  var ticks = Math.max(2, Math.floor(Number(targetTicks) || 4));
+  var roughStep = value / (ticks + 1);
+  var magnitude = Math.pow(10, Math.floor(Math.log10(roughStep)));
+  var step = [1, 2, 5, 10].map(function(multiplier) {
+    return multiplier * magnitude;
+  }).find(function(candidate) {
+    return candidate >= roughStep;
+  }) || 10 * magnitude;
+  step = Math.max(1, step);
+  return { max: Math.ceil(value / step) * step, step: step };
 }
 
 /**
@@ -5961,6 +5550,21 @@ function selectTimelineTickIndices(seriesLength, plotWidth, minPixelGap) {
 }
 
 /**
+ * Build an SVG path for a bar with rounded top corners and a square baseline.
+ * @returns {string} SVG path data.
+ */
+function buildStatsBarPath(x, y, width, height) {
+  var radius = Math.max(0, Math.min(4, width / 2, height));
+  var bottom = y + height;
+  return 'M' + x + ',' + bottom
+    + 'V' + (y + radius)
+    + 'Q' + x + ',' + y + ' ' + (x + radius) + ',' + y
+    + 'H' + (x + width - radius)
+    + 'Q' + (x + width) + ',' + y + ' ' + (x + width) + ',' + (y + radius)
+    + 'V' + bottom + 'Z';
+}
+
+/**
  * Render publication bars and a trailing-average line as accessible SVG.
  * @param {HTMLElement|null} container Chart container.
  * @param {Array<Object>} series Selected publication buckets with average values.
@@ -5981,17 +5585,20 @@ function renderReleasePulseChart(container, series, options) {
     return;
   }
 
-  var margin = { top: 28, right: 18, bottom: 36, left: 42 };
-  var chartWidth = Math.max(320, Math.floor(Number(container.clientWidth) || 720));
-  var chartHeight = 250;
+  var margin = { top: 14, right: 8, bottom: 30, left: 34 };
+  var chartWidth = Math.max(280, Math.floor(Number(container.clientWidth) || 720));
+  var chartHeight = Math.max(200, Math.floor(Number(container.clientHeight) || 260));
   var plotWidth = chartWidth - margin.left - margin.right;
   var plotHeight = chartHeight - margin.top - margin.bottom;
-  var maxValue = Math.max(1, Math.max.apply(null, safeSeries.map(function(bucket) {
+  var rawMax = Math.max.apply(null, safeSeries.map(function(bucket) {
     return Math.max(
       normalizeReleaseCount(bucket && bucket.count),
       normalizeReleaseCount(bucket && bucket.average)
     );
-  })));
+  }));
+  var axis = niceStatsAxis(rawMax, plotHeight < 150 ? 3 : 4);
+  var maxValue = Math.max(1, axis.max);
+  var granularity = settings.granularity || 'day';
   var idPrefix = settings.idPrefix || 'release-pulse';
   var titleId = idPrefix + '-title';
   var descId = idPrefix + '-desc';
@@ -5999,60 +5606,60 @@ function renderReleasePulseChart(container, series, options) {
     class: 'timeline-chart',
     'viewBox': '0 0 ' + chartWidth + ' ' + chartHeight,
     role: 'img',
+    tabindex: 0,
     'aria-labelledby': titleId + ' ' + descId
   });
   svg.style.width = '100%';
 
   var title = createStatsSvgElement('title', { id: titleId });
-  title.textContent = settings.title || 'Release Pulse';
+  title.textContent = settings.title || 'Release trend';
   svg.appendChild(title);
   var description = createStatsSvgElement('desc', { id: descId });
-  description.textContent = settings.description
-    || 'Bars show paper releases per period and a line shows the trailing average.';
+  description.textContent = (settings.description
+    || 'Bars show paper releases per period and a line shows the trailing average.')
+    + ' Use the left and right arrow keys to read individual periods.';
   svg.appendChild(description);
 
-  for (var tickIndex = 0; tickIndex <= 4; tickIndex += 1) {
-    var tickRatio = tickIndex / 4;
-    var tickY = margin.top + plotHeight - tickRatio * plotHeight;
+  for (var tickValue = 0; tickValue <= maxValue; tickValue += axis.step) {
+    var tickY = margin.top + plotHeight - tickValue / maxValue * plotHeight;
     svg.appendChild(createStatsSvgElement('line', {
-      class: 'timeline-grid',
+      class: tickValue === 0 ? 'timeline-baseline' : 'timeline-grid',
       x1: margin.left,
       y1: tickY,
       x2: chartWidth - margin.right,
       y2: tickY
     }));
-    appendStatsSvgText(svg, String(Math.round(maxValue * tickRatio)), {
+    appendStatsSvgText(svg, String(tickValue), {
       class: 'timeline-tick-label timeline-axis-count',
       x: margin.left - 10,
-      y: tickY + 3,
+      y: tickY + 4,
       'text-anchor': 'end'
     });
   }
 
-  appendStatsSvgText(svg, settings.countLabel || 'Papers released', {
-    class: 'timeline-axis-label timeline-axis-count',
-    x: margin.left,
-    y: 17,
-    'text-anchor': 'start'
-  });
   var stepWidth = plotWidth / safeSeries.length;
-  var barWidth = Math.max(1.5, Math.min(9, stepWidth * 0.68));
+  var barGap = stepWidth > 6 ? 2 : 1;
+  var barWidth = Math.max(1, Math.min(24, stepWidth - barGap));
+  var bars = [];
+  var points = [];
   var averagePoints = [];
   safeSeries.forEach(function(bucket, index) {
     var count = normalizeReleaseCount(bucket && bucket.count);
     var average = normalizeReleaseCount(bucket && bucket.average);
     var centerX = margin.left + stepWidth * index + stepWidth / 2;
     var barHeight = count / maxValue * plotHeight;
+    var averageY = margin.top + plotHeight - average / maxValue * plotHeight;
+    var bar = null;
     if (barHeight > 0) {
-      svg.appendChild(createStatsSvgElement('rect', {
+      bar = createStatsSvgElement('path', {
         class: 'timeline-bar',
-        x: centerX - barWidth / 2,
-        y: margin.top + plotHeight - barHeight,
-        width: barWidth,
-        height: barHeight
-      }));
+        d: buildStatsBarPath(centerX - barWidth / 2, margin.top + plotHeight - barHeight, barWidth, barHeight)
+      });
+      svg.appendChild(bar);
     }
-    averagePoints.push(centerX + ',' + (margin.top + plotHeight - average / maxValue * plotHeight));
+    bars.push(bar);
+    points.push({ x: centerX, y: averageY, count: count, average: average, bucket: bucket });
+    averagePoints.push(centerX + ',' + averageY);
   });
   svg.appendChild(createStatsSvgElement('polyline', {
     class: 'timeline-line',
@@ -6064,14 +5671,141 @@ function renderReleasePulseChart(container, series, options) {
   xTickIndices.forEach(function(index) {
     var bucket = safeSeries[index];
     var tickX = margin.left + stepWidth * index + stepWidth / 2;
-    appendStatsSvgText(svg, formatStatsPeriodLabel(bucket.key, settings.granularity), {
+    appendStatsSvgText(svg, formatStatsPeriodLabel(bucket.key, granularity), {
       class: 'timeline-tick-label',
       x: tickX,
-      y: chartHeight - 18,
+      y: chartHeight - 8,
       'text-anchor': index === 0 ? 'start' : (index === safeSeries.length - 1 ? 'end' : 'middle')
     });
   });
 
+  var crosshair = createStatsSvgElement('line', {
+    class: 'timeline-crosshair',
+    x1: 0, y1: margin.top, x2: 0, y2: margin.top + plotHeight,
+    visibility: 'hidden'
+  });
+  var focusDot = createStatsSvgElement('circle', {
+    class: 'timeline-focus-dot', cx: 0, cy: 0, r: 4, visibility: 'hidden'
+  });
+  var hitArea = createStatsSvgElement('rect', {
+    class: 'timeline-hit',
+    x: margin.left,
+    y: margin.top,
+    width: plotWidth,
+    height: plotHeight
+  });
+  svg.append(crosshair, focusDot, hitArea);
+
+  var tooltip = document.createElement('div');
+  tooltip.className = 'stats-chart-tooltip';
+  tooltip.hidden = true;
+  var tooltipTitle = document.createElement('span');
+  tooltipTitle.className = 'stats-chart-tooltip-title';
+  var countRow = document.createElement('span');
+  countRow.className = 'stats-chart-tooltip-row';
+  var countKey = document.createElement('i');
+  countKey.className = 'is-bar';
+  var countValue = document.createElement('strong');
+  var countLabel = document.createElement('span');
+  countRow.append(countKey, countValue, countLabel);
+  var averageRow = document.createElement('span');
+  averageRow.className = 'stats-chart-tooltip-row';
+  var averageKey = document.createElement('i');
+  averageKey.className = 'is-line';
+  var averageValue = document.createElement('strong');
+  var averageLabel = document.createElement('span');
+  averageLabel.textContent = settings.averageLabel || 'trailing average';
+  averageRow.append(averageKey, averageValue, averageLabel);
+  tooltip.append(tooltipTitle, countRow, averageRow);
+
+  var activeIndex = -1;
+  function showIndex(index) {
+    if (index < 0 || index >= points.length) return;
+    if (activeIndex >= 0 && bars[activeIndex]) bars[activeIndex].classList.remove('is-active');
+    activeIndex = index;
+    var point = points[index];
+    if (bars[index]) bars[index].classList.add('is-active');
+    crosshair.setAttribute('x1', point.x);
+    crosshair.setAttribute('x2', point.x);
+    crosshair.setAttribute('visibility', 'visible');
+    focusDot.setAttribute('cx', point.x);
+    focusDot.setAttribute('cy', point.y);
+    focusDot.setAttribute('visibility', 'visible');
+    tooltipTitle.textContent = describeStatsPeriod(point.bucket, granularity);
+    countValue.textContent = point.count.toLocaleString('en-US');
+    countLabel.textContent = point.count === 1 ? 'paper' : 'papers';
+    averageValue.textContent = point.average.toFixed(1);
+    tooltip.hidden = false;
+    var scale = (container.clientWidth || chartWidth) / chartWidth;
+    var tooltipWidth = tooltip.offsetWidth || 160;
+    var left = point.x * scale + 14;
+    if (left + tooltipWidth > (container.clientWidth || chartWidth)) left = point.x * scale - tooltipWidth - 14;
+    tooltip.style.left = Math.max(0, left) + 'px';
+    tooltip.style.top = '4px';
+  }
+  function hideTooltip() {
+    if (activeIndex >= 0 && bars[activeIndex]) bars[activeIndex].classList.remove('is-active');
+    activeIndex = -1;
+    crosshair.setAttribute('visibility', 'hidden');
+    focusDot.setAttribute('visibility', 'hidden');
+    tooltip.hidden = true;
+  }
+  function indexFromPointer(event) {
+    var rect = svg.getBoundingClientRect();
+    if (!rect.width) return -1;
+    var x = (event.clientX - rect.left) * chartWidth / rect.width;
+    return Math.max(0, Math.min(points.length - 1, Math.floor((x - margin.left) / stepWidth)));
+  }
+  svg.addEventListener('pointermove', function(event) { showIndex(indexFromPointer(event)); });
+  svg.addEventListener('pointerleave', hideTooltip);
+  svg.addEventListener('blur', hideTooltip);
+  svg.addEventListener('focus', function() { showIndex(points.length - 1); });
+  svg.addEventListener('keydown', function(event) {
+    var next = activeIndex < 0 ? points.length - 1 : activeIndex;
+    if (event.key === 'ArrowLeft') next -= 1;
+    else if (event.key === 'ArrowRight') next += 1;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = points.length - 1;
+    else if (event.key === 'Escape') { hideTooltip(); return; }
+    else return;
+    event.preventDefault();
+    showIndex(Math.max(0, Math.min(points.length - 1, next)));
+  });
+
+  container.append(svg, tooltip);
+}
+
+/**
+ * Render a compact weekly sparkline for a headline metric tile.
+ * @param {HTMLElement|null} container Sparkline container.
+ * @param {Array<number>} values Oldest-first counts.
+ * @returns {void}
+ */
+function renderStatsSparkline(container, values) {
+  if (!container) return;
+  container.replaceChildren();
+  var counts = Array.isArray(values) ? values.map(normalizeReleaseCount) : [];
+  if (counts.length === 0) return;
+  var width = 120;
+  var height = 28;
+  var maxValue = Math.max(1, Math.max.apply(null, counts));
+  var step = width / counts.length;
+  var svg = createStatsSvgElement('svg', {
+    'viewBox': '0 0 ' + width + ' ' + height,
+    preserveAspectRatio: 'none',
+    focusable: 'false'
+  });
+  counts.forEach(function(count, index) {
+    var barHeight = Math.max(count > 0 ? 2 : 1, count / maxValue * height);
+    svg.appendChild(createStatsSvgElement('rect', {
+      class: 'stats-spark-bar' + (index === counts.length - 1 ? ' is-current' : ''),
+      x: index * step + 1,
+      y: height - barHeight,
+      width: Math.max(1, step - 2),
+      height: barHeight,
+      rx: 1.5
+    }));
+  });
   container.appendChild(svg);
 }
 
@@ -6120,13 +5854,16 @@ function renderStatsDistribution(container, distribution, options) {
     label.textContent = row.label;
     var value = document.createElement('strong');
     value.className = 'stats-distribution-value';
-    value.textContent = row.count.toLocaleString('en-US') + ' · ' + row.percentage.toFixed(1) + '%';
+    value.textContent = row.count.toLocaleString('en-US');
+    var share = document.createElement('small');
+    share.textContent = row.percentage.toFixed(1) + '%';
+    value.appendChild(share);
     var track = document.createElement('span');
     track.className = 'stats-distribution-track';
     track.setAttribute('aria-hidden', 'true');
     var bar = document.createElement('span');
     bar.className = 'stats-distribution-bar';
-    bar.style.width = Math.min(100, row.percentage).toFixed(1) + '%';
+    bar.style.width = Math.max(1, Math.min(100, row.percentage)).toFixed(1) + '%';
     track.appendChild(bar);
     item.append(label, value, track);
     if (tagGroup) listItem.appendChild(item);
@@ -6135,7 +5872,7 @@ function renderStatsDistribution(container, distribution, options) {
   container.appendChild(list);
 }
 
-/** Render the mutually exclusive primary category distribution as a donut and legend. */
+/** Render the mutually exclusive primary category distribution as a stacked share bar and legend. */
 function renderStatsCategoryComposition(container, distribution) {
   if (!container) return;
   container.replaceChildren();
@@ -6149,26 +5886,27 @@ function renderStatsCategoryComposition(container, distribution) {
   }
 
   var colors = ['var(--stats-data-1)', 'var(--stats-data-2)', 'var(--stats-data-3)'];
-  var cursor = 0;
-  var stops = data.rows.map(function(row, index) {
-    var start = cursor;
-    cursor += row.percentage;
-    return colors[index % colors.length] + ' ' + start.toFixed(1) + '% ' + cursor.toFixed(1) + '%';
-  });
-  var chart = document.createElement('div');
-  chart.className = 'stats-category-donut';
-  chart.style.background = 'conic-gradient(' + stops.join(', ') + ')';
-  chart.setAttribute('role', 'img');
-  chart.setAttribute('aria-label', data.rows.map(function(row) {
+  var total = document.createElement('p');
+  total.className = 'stats-category-total';
+  var totalValue = document.createElement('strong');
+  totalValue.textContent = data.totalPapers.toLocaleString('en-US');
+  var totalLabel = document.createElement('span');
+  totalLabel.textContent = 'papers across ' + data.rows.length + ' categories';
+  total.append(totalValue, totalLabel);
+
+  var stack = document.createElement('div');
+  stack.className = 'stats-category-stack';
+  stack.setAttribute('role', 'img');
+  stack.setAttribute('aria-label', data.rows.map(function(row) {
     return row.label + ': ' + row.count + ' papers';
   }).join('; '));
-  var center = document.createElement('span');
-  var total = document.createElement('strong');
-  total.textContent = data.totalPapers.toLocaleString('en-US');
-  var label = document.createElement('small');
-  label.textContent = 'papers';
-  center.append(total, label);
-  chart.appendChild(center);
+  data.rows.forEach(function(row, index) {
+    var segment = document.createElement('span');
+    segment.style.flex = row.count + ' 1 0';
+    segment.style.background = colors[index % colors.length];
+    segment.title = row.label + ' · ' + row.count;
+    stack.appendChild(segment);
+  });
 
   var legend = document.createElement('div');
   legend.className = 'stats-category-legend';
@@ -6186,12 +5924,15 @@ function renderStatsCategoryComposition(container, distribution) {
     text.textContent = row.label;
     name.append(swatch, text);
     var value = document.createElement('strong');
-    value.textContent = row.count.toLocaleString('en-US') + ' · ' + row.percentage.toFixed(1) + '%';
+    value.textContent = row.count.toLocaleString('en-US');
+    var share = document.createElement('small');
+    share.textContent = row.percentage.toFixed(1) + '%';
+    value.appendChild(share);
     link.append(name, value);
     legend.appendChild(link);
   });
 
-  container.append(chart, legend);
+  container.append(total, stack, legend);
 }
 
 /** Return the catalog field name for a supported Stats taxonomy group. */
@@ -6228,24 +5969,48 @@ function initStatsTaxonomyInteractions() {
 /** Render the active range without exposing full daily history to the chart renderer. */
 function renderReleasePulse() {
   var rangeData = slicePublicationRange(STATS_DAILY_RELEASES, STATS_MONTHLY_RELEASES, CURRENT_STATS_RANGE);
+  var unit = getStatsPeriodUnit(rangeData.granularity);
   var rangeName = rangeData.range === '90d' ? 'latest 90 recorded days'
-    : (rangeData.range === 'all' ? 'complete monthly record' : 'latest 365 recorded days');
-  var periodName = rangeData.granularity === 'month' ? 'Monthly releases' : 'Daily releases';
-  var averageName = rangeData.windowSize + '-' + (rangeData.granularity === 'month' ? 'month' : 'day') + ' average';
+    : (rangeData.range === 'all' ? 'complete monthly record' : 'latest 52 recorded weeks');
+  var periodName = rangeData.granularity === 'month' ? 'Monthly releases'
+    : (rangeData.granularity === 'week' ? 'Weekly releases' : 'Daily releases');
+  var averageName = rangeData.windowSize + '-' + unit + ' average';
   renderReleasePulseChart(document.getElementById('release-pulse-chart'), rangeData.series, {
     idPrefix: 'release-pulse-' + rangeData.range,
-    title: 'Release Pulse — ' + rangeName,
-    description: periodName + ' appear as blue bars; the ' + averageName.toLowerCase() + ' appears as a green line.',
+    title: 'Release trend — ' + rangeName,
+    description: periodName + ' appear as blue bars; the ' + averageName.toLowerCase() + ' appears as an orange line.',
     countLabel: periodName,
+    averageLabel: averageName,
     granularity: rangeData.granularity,
     emptyMessage: 'No valid paper publication dates are available.'
   });
-  var barLabel = document.getElementById('release-pulse-bar-label');
-  var lineLabel = document.getElementById('release-pulse-line-label');
-  var summary = document.getElementById('release-pulse-summary');
-  if (barLabel) barLabel.textContent = periodName;
-  if (lineLabel) lineLabel.textContent = averageName;
-  if (summary) summary.textContent = summarizeReleasePulse(rangeData);
+
+  var facts = buildReleasePulseFacts(rangeData);
+  var setText = function(id, text) {
+    var element = document.getElementById(id);
+    if (element) element.textContent = text;
+  };
+  setText('release-pulse-bar-label', periodName);
+  setText('release-pulse-line-label', averageName);
+  setText('release-pulse-summary', summarizeReleasePulse(rangeData));
+  setText('release-pulse-total', facts.total.toLocaleString('en-US') + (facts.total === 1 ? ' paper' : ' papers'));
+  setText('release-pulse-peak-label', 'Busiest ' + unit);
+  setText('release-pulse-average-label', 'Average per ' + unit);
+  setText('release-pulse-average', facts.average.toFixed(facts.average >= 10 ? 0 : 1));
+  var peakElement = document.getElementById('release-pulse-peak');
+  if (peakElement) {
+    peakElement.replaceChildren();
+    if (facts.peak) {
+      peakElement.append(document.createTextNode(facts.peak.count.toLocaleString('en-US')));
+      var peakDate = document.createElement('small');
+      peakDate.textContent = rangeData.granularity === 'month'
+        ? formatStatsPeriodLabel(facts.peak.key, 'month')
+        : (rangeData.granularity === 'week' ? 'wk of ' : '') + formatStatsPeriodLabel(facts.peak.key, 'day');
+      peakElement.appendChild(peakDate);
+    } else {
+      peakElement.textContent = '—';
+    }
+  }
 }
 
 /**
@@ -6324,6 +6089,10 @@ function renderStatsPanel() {
       + ' strict scope · ' + adjacentCount.toLocaleString('en-US') + ' adjacent';
   }
   if (latestThirtyElement) latestThirtyElement.textContent = summary.releasesLast30Days.toLocaleString('en-US');
+  renderStatsSparkline(
+    document.getElementById('stats-latest-thirty-spark'),
+    aggregateWeeklySeries(STATS_DAILY_RELEASES.slice(-84)).map(function(week) { return week.count; })
+  );
   if (latestThirtyNote) {
     latestThirtyNote.textContent = latestWindow.length
       ? latestWindow[0].key + ' to ' + latestWindow[latestWindow.length - 1].key
