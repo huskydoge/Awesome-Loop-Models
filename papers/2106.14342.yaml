@@ -6,7 +6,7 @@ authors:
 year: 2021
 published_date: '2021-06-28'
 added_date: '2026-09-06'
-venue: "ICML"
+venue: ICML
 category: designs
 mechanism_tags:
 - implicit-layer
@@ -27,15 +27,15 @@ links:
   paper: https://proceedings.mlr.press/v139/bai21b.html
   github: https://github.com/locuslab/deq
 citation_source_best: semantic_scholar
-citations: 99
+citations: 100
 citation_sources:
-  semantic_scholar: 99
+  semantic_scholar: 100
   openalex: 6
   opencitations: 0
 star_source_best: github_api
 github_stars: 808
 star_sources:
   github_api: 808
-metrics_updated: '2026-09-16'
+metrics_updated: '2026-09-25'
 peer_reviewed: true
-venue_source: "https://proceedings.mlr.press/v139/bai21b.html"
+venue_source: https://proceedings.mlr.press/v139/bai21b.html
