@@ -1,0 +1,27 @@
+title: 'FlashLoop: Fast and Memory-Efficient Looped Transformers via Lazy Updates'
+authors:
+- 'Wanqi Yang'
+- 'Shiwei Liu'
+year: 2026
+published_date: '2026-09-24'
+added_date: "2026-09-24"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- memory-efficiency
+tags:
+- 'FlashLoop'
+- 'Ouro'
+- 'Huginn'
+focus_tags:
+- inference-algorithm
+desc: 'Training-free inference framework for looped Transformers that exploits cross-loop redundancy with token-sparse updates, loop-aware sparse attention, and KV-residual quantization, reporting lossless accuracy with up to 1.64 times end-to-end speedup and 6 times KV-cache reduction on Ouro and Huginn.'
+links:
+  arxiv: https://arxiv.org/abs/2609.29812
+  alphaxiv: https://www.alphaxiv.org/abs/2609.29812
+  github: https://github.com/Superone77/FlashLoop

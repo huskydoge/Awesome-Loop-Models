@@ -1,0 +1,27 @@
+title: 'On Growth and Form, and Function: Reusable Regulatory Handles Control Phenotypic Variation'
+authors:
+- 'Benedikt Hartl'
+- 'Milton L. Montero'
+- 'Marcello Barylli'
+- 'Sebastian Risi'
+- 'Michael Levin'
+year: 2026
+published_date: '2026-09-24'
+added_date: "2026-09-24"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- scientific-ml
+- biology
+tags:
+- 'NCA'
+- 'LoRA'
+focus_tags:
+- architecture
+desc: 'Applies low-rank adaptation to pretrained neural cellular automata whose shared local update rule grows morphologies from a single cell, showing rank-one adapters implement scaling transformations that combine, transfer zero-shot across phenotypes, and reveal low-dimensional control directions.'
+links:
+  arxiv: https://arxiv.org/abs/2609.29755
+  alphaxiv: https://www.alphaxiv.org/abs/2609.29755
