@@ -268,7 +268,7 @@ assert.match(influence({ venue: 'arXiv', peer_reviewed: false, published_date: '
 assert.equal(influence({ published_date: '2026-04-17', citations: 1000 }, new Date(NaN)), '');
 Object.assign(rendering, { EXPANDED_TABLE_ROWS: new Set() });
 vm.runInContext(html.slice(html.indexOf('function formatTableText('), html.indexOf('function getPaperDisplayDate(')), rendering);
-vm.runInContext(html.slice(html.indexOf('function renderTableRow('), html.indexOf('function renderTableView(')), rendering);
+vm.runInContext(html.slice(html.indexOf('function renderTableTagLinksHtml('), html.indexOf('function renderTableView(')), rendering);
 const example = {
   id: '2301.13196', title: 'A paper', _authorsText: 'Author One, Author Two',
   venue: 'ICML', year: 2026, published_date: '2026-09-16', desc: 'A complete summary.',
@@ -380,32 +380,29 @@ assert.match(detailContent.innerHTML, /class="desk-detail-body"/);
 const activeTags = new Set(['mechanism::implicit-layer', 'focus::architecture']);
 const filters = vm.createContext({
   ACTIVE_TAG_FILTERS: activeTags,
-  TAG_FILTER_OPEN: true,
-  LOCKED_TAG_FILTER_KEY: 'mechanism::implicit-layer',
+  URL_TAG_FILTER_KEYS: new Set(['mechanism::implicit-layer']),
   TAG_FILTER_LOOKUP: {
-    'mechanism::implicit-layer': { displayLabel: 'implicit-layer', count: 31 },
-    'focus::architecture': { displayLabel: 'architecture <tag>', count: 186 },
+    'mechanism::implicit-layer': { group: 'mechanism', displayLabel: 'implicit-layer', count: 31 },
+    'focus::architecture': { group: 'focus', displayLabel: 'architecture <tag>', count: 186 },
   },
   getPaperCountForTagKey: () => 30,
+  getTagDrilldownGroupLabel: group => (group === 'mechanism' ? 'Mechanism' : 'Focus'),
   document: { getElementById: () => ({ value: 'recurrent' }) },
   updateTagFilterUI() {},
   doSearch(query) { assert.equal(query, 'recurrent'); },
-  clearTagDrilldown() { assert.equal(activeTags.has('mechanism::implicit-layer'), false); },
 });
 vm.runInContext(html.slice(html.indexOf('function escapeHtml(str) {'), html.indexOf('function highlightQuery(')), filters);
-vm.runInContext(html.slice(html.indexOf('function renderActiveTagSummary() {'), html.indexOf('function renderTagFilterGroups() {')), filters);
-const tagSummary = filters.renderActiveTagSummary();
-assert.equal((tagSummary.match(/class="tag-filter-remove"/g) || []).length, 2);
-assert.match(tagSummary, /implicit-layer · 30/);
-assert.match(tagSummary, /architecture &lt;tag&gt; · 186/);
-assert.match(tagSummary, /aria-label="Remove implicit-layer filter"/);
-assert.match(tagSummary, /class="tag-filter-remove-icon" aria-hidden="true">×/);
+vm.runInContext(html.slice(html.indexOf('function removeTagFilter(tagKey) {'), html.indexOf('function renderTagFilterGroups() {')), filters);
+const tagSummary = filters.renderActiveTagFiltersHtml();
+assert.equal((tagSummary.match(/class="tag-filter-active-remove"/g) || []).length, 2);
+assert.match(tagSummary, /implicit-layer<\/span><span class="tag-filter-chip-count">30</);
+assert.match(tagSummary, /architecture &lt;tag&gt;<\/span><span class="tag-filter-chip-count">186</);
+assert.match(tagSummary, /aria-label="Remove Mechanism filter: implicit-layer"/);
+assert.match(tagSummary, /<span aria-hidden="true">×<\/span><\/button>/);
 filters.toggleTagFilter('focus::architecture');
 assert.deepEqual([...activeTags], ['mechanism::implicit-layer']);
-filters.toggleTagFilter('mechanism::implicit-layer');
-assert.equal(activeTags.size, 0);
-assert.equal(filters.renderActiveTagSummary(), '0 active');
-const filterHeading = html.slice(html.indexOf('<div class="tag-filter-heading">'), html.indexOf('<div class="tag-filter-panel"'));
+assert.equal((filters.renderActiveTagFiltersHtml().match(/class="tag-filter-active-remove"/g) || []).length, 1);
+const filterHeading = html.slice(html.indexOf('<div class="tag-filter-header">'), html.indexOf('<div class="tag-filter-panel"'));
 assert.ok(filterHeading.indexOf('</button>') < filterHeading.indexOf('id="tag-filter-summary"'));
 assert.match(css, /\.reading-desk \.filter-sidebar-header \{[^}]*text-align: left;/);
 const categorySelect = { value: '', innerHTML: '' };
@@ -471,7 +468,7 @@ Object.assign(categories, {
 });
 vm.runInContext(html.slice(html.indexOf('function matchAcceptedOnly(paper) {'), html.indexOf('function renderCategoryFilter() {')), categories);
 vm.runInContext(html.slice(html.indexOf('function paperMatchesActiveFilters('), html.indexOf('function setFilterSidebarOpen(')), categories);
-vm.runInContext(html.slice(html.indexOf('function normalizeTopLevelTab(tab) {'), html.indexOf('function getTagDrilldownKeyFromUrl() {')), categories);
+vm.runInContext(html.slice(html.indexOf('function normalizeTopLevelTab(tab) {'), html.indexOf('function getTagDrilldownKeysFromUrl() {')), categories);
 assert.match(filterPanel, /id="accepted-only-toggle"[^>]*>Peer-reviewed<\/button>/);
 assert.match(filterPanel, /id="high-influence-only-toggle"[^>]*aria-pressed="false"[^>]*onclick="toggleHighInfluenceOnly\(\)"[^>]*>High influence<\/button>/);
 assert.match(css, /\.blogs-mode #high-influence-only-toggle/);

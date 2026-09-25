@@ -524,7 +524,7 @@ process.stdout.write(JSON.stringify(result));
         state_end = html.index("let CURRENT_VIEW = 'category';", state_start) + len("let CURRENT_VIEW = 'category';")
         block_start = html.index("function normalizeTopLevelTab(tab) {")
         block_end = html.index("initResearchPrompt();", block_start)
-        toggle_start = html.index("function toggleTagFilter(tagKey) {")
+        toggle_start = html.index("function removeTagFilter(tagKey) {")
         toggle_end = html.index("function renderTagFilterGroups() {", toggle_start)
         category_start = html.index("function renderCategoryFilter() {")
         category_end = html.index("function paperMatchesActiveFilters(", category_start)
@@ -658,7 +658,7 @@ const window = {{
     replaceState: function(state, title, url) {{
       const nextUrl = new URL(String(url), window.location.href);
       replaceStateCalls.push({{
-        tag: nextUrl.searchParams.get('tag'),
+        tags: nextUrl.searchParams.getAll('tag'),
         q: nextUrl.searchParams.get('q'),
         hash: nextUrl.hash
       }});
@@ -669,7 +669,7 @@ const window = {{
     pushState: function(state, title, url) {{
       const nextUrl = new URL(String(url), window.location.href);
       pushStateCalls.push({{
-        tag: nextUrl.searchParams.get('tag'),
+        tags: nextUrl.searchParams.getAll('tag'),
         q: nextUrl.searchParams.get('q'),
         hash: nextUrl.hash
       }});
@@ -763,8 +763,8 @@ CATEGORIES = {{ designs: {{ title: 'Architecture' }} }};
         self.assertIn("tag-filter-chip-count", html)
         self.assertIn("tag.count", html)
 
-    def test_tag_drilldown_opens_filters_without_a_search_prefix(self):
-        """Tag routes should use the normal filter UI and leave search unchanged."""
+    def test_tag_drilldown_opens_filters_and_lists_each_active_tag(self):
+        """Tag routes expose independent removable filters without changing search UI."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         self.assertIn('class="search-field"', html)
         self.assertIn('aria-live="polite"', html[html.index('id="search-count"') - 120:html.index('id="search-count"') + 120])
@@ -776,18 +776,73 @@ CATEGORIES = {{ designs: {{ title: 'Architecture' }} }};
         self.assertIn("setFilterSidebarOpen(true);", restore_source)
         self.assertIn("setTagFilterOpen(false);", restore_source)
         self.assertNotIn("setTagFilterOpen(true);", restore_source)
-        summary_start = html.index("function renderActiveTagSummary() {")
-        summary_end = html.index("function setTagFilterOpen(isOpen) {", summary_start)
+        summary_start = html.index("function renderActiveTagFiltersHtml() {")
+        summary_end = html.index("function renderTagFilterGroups() {", summary_start)
         summary_source = html[summary_start:summary_end]
-        self.assertIn("const entry = TAG_FILTER_LOOKUP[tagKey];", summary_source)
-        self.assertIn("getPaperCountForTagKey(tagKey)", summary_source)
-        self.assertIn("summary.classList.toggle('is-active', ACTIVE_TAG_FILTERS.size > 0);", html)
-        self.assertIn("#tag-filter-summary.is-active", html)
+        self.assertIn("ACTIVE_TAG_FILTERS", summary_source)
+        self.assertIn("data-remove-tag-key", summary_source)
+        self.assertIn("aria-label", summary_source)
+        self.assertNotIn("ACTIVE_TAG_FILTERS.size + ' active'", summary_source)
+        self.assertIn("summary.innerHTML = summaryHtml;", html)
+        self.assertIn("summary.hidden = !summaryHtml;", html)
+
+        shell_start = html.index('<div class="tag-filter-shell filter-sidebar-tag-shell">')
+        shell_end = html.index('<div class="tag-filter-panel"', shell_start)
+        shell_source = html[shell_start:shell_end]
+        toggle_start = shell_source.index('id="tag-filter-toggle"')
+        toggle_end = shell_source.index("</button>", toggle_start)
+        self.assertGreater(shell_source.index('id="tag-filter-summary"'), toggle_end)
+
         navigate_start = html.index("function navigateToTagDrilldown(tagKey) {")
-        navigate_end = html.index("function clearTagDrilldown() {", navigate_start)
+        navigate_end = html.index("function restoreTagDrilldownFromUrl() {", navigate_start)
         navigate_source = html[navigate_start:navigate_end]
         self.assertIn("window.requestAnimationFrame(function() { tagFilterToggle.focus(); });", navigate_source)
         self.assertNotIn("searchInput.focus();", navigate_source)
+
+    def test_active_tag_summary_renders_independent_accessible_remove_buttons(self):
+        """Each active filter remains a distinct, safely escaped removal control."""
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        escape_start = html.index("function escapeHtml(str) {")
+        escape_end = html.index("function highlightQuery(", escape_start)
+        group_start = html.index("function getTagDrilldownGroupLabel(group) {")
+        group_end = html.index("function getTagDrilldownHref(", group_start)
+        count_start = html.index("function getPaperCountForTagKey(tagKey) {")
+        count_end = html.index("function getTagDrilldownKeysWith(", count_start)
+        render_start = html.index("function renderActiveTagFiltersHtml() {")
+        render_end = html.index("function renderTagFilterGroups() {", render_start)
+        script = f"""
+{html[escape_start:escape_end]}
+{html[group_start:group_end]}
+{html[count_start:count_end]}
+{html[render_start:render_end]}
+const ACTIVE_TAG_FILTERS = new Set(['focus::architecture', 'domain::theory']);
+const URL_TAG_FILTER_KEYS = new Set(['domain::theory']);
+const TAG_FILTER_LOOKUP = {{
+  'focus::architecture': {{ group: 'focus', displayLabel: 'architecture <img>', count: 3 }},
+  'domain::theory': {{ group: 'domain', displayLabel: 'theory', count: 9 }}
+}};
+const ALL_PAPERS = [
+  {{ _tagKeySet: new Set(['domain::theory']) }},
+  {{ _tagKeySet: new Set(['domain::theory']) }}
+];
+process.stdout.write(renderActiveTagFiltersHtml());
+"""
+        output = subprocess.check_output(["node", "-e", script], text=True)
+        self.assertEqual(output.count("tag-filter-active-item"), 2)
+        self.assertEqual(output.count("tag-filter-active-remove"), 2)
+        self.assertIn('data-remove-tag-key="focus::architecture"', output)
+        self.assertIn('data-remove-tag-key="domain::theory"', output)
+        self.assertIn('aria-label="Remove Focus filter: architecture &lt;img&gt;"', output)
+        self.assertIn('aria-label="Remove Domain filter: theory"', output)
+        self.assertIn('<span class="tag-filter-chip-count">3</span>', output)
+        self.assertIn('<span class="tag-filter-chip-count">2</span>', output)
+        self.assertNotIn("<img>", output)
+
+        init_start = html.index("function initTagFilterControls() {")
+        init_end = html.index("function shouldHandleTagDrilldownClick(", init_start)
+        init_source = html[init_start:init_end]
+        self.assertIn(".tag-filter-active-remove[data-remove-tag-key]", init_source)
+        self.assertIn("removeTagFilter(removeButton.dataset.removeTagKey);", init_source)
 
     def test_stats_tag_distributions_link_to_papers_but_categories_do_not(self):
         """Only genuine multi-label taxonomy rows expose tag drill-down links."""
@@ -810,7 +865,7 @@ CATEGORIES = {{ designs: {{ title: 'Architecture' }} }};
         renderer_source = html[renderer_start:renderer_end]
         self.assertIn("options.tagGroup", renderer_source)
         self.assertIn("buildTagEntry(tagGroup, row.key).key", renderer_source)
-        self.assertIn("getTagDrilldownHref(tagKey)", renderer_source)
+        self.assertIn("getTagDrilldownHref(", renderer_source)
         self.assertIn("'View ' + row.count + ' papers tagged '", renderer_source)
 
     def test_stats_distribution_renderer_builds_native_accessible_tag_links(self):
@@ -885,11 +940,11 @@ process.stdout.write(JSON.stringify({{
             },
         )
 
-    def test_tag_navigation_expands_active_filter_without_search_prefix(self):
-        """Entering expands the active chip; clicking it clears only the route tag."""
+    def test_tag_navigation_accumulates_active_paper_tags_with_and(self):
+        """Consecutive paper-tag clicks preserve earlier tags and apply AND filtering."""
         result = self.run_top_level_tab_block("#stats", """
 ALL_PAPERS = [
-  { _tagKeySet: new Set(['mechanism::flat-loop']) },
+  { _tagKeySet: new Set(['focus::architecture', 'mechanism::flat-loop']) },
   { _tagKeySet: new Set(['mechanism::flat-loop']) },
   { _tagKeySet: new Set(['focus::architecture']) }
 ];
@@ -899,85 +954,46 @@ TAG_FILTER_LOOKUP = {
   'focus::architecture': { group: 'focus', displayLabel: 'architecture' }
 };
 CATALOG_DATA_READY = true;
-ACTIVE_TAG_FILTERS = new Set(['focus::architecture']);
-publicationDateStart.value = '2025-01-01';
-publicationDateEnd.value = '2026-01-01';
-ACCEPTED_ONLY = true;
-HIGH_INFLUENCE_ONLY = true;
-NEWLY_ARRIVED_ONLY = true;
-HAS_CODE_ONLY = true;
-HAS_COMMENTS_ONLY = true;
 FILTER_SIDEBAR_OPEN = false;
 TAG_FILTER_OPEN = false;
 
+navigateToTagDrilldown('focus::architecture');
 navigateToTagDrilldown('mechanism::flat-loop');
 const entered = {
-  active: Array.from(ACTIVE_TAG_FILTERS),
-  locked: LOCKED_TAG_FILTER_KEY,
-  placeholder: searchInput.placeholder,
-  query: searchInput.value,
-  dates: [publicationDateStart.value, publicationDateEnd.value],
-  quickFilters: [ACCEPTED_ONLY, HIGH_INFLUENCE_ONLY, NEWLY_ARRIVED_ONLY, HAS_CODE_ONLY, HAS_COMMENTS_ONLY],
-  panels: [FILTER_SIDEBAR_OPEN, TAG_FILTER_OPEN],
+  active: Array.from(ACTIVE_TAG_FILTERS).sort(),
+  urlTags: Array.from(URL_TAG_FILTER_KEYS).sort(),
+  routeOwned: Array.from(ROUTE_OWNED_TAG_FILTER_KEYS).sort(),
   visibleCount: ALL_PAPERS.filter(function(paper) {
     return Array.from(ACTIVE_TAG_FILTERS).every(function(key) { return paper._tagKeySet.has(key); });
-  }).length,
-  searchCall: searchCalls.at(-1),
-  quickFilterUiUpdates: quickFilterUiUpdates,
-  sidebarOpenCalls: sidebarOpenCalls,
-  tagOpenCalls: tagOpenCalls
-};
-
-ACTIVE_TAG_FILTERS.add('focus::architecture');
-searchInput.value = 'LayerNorm';
-syncSearchQueryToUrl(searchInput.value);
-toggleTagFilter('mechanism::flat-loop');
-const cleared = {
-  active: Array.from(ACTIVE_TAG_FILTERS),
-  locked: LOCKED_TAG_FILTER_KEY,
-  query: searchInput.value,
-  placeholder: searchInput.placeholder,
-  panels: [FILTER_SIDEBAR_OPEN, TAG_FILTER_OPEN]
+  }).length
 };
 process.stdout.write(JSON.stringify({
   pushes: pushStateCalls,
-  entered: entered,
-  cleared: cleared
+  entered: entered
 }));
 """)
         self.assertEqual(
             result,
             {
                 "pushes": [
-                    {"tag": "mechanism::flat-loop", "q": None, "hash": "#papers"},
-                    {"tag": None, "q": "LayerNorm", "hash": "#papers"},
+                    {"tags": ["focus::architecture"], "q": None, "hash": "#papers"},
+                    {
+                        "tags": ["focus::architecture", "mechanism::flat-loop"],
+                        "q": None,
+                        "hash": "#papers",
+                    },
                 ],
                 "entered": {
-                    "active": ["mechanism::flat-loop"],
-                    "locked": "mechanism::flat-loop",
-                    "placeholder": "Search papers, authors, keywords…",
-                    "query": "",
-                    "dates": ["", ""],
-                    "quickFilters": [False, False, False, False, False],
-                    "panels": [True, False],
-                    "visibleCount": 2,
-                    "searchCall": "",
-                    "quickFilterUiUpdates": 1,
-                    "sidebarOpenCalls": [True],
-                    "tagOpenCalls": [False],
-                },
-                "cleared": {
-                    "active": ["focus::architecture"],
-                    "locked": "",
-                    "query": "LayerNorm",
-                    "placeholder": "Search papers, authors, keywords…",
-                    "panels": [True, False],
+                    "active": ["focus::architecture", "mechanism::flat-loop"],
+                    "urlTags": ["focus::architecture", "mechanism::flat-loop"],
+                    "routeOwned": ["focus::architecture", "mechanism::flat-loop"],
+                    "visibleCount": 1,
                 },
             },
         )
 
-    def test_route_owned_chip_uses_paper_only_count_and_remains_interactive(self):
-        """The active route chip matches Stats and can still be cleared in Filters."""
+    def test_url_backed_chips_use_paper_only_counts_and_remain_interactive(self):
+        """Active URL chips match Stats and can still be cleared in Filters."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         count_start = html.index("function getPaperCountForTagKey(")
         count_end = html.index("function navigateToTagDrilldown(", count_start)
@@ -998,7 +1014,7 @@ const ALL_PAPERS = [
   {{ _tagKeySet: new Set([key]) }}
 ];
 const ACTIVE_TAG_FILTERS = new Set([key]);
-const LOCKED_TAG_FILTER_KEY = key;
+const URL_TAG_FILTER_KEYS = new Set([key]);
 const TAG_FILTER_GROUPS = [{{
   title: 'Loop <mechanism>',
   tags: [
@@ -1108,7 +1124,7 @@ process.stdout.write(JSON.stringify({{ blogOnly: blogOnly, shared: shared }}));
         card_end = html.index("// ── State & Category Tree", card_start)
         card_source = html[card_start:card_end]
         self.assertIn("getPaperCountForTagKey(entry.key)", card_source)
-        self.assertIn("'<a href=\"' + escapeHtml(getTagDrilldownHref(entry.key))", card_source)
+        self.assertIn("'<a href=\"' + escapeHtml(getTagDrilldownHref(", card_source)
         self.assertIn("'<span class=\"' + classes.join(' ')", card_source)
         self.assertIn("data-tag-key", card_source)
 
@@ -1118,7 +1134,7 @@ process.stdout.write(JSON.stringify({{ blogOnly: blogOnly, shared: shared }}));
         self.assertIn("aria-pressed", chip_source)
         self.assertNotIn("aria-disabled", chip_source)
         self.assertNotIn(" disabled", chip_source)
-        self.assertIn("tag.key === LOCKED_TAG_FILTER_KEY", chip_source)
+        self.assertIn("URL_TAG_FILTER_KEYS.has(tag.key)", chip_source)
 
         interactions_start = html.index("function initPaperTagInteractions() {")
         interactions_end = html.index("function initTableInteractions() {", interactions_start)
@@ -1128,11 +1144,12 @@ process.stdout.write(JSON.stringify({{ blogOnly: blogOnly, shared: shared }}));
         self.assertIn("shouldHandleTagDrilldownClick(event)", interactions_source)
 
     def test_tag_drilldown_state_is_url_backed_and_paper_only(self):
-        """Locked tag routes must be URL-driven and exclude non-paper resources."""
+        """URL tag routes must be URL-driven and exclude non-paper resources."""
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")
         for snippet in (
-            "let LOCKED_TAG_FILTER_KEY = '';",
-            "function getTagDrilldownKeyFromUrl() {",
+            "let URL_TAG_FILTER_KEYS = new Set();",
+            "let ROUTE_OWNED_TAG_FILTER_KEYS = new Set();",
+            "function getTagDrilldownKeysFromUrl() {",
             "function restoreTagDrilldownFromUrl() {",
             "ACTIVE_TOP_LEVEL_TAB === 'blogs' ? ALL_BLOGS : ALL_PAPERS",
             "window.addEventListener('popstate', restoreTagDrilldownFromUrl);",
@@ -1152,13 +1169,17 @@ process.stdout.write(JSON.stringify({{ blogOnly: blogOnly, shared: shared }}));
         )
 
     def test_tag_drilldown_url_restore_behavior(self):
-        """Valid paper tags and q restore; invalid routes fail closed across history."""
+        """Valid paper tag sets and q restore; invalid routes fail closed."""
         result = self.run_top_level_tab_block("#papers", """
-ALL_PAPERS = [{ _tagKeySet: new Set(['mechanism::flat-loop']) }];
+ALL_PAPERS = [
+  { _tagKeySet: new Set(['mechanism::flat-loop', 'focus::architecture']) },
+  { _tagKeySet: new Set(['mechanism::flat-loop']) }
+];
 ALL_RESOURCES = ALL_PAPERS.concat([{ _tagKeySet: new Set(['domain::blog-only']) }]);
 ACTIVE_TAG_FILTERS = new Set(['focus::architecture']);
 TAG_FILTER_LOOKUP = {
   'mechanism::flat-loop': { displayLabel: 'flat-loop' },
+  'focus::architecture': { displayLabel: 'architecture' },
   'domain::blog-only': { displayLabel: 'blog-only' }
 };
 CATALOG_DATA_READY = true;
@@ -1166,12 +1187,13 @@ CATALOG_DATA_READY = true;
 function parse(search, hash) {
   window.location.search = search;
   window.location.hash = hash;
-  return getTagDrilldownKeyFromUrl();
+  return Array.from(getTagDrilldownKeysFromUrl()).sort();
 }
 
 const parsed = {
-  valid: parse('?tag=mechanism%3A%3Aflat-loop', '#papers'),
-  section: parse('?tag=mechanism%3A%3Aflat-loop', '#section-designs'),
+  valid: parse('?tag=mechanism%3A%3Aflat-loop&tag=focus%3A%3Aarchitecture', '#papers'),
+  section: parse('?tag=mechanism%3A%3Aflat-loop&tag=focus%3A%3Aarchitecture', '#section-designs'),
+  duplicate: parse('?tag=mechanism%3A%3Aflat-loop&tag=mechanism%3A%3Aflat-loop', '#papers'),
   unknown: parse('?tag=domain%3A%3Aunknown', '#papers'),
   malformed: parse('?tag=mechanism%3Aflat-loop', '#papers'),
   nonPaper: parse('?tag=domain%3A%3Ablog-only', '#papers'),
@@ -1180,11 +1202,12 @@ const parsed = {
   stats: parse('?tag=mechanism%3A%3Aflat-loop', '#stats')
 };
 
-window.location.search = '?tag=mechanism%3A%3Aflat-loop&q=LayerNorm';
+window.location.search = '?tag=mechanism%3A%3Aflat-loop&tag=focus%3A%3Aarchitecture&q=LayerNorm';
 window.location.hash = '#papers';
 dispatchWindowEvent('popstate');
 const restored = {
-  locked: LOCKED_TAG_FILTER_KEY,
+  urlTags: Array.from(URL_TAG_FILTER_KEYS).sort(),
+  routeOwned: Array.from(ROUTE_OWNED_TAG_FILTER_KEYS).sort(),
   active: Array.from(ACTIVE_TAG_FILTERS).sort(),
   query: searchInput.value,
   searchCall: searchCalls.at(-1)
@@ -1193,7 +1216,8 @@ const restored = {
 window.location.hash = '#section-designs';
 dispatchWindowEvent('hashchange');
 const categoryRoute = {
-  locked: LOCKED_TAG_FILTER_KEY,
+  urlTags: Array.from(URL_TAG_FILTER_KEYS).sort(),
+  routeOwned: Array.from(ROUTE_OWNED_TAG_FILTER_KEYS).sort(),
   active: Array.from(ACTIVE_TAG_FILTERS).sort(),
   query: searchInput.value,
   searchCall: searchCalls.at(-1)
@@ -1202,18 +1226,20 @@ const categoryRoute = {
 window.location.search = '?q=plain';
 dispatchWindowEvent('popstate');
 const leftRoute = {
-  locked: LOCKED_TAG_FILTER_KEY,
+  urlTags: Array.from(URL_TAG_FILTER_KEYS).sort(),
+  routeOwned: Array.from(ROUTE_OWNED_TAG_FILTER_KEYS).sort(),
   active: Array.from(ACTIVE_TAG_FILTERS).sort(),
   query: searchInput.value,
   searchCall: searchCalls.at(-1)
 };
 
-window.location.search = '?tag=mechanism%3A%3Aflat-loop&q=again';
+window.location.search = '?tag=mechanism%3A%3Aflat-loop&tag=focus%3A%3Aarchitecture&q=again';
 dispatchWindowEvent('popstate');
 window.location.hash = '#stats';
 dispatchWindowEvent('hashchange');
 const statsRoute = {
-  locked: LOCKED_TAG_FILTER_KEY,
+  urlTags: Array.from(URL_TAG_FILTER_KEYS).sort(),
+  routeOwned: Array.from(ROUTE_OWNED_TAG_FILTER_KEYS).sort(),
   active: Array.from(ACTIVE_TAG_FILTERS).sort(),
   query: searchInput.value,
   searchCall: searchCalls.at(-1)
@@ -1235,21 +1261,23 @@ process.stdout.write(JSON.stringify({
         self.assertEqual(
             result["parsed"],
             {
-                "valid": "mechanism::flat-loop",
-                "section": "mechanism::flat-loop",
-                "unknown": "",
-                "malformed": "",
-                "nonPaper": "",
-                "blogs": "",
-                "legacyBlogs": "",
-                "stats": "",
+                "valid": ["focus::architecture", "mechanism::flat-loop"],
+                "section": ["focus::architecture", "mechanism::flat-loop"],
+                "duplicate": ["mechanism::flat-loop"],
+                "unknown": [],
+                "malformed": [],
+                "nonPaper": [],
+                "blogs": [],
+                "legacyBlogs": [],
+                "stats": [],
             },
         )
         self.assertEqual(result["listeners"], {"popstate": 1, "hashchange": 1})
         self.assertEqual(
             result["restored"],
             {
-                "locked": "mechanism::flat-loop",
+                "urlTags": ["focus::architecture", "mechanism::flat-loop"],
+                "routeOwned": ["mechanism::flat-loop"],
                 "active": ["focus::architecture", "mechanism::flat-loop"],
                 "query": "LayerNorm",
                 "searchCall": "LayerNorm",
@@ -1258,7 +1286,8 @@ process.stdout.write(JSON.stringify({
         self.assertEqual(
             result["categoryRoute"],
             {
-                "locked": "mechanism::flat-loop",
+                "urlTags": ["focus::architecture", "mechanism::flat-loop"],
+                "routeOwned": ["mechanism::flat-loop"],
                 "active": ["focus::architecture", "mechanism::flat-loop"],
                 "query": "LayerNorm",
                 "searchCall": "LayerNorm",
@@ -1267,7 +1296,8 @@ process.stdout.write(JSON.stringify({
         self.assertEqual(
             result["leftRoute"],
             {
-                "locked": "",
+                "urlTags": [],
+                "routeOwned": [],
                 "active": ["focus::architecture"],
                 "query": "plain",
                 "searchCall": "plain",
@@ -1276,7 +1306,8 @@ process.stdout.write(JSON.stringify({
         self.assertEqual(
             result["statsRoute"],
             {
-                "locked": "",
+                "urlTags": [],
+                "routeOwned": [],
                 "active": ["focus::architecture"],
                 "query": "again",
                 "searchCall": "again",
@@ -1284,29 +1315,42 @@ process.stdout.write(JSON.stringify({
         )
         self.assertEqual(result["uiUpdates"], 4)
 
-    def test_route_owned_tag_clears_through_regular_filter_toggle(self):
-        """Clicking the active route chip removes its URL state and filter."""
+    def test_removing_one_url_tag_preserves_other_tags_and_query(self):
+        """Removing one active chip keeps the remaining URL filter and q value."""
         result = self.run_top_level_tab_block("#papers", """
-ALL_PAPERS = [{ _tagKeySet: new Set(['mechanism::flat-loop']) }];
-TAG_FILTER_LOOKUP = { 'mechanism::flat-loop': { displayLabel: 'flat-loop' } };
+ALL_PAPERS = [{ _tagKeySet: new Set(['mechanism::flat-loop', 'focus::architecture']) }];
+TAG_FILTER_LOOKUP = {
+  'mechanism::flat-loop': { displayLabel: 'flat-loop' },
+  'focus::architecture': { displayLabel: 'architecture' }
+};
 CATALOG_DATA_READY = true;
-window.location.search = '?tag=mechanism%3A%3Aflat-loop';
+window.location.href = 'https://example.test/index.html?tag=mechanism%3A%3Aflat-loop&tag=focus%3A%3Aarchitecture&q=LayerNorm#papers';
+window.location.search = '?tag=mechanism%3A%3Aflat-loop&tag=focus%3A%3Aarchitecture&q=LayerNorm';
 restoreTagDrilldownFromUrl();
 toggleTagFilter('mechanism::flat-loop');
 process.stdout.write(JSON.stringify({
-  locked: LOCKED_TAG_FILTER_KEY,
-  active: Array.from(ACTIVE_TAG_FILTERS),
+  urlTags: Array.from(URL_TAG_FILTER_KEYS).sort(),
+  routeOwned: Array.from(ROUTE_OWNED_TAG_FILTER_KEYS).sort(),
+  active: Array.from(ACTIVE_TAG_FILTERS).sort(),
   pushes: pushStateCalls
 }));
 """)
         self.assertEqual(
             result,
             {
-                "locked": "",
-                "active": [],
-                "pushes": [{"tag": None, "q": None, "hash": "#papers"}],
+                "urlTags": ["focus::architecture"],
+                "routeOwned": ["focus::architecture"],
+                "active": ["focus::architecture"],
+                "pushes": [
+                    {"tags": ["focus::architecture"], "q": "LayerNorm", "hash": "#papers"}
+                ],
             },
         )
+
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        toggle_start = html.index("function toggleTagFilter(tagKey) {")
+        toggle_end = html.index("function renderTagFilterGroups() {", toggle_start)
+        self.assertIn("removeTagFilter(tagKey);", html[toggle_start:toggle_end])
 
     def test_duplicate_history_events_restore_tag_route_only_once(self):
         """A combined popstate/hashchange navigation has one effective restore."""
@@ -1318,7 +1362,8 @@ window.location.search = '?tag=mechanism%3A%3Aflat-loop&q=layer';
 dispatchWindowEvent('popstate');
 dispatchWindowEvent('hashchange');
 process.stdout.write(JSON.stringify({
-  locked: LOCKED_TAG_FILTER_KEY,
+  urlTags: Array.from(URL_TAG_FILTER_KEYS),
+  routeOwned: Array.from(ROUTE_OWNED_TAG_FILTER_KEYS),
   uiUpdates: uiUpdates,
   searchCalls: searchCalls
 }));
@@ -1326,7 +1371,8 @@ process.stdout.write(JSON.stringify({
         self.assertEqual(
             result,
             {
-                "locked": "mechanism::flat-loop",
+                "urlTags": ["mechanism::flat-loop"],
+                "routeOwned": ["mechanism::flat-loop"],
                 "uiUpdates": 1,
                 "searchCalls": ["layer"],
             },
@@ -1344,26 +1390,28 @@ dispatchWindowEvent('popstate');
 window.location.search = '';
 dispatchWindowEvent('popstate');
 process.stdout.write(JSON.stringify({
-  locked: LOCKED_TAG_FILTER_KEY,
+  urlTags: Array.from(URL_TAG_FILTER_KEYS),
+  routeOwned: Array.from(ROUTE_OWNED_TAG_FILTER_KEYS),
   active: Array.from(ACTIVE_TAG_FILTERS)
 }));
 """)
         self.assertEqual(
             result,
             {
-                "locked": "",
+                "urlTags": [],
+                "routeOwned": [],
                 "active": ["mechanism::flat-loop"],
             },
         )
 
     def test_search_query_sync_uses_replace_state_and_preserves_tag_route(self):
-        """Free search updates q in place without losing the locked tag or hash."""
+        """Free search updates q in place without losing URL tags or the hash."""
         result = self.run_top_level_tab_block("#papers", """
 if (typeof syncSearchQueryToUrl !== 'function') {
   process.stdout.write(JSON.stringify({ missing: true }));
 } else {
-  window.location.href = 'https://example.test/index.html?tag=mechanism%3A%3Aflat-loop#papers';
-  window.location.search = '?tag=mechanism%3A%3Aflat-loop';
+  window.location.href = 'https://example.test/index.html?tag=mechanism%3A%3Aflat-loop&tag=focus%3A%3Aarchitecture#papers';
+  window.location.search = '?tag=mechanism%3A%3Aflat-loop&tag=focus%3A%3Aarchitecture';
   syncSearchQueryToUrl('Layer Norm');
   syncSearchQueryToUrl('');
   process.stdout.write(JSON.stringify({ calls: replaceStateCalls }));
@@ -1374,12 +1422,12 @@ if (typeof syncSearchQueryToUrl !== 'function') {
             {
                 "calls": [
                     {
-                        "tag": "mechanism::flat-loop",
+                        "tags": ["mechanism::flat-loop", "focus::architecture"],
                         "q": "Layer Norm",
                         "hash": "#papers",
                     },
                     {
-                        "tag": "mechanism::flat-loop",
+                        "tags": ["mechanism::flat-loop", "focus::architecture"],
                         "q": None,
                         "hash": "#papers",
                     },
@@ -1400,8 +1448,8 @@ if (typeof syncSearchQueryToUrl !== 'function') {
     def test_search_input_syncs_q_immediately_and_debounces_captured_query(self):
         """Navigation sees the latest q while rendering still uses the input event value."""
         result = self.run_top_level_tab_block("#papers", """
-window.location.href = 'https://example.test/index.html?tag=mechanism%3A%3Aflat-loop#papers';
-window.location.search = '?tag=mechanism%3A%3Aflat-loop';
+window.location.href = 'https://example.test/index.html?tag=mechanism%3A%3Aflat-loop&tag=focus%3A%3Aarchitecture#papers';
+window.location.search = '?tag=mechanism%3A%3Aflat-loop&tag=focus%3A%3Aarchitecture';
 initSearch();
 searchInput.value = 'first query';
 const eventTarget = { value: 'first query' };
@@ -1417,7 +1465,7 @@ setTimeout(function() {
 }, 180);
 """)
         expected_call = {
-            "tag": "mechanism::flat-loop",
+            "tags": ["mechanism::flat-loop", "focus::architecture"],
             "q": "first query",
             "hash": "#papers",
         }
@@ -3414,6 +3462,20 @@ process.stdout.write(JSON.stringify({{
         self.assertIn("function renderCompactPaperLinksHtml(paper)", html)
         self.assertIn("'<td class=\"paper-table-links-cell\">' + compactLinksHtml + '</td>'", html)
         self.assertIn("'<div class=\"paper-table-links\">' + linksHtml + '</div>'", html)
+
+    def test_table_view_focus_and_domain_tags_use_drilldown_links(self):
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        helper_start = html.index("function renderTableTagLinksHtml(paper, group) {")
+        helper_end = html.index("function renderTableRow(paper, query) {", helper_start)
+        helper = html[helper_start:helper_end]
+        renderer_start = helper_end
+        renderer_end = html.index("function renderTableView(query, papers) {", renderer_start)
+        renderer = html[renderer_start:renderer_end]
+
+        self.assertIn("paper._tagEntries", helper)
+        self.assertIn("renderPaperTagHtml(entry, 'paper-tag-' + group)", helper)
+        self.assertIn("renderTableTagLinksHtml(paper, 'focus')", renderer)
+        self.assertIn("renderTableTagLinksHtml(paper, 'domain')", renderer)
 
     def test_table_view_rows_use_button_disclosure_markup(self):
         html = INDEX_HTML_PATH.read_text(encoding="utf-8")

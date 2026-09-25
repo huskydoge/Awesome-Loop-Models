@@ -2824,69 +2824,56 @@
       transform: translateY(-1px);
     }
 
-    .tag-filter-heading {
+    .tag-filter-header,
+    .tag-filter-active-list {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 8px;
+    }
+
+    .tag-filter-header {
       width: 100%;
-    }
-
-    #tag-filter-summary {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 12px;
       min-width: 0;
-      color: var(--text-dim);
-      font-size: 11.5px;
-      font-weight: 600;
     }
 
-    #tag-filter-summary.is-active {
-      flex: 1 1 auto;
+    .tag-filter-active-list {
+      min-width: 0;
     }
 
-    .tag-filter-remove {
-      position: relative;
-      max-width: 100%;
-      min-height: 28px;
-      padding: 3px 14px 3px 8px;
-      border: 1px solid var(--tag-border);
+    .tag-filter-active-list[hidden] {
+      display: none;
+    }
+
+    .tag-filter-active-item {
+      cursor: default;
+      white-space: nowrap;
+    }
+
+    .tag-filter-active-remove {
+      display: inline-grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      margin: -4px -5px -4px 0;
+      padding: 0;
+      border: 0;
       border-radius: 999px;
-      background: var(--surface2);
-      color: var(--accent3);
+      background: transparent;
+      color: inherit;
       font: inherit;
-      line-height: 1.4;
-      overflow-wrap: anywhere;
+      font-size: 14px;
+      line-height: 1;
       cursor: pointer;
     }
 
-    .tag-filter-remove-icon {
-      position: absolute;
-      top: -6px;
-      right: -5px;
-      display: grid;
-      place-items: center;
-      width: 18px;
-      height: 18px;
-      border: 1px solid var(--tag-border);
-      border-radius: 50%;
-      background: var(--surface);
-      color: var(--text-muted);
-      font-size: 14px;
-      line-height: 1;
+    .tag-filter-active-remove:hover {
+      background: rgba(255,255,255,0.2);
     }
 
-    .tag-filter-remove:hover,
-    .tag-filter-remove:hover .tag-filter-remove-icon {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .tag-filter-remove:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
+    .tag-filter-active-remove:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px;
     }
 
     .tag-filter-caret {
@@ -3273,6 +3260,12 @@
       color: var(--text-muted);
       min-width: 150px;
       line-height: 1.5;
+    }
+
+    .paper-table-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
     }
 
     .paper-table-links-cell {
@@ -5329,12 +5322,12 @@
           </div>
         </div>
         <div class="tag-filter-shell filter-sidebar-tag-shell">
-          <div class="tag-filter-heading">
+          <div class="tag-filter-header">
             <button type="button" class="tag-filter-toggle" id="tag-filter-toggle" aria-expanded="false" aria-controls="tag-filter-panel">
               <span>Tags filter</span>
-              <span class="tag-filter-caret">⌄</span>
+              <span class="tag-filter-caret" aria-hidden="true">⌄</span>
             </button>
-            <div id="tag-filter-summary">hidden</div>
+            <div class="tag-filter-active-list" id="tag-filter-summary" role="list" aria-label="Active tag filters" aria-live="polite" hidden></div>
           </div>
           <div class="tag-filter-panel" id="tag-filter-panel" hidden>
             <div class="tag-filter-head">
@@ -6599,6 +6592,14 @@ function renderCatalogFitNoteHtml(paper) {
     : '';
 }
 
+/** Render table metadata as the same native tag links used by paper cards. */
+function renderTableTagLinksHtml(paper, group) {
+  const entries = (paper._tagEntries || []).filter(function(entry) { return entry.group === group; });
+  return entries.length
+    ? '<div class="paper-table-tags">' + entries.map(function(entry) { return renderPaperTagHtml(entry, 'paper-tag-' + group); }).join('') + '</div>'
+    : formatTableText('');
+}
+
 function renderTableRow(paper, query) {
   const expanded = EXPANDED_TABLE_ROWS.has(paper.id);
   const paperId = escapeHtml(paper.id || '');
@@ -6635,8 +6636,8 @@ function renderTableRow(paper, query) {
     + '<td class="paper-table-number">' + formatTableText(getPaperDisplayDate(paper)) + '</td>'
     + '<td><span class="paper-venue ' + (paper.venueClass || 'venue-arxiv') + '">' + escapeHtml(getPaperVenueLabel(paper) || '—') + '</span></td>'
     + '<td class="paper-table-links-cell">' + compactLinksHtml + '</td>'
-    + '<td class="paper-table-meta-cell">' + formatTableText(paper._focusLabel) + '</td>'
-    + '<td class="paper-table-meta-cell">' + formatTableText(paper._domainLabel) + '</td>'
+    + '<td class="paper-table-meta-cell">' + renderTableTagLinksHtml(paper, 'focus') + '</td>'
+    + '<td class="paper-table-meta-cell">' + renderTableTagLinksHtml(paper, 'domain') + '</td>'
     + '<td class="paper-table-number">' + formatTableNumber(paper.citations) + renderInfluenceBadgeHtml(paper) + '</td>'
     + '<td class="paper-table-number">' + formatTableNumber(paper.github_stars) + '</td>'
     + '</tr>'
@@ -6652,7 +6653,7 @@ function renderTableView(query, papers) {
 }
 
 // ── Render a single paper card ────────────────────────────────────────────────
-/** Render a card tag as a link only when the Papers route has matching records. */
+/** Render a paper tag as a link only when the Papers route has matching records. */
 function renderPaperTagHtml(entry, extraClass) {
   const classes = ['paper-tag'];
   if (extraClass) classes.push(extraClass);
@@ -6661,7 +6662,7 @@ function renderPaperTagHtml(entry, extraClass) {
   if (!getPaperCountForTagKey(entry.key)) {
     return '<span class="' + classes.join(' ') + '">' + label + '</span>';
   }
-  return '<a href="' + escapeHtml(getTagDrilldownHref(entry.key)) + '" class="' + classes.join(' ') + '" data-tag-key="' + escapeHtml(entry.key) + '" data-tag-group="' + escapeHtml(entry.group) + '">' + label + '</a>';
+  return '<a href="' + escapeHtml(getTagDrilldownHref(getTagDrilldownKeysWith(entry.key))) + '" class="' + classes.join(' ') + '" data-tag-key="' + escapeHtml(entry.key) + '" data-tag-group="' + escapeHtml(entry.group) + '">' + label + '</a>';
 }
 
 /** Keep card content identical while CSS reflows it with the available list width. */
@@ -6714,8 +6715,8 @@ let NODE_COUNTS = {};
 let SECTION_OBSERVER = null;
 let ACTIVE_TAG_FILTERS = new Set();
 let ACTIVE_CATEGORY_FILTER = '';
-let LOCKED_TAG_FILTER_KEY = '';
-let LOCKED_TAG_FILTER_IS_ROUTE_OWNED = false;
+let URL_TAG_FILTER_KEYS = new Set();
+let ROUTE_OWNED_TAG_FILTER_KEYS = new Set();
 let HAS_RESTORED_TAG_DRILLDOWN_URL = false;
 let LAST_RESTORED_SEARCH_QUERY = '';
 let TAG_FILTER_GROUPS = [];
@@ -7047,18 +7048,26 @@ function getTopLevelTabFromHash(hash) {
 }
 
 /**
- * Returns a valid paper-backed tag key from the current Papers URL.
- * @returns {string} Canonical tag key, or an empty string for an invalid route.
+ * Returns the valid paper-backed tag keys from the current Papers URL.
+ * @returns {Set<string>} Canonical tag keys, or an empty set for an invalid route.
  */
-function getTagDrilldownKeyFromUrl() {
+function getTagDrilldownKeysFromUrl() {
   const hash = window.location.hash;
-  if (getTopLevelTabFromHash(hash) !== 'papers') return '';
-  if (hash !== '#papers' && !hash.startsWith('#section-')) return '';
-  const tagKey = new URLSearchParams(window.location.search).get('tag') || '';
-  if (!/^(mechanism|focus|domain)::[^:]+$/.test(tagKey) || !TAG_FILTER_LOOKUP[tagKey]) return '';
-  return ALL_PAPERS.some(function(paper) {
-    return paper._tagKeySet && paper._tagKeySet.has(tagKey);
-  }) ? tagKey : '';
+  if (getTopLevelTabFromHash(hash) !== 'papers') return new Set();
+  if (hash !== '#papers' && !hash.startsWith('#section-')) return new Set();
+  const tagKeys = new URLSearchParams(window.location.search).getAll('tag').filter(Boolean);
+  const uniqueTagKeys = new Set(tagKeys);
+  const hasInvalidTag = Array.from(uniqueTagKeys).some(function(tagKey) {
+    return !/^(mechanism|focus|domain)::[^:]+$/.test(tagKey)
+      || !TAG_FILTER_LOOKUP[tagKey]
+      || !getPaperCountForTagKey(tagKey);
+  });
+  return hasInvalidTag ? new Set() : uniqueTagKeys;
+}
+
+/** Return whether two tag-key sets contain the same values. */
+function tagKeySetsEqual(left, right) {
+  return left.size === right.size && Array.from(left).every(function(tagKey) { return right.has(tagKey); });
 }
 
 /** Return the reader-facing singular label for a supported taxonomy group. */
@@ -7069,10 +7078,11 @@ function getTagDrilldownGroupLabel(group) {
   return 'Tag';
 }
 
-/** Build the native, shareable Papers URL for a taxonomy tag. */
-function getTagDrilldownHref(tagKey) {
+/** Build the native, shareable Papers URL for one or more taxonomy tags. */
+function getTagDrilldownHref(tagKeys) {
   const params = new URLSearchParams();
-  params.set('tag', String(tagKey || ''));
+  const keys = typeof tagKeys === 'string' ? [tagKeys] : Array.from(tagKeys || []);
+  keys.filter(Boolean).forEach(function(tagKey) { params.append('tag', String(tagKey)); });
   return '?' + params.toString() + '#papers';
 }
 
@@ -7083,10 +7093,22 @@ function getPaperCountForTagKey(tagKey) {
   }).length;
 }
 
-/** Enter a tag route without carrying transient advanced filters into its count. */
+/** Append a paper-backed tag to the currently active AND filter keys. */
+function getTagDrilldownKeysWith(tagKey) {
+  const tagKeys = Array.from(ACTIVE_TAG_FILTERS).filter(function(activeTagKey) {
+    return getPaperCountForTagKey(activeTagKey) > 0;
+  });
+  if (!tagKeys.includes(tagKey)) tagKeys.push(tagKey);
+  return tagKeys;
+}
+
+/** Enter a cumulative tag route without carrying transient non-tag filters. */
 function navigateToTagDrilldown(tagKey) {
   if (!TAG_FILTER_LOOKUP[tagKey] || !getPaperCountForTagKey(tagKey)) return;
-  ACTIVE_TAG_FILTERS.clear();
+  const nextTagKeys = getTagDrilldownKeysWith(tagKey);
+  ACTIVE_TAG_FILTERS.forEach(function(activeTagKey) {
+    if (!getPaperCountForTagKey(activeTagKey)) ACTIVE_TAG_FILTERS.delete(activeTagKey);
+  });
   ACTIVE_CATEGORY_FILTER = '';
   const categoryFilter = document.getElementById('category-filter');
   if (categoryFilter) categoryFilter.value = '';
@@ -7100,7 +7122,7 @@ function navigateToTagDrilldown(tagKey) {
   HAS_CODE_ONLY = false;
   HAS_COMMENTS_ONLY = false;
   updateQuickFilterButtons();
-  const nextUrl = new URL(getTagDrilldownHref(tagKey), window.location.href);
+  const nextUrl = new URL(getTagDrilldownHref(nextTagKeys), window.location.href);
   window.history.pushState(window.history.state, '', nextUrl);
   setTopLevelTab('papers', { updateHash: false, userInitiated: true });
   restoreTagDrilldownFromUrl();
@@ -7108,44 +7130,32 @@ function navigateToTagDrilldown(tagKey) {
   if (tagFilterToggle) window.requestAnimationFrame(function() { tagFilterToggle.focus(); });
 }
 
-/** Clear only the locked URL tag while preserving q and any advanced filters. */
-function clearTagDrilldown() {
-  if (!LOCKED_TAG_FILTER_KEY) return;
-  const nextUrl = new URL(window.location.href);
-  nextUrl.searchParams.delete('tag');
-  nextUrl.hash = '#papers';
-  window.history.pushState(window.history.state, '', nextUrl);
-  setTopLevelTab('papers', { updateHash: false, userInitiated: true });
-  restoreTagDrilldownFromUrl();
-}
-
-/** Restores the locked tag and free-text query from the current URL. */
+/** Restores cumulative tag filters and free-text query from the current URL. */
 function restoreTagDrilldownFromUrl() {
   if (!CATALOG_DATA_READY) return;
   const searchInput = document.getElementById('search');
-  const nextTagKey = getTagDrilldownKeyFromUrl();
+  const nextTagKeys = getTagDrilldownKeysFromUrl();
   const nextQuery = new URLSearchParams(window.location.search).get('q') || '';
   const stateIsCurrent = HAS_RESTORED_TAG_DRILLDOWN_URL
-    && nextTagKey === LOCKED_TAG_FILTER_KEY
+    && tagKeySetsEqual(nextTagKeys, URL_TAG_FILTER_KEYS)
     && nextQuery === LAST_RESTORED_SEARCH_QUERY
-    && (!nextTagKey || ACTIVE_TAG_FILTERS.has(nextTagKey))
+    && Array.from(nextTagKeys).every(function(tagKey) { return ACTIVE_TAG_FILTERS.has(tagKey); })
     && (!searchInput || searchInput.value === nextQuery);
   if (stateIsCurrent) return;
 
-  if (LOCKED_TAG_FILTER_KEY && LOCKED_TAG_FILTER_IS_ROUTE_OWNED) {
-    ACTIVE_TAG_FILTERS.delete(LOCKED_TAG_FILTER_KEY);
-  }
-  LOCKED_TAG_FILTER_KEY = nextTagKey;
-  LOCKED_TAG_FILTER_IS_ROUTE_OWNED = false;
-  if (LOCKED_TAG_FILTER_KEY && !ACTIVE_TAG_FILTERS.has(LOCKED_TAG_FILTER_KEY)) {
-    ACTIVE_TAG_FILTERS.add(LOCKED_TAG_FILTER_KEY);
-    LOCKED_TAG_FILTER_IS_ROUTE_OWNED = true;
-  }
+  ROUTE_OWNED_TAG_FILTER_KEYS.forEach(function(tagKey) { ACTIVE_TAG_FILTERS.delete(tagKey); });
+  URL_TAG_FILTER_KEYS = nextTagKeys;
+  ROUTE_OWNED_TAG_FILTER_KEYS = new Set();
+  URL_TAG_FILTER_KEYS.forEach(function(tagKey) {
+    if (ACTIVE_TAG_FILTERS.has(tagKey)) return;
+    ACTIVE_TAG_FILTERS.add(tagKey);
+    ROUTE_OWNED_TAG_FILTER_KEYS.add(tagKey);
+  });
 
   HAS_RESTORED_TAG_DRILLDOWN_URL = true;
   LAST_RESTORED_SEARCH_QUERY = nextQuery;
   if (searchInput) searchInput.value = nextQuery;
-  if (LOCKED_TAG_FILTER_KEY) {
+  if (URL_TAG_FILTER_KEYS.size) {
     setFilterSidebarOpen(true);
     setTagFilterOpen(false);
   } else {
@@ -7492,38 +7502,55 @@ function paperMatchesTagFilters(paper) {
   });
 }
 
-/** Render independently removable active filters without nesting interactive controls. */
-function renderActiveTagSummary() {
-  if (ACTIVE_TAG_FILTERS.size === 0) return TAG_FILTER_OPEN ? '0 active' : 'hidden';
-  return Array.from(ACTIVE_TAG_FILTERS).map(function(tagKey) {
-    const entry = TAG_FILTER_LOOKUP[tagKey];
-    const label = entry ? (entry.displayLabel || entry.label || tagKey) : tagKey;
-    const count = tagKey === LOCKED_TAG_FILTER_KEY ? getPaperCountForTagKey(tagKey) : (entry ? entry.count : null);
-    return '<button type="button" class="tag-filter-remove" data-tag-key="' + escapeHtml(tagKey) + '" aria-label="' + escapeHtml('Remove ' + label + ' filter') + '">'
-      + escapeHtml(label) + (count == null ? '' : ' · ' + escapeHtml(count))
-      + '<span class="tag-filter-remove-icon" aria-hidden="true">×</span></button>';
-  }).join('');
-}
-
 function setTagFilterOpen(isOpen) {
   TAG_FILTER_OPEN = Boolean(isOpen);
   updateTagFilterUI();
 }
 
-function toggleTagFilter(tagKey) {
-  if (!tagKey) return;
-  if (tagKey === LOCKED_TAG_FILTER_KEY) {
-    ACTIVE_TAG_FILTERS.delete(tagKey);
-    clearTagDrilldown();
+/** Remove one active tag while preserving every other AND condition. */
+function removeTagFilter(tagKey) {
+  if (!ACTIVE_TAG_FILTERS.has(tagKey)) return;
+  ACTIVE_TAG_FILTERS.delete(tagKey);
+  if (URL_TAG_FILTER_KEYS.has(tagKey)) {
+    const nextUrl = new URL(window.location.href);
+    nextUrl.searchParams.delete('tag');
+    URL_TAG_FILTER_KEYS.forEach(function(urlTagKey) {
+      if (urlTagKey !== tagKey) nextUrl.searchParams.append('tag', urlTagKey);
+    });
+    nextUrl.hash = '#papers';
+    window.history.pushState(window.history.state, '', nextUrl);
+    setTopLevelTab('papers', { updateHash: false, userInitiated: true });
+    restoreTagDrilldownFromUrl();
     return;
-  }
-  if (ACTIVE_TAG_FILTERS.has(tagKey)) {
-    ACTIVE_TAG_FILTERS.delete(tagKey);
-  } else {
-    ACTIVE_TAG_FILTERS.add(tagKey);
   }
   updateTagFilterUI();
   doSearch(document.getElementById('search').value || '');
+}
+
+function toggleTagFilter(tagKey) {
+  if (!tagKey) return;
+  if (ACTIVE_TAG_FILTERS.has(tagKey)) {
+    removeTagFilter(tagKey);
+    return;
+  }
+  ACTIVE_TAG_FILTERS.add(tagKey);
+  updateTagFilterUI();
+  doSearch(document.getElementById('search').value || '');
+}
+
+/** Render each active tag as an independent filter with its own remove button. */
+function renderActiveTagFiltersHtml() {
+  return Array.from(ACTIVE_TAG_FILTERS).map(function(tagKey) {
+    const entry = TAG_FILTER_LOOKUP[tagKey];
+    if (!entry) return '';
+    const label = entry.displayLabel || entry.label || tagKey;
+    const count = URL_TAG_FILTER_KEYS.has(tagKey) ? getPaperCountForTagKey(tagKey) : entry.count;
+    return '<span class="paper-tag is-active tag-filter-active-item" data-tag-group="' + escapeHtml(entry.group) + '" role="listitem">'
+      + '<span class="tag-filter-chip-label">' + escapeHtml(label) + '</span>'
+      + '<span class="tag-filter-chip-count">' + escapeHtml(count) + '</span>'
+      + '<button type="button" class="tag-filter-active-remove" data-remove-tag-key="' + escapeHtml(tagKey) + '" aria-label="Remove ' + escapeHtml(getTagDrilldownGroupLabel(entry.group)) + ' filter: ' + escapeHtml(label) + '"><span aria-hidden="true">×</span></button>'
+      + '</span>';
+  }).join('');
 }
 
 function renderTagFilterGroups() {
@@ -7535,7 +7562,7 @@ function renderTagFilterGroups() {
       + '<div class="tag-filter-chip-list">'
       + group.tags.map(function(tag) {
         const isActive = ACTIVE_TAG_FILTERS.has(tag.key);
-        const isRouteTag = tag.key === LOCKED_TAG_FILTER_KEY;
+        const isRouteTag = URL_TAG_FILTER_KEYS.has(tag.key);
         const tagCount = isRouteTag ? getPaperCountForTagKey(tag.key) : tag.count;
         const activeClass = isActive ? ' is-active' : '';
         return '<button type="button" class="tag-filter-chip' + activeClass + '" data-tag-key="' + escapeHtml(tag.key) + '" data-tag-group="' + escapeHtml(tag.group) + '" aria-pressed="' + (isActive ? 'true' : 'false') + '">'
@@ -7555,8 +7582,9 @@ function updateTagFilterUI() {
   if (!toggle || !panel || !summary) return;
   toggle.setAttribute('aria-expanded', TAG_FILTER_OPEN ? 'true' : 'false');
   panel.hidden = !TAG_FILTER_OPEN;
-  summary.classList.toggle('is-active', ACTIVE_TAG_FILTERS.size > 0);
-  summary.innerHTML = renderActiveTagSummary();
+  const summaryHtml = renderActiveTagFiltersHtml();
+  summary.innerHTML = summaryHtml;
+  summary.hidden = !summaryHtml;
   renderTagFilterGroups();
   updateFilterSidebarSummary();
 }
@@ -8373,10 +8401,16 @@ function initTagFilterControls() {
   });
 
   summary.addEventListener('click', function(event) {
-    const chip = event.target.closest('.tag-filter-remove[data-tag-key]');
-    if (!chip) return;
-    toggleTagFilter(chip.dataset.tagKey);
-    (summary.querySelector('.tag-filter-remove') || toggle).focus();
+    const removeButton = event.target.closest('.tag-filter-active-remove[data-remove-tag-key]');
+    if (!removeButton) return;
+    const removeButtons = Array.from(summary.querySelectorAll('.tag-filter-active-remove[data-remove-tag-key]'));
+    const removeIndex = Math.max(0, removeButtons.indexOf(removeButton));
+    removeTagFilter(removeButton.dataset.removeTagKey);
+    window.requestAnimationFrame(function() {
+      const remainingButtons = summary.querySelectorAll('.tag-filter-active-remove[data-remove-tag-key]');
+      const nextButton = remainingButtons[Math.min(removeIndex, remainingButtons.length - 1)];
+      (nextButton || toggle).focus();
+    });
   });
 }
 
