@@ -27,8 +27,9 @@ desc: Compares seven weight-reuse layouts for flow-matching text-to-speech Trans
 links:
   arxiv: https://arxiv.org/abs/2609.29768
   alphaxiv: https://www.alphaxiv.org/abs/2609.29768
-citation_source_best: opencitations
+citation_source_best: semantic_scholar
 citations: 0
 citation_sources:
   opencitations: 0
-metrics_updated: '2026-09-25'
+  semantic_scholar: 0
+metrics_updated: '2026-09-26'

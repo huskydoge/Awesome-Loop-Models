@@ -27,15 +27,15 @@ links:
   github: https://github.com/machelreid/subformer
   paper: https://aclanthology.org/2021.findings-emnlp.344/
 citation_source_best: semantic_scholar
-citations: 69
+citations: 70
 citation_sources:
-  semantic_scholar: 69
+  semantic_scholar: 70
   openalex: 0
   opencitations: 0
 star_source_best: github_api
 github_stars: 16
 star_sources:
   github_api: 16
-metrics_updated: '2026-09-19'
+metrics_updated: '2026-09-26'
 peer_reviewed: true
 venue_source: https://aclanthology.org/2021.findings-emnlp.344/
