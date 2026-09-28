@@ -30,4 +30,5 @@ desc: Reproduces program-of-layers (PoLar) search across five LLMs, confirming t
 links:
   arxiv: https://arxiv.org/abs/2609.31360
   alphaxiv: https://www.alphaxiv.org/abs/2609.31360
+  github: https://github.com/DATEXIS/RE-PoLar
   project: https://datexis.github.io/RE-PoLar/
