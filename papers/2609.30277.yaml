@@ -1,0 +1,30 @@
+title: 'Fixed Points Without Fixed Diffusion: Implicit Neural Sheaves for Convergent Test-Time
+  Computation'
+authors:
+- Rémi Bourgerie
+- Šarūnas Girdzijauskas
+- Viktoria Fodor
+year: 2026
+published_date: '2026-08-12'
+added_date: "2026-09-27"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- graph-data
+- theory
+tags:
+- SheafDEQ
+- implicit GNN
+focus_tags:
+- architecture
+desc: Introduces SheafDEQ, a subhomogeneous deep-equilibrium graph network whose node
+  states are fixed points of learned, edge-dependent neural-sheaf message passing, with
+  a proof of a unique globally attracting equilibrium reachable by fixed-point iteration
+  and gains over fixed-propagation implicit GNN baselines on long-range and heterophilic
+  tasks.
+links:
+  arxiv: https://arxiv.org/abs/2609.30277
+  alphaxiv: https://www.alphaxiv.org/abs/2609.30277

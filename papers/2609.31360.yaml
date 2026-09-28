@@ -1,0 +1,34 @@
+title: Programs-of-Layers in LLMs through the Lens of Cortical Areas
+authors:
+- Justus Westerhoff
+- Stephan Olbrich
+- Hatem Oraby
+- Matthew Evan Larkum
+- Felix Alexander Gers
+year: 2026
+published_date: '2026-09-25'
+added_date: "2026-09-27"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- adaptive-compute
+tags:
+- PoLar
+- RE-PoLar
+focus_tags:
+- inference-algorithm
+desc: Reproduces program-of-layers (PoLar) search across five LLMs, confirming that
+  inputs benefit from skipping and repeating contiguous layer blocks within one forward
+  pass, that harder questions need more layer repeats, and that a few generic programs
+  cover most questions, while failing to replicate the learned router's single-shot
+  gains.
+links:
+  arxiv: https://arxiv.org/abs/2609.31360
+  alphaxiv: https://www.alphaxiv.org/abs/2609.31360
+  github: https://github.com/DATEXIS/RE-PoLar
+  project: https://datexis.github.io/RE-PoLar/

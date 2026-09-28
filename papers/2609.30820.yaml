@@ -1,0 +1,27 @@
+title: 'Quantizing Looped Transformers: Feedback Exposure and Calibration Blindness'
+authors:
+- Nux Li
+year: 2026
+published_date: '2026-09-25'
+added_date: "2026-09-27"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+tags:
+- Huginn
+- GPTQ
+focus_tags:
+- inference-algorithm
+desc: Diagnoses two failure modes of post-training quantization for looped Transformers,
+  feedback exposure at non-residual loop-entry layers and calibration blindness from
+  step-0-only GPTQ Hessians, and shows that accumulating the Hessian across recurrence
+  steps beats one-step GPTQ and round-to-nearest on nine checkpoints from seven looped
+  architectures, recovering bf16-level accuracy on Huginn.
+links:
+  arxiv: https://arxiv.org/abs/2609.30820
+  alphaxiv: https://www.alphaxiv.org/abs/2609.30820
