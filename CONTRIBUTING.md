@@ -283,6 +283,10 @@ If you want searchable existing-tag selectors before opening GitHub, use the sub
 
 ---
 
+## Local Preview
+
+To preview the interactive browser locally, run `python3 -m http.server 8123 --bind 127.0.0.1` from the repo root and open `http://127.0.0.1:8123/index.html`. Opening the page directly from `file://` cannot load `papers.json`.
+
 ## Static Site Asset Budgets
 
 After regenerating the canonical site artifacts, run the deterministic, offline budget check:

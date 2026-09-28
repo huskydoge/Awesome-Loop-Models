@@ -3823,38 +3823,7 @@ class ReadmeRenderingTests(unittest.TestCase):
 
         self.assertIn("<summary>[04/26/2026] <strong>Dated Loop Paper</strong>", markdown)
 
-    def test_build_readme_sorts_each_category_by_publication_date_desc(self):
-        papers = [
-            {
-                "title": "Older Foundation Loop Paper",
-                "authors": "Alice Example",
-                "venue": "ICLR",
-                "year": 2025,
-                "published_date": "2025-12-31",
-                "category": "designs",
-                "foundation": True,
-                "links": {},
-            },
-            {
-                "title": "Newest Loop Paper",
-                "authors": "Bob Example",
-                "venue": "ICLR",
-                "year": 2026,
-                "published_date": "2026-04-26",
-                "category": "designs",
-                "links": {},
-            },
-            {
-                "title": "Middle Loop Paper",
-                "authors": "Carol Example",
-                "venue": "ICLR",
-                "year": 2026,
-                "published_date": "2026-02-03",
-                "category": "designs",
-                "links": {},
-            },
-        ]
-
+    def _render_front_page(self, papers, blogs=()):
         with TemporaryDirectory() as tmpdir:
             tmp_path = Path(tmpdir)
             header_path = tmp_path / "README_HEADER.md"
@@ -3866,15 +3835,84 @@ class ReadmeRenderingTests(unittest.TestCase):
             with patch.object(build, "HEADER_FILE", header_path), \
                  patch.object(build, "FOOTER_FILE", footer_path), \
                  patch.object(build, "README_OUT", readme_path):
-                build.build_readme(papers, [], {"public_pages_base": "https://example.test/repo"})
+                build.build_readme(list(papers), list(blogs), {"public_pages_base": "https://example.test/repo"})
 
-            readme = readme_path.read_text(encoding="utf-8")
+            return readme_path.read_text(encoding="utf-8")
 
-        newest_index = readme.index("Newest Loop Paper")
-        middle_index = readme.index("Middle Loop Paper")
-        older_index = readme.index("Older Foundation Loop Paper")
-        self.assertLess(newest_index, middle_index)
-        self.assertLess(middle_index, older_index)
+    def test_build_readme_front_page_lists_anchors_latest_and_most_cited(self):
+        papers = [
+            {
+                "title": "Older Foundation Loop Paper",
+                "venue": "ICLR",
+                "year": 2019,
+                "published_date": "2019-01-01",
+                "added_date": "2026-04-24",
+                "category": "designs",
+                "foundation": True,
+                "mechanism_tags": ["flat-loop"],
+                "citations": 500,
+                "links": {"arxiv": "https://arxiv.org/abs/1901.00001"},
+            },
+            {
+                "title": "Newest Loop Paper",
+                "venue": "arXiv",
+                "year": 2026,
+                "published_date": "2026-04-26",
+                "added_date": "2026-09-27",
+                "category": "analysis",
+                "github_stars": 1234,
+                "links": {
+                    "arxiv": "https://arxiv.org/abs/2604.00002",
+                    "github": "https://github.com/example/newest",
+                },
+            },
+            {
+                "title": "Middle Loop Paper",
+                "venue": "ICLR",
+                "year": 2026,
+                "published_date": "2026-02-03",
+                "added_date": "2026-09-20",
+                "category": "applications",
+                "citations": 7,
+                "links": {"arxiv": "https://arxiv.org/abs/2602.00003"},
+            },
+        ]
+
+        readme = self._render_front_page(papers)
+
+        self.assertIn("<b>3 papers</b> · 1 analysis · 1 designs · 1 applications", readme)
+        self.assertIn("https://example.test/repo/index.html", readme)
+
+        start_here = readme[readme.index("## 🌟 Start here"):readme.index("## 🆕 Latest additions")]
+        self.assertIn("Older Foundation Loop Paper", start_here)
+        self.assertNotIn("Newest Loop Paper", start_here)
+
+        latest = readme[readme.index("## 🆕 Latest additions"):readme.index("## 🔥 Most cited")]
+        self.assertLess(latest.index("Newest Loop Paper"), latest.index("Middle Loop Paper"))
+        self.assertLess(latest.index("Middle Loop Paper"), latest.index("Older Foundation Loop Paper"))
+        self.assertIn('<a href="https://github.com/example/newest">Code ★1,234</a>', latest)
+
+        most_cited = readme[readme.index("## 🔥 Most cited"):]
+        self.assertLess(most_cited.index("Older Foundation Loop Paper"), most_cited.index("Middle Loop Paper"))
+        self.assertNotIn("Newest Loop Paper", most_cited)
+
+        self.assertNotIn("<details>", readme)
+        self.assertNotIn("## Table of Contents", readme)
+
+    def test_build_readme_front_page_escapes_table_cells(self):
+        readme = self._render_front_page(
+            [
+                {
+                    "title": "Pipes | and <tags>",
+                    "year": 2026,
+                    "published_date": "2026-01-01",
+                    "added_date": "2026-01-02",
+                    "category": "designs",
+                    "links": {},
+                }
+            ]
+        )
+        self.assertIn("<b>Pipes &#124; and &lt;tags&gt;</b>", readme)
 
     def test_readme_paper_entries_hide_summary_tags_and_use_badge_links(self):
         paper = {

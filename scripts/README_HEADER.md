@@ -1,77 +1,46 @@
-
 <div align="center">
 
 # Awesome Loop Models
 
+**Models that compute by looping: one learned layer, block, or operator, reused inside a single forward pass.**
+
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Submit](https://img.shields.io/badge/📄%20Submit-blue?style=flat-square)]({{PUBLIC_SUBMIT_URL}})
 [![Website](https://img.shields.io/badge/🌐%20Live%20Website-Link-blue?style=flat-square)]({{PUBLIC_INDEX_URL}})
+[![Submit](https://img.shields.io/badge/📄%20Submit-blue?style=flat-square)]({{PUBLIC_SUBMIT_URL}})
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <img src="assets/cover.png" alt="Loop architecture concept diagram" width="100%" />
 
 ### 🌐 [**Interactive Browser**]({{PUBLIC_INDEX_URL}}) · 🧾 [**PR Submission Guide**]({{PUBLIC_SUBMIT_URL}})
 
-*Search, filter, and explore loop-model papers and selected technical blogs with links to arXiv, code, OpenReview, and more.*
-
-*Use the PR Submission Guide to generate YAML for papers or blogs, then copy the path and YAML into your fork / branch for the final pull request step.*
+<sub>The full catalog lives in the browser: search, filter by loop mechanism and domain, and read TL;DRs, venues, code links, and daily briefings.</sub>
 
 </div>
 
-A curated list of papers and selected long-form technical blogs on **Loop Models** — architectures where, within a single forward process, a shared learned internal layer, block, module, or operator is reused.
+## What is a loop model?
 
-Local preview: run `python3 -m http.server 8123 --bind 127.0.0.1` from the repo root and open `http://127.0.0.1:8123/index.html`; direct `file://` opens cannot load `papers.json`.
+> Within a single forward pass, a shared learned layer, block, module, or operator is reused.
 
----
+That covers looped, recurrent-depth, and weight-tied Transformers, adaptive halting over a reused block, deep-equilibrium and implicit layers, and shared neural algorithmic processors, plus theory and analysis of all of these. It leaves out agent loops, repeated full-model calls, diffusion-style iterative inference, and plain recurrence over time steps. [TAXONOMY.md](TAXONOMY.md) has the full rules.
 
-## News
+<details>
+<summary>Where the scope boundary sits</summary>
+<br>
+<img src="assets/scope.png" alt="Scope scale from agent loop to loop models" width="100%" />
 
-- **2026-07-17** — The interactive browser now includes a release-date **Release Intelligence** view with publication pulse, long-term trends, and richer latest-release dossiers covering authors, summaries, tags, and metrics. [Explore Stats]({{PUBLIC_INDEX_URL}}#stats)
-- **2026-04-24** — Awesome Loop Models is released. [Announcement](https://x.com/huskydogewoof/status/2047655947942744285)
+Only the rightmost end of this scale is in scope. Omitting `catalog_fit` means strict scope; the rare exceptions kept for context set `catalog_fit: adjacent` and are labeled **Adjacent work**.
+</details>
 
----
+<details>
+<summary>How the catalog is organized</summary>
+<br>
 
-## What Counts as a Loop Model?
+| Axis | Values |
+|:--|:--|
+| **Category** | Theoretical and Mechanical Analysis · Architecture and Algorithm Designs · Applications Focused |
+| **Loop Mechanism** (`mechanism_tags`) | `flat-loop` · `hierarchical-loop` · `parallel-loop` · `implicit-layer` |
+| **Focus** (`focus_tags`) | `architecture` · `training-algorithm` · `inference-algorithm` · `objective-loss` · `data` |
+| **Domain** (`domain_tags`) | `language-modeling`, `reasoning`, `vision`, `graph-data`, … |
 
-The main catalog uses a strict definition:
-
-> By "loop model," we mean that, within a single forward pass of a model, a shared learned internal layer, block, module, or operator is reused.
-
-The main catalog therefore includes papers that focus on loop models themselves, their mechanisms, applications, and designs. It excludes papers that are primarily about broader-scale iteration patterns that do not directly connect to loop models as defined above, such as agent loops, repeated full-model calls, external solver rounds, energy-based models, or plain sequence-time recurrence.
-
-Rare curator-approved exceptions use `catalog_fit: adjacent`. They remain for conceptual value, are visibly labeled **Adjacent work**, carry no strict Loop Mechanism tag, and include primary-source evidence for the boundary. Omitting `catalog_fit` means strict scope.
-
-> Admittedly, loop models are deeply connected to the broader field of architecture and algorithm design (Diffusion, Energy-Based Models, etc.). We also welcome work that explicitly connects adjacent topics to loop models.
-
-<p align="center">
-  <img src="assets/scope.png" alt="Scope scale from agent loop to loop models" width="100%" />
-</p>
-
-> Only the **rightmost end** of this scale is strict scope; any retained exception is explicitly marked adjacent.
-
-## How the Repository Is Organized
-
-The public browsing layer uses exactly three flat paper categories:
-- **Theoretical and Mechanical Analysis** — analytical papers whose main reader takeaway is understanding: theory, mechanism analysis, probing, diagnostics, or formal properties
-- **Architecture and Algorithm Designs** — papers that propose loop-model architectures or algorithms, often for better performance, efficiency, training, inference, or memory use
-- **Applications Focused** — papers whose main reader takeaway is loop-model performance on concrete external domains or tasks, such as robotics, VLA, multimodal tasks, tabular data, or graph data
-
-In addition, selected long-form technical posts live in a separate flat **Blogs** section. Blogs can carry tags, but they do not use the paper taxonomy.
-
-> The paper categories are intentionally coarse. Foundation status plus Loop Mechanism / focus / domain tags carry secondary structure without introducing a separate lineage-tag axis.
-
-Top-level categories do the minimum amount of work. Finer distinctions are pushed into:
-- **Loop Mechanism** (`mechanism_tags`) — loop-form labels only: `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`
-- `focus_tags` — whether the paper mainly studies `objective-loss`, `training-algorithm`, `architecture`, `data`, or `inference-algorithm`
-- `domain_tags` — problem/domain labels such as `language-modeling`, `robotics-vla`, `multimodal`, `tabular-data`, or `graph-data`
-- `tags` — optional aliases or model identifiers kept in YAML / README metadata, such as `DEQ`, `UT`, `ACT`, or `Ouro`
-
-A paper can also carry `foundation: true` as a secondary badge when it is a canonical anchor such as ACT, Universal Transformers, or DEQ. Foundation is no longer a separate top-level shelf.
-
-In the interactive browser, the visible tag filters are **Loop Mechanism**, `focus_tags`, and `domain_tags`. Alias-style `tags` are not shown as browser filter chips there.
-
-See [TAGS.md](TAGS.md) for the current tag inventory and preferred spellings before proposing a new tag.
-
-See [TAXONOMY.md](TAXONOMY.md) for the full inclusion rule, paper category definitions, tie-break rules, and the flat Blogs-section rule.
-
----
+A paper can also carry a `foundation` badge when it is a canonical anchor such as ACT, Universal Transformers, or DEQ. The browser filters by Loop Mechanism, focus, and domain tags. Blogs sit in one flat section outside the paper categories. [TAGS.md](TAGS.md) lists every tag in use.
+</details>
