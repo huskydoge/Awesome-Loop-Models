@@ -310,7 +310,7 @@ class AssetBudgetContractTests(unittest.TestCase):
             report = check_asset_budgets.check_asset_budgets(root)
 
         violations = "\n".join(report.violations)
-        for field in ("meta", "categories", "mechanism_tags", "focus_tags", "papers", "blogs"):
+        for field in ("meta", "categories", "mechanism_tags", "focus_tags", "paper_chunks", "blogs"):
             with self.subTest(field=field):
                 self.assertIn(f"papers.json.{field}", violations)
 
