@@ -1,0 +1,33 @@
+title: 'Loop Dropout: Regularizing Shared Updates in Looped Language Models'
+authors:
+- Zirui Zhu
+- Hailun Xu
+- Xuanlei Zhao
+- Yong Liu
+- Yingxuan Ren
+- Kanchan Sarkar
+- Kun Xu
+- Yang You
+year: 2026
+published_date: '2026-09-28'
+added_date: "2026-09-28"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- Loop Dropout
+- LoRA
+focus_tags:
+- training-algorithm
+desc: Finds that LoRA adapters shared across the loops of a looped language model are biased
+  toward late loop positions and proposes Loop Dropout, which randomly masks per-loop adapter
+  applications with inverse-survival rescaling, improving mathematical reasoning, instruction
+  tuning, and code generation with no extra inference cost.
+links:
+  arxiv: https://arxiv.org/abs/2609.34218
+  alphaxiv: https://www.alphaxiv.org/abs/2609.34218

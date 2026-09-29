@@ -1,0 +1,26 @@
+title: 'Multi-Attractor GNNs: Set-Valued Expressivity Beyond Unique Equilibria'
+authors:
+- Jialin Liu
+year: 2026
+published_date: '2026-09-28'
+added_date: "2026-09-28"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- graph-data
+- theory
+- scientific-ml
+tags:
+- implicit GNN
+focus_tags:
+- architecture
+desc: Proves that allowing multiple equilibria lets one weight-tied recurrent message-passing
+  GNN represent set-valued permutation-equivariant maps, with different initializations converging
+  to different valid solutions, and learns such dynamics without solution labels on Ising
+  ground states, protein module detection, and chemical reaction steady states.
+links:
+  arxiv: https://arxiv.org/abs/2609.35274
+  alphaxiv: https://www.alphaxiv.org/abs/2609.35274

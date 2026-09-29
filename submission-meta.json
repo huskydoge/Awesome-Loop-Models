@@ -240,6 +240,17 @@
     "papers/2609.30277.yaml",
     "papers/2609.30820.yaml",
     "papers/2609.31360.yaml",
+    "papers/2609.33144.yaml",
+    "papers/2609.33270.yaml",
+    "papers/2609.33306.yaml",
+    "papers/2609.33540.yaml",
+    "papers/2609.34218.yaml",
+    "papers/2609.34488.yaml",
+    "papers/2609.34538.yaml",
+    "papers/2609.34585.yaml",
+    "papers/2609.35274.yaml",
+    "papers/2609.35748.yaml",
+    "papers/2609.35751.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -251,11 +262,11 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 207
+        "count": 216
       },
       {
         "label": "implicit-layer",
-        "count": 33
+        "count": 35
       },
       {
         "label": "hierarchical-loop",
@@ -269,15 +280,15 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 200
+        "count": 206
       },
       {
         "label": "inference-algorithm",
-        "count": 163
+        "count": 166
       },
       {
         "label": "training-algorithm",
-        "count": 105
+        "count": 110
       },
       {
         "label": "objective-loss",
@@ -285,57 +296,57 @@
       },
       {
         "label": "data",
-        "count": 5
+        "count": 6
       }
     ],
     "domain": [
       {
         "label": "efficiency",
-        "count": 123
+        "count": 125
       },
       {
         "label": "language-modeling",
-        "count": 112
+        "count": 117
       },
       {
         "label": "reasoning",
-        "count": 111
+        "count": 116
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 55
+        "count": 59
       },
       {
         "label": "adaptive-compute",
-        "count": 36
+        "count": 39
       },
       {
         "label": "theory",
-        "count": 35
+        "count": 37
       },
       {
         "label": "vision",
-        "count": 33
+        "count": 34
       },
       {
         "label": "scaling",
-        "count": 32
+        "count": 33
       },
       {
         "label": "memory-efficiency",
         "count": 26
       },
       {
+        "label": "graph-data",
+        "count": 17
+      },
+      {
         "label": "sequence-modeling",
         "count": 16
       },
       {
-        "label": "graph-data",
-        "count": 15
-      },
-      {
         "label": "scientific-ml",
-        "count": 8
+        "count": 9
       },
       {
         "label": "machine-translation",
@@ -354,11 +365,11 @@
         "count": 3
       },
       {
-        "label": "recommendation",
-        "count": 2
+        "label": "rl-control",
+        "count": 3
       },
       {
-        "label": "rl-control",
+        "label": "recommendation",
         "count": 2
       },
       {

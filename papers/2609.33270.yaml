@@ -1,0 +1,33 @@
+title: Structured Sparse Memory for Recurrent Reasoning
+authors:
+- Zixuan Zhao
+- Samuel Wheeler
+- Neil Getty
+- Xiaotian Duan
+- Rick Stevens
+- Fangfang Xia
+year: 2026
+published_date: '2026-09-27'
+added_date: "2026-09-28"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+tags:
+- CHARM
+- CoSE
+focus_tags:
+- architecture
+- data
+desc: Presents CHARM, a compact ARC model that pairs a recurrent reasoning backbone with a
+  compositional sparse task embedding (CoSE) that cuts learned task-memory parameters by over
+  90 percent, finds that recurrent depth helps only when balanced with learning horizon, and
+  reports 84 percent pass@2 on ARC-AGI-1 and 46.7 percent on ARC-AGI-2 public evaluation.
+links:
+  arxiv: https://arxiv.org/abs/2609.33270
+  alphaxiv: https://www.alphaxiv.org/abs/2609.33270
+  github: https://github.com/water-vapor/charm
