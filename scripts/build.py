@@ -825,13 +825,38 @@ def load_briefings() -> list[dict]:
     return sorted(briefings, key=lambda item: item["date"], reverse=True)
 
 
+# Must match the pattern in index.html's restoreDerivedLinks().
+BROWSER_ARXIV_LINK_RE = re.compile(r"arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5})(?:v\d+)?")
+
+
+def compact_browser_links(links: dict) -> dict:
+    """Drop an AlphaXiv link that index.html can rebuild exactly from the arXiv link.
+
+    The link is omitted only when it equals the derived URL and directly follows
+    ``arxiv``, so the browser restores both the value and the badge order.
+    """
+    match = BROWSER_ARXIV_LINK_RE.search(str(links.get("arxiv") or ""))
+    arxiv_id = match.group(1) if match else None
+    if not arxiv_id or links.get("alphaxiv") != f"https://www.alphaxiv.org/abs/{arxiv_id}":
+        return dict(links)
+    keys = list(links)
+    if keys.index("alphaxiv") != keys.index("arxiv") + 1:
+        return dict(links)
+    return {key: value for key, value in links.items() if key != "alphaxiv"}
+
+
 def serialize_browser_entry(entry: dict) -> dict:
-    """Return a catalog entry containing only fields consumed by index.html."""
+    """Return a catalog entry containing only fields consumed by index.html.
+
+    The projection avoids redundant copies: ``authors_list`` replaces the joined
+    ``authors`` string, ``community_comments`` replaces its ``comments`` alias,
+    ``entry_type`` is emitted only for non-paper entries, and a derivable AlphaXiv
+    link is omitted. index.html restores each of these in ``preparePaperRecord``.
+    """
     browser_fields = (
         "id",
         "entry_type",
         "title",
-        "authors",
         "authors_list",
         "venue",
         "venueClass",
@@ -852,9 +877,17 @@ def serialize_browser_entry(entry: dict) -> dict:
         "citations",
         "github_stars",
         "community_comments",
-        "comments",
     )
-    return {field: entry[field] for field in browser_fields if field in entry}
+    browser_entry = {field: entry[field] for field in browser_fields if field in entry}
+    if browser_entry.get("entry_type") == "paper":
+        del browser_entry["entry_type"]
+    if "authors_list" not in browser_entry and "authors" in entry:
+        browser_entry["authors"] = entry["authors"]
+    if "community_comments" not in browser_entry and "comments" in entry:
+        browser_entry["community_comments"] = entry["comments"]
+    if isinstance(browser_entry.get("links"), dict):
+        browser_entry["links"] = compact_browser_links(browser_entry["links"])
+    return browser_entry
 
 
 def serialize_browser_briefing_candidate(candidate: dict) -> dict:

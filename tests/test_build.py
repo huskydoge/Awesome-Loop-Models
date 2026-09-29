@@ -305,6 +305,58 @@ class DailyBriefingBuildTests(unittest.TestCase):
         self.assertEqual([briefing["date"] for briefing in briefings], ["2026-04-28", "2026-04-27"])
         self.assertEqual([briefing["content"] for briefing in briefings], ["Latest reader notes.", "Earlier reader notes."])
 
+    def test_serialize_browser_entry_drops_redundant_copies(self):
+        entry = {
+            "id": "2604.21999",
+            "entry_type": "paper",
+            "title": "A paper",
+            "authors": "A. Author, B. Author",
+            "authors_list": ["A. Author", "B. Author"],
+            "links": {
+                "arxiv": "https://arxiv.org/abs/2604.21999",
+                "alphaxiv": "https://www.alphaxiv.org/abs/2604.21999",
+                "github": "https://github.com/example/repo",
+            },
+            "community_comments": [{"label": "Review", "url": "https://example.com/review"}],
+            "comments": [{"label": "Review", "url": "https://example.com/review"}],
+        }
+
+        browser_entry = build.serialize_browser_entry(entry)
+
+        self.assertNotIn("entry_type", browser_entry)
+        self.assertNotIn("authors", browser_entry)
+        self.assertNotIn("comments", browser_entry)
+        self.assertEqual(browser_entry["authors_list"], ["A. Author", "B. Author"])
+        self.assertEqual(browser_entry["community_comments"], entry["community_comments"])
+        self.assertEqual(
+            browser_entry["links"],
+            {"arxiv": "https://arxiv.org/abs/2604.21999", "github": "https://github.com/example/repo"},
+        )
+        self.assertIn("alphaxiv", entry["links"])
+        self.assertEqual(build.serialize_browser_entry({"entry_type": "blog"}), {"entry_type": "blog"})
+
+    def test_compact_browser_links_keeps_alphaxiv_it_cannot_rebuild_exactly(self):
+        arxiv = "https://arxiv.org/abs/2604.21999"
+        cases = [
+            {"arxiv": arxiv, "alphaxiv": "https://www.alphaxiv.org/abs/2604.00001"},
+            {"arxiv": arxiv, "github": "https://github.com/x/y", "alphaxiv": "https://www.alphaxiv.org/abs/2604.21999"},
+            {"alphaxiv": "https://www.alphaxiv.org/abs/2604.21999"},
+            {"arxiv": "https://www.alphaxiv.org/abs/2604.21999", "alphaxiv": "https://www.alphaxiv.org/abs/2604.21999"},
+        ]
+        for links in cases:
+            with self.subTest(links=links):
+                self.assertEqual(build.compact_browser_links(links), links)
+
+    def test_index_restores_links_dropped_from_browser_payload(self):
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        self.assertIn("function restoreDerivedLinks(links) {", html)
+        self.assertIn("paper.links = restoreDerivedLinks(paper.links);", html)
+        self.assertIn("arxiv\\.org\\/(?:abs|pdf)\\/(\\d{4}\\.\\d{4,5})(?:v\\d+)?", html)
+        self.assertEqual(
+            build.BROWSER_ARXIV_LINK_RE.pattern,
+            r"arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5})(?:v\d+)?",
+        )
+
     def test_build_json_trims_briefings_for_browser_without_changing_catalog_entries(self):
         with TemporaryDirectory() as tmpdir:
             json_out = Path(tmpdir) / "papers.json"
@@ -401,16 +453,18 @@ class DailyBriefingBuildTests(unittest.TestCase):
             payload = json.loads(raw_payload)
 
         browser_fields = (
-            "id", "entry_type", "title", "authors", "authors_list", "venue", "venueClass",
+            "id", "entry_type", "title", "authors_list", "venue", "venueClass",
             "peer_reviewed", "venue_source",
             "year", "published_date", "added_date", "desc", "links", "category", "foundation",
             "catalog_fit", "mechanism_tags", "focus_tags", "domain_tags", "must_read", "citations",
-            "github_stars", "community_comments", "comments",
+            "github_stars", "community_comments",
         )
-        self.assertEqual(
-            payload["papers"],
-            [{field: papers_before[0][field] for field in browser_fields if field in papers_before[0]}],
-        )
+        expected_paper = {
+            field: papers_before[0][field]
+            for field in browser_fields
+            if field in papers_before[0] and field != "entry_type"
+        }
+        self.assertEqual(payload["papers"], [expected_paper])
         self.assertEqual(
             payload["blogs"],
             [{field: blogs_before[0][field] for field in browser_fields if field in blogs_before[0]}],

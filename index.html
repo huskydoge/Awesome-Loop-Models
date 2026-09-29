@@ -7168,7 +7168,22 @@ function getPaperCategoryLabels(paper) {
   return { category: category, trail: category };
 }
 
+// papers.json omits an AlphaXiv link that equals the one derived from the arXiv
+// link and directly follows it; rebuild it here so badges keep their order.
+function restoreDerivedLinks(links) {
+  if (!links || typeof links !== 'object' || links.alphaxiv || !links.arxiv) return links;
+  const match = /arxiv\.org\/(?:abs|pdf)\/(\d{4}\.\d{4,5})(?:v\d+)?/.exec(String(links.arxiv));
+  if (!match) return links;
+  const restored = {};
+  Object.keys(links).forEach(function(key) {
+    restored[key] = links[key];
+    if (key === 'arxiv') restored.alphaxiv = 'https://www.alphaxiv.org/abs/' + match[1];
+  });
+  return restored;
+}
+
 function preparePaperRecord(paper) {
+  paper.links = restoreDerivedLinks(paper.links);
   const authors = Array.isArray(paper.authors_list) && paper.authors_list.length
     ? paper.authors_list.join(', ')
     : (Array.isArray(paper.authors) ? paper.authors.join(', ') : String(paper.authors || ''));
