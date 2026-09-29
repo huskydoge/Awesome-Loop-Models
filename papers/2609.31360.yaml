@@ -32,12 +32,14 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2609.31360
   github: https://github.com/DATEXIS/RE-PoLar
   project: https://datexis.github.io/RE-PoLar/
-citation_source_best: opencitations
+citation_source_best: semantic_scholar
 citations: 0
 citation_sources:
   opencitations: 0
+  semantic_scholar: 0
+  openalex: 0
 star_source_best: github_api
-github_stars: 5
+github_stars: 7
 star_sources:
-  github_api: 5
-metrics_updated: '2026-09-28'
+  github_api: 7
+metrics_updated: '2026-09-29'

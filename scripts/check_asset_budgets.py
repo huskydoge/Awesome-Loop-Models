@@ -5,7 +5,9 @@ from __future__ import annotations
 
 import argparse
 import gzip
+import hashlib
 import json
+import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -14,6 +16,9 @@ from typing import Sequence, TextIO
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PAPERS_GZIP_BYTES_LIMIT = 60_000
+PAPER_CHUNK_GZIP_BYTES_LIMIT = 60_000
+PAPER_CHUNK_ENTRIES_LIMIT = 100
+PAPER_CHUNK_PATH_RE = re.compile(r"^catalog/papers-\d{3}\.json$")
 PAPERS_BRIEFINGS_LIMIT = 1
 BRIEFING_CONTENT_FIELDS_LIMIT = 0
 SUBMISSION_META_BYTES_LIMIT = 20_000
@@ -104,7 +109,7 @@ def validate_papers_schema(payload: dict, violations: list[str]) -> tuple[int | 
         if not isinstance(payload.get(field), dict):
             violations.append(f"papers.json.{field} must be an object")
 
-    for field in ("mechanism_tags", "focus_tags", "papers", "blogs"):
+    for field in ("mechanism_tags", "focus_tags", "paper_chunks", "blogs"):
         if not isinstance(payload.get(field), list):
             violations.append(f"papers.json.{field} must be an array")
 
@@ -175,6 +180,57 @@ def validate_submission_schema(payload: dict, violations: list[str]) -> None:
                 violations.append(f"{row_label}.count must be a non-negative integer")
 
 
+def check_paper_chunks(root: Path, payload: dict, violations: list[str]) -> tuple[int, int]:
+    """Validate every manifest-listed paper chunk and return the largest gzip size and entry count.
+
+    Each chunk must exist at a ``catalog/papers-NNN.json`` path, hold a ``papers`` array whose
+    length matches the manifest ``count``, and match the manifest ``version`` hash. Chunk files
+    that the manifest does not list are reported as stale.
+    """
+    rows = payload.get("paper_chunks")
+    if not isinstance(rows, list):
+        return 0, 0
+    largest_gzip = 0
+    largest_entries = 0
+    listed: set[str] = set()
+    for index, row in enumerate(rows):
+        label = f"papers.json.paper_chunks[{index}]"
+        if not isinstance(row, dict):
+            violations.append(f"{label} must be an object")
+            continue
+        path = row.get("path")
+        if not isinstance(path, str) or not PAPER_CHUNK_PATH_RE.fullmatch(path):
+            violations.append(f"{label}.path must match catalog/papers-NNN.json")
+            continue
+        if path in listed:
+            violations.append(f"{label}.path is listed more than once: {path}")
+            continue
+        listed.add(path)
+        raw = read_required_file(root / path, path, violations)
+        if raw is None:
+            continue
+        largest_gzip = max(largest_gzip, len(gzip.compress(raw, mtime=0)))
+        if row.get("version") != hashlib.sha256(raw).hexdigest()[:12]:
+            violations.append(f"{path}: content does not match {label}.version")
+        chunk = parse_json_object(raw, path, violations)
+        if chunk is None:
+            continue
+        papers = chunk.get("papers")
+        if not isinstance(papers, list):
+            violations.append(f"{path}.papers must be an array")
+            continue
+        largest_entries = max(largest_entries, len(papers))
+        if row.get("count") != len(papers):
+            violations.append(f"{path}: holds {len(papers)} papers but {label}.count is {row.get('count')!r}")
+
+    chunk_dir = root / "catalog"
+    if chunk_dir.is_dir():
+        for stale in sorted(chunk_dir.glob("papers-*.json")):
+            if f"catalog/{stale.name}" not in listed:
+                violations.append(f"catalog/{stale.name}: not listed in papers.json.paper_chunks")
+    return largest_gzip, largest_entries
+
+
 def check_asset_budgets(root: Path) -> AssetBudgetReport:
     """Measure every required asset under ``root`` and aggregate all violations."""
     root = Path(root)
@@ -193,10 +249,29 @@ def check_asset_budgets(root: Path) -> AssetBudgetReport:
 
     briefing_count: int | None = None
     content_fields: int | None = None
+    chunk_gzip_bytes: int | None = None
+    chunk_entries: int | None = None
     if papers_raw is not None:
         papers_payload = parse_json_object(papers_raw, "papers.json", violations)
         if papers_payload is not None:
             briefing_count, content_fields = validate_papers_schema(papers_payload, violations)
+            chunk_gzip_bytes, chunk_entries = check_paper_chunks(root, papers_payload, violations)
+    add_measurement(
+        measurements,
+        violations,
+        "largest paper chunk deterministic gzip bytes",
+        chunk_gzip_bytes,
+        PAPER_CHUNK_GZIP_BYTES_LIMIT,
+        "bytes",
+    )
+    add_measurement(
+        measurements,
+        violations,
+        "largest paper chunk entries",
+        chunk_entries,
+        PAPER_CHUNK_ENTRIES_LIMIT,
+        "items",
+    )
     add_measurement(
         measurements,
         violations,

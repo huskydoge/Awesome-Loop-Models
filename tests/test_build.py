@@ -1,3 +1,4 @@
+import hashlib
 import json
 import subprocess
 import unittest
@@ -305,6 +306,93 @@ class DailyBriefingBuildTests(unittest.TestCase):
         self.assertEqual([briefing["date"] for briefing in briefings], ["2026-04-28", "2026-04-27"])
         self.assertEqual([briefing["content"] for briefing in briefings], ["Latest reader notes.", "Earlier reader notes."])
 
+    def test_build_json_splits_papers_into_bounded_versioned_chunks(self):
+        with TemporaryDirectory() as tmpdir:
+            json_out = Path(tmpdir) / "papers.json"
+            stale = Path(tmpdir) / "catalog" / "papers-009.json"
+            stale.parent.mkdir()
+            stale.write_text('{"papers":[]}', encoding="utf-8")
+            papers = [{"id": f"2604.{index:05d}", "title": f"Paper {index}"} for index in range(5)]
+            with patch.object(build, "JSON_OUT", json_out), patch.object(build, "PAPER_CHUNK_SIZE", 2):
+                build.build_json(papers, [], [])
+            payload = json.loads(json_out.read_text(encoding="utf-8"))
+            chunk_files = sorted(path.name for path in (Path(tmpdir) / "catalog").iterdir())
+            raw_chunks = [
+                (Path(tmpdir) / row["path"]).read_text(encoding="utf-8") for row in payload["paper_chunks"]
+            ]
+
+        self.assertEqual(
+            [(row["path"], row["count"]) for row in payload["paper_chunks"]],
+            [("catalog/papers-000.json", 2), ("catalog/papers-001.json", 2), ("catalog/papers-002.json", 1)],
+        )
+        self.assertEqual(chunk_files, ["papers-000.json", "papers-001.json", "papers-002.json"])
+        self.assertEqual(
+            [paper["id"] for raw in raw_chunks for paper in json.loads(raw)["papers"]],
+            [paper["id"] for paper in papers],
+        )
+        for row, raw in zip(payload["paper_chunks"], raw_chunks):
+            self.assertEqual(row["version"], hashlib.sha256(raw.encode("utf-8")).hexdigest()[:12])
+
+    def test_index_fetches_manifest_then_every_listed_chunk(self):
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        self.assertIn('return fetch("papers.json")', html)
+        self.assertIn("Promise.all(chunks.map(fetchPaperChunk))", html)
+        self.assertIn("const PAPER_CHUNK_PATH_PATTERN = /^catalog\\/papers-\\d{3}\\.json$/;", html)
+        self.assertIn("papers.length !== chunk.count", html)
+        self.assertIn("loadCatalog()\n  .then(function(data) { buildDOM(data); })", html)
+
+    def test_serialize_browser_entry_drops_redundant_copies(self):
+        entry = {
+            "id": "2604.21999",
+            "entry_type": "paper",
+            "title": "A paper",
+            "authors": "A. Author, B. Author",
+            "authors_list": ["A. Author", "B. Author"],
+            "links": {
+                "arxiv": "https://arxiv.org/abs/2604.21999",
+                "alphaxiv": "https://www.alphaxiv.org/abs/2604.21999",
+                "github": "https://github.com/example/repo",
+            },
+            "community_comments": [{"label": "Review", "url": "https://example.com/review"}],
+            "comments": [{"label": "Review", "url": "https://example.com/review"}],
+        }
+
+        browser_entry = build.serialize_browser_entry(entry)
+
+        self.assertNotIn("entry_type", browser_entry)
+        self.assertNotIn("authors", browser_entry)
+        self.assertNotIn("comments", browser_entry)
+        self.assertEqual(browser_entry["authors_list"], ["A. Author", "B. Author"])
+        self.assertEqual(browser_entry["community_comments"], entry["community_comments"])
+        self.assertEqual(
+            browser_entry["links"],
+            {"arxiv": "https://arxiv.org/abs/2604.21999", "github": "https://github.com/example/repo"},
+        )
+        self.assertIn("alphaxiv", entry["links"])
+        self.assertEqual(build.serialize_browser_entry({"entry_type": "blog"}), {"entry_type": "blog"})
+
+    def test_compact_browser_links_keeps_alphaxiv_it_cannot_rebuild_exactly(self):
+        arxiv = "https://arxiv.org/abs/2604.21999"
+        cases = [
+            {"arxiv": arxiv, "alphaxiv": "https://www.alphaxiv.org/abs/2604.00001"},
+            {"arxiv": arxiv, "github": "https://github.com/x/y", "alphaxiv": "https://www.alphaxiv.org/abs/2604.21999"},
+            {"alphaxiv": "https://www.alphaxiv.org/abs/2604.21999"},
+            {"arxiv": "https://www.alphaxiv.org/abs/2604.21999", "alphaxiv": "https://www.alphaxiv.org/abs/2604.21999"},
+        ]
+        for links in cases:
+            with self.subTest(links=links):
+                self.assertEqual(build.compact_browser_links(links), links)
+
+    def test_index_restores_links_dropped_from_browser_payload(self):
+        html = INDEX_HTML_PATH.read_text(encoding="utf-8")
+        self.assertIn("function restoreDerivedLinks(links) {", html)
+        self.assertIn("paper.links = restoreDerivedLinks(paper.links);", html)
+        self.assertIn("arxiv\\.org\\/(?:abs|pdf)\\/(\\d{4}\\.\\d{4,5})(?:v\\d+)?", html)
+        self.assertEqual(
+            build.BROWSER_ARXIV_LINK_RE.pattern,
+            r"arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5})(?:v\d+)?",
+        )
+
     def test_build_json_trims_briefings_for_browser_without_changing_catalog_entries(self):
         with TemporaryDirectory() as tmpdir:
             json_out = Path(tmpdir) / "papers.json"
@@ -399,25 +487,33 @@ class DailyBriefingBuildTests(unittest.TestCase):
                 build.build_json(papers, blogs, briefings)
             raw_payload = json_out.read_text(encoding="utf-8")
             payload = json.loads(raw_payload)
+            chunk_papers = [
+                paper
+                for row in payload["paper_chunks"]
+                for paper in json.loads((json_out.parent / row["path"]).read_text(encoding="utf-8"))["papers"]
+            ]
 
+        self.assertNotIn("papers", payload)
         browser_fields = (
-            "id", "entry_type", "title", "authors", "authors_list", "venue", "venueClass",
+            "id", "entry_type", "title", "authors_list", "venue", "venueClass",
             "peer_reviewed", "venue_source",
             "year", "published_date", "added_date", "desc", "links", "category", "foundation",
             "catalog_fit", "mechanism_tags", "focus_tags", "domain_tags", "must_read", "citations",
-            "github_stars", "community_comments", "comments",
+            "github_stars", "community_comments",
         )
-        self.assertEqual(
-            payload["papers"],
-            [{field: papers_before[0][field] for field in browser_fields if field in papers_before[0]}],
-        )
+        expected_paper = {
+            field: papers_before[0][field]
+            for field in browser_fields
+            if field in papers_before[0] and field != "entry_type"
+        }
+        self.assertEqual(chunk_papers, [expected_paper])
         self.assertEqual(
             payload["blogs"],
             [{field: blogs_before[0][field] for field in browser_fields if field in blogs_before[0]}],
         )
         self.assertEqual(papers, papers_before)
         self.assertEqual(blogs, blogs_before)
-        for entry in [*payload["papers"], *payload["blogs"]]:
+        for entry in [*chunk_papers, *payload["blogs"]]:
             for field in (
                 "source_file", "source_path", "citation_source_best", "citation_sources",
                 "star_source_best", "star_sources", "metrics_updated",
@@ -4512,6 +4608,12 @@ class SourceFileMetadataTests(unittest.TestCase):
 
     def test_generated_json_uses_loop_form_mechanism_allowlist(self):
         payload = json.loads((REPO_ROOT / "papers.json").read_text(encoding="utf-8"))
+        payload["papers"] = [
+            paper
+            for row in payload["paper_chunks"]
+            for paper in json.loads((REPO_ROOT / row["path"]).read_text(encoding="utf-8"))["papers"]
+        ]
+        self.assertEqual(len(payload["papers"]), payload["meta"]["paper_total"])
         self.assertEqual(payload["mechanism_tags"], list(build.VALID_MECHANISM_TAGS))
         allowed = set(build.VALID_MECHANISM_TAGS)
         for entry in [*payload["papers"], *payload.get("blogs", [])]:

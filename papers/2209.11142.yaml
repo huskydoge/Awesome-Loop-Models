@@ -18,7 +18,7 @@ authors:
 year: 2022
 published_date: '2022-09-22'
 added_date: '2026-04-24'
-venue: "Learning on Graphs Conference"
+venue: Learning on Graphs Conference
 category: designs
 mechanism_tags:
 - flat-loop
@@ -39,13 +39,13 @@ links:
 citations: 75
 citation_sources:
   semantic_scholar: 75
-  openalex: 7
+  openalex: 5
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-09-16'
+metrics_updated: '2026-09-29'
 star_source_best: github_api
 github_stars: 547
 star_sources:
   github_api: 547
 peer_reviewed: true
-venue_source: "https://proceedings.mlr.press/v198/ibarz22a.html"
+venue_source: https://proceedings.mlr.press/v198/ibarz22a.html

@@ -3,7 +3,8 @@
 build.py — Single-source build script for Awesome Loop Models.
 
 Reads all papers/*.yaml and blogs/*.yaml files and generates:
-  1. papers.json   — consumed by index.html
+  1. papers.json   — catalog manifest consumed by index.html, plus the paper
+                     records it lists under catalog/papers-NNN.json
   2. submission-meta.json — minimal tag/path inventory consumed by submit.html
   3. README.md     — the GitHub repository README
   4. TAGS.md       — contributor-facing tag reference
@@ -13,6 +14,7 @@ The paper/blog YAML files are the source of truth.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from collections import Counter, defaultdict
@@ -29,6 +31,10 @@ PAPERS_DIR = REPO_ROOT / "papers"
 BLOGS_DIR = REPO_ROOT / "blogs"
 BRIEFINGS_DIR = REPO_ROOT / "briefings"
 JSON_OUT = REPO_ROOT / "papers.json"
+# Paper records are split into bounded chunks next to the manifest so no single
+# browser asset grows with the catalog. Paths are relative to JSON_OUT.parent.
+PAPER_CHUNK_DIRNAME = "catalog"
+PAPER_CHUNK_SIZE = 100
 SUBMISSION_META_OUT = REPO_ROOT / "submission-meta.json"
 README_OUT = REPO_ROOT / "README.md"
 TAGS_OUT = REPO_ROOT / "TAGS.md"
@@ -825,13 +831,38 @@ def load_briefings() -> list[dict]:
     return sorted(briefings, key=lambda item: item["date"], reverse=True)
 
 
+# Must match the pattern in index.html's restoreDerivedLinks().
+BROWSER_ARXIV_LINK_RE = re.compile(r"arxiv\.org/(?:abs|pdf)/(\d{4}\.\d{4,5})(?:v\d+)?")
+
+
+def compact_browser_links(links: dict) -> dict:
+    """Drop an AlphaXiv link that index.html can rebuild exactly from the arXiv link.
+
+    The link is omitted only when it equals the derived URL and directly follows
+    ``arxiv``, so the browser restores both the value and the badge order.
+    """
+    match = BROWSER_ARXIV_LINK_RE.search(str(links.get("arxiv") or ""))
+    arxiv_id = match.group(1) if match else None
+    if not arxiv_id or links.get("alphaxiv") != f"https://www.alphaxiv.org/abs/{arxiv_id}":
+        return dict(links)
+    keys = list(links)
+    if keys.index("alphaxiv") != keys.index("arxiv") + 1:
+        return dict(links)
+    return {key: value for key, value in links.items() if key != "alphaxiv"}
+
+
 def serialize_browser_entry(entry: dict) -> dict:
-    """Return a catalog entry containing only fields consumed by index.html."""
+    """Return a catalog entry containing only fields consumed by index.html.
+
+    The projection avoids redundant copies: ``authors_list`` replaces the joined
+    ``authors`` string, ``community_comments`` replaces its ``comments`` alias,
+    ``entry_type`` is emitted only for non-paper entries, and a derivable AlphaXiv
+    link is omitted. index.html restores each of these in ``preparePaperRecord``.
+    """
     browser_fields = (
         "id",
         "entry_type",
         "title",
-        "authors",
         "authors_list",
         "venue",
         "venueClass",
@@ -852,9 +883,17 @@ def serialize_browser_entry(entry: dict) -> dict:
         "citations",
         "github_stars",
         "community_comments",
-        "comments",
     )
-    return {field: entry[field] for field in browser_fields if field in entry}
+    browser_entry = {field: entry[field] for field in browser_fields if field in entry}
+    if browser_entry.get("entry_type") == "paper":
+        del browser_entry["entry_type"]
+    if "authors_list" not in browser_entry and "authors" in entry:
+        browser_entry["authors"] = entry["authors"]
+    if "community_comments" not in browser_entry and "comments" in entry:
+        browser_entry["community_comments"] = entry["comments"]
+    if isinstance(browser_entry.get("links"), dict):
+        browser_entry["links"] = compact_browser_links(browser_entry["links"])
+    return browser_entry
 
 
 def serialize_browser_briefing_candidate(candidate: dict) -> dict:
@@ -913,12 +952,42 @@ def build_json(papers: list[dict], blogs: list[dict], briefings: list[dict] | No
         "categories": CATEGORIES,
         "mechanism_tags": list(VALID_MECHANISM_TAGS),
         "focus_tags": list(VALID_FOCUS_TAGS),
-        "papers": [serialize_browser_entry(paper) for paper in papers],
+        "paper_chunks": write_paper_chunks([serialize_browser_entry(paper) for paper in papers]),
         "blogs": [serialize_browser_entry(blog) for blog in blogs],
         "briefings": serialize_browser_briefings(briefings),
     }
     JSON_OUT.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    print(f"✓ papers.json  — {len(papers)} papers, {len(blogs)} blogs, {len(briefings)} briefings")
+    print(
+        f"✓ papers.json  — {len(papers)} papers in {len(payload['paper_chunks'])} chunks, "
+        f"{len(blogs)} blogs, {len(briefings)} briefings"
+    )
+
+
+def write_paper_chunks(entries: list[dict]) -> list[dict]:
+    """Write browser paper records as fixed-size chunks and return their manifest rows.
+
+    Chunks keep the catalog order, so new arXiv IDs usually land in the last chunk.
+    Each row carries a content hash that index.html uses to bypass stale caches.
+    Chunk files left over from a larger catalog are removed.
+    """
+    chunk_dir = JSON_OUT.parent / PAPER_CHUNK_DIRNAME
+    chunk_dir.mkdir(parents=True, exist_ok=True)
+    rows: list[dict] = []
+    for index, start in enumerate(range(0, len(entries), PAPER_CHUNK_SIZE)):
+        chunk = entries[start:start + PAPER_CHUNK_SIZE]
+        raw = json.dumps({"papers": chunk}, ensure_ascii=False, separators=(",", ":"))
+        relative_path = f"{PAPER_CHUNK_DIRNAME}/papers-{index:03d}.json"
+        (JSON_OUT.parent / relative_path).write_text(raw, encoding="utf-8")
+        rows.append({
+            "path": relative_path,
+            "count": len(chunk),
+            "version": hashlib.sha256(raw.encode("utf-8")).hexdigest()[:12],
+        })
+    expected = {row["path"] for row in rows}
+    for stale in sorted(chunk_dir.glob("papers-*.json")):
+        if f"{PAPER_CHUNK_DIRNAME}/{stale.name}" not in expected:
+            stale.unlink()
+    return rows
 
 
 def render_submission_metadata(papers: list[dict], blogs: list[dict]) -> dict:
