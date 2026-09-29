@@ -1,0 +1,32 @@
+title: 'FlexLoop: Depth-Elastic Looped Policies for Adaptive Test-Time Computation in Deep
+  RL'
+authors:
+- Xun Wang
+- Ruishuo Chen
+- Yu Chen
+- Zhuoran Li
+- Longbo Huang
+year: 2026
+published_date: '2026-09-28'
+added_date: "2026-09-28"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- rl-control
+- adaptive-compute
+tags:
+- FlexLoop
+- looped policy
+focus_tags:
+- training-algorithm
+- inference-algorithm
+desc: Shows that pretrained looped RL policies specialize to their trained recurrent depth
+  and proposes FlexLoop, a post-training method using adjacent-depth policy distillation so
+  decisions stay reliable at shallower depths and can stop per state via recurrent-depth consistency,
+  evaluated on 30 long-horizon goal-conditioned environments.
+links:
+  arxiv: https://arxiv.org/abs/2609.34488
+  alphaxiv: https://www.alphaxiv.org/abs/2609.34488
