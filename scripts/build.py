@@ -1267,111 +1267,206 @@ def render_readme_fragment(template_text: str, meta: dict) -> str:
     )
 
 
+README_LATEST_COUNT = 10
+README_MOST_CITED_COUNT = 10
+README_LINK_LABELS = (
+    ("blog", "Read"),
+    ("arxiv", "arXiv"),
+    ("openreview", "OpenReview"),
+    ("paper", "Paper"),
+    ("github", "Code"),
+    ("hf", "HF"),
+    ("project", "Project"),
+)
+README_CATEGORY_PLURAL = {
+    "analysis": "analysis",
+    "designs": "designs",
+    "applications": "applications",
+}
+README_CATEGORY_SHORT = {
+    "analysis": "Analysis",
+    "designs": "Design",
+    "applications": "Application",
+}
+
+
+def _readme_date_rank(value: object) -> int:
+    """Return a sortable ordinal for a YYYY-MM-DD value, or 0 when it is missing."""
+    try:
+        return date.fromisoformat(str(value or "").strip()).toordinal()
+    except ValueError:
+        return 0
+
+
+def _readme_cell(text: object) -> str:
+    """Escape text for a single Markdown table cell."""
+    return escape(str(text or "")).replace("|", "&#124;").replace("\n", " ")
+
+
+def _readme_short_date(value: object) -> str:
+    rank = _readme_date_rank(value)
+    return date.fromordinal(rank).strftime("%Y-%m-%d") if rank else ""
+
+
+def _readme_venue(entry: dict) -> str:
+    venue = str(entry.get("venue") or "").strip()
+    year = str(entry.get("year") or "").strip()
+    if venue and venue != "arXiv":
+        return f"{venue} {year}".strip()
+    return year
+
+
+def _readme_link_cell(entry: dict) -> str:
+    """Render compact text links (arXiv · Code ★N · …) instead of badge images."""
+    links = entry.get("links") or {}
+    parts = []
+    for key, label in README_LINK_LABELS:
+        url = links.get(key)
+        if not url:
+            continue
+        if key in ("openreview", "paper") and links.get("arxiv"):
+            continue
+        text = label
+        if key == "github" and isinstance(entry.get("github_stars"), int) and entry["github_stars"] > 0:
+            text = f"{label} ★{entry['github_stars']:,}"
+        parts.append(f'<a href="{escape(url)}">{text}</a>')
+    return " · ".join(parts)
+
+
+def _readme_title_cell(entry: dict) -> str:
+    marks = []
+    if entry.get("must_read"):
+        marks.append("🌟")
+    if entry.get("catalog_fit") == "adjacent":
+        marks.append("⚠️")
+    title = f"<b>{_readme_cell(entry.get('title', 'Untitled'))}</b>"
+    return " ".join(marks + [title])
+
+
+def _readme_table(headers: list[str], rows: list[list[str]]) -> str:
+    lines = ["| " + " | ".join(headers) + " |", "|" + "|".join(":--" for _ in headers) + "|"]
+    lines.extend("| " + " | ".join(row) + " |" for row in rows)
+    return "\n".join(lines)
+
+
 def build_readme(papers: list[dict], blogs: list[dict], repo_meta: dict) -> None:
+    """Write README.md as a compact front page; the full catalog lives in the browser."""
     header = render_readme_fragment(HEADER_FILE.read_text(encoding="utf-8").rstrip(), repo_meta)
     footer = render_readme_fragment(FOOTER_FILE.read_text(encoding="utf-8").rstrip(), repo_meta)
+    browser_url = repo_meta["public_pages_base"] + "/index.html"
 
-    papers_by_path: dict[tuple[str, ...], list[dict]] = defaultdict(list)
-    papers_by_prefix_count: dict[tuple[str, ...], int] = defaultdict(int)
+    counts = Counter(paper.get("category") for paper in papers)
+    shelf_parts = [
+        f"{counts[category_id]} {README_CATEGORY_PLURAL.get(category_id, category['title'])}"
+        for category_id, category in iter_category_tree()
+        if counts.get(category_id)
+    ]
+    stats_line = (
+        f"<p align=\"center\"><b>{len(papers)} papers</b> · {' · '.join(shelf_parts)}"
+        + (f" · <b>{len(blogs)} blogs</b>" if blogs else "")
+        + f" · <a href=\"{escape(browser_url)}\">browse all →</a></p>"
+    )
 
-    for paper in papers:
-        full_path = paper_full_category_path(paper)
-        papers_by_path[full_path].append(paper)
-        for depth in range(1, len(full_path) + 1):
-            papers_by_prefix_count[full_path[:depth]] += 1
+    sections = ["## At a glance", "", stats_line]
 
-    def sort_key(entry: dict):
-        # README sections should read newest-to-oldest within each category.
-        published_date = str(entry.get("published_date") or "").strip()
-        try:
-            date_rank = -date.fromisoformat(published_date).toordinal()
-            missing_date_rank = 0
-        except ValueError:
-            date_rank = 0
-            missing_date_rank = 1
-        return (
-            missing_date_rank,
-            date_rank,
-            str(entry.get("title", "")).lower(),
+    anchors = [paper for paper in papers if paper.get("foundation") or paper.get("must_read")]
+    anchors.sort(key=lambda p: (_readme_date_rank(p.get("published_date")), str(p.get("title", "")).lower()))
+    if anchors:
+        rows = [
+            [
+                _readme_title_cell(p),
+                _readme_cell(_readme_venue(p)),
+                _readme_cell(" · ".join(p.get("mechanism_tags") or [])),
+                _readme_link_cell(p),
+            ]
+            for p in anchors
+        ]
+        sections += [
+            "",
+            "## 🌟 Start here",
+            "",
+            "The foundational papers, plus the ones the maintainer marks as must-read.",
+            "",
+            _readme_table(["Paper", "Venue", "Loop", "Links"], rows),
+        ]
+
+    latest = sorted(
+        papers,
+        key=lambda p: (
+            -_readme_date_rank(p.get("added_date")),
+            -_readme_date_rank(p.get("published_date")),
+            str(p.get("title", "")).lower(),
+        ),
+    )[:README_LATEST_COUNT]
+    if latest:
+        rows = [
+            [
+                _readme_cell(_readme_short_date(p.get("added_date"))),
+                _readme_title_cell(p),
+                _readme_cell(README_CATEGORY_SHORT.get(p.get("category"), "")),
+                _readme_link_cell(p),
+            ]
+            for p in latest
+        ]
+        sections += [
+            "",
+            "## 🆕 Latest additions",
+            "",
+            _readme_table(["Added", "Paper", "Type", "Links"], rows),
+            "",
+            f"<sub>A daily watch adds new arXiv papers. The <a href=\"{escape(browser_url)}\">browser</a> has every paper and each day's briefing.</sub>",
+        ]
+
+    cited = [p for p in papers if isinstance(p.get("citations"), int) and p["citations"] > 0]
+    cited.sort(key=lambda p: (-p["citations"], str(p.get("title", "")).lower()))
+    cited = cited[:README_MOST_CITED_COUNT]
+    if cited:
+        rows = [
+            [
+                _readme_title_cell(p),
+                _readme_cell(_readme_venue(p)),
+                f"{p['citations']:,}",
+                _readme_link_cell(p),
+            ]
+            for p in cited
+        ]
+        sections += [
+            "",
+            "## 🔥 Most cited",
+            "",
+            _readme_table(["Paper", "Venue", "Citations", "Links"], rows),
+        ]
+
+    if blogs:
+        ordered_blogs = sorted(
+            blogs,
+            key=lambda b: (-_readme_date_rank(b.get("published_date")), str(b.get("title", "")).lower()),
         )
-
-    toc_lines = ["## Table of Contents", ""]
-    anchor_counts: dict[str, int] = defaultdict(int)
-
-    def next_anchor(title: str) -> str:
-        base = heading_anchor(title)
-        count = anchor_counts[base]
-        anchor_counts[base] += 1
-        return base if count == 0 else f"{base}-{count}"
-
-    def append_toc_node(node: dict, path: tuple[str, ...], depth: int) -> None:
-        count = papers_by_prefix_count.get(path, 0)
-        if count == 0:
-            return
-        indent = "  " * depth
-        toc_lines.append(f"{indent}- [{node['title']}](#{next_anchor(node['title'])}) ({count})")
-        for child_id, child in iter_child_nodes(node):
-            append_toc_node(child, path + (child_id,), depth + 1)
-
-    for category_id, category in iter_category_tree():
-        append_toc_node(category, (category_id,), 0)
-    if blogs:
-        toc_lines.append(f"- [{BLOG_SECTION_TITLE}](#{next_anchor(BLOG_SECTION_TITLE)}) ({len(blogs)})")
-    toc_lines.append("")
-    toc_lines.append("> " + CATEGORY_DISCLAIMER)
-    if blogs:
-        toc_lines.append("> Blogs are a separate flat section: they can carry tags, but they do not use the paper taxonomy.")
-    toc_lines.append("")
-    toc_lines.append("---")
-    toc = "\n".join(toc_lines)
-
-    sections: list[str] = []
-    for category_id, category in iter_category_tree():
-        category_path = (category_id,)
-        if papers_by_prefix_count.get(category_path, 0) == 0:
-            continue
-
-        section_lines = [f"## {category['title']}", ""]
-        if category.get("readme_intro"):
-            section_lines.append(category["readme_intro"])
-            section_lines.append("")
-
-        def append_section_node(node: dict, path: tuple[str, ...], depth: int) -> None:
-            for child_id, child in iter_child_nodes(node):
-                child_path = path + (child_id,)
-                if papers_by_prefix_count.get(child_path, 0) == 0:
-                    continue
-                heading_level = min(6, depth + 3)
-                section_lines.append(f"{'#' * heading_level} {child['title']}")
-                section_lines.append("")
-                if child.get("desc"):
-                    section_lines.append(child["desc"])
-                    section_lines.append("")
-                append_section_node(child, child_path, depth + 1)
-
-            for paper in sorted(papers_by_path.get(path, []), key=sort_key):
-                section_lines.append(_paper_to_md(paper))
-                section_lines.append("")
-
-        append_section_node(category, category_path, 0)
-        section_lines.append("---")
-        sections.append("\n".join(section_lines))
-
-    if blogs:
-        blog_lines = [f"## {BLOG_SECTION_TITLE}", "", BLOG_SECTION_DESC, ""]
-        for blog in sorted(blogs, key=sort_key):
-            blog_lines.append(_paper_to_md(blog))
-            blog_lines.append("")
-        blog_lines.append("---")
-        sections.append("\n".join(blog_lines))
+        rows = [
+            [
+                _readme_cell(_readme_short_date(b.get("published_date"))),
+                _readme_title_cell(b),
+                _readme_cell(b.get("venue") or ""),
+                _readme_link_cell(b),
+            ]
+            for b in ordered_blogs
+        ]
+        sections += [
+            "",
+            f"## ✍️ {BLOG_SECTION_TITLE}",
+            "",
+            "Long-form technical posts on loop models.",
+            "",
+            _readme_table(["Date", "Post", "Where", "Links"], rows),
+        ]
 
     auto_note = (
         "<!-- AUTO-GENERATED by scripts/build.py on "
         f"{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} — "
-        "DO NOT EDIT the lists below manually. Edit papers/*.yaml or blogs/*.yaml and run `python3 scripts/build.py` instead. -->"
+        "DO NOT EDIT the sections below manually. Edit papers/*.yaml or blogs/*.yaml and run `python3 scripts/build.py` instead. -->"
     )
 
-    README_OUT.write_text("\n\n".join([header, toc, auto_note, "\n\n".join(sections), footer]) + "\n", encoding="utf-8")
+    README_OUT.write_text("\n\n".join([header, auto_note, "\n".join(sections), footer]) + "\n", encoding="utf-8")
     print(f"✓ README.md    — {len(papers)} papers, {len(blogs)} blogs")
 
 
