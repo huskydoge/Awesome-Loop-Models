@@ -27,9 +27,9 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2609.15160
   github: https://github.com/YuMingQian1234/T-LoopFormer
 citation_source_best: semantic_scholar
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   opencitations: 0
   openalex: 0
 star_source_best: github_api

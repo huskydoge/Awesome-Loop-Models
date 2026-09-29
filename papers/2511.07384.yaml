@@ -33,9 +33,9 @@ links:
   arxiv: https://arxiv.org/abs/2511.07384
   github: https://github.com/mcleish7/retrofitting-recurrence
   hf: https://huggingface.co/collections/tomg-group-umd/retrofitting-recurrence
-citations: 36
+citations: 38
 citation_sources:
-  semantic_scholar: 36
+  semantic_scholar: 38
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar

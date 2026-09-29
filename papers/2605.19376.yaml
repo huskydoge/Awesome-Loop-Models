@@ -31,9 +31,9 @@ desc: Introduces GRAM, a probabilistic recursive-reasoning framework that models
 links:
   arxiv: https://arxiv.org/abs/2605.19376
   project: https://ahn-ml.github.io/gram-website/
-citations: 6
+citations: 7
 citation_sources:
-  semantic_scholar: 6
+  semantic_scholar: 7
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
