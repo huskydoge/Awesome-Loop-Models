@@ -1,0 +1,30 @@
+title: 'Reasoning on the Simplex: Geometric Fixed-Point Models'
+authors:
+- Talgat Daulbaev
+- Ilya Glazkov
+- Maxim Rakhuba
+- Ivan Oseledets
+year: 2026
+published_date: '2026-09-27'
+added_date: "2026-09-28"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+- language-modeling
+tags:
+- GFPR
+focus_tags:
+- architecture
+desc: Introduces Geometric Fixed-Point Reasoning, which iterates a weight-tied map on a product
+  of simplices so the recurrent state is itself the categorical prediction and a fixed point
+  exists for any parameters; a 7M-parameter model reaches 95.1 percent on Sudoku-Extreme and
+  92.0 percent on Maze-Hard, and a 201M language model with 24 Picard steps beats GPT-2 small
+  on four zero-shot tasks.
+links:
+  arxiv: https://arxiv.org/abs/2609.33540
+  alphaxiv: https://www.alphaxiv.org/abs/2609.33540

@@ -1,0 +1,29 @@
+title: 'LoopTrack: A Simple Baseline for Parameter-Efficient Transformer Tracking'
+authors:
+- Liang Peng
+- Chenxiao Li
+- Libo Zhang
+- Xingping Dong
+- Heng Fan
+year: 2026
+published_date: '2026-09-27'
+added_date: "2026-09-28"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- efficiency
+tags:
+- LoopTrack
+focus_tags:
+- architecture
+desc: Proposes LoopTrack, a visual object tracker that repeatedly applies a shared set of
+  Transformer blocks for template-search interaction instead of stacking separately parameterized
+  blocks, adding target-aware looping and a gated cross-frame target memory to reduce parameters
+  while keeping multiple rounds of feature interaction.
+links:
+  arxiv: https://arxiv.org/abs/2609.33306
+  alphaxiv: https://www.alphaxiv.org/abs/2609.33306

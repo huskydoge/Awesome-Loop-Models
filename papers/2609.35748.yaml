@@ -1,0 +1,34 @@
+title: Improving Test-Time Scaling with Adaptive Looped Transformers
+authors:
+- Yichen You
+- Tianyu Fu
+- Aosong Feng
+- Xingtai Lv
+- Xuefei Ning
+- Ning Ding
+- Yu Wang
+year: 2026
+published_date: '2026-09-28'
+added_date: "2026-09-28"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- adaptive-compute
+tags:
+- TaH2
+focus_tags:
+- training-algorithm
+- inference-algorithm
+desc: Measures test-time scaling of looped Transformers as accuracy gain per doubling of decoding
+  FLOPs and proposes TaH2, which post-trains a looped backbone with an iteration decider supervised
+  by lookahead depth labels so only tokens that benefit get extra iterations, improving the
+  AIME accuracy-compute slope by 53 percent over the non-looped baseline.
+links:
+  arxiv: https://arxiv.org/abs/2609.35748
+  alphaxiv: https://www.alphaxiv.org/abs/2609.35748
+  github: https://github.com/thu-nics/TaH

@@ -1,0 +1,35 @@
+title: 'How to Loop MoE: Flatten the Experts, Untie the Attention'
+authors:
+- Shouren Wang
+- Chuang Ma
+- Mohsen Hariri
+- Debargha Ganguly
+- Wang Yang
+- Xiaoqing Tong
+- Qianying Liu
+- Xiaotian Han
+- Vipin Chaudhary
+year: 2026
+published_date: '2026-09-28'
+added_date: "2026-09-28"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- scaling
+tags:
+- Foil
+- MoE
+focus_tags:
+- architecture
+desc: Proposes Foil for looped mixture-of-experts models, which halves the expert layers while
+  doubling experts per layer and passes, and gives each pass its own attention while experts
+  and routers stay shared; at equal parameters and compute, Foil lowers pretraining loss over
+  an unflattened looped MoE baseline through 100B tokens.
+links:
+  arxiv: https://arxiv.org/abs/2609.35751
+  alphaxiv: https://www.alphaxiv.org/abs/2609.35751
+  github: https://github.com/SR-A-W/how-to-loop-moe
