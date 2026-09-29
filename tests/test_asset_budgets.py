@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import contextlib
+import hashlib
 import io
 import json
 import unittest
@@ -45,9 +46,23 @@ def valid_papers_payload() -> dict:
         "categories": {},
         "mechanism_tags": [],
         "focus_tags": [],
-        "papers": [],
+        "paper_chunks": [],
         "blogs": [],
         "briefings": [valid_briefing()],
+    }
+
+
+def write_chunk(root: Path, index: int, papers: list, count: int | None = None) -> dict:
+    """Write one paper chunk under ``root`` and return its manifest row."""
+    relative_path = f"catalog/papers-{index:03d}.json"
+    path = root / relative_path
+    path.parent.mkdir(parents=True, exist_ok=True)
+    raw = json.dumps({"papers": papers}, sort_keys=True)
+    path.write_text(raw, encoding="utf-8")
+    return {
+        "path": relative_path,
+        "count": len(papers) if count is None else count,
+        "version": hashlib.sha256(raw.encode("utf-8")).hexdigest()[:12],
     }
 
 
@@ -102,6 +117,8 @@ class AssetBudgetContractTests(unittest.TestCase):
             {item.name for item in report.measurements},
             {
                 "papers.json deterministic gzip bytes",
+                "largest paper chunk deterministic gzip bytes",
+                "largest paper chunk entries",
                 "papers.json briefing count",
                 "papers.json briefing content fields",
                 "submission-meta.json raw bytes",
@@ -125,6 +142,78 @@ class AssetBudgetContractTests(unittest.TestCase):
             check_asset_budgets.PAPERS_GZIP_BYTES_LIMIT,
         )
         self.assertIn("papers.json deterministic gzip bytes", "\n".join(report.violations))
+
+    def test_accepts_manifest_with_valid_paper_chunks(self):
+        """Chunks that match their manifest rows should pass and be measured."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            write_valid_fixture(root)
+            payload = valid_papers_payload()
+            payload["paper_chunks"] = [
+                write_chunk(root, 0, [{"id": "a"}, {"id": "b"}]),
+                write_chunk(root, 1, [{"id": "c"}]),
+            ]
+            write_json(root / "papers.json", payload)
+
+            report = check_asset_budgets.check_asset_budgets(root)
+
+        self.assertTrue(report.ok, report.violations)
+        self.assertEqual(measurement(report, "largest paper chunk entries"), 2)
+        self.assertGreater(measurement(report, "largest paper chunk deterministic gzip bytes"), 0)
+
+    def test_rejects_paper_chunk_over_gzip_limit(self):
+        """Each chunk has its own deterministic gzip budget."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            write_valid_fixture(root)
+            payload = valid_papers_payload()
+            payload["paper_chunks"] = [write_chunk(root, 0, [{"desc": deterministic_noise(140_000)}])]
+            write_json(root / "papers.json", payload)
+
+            report = check_asset_budgets.check_asset_budgets(root)
+
+        self.assertIn("largest paper chunk deterministic gzip bytes", "\n".join(report.violations))
+
+    def test_rejects_paper_chunk_with_too_many_entries(self):
+        """Chunks must stay bounded in entry count."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            write_valid_fixture(root)
+            payload = valid_papers_payload()
+            papers = [{"id": str(index)} for index in range(check_asset_budgets.PAPER_CHUNK_ENTRIES_LIMIT + 1)]
+            payload["paper_chunks"] = [write_chunk(root, 0, papers)]
+            write_json(root / "papers.json", payload)
+
+            report = check_asset_budgets.check_asset_budgets(root)
+
+        self.assertIn("largest paper chunk entries", "\n".join(report.violations))
+
+    def test_rejects_inconsistent_paper_chunks(self):
+        """Count, version, path, missing-file, and stale-file errors are all reported."""
+        with TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            write_valid_fixture(root)
+            payload = valid_papers_payload()
+            wrong_count = write_chunk(root, 0, [{"id": "a"}], count=2)
+            wrong_version = write_chunk(root, 1, [{"id": "b"}])
+            wrong_version["version"] = "000000000000"
+            write_chunk(root, 7, [{"id": "stale"}])
+            payload["paper_chunks"] = [
+                wrong_count,
+                wrong_version,
+                {"path": "../papers.json", "count": 0, "version": ""},
+                {"path": "catalog/papers-002.json", "count": 0, "version": ""},
+            ]
+            write_json(root / "papers.json", payload)
+
+            report = check_asset_budgets.check_asset_budgets(root)
+
+        violations = "\n".join(report.violations)
+        self.assertIn("catalog/papers-000.json: holds 1 papers but", violations)
+        self.assertIn("catalog/papers-001.json: content does not match", violations)
+        self.assertIn("paper_chunks[2].path must match catalog/papers-NNN.json", violations)
+        self.assertIn("catalog/papers-002.json: missing required file", violations)
+        self.assertIn("catalog/papers-007.json: not listed in papers.json.paper_chunks", violations)
 
     def test_rejects_submission_metadata_over_limit(self):
         """Oversized but schema-valid submission metadata should fail its byte budget."""
@@ -221,7 +310,7 @@ class AssetBudgetContractTests(unittest.TestCase):
             report = check_asset_budgets.check_asset_budgets(root)
 
         violations = "\n".join(report.violations)
-        for field in ("meta", "categories", "mechanism_tags", "focus_tags", "papers", "blogs"):
+        for field in ("meta", "categories", "mechanism_tags", "focus_tags", "paper_chunks", "blogs"):
             with self.subTest(field=field):
                 self.assertIn(f"papers.json.{field}", violations)
 
@@ -237,7 +326,7 @@ class AssetBudgetContractTests(unittest.TestCase):
                     "categories": [],
                     "mechanism_tags": {},
                     "focus_tags": {},
-                    "papers": {},
+                    "paper_chunks": {},
                     "blogs": {},
                     "briefings": {},
                 }
@@ -249,7 +338,7 @@ class AssetBudgetContractTests(unittest.TestCase):
         violations = "\n".join(report.violations)
         self.assertIn("papers.json.meta must be an object", violations)
         self.assertIn("papers.json.categories must be an object", violations)
-        for field in ("mechanism_tags", "focus_tags", "papers", "blogs", "briefings"):
+        for field in ("mechanism_tags", "focus_tags", "paper_chunks", "blogs", "briefings"):
             with self.subTest(field=field):
                 self.assertIn(f"papers.json.{field} must be an array", violations)
 
@@ -445,7 +534,7 @@ class AssetBudgetContractTests(unittest.TestCase):
 
         for command in (
             "git add papers",
-            "git add -f papers.json submission-meta.json README.md TAGS.md",
+            "git add -f papers.json submission-meta.json README.md TAGS.md catalog",
             "git diff --cached --quiet && exit 0",
             'base_sha="$(git rev-parse HEAD)"',
             "git commit -m \"chore: update paper metrics [skip ci]\"",

@@ -19,7 +19,6 @@ domain_tags:
 - adaptive-compute
 tags:
 - FlexLoop
-- looped policy
 focus_tags:
 - training-algorithm
 - inference-algorithm

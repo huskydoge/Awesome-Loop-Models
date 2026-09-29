@@ -23,7 +23,6 @@ domain_tags:
 tags:
 - DAS
 - DAS-Wave
-- self-speculative decoding
 focus_tags:
 - inference-algorithm
 desc: Observes that queries and keys in looped Transformers converge to their final-depth

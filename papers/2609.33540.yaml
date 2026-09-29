@@ -18,7 +18,6 @@ domain_tags:
 - language-modeling
 tags:
 - GFPR
-- fixed-point reasoning
 focus_tags:
 - architecture
 desc: Introduces Geometric Fixed-Point Reasoning, which iterates a weight-tied map on a product

@@ -22,7 +22,7 @@ domain_tags:
 - scaling
 tags:
 - Foil
-- looped MoE
+- MoE
 focus_tags:
 - architecture
 desc: Proposes Foil for looped mixture-of-experts models, which halves the expert layers while

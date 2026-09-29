@@ -19,7 +19,6 @@ domain_tags:
 tags:
 - MR-Loop
 - DR-Loop
-- length generalization
 focus_tags:
 - training-algorithm
 desc: Mechanistically compares two looped-Transformer recurrence-training schemes on polynomial

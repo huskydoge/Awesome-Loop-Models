@@ -18,7 +18,6 @@ domain_tags:
 - efficiency
 tags:
 - LoopTrack
-- visual object tracking
 focus_tags:
 - architecture
 desc: Proposes LoopTrack, a visual object tracker that repeatedly applies a shared set of

@@ -20,7 +20,6 @@ domain_tags:
 tags:
 - CHARM
 - CoSE
-- ARC-AGI
 focus_tags:
 - architecture
 - data

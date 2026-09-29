@@ -15,9 +15,8 @@ domain_tags:
 - algorithmic-reasoning
 - adaptive-compute
 tags:
-- tiny recursive model
-- TSP
-- MIS
+- TRM
+- halting
 focus_tags:
 - architecture
 - training-algorithm

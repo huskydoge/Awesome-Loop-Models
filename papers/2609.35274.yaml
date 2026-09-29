@@ -14,8 +14,7 @@ domain_tags:
 - theory
 - scientific-ml
 tags:
-- equilibrium GNN
-- multi-attractor
+- implicit GNN
 focus_tags:
 - architecture
 desc: Proves that allowing multiple equilibria lets one weight-tied recurrent message-passing
