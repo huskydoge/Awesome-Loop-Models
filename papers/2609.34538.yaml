@@ -1,4 +1,5 @@
-title: 'Shallow Queries, Mature Values: Depth-Asynchronous Self-Speculation for Looped Transformers'
+title: 'Shallow Queries, Mature Values: Depth-Asynchronous Self-Speculation for Looped
+  Transformers'
 authors:
 - Guanghao Li
 - Zihan Su
@@ -11,7 +12,7 @@ authors:
 - Chun Yuan
 year: 2026
 published_date: '2026-09-28'
-added_date: "2026-09-28"
+added_date: '2026-09-28'
 venue: arXiv
 category: designs
 foundation: false
@@ -26,9 +27,16 @@ tags:
 focus_tags:
 - inference-algorithm
 desc: Observes that queries and keys in looped Transformers converge to their final-depth
-  values earlier than values do, and introduces Depth-Asynchronous Self-Speculation, where
-  shallow drafts read full-depth prefix values; the DAS-Wave variant gives 4.00 to 6.96 times
-  mean throughput speedup over full-depth decoding on math and code workloads.
+  values earlier than values do, and introduces Depth-Asynchronous Self-Speculation,
+  where shallow drafts read full-depth prefix values; the DAS-Wave variant gives 4.00
+  to 6.96 times mean throughput speedup over full-depth decoding on math and code
+  workloads.
 links:
   arxiv: https://arxiv.org/abs/2609.34538
   alphaxiv: https://www.alphaxiv.org/abs/2609.34538
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-29'

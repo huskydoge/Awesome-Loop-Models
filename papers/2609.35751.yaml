@@ -11,7 +11,7 @@ authors:
 - Vipin Chaudhary
 year: 2026
 published_date: '2026-09-28'
-added_date: "2026-09-28"
+added_date: '2026-09-28'
 venue: arXiv
 category: designs
 foundation: false
@@ -25,11 +25,22 @@ tags:
 - MoE
 focus_tags:
 - architecture
-desc: Proposes Foil for looped mixture-of-experts models, which halves the expert layers while
-  doubling experts per layer and passes, and gives each pass its own attention while experts
-  and routers stay shared; at equal parameters and compute, Foil lowers pretraining loss over
-  an unflattened looped MoE baseline through 100B tokens.
+desc: Proposes Foil for looped mixture-of-experts models, which halves the expert
+  layers while doubling experts per layer and passes, and gives each pass its own
+  attention while experts and routers stay shared; at equal parameters and compute,
+  Foil lowers pretraining loss over an unflattened looped MoE baseline through 100B
+  tokens.
 links:
   arxiv: https://arxiv.org/abs/2609.35751
   alphaxiv: https://www.alphaxiv.org/abs/2609.35751
   github: https://github.com/SR-A-W/how-to-loop-moe
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 1
+star_sources:
+  github_api: 1
+metrics_updated: '2026-09-29'
