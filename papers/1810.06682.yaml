@@ -26,9 +26,9 @@ links:
   github: https://github.com/locuslab/trellisnet
   openreview: https://openreview.net/forum?id=HyeVtoRqtQ
 citation_source_best: semantic_scholar
-citations: 167
+citations: 166
 citation_sources:
-  semantic_scholar: 167
+  semantic_scholar: 166
   openalex: 94
   opencitations: 1
 star_source_best: github_api

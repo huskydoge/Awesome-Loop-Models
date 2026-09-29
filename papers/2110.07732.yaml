@@ -25,13 +25,13 @@ links:
   github: https://github.com/RobertCsordas/ndr
   openreview: https://openreview.net/forum?id=KBQP4A_J1K
 citation_source_best: semantic_scholar
-citations: 72
+citations: 73
 citation_sources:
-  semantic_scholar: 72
+  semantic_scholar: 73
   openalex: 10
   opencitations: 0
 star_source_best: github_api
 github_stars: 34
 star_sources:
   github_api: 34
-metrics_updated: '2026-09-28'
+metrics_updated: '2026-09-29'

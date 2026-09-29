@@ -8,7 +8,7 @@ authors:
 - Fangfang Xia
 year: 2026
 published_date: '2026-09-27'
-added_date: "2026-09-28"
+added_date: '2026-09-28'
 venue: arXiv
 category: designs
 foundation: false
@@ -23,11 +23,22 @@ tags:
 focus_tags:
 - architecture
 - data
-desc: Presents CHARM, a compact ARC model that pairs a recurrent reasoning backbone with a
-  compositional sparse task embedding (CoSE) that cuts learned task-memory parameters by over
-  90 percent, finds that recurrent depth helps only when balanced with learning horizon, and
-  reports 84 percent pass@2 on ARC-AGI-1 and 46.7 percent on ARC-AGI-2 public evaluation.
+desc: Presents CHARM, a compact ARC model that pairs a recurrent reasoning backbone
+  with a compositional sparse task embedding (CoSE) that cuts learned task-memory
+  parameters by over 90 percent, finds that recurrent depth helps only when balanced
+  with learning horizon, and reports 84 percent pass@2 on ARC-AGI-1 and 46.7 percent
+  on ARC-AGI-2 public evaluation.
 links:
   arxiv: https://arxiv.org/abs/2609.33270
   alphaxiv: https://www.alphaxiv.org/abs/2609.33270
   github: https://github.com/water-vapor/charm
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-09-29'

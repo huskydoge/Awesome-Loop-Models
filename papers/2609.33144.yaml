@@ -1,12 +1,12 @@
-title: 'Beyond the Training Horizon: Mechanisms and Limits of Length Generalization in Looped
-  Transformers'
+title: 'Beyond the Training Horizon: Mechanisms and Limits of Length Generalization
+  in Looped Transformers'
 authors:
 - Jia Liang
 - Xi Jin
 - Liangming Pan
 year: 2026
 published_date: '2026-09-27'
-added_date: "2026-09-28"
+added_date: '2026-09-28'
 venue: arXiv
 category: analysis
 foundation: false
@@ -21,11 +21,17 @@ tags:
 - DR-Loop
 focus_tags:
 - training-algorithm
-desc: Mechanistically compares two looped-Transformer recurrence-training schemes on polynomial
-  iteration, finite-state composition, and knowledge-graph traversal, showing that one updates
-  a state at a fixed readout while the other propagates an advancing computational frontier,
-  and that both degrade at depths beyond training because readout, progress cues, or state
-  propagation become unreliable.
+desc: Mechanistically compares two looped-Transformer recurrence-training schemes
+  on polynomial iteration, finite-state composition, and knowledge-graph traversal,
+  showing that one updates a state at a fixed readout while the other propagates an
+  advancing computational frontier, and that both degrade at depths beyond training
+  because readout, progress cues, or state propagation become unreliable.
 links:
   arxiv: https://arxiv.org/abs/2609.33144
   alphaxiv: https://www.alphaxiv.org/abs/2609.33144
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-29'

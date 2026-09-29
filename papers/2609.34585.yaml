@@ -4,7 +4,7 @@ authors:
 - Paul Swoboda
 year: 2026
 published_date: '2026-09-28'
-added_date: "2026-09-28"
+added_date: '2026-09-28'
 venue: arXiv
 category: applications
 foundation: false
@@ -20,10 +20,16 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
-desc: Adapts tiny recursive models to combinatorial optimization with a graph-aware network
-  that iterates a latent state under adaptive halting and scales both recursion depth and
-  parallel sampling, beating diffusion-based solvers on TSP from 500 to 10,000 cities at lower
-  cost and exploring self-relabeling as a training signal.
+desc: Adapts tiny recursive models to combinatorial optimization with a graph-aware
+  network that iterates a latent state under adaptive halting and scales both recursion
+  depth and parallel sampling, beating diffusion-based solvers on TSP from 500 to
+  10,000 cities at lower cost and exploring self-relabeling as a training signal.
 links:
   arxiv: https://arxiv.org/abs/2609.34585
   alphaxiv: https://www.alphaxiv.org/abs/2609.34585
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-09-29'
