@@ -6599,7 +6599,7 @@ function buildResearchPrompt(language, question) {
       normalizedQuestion,
       '',
       '请使用 Awesome Loop Models 作为论文发现入口：',
-      '- 结构化论文目录：' + sources.catalog,
+      '- 结构化论文目录：' + sources.catalog + '（清单文件；论文记录在其 paper_chunks 列出的文件中，路径相对于该文件）',
       '- 收录范围与分类规则：' + sources.taxonomy,
       '- 项目仓库：' + sources.repo,
       '',
@@ -6623,7 +6623,7 @@ function buildResearchPrompt(language, question) {
     normalizedQuestion,
     '',
     'Use Awesome Loop Models as the paper-discovery index:',
-    '- Structured paper catalog: ' + sources.catalog,
+    '- Structured paper catalog: ' + sources.catalog + ' (a manifest; paper records are in the files listed under paper_chunks, relative to it)',
     '- Inclusion scope and taxonomy: ' + sources.taxonomy,
     '- Project repository: ' + sources.repo,
     '',
@@ -8332,11 +8332,46 @@ function initScrollObserver() {
 initReadingDesk();
 
 // ── Bootstrap: fetch papers.json ─────────────────────────────────────────────
-fetch("papers.json")
-  .then(function(r) {
-    if (!r.ok) throw new Error("papers.json request failed with status " + r.status);
-    return r.json();
-  })
+// papers.json is a manifest; paper records live in bounded chunks listed under
+// paper_chunks. Search, filters, and counts need every paper, so all chunks are
+// fetched in parallel before the catalog renders.
+const PAPER_CHUNK_PATH_PATTERN = /^catalog\/papers-\d{3}\.json$/;
+
+function fetchPaperChunk(chunk) {
+  if (!chunk || typeof chunk.path !== 'string' || !PAPER_CHUNK_PATH_PATTERN.test(chunk.path)) {
+    return Promise.reject(new Error("papers.json lists an invalid paper chunk"));
+  }
+  const url = chunk.path + (chunk.version ? '?v=' + encodeURIComponent(chunk.version) : '');
+  return fetch(url)
+    .then(function(r) {
+      if (!r.ok) throw new Error(chunk.path + " request failed with status " + r.status);
+      return r.json();
+    })
+    .then(function(part) {
+      const papers = part && Array.isArray(part.papers) ? part.papers : null;
+      if (!papers || (Number.isInteger(chunk.count) && papers.length !== chunk.count)) {
+        throw new Error(chunk.path + " does not match the papers.json manifest");
+      }
+      return papers;
+    });
+}
+
+function loadCatalog() {
+  return fetch("papers.json")
+    .then(function(r) {
+      if (!r.ok) throw new Error("papers.json request failed with status " + r.status);
+      return r.json();
+    })
+    .then(function(manifest) {
+      const chunks = Array.isArray(manifest.paper_chunks) ? manifest.paper_chunks : [];
+      return Promise.all(chunks.map(fetchPaperChunk)).then(function(parts) {
+        manifest.papers = [].concat.apply([], parts);
+        return manifest;
+      });
+    });
+}
+
+loadCatalog()
   .then(function(data) { buildDOM(data); })
   .catch(function(err) {
     console.error("Failed to load papers.json:", err);
