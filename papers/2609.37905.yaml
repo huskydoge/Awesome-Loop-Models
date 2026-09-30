@@ -1,0 +1,27 @@
+title: 'Beyond Interaction Capacity: Estimator Scaling with Recursive Models for CTR Prediction'
+authors:
+- Shivang Chopra
+- Fotis Iliopoulos
+- Zsolt Kira
+- Gaurav Menghani
+year: 2026
+published_date: '2026-09-29'
+added_date: "2026-09-30"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- recommendation
+- efficiency
+tags:
+- 'RECAP'
+- 'CTR-prediction'
+focus_tags:
+- architecture
+- training-algorithm
+desc: 'Proposes RECAP, a CTR model whose cross-network towers share core interaction weights across recursive steps and aggregate predictions over inference-time adapter routes, combining this with distillation and EMA as parameter-efficient estimator scaling to reach state-of-the-art accuracy on standard CTR benchmarks.'
+links:
+  arxiv: https://arxiv.org/abs/2609.37905
+  alphaxiv: https://www.alphaxiv.org/abs/2609.37905

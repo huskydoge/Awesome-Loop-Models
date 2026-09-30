@@ -1,0 +1,28 @@
+title: 'Looped Actor: Depth-Recurrent Reasoning Models for Reinforcement Learning'
+authors:
+- T. Konstantin Rusch
+- Tim Seyde
+- Jared Boyer
+- Zach J. Patterson
+- Daniela Rus
+year: 2026
+published_date: '2026-09-29'
+added_date: "2026-09-30"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- rl-control
+- adaptive-compute
+tags:
+- 'Looped Actor'
+focus_tags:
+- architecture
+- inference-algorithm
+desc: 'Introduces Looped Actor, a transformer policy that repeatedly applies a shared block to refine a latent toward a fixed point with state-dependent loop counts; across 22 tasks in six online and offline RL environments it matches or exceeds an untied baseline with 16x more parameters, with largest gains where planning is needed.'
+links:
+  arxiv: https://arxiv.org/abs/2609.37432
+  alphaxiv: https://www.alphaxiv.org/abs/2609.37432
+  github: https://github.com/camail-official/LoopedActor

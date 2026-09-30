@@ -1,0 +1,29 @@
+title: 'Looped Transformers as Optimizers'
+authors:
+- Yulong Huang
+- Chen Jiang
+- Zhanpeng Zhou
+- Hongtao Zhang
+- Tianyu Li
+- Tianyu He
+- Xiangyu Zhang
+- Bojun Cheng
+year: 2026
+published_date: '2026-09-29'
+added_date: "2026-09-30"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+tags:
+- 'OperLoop'
+- 'fast-weights'
+focus_tags:
+- architecture
+desc: 'Views the looped hidden state as a fast weight and derives loop transitions of looped Transformers as local optimizer updates toward implicit targets; aligning existing transitions and the resulting OperLoop (weight decay, adaptive step size, delta objective) improve commonsense and generative performance over looped and non-looped baselines at matched training FLOPs.'
+links:
+  arxiv: https://arxiv.org/abs/2609.37379
+  alphaxiv: https://www.alphaxiv.org/abs/2609.37379
