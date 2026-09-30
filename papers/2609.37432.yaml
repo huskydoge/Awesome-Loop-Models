@@ -16,8 +16,6 @@ mechanism_tags:
 domain_tags:
 - rl-control
 - adaptive-compute
-tags:
-- 'Looped Actor'
 focus_tags:
 - architecture
 - inference-algorithm

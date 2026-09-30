@@ -20,9 +20,6 @@ domain_tags:
 - speech-recognition
 - multimodal
 - reasoning
-tags:
-- 'LoopSLM'
-- 'spoken-dialogue'
 focus_tags:
 - architecture
 - training-algorithm

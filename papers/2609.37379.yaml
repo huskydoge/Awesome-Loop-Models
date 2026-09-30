@@ -18,9 +18,6 @@ mechanism_tags:
 - flat-loop
 domain_tags:
 - language-modeling
-tags:
-- 'OperLoop'
-- 'fast-weights'
 focus_tags:
 - architecture
 desc: 'Views the looped hidden state as a fast weight and derives loop transitions of looped Transformers as local optimizer updates toward implicit targets; aligning existing transitions and the resulting OperLoop (weight decay, adaptive step size, delta objective) improve commonsense and generative performance over looped and non-looped baselines at matched training FLOPs.'

@@ -15,9 +15,6 @@ mechanism_tags:
 domain_tags:
 - recommendation
 - efficiency
-tags:
-- 'RECAP'
-- 'CTR-prediction'
 focus_tags:
 - architecture
 - training-algorithm

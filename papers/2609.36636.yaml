@@ -17,7 +17,6 @@ domain_tags:
 - reasoning
 tags:
 - 'LoopLM'
-- 'history-state-injection'
 focus_tags:
 - architecture
 desc: 'Controlled study of when recurrence helps looped language models: extra loops can improve reasoning beyond the training horizon while degrading knowledge, layer and iteration allocation matters beyond effective depth, and channel-wise history-state injection with timestep conditioning is more robust than initial-state injection across inference budgets.'
