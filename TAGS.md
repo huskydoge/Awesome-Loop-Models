@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (24)
-- `flat-loop` (216)
+- `flat-loop` (223)
 - `parallel-loop` (7)
 - `implicit-layer` (35)
 
@@ -27,20 +27,20 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (29)
-- `training-algorithm` (110)
-- `architecture` (206)
+- `training-algorithm` (113)
+- `architecture` (212)
 - `data` (6)
-- `inference-algorithm` (166)
+- `inference-algorithm` (168)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `efficiency` (125)
-- `language-modeling` (117)
-- `reasoning` (116)
-- `algorithmic-reasoning` (59)
-- `adaptive-compute` (39)
+- `efficiency` (127)
+- `language-modeling` (119)
+- `reasoning` (119)
+- `algorithmic-reasoning` (60)
+- `adaptive-compute` (42)
 - `theory` (37)
 - `vision` (34)
 - `scaling` (33)
@@ -48,15 +48,15 @@ Observed browser-facing domain tags currently used across the repo.
 - `graph-data` (17)
 - `sequence-modeling` (16)
 - `scientific-ml` (9)
+- `multimodal` (7)
 - `machine-translation` (6)
-- `multimodal` (6)
 - `compositional-reasoning` (4)
+- `rl-control` (4)
 - `hardware-aware` (3)
-- `rl-control` (3)
-- `recommendation` (2)
+- `recommendation` (3)
+- `speech-recognition` (3)
+- `tabular-data` (3)
 - `robotics-vla` (2)
-- `speech-recognition` (2)
-- `tabular-data` (2)
 - `wireless-communications` (2)
 - `alignment` (1)
 - `biology` (1)
@@ -92,12 +92,12 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `recursive-transformer` (6)
 - `depth-scaling` (5)
 - `latent-refinement` (5)
+- `LoopLM` (5)
 - `LoRA` (5)
 - `test-time-compute` (5)
 - `universal-transformer` (5)
 - `UT` (5)
 - `adaptive-computation-time` (4)
-- `LoopLM` (4)
 - `activation-compression` (2)
 - `fixed-point-analysis` (2)
 - `hyper-connections` (2)

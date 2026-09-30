@@ -251,6 +251,13 @@
     "papers/2609.35274.yaml",
     "papers/2609.35748.yaml",
     "papers/2609.35751.yaml",
+    "papers/2609.36108.yaml",
+    "papers/2609.36636.yaml",
+    "papers/2609.36653.yaml",
+    "papers/2609.37379.yaml",
+    "papers/2609.37432.yaml",
+    "papers/2609.37818.yaml",
+    "papers/2609.37905.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -262,7 +269,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 216
+        "count": 223
       },
       {
         "label": "implicit-layer",
@@ -280,15 +287,15 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 206
+        "count": 212
       },
       {
         "label": "inference-algorithm",
-        "count": 166
+        "count": 168
       },
       {
         "label": "training-algorithm",
-        "count": 110
+        "count": 113
       },
       {
         "label": "objective-loss",
@@ -302,23 +309,23 @@
     "domain": [
       {
         "label": "efficiency",
-        "count": 125
+        "count": 127
       },
       {
         "label": "language-modeling",
-        "count": 117
+        "count": 119
       },
       {
         "label": "reasoning",
-        "count": 116
+        "count": 119
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 59
+        "count": 60
       },
       {
         "label": "adaptive-compute",
-        "count": 39
+        "count": 42
       },
       {
         "label": "theory",
@@ -349,11 +356,11 @@
         "count": 9
       },
       {
-        "label": "machine-translation",
-        "count": 6
+        "label": "multimodal",
+        "count": 7
       },
       {
-        "label": "multimodal",
+        "label": "machine-translation",
         "count": 6
       },
       {
@@ -361,27 +368,27 @@
         "count": 4
       },
       {
+        "label": "rl-control",
+        "count": 4
+      },
+      {
         "label": "hardware-aware",
         "count": 3
       },
       {
-        "label": "rl-control",
+        "label": "recommendation",
         "count": 3
       },
       {
-        "label": "recommendation",
-        "count": 2
-      },
-      {
-        "label": "robotics-vla",
-        "count": 2
-      },
-      {
         "label": "speech-recognition",
-        "count": 2
+        "count": 3
       },
       {
         "label": "tabular-data",
+        "count": 3
+      },
+      {
+        "label": "robotics-vla",
         "count": 2
       },
       {
