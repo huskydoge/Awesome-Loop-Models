@@ -20,6 +20,15 @@ domain_tags:
 focus_tags:
 - inference-algorithm
 - training-algorithm
+survey_section:
+- interpretability
+- benefits/limits
+loop_topology: whole-stack
+sharing: full
+depth_control: unspecified
+claims: []
+comparison: []
+survey_core: false
 desc: Introduces the Depth Control Protocol for weight-shared recurrent language models,
   separating block-application, distinct-depth, and readout-calibration effects that
   ordinary inference-time truncation conflates.

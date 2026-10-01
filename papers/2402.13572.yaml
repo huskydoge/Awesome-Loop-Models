@@ -24,6 +24,17 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- benefits/expressivity
+- design/topology
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- expressivity
+comparison:
+- unclear
+survey_core: false
 desc: Splits computation into pre-, loop-, and post-transformer stages, showing that
   structured recurrent depth can outperform standard and vanilla looped transformers
   on algorithmic and language tasks.

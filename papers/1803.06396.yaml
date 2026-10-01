@@ -23,6 +23,17 @@ tags:
 - convergence
 focus_tags:
 - training-algorithm
+survey_section:
+- train/gradients
+- foundations/implicit
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- memory-efficiency
+- stability
+comparison: []
+survey_core: false
 desc: Revisits recurrent back-propagation for convergent recurrent networks and introduces
   CG-RBP and Neumann-RBP, with the latter matching truncated BPTT time while using
   constant memory.

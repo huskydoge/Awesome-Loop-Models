@@ -20,6 +20,16 @@ tags:
 - PTRM
 focus_tags:
 - inference-algorithm
+survey_section:
+- scaling/test-time
+loop_topology: hierarchical
+sharing: full
+depth_control: unspecified
+claims:
+- test-time-scaling
+- failure-mode
+comparison: []
+survey_core: false
 desc: Introduces PTRM, an inference-time scaling framework for Tiny Recursive Models
   that injects Gaussian noise into recursive latent updates, runs parallel trajectories,
   and selects the final answer with the model's Q head without retraining.

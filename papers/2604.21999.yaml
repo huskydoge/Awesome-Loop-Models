@@ -21,6 +21,19 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/state-memory
+- design/depth-control
+- benefits/limits
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- stability
+- failure-mode
+comparison: []
+survey_core: false
 desc: Studies a single-block Universal Transformer with ACT on Sudoku-Extreme, showing
   that learned memory tokens are necessary for non-trivial recursive-depth reasoning
   and that ACT initialization can trap the model in shallow computation.

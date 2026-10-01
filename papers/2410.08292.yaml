@@ -22,6 +22,15 @@ focus_tags:
 - training-algorithm
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/expressivity
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- expressivity
+comparison: []
+survey_core: false
 desc: Proves that trained linear looped Transformers can learn multi-step preconditioned
   gradient descent for in-context linear regression and establishes convergence of
   gradient flow to such solutions.

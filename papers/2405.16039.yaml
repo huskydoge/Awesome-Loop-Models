@@ -22,6 +22,19 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- design/loop-x
+- design/sharing-scheme
+loop_topology: whole-stack
+sharing: expert-routed
+depth_control: fixed
+claims:
+- param-efficiency
+- compute-efficiency
+- memory-efficiency
+comparison:
+- unclear
+survey_core: true
 desc: Introduces MoEUT, a Universal Transformer that recurrently reuses fine-grained
   MoE layer groups, marginally improving parameter-matched language-modeling perplexity
   with fewer training MACs and comparable GPU memory to dense Transformers.

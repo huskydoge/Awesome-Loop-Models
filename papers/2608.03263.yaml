@@ -15,6 +15,14 @@ domain_tags:
 - reasoning
 focus_tags:
 - architecture
+survey_section:
+- interpretability
+loop_topology: unspecified
+sharing: full
+depth_control: unspecified
+claims: []
+comparison: []
+survey_core: false
 desc: Analyzes iteration-by-iteration commitment in a recurrent-depth reasoner, finding
   a difficulty-dependent readout transition while separating robust hidden-state evidence
   from coordinate-dependent artifacts.

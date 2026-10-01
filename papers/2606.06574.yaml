@@ -20,6 +20,16 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/depth-control
+- train/retrofitting
+loop_topology: partial
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Learns input-specific programs over pretrained LLM layers, allowing layers to
   be skipped or repeated so inference can use shorter or looped execution paths than
   the fixed-depth baseline.

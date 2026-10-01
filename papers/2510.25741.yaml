@@ -54,6 +54,16 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- benefits/efficiency
+- design/depth-control
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+comparison: []
+survey_core: true
 desc: Introduces Ouro, 1.4B and 2.6B pretrained LoopLMs trained on 7.7T tokens; the
   1.4B model is comparable to 4B models on most benchmarks, while the 2.6B model outperforms
   models up to 8B on reasoning-intensive tasks, positioning loop depth as a third

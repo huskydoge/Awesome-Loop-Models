@@ -21,6 +21,17 @@ domain_tags:
 - theory
 focus_tags:
 - inference-algorithm
+survey_section:
+- benefits/limits
+- interpretability
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- failure-mode
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Separates update direction from displacement scale in looped Transformers, showing
   that some harmful full recurrent steps begin along locally useful directions and
   can recover reference utility when shortened.

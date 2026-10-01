@@ -18,6 +18,14 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/embodied-other
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims: []
+comparison: []
+survey_core: false
 desc: Applies a latent neural integral-operator model to fMRI encoding and decoding,
   using fixed-point iterations in an auxiliary latent space before downstream classification
   or stimulus prediction.

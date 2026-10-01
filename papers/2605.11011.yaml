@@ -25,6 +25,17 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- train/retrofitting
+- design/depth-control
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: adaptive-halting
+claims:
+- test-time-scaling
+- stability
+comparison: []
+survey_core: false
 desc: Converts pretrained LLMs into encoder, looped reasoning block, and decoder components,
   using selective gating, random deep supervision, and adaptive early exiting to stabilize
   latent looping without training recurrent models from scratch.

@@ -18,6 +18,16 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/depth-control
+- applications/vision
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Reuses the same ViT blocks across confidence-routed resolution-and-width rounds,
   projecting earlier representations into later rounds to retain accuracy while reducing
   average ImageNet compute by up to 31.1%.

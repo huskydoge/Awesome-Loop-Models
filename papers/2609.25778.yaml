@@ -16,6 +16,18 @@ domain_tags:
 - scaling
 focus_tags:
 - architecture
+survey_section:
+- benefits/expressivity
+- benefits/efficiency
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- expressivity
+comparison:
+- iso-param
+survey_core: false
 desc: Establishes Hellinger-risk upper and minimax lower bounds for estimators that
   repeatedly reuse a parameter-budgeted map, showing regimes where looped estimation
   improves statistically over non-looped alternatives and approaches minimax rates

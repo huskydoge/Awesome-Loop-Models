@@ -21,6 +21,18 @@ focus_tags:
 - objective-loss
 - training-algorithm
 - inference-algorithm
+survey_section:
+- foundations/recurrence
+- design/depth-control
+- train/supervision
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- length-generalization
+comparison: []
+survey_core: true
 desc: Introduces a differentiable probabilistic halting objective that learns how
   many times to apply a recurrent step function for each input.
 links:

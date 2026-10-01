@@ -19,6 +19,16 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/expressivity
+- applications/graphs-science
+loop_topology: whole-stack
+sharing: full
+depth_control: convergence
+claims:
+- expressivity
+comparison: []
+survey_core: false
 desc: Analyzes recurrent graph neural networks that repeatedly apply message passing
   until convergence or halting, proving expressiveness relationships between converging,
   output-converging, and halting RGNN variants.

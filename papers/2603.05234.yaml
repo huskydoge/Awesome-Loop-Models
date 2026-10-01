@@ -20,6 +20,14 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/state-memory
+loop_topology: hierarchical
+sharing: full
+depth_control: unspecified
+claims: []
+comparison: []
+survey_core: false
 desc: Introduces Recursive Inference Machines, a nested generator-solver framework
   that subsumes TRMs; RIMformer reweights full reasoning histories for ARC-AGI and
   Sudoku, while TabRIM applies recursive inference to tabular classification.

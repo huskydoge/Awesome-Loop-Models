@@ -20,6 +20,20 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/residual-injection
+- scaling/compute-optimal
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- memory-efficiency
+- compute-efficiency
+comparison:
+- iso-flop
+- iso-param
+survey_core: false
 desc: Introduces a prelude-shared-coda recurrent Transformer whose gated shared core
   is iterated across depth, matching a 12-layer GPT-2 Small with three distinct layers
   under isoFLOPS while reducing large-scale parameters by 63% and peak decoding memory

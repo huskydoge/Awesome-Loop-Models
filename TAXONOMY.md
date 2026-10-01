@@ -152,6 +152,52 @@ Use `tags` for optional aliases or short identifiers kept in YAML / README metad
 
 Examples: `DEQ`, `UT`, `ACT`, `HRM`, `Ouro`, `LoopLM`.
 
+## Survey-Aligned Axes
+
+These fields follow the outline of the Looped Models Survey so that the catalog and the survey share one map of the field. They are optional in the schema while the browser is being migrated, but every catalog paper carries them and new papers should fill all of them. The build validates every value; see [TAGS.md](TAGS.md) for current counts.
+
+### `survey_section` (list, first entry = primary)
+
+Every survey section where the paper belongs, primary contribution first. `analysis` papers usually land in `benefits/expressivity`, `benefits/limits`, or `interpretability`.
+
+| Part | Sections |
+| --- | --- |
+| Foundations (§2) | `foundations/recurrence`, `foundations/depth-sharing`, `foundations/implicit`, `foundations/algorithmic` — lineage papers, mostly before 2023 |
+| What looping buys (§3) | `benefits/efficiency`, `benefits/expressivity`, `benefits/generalization`, `benefits/limits` |
+| Architecture (§4) | `design/topology`, `design/residual-injection`, `design/state-memory`, `design/sharing-scheme`, `design/depth-control`, `design/loop-x` |
+| Training (§5) | `train/supervision`, `train/gradients`, `train/stability`, `train/post-training`, `train/retrofitting` |
+| Scaling (§6) | `scaling/compute-optimal`, `scaling/test-time` |
+| Systems (§7) | `systems/quantization-edge`, `systems/kv-memory`, `systems/batching-parallel` |
+| Interpretability (§8) | `interpretability` |
+| Applications (§9) | `applications/language-speech-multimodal`, `applications/vision`, `applications/flow-3d`, `applications/graphs-science`, `applications/embodied-other` |
+| Outlook (§10) | `outlook/diffusion` |
+
+Use an `applications/*` section as primary only when the main takeaway is a specific external domain; a design evaluated on language modeling is a `design/*` paper.
+
+### `loop_topology` (one value)
+
+Where the loop sits: `whole-stack` (the whole block stack repeats), `prelude-core-coda` (a middle core loops between distinct input and output layers), `partial` (only an early block or sub-module loops), `hierarchical` (coupled loops at different rates, e.g. HRM/TRM), `shifted-parallel` (loops pipelined across tokens or run in parallel branches), `implicit-fixed-point` (output solved as a fixed point), or `unspecified`.
+
+### `sharing` (one value)
+
+`full` (all looped parameters tied), `partial-adapter` (shared core plus per-iteration adapters, LoRA, or embeddings), `expert-routed` (per-iteration routing among experts or LoRAs), or `unspecified`.
+
+### `depth_control` (one value)
+
+`fixed`, `sampled-train` (loop count randomized or scheduled in training without a learned halting policy), `adaptive-halting` (learned or confidence-based stopping, depth routers), `convergence` (iterate to a fixed-point tolerance), or `unspecified`.
+
+### `claims` (list)
+
+What the paper argues looping buys or costs: `param-efficiency`, `compute-efficiency`, `memory-efficiency`, `data-efficiency`, `expressivity`, `length-generalization`, `test-time-scaling`, `stability`, `failure-mode`.
+
+### `comparison` (list)
+
+Only for papers that compare looped and non-looped (untied) models: which quantity is held fixed. `iso-param` (same unique parameters), `iso-flop` (same executed compute), `iso-depth` (K loops vs K untied layers), or `unclear` when the paper compares without stating the control. Use `[]` when there is no such comparison.
+
+### `survey_core` (bool)
+
+`true` for the survey's core set of roughly 30-50 anchor papers. It does not change repo inclusion; peer-review or citation thresholds of the survey do not apply to the catalog.
+
 ## Browser Behavior
 
 The interactive browser exposes only these visible tag-filter groups:
@@ -194,6 +240,7 @@ When a paper is ambiguous, use this order:
    - architecture, algorithm, efficiency, memory compression, training/inference method -> `designs`
    - domain/task demonstration such as robotics, VLA, multimodal, tabular, or graph data -> `applications`
 4. Then use `foundation`, Loop Mechanism (`mechanism_tags`), `focus_tags`, and `domain_tags` for the secondary story.
+5. Fill the survey-aligned axes: `survey_section` (primary first), `loop_topology`, `sharing`, `depth_control`, `claims`, `comparison`, and `survey_core`.
 
 ## Tie-Break Rules
 

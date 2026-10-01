@@ -21,6 +21,19 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/vision
+- benefits/efficiency
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: adaptive-halting
+claims:
+- data-efficiency
+- param-efficiency
+- test-time-scaling
+comparison:
+- unclear
+survey_core: false
 desc: Introduces RD-ViT, looping one shared Transformer block for dense 2D and 3D
   segmentation with stable input injection, adaptive halting, depth-wise LoRA, and
   optional MoE specialization.

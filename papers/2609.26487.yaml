@@ -17,6 +17,16 @@ domain_tags:
 - algorithmic-reasoning
 focus_tags:
 - inference-algorithm
+survey_section:
+- interpretability
+- scaling/test-time
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims:
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Studies when Tiny Recursive Models have effectively completed their computation,
   showing that extending the same attention-and-MLP recurrence from 16 to 512 steps
   raises cumulative exact Sudoku solve rates and linking convergence to anisotropic

@@ -17,6 +17,19 @@ domain_tags:
 focus_tags:
 - architecture
 - data
+survey_section:
+- applications/language-speech-multimodal
+- benefits/efficiency
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- data-efficiency
+comparison:
+- iso-param
+- iso-depth
+survey_core: false
 desc: Tracks a 28M-parameter autoregressive Tiny Recursive Model across training,
   showing how recursive reuse of one two-layer block changes fit, free-running code
   generation, generalization, and compute relative to matched controls.

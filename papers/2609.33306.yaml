@@ -20,6 +20,15 @@ tags:
 - LoopTrack
 focus_tags:
 - architecture
+survey_section:
+- applications/vision
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
 desc: Proposes LoopTrack, a visual object tracker that repeatedly applies a shared
   set of Transformer blocks for template-search interaction instead of stacking separately
   parameterized blocks, adding target-aware looping and a gated cross-frame target

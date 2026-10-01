@@ -26,6 +26,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/embodied-other
+- design/depth-control
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Uses a recursive ViT structure to iteratively refine semantic features for image
   semantic communication while dynamically adjusting recursive depth and width under
   image and channel conditions.

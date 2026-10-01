@@ -29,6 +29,16 @@ focus_tags:
 - inference-algorithm
 tags:
 - RecRec
+survey_section:
+- applications/embodied-other
+- train/supervision
+loop_topology: partial
+sharing: full
+depth_control: sampled-train
+claims:
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Applies recursive latent-interest refinement to sequential recommendation, using
   adjustable-depth reasoning over compact user-interest state before prediction.
 links:

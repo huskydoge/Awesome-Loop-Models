@@ -17,6 +17,17 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/loop-x
+- systems/quantization-edge
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- compute-efficiency
+- data-efficiency
+comparison: []
+survey_core: false
 desc: Recirculates each token through one shared spiking connectome to a fixed point,
   supporting equivalent parallel-scan training and event-driven recurrent inference.
 links:

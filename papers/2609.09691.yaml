@@ -19,6 +19,18 @@ domain_tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- benefits/efficiency
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- data-efficiency
+- failure-mode
+comparison:
+- unclear
+survey_core: false
 desc: Combines GPT-BERT's hybrid causal and masked objectives with a four-layer Transformer
   stack reused across twelve recurrent traversals, trading parameters for recurrent
   compute in small-data language modeling.

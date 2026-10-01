@@ -19,6 +19,18 @@ tags:
 - weight-tying
 focus_tags:
 - architecture
+survey_section:
+- applications/vision
+- design/sharing-scheme
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- compute-efficiency
+comparison:
+- iso-param
+survey_core: false
 desc: Builds parameter-efficient vision Transformers by recursively reusing blocks
   across depth and reducing recursive attention cost with sliced group self-attention.
 links:

@@ -22,6 +22,16 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/language-speech-multimodal
+- train/retrofitting
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Reuses a frozen audio encoder core through bridged, gated recurrent passes with
   loop-specific low-rank adaptation and adaptive halting, improving cross-domain deepfake
   detection while training only lightweight modules.

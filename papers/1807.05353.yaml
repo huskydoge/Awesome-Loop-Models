@@ -17,6 +17,17 @@ tags:
 - weight-tying
 focus_tags:
 - architecture
+survey_section:
+- foundations/depth-sharing
+- benefits/efficiency
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- iso-depth
+survey_core: false
 desc: Shares one encoder or decoder layer across all stacked depths in neural machine
   translation, showing that six recurrent applications can approach a six-distinct-layer
   baseline with far fewer parameters.

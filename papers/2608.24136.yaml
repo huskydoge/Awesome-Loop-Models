@@ -22,6 +22,15 @@ domain_tags:
 - adaptive-compute
 focus_tags:
 - inference-algorithm
+survey_section:
+- scaling/test-time
+loop_topology: unspecified
+sharing: full
+depth_control: unspecified
+claims:
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Introduces Readout Feedback, which converts intermediate predictions into coupling
   forces that steer the shared-block latent dynamics of recurrent reasoners at test
   time without retraining.

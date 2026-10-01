@@ -16,6 +16,15 @@ focus_tags:
 - architecture
 - inference-algorithm
 - training-algorithm
+survey_section:
+- benefits/expressivity
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- expressivity
+comparison: []
+survey_core: false
 desc: Proves that softmax transformers can implement in-context logistic regression
   by treating layers as normalized-gradient-descent steps, then trains one self-attention
   layer and applies it recurrently as a looped model with convergence and OOD guarantees.

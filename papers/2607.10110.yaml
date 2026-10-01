@@ -22,6 +22,22 @@ focus_tags:
 - inference-algorithm
 tags:
 - Looped-Mamba
+survey_section:
+- design/loop-x
+- design/depth-control
+- scaling/compute-optimal
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+- failure-mode
+- compute-efficiency
+comparison:
+- iso-param
+- iso-flop
+- iso-depth
+survey_core: false
 desc: Introduces looped state-space language models that repeatedly apply shared Mamba
   or hybrid Mamba-Transformer blocks and select among exit states for adaptive inference.
 links:

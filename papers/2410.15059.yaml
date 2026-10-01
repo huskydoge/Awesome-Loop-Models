@@ -20,6 +20,15 @@ focus_tags:
 - training-algorithm
 - architecture
 - inference-algorithm
+survey_section:
+- applications/graphs-science
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Recasts neural algorithmic reasoning as fixed-point solving with deep-equilibrium
   GNN processors, removing the need for ground-truth algorithm step counts during
   training and inference.

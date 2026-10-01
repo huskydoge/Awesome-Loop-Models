@@ -15,6 +15,17 @@ domain_tags:
 - adaptive-compute
 focus_tags:
 - inference-algorithm
+survey_section:
+- scaling/test-time
+- interpretability
+- benefits/limits
+loop_topology: whole-stack
+sharing: full
+depth_control: convergence
+claims:
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Shows that identically accurate weight-tied looped Transformers can realize
   initialization-selected dynamical phases, deriving parameter-free fold scaling and
   an N^-2 workload tail while finding no analogous law in a Neimark-Sacker phase.

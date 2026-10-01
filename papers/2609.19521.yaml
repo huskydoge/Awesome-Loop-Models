@@ -16,6 +16,17 @@ domain_tags:
 - memory-efficiency
 focus_tags:
 - architecture
+survey_section:
+- design/state-memory
+- benefits/generalization
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- length-generalization
+- failure-mode
+comparison: []
+survey_core: false
 desc: Compares recurrent-depth Transformer memory designs on cellular automata and
   delayed recall, then introduces bounded gated LSTM-UT to improve unseen-depth extrapolation
   and retrieval over current-state and expanding-cache baselines.

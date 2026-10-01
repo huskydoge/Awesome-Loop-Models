@@ -20,6 +20,16 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- benefits/efficiency
+- applications/language-speech-multimodal
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Pairs a task-specific latent proposer with a tiny TRM-style recurrent refiner
   that repeatedly applies one learned transition block before a frozen LLM decodes
   the answer.

@@ -18,6 +18,16 @@ tags:
 - shared-weight-recurrence
 focus_tags:
 - architecture
+survey_section:
+- benefits/generalization
+- foundations/algorithmic
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- length-generalization
+comparison: []
+survey_core: false
 desc: Adds copy gating and geometric attention to a weight-shared Transformer to learn
   adaptive control flow and improve systematic length and depth generalization.
 links:

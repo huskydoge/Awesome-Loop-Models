@@ -17,6 +17,16 @@ domain_tags:
 - efficiency
 focus_tags:
 - inference-algorithm
+survey_section:
+- systems/batching-parallel
+- systems/kv-memory
+loop_topology: shifted-parallel
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Parallelizes self-speculative decoding for looped language models by batching
   tokens at different sequence positions and recurrence depths, reporting 2.42 times
   speedup on Ouro and 3.54 times on Huginn, rising to 4.81 times with KV sharing.

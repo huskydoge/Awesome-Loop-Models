@@ -20,6 +20,18 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- foundations/implicit
+- train/stability
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- stability
+- compute-efficiency
+- memory-efficiency
+comparison: []
+survey_core: true
 desc: Introduces monDEQ, a monotone-operator parameterization and splitting solvers
   that guarantee a unique, stably computable equilibrium for implicit-depth networks.
 links:

@@ -17,6 +17,16 @@ tags:
 - activation-compression
 focus_tags:
 - training-algorithm
+survey_section:
+- systems/kv-memory
+- interpretability
+loop_topology: hierarchical
+sharing: full
+depth_control: unspecified
+claims:
+- memory-efficiency
+comparison: []
+survey_core: false
 desc: Analyzes TRM activation geometry during recursive unrolling and introduces LASER,
   a dynamic low-rank compression method for stored training activations that reduces
   activation memory by about 60% without statistically significant accuracy loss.

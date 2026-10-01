@@ -17,6 +17,16 @@ domain_tags:
 - reasoning
 focus_tags:
 - inference-algorithm
+survey_section:
+- scaling/test-time
+- benefits/limits
+loop_topology: unspecified
+sharing: full
+depth_control: unspecified
+claims:
+- failure-mode
+comparison: []
+survey_core: false
 desc: Introduces loop-wise contrastive decoding, which contrasts predictions from
   successive applications of a shared recurrent language-model block to suppress premature
   answers, improving reasoning accuracy by 1.06 to 6.71 percentage points while retaining

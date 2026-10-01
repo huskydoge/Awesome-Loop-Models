@@ -53,6 +53,13 @@ ALLOWED_FIELDS = frozenset(
         "star_source_best",
         "star_sources",
         "tags",
+        "survey_section",
+        "loop_topology",
+        "sharing",
+        "depth_control",
+        "claims",
+        "comparison",
+        "survey_core",
     )
 )
 TAG_FIELDS = ("mechanism_tags", "domain_tags", "focus_tags", "tags")

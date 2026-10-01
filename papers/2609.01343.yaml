@@ -25,6 +25,19 @@ domain_tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- scaling/compute-optimal
+- design/loop-x
+- interpretability
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison:
+- iso-flop
+- iso-param
+survey_core: false
 desc: Introduces a compute-matched sparse MoE Transformer that applies the same middle
   half of its layers twice, showing improved scaling and downstream performance without
   increasing per-token FLOPs, non-embedding parameters, or KV-cache size.

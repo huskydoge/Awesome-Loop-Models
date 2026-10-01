@@ -17,6 +17,16 @@ tags:
 - MDEQ
 focus_tags:
 - architecture
+survey_section:
+- foundations/implicit
+- applications/vision
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- memory-efficiency
+comparison: []
+survey_core: false
 desc: Extends DEQ to synchronized equilibria across multiple feature resolutions,
   achieving competitive performance on large-scale vision tasks with constant-depth
   activation memory.

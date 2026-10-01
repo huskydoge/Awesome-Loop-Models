@@ -22,6 +22,16 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/language-speech-multimodal
+- benefits/efficiency
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
 desc: Introduces PERL, a few-shot CLIP adaptation framework that reuses a compact
   shared reasoning module across latent refinement steps, improving base-to-novel,
   transfer, and OOD results with about 6K trainable parameters.

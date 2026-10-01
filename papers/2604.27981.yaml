@@ -18,6 +18,15 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/embodied-other
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
 desc: Applies a shared-parameter iterative refinement module inside an all-MLP multivariate
   time-series forecasting system, using the loop-model pattern for a concrete forecasting
   application.

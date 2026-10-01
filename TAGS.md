@@ -32,6 +32,96 @@ Controlled vocabulary. The build validates these values, and the interactive bro
 - `data` (6)
 - `inference-algorithm` (166)
 
+## Survey sections (`survey_section`)
+
+Controlled vocabulary aligned with the Looped Models Survey outline. List every section where the paper belongs; the first entry is its primary section. Counts are primary / any.
+
+- `foundations/recurrence` — Foundations: Recurrent networks and weight sharing across computation (2 / 3)
+- `foundations/depth-sharing` — Foundations: Weight sharing across network depth (4 / 6)
+- `foundations/implicit` — Foundations: Deep equilibrium and implicit models (6 / 9)
+- `foundations/algorithmic` — Foundations: Iterative and algorithmic computation (3 / 6)
+- `benefits/efficiency` — What Looping Buys: Parameter, data, and compute efficiency (7 / 30)
+- `benefits/expressivity` — What Looping Buys: Expressivity and reasoning capacity (17 / 20)
+- `benefits/generalization` — What Looping Buys: Length, easy-to-hard, and compositional generalization (8 / 15)
+- `benefits/limits` — What Looping Buys: Limits and failure modes (8 / 24)
+- `design/topology` — Architecture: Loop topology (9 / 21)
+- `design/residual-injection` — Architecture: Residual manipulation, input injection, and initialization (7 / 25)
+- `design/state-memory` — Architecture: Recurrent state and loop-time memory (7 / 12)
+- `design/sharing-scheme` — Architecture: Weight-sharing schemes and iteration-dependent computation (3 / 18)
+- `design/depth-control` — Architecture: Controlling recurrence depth (12 / 37)
+- `design/loop-x` — Architecture: Loop x MoE, efficient mixers, and diffusion (17 / 22)
+- `train/supervision` — Training: Supervision and credit assignment (3 / 21)
+- `train/gradients` — Training: BPTT, truncated BPTT, and implicit gradients (5 / 12)
+- `train/stability` — Training: Loop-specific optimization and stability (7 / 14)
+- `train/post-training` — Training: Post-training and reinforcement learning (3 / 7)
+- `train/retrofitting` — Training: Retrofitting pretrained models into looped models (9 / 13)
+- `scaling/compute-optimal` — Scaling: Parameter, depth, and compute-optimal scaling (6 / 14)
+- `scaling/test-time` — Scaling: Test-time scaling (8 / 28)
+- `systems/quantization-edge` — Systems: Quantization and edge deployment (4 / 7)
+- `systems/kv-memory` — Systems: KV cache and memory (5 / 11)
+- `systems/batching-parallel` — Systems: Loop-level batching, scheduling, and parallel execution (5 / 8)
+- `interpretability` — Interpretability: Mechanistic interpretability of looped models (17 / 24)
+- `applications/language-speech-multimodal` — Applications: Language, code, speech, and multimodal tasks (17 / 20)
+- `applications/vision` — Applications: Visual recognition, restoration, and generation (15 / 20)
+- `applications/flow-3d` — Applications: Flow, stereo, and 3D geometry (5 / 5)
+- `applications/graphs-science` — Applications: Graphs, structured data, and scientific modeling (14 / 21)
+- `applications/embodied-other` — Applications: Embodied AI and other domains (15 / 18)
+- `outlook/diffusion` — Outlook: Unification with diffusion models (1 / 5)
+
+## `loop_topology`
+
+Controlled vocabulary. Where the loop sits in the network (single value).
+
+- `whole-stack` (108)
+- `prelude-core-coda` (24)
+- `partial` (27)
+- `hierarchical` (22)
+- `shifted-parallel` (8)
+- `implicit-fixed-point` (33)
+- `unspecified` (27)
+
+## `sharing`
+
+Controlled vocabulary. How parameters are shared across iterations (single value).
+
+- `full` (219)
+- `partial-adapter` (13)
+- `expert-routed` (8)
+- `unspecified` (9)
+
+## `depth_control`
+
+Controlled vocabulary. How the number of iterations is decided (single value).
+
+- `fixed` (105)
+- `sampled-train` (12)
+- `adaptive-halting` (45)
+- `convergence` (40)
+- `unspecified` (47)
+
+## `claims`
+
+Controlled vocabulary. What the paper argues looping buys or costs (list).
+
+- `param-efficiency` (68)
+- `compute-efficiency` (81)
+- `memory-efficiency` (31)
+- `data-efficiency` (15)
+- `expressivity` (24)
+- `length-generalization` (23)
+- `test-time-scaling` (41)
+- `stability` (28)
+- `failure-mode` (36)
+
+## `comparison`
+
+Controlled vocabulary. Which quantity is held fixed when the paper compares looped and non-looped models (list; empty when there is no such comparison).
+
+- `iso-param` (22)
+- `iso-flop` (16)
+- `iso-depth` (12)
+- `unclear` (40)
+
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.

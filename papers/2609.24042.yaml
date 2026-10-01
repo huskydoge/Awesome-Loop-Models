@@ -21,6 +21,17 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- systems/quantization-edge
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- param-efficiency
+- memory-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Combines a QUBO-formulated local solver with W8A8 quantization for deep-equilibrium
   time-series forecasting, preserving accuracy within a narrow MSE range while reducing
   parameter count by 1.80 to 3.82 times and storage by 4.3 to 12.8 times for edge

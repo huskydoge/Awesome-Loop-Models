@@ -17,6 +17,18 @@ domain_tags:
 - compositional-reasoning
 focus_tags:
 - inference-algorithm
+survey_section:
+- applications/language-speech-multimodal
+- scaling/test-time
+loop_topology: unspecified
+sharing: full
+depth_control: adaptive-halting
+claims:
+- test-time-scaling
+- compute-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Evaluates native and retrofitted looped language models on compositional tool
   calling, finding that recurrent depth most consistently improves multi-call dependency
   handling while adaptive stopping uses fewer iterations.

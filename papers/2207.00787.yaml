@@ -19,6 +19,17 @@ tags:
 focus_tags:
 - training-algorithm
 - inference-algorithm
+survey_section:
+- train/gradients
+- applications/vision
+loop_topology: partial
+sharing: full
+depth_control: convergence
+claims:
+- stability
+- memory-efficiency
+comparison: []
+survey_core: false
 desc: Trains iterative object-centric refinement as a fixed-point computation through
   implicit differentiation, improving SLATE optimization with constant-memory backpropagation.
 links:

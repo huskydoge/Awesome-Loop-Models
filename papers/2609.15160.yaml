@@ -20,6 +20,17 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/depth-control
+- systems/kv-memory
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- param-efficiency
+comparison: []
+survey_core: false
 desc: Reuses a shared Transformer stack while routing each token to its own recursion
   depth, with recursion-wise KV caches that avoid recomputing tokens after they exit.
 links:

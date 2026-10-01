@@ -62,6 +62,85 @@ VALID_MECHANISM_TAGS = (
 )
 
 VALID_CATALOG_FITS = ("strict", "adjacent")
+
+# Survey-aligned taxonomy (Looped Models Survey outline). These axes are optional
+# per paper for now; when present they must use the controlled values below.
+SURVEY_SECTIONS = (
+    ("foundations/recurrence", "Foundations", "Recurrent networks and weight sharing across computation"),
+    ("foundations/depth-sharing", "Foundations", "Weight sharing across network depth"),
+    ("foundations/implicit", "Foundations", "Deep equilibrium and implicit models"),
+    ("foundations/algorithmic", "Foundations", "Iterative and algorithmic computation"),
+    ("benefits/efficiency", "What Looping Buys", "Parameter, data, and compute efficiency"),
+    ("benefits/expressivity", "What Looping Buys", "Expressivity and reasoning capacity"),
+    ("benefits/generalization", "What Looping Buys", "Length, easy-to-hard, and compositional generalization"),
+    ("benefits/limits", "What Looping Buys", "Limits and failure modes"),
+    ("design/topology", "Architecture", "Loop topology"),
+    ("design/residual-injection", "Architecture", "Residual manipulation, input injection, and initialization"),
+    ("design/state-memory", "Architecture", "Recurrent state and loop-time memory"),
+    ("design/sharing-scheme", "Architecture", "Weight-sharing schemes and iteration-dependent computation"),
+    ("design/depth-control", "Architecture", "Controlling recurrence depth"),
+    ("design/loop-x", "Architecture", "Loop x MoE, efficient mixers, and diffusion"),
+    ("train/supervision", "Training", "Supervision and credit assignment"),
+    ("train/gradients", "Training", "BPTT, truncated BPTT, and implicit gradients"),
+    ("train/stability", "Training", "Loop-specific optimization and stability"),
+    ("train/post-training", "Training", "Post-training and reinforcement learning"),
+    ("train/retrofitting", "Training", "Retrofitting pretrained models into looped models"),
+    ("scaling/compute-optimal", "Scaling", "Parameter, depth, and compute-optimal scaling"),
+    ("scaling/test-time", "Scaling", "Test-time scaling"),
+    ("systems/quantization-edge", "Systems", "Quantization and edge deployment"),
+    ("systems/kv-memory", "Systems", "KV cache and memory"),
+    ("systems/batching-parallel", "Systems", "Loop-level batching, scheduling, and parallel execution"),
+    ("interpretability", "Interpretability", "Mechanistic interpretability of looped models"),
+    ("applications/language-speech-multimodal", "Applications", "Language, code, speech, and multimodal tasks"),
+    ("applications/vision", "Applications", "Visual recognition, restoration, and generation"),
+    ("applications/flow-3d", "Applications", "Flow, stereo, and 3D geometry"),
+    ("applications/graphs-science", "Applications", "Graphs, structured data, and scientific modeling"),
+    ("applications/embodied-other", "Applications", "Embodied AI and other domains"),
+    ("outlook/diffusion", "Outlook", "Unification with diffusion models"),
+)
+VALID_SURVEY_SECTIONS = tuple(section_id for section_id, _, _ in SURVEY_SECTIONS)
+VALID_LOOP_TOPOLOGIES = (
+    "whole-stack",
+    "prelude-core-coda",
+    "partial",
+    "hierarchical",
+    "shifted-parallel",
+    "implicit-fixed-point",
+    "unspecified",
+)
+VALID_SHARING_SCHEMES = ("full", "partial-adapter", "expert-routed", "unspecified")
+VALID_DEPTH_CONTROLS = ("fixed", "sampled-train", "adaptive-halting", "convergence", "unspecified")
+VALID_CLAIMS = (
+    "param-efficiency",
+    "compute-efficiency",
+    "memory-efficiency",
+    "data-efficiency",
+    "expressivity",
+    "length-generalization",
+    "test-time-scaling",
+    "stability",
+    "failure-mode",
+)
+VALID_COMPARISONS = ("iso-param", "iso-flop", "iso-depth", "unclear")
+SURVEY_SCALAR_FIELDS = (
+    ("loop_topology", VALID_LOOP_TOPOLOGIES),
+    ("sharing", VALID_SHARING_SCHEMES),
+    ("depth_control", VALID_DEPTH_CONTROLS),
+)
+SURVEY_LIST_FIELDS = (
+    ("survey_section", VALID_SURVEY_SECTIONS),
+    ("claims", VALID_CLAIMS),
+    ("comparison", VALID_COMPARISONS),
+)
+SURVEY_FIELDS = (
+    "survey_section",
+    "loop_topology",
+    "sharing",
+    "depth_control",
+    "claims",
+    "comparison",
+    "survey_core",
+)
 ADJACENT_SCOPE_NOTE = (
     "Retained as adjacent work; its recurrence is outside the strict single-forward loop-model scope."
 )
@@ -553,6 +632,38 @@ def split_focus_and_mechanism_tags(raw_focus_tags: object, source: str) -> tuple
     return normalize_focus_tags(raw_focus_tags, source), []
 
 
+def normalize_survey_fields(data: dict, source: str) -> dict:
+    """Validate the optional survey-aligned taxonomy fields and return their normalized values.
+
+    ``survey_section`` lists where the survey cites the paper (first entry is the
+    primary section). Missing fields are omitted from the result.
+    """
+    result: dict = {}
+    for field, allowed in SURVEY_SCALAR_FIELDS:
+        raw = data.get(field)
+        if raw is None or raw == "":
+            continue
+        value = str(raw).strip()
+        if value not in allowed:
+            raise ValueError(f"{source}: invalid {field} {value!r}; valid values are {list(allowed)!r}")
+        result[field] = value
+    for field, allowed in SURVEY_LIST_FIELDS:
+        if field not in data or data.get(field) is None:
+            continue
+        values = normalize_str_list(data.get(field))
+        invalid = [value for value in values if value not in allowed]
+        if invalid:
+            raise ValueError(f"{source}: invalid {field} {invalid!r}; valid values are {list(allowed)!r}")
+        if field == "survey_section" and not values:
+            raise ValueError(f"{source}: survey_section must list at least one section when present")
+        result[field] = values
+    if "survey_core" in data and data.get("survey_core") is not None:
+        if not isinstance(data.get("survey_core"), bool):
+            raise ValueError(f"{source}: survey_core must be true or false")
+        result["survey_core"] = data["survey_core"]
+    return result
+
+
 def normalize_authors(raw_authors: object) -> tuple[list[str], str]:
     authors = normalize_str_list(raw_authors)
     return authors, ", ".join(authors)
@@ -628,8 +739,12 @@ def load_papers() -> list[dict]:
         published_date = normalize_required_date_string(data.get("published_date"), "published_date", yaml_file.name)
         added_date = normalize_optional_date_string(data.get("added_date"), "added_date", yaml_file.name)
         must_read = normalize_must_read_flag(data.get("must_read"))
+        survey_fields = normalize_survey_fields(data, yaml_file.name)
 
         paper = dict(data)
+        for field in SURVEY_FIELDS:
+            paper.pop(field, None)
+        paper.update(survey_fields)
         paper.pop("family_tags", None)
         paper["id"] = yaml_file.stem
         paper["source_file"] = yaml_file.name
@@ -879,6 +994,13 @@ def serialize_browser_entry(entry: dict) -> dict:
         "mechanism_tags",
         "focus_tags",
         "domain_tags",
+        "survey_section",
+        "loop_topology",
+        "sharing",
+        "depth_control",
+        "claims",
+        "comparison",
+        "survey_core",
         "must_read",
         "citations",
         "github_stars",
@@ -952,6 +1074,17 @@ def build_json(papers: list[dict], blogs: list[dict], briefings: list[dict] | No
         "categories": CATEGORIES,
         "mechanism_tags": list(VALID_MECHANISM_TAGS),
         "focus_tags": list(VALID_FOCUS_TAGS),
+        "survey_taxonomy": {
+            "sections": [
+                {"id": section_id, "part": part, "title": title}
+                for section_id, part, title in SURVEY_SECTIONS
+            ],
+            "loop_topology": list(VALID_LOOP_TOPOLOGIES),
+            "sharing": list(VALID_SHARING_SCHEMES),
+            "depth_control": list(VALID_DEPTH_CONTROLS),
+            "claims": list(VALID_CLAIMS),
+            "comparison": list(VALID_COMPARISONS),
+        },
         "paper_chunks": write_paper_chunks([serialize_browser_entry(paper) for paper in papers]),
         "blogs": [serialize_browser_entry(blog) for blog in blogs],
         "briefings": serialize_browser_briefings(briefings),
@@ -1083,6 +1216,37 @@ def render_tags_reference_text(papers: list[dict], blogs: list[dict]) -> str:
         "Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.",
         [(tag, focus_counts.get(tag, 0)) for tag in VALID_FOCUS_TAGS],
     )
+    survey_counts: Counter[str] = Counter()
+    primary_counts: Counter[str] = Counter()
+    for entry in papers:
+        sections = entry.get("survey_section", [])
+        survey_counts.update(sections)
+        if sections:
+            primary_counts[sections[0]] += 1
+    lines.extend([
+        "## Survey sections (`survey_section`)",
+        "",
+        "Controlled vocabulary aligned with the Looped Models Survey outline. List every section where the paper belongs; the first entry is its primary section. Counts are primary / any.",
+        "",
+    ])
+    for section_id, part, title in SURVEY_SECTIONS:
+        lines.append(f"- `{section_id}` — {part}: {title} ({primary_counts.get(section_id, 0)} / {survey_counts.get(section_id, 0)})")
+    lines.append("")
+    for field, allowed, intro in (
+        ("loop_topology", VALID_LOOP_TOPOLOGIES, "Where the loop sits in the network (single value)."),
+        ("sharing", VALID_SHARING_SCHEMES, "How parameters are shared across iterations (single value)."),
+        ("depth_control", VALID_DEPTH_CONTROLS, "How the number of iterations is decided (single value)."),
+        ("claims", VALID_CLAIMS, "What the paper argues looping buys or costs (list)."),
+        ("comparison", VALID_COMPARISONS, "Which quantity is held fixed when the paper compares looped and non-looped models (list; empty when there is no such comparison)."),
+    ):
+        field_counts: Counter[str] = Counter()
+        for entry in papers:
+            value = entry.get(field)
+            if isinstance(value, list):
+                field_counts.update(value)
+            elif value:
+                field_counts[value] += 1
+        append_section(f"`{field}`", f"Controlled vocabulary. {intro}", [(tag, field_counts.get(tag, 0)) for tag in allowed])
     append_section(
         "domain_tags",
         "Observed browser-facing domain tags currently used across the repo.",

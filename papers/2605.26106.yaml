@@ -27,6 +27,21 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/loop-x
+- outlook/diffusion
+- scaling/test-time
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+- test-time-scaling
+- param-efficiency
+comparison:
+- iso-param
+- iso-flop
+survey_core: false
 desc: Introduces LoopMDM, selectively looping early-middle transformer layers in masked
   diffusion language models so training gains depth-scaling without extra parameters
   and inference can vary loop count for compute scaling.

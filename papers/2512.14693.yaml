@@ -23,6 +23,15 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- design/loop-x
+- train/gradients
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims: []
+comparison: []
+survey_core: false
 desc: Proposes URM, a Universal Transformer-based architecture with weight tying that
   beats standard transformers on reasoning benchmarks through iterative depth computation.
 links:

@@ -19,6 +19,15 @@ tags:
 - NCA
 focus_tags:
 - architecture
+survey_section:
+- applications/language-speech-multimodal
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
 desc: Places frozen paragraph embeddings of a legal act on a 2D lattice and consolidates
   them with a masked neural cellular automaton that applies one shared local update
   for eight steps, reaching state-of-the-art ROUGE across all 24 EUR-Lex-Sum languages

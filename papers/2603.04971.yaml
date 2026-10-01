@@ -28,6 +28,16 @@ focus_tags:
 - objective-loss
 - architecture
 - inference-algorithm
+survey_section:
+- design/loop-x
+- design/sharing-scheme
+loop_topology: whole-stack
+sharing: expert-routed
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
 desc: Proposes MOUE, which reuses a universal layer-agnostic expert pool across layers
   to transform depth into virtual width and improve MoE performance under fixed activation
   budgets.

@@ -17,6 +17,16 @@ tags:
 - GPTQ
 focus_tags:
 - inference-algorithm
+survey_section:
+- systems/quantization-edge
+- benefits/limits
+loop_topology: unspecified
+sharing: full
+depth_control: unspecified
+claims:
+- failure-mode
+comparison: []
+survey_core: false
 desc: Diagnoses two failure modes of post-training quantization for looped Transformers,
   feedback exposure at non-residual loop-entry layers and calibration blindness from
   step-0-only GPTQ Hessians, and shows that accumulating the Hessian across recurrence

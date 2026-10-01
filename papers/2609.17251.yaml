@@ -15,6 +15,14 @@ domain_tags:
 - sequence-modeling
 focus_tags:
 - architecture
+survey_section:
+- design/state-memory
+loop_topology: partial
+sharing: full
+depth_control: unspecified
+claims: []
+comparison: []
+survey_core: false
 desc: Inserts a persistent latent state between Transformer halves and recursively
   reuses one GRU update within each forward pass, with controlled small-scale experiments
   attributing improved generalization to the recurrent memory topology.

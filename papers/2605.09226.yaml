@@ -22,6 +22,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/graphs-science
+- design/residual-injection
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- stability
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Formulates quantum-signal injection pathways for graph deep-equilibrium models,
   comparing fixed, state-dependent, and backbone-dependent coupling inside the fixed-point
   operator with contraction guarantees and graph-classification experiments.

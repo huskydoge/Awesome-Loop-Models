@@ -22,6 +22,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/limits
+- design/depth-control
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- failure-mode
+- length-generalization
+comparison: []
+survey_core: false
 desc: Uses ANIRA as a controlled recurrent-Transformer framework to study per-token
   variable-depth computation, showing that adaptive compute can align with token complexity
   while failing to extrapolate to longer algorithmic inputs.

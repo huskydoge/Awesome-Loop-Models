@@ -18,6 +18,17 @@ domain_tags:
 focus_tags:
 - objective-loss
 - training-algorithm
+survey_section:
+- train/supervision
+- benefits/generalization
+loop_topology: unspecified
+sharing: full
+depth_control: unspecified
+claims:
+- length-generalization
+- stability
+comparison: []
+survey_core: false
 desc: Replaces point targets with a local target distribution and adversarial critic
   for recurrent reasoning models, improving stability and out-of-distribution accuracy
   on Maze, Chess, and masked Sudoku.

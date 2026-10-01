@@ -22,6 +22,18 @@ tags:
 - weight-tying
 focus_tags:
 - architecture
+survey_section:
+- applications/language-speech-multimodal
+- benefits/efficiency
+- design/sharing-scheme
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- param-efficiency
+- memory-efficiency
+comparison: []
+survey_core: false
 desc: Shares Transformer parameters across depth and modalities, using modality-specific
   and shared factorization plus low-rank sharing to cut audio-visual video model parameters
   by up to 97% while enabling end-to-end training.

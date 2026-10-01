@@ -17,6 +17,17 @@ tags:
 - implicit GNN
 focus_tags:
 - architecture
+survey_section:
+- benefits/expressivity
+- applications/graphs-science
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- expressivity
+comparison:
+- unclear
+survey_core: false
 desc: Proves that allowing multiple equilibria lets one weight-tied recurrent message-passing
   GNN represent set-valued permutation-equivariant maps, with different initializations
   converging to different valid solutions, and learns such dynamics without solution

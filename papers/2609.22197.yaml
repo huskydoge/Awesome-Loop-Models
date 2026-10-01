@@ -16,6 +16,15 @@ domain_tags:
 - algorithmic-reasoning
 focus_tags:
 - architecture
+survey_section:
+- interpretability
+loop_topology: hierarchical
+sharing: full
+depth_control: unspecified
+claims: []
+comparison:
+- unclear
+survey_core: false
 desc: Uses causal state interventions, probes, and sparse autoencoders to analyze
   hierarchical recurrent reasoning, finding constraint-aware iterative refinement
   while showing that a simpler single-state recurrent Transformer can attain comparable

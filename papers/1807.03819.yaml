@@ -21,6 +21,19 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- foundations/depth-sharing
+- benefits/generalization
+- design/sharing-scheme
+- design/topology
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- length-generalization
+- expressivity
+comparison: []
+survey_core: true
 desc: Introduces the Universal Transformer, which repeatedly applies shared self-attention
   and transition blocks over depth, optionally with per-position adaptive halting;
   under the paper's stated assumptions the architecture is Turing-complete.
