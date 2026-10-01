@@ -1,0 +1,35 @@
+title: 'Rethinking Depth: A study of the Recursive-Transformer for Speech Recognition'
+authors:
+- 'Thomas Rolland'
+- 'Carlos Carvalho'
+- 'Alberto Abad'
+year: 2026
+published_date: '2026-06-08'
+added_date: "2026-10-01"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- speech-recognition
+- efficiency
+tags:
+- 'recursive-transformer'
+focus_tags:
+- architecture
+survey_section:
+- applications/language-speech-multimodal
+- benefits/efficiency
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- iso-depth
+survey_core: false
+desc: 'Experimental study of recursive (layer-sharing) Transformer encoders for automatic speech recognition, analysing recursion depth and layer allocation and finding that recurrence in the latent space with few loops matches baseline accuracy with 66% fewer parameters.'
+links:
+  arxiv: https://arxiv.org/abs/2606.09357
+  alphaxiv: https://www.alphaxiv.org/abs/2606.09357

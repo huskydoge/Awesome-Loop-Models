@@ -1,0 +1,41 @@
+title: 'When Does Recurrence Become an Algorithm? Convergence Selection in Weight-Tied Looped Transformers'
+authors:
+- 'Tong Zhang'
+- 'Junhao Hu'
+- 'Yun Peng'
+- 'Tao Xie'
+year: 2026
+published_date: '2026-07-22'
+added_date: "2026-10-01"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- algorithmic-reasoning
+- theory
+tags:
+- 'weight-tying'
+- 'looped-transformer'
+focus_tags:
+- training-algorithm
+- inference-algorithm
+survey_section:
+- train/stability
+- scaling/test-time
+- benefits/generalization
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- length-generalization
+- test-time-scaling
+comparison:
+- iso-depth
+- iso-param
+survey_core: false
+desc: 'Studies when a weight-tied looped transformer learns an actual algorithm on group word problems, finding a budget law where solved positions per loop scale with training length over loop count, that weight tying selects a serial frontier over parallel scans, and that untied models extrapolate worst.'
+links:
+  arxiv: https://arxiv.org/abs/2607.20594
+  alphaxiv: https://www.alphaxiv.org/abs/2607.20594

@@ -49,7 +49,7 @@ A paper can also carry a `foundation` badge when it is a canonical anchor such a
 
 ## At a glance
 
-<p align="center"><b>249 papers</b> · 58 analysis · 159 designs · 32 applications · <b>8 blogs</b> · <a href="https://huskydoge.github.io/Awesome-Loop-Models/index.html">browse all →</a></p>
+<p align="center"><b>263 papers</b> · 63 analysis · 163 designs · 37 applications · <b>8 blogs</b> · <a href="https://huskydoge.github.io/Awesome-Loop-Models/index.html">browse all →</a></p>
 
 ## 🌟 Start here
 
@@ -68,16 +68,16 @@ The foundational papers, plus the ones the maintainer marks as must-read.
 
 | Added | Paper | Type | Links |
 |:--|:--|:--|:--|
-| 2026-09-28 | <b>Compute Time Scaling with Recursive Models for Combinatorial Optimization</b> | Application | <a href="https://arxiv.org/abs/2609.34585">arXiv</a> |
-| 2026-09-28 | <b>FlexLoop: Depth-Elastic Looped Policies for Adaptive Test-Time Computation in Deep RL</b> | Design | <a href="https://arxiv.org/abs/2609.34488">arXiv</a> |
-| 2026-09-28 | <b>How to Loop MoE: Flatten the Experts, Untie the Attention</b> | Design | <a href="https://arxiv.org/abs/2609.35751">arXiv</a> · <a href="https://github.com/SR-A-W/how-to-loop-moe">Code ★1</a> |
-| 2026-09-28 | <b>Improving Test-Time Scaling with Adaptive Looped Transformers</b> | Design | <a href="https://arxiv.org/abs/2609.35748">arXiv</a> · <a href="https://github.com/thu-nics/TaH">Code ★91</a> |
-| 2026-09-28 | <b>Loop Dropout: Regularizing Shared Updates in Looped Language Models</b> | Design | <a href="https://arxiv.org/abs/2609.34218">arXiv</a> |
-| 2026-09-28 | <b>Multi-Attractor GNNs: Set-Valued Expressivity Beyond Unique Equilibria</b> | Analysis | <a href="https://arxiv.org/abs/2609.35274">arXiv</a> |
-| 2026-09-28 | <b>Shallow Queries, Mature Values: Depth-Asynchronous Self-Speculation for Looped Transformers</b> | Design | <a href="https://arxiv.org/abs/2609.34538">arXiv</a> |
-| 2026-09-28 | <b>Beyond the Training Horizon: Mechanisms and Limits of Length Generalization in Looped Transformers</b> | Analysis | <a href="https://arxiv.org/abs/2609.33144">arXiv</a> |
-| 2026-09-28 | <b>LoopTrack: A Simple Baseline for Parameter-Efficient Transformer Tracking</b> | Application | <a href="https://arxiv.org/abs/2609.33306">arXiv</a> |
-| 2026-09-28 | <b>Reasoning on the Simplex: Geometric Fixed-Point Models</b> | Design | <a href="https://arxiv.org/abs/2609.33540">arXiv</a> |
+| 2026-10-01 | <b>MergeOver: Post-Training Token Merging for Recursive Vision Transformers</b> | Design | <a href="https://arxiv.org/abs/2608.13141">arXiv</a> |
+| 2026-10-01 | <b>bioMoR: Biology-Guided Mixture-of-Recursions for Effective Genomic Learning</b> | Application | <a href="https://arxiv.org/abs/2608.06727">arXiv</a> |
+| 2026-10-01 | <b>Nanbeige4.2-3B: Unlocking Agentic Capabilities in a Compact Model</b> | Application | <a href="https://arxiv.org/abs/2607.22083">arXiv</a> |
+| 2026-10-01 | <b>When Does Recurrence Become an Algorithm? Convergence Selection in Weight-Tied Looped Transformers</b> | Analysis | <a href="https://arxiv.org/abs/2607.20594">arXiv</a> |
+| 2026-10-01 | <b>Quantizing Recursive Reasoning Models</b> | Analysis | <a href="https://arxiv.org/abs/2607.16237">arXiv</a> |
+| 2026-10-01 | <b>Dense Supervision Is Not Enough: The Readout Blind Spot in Looped Language Models</b> | Analysis | <a href="https://arxiv.org/abs/2606.24898">arXiv</a> |
+| 2026-10-01 | <b>Rethinking Depth: A study of the Recursive-Transformer for Speech Recognition</b> | Application | <a href="https://arxiv.org/abs/2606.09357">arXiv</a> |
+| 2026-10-01 | <b>LA-Sign: Looped Transformers with Geometry-aware Alignment for Skeleton-based Sign Language Recognition</b> | Application | <a href="https://arxiv.org/abs/2603.29057">arXiv</a> |
+| 2026-10-01 | <b>Symbol-Equivariant Recurrent Reasoning Models</b> | Design | <a href="https://arxiv.org/abs/2603.02193">arXiv</a> · <a href="https://github.com/ml-jku/SE-RRM">Code</a> |
+| 2026-10-01 | <b>LoopViT: Scaling Visual ARC with Looped Transformers</b> | Application | <a href="https://arxiv.org/abs/2602.02156">arXiv</a> · <a href="https://github.com/WenjieShu/LoopViT">Code</a> |
 
 <sub>A daily watch adds new arXiv papers. The <a href="https://huskydoge.github.io/Awesome-Loop-Models/index.html">browser</a> has every paper and each day's briefing.</sub>
 

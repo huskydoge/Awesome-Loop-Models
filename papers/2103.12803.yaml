@@ -1,0 +1,37 @@
+title: 'JFB: Jacobian-Free Backpropagation for Implicit Networks'
+authors:
+- 'Samy Wu Fung'
+- 'Howard Heaton'
+- 'Qiuwei Li'
+- 'Daniel McKenzie'
+- 'Stanley Osher'
+- 'Wotao Yin'
+year: 2021
+published_date: '2021-03-23'
+added_date: "2026-10-01"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- vision
+- efficiency
+tags:
+- 'DEQ'
+focus_tags:
+- training-algorithm
+survey_section:
+- train/gradients
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- memory-efficiency
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: 'Proposes Jacobian-Free Backpropagation for implicit networks, which skips the Jacobian-based linear solve from the implicit function theorem so fixed-point networks train faster and with fixed memory, without losing test accuracy.'
+links:
+  arxiv: https://arxiv.org/abs/2103.12803
+  alphaxiv: https://www.alphaxiv.org/abs/2103.12803

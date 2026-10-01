@@ -1,0 +1,40 @@
+title: 'Quantizing Recursive Reasoning Models'
+authors:
+- 'Thorir Mar Ingolfsson'
+- 'Wajeeha Tahir'
+- 'Anna Tegon'
+- 'Lionnus Kesting'
+- 'Gamze İslamoğlu'
+- 'Luca Benini'
+year: 2026
+published_date: '2026-06-25'
+added_date: "2026-10-01"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- algorithmic-reasoning
+- efficiency
+- hardware-aware
+tags:
+- 'TRM'
+- 'EqR'
+focus_tags:
+- inference-algorithm
+survey_section:
+- systems/quantization-edge
+- benefits/limits
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+- failure-mode
+comparison: []
+survey_core: false
+desc: 'Shows that quantizing weight-tied recursive reasoning models accumulates error at every step: per-tensor 4-bit activations drop Sudoku exact accuracy from 84.1% to 0%, while block-wise scaling such as MXInt4 restores it, with deeper recursion being more quantization-sensitive.'
+links:
+  arxiv: https://arxiv.org/abs/2607.16237
+  alphaxiv: https://www.alphaxiv.org/abs/2607.16237
