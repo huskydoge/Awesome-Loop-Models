@@ -20,6 +20,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/loop-x
+- applications/embodied-other
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- iso-depth
+survey_core: false
 desc: Extends looped-transformer depth recurrence to state-space models by reusing
   the same SSM block across depth and adding input reshaping, showing tied-depth SSMs
   match or beat untied SSMs on six time-series benchmarks despite fewer parameters.

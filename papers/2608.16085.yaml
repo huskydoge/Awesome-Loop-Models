@@ -16,6 +16,14 @@ domain_tags:
 - algorithmic-reasoning
 focus_tags:
 - architecture
+survey_section:
+- interpretability
+loop_topology: unspecified
+sharing: full
+depth_control: unspecified
+claims: []
+comparison: []
+survey_core: false
 desc: Separates behavioural acquisition from hidden-state accessibility in a 30M looped
   reasoner, finding pre-arrival answer information under preregistered controls while
   explicitly withholding causal claims about the learned computation.

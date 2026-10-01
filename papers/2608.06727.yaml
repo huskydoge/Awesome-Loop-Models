@@ -1,0 +1,35 @@
+title: 'bioMoR: Biology-Guided Mixture-of-Recursions for Effective Genomic Learning'
+authors:
+- 'Koushik Howlader'
+- 'Tirtho Roy'
+- 'Md Tauhidul Islam'
+- 'Wei Le'
+year: 2026
+published_date: '2026-08-07'
+added_date: "2026-10-01"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- biology
+- adaptive-compute
+tags:
+- 'recursive-transformer'
+focus_tags:
+- architecture
+survey_section:
+- applications/embodied-other
+- design/depth-control
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: 'Applies Mixture-of-Recursions to gene- and pathway-level omics learning, adding graph-based embedding refinement, a biological attention bias and a graph-aware router that sets each token''s recursion depth, improving macro-F1 across eight benchmarks.'
+links:
+  arxiv: https://arxiv.org/abs/2608.06727
+  alphaxiv: https://www.alphaxiv.org/abs/2608.06727

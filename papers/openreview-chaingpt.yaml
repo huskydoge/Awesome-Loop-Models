@@ -20,6 +20,15 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/loop-x
+- design/state-memory
+loop_topology: hierarchical
+sharing: unspecified
+depth_control: adaptive-halting
+claims: []
+comparison: []
+survey_core: false
 desc: Introduces ChainGPT, a dual-reasoning recurrent-depth architecture that combines multi-substep state updates and state-guided sparse attention to move reasoning into latent computation, with adaptive stopping as a supporting mechanism.
 links:
   openreview: https://openreview.net/forum?id=kdZbxizwGK

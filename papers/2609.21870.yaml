@@ -14,6 +14,17 @@ domain_tags:
 - vision
 focus_tags:
 - architecture
+survey_section:
+- interpretability
+- applications/vision
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- data-efficiency
+comparison: []
+survey_core: false
 desc: Analyzes the hidden channels of a roughly 9,800-parameter neural cellular automaton
   whose learned update rule is reused over recurrent steps, finding orthogonal, scale-invariant
   topological features that transfer across few-shot and scale-varied MNIST tasks.

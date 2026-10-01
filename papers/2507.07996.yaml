@@ -20,6 +20,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- train/retrofitting
+- design/depth-control
+loop_topology: partial
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Proposes Chain-of-Layers (CoLa), an inference-time search method that skips
   or repeats pretrained LLM layers per sample via MCTS to improve efficiency and reasoning
   accuracy.

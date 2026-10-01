@@ -15,6 +15,14 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- foundations/implicit
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims: []
+comparison: []
+survey_core: false
 desc: Defines sequence hidden states jointly through a learned implicit system and
   solves the coupled nonlinear equations to enable non-causal bidirectional interactions
   for sequence labeling.

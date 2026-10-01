@@ -19,6 +19,15 @@ domain_tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- applications/graphs-science
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Introduces a weight-tied iterative GNN that amortizes best-response dynamics
   into a single forward pass, predicting Nash equilibria up to 43x faster while recovering
   equilibrium sensitivities across security-game specifications and graph sizes.

@@ -22,6 +22,14 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/vision
+loop_topology: unspecified
+sharing: unspecified
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Unrolls a sparse-view CT optimizer whose shared image-domain neural operators
   repeatedly correct measurement and pseudo-measurement residuals across reconstruction
   stages and discretizations.

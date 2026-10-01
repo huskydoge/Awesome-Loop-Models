@@ -23,6 +23,16 @@ focus_tags:
 - training-algorithm
 tags:
 - DeepLoop
+survey_section:
+- train/stability
+- design/residual-injection
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- stability
+comparison: []
+survey_core: false
 desc: Studies depth scaling in looped Transformers, showing how residual scaling can
   stabilize repeated use of compact physical blocks across many recurrent rounds.
 links:

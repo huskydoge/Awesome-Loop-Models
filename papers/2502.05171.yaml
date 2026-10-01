@@ -26,6 +26,21 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- scaling/test-time
+- design/topology
+- design/residual-injection
+- design/depth-control
+- benefits/efficiency
+- applications/language-speech-multimodal
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: sampled-train
+claims:
+- test-time-scaling
+- compute-efficiency
+comparison: []
+survey_core: true
 desc: Presents Huginn, a 3.5B-parameter recurrent-depth language model trained on
   800B tokens whose shared core can be unrolled to variable depth; reasoning performance
   improves with additional test-time recurrences, and the architecture supports zero-shot

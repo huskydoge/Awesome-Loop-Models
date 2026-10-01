@@ -22,6 +22,19 @@ tags:
 - MoE
 focus_tags:
 - architecture
+survey_section:
+- design/state-memory
+- design/loop-x
+loop_topology: whole-stack
+sharing: expert-routed
+depth_control: unspecified
+claims:
+- data-efficiency
+- param-efficiency
+comparison:
+- iso-flop
+- iso-param
+survey_core: false
 desc: Introduces Dreamer, a depth-recurrent attention-mixture framework combining
   sequence, depth, and sparse expert attention, and reports higher reasoning accuracy
   and data efficiency than tightly FLOP-, parameter-, and memory-matched baselines.

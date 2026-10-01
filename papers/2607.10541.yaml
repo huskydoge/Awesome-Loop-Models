@@ -23,6 +23,17 @@ focus_tags:
 - inference-algorithm
 tags:
 - RecRec
+survey_section:
+- applications/embodied-other
+- design/residual-injection
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- stability
+comparison: []
+survey_core: false
 desc: Builds a recursive refinement recommender that repeatedly updates a compact
   latent state through a shared module conditioned on interaction evidence.
 links:

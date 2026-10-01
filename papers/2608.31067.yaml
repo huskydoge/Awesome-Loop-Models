@@ -19,6 +19,18 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/generalization
+- benefits/expressivity
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- length-generalization
+- expressivity
+- param-efficiency
+comparison: []
+survey_core: false
 desc: Introduces a compact Universal Transformer that repeatedly applies one learned
   circuit-reduction step with autonomous depth-based halting, enabling exact generalization
   to much deeper symbolic expressions.

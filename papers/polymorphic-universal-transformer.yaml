@@ -29,6 +29,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/sharing-scheme
+- design/depth-control
+loop_topology: whole-stack
+sharing: expert-routed
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- failure-mode
+comparison: []
+survey_core: false
 desc: Introduces the Polymorphic Universal Transformer, adding conditional sparse
   subspaces and uncertainty-aware depth scheduling to shared-parameter recurrence
   to reduce compute while mitigating representational collapse.

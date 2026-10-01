@@ -18,6 +18,17 @@ focus_tags:
 - inference-algorithm
 tags:
 - DEQ
+survey_section:
+- benefits/limits
+- train/gradients
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- failure-mode
+comparison:
+- unclear
+survey_core: false
 desc: Audits physics-structured deep equilibrium reasoning and shows a lazy identity-collapse
   failure mode where fixed-point computation can degenerate around initialization.
 links:

@@ -18,6 +18,19 @@ tags:
 - implicit-reasoning
 focus_tags:
 - inference-algorithm
+survey_section:
+- benefits/generalization
+- benefits/efficiency
+loop_topology: whole-stack
+sharing: full
+depth_control: unspecified
+claims:
+- length-generalization
+- test-time-scaling
+- failure-mode
+comparison:
+- unclear
+survey_core: false
 desc: Studies implicit reasoning in recurrent-depth transformers, showing that iterating
   shared transformer layers can unlock systematic generalization and depth extrapolation
   while also exposing overthinking limits.

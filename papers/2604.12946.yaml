@@ -22,6 +22,20 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- scaling/compute-optimal
+- design/depth-control
+- scaling/test-time
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: unspecified
+claims:
+- stability
+- test-time-scaling
+- param-efficiency
+comparison:
+- iso-param
+survey_core: true
 desc: Introduces Parcae, a stable looped language model that constrains injection
   spectral norms to prevent instability and studies isoFLOPs-style training- and test-time
   scaling laws for quality gains under fixed-parameter budgets.

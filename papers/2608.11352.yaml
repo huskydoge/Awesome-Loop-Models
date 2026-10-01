@@ -20,6 +20,16 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/language-speech-multimodal
+- design/residual-injection
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
 desc: Replaces residual updates in an iterative sign-language translation decoder
   with ODE-inspired RK-2 and RK-4 updates that repeatedly evaluate the same learned
   decoder function without adding decoder parameters.

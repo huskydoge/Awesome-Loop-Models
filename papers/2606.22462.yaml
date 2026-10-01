@@ -21,6 +21,16 @@ focus_tags:
 - training-algorithm
 tags:
 - AdaR
+survey_section:
+- applications/graphs-science
+- scaling/test-time
+loop_topology: whole-stack
+sharing: full
+depth_control: convergence
+claims:
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Introduces AdaR, an adaptive recurrent graph model that repeatedly applies learned
   recurrent message-passing updates with step conditioning, enabling flexible test-time
   compute on graph tasks without changing model parameters.

@@ -19,6 +19,18 @@ domain_tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- scaling/compute-optimal
+- design/depth-control
+- design/residual-injection
+loop_topology: whole-stack
+sharing: full
+depth_control: sampled-train
+claims:
+- compute-efficiency
+- data-efficiency
+comparison: []
+survey_core: false
 desc: Studies compute-optimal scaling in prelude-core-coda Transformers, finding that
   tied loop growth improves the fitted scaling exponent while trailing untied growth
   by a constant factor, and that more loops regularize data-constrained multi-epoch

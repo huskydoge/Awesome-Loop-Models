@@ -25,6 +25,20 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/loop-x
+- outlook/diffusion
+- train/retrofitting
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- param-efficiency
+- memory-efficiency
+- compute-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Replaces part of a masked generative model denoiser with a fixed-point solver
   over shared attention layers, using consistency training and solver-state reuse
   to adapt depth with fewer parameters.

@@ -26,6 +26,16 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/depth-control
+- systems/kv-memory
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Introduces AdaPonderLM, a self-supervised recurrent language model with token-wise
   halting gates and KV reuse, allocating more loop steps to hard tokens under a fixed
   compute budget.

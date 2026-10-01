@@ -19,6 +19,16 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- foundations/recurrence
+- design/depth-control
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+comparison: []
+survey_core: true
 desc: Introduces ACT, a deterministic differentiable halting algorithm that lets an
   RNN learn a variable number of shared state transitions between receiving each input
   and emitting an output.

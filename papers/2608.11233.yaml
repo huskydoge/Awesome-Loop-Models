@@ -19,6 +19,19 @@ focus_tags:
 - architecture
 - objective-loss
 - training-algorithm
+survey_section:
+- train/retrofitting
+- benefits/generalization
+- train/supervision
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- length-generalization
+- compute-efficiency
+comparison:
+- iso-param
+survey_core: false
 desc: Retrofits Qwen2.5-0.5B with a weight-tied recurrent middle block and re-entry
   bridge, installing iterative latent computation at full-block and frozen-base adapter
   training budgets.

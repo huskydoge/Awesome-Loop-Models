@@ -74,6 +74,17 @@ focus_tags:
 #   data
 #   inference-algorithm
 
+# Survey-aligned axes (see TAXONOMY.md for the full vocabulary).
+survey_section:            # every survey section that fits; first = primary
+  - "design/topology"
+loop_topology: "prelude-core-coda"   # whole-stack | prelude-core-coda | partial | hierarchical | shifted-parallel | implicit-fixed-point | unspecified
+sharing: "full"                      # full | partial-adapter | expert-routed | unspecified
+depth_control: "sampled-train"       # fixed | sampled-train | adaptive-halting | convergence | unspecified
+claims:                              # param-efficiency, compute-efficiency, memory-efficiency, data-efficiency,
+  - "test-time-scaling"              # expressivity, length-generalization, test-time-scaling, stability, failure-mode
+comparison: []                       # iso-param | iso-flop | iso-depth | unclear; [] if no looped-vs-untied comparison
+survey_core: false
+
 desc: >
   One concise sentence describing the paper's core contribution.
 

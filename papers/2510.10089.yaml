@@ -1,0 +1,36 @@
+title: 'What Makes Looped Transformers Perform Better Than Non-Recursive Ones'
+authors:
+- 'Zixuan Gong'
+- 'Yong Liu'
+- 'Jiaye Teng'
+year: 2025
+published_date: '2025-10-11'
+added_date: "2026-10-01"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- theory
+tags:
+- 'looped-transformer'
+focus_tags:
+- training-algorithm
+survey_section:
+- train/stability
+- design/depth-control
+- benefits/expressivity
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- expressivity
+comparison:
+- unclear
+survey_core: false
+desc: 'Explains why looped transformers beat single-pass ones on reasoning through loss-landscape geometry, arguing recursion biases training toward steep River-V-Valleys, and proposes SHIFT, a staged progressive training scheme that speeds up looped-transformer training at comparable performance.'
+links:
+  arxiv: https://arxiv.org/abs/2510.10089
+  alphaxiv: https://www.alphaxiv.org/abs/2510.10089

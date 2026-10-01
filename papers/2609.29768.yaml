@@ -20,6 +20,18 @@ tags:
 - flow matching
 focus_tags:
 - architecture
+survey_section:
+- applications/language-speech-multimodal
+- design/topology
+- design/sharing-scheme
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- iso-depth
+survey_core: false
 desc: Compares seven weight-reuse layouts for flow-matching text-to-speech Transformers
   at a fixed 18 block calls, finding that applying nine blocks twice keeps competitive
   intelligibility and speaker similarity with 47.1 percent fewer parameters, and that

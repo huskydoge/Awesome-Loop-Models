@@ -25,6 +25,19 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/language-speech-multimodal
+- scaling/test-time
+- design/sharing-scheme
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: unspecified
+claims:
+- test-time-scaling
+- param-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Introduces LARM, a depth-conditioned looped Transformer for automatic speech
   recognition that reuses a shared acoustic-encoder block recurrently and scales recognition
   quality by increasing inference-time loop count.

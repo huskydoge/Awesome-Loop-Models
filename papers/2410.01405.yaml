@@ -20,6 +20,16 @@ tags:
 - TMLT
 focus_tags:
 - architecture
+survey_section:
+- benefits/expressivity
+- design/sharing-scheme
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- expressivity
+comparison: []
+survey_core: false
 desc: Derives approximation-rate bounds and an architecture-specific limitation for
   looped Transformers, then introduces the Timestep-Modulated Looped Transformer (TMLT)
   to condition per-loop scaling parameters on timestep encodings.

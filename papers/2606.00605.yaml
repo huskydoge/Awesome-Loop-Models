@@ -20,6 +20,16 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- benefits/expressivity
+- design/residual-injection
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- expressivity
+comparison: []
+survey_core: false
 desc: Proves that a looped linear transformer with layer normalization, trained only
   for principal component prediction, converges to a solution implementing the power
   method, with each self-attention layer performing one power iteration.

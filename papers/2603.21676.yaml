@@ -20,6 +20,20 @@ focus_tags:
 - architecture
 - objective-loss
 - inference-algorithm
+survey_section:
+- benefits/generalization
+- design/residual-injection
+- train/supervision
+loop_topology: whole-stack
+sharing: full
+depth_control: unspecified
+claims:
+- length-generalization
+- memory-efficiency
+- param-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Introduces a depth-recurrent Transformer for compositional generalization, with
   silent thinking, LayerScale, and identity-biased recurrence enabling stable deep
   latent iteration.

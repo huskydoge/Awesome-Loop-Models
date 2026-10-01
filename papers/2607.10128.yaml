@@ -16,6 +16,17 @@ domain_tags:
 focus_tags:
 - inference-algorithm
 - objective-loss
+survey_section:
+- scaling/test-time
+- design/depth-control
+loop_topology: unspecified
+sharing: full
+depth_control: unspecified
+claims:
+- test-time-scaling
+- failure-mode
+comparison: []
+survey_core: false
 desc: 'Recursive reasoning models address structured problems by repeatedly updating
   latent states of small neural networks. However, their test-time scaling lacks a
   principled inference mechanism: increasing depth or stochastic breadth generates

@@ -23,6 +23,17 @@ tags:
 focus_tags:
 - training-algorithm
 - inference-algorithm
+survey_section:
+- benefits/limits
+- design/depth-control
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- failure-mode
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Diagnoses adaptive depth in looped Transformers through a trajectory-readout
   lens, finding that fixed-prior depth supervision shapes more useful stopping signals
   than jointly learned halting gates, on synthetic tasks and Ouro-1.4B/2.6B checkpoints.

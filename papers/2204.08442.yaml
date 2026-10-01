@@ -22,6 +22,17 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/flow-3d
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- memory-efficiency
+- compute-efficiency
+- stability
+comparison: []
+survey_core: false
 desc: Recasts recurrent optical-flow estimation as an implicit fixed-point layer with
   analytic differentiation, fixed-point reuse, and sparse correction for lower memory
   use and faster convergence.

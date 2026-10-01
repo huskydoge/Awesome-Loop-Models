@@ -21,6 +21,16 @@ tags:
 - HRM
 focus_tags:
 - architecture
+survey_section:
+- interpretability
+- design/topology
+loop_topology: hierarchical
+sharing: full
+depth_control: unspecified
+claims: []
+comparison:
+- iso-param
+survey_core: false
 desc: Modifies the Hierarchical Reasoning Model into a multi-stream recursive architecture
   whose layers repeatedly call shared per-stream step functions, aiming at scalable
   mechanistic interpretability while matching GPT-2 on a per-parameter basis and revealing

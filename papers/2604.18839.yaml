@@ -26,6 +26,16 @@ tags:
 focus_tags:
 - objective-loss
 - training-algorithm
+survey_section:
+- outlook/diffusion
+- train/supervision
+- design/loop-x
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Introduces Denoising Recursion Models, a looped-transformer training method
   that corrupts targets and trains recursive refinement over multiple steps, improving
   ARC-AGI reasoning over TRM.

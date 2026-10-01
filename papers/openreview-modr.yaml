@@ -24,6 +24,16 @@ focus_tags:
 - architecture
 - inference-algorithm
 - training-algorithm
+survey_section:
+- design/sharing-scheme
+- scaling/test-time
+loop_topology: shifted-parallel
+sharing: expert-routed
+depth_control: unspecified
+claims:
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Introduces MoDr, which adds multi-branch routing to a depth-recurrent Transformer
   so looped models can explore solution paths more adaptively at test time.
 links:

@@ -23,6 +23,18 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/vision
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- param-efficiency
+- memory-efficiency
+- compute-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Introduces VIAR, replacing the deep middle stack of a visual autoregressive
   generator with an implicit equilibrium layer trained by Jacobian-Free Backpropagation
   and controlled by per-scale iteration budgets at inference.

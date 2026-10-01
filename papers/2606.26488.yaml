@@ -26,6 +26,18 @@ tags:
 focus_tags:
 - inference-algorithm
 - architecture
+survey_section:
+- systems/quantization-edge
+- benefits/limits
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims:
+- failure-mode
+- memory-efficiency
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Analyzes compression of TRM/HRM recursive reasoners, finding that naïve INT4,
   pruning, distillation, and linear attention can preserve cell accuracy while collapsing
   puzzle-exact accuracy; calibrated per-channel INT4 largely recovers Sudoku performance,

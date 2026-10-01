@@ -29,6 +29,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/topology
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- compute-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Introduces SpiralFormer, a looped transformer that applies shared layers under
   a multi-resolution recursion schedule to learn hierarchical dependencies more efficiently
   than fixed-resolution recurrent baselines.

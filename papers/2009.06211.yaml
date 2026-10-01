@@ -20,6 +20,16 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- foundations/implicit
+- applications/graphs-science
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- expressivity
+comparison: []
+survey_core: false
 desc: Defines graph representations as the solution of a learned fixed-point equation,
   with well-posedness conditions and implicit-differentiation training for long-range
   graph dependencies.

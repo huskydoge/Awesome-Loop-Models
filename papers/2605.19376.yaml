@@ -25,6 +25,16 @@ focus_tags:
 - objective-loss
 - training-algorithm
 - inference-algorithm
+survey_section:
+- scaling/test-time
+- train/supervision
+loop_topology: hierarchical
+sharing: full
+depth_control: unspecified
+claims:
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Introduces GRAM, a probabilistic recursive-reasoning framework that models reasoning
   as stochastic latent trajectories, enabling multi-hypothesis computation, variational
   training, and inference-time scaling through depth and parallel sampling.

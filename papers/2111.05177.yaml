@@ -19,6 +19,15 @@ tags:
 - phantom-gradient
 focus_tags:
 - training-algorithm
+survey_section:
+- train/gradients
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Proposes phantom gradient, a lightweight backpropagation estimator for implicit
   (infinite-depth) models that uses damped unrolling and a truncated Neumann series
   to speed backward passes while matching or surpassing exact-gradient baselines on

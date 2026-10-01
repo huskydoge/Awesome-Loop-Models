@@ -25,6 +25,15 @@ focus_tags:
 - data
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/graphs-science
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- data-efficiency
+comparison: []
+survey_core: false
 desc: Reuses a single learned canonical inverse operator inside a fixed-point recast
   for parameter-varying PDEs, enabling zero-shot extrapolation while exposing failure
   through loss of convergence.

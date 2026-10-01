@@ -19,6 +19,16 @@ tags:
 - WISE
 focus_tags:
 - inference-algorithm
+survey_section:
+- systems/kv-memory
+- interpretability
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Finds that attention support in recurrent-depth language models stabilizes earlier
   than hidden states and introduces WISE, a training-free method that uses global
   attention in early recurrent steps and reuses the discovered sparse working set

@@ -23,6 +23,14 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/language-speech-multimodal
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims: []
+comparison: []
+survey_core: false
 desc: Adapts the Universal Transformer to speech recognition with shared iterative
   encoder and decoder computation, dynamic depth, one-time positional encoding, and
   full hidden-state updates.

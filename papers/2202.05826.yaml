@@ -25,6 +25,18 @@ focus_tags:
 - training-algorithm
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/generalization
+- foundations/algorithmic
+- design/residual-injection
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: sampled-train
+claims:
+- length-generalization
+- failure-mode
+comparison: []
+survey_core: true
 desc: Introduces a recall architecture and progressive training objective that prevent
   overthinking, enabling shared recurrent networks to extrapolate over thousands of
   test-time iterations.

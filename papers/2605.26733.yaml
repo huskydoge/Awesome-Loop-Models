@@ -29,6 +29,19 @@ tags:
 focus_tags:
 - training-algorithm
 - inference-algorithm
+survey_section:
+- train/stability
+- benefits/limits
+- scaling/test-time
+loop_topology: whole-stack
+sharing: full
+depth_control: sampled-train
+claims:
+- stability
+- test-time-scaling
+- failure-mode
+comparison: []
+survey_core: false
 desc: Diagnoses why Looped Language Models can collapse at larger recurrence depths
   and proposes STARS, which combines Jacobian spectral-radius regularization with
   random loop sampling to encourage stable recurrent dynamics and improve test-time

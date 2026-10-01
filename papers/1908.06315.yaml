@@ -21,6 +21,15 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- foundations/implicit
+- train/stability
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims: []
+comparison: []
+survey_core: false
 desc: Formulates neural prediction as a learned fixed-point equation and develops
   well-posed implicit architectures, training schemes, and robustness analysis.
 links:

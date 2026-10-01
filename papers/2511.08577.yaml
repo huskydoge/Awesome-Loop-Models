@@ -27,6 +27,18 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/depth-control
+- design/sharing-scheme
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- failure-mode
+comparison:
+- iso-param
+survey_core: false
 desc: Introduces Think-at-Hard, a dynamic latent-thinking method that uses a learned
   decider to apply extra recurrent latent iterations only to hard tokens, with LoRA
   refiners and duo-causal attention across iteration depth.

@@ -22,6 +22,19 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- foundations/depth-sharing
+- benefits/efficiency
+- design/sharing-scheme
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- memory-efficiency
+comparison:
+- unclear
+survey_core: true
 desc: Introduces factorized embeddings and cross-layer parameter sharing to reduce
   BERT's parameter footprint while retaining or improving performance at larger model
   scales.

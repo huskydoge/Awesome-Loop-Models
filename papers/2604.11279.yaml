@@ -19,6 +19,15 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- applications/vision
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- memory-efficiency
+comparison: []
+survey_core: false
 desc: Recasts hyperspectral unmixing as a deep equilibrium model, replacing the reconstruction-gradient
   operator with a trainable convolutional update and solving for an implicit fixed
   point with constant-memory differentiation.

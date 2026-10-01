@@ -19,6 +19,16 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/expressivity
+- applications/graphs-science
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- expressivity
+comparison: []
+survey_core: false
 desc: Studies weight-tied dynamics for set-valued solution maps, proving that regular
   equilibrium dynamics can represent multiple branches; experiments discover multiple
   low-energy Ising equilibria, while Allen-Cahn requires explicit diversity promotion

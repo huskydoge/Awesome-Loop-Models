@@ -21,6 +21,16 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/language-speech-multimodal
+- train/supervision
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Reuses one FastMTP draft block recursively for three speculative prediction
   steps in an OCR vision-language model, doubling decoding speed over greedy autoregressive
   decoding on an NVIDIA L4 while retaining lossless greedy verification.

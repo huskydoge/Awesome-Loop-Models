@@ -20,6 +20,17 @@ tags:
 - Huginn
 focus_tags:
 - inference-algorithm
+survey_section:
+- systems/kv-memory
+- systems/quantization-edge
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+- memory-efficiency
+comparison: []
+survey_core: false
 desc: Training-free inference framework for looped Transformers that exploits cross-loop
   redundancy with token-sparse updates, loop-aware sparse attention, and KV-residual
   quantization, reporting lossless accuracy with up to 1.64 times end-to-end speedup

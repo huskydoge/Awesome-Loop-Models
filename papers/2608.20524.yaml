@@ -18,6 +18,14 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/vision
+loop_topology: whole-stack
+sharing: unspecified
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Unrolls an ADMM-inspired Poisson inverse-problem solver whose shared CLIP-based
   learned prior is reused across reconstruction iterations for robust self-supervised
   imaging.

@@ -23,6 +23,16 @@ focus_tags:
 - objective-loss
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/graphs-science
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- length-generalization
+comparison:
+- unclear
+survey_core: false
 desc: Introduces HamEvo, a fixed-point neural operator for Kohn-Sham Hamiltonian prediction
   that learns a single-step self-consistent update and returns the converged Hamiltonian
   as the learned operator's fixed point, improving electronic-structure prediction

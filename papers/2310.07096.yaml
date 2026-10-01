@@ -26,6 +26,18 @@ focus_tags:
 - architecture
 - objective-loss
 - inference-algorithm
+survey_section:
+- design/loop-x
+- design/depth-control
+loop_topology: whole-stack
+sharing: expert-routed
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- param-efficiency
+- length-generalization
+comparison: []
+survey_core: false
 desc: Combines the Universal Transformer's shared recurrent block with sparse mixtures
   of experts and stick-breaking halting to reduce compute while preserving compositional
   generalization.

@@ -16,6 +16,14 @@ domain_tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- applications/embodied-other
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Extends PPO with a shared residual policy network that repeatedly refines an
   action proposal within one policy forward process, improving performance on 13 of
   14 continuous-control tasks in the reported evaluation.

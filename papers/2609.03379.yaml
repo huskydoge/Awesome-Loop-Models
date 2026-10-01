@@ -23,6 +23,16 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/state-memory
+- design/depth-control
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Adds loop-time attention over prior iteration states and oracle-distilled adaptive
   halting to a fully weight-tied recurrent Qwen3 block, improving matched-compute
   reasoning across 0.6B-8B models.

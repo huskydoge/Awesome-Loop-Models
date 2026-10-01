@@ -21,6 +21,16 @@ focus_tags:
 - architecture
 - objective-loss
 - training-algorithm
+survey_section:
+- train/supervision
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- stability
+comparison:
+- unclear
+survey_core: false
 desc: Guides each reuse of a shared Transformer stack with a soft multi-token alignment
   target, then learns to aggregate intermediate loop states to reduce redundant computation
   and latent overthinking.

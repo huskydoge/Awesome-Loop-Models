@@ -21,6 +21,16 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/depth-control
+- applications/language-speech-multimodal
+loop_topology: hierarchical
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Explores a compact autoregressive language model with a Hierarchical Reasoning
   Module that iterates through high-level and low-level reasoning cycles and learns
   input-dependent halting behavior for adaptive reasoning depth.

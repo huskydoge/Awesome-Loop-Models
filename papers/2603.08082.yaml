@@ -19,6 +19,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/limits
+- benefits/efficiency
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims:
+- failure-mode
+comparison:
+- iso-flop
+survey_core: false
 desc: Studies compute placement in autoregressive Transformers under matched block-pass
   budgets, finding that untied depth and flat two-stream recurrence perform best on
   small character-level algorithmic tasks while the full Autoregressive TRM provides

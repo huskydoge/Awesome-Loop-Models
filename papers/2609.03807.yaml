@@ -23,6 +23,18 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/topology
+- systems/kv-memory
+loop_topology: shifted-parallel
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+- memory-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Introduces a parallel prediction stream that shares every Transformer backbone
   weight and reads the state stream's per-layer KV states, improving 1B next-token
   loss with essentially unchanged decode latency.

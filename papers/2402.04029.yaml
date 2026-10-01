@@ -1,0 +1,33 @@
+title: 'Positive concave deep equilibrium models'
+authors:
+- 'Mateusz Gabor'
+- 'Tomasz Piotrowski'
+- 'Renato L. G. Cavalcante'
+year: 2024
+published_date: '2024-02-06'
+added_date: "2026-10-01"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- implicit-layer
+domain_tags:
+- vision
+- theory
+tags:
+- 'DEQ'
+focus_tags:
+- architecture
+survey_section:
+- train/stability
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- stability
+comparison: []
+survey_core: false
+desc: 'Introduces positive concave DEQ models that, via nonlinear Perron-Frobenius theory, use nonnegative weights and concave activations to guarantee a unique fixed point and geometric convergence of plain fixed-point iteration, remaining competitive with other implicit models.'
+links:
+  arxiv: https://arxiv.org/abs/2402.04029
+  alphaxiv: https://www.alphaxiv.org/abs/2402.04029

@@ -24,6 +24,19 @@ tags:
 focus_tags:
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/depth-control
+- scaling/test-time
+- train/post-training
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- test-time-scaling
+- compute-efficiency
+comparison:
+- iso-flop
+survey_core: false
 desc: Measures test-time scaling of looped Transformers as accuracy gain per doubling
   of decoding FLOPs and proposes TaH2, which post-trains a looped backbone with an
   iteration decider supervised by lookahead depth labels so only tokens that benefit

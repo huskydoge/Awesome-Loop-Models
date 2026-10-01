@@ -20,6 +20,17 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/topology
+- scaling/compute-optimal
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison:
+- iso-param
+survey_core: false
 desc: Introduces MixerLoop, which repeatedly applies each shared Gated DeltaNet token
   mixer while executing its dense FFN once, preserving recurrent-depth benefits with
   lower projection cost and higher prefill throughput.

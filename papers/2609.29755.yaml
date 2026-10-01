@@ -22,6 +22,14 @@ tags:
 - LoRA
 focus_tags:
 - architecture
+survey_section:
+- applications/graphs-science
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Applies low-rank adaptation to pretrained neural cellular automata whose shared
   local update rule grows morphologies from a single cell, showing rank-one adapters
   implement scaling transformations that combine, transfer zero-shot across phenotypes,

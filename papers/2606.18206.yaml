@@ -24,6 +24,18 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/residual-injection
+- design/depth-control
+- train/stability
+loop_topology: whole-stack
+sharing: full
+depth_control: convergence
+claims:
+- stability
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Introduces FPRM, a Transformer-based Fixed-Point Reasoning Model that repeatedly
   applies a looped reasoning block and uses fixed-point convergence as an end-to-end
   halting signal, adapting test-time compute to task difficulty on Sudoku, Maze, state-tracking,

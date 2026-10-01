@@ -18,6 +18,18 @@ domain_tags:
 focus_tags:
 - architecture
 - data
+survey_section:
+- benefits/efficiency
+- scaling/compute-optimal
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- data-efficiency
+- param-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Introduces RecursiveGPT, reusing one causal Transformer block across fixed recurrent
   depth with factorized embeddings to scale per-token compute without proportionally
   increasing parameters under limited-data pretraining.

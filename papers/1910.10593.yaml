@@ -18,6 +18,15 @@ domain_tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- foundations/algorithmic
+- applications/graphs-science
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: adaptive-halting
+claims: []
+comparison: []
+survey_core: true
 desc: Trains a shared GNN processor to execute graph algorithms step by step, demonstrating
   benefits from max aggregation and positive transfer between reachability and shortest-path
   tasks.

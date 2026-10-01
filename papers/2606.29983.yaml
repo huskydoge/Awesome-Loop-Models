@@ -24,6 +24,18 @@ tags:
 - looped-transformer
 - depth-scaling
 - halting
+survey_section:
+- design/depth-control
+- scaling/test-time
+- train/post-training
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- length-generalization
+- stability
+comparison: []
+survey_core: false
 desc: Studies looped Transformers that repeatedly apply a shared Transformer block,
   showing that stochastic training-time loop counts and learned stochastic stopping
   can reduce out-of-distribution variance across inference loop counts on algorithmic
