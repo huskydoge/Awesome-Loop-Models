@@ -33,15 +33,15 @@ links:
   github: https://github.com/aks2203/deep-thinking
   paper: https://proceedings.neurips.cc/paper_files/paper/2022/hash/7f70331dbe58ad59d83941dfa7d975aa-Abstract-Conference.html
 citation_source_best: semantic_scholar
-citations: 32
+citations: 34
 citation_sources:
-  semantic_scholar: 32
+  semantic_scholar: 34
   openalex: 3
   opencitations: 0
 star_source_best: github_api
 github_stars: 92
 star_sources:
   github_api: 92
-metrics_updated: '2026-09-30'
+metrics_updated: '2026-10-01'
 peer_reviewed: true
 venue_source: https://proceedings.neurips.cc/paper_files/paper/2022/hash/7f70331dbe58ad59d83941dfa7d975aa-Abstract-Conference.html
