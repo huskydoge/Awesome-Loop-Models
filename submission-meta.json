@@ -251,6 +251,18 @@
     "papers/2609.35274.yaml",
     "papers/2609.35748.yaml",
     "papers/2609.35751.yaml",
+    "papers/2609.38426.yaml",
+    "papers/2609.39892.yaml",
+    "papers/2609.39967.yaml",
+    "papers/2609.40305.yaml",
+    "papers/2609.40316.yaml",
+    "papers/2610.00368.yaml",
+    "papers/2610.00541.yaml",
+    "papers/2610.00673.yaml",
+    "papers/2610.01153.yaml",
+    "papers/2610.02185.yaml",
+    "papers/2610.02383.yaml",
+    "papers/2610.02741.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -262,7 +274,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 216
+        "count": 227
       },
       {
         "label": "implicit-layer",
@@ -270,7 +282,7 @@
       },
       {
         "label": "hierarchical-loop",
-        "count": 24
+        "count": 25
       },
       {
         "label": "parallel-loop",
@@ -280,45 +292,45 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 206
+        "count": 215
       },
       {
         "label": "inference-algorithm",
-        "count": 166
+        "count": 171
       },
       {
         "label": "training-algorithm",
-        "count": 110
+        "count": 114
       },
       {
         "label": "objective-loss",
-        "count": 29
+        "count": 30
       },
       {
         "label": "data",
-        "count": 6
+        "count": 7
       }
     ],
     "domain": [
       {
         "label": "efficiency",
-        "count": 125
+        "count": 126
       },
       {
         "label": "language-modeling",
-        "count": 117
+        "count": 123
       },
       {
         "label": "reasoning",
-        "count": 116
+        "count": 122
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 59
+        "count": 62
       },
       {
         "label": "adaptive-compute",
-        "count": 39
+        "count": 41
       },
       {
         "label": "theory",
@@ -326,19 +338,19 @@
       },
       {
         "label": "vision",
-        "count": 34
+        "count": 37
       },
       {
         "label": "scaling",
-        "count": 33
+        "count": 35
       },
       {
         "label": "memory-efficiency",
-        "count": 26
+        "count": 27
       },
       {
         "label": "graph-data",
-        "count": 17
+        "count": 18
       },
       {
         "label": "sequence-modeling",
@@ -349,11 +361,11 @@
         "count": 9
       },
       {
-        "label": "machine-translation",
-        "count": 6
+        "label": "multimodal",
+        "count": 7
       },
       {
-        "label": "multimodal",
+        "label": "machine-translation",
         "count": 6
       },
       {
@@ -361,12 +373,16 @@
         "count": 4
       },
       {
+        "label": "rl-control",
+        "count": 4
+      },
+      {
         "label": "hardware-aware",
         "count": 3
       },
       {
-        "label": "rl-control",
-        "count": 3
+        "label": "alignment",
+        "count": 2
       },
       {
         "label": "recommendation",
@@ -389,8 +405,8 @@
         "count": 2
       },
       {
-        "label": "alignment",
-        "count": 1
+        "label": "world-modeling",
+        "count": 2
       },
       {
         "label": "biology",
@@ -430,10 +446,6 @@
       },
       {
         "label": "summarization",
-        "count": 1
-      },
-      {
-        "label": "world-modeling",
         "count": 1
       }
     ]

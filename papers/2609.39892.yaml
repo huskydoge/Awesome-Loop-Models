@@ -1,0 +1,27 @@
+title: "Shared Weights, Selected Computations: How Looped Transformers Route What Each Loop Does"
+authors:
+- "Jiaju Wu"
+- "Yi Hu"
+- "Muhan Zhang"
+year: 2026
+published_date: "2026-09-30"
+added_date: "2026-10-04"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- algorithmic-reasoning
+- graph-data
+tags:
+- "looped-transformer"
+- "mechanistic-analysis"
+focus_tags:
+- architecture
+- training-algorithm
+desc: "Uses graph walks to show that the loops of a looped Transformer need not repeat one fixed step: a learned linear map on the hidden state entering a frozen loop selects which transition the shared layers perform, activation patching traces this control to attention routing, and the intermediate supervision used in backbone training determines which transitions can be selected."
+links:
+  arxiv: https://arxiv.org/abs/2609.39892
+  alphaxiv: https://www.alphaxiv.org/abs/2609.39892
+  github: https://github.com/wjjpku/howloop

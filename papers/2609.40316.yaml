@@ -1,0 +1,26 @@
+title: "Scaling Laws for Looped Mixture of Experts"
+authors:
+- "Yanbei Chen"
+- "Anirudh Goyal"
+- "Raghuraman Krishnamoorthi"
+year: 2026
+published_date: "2026-09-30"
+added_date: "2026-10-04"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- scaling
+- language-modeling
+tags:
+- "MoE"
+- "LoopMoE"
+- "scaling-laws"
+focus_tags:
+- architecture
+desc: "Proposes Loop Scaling Laws that jointly model recurrence, MoE sparsity, model size and data through a bounded, sparsity-conditional effective-parameter gain from looping, predicting held-out loss better than linear or power-law alternatives; at matched training compute on trillion-token runs, a looped MoE with law-derived recurrence matches a roughly 2x larger non-looped MoE on reasoning benchmarks."
+links:
+  arxiv: https://arxiv.org/abs/2609.40316
+  alphaxiv: https://www.alphaxiv.org/abs/2609.40316
