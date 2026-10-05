@@ -1,0 +1,32 @@
+title: "Closing the Loop: Practical Training Recipes for Looped Language Models"
+authors:
+- "Andrei Marchenko"
+- "Viacheslav Bezrukov"
+- "Oleg Kashurin"
+- "Inessa Fedorova"
+- "Dmitry Bocharov"
+- "Yuliana Shakhvalieva"
+- "Maria Tikhonova"
+- "Valerii Ternovskii"
+year: 2026
+published_date: "2026-09-30"
+added_date: "2026-10-04"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- "LoopLM"
+- "Ouro"
+- "looped-llm"
+focus_tags:
+- training-algorithm
+- data
+desc: "Gives compute-efficient recipes for looped language models: a from-scratch pipeline that cuts training from Ouro's 7.7T to 310B tokens using mid-training, learning-rate warmup and stronger exit-gate regularization, yielding a 1.4B LoopLM that beats a parameter-matched dense model on all 12 benchmarks, plus a minimal recipe that converts Qwen3-1.7B-Base into a looped model with one learned input-mixing scalar and a smoothed exit loss."
+links:
+  arxiv: https://arxiv.org/abs/2610.00673
+  alphaxiv: https://www.alphaxiv.org/abs/2610.00673

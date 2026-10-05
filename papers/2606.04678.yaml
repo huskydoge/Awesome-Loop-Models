@@ -32,13 +32,13 @@ links:
   arxiv: https://arxiv.org/abs/2606.04678
   alphaxiv: https://www.alphaxiv.org/abs/2606.04678
   github: https://github.com/idiap/LARM
-citations: 1
+citations: 2
 citation_sources:
-  semantic_scholar: 1
+  semantic_scholar: 2
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-09-30'
+metrics_updated: '2026-10-03'
 star_source_best: github_api
 github_stars: 4
 star_sources:
