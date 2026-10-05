@@ -1,0 +1,33 @@
+title: "DeepJEPA: Scaling World Models from Within"
+authors:
+- "Zijian Jin"
+- "Yunbei Zhang"
+- "Yuanzhe Liu"
+- "Ming Liu"
+- "Baian Chen"
+- "Weirui Ye"
+- "Shilong Liu"
+- "Marco Pavone"
+year: 2026
+published_date: "2026-09-30"
+added_date: "2026-10-04"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- world-modeling
+- rl-control
+- adaptive-compute
+tags:
+- "DeepJEPA"
+- "halting"
+- "test-time-compute"
+focus_tags:
+- architecture
+- inference-algorithm
+desc: "Turns each imagined transition of a JEPA world-model planner into a weight-tied recurrent cell with a learned continue head that decides per candidate and rollout step whether to run another update; across five visual-control settings it improves or matches the best fixed-depth planner while averaging only 1.00 to 1.26 updates per transition, with extra computation concentrated at contact events."
+links:
+  arxiv: https://arxiv.org/abs/2610.00368
+  alphaxiv: https://www.alphaxiv.org/abs/2610.00368

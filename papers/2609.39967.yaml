@@ -1,0 +1,32 @@
+title: "What Limits Recursive Reasoning Models: Optimization, Architecture and Test-Time Scaling"
+authors:
+- "Yuliana Shakhvalieva"
+- "Dmitrii Kharchev"
+- "Viacheslav Bezrukov"
+- "Inessa Fedorova"
+- "Dmitry Bocharov"
+- "Ivan Oseledets"
+- "Valerii Ternovskii"
+year: 2026
+published_date: "2026-09-30"
+added_date: "2026-10-04"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- algorithmic-reasoning
+- reasoning
+tags:
+- "HRM"
+- "TRM"
+- "URM"
+- "recursive-transformer"
+focus_tags:
+- training-algorithm
+- architecture
+desc: "Compares HRM, TRM and URM-style recursive reasoners under one pipeline across six algorithmic domains and finds that an intermediate gradient horizon, large physical batches and bounded, gated recurrent-state updates matter more than an explicit hierarchy; the resulting 13.6M-parameter shared-block model reaches 71.2 percent Arithmetic OOD accuracy versus 36.2 percent for the strongest baseline, 98.41 percent on Sudoku and 59.5 percent pass@2 on ARC-AGI-1."
+links:
+  arxiv: https://arxiv.org/abs/2609.39967
+  alphaxiv: https://www.alphaxiv.org/abs/2609.39967
