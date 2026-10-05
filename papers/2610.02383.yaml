@@ -19,7 +19,6 @@ domain_tags:
 - language-modeling
 - memory-efficiency
 tags:
-- "LPT"
 - "looped-transformer"
 - "memory-banks"
 focus_tags:

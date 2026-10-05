@@ -22,7 +22,6 @@ domain_tags:
 tags:
 - "Huginn"
 - "Parcae"
-- "OrthoInj"
 - "fixed-point-analysis"
 - "depth-recurrent"
 focus_tags:

@@ -15,7 +15,7 @@ domain_tags:
 - reasoning
 - vision
 tags:
-- "RRM"
+- "recursive-transformer"
 - "TRM"
 - "HRM"
 - "test-time-compute"
