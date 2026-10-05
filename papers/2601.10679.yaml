@@ -1,10 +1,11 @@
-title: 'Are Your Reasoning Models Reasoning or Guessing? A Mechanistic Analysis of Hierarchical Reasoning Models'
+title: Are Your Reasoning Models Reasoning or Guessing? A Mechanistic Analysis of
+  Hierarchical Reasoning Models
 authors:
-- 'Zirui Ren'
-- 'Ziming Liu'
+- Zirui Ren
+- Ziming Liu
 year: 2026
 published_date: '2026-01-15'
-added_date: "2026-10-01"
+added_date: '2026-10-01'
 venue: arXiv
 category: analysis
 foundation: false
@@ -14,8 +15,8 @@ domain_tags:
 - reasoning
 - algorithmic-reasoning
 tags:
-- 'HRM'
-- 'mechanistic-analysis'
+- HRM
+- mechanistic-analysis
 focus_tags:
 - inference-algorithm
 survey_section:
@@ -28,7 +29,17 @@ claims:
 - failure-mode
 comparison: []
 survey_core: false
-desc: 'Mechanistic study of the Hierarchical Reasoning Model showing it can fail on near-trivial Sudoku puzzles because the fixed-point assumption is violated, that answers improve abruptly at a critical step, and that it often settles on an incorrect fixed point first, i.e. it guesses.'
+desc: Mechanistic study of the Hierarchical Reasoning Model showing it can fail on
+  near-trivial Sudoku puzzles because the fixed-point assumption is violated, that
+  answers improve abruptly at a critical step, and that it often settles on an incorrect
+  fixed point first, i.e. it guesses.
 links:
   arxiv: https://arxiv.org/abs/2601.10679
   alphaxiv: https://www.alphaxiv.org/abs/2601.10679
+citation_source_best: semantic_scholar
+citations: 9
+citation_sources:
+  semantic_scholar: 9
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-05'

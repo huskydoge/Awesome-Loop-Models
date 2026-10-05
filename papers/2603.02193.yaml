@@ -1,13 +1,13 @@
-title: 'Symbol-Equivariant Recurrent Reasoning Models'
+title: Symbol-Equivariant Recurrent Reasoning Models
 authors:
-- 'Richard Freinschlag'
-- 'Timo Bertram'
-- 'Erich Kobler'
-- 'Andreas Mayr'
-- 'Günter Klambauer'
+- Richard Freinschlag
+- Timo Bertram
+- Erich Kobler
+- Andreas Mayr
+- Günter Klambauer
 year: 2026
 published_date: '2026-03-02'
-added_date: "2026-10-01"
+added_date: '2026-10-01'
 venue: arXiv
 category: designs
 foundation: false
@@ -17,8 +17,8 @@ domain_tags:
 - algorithmic-reasoning
 - reasoning
 tags:
-- 'HRM'
-- 'TRM'
+- HRM
+- TRM
 focus_tags:
 - architecture
 survey_section:
@@ -32,8 +32,22 @@ claims:
 - data-efficiency
 comparison: []
 survey_core: false
-desc: 'Introduces symbol-equivariant recurrent reasoning models that build permutation equivariance over symbols into HRM/TRM-style recurrent reasoners, outperforming prior models on 9x9 Sudoku, extrapolating to 4x4 through 25x25 grids, and staying competitive on ARC-AGI with 2M parameters and little augmentation.'
+desc: Introduces symbol-equivariant recurrent reasoning models that build permutation
+  equivariance over symbols into HRM/TRM-style recurrent reasoners, outperforming
+  prior models on 9x9 Sudoku, extrapolating to 4x4 through 25x25 grids, and staying
+  competitive on ARC-AGI with 2M parameters and little augmentation.
 links:
   arxiv: https://arxiv.org/abs/2603.02193
   alphaxiv: https://www.alphaxiv.org/abs/2603.02193
   github: https://github.com/ml-jku/SE-RRM
+citation_source_best: semantic_scholar
+citations: 2
+citation_sources:
+  semantic_scholar: 2
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 18
+star_sources:
+  github_api: 18
+metrics_updated: '2026-10-05'

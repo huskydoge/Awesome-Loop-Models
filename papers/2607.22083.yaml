@@ -1,33 +1,33 @@
 title: 'Nanbeige4.2-3B: Unlocking Agentic Capabilities in a Compact Model'
 authors:
-- 'Nanbeige Lab'
-- 'Chen Yang'
-- 'Chengrui Huang'
-- 'Fufeng Lan'
-- 'Hanhui Chen'
-- 'Hao Zhou'
-- 'Huatong Song'
-- 'Jiaqi Cao'
-- 'Jiaying Zhu'
-- 'Jinlin Niu'
-- 'Kai Wang'
-- 'Lisheng Huang'
-- 'Qiliang Liang'
-- 'Ran Le'
-- 'Ruixiang Feng'
-- 'Shuang Sun'
-- 'Tao Gu'
-- 'Tao Zhang'
-- 'Tianyu Luo'
-- 'Yang Song'
-- 'Yun Xing'
-- 'Yuntao Wen'
-- 'Ziyao Xu'
-- 'Zongchao Chen'
-- 'Zongqiang Li'
+- Nanbeige Lab
+- Chen Yang
+- Chengrui Huang
+- Fufeng Lan
+- Hanhui Chen
+- Hao Zhou
+- Huatong Song
+- Jiaqi Cao
+- Jiaying Zhu
+- Jinlin Niu
+- Kai Wang
+- Lisheng Huang
+- Qiliang Liang
+- Ran Le
+- Ruixiang Feng
+- Shuang Sun
+- Tao Gu
+- Tao Zhang
+- Tianyu Luo
+- Yang Song
+- Yun Xing
+- Yuntao Wen
+- Ziyao Xu
+- Zongchao Chen
+- Zongqiang Li
 year: 2026
 published_date: '2026-07-24'
-added_date: "2026-10-01"
+added_date: '2026-10-01'
 venue: arXiv
 category: applications
 foundation: false
@@ -37,7 +37,7 @@ domain_tags:
 - language-modeling
 - reasoning
 tags:
-- 'looped-llm'
+- looped-llm
 focus_tags:
 - training-algorithm
 - data
@@ -51,7 +51,17 @@ claims:
 - param-efficiency
 comparison: []
 survey_core: false
-desc: 'Presents Nanbeige4.2-3B, a compact agentic model pretrained from scratch on 28T tokens with a looped Transformer that reuses its layer stack, then post-trained with mixed-mode RLHF and agentic RL, outperforming larger open models on agentic benchmarks.'
+desc: Presents Nanbeige4.2-3B, a compact agentic model pretrained from scratch on
+  28T tokens with a looped Transformer that reuses its layer stack, then post-trained
+  with mixed-mode RLHF and agentic RL, outperforming larger open models on agentic
+  benchmarks.
 links:
   arxiv: https://arxiv.org/abs/2607.22083
   alphaxiv: https://www.alphaxiv.org/abs/2607.22083
+citation_source_best: semantic_scholar
+citations: 7
+citation_sources:
+  semantic_scholar: 7
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-05'
