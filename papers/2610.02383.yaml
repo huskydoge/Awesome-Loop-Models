@@ -1,0 +1,52 @@
+title: The Surprising Effectiveness of Shared Memory in Looped Transformers
+authors:
+- Giovanni Monea
+- Keshav Ramji
+- Yousef El-Kurdi
+- Luis A. Lastras
+- Yoav Artzi
+- Nathan Godey
+- Ramón Fernandez Astudillo
+year: 2026
+published_date: '2026-10-01'
+added_date: '2026-10-04'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- memory-efficiency
+tags:
+- looped-transformer
+- memory-banks
+focus_tags:
+- architecture
+survey_section:
+- systems/kv-memory
+- design/state-memory
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+- param-efficiency
+comparison:
+- iso-param
+survey_core: false
+desc: Pretrains looped language models in which only the first recursion writes a
+  KV cache and later recursions read it while keeping a short local window; at 150M
+  to 1B parameters the Looped Prediction Transformer and its gated-DeltaNet hybrid
+  improve quality rather than losing it, with the hybrid at five recursions lowering
+  FineWeb-Edu perplexity by 1.12 to 1.82 versus a same-size standard Transformer while
+  using 76 to 79 percent less context memory.
+links:
+  arxiv: https://arxiv.org/abs/2610.02383
+  alphaxiv: https://www.alphaxiv.org/abs/2610.02383
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  opencitations: 0
+  semantic_scholar: 0
+metrics_updated: '2026-10-05'

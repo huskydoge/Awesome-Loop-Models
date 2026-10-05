@@ -1,0 +1,66 @@
+title: Looped Diffusion Transformer
+authors:
+- Yong Xien Chng
+- Tianyi Chen
+- Wenwen Tong
+- Haiwen Diao
+- Zhongang Cai
+- Lei Yang
+- Ziwei Liu
+- Lewei Lu
+- Dahua Lin
+- Gao Huang
+year: 2026
+published_date: '2026-09-30'
+added_date: '2026-10-04'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- adaptive-compute
+tags:
+- Looped-DiT
+- flow matching
+- looped-transformer
+focus_tags:
+- architecture
+- objective-loss
+- inference-algorithm
+survey_section:
+- applications/vision
+- train/supervision
+- outlook/diffusion
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- compute-efficiency
+- test-time-scaling
+comparison:
+- iso-param
+- iso-flop
+survey_core: false
+desc: Loops a shared middle group of MMDiT blocks several times inside each denoising
+  step of a text-to-image model and stabilizes the loops with deep supervision across
+  loop depths and self-modulating attention; under matched-parameter and matched-compute
+  settings Looped-DiT beats non-looped baselines, and a 260M looped model surpasses
+  a 6.5x larger model on several benchmarks with 4.9x lower inference compute.
+links:
+  arxiv: https://arxiv.org/abs/2609.40305
+  alphaxiv: https://www.alphaxiv.org/abs/2609.40305
+  github: https://github.com/OpenSenseNova/Looped-DiT
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 35
+star_sources:
+  github_api: 35
+metrics_updated: '2026-10-05'

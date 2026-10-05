@@ -35,10 +35,10 @@ desc: Feeds a mixture of deep-layer activations back into shallower layers while
 links:
   arxiv: https://arxiv.org/abs/2608.17981
   alphaxiv: https://www.alphaxiv.org/abs/2608.17981
-citations: 10
+citations: 11
 citation_sources:
-  semantic_scholar: 10
+  semantic_scholar: 11
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-09-30'
+metrics_updated: '2026-10-03'

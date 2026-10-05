@@ -1,0 +1,49 @@
+title: 'Thinking in Depth, Speaking Directly: Recurrent Latent Reasoning for Paralinguistically
+  Grounded Spoken Dialogue'
+authors:
+- Shengbo Cai
+- Yuxiang Wang
+- Jingran Xie
+- Zhisheng Zhang
+- Shun Lei
+- Di Cao
+- Teddy Sun
+- Zhiyong Wu
+year: 2026
+published_date: '2026-09-29'
+added_date: '2026-09-30'
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- speech-recognition
+- multimodal
+- reasoning
+focus_tags:
+- architecture
+- training-algorithm
+survey_section:
+- applications/language-speech-multimodal
+loop_topology: partial
+sharing: full
+depth_control: unspecified
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Introduces LoopSLM, a spoken language model that reuses a decoder block for
+  latent reasoning with acoustic grounding at every pass and a two-stage training
+  recipe; on EchoMind it improves paralinguistic reasoning by over 20 points versus
+  CoT fine-tuning while generating 64.5% fewer tokens at half the latency.
+links:
+  arxiv: https://arxiv.org/abs/2609.37818
+  alphaxiv: https://www.alphaxiv.org/abs/2609.37818
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-05'

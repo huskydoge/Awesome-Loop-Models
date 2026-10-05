@@ -53,15 +53,15 @@ links:
   comment:
   - label: Reza Bayat reading list (#9)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20
-citations: 397
+citations: 418
 citation_sources:
-  semantic_scholar: 397
+  semantic_scholar: 418
   opencitations: 0
 citation_source_best: semantic_scholar
-github_stars: 973
+github_stars: 976
 star_sources:
-  github_api: 973
+  github_api: 976
 star_source_best: github_api
-metrics_updated: '2026-09-30'
+metrics_updated: '2026-10-05'
 peer_reviewed: true
 venue_source: https://proceedings.neurips.cc/paper_files/paper/2025/hash/3b01972cf31e6fa0fe29e4b8b5c2a0a1-Abstract-Conference.html

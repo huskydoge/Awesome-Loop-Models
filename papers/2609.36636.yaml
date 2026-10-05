@@ -1,0 +1,49 @@
+title: What Makes Recurrence Effective in Looped Language Models?
+authors:
+- Xinlin Zhuang
+- Siyuan Wang
+- Imran Razzak
+- Weiyang Liu
+year: 2026
+published_date: '2026-09-29'
+added_date: '2026-09-30'
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- LoopLM
+focus_tags:
+- architecture
+survey_section:
+- design/topology
+- design/residual-injection
+- benefits/limits
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: unspecified
+claims:
+- test-time-scaling
+- length-generalization
+- failure-mode
+comparison: []
+survey_core: false
+desc: 'Controlled study of when recurrence helps looped language models: extra loops
+  can improve reasoning beyond the training horizon while degrading knowledge, layer
+  and iteration allocation matters beyond effective depth, and channel-wise history-state
+  injection with timestep conditioning is more robust than initial-state injection
+  across inference budgets.'
+links:
+  arxiv: https://arxiv.org/abs/2609.36636
+  alphaxiv: https://www.alphaxiv.org/abs/2609.36636
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-05'

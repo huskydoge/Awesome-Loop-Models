@@ -265,18 +265,38 @@
     "papers/2609.35274.yaml",
     "papers/2609.35748.yaml",
     "papers/2609.35751.yaml",
+    "papers/2609.36108.yaml",
+    "papers/2609.36636.yaml",
+    "papers/2609.36653.yaml",
+    "papers/2609.37379.yaml",
+    "papers/2609.37432.yaml",
+    "papers/2609.37818.yaml",
+    "papers/2609.37905.yaml",
+    "papers/2609.38426.yaml",
+    "papers/2609.39892.yaml",
+    "papers/2609.39967.yaml",
+    "papers/2609.40305.yaml",
+    "papers/2609.40316.yaml",
+    "papers/2610.00368.yaml",
+    "papers/2610.00541.yaml",
+    "papers/2610.00673.yaml",
+    "papers/2610.01153.yaml",
+    "papers/2610.02185.yaml",
+    "papers/2610.02383.yaml",
+    "papers/2610.02741.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
     "papers/openreview-modr.yaml",
     "papers/polymorphic-universal-transformer.yaml",
+    "papers/towards-looped-models-done-right-part-ii.yaml",
     "papers/universal-speech-transformer.yaml"
   ],
   "tag_inventories": {
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 226
+        "count": 245
       },
       {
         "label": "implicit-layer",
@@ -284,7 +304,7 @@
       },
       {
         "label": "hierarchical-loop",
-        "count": 26
+        "count": 27
       },
       {
         "label": "parallel-loop",
@@ -294,81 +314,85 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 213
+        "count": 229
       },
       {
         "label": "inference-algorithm",
-        "count": 171
+        "count": 179
       },
       {
         "label": "training-algorithm",
-        "count": 114
+        "count": 122
       },
       {
         "label": "objective-loss",
-        "count": 31
+        "count": 32
       },
       {
         "label": "data",
-        "count": 7
+        "count": 8
       }
     ],
     "domain": [
       {
         "label": "efficiency",
-        "count": 129
+        "count": 133
       },
       {
         "label": "reasoning",
-        "count": 120
+        "count": 129
       },
       {
         "label": "language-modeling",
-        "count": 119
+        "count": 128
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 64
+        "count": 68
       },
       {
         "label": "adaptive-compute",
-        "count": 41
+        "count": 46
+      },
+      {
+        "label": "vision",
+        "count": 42
       },
       {
         "label": "theory",
         "count": 40
       },
       {
-        "label": "vision",
-        "count": 39
-      },
-      {
         "label": "scaling",
-        "count": 33
+        "count": 35
       },
       {
         "label": "memory-efficiency",
-        "count": 27
+        "count": 29
       },
       {
         "label": "graph-data",
-        "count": 17
+        "count": 18
       },
       {
         "label": "sequence-modeling",
         "count": 16
       },
       {
+        "label": "multimodal",
+        "count": 9
+      },
+      {
         "label": "scientific-ml",
         "count": 9
       },
       {
-        "label": "multimodal",
-        "count": 7
-      },
-      {
         "label": "machine-translation",
         "count": 6
+      },
+      {
+        "label": "rl-control",
+        "count": 5
       },
       {
         "label": "compositional-reasoning",
@@ -379,19 +403,23 @@
         "count": 4
       },
       {
-        "label": "rl-control",
-        "count": 3
-      },
-      {
         "label": "speech-recognition",
-        "count": 3
-      },
-      {
-        "label": "biology",
-        "count": 2
+        "count": 4
       },
       {
         "label": "recommendation",
+        "count": 3
+      },
+      {
+        "label": "tabular-data",
+        "count": 3
+      },
+      {
+        "label": "alignment",
+        "count": 2
+      },
+      {
+        "label": "biology",
         "count": 2
       },
       {
@@ -399,16 +427,12 @@
         "count": 2
       },
       {
-        "label": "tabular-data",
-        "count": 2
-      },
-      {
         "label": "wireless-communications",
         "count": 2
       },
       {
-        "label": "alignment",
-        "count": 1
+        "label": "world-modeling",
+        "count": 2
       },
       {
         "label": "electronic-structure",
@@ -444,10 +468,6 @@
       },
       {
         "label": "summarization",
-        "count": 1
-      },
-      {
-        "label": "world-modeling",
         "count": 1
       }
     ]
