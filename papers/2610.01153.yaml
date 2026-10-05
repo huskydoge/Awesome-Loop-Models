@@ -23,6 +23,19 @@ tags:
 - LoopMoE
 focus_tags:
 - architecture
+survey_section:
+- design/sharing-scheme
+- train/stability
+- design/residual-injection
+loop_topology: whole-stack
+sharing: expert-routed
+depth_control: fixed
+claims:
+- stability
+- param-efficiency
+comparison:
+- iso-flop
+survey_core: false
 desc: Diagnoses hidden-state variance growth and expert-selection collapse as the
   obstacles to looping MoE language models more than twice and proposes LOOM, which
   scales residual updates, re-injects the input embedding at every loop, uses per-loop

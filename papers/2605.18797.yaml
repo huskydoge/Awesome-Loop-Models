@@ -27,6 +27,17 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/residual-injection
+- train/stability
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- stability
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Stabilizes looped transformers with parameter-free fully looped signal routing
   and attention injection, enabling stable training at higher loop counts while preserving
   test-time loop-depth control.

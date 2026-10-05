@@ -19,6 +19,18 @@ tags:
 - IRU
 focus_tags:
 - architecture
+survey_section:
+- applications/embodied-other
+- benefits/expressivity
+loop_topology: unspecified
+sharing: unspecified
+depth_control: unspecified
+claims:
+- expressivity
+- length-generalization
+comparison:
+- unclear
+survey_core: false
 desc: Formalizes compute-bounded RL policies and introduces a minimal variable-compute
   architecture, showing that extra iterative computation improves performance and
   longer-horizon generalization across 31 online and offline RL tasks.

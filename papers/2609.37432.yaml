@@ -19,6 +19,19 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/embodied-other
+- design/depth-control
+loop_topology: unspecified
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+- compute-efficiency
+- expressivity
+comparison:
+- unclear
+survey_core: false
 desc: Introduces Looped Actor, a transformer policy that repeatedly applies a shared
   block to refine a latent toward a fixed point with state-dependent loop counts;
   across 22 tasks in six online and offline RL environments it matches or exceeds

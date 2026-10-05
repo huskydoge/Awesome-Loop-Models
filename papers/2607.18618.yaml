@@ -21,6 +21,18 @@ domain_tags:
 focus_tags:
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/language-speech-multimodal
+- scaling/test-time
+loop_topology: unspecified
+sharing: full
+depth_control: unspecified
+claims:
+- test-time-scaling
+- param-efficiency
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Applies latent-reasoning Looped Language Models to machine translation, using
   recurrent hidden-state computation to match much larger baselines across 32 translation
   directions.

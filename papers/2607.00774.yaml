@@ -17,6 +17,17 @@ tags:
 - recursive-transformer
 focus_tags:
 - architecture
+survey_section:
+- applications/vision
+- design/state-memory
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Introduces SoftMoR and SR-ViT, learning token-wise mixtures over outputs from
   repeated applications of a shared Vision Transformer block so greater recursive
   depth improves accuracy with little parameter growth.

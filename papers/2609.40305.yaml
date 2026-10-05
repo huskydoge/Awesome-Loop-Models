@@ -29,6 +29,21 @@ focus_tags:
 - architecture
 - objective-loss
 - inference-algorithm
+survey_section:
+- applications/vision
+- train/supervision
+- outlook/diffusion
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- compute-efficiency
+- test-time-scaling
+comparison:
+- iso-param
+- iso-flop
+survey_core: false
 desc: Loops a shared middle group of MMDiT blocks several times inside each denoising
   step of a text-to-image model and stabilizes the loops with deep supervision across
   loop depths and self-modulating attention; under matched-parameter and matched-compute

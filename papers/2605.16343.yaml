@@ -20,6 +20,16 @@ tags:
 focus_tags:
 - training-algorithm
 - inference-algorithm
+survey_section:
+- systems/quantization-edge
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- memory-efficiency
+- failure-mode
+comparison: []
+survey_core: false
 desc: Introduces LoopQ, a loop-aware post-training quantization framework that preserves
   a shared quantized backbone while correcting role shifts, cross-loop state mismatch,
   and recursive quantization-error accumulation.

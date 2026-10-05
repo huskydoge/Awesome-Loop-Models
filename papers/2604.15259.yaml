@@ -16,6 +16,19 @@ tags:
 - fixed-point-analysis
 focus_tags:
 - inference-algorithm
+survey_section:
+- train/stability
+- design/residual-injection
+- benefits/generalization
+loop_topology: whole-stack
+sharing: full
+depth_control: unspecified
+claims:
+- stability
+- length-generalization
+- failure-mode
+comparison: []
+survey_core: false
 desc: Analyzes stability and generalization in looped transformers through a fixed-point
   framework, characterizing when recall and normalization yield reachable, input-dependent,
   and trainable loop dynamics.

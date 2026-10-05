@@ -19,6 +19,14 @@ tags:
 - TRM
 focus_tags:
 - architecture
+survey_section:
+- interpretability
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Proposes interaction locality as a mechanistic measurement framework for HRM
   and TRM, showing how repeated recursive updates accumulate local writes into broader
   solution structure on grid reasoning benchmarks.

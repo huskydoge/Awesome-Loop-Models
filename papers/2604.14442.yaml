@@ -17,6 +17,16 @@ tags:
 - universal-transformer
 focus_tags:
 - architecture
+survey_section:
+- design/topology
+- benefits/limits
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims: []
+comparison:
+- unclear
+survey_core: false
 desc: Empirically compares two-speed hierarchical shared-weight recurrence with flat
   shared-weight iteration and independent-layer Transformers, finding a robust 3.4-nat
   validation-CE advantage over a parameter-matched Universal Transformer while reporting

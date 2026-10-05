@@ -39,6 +39,19 @@ focus_tags:
 tags:
 - LoopCoder-v2
 - PLT
+survey_section:
+- applications/language-speech-multimodal
+- train/post-training
+- benefits/limits
+loop_topology: shifted-parallel
+sharing: full
+depth_control: fixed
+claims:
+- failure-mode
+- memory-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Studies loop-count selection in Parallel Loop Transformers by training LoopCoder-v2
   coder models with shared looped blocks, finding that two loops give the main productive
   refinement while additional loops regress under cross-loop positional mismatch.

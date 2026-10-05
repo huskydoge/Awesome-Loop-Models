@@ -28,6 +28,18 @@ focus_tags:
 - objective-loss
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/language-speech-multimodal
+- train/supervision
+loop_topology: whole-stack
+sharing: full
+depth_control: sampled-train
+claims:
+- param-efficiency
+- test-time-scaling
+comparison:
+- unclear
+survey_core: false
 desc: Introduces RecursiveVLM, a recursive multimodal transformer with a recursive
   connector and monotonic recursion loss that enables on-demand extra refinement under
   varying compute budgets.

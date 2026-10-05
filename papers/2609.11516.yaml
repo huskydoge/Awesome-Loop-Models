@@ -15,6 +15,17 @@ domain_tags:
 - efficiency
 focus_tags:
 - architecture
+survey_section:
+- applications/vision
+- design/topology
+loop_topology: hierarchical
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- iso-depth
+survey_core: false
 desc: Reuses separate four-block encoder and decoder cores within and across spatial
   scales, executing 28 shared-core block applications per branch to reduce stored
   VAE parameters while exposing higher arithmetic and latency costs.

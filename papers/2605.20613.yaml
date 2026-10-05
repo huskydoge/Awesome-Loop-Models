@@ -31,6 +31,18 @@ focus_tags:
 - training-algorithm
 - objective-loss
 - data
+survey_section:
+- benefits/efficiency
+- design/residual-injection
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims:
+- data-efficiency
+- compute-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Introduces HRM-Text, a 1B Hierarchical Recurrent Model language model that combines
   dual-timescale recurrent Transformer modules with MagicNorm, warmup deep credit
   assignment, PrefixLM masking, and task-completion pretraining for efficient training

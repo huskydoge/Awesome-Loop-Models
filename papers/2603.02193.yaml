@@ -1,0 +1,39 @@
+title: 'Symbol-Equivariant Recurrent Reasoning Models'
+authors:
+- 'Richard Freinschlag'
+- 'Timo Bertram'
+- 'Erich Kobler'
+- 'Andreas Mayr'
+- 'Günter Klambauer'
+year: 2026
+published_date: '2026-03-02'
+added_date: "2026-10-01"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- hierarchical-loop
+domain_tags:
+- algorithmic-reasoning
+- reasoning
+tags:
+- 'HRM'
+- 'TRM'
+focus_tags:
+- architecture
+survey_section:
+- benefits/generalization
+- design/topology
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims:
+- length-generalization
+- data-efficiency
+comparison: []
+survey_core: false
+desc: 'Introduces symbol-equivariant recurrent reasoning models that build permutation equivariance over symbols into HRM/TRM-style recurrent reasoners, outperforming prior models on 9x9 Sudoku, extrapolating to 4x4 through 25x25 grids, and staying competitive on ARC-AGI with 2M parameters and little augmentation.'
+links:
+  arxiv: https://arxiv.org/abs/2603.02193
+  alphaxiv: https://www.alphaxiv.org/abs/2603.02193
+  github: https://github.com/ml-jku/SE-RRM

@@ -31,6 +31,18 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- applications/language-speech-multimodal
+- design/topology
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- compute-efficiency
+comparison:
+- iso-param
+survey_core: false
 desc: 'Extends looped Transformers to vision-language models: LoopVL reuses two 16-layer
   L/H Transformer stacks under a Module-Loop and Model-Loop schedule, executing 128
   layer calls from 32 unique layers, and after language pretraining, multimodal training

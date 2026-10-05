@@ -20,6 +20,18 @@ tags:
 - scaling-laws
 focus_tags:
 - architecture
+survey_section:
+- scaling/compute-optimal
+- design/sharing-scheme
+loop_topology: unspecified
+sharing: expert-routed
+depth_control: fixed
+claims:
+- param-efficiency
+- test-time-scaling
+comparison:
+- iso-flop
+survey_core: false
 desc: Proposes Loop Scaling Laws that jointly model recurrence, MoE sparsity, model
   size and data through a bounded, sparsity-conditional effective-parameter gain from
   looping, predicting held-out loss better than linear or power-law alternatives;

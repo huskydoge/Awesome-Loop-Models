@@ -21,6 +21,18 @@ domain_tags:
 focus_tags:
 - inference-algorithm
 - training-algorithm
+survey_section:
+- design/depth-control
+- scaling/test-time
+loop_topology: unspecified
+sharing: full
+depth_control: unspecified
+claims:
+- test-time-scaling
+- compute-efficiency
+- stability
+comparison: []
+survey_core: false
 desc: Proposes TAPS, a scheduler that adapts the step size of each shared-parameter
   recurrent update online by balancing persistent progress against fluctuation, improving
   terminal accuracy of looped reasoning models without retraining and giving up to

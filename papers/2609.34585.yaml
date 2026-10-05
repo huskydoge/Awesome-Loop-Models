@@ -20,6 +20,17 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- applications/graphs-science
+- scaling/test-time
+loop_topology: hierarchical
+sharing: full
+depth_control: adaptive-halting
+claims:
+- test-time-scaling
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Adapts tiny recursive models to combinatorial optimization with a graph-aware
   network that iterates a latent state under adaptive halting and scales both recursion
   depth and parallel sampling, beating diffusion-based solvers on TSP from 500 to

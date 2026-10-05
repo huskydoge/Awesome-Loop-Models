@@ -1,0 +1,35 @@
+title: 'Dense Supervision Is Not Enough: The Readout Blind Spot in Looped Language Models'
+authors:
+- 'Rituraj Sharma'
+- 'Tu Vu'
+year: 2026
+published_date: '2026-06-12'
+added_date: "2026-10-01"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+tags:
+- 'looped-llm'
+focus_tags:
+- objective-loss
+- architecture
+survey_section:
+- benefits/limits
+- train/supervision
+- interpretability
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- failure-mode
+- stability
+comparison: []
+survey_core: false
+desc: 'Shows that dense per-loop cross-entropy in looped language models only controls state variables visible through the readout: with RMSNorm or LayerNorm readouts, recurrent hidden-state scale grows unchecked, and scale-visible readouts, norm penalties or scale-removing recurrence fix it.'
+links:
+  arxiv: https://arxiv.org/abs/2606.24898
+  alphaxiv: https://www.alphaxiv.org/abs/2606.24898

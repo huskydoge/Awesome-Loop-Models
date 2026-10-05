@@ -20,6 +20,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/vision
+- train/stability
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- stability
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Introduces i-DEQ, an inertial deep-equilibrium image-restoration model that
   learns explicit nonconvex regularization and uses momentum in fixed-point iterations,
   improving stability and robustness while roughly halving DEQ inference time.

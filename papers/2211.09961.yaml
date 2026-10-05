@@ -26,6 +26,19 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/generalization
+- scaling/test-time
+- benefits/limits
+- design/depth-control
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- length-generalization
+- test-time-scaling
+comparison: []
+survey_core: true
 desc: Links equilibrium models' ability to benefit from additional inference iterations
   to path independence and shows that promoting it improves upward generalization.
 links:

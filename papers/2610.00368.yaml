@@ -27,6 +27,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/embodied-other
+- design/depth-control
+loop_topology: partial
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Turns each imagined transition of a JEPA world-model planner into a weight-tied
   recurrent cell with a learned continue head that decides per candidate and rollout
   step whether to run another update; across five visual-control settings it improves

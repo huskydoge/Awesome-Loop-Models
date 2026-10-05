@@ -24,6 +24,18 @@ tags:
 - LoopMoE
 focus_tags:
 - architecture
+survey_section:
+- design/loop-x
+- design/sharing-scheme
+loop_topology: whole-stack
+sharing: expert-routed
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison:
+- iso-param
+- iso-flop
+survey_core: false
 desc: Introduces LoopMoE, a looped mixture-of-experts language model that combines
   sparse routing with iterative weight-shared computation through iteration-conditioned
   modulation and capacity balancing.

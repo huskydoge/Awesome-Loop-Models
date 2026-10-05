@@ -21,6 +21,15 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- interpretability
+- design/topology
+loop_topology: hierarchical
+sharing: full
+depth_control: unspecified
+claims: []
+comparison: []
+survey_core: false
 desc: Analyzes Asymmetric Input Recurrence, a two-state shared-weight recurrent Transformer
   where the same model updates L/H states, showing that state identity and input-injection
   asymmetry induce distinct proposal-vs-uncertainty roles on Sudoku-Extreme and Maze.

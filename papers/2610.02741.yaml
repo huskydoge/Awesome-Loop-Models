@@ -20,6 +20,18 @@ tags:
 - looped-llm
 focus_tags:
 - inference-algorithm
+survey_section:
+- interpretability
+- benefits/limits
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- failure-mode
+comparison:
+- iso-param
+- iso-depth
+survey_core: false
 desc: Gives the first systematic evaluation of chain-of-thought monitorability in
   looped language models on eight MonitorBench tasks, varying Ouro loop depth and
   comparing against non-looped models matched by parameters, layer count or effective

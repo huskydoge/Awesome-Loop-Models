@@ -23,6 +23,17 @@ domain_tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- design/topology
+- train/supervision
+loop_topology: shifted-parallel
+sharing: full
+depth_control: fixed
+claims:
+- data-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Feeds each decoding step's top-layer hidden state back through a learned gate
   at the bottom of the same Transformer stack, widening autoregressive feedback from
   a sampled token to a full latent state.

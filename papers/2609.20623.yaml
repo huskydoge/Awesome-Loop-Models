@@ -19,6 +19,14 @@ domain_tags:
 - memory-efficiency
 focus_tags:
 - inference-algorithm
+survey_section:
+- applications/flow-3d
+loop_topology: partial
+sharing: full
+depth_control: unspecified
+claims: []
+comparison: []
+survey_core: false
 desc: Adds a trainable shared recurrent refiner, applied for four steps after a frozen
   single-view 3D Gaussian backbone, and prunes roughly half of the predicted Gaussians
   while largely preserving the reported reconstruction quality.

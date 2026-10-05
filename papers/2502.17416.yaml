@@ -23,6 +23,20 @@ tags:
 focus_tags:
 - objective-loss
 - training-algorithm
+survey_section:
+- benefits/expressivity
+- benefits/efficiency
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- expressivity
+- param-efficiency
+- test-time-scaling
+comparison:
+- iso-depth
+- iso-param
+survey_core: true
 desc: Studies looped transformers as reasoning models, showing effective-depth scaling,
   latent-thought simulation of chain-of-thought, and a looping-based regularizer that
   improves the reasoning-versus-memorization trade-off.

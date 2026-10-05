@@ -27,6 +27,17 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/loop-x
+- train/supervision
+- scaling/test-time
+loop_topology: whole-stack
+sharing: full
+depth_control: unspecified
+claims:
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Trains a TRM-based shared recurrent network with temporally aligned local denoising
   objectives, then couples its stateful denoiser to probability-flow integration for
   scalable and diverse reasoning.

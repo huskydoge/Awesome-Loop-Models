@@ -21,6 +21,14 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- interpretability
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: 'Uses graph walks to show that the loops of a looped Transformer need not repeat
   one fixed step: a learned linear map on the hidden state entering a frozen loop
   selects which transition the shared layers perform, activation patching traces this

@@ -19,6 +19,21 @@ tags:
 - CART
 focus_tags:
 - architecture
+survey_section:
+- design/topology
+- benefits/limits
+- design/residual-injection
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- stability
+- failure-mode
+comparison:
+- iso-param
+- iso-depth
+survey_core: false
 desc: Introduces a compact language model that reuses a single shared transformer
   core across depth while anchoring recurrence to precomputed key-value tensors and
   reports a mostly negative parameter-parity result against dense baselines.

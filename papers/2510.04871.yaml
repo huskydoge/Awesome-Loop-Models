@@ -17,6 +17,20 @@ focus_tags:
 - architecture
 - inference-algorithm
 - training-algorithm
+survey_section:
+- benefits/efficiency
+- design/topology
+- design/residual-injection
+- train/gradients
+- train/supervision
+loop_topology: hierarchical
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+- data-efficiency
+comparison: []
+survey_core: true
 desc: Proposes Tiny Recursive Model (TRM), which reuses one two-layer network to update
   a latent state repeatedly and then refine its answer across improvement steps; reports
   44.6% on ARC-AGI-1 and 7.8% on ARC-AGI-2 with a 7M-parameter model.

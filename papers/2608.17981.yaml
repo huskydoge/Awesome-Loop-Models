@@ -20,6 +20,15 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- train/retrofitting
+- scaling/test-time
+loop_topology: unspecified
+sharing: full
+depth_control: unspecified
+claims: []
+comparison: []
+survey_core: false
 desc: Feeds a mixture of deep-layer activations back into shallower layers while reusing
   the same frozen Transformer stack, enabling training-free recurrent state tracking
   with an adaptive inference-time variant.

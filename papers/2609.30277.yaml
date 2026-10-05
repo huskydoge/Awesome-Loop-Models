@@ -20,6 +20,17 @@ tags:
 - implicit GNN
 focus_tags:
 - architecture
+survey_section:
+- applications/graphs-science
+- train/stability
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- expressivity
+- stability
+comparison: []
+survey_core: false
 desc: Introduces SheafDEQ, a subhomogeneous deep-equilibrium graph network whose node
   states are fixed points of learned, edge-dependent neural-sheaf message passing,
   with a proof of a unique globally attracting equilibrium reachable by fixed-point

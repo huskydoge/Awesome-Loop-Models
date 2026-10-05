@@ -18,6 +18,14 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/language-speech-multimodal
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Reuses one decoder layer and shared LoRA parameters for recurrent visual reasoning,
   repeatedly re-reading fixed visual evidence while making the final recurrent state
   the only image-conditioned path to prediction.

@@ -26,6 +26,15 @@ tags:
 - DAS-Wave
 focus_tags:
 - inference-algorithm
+survey_section:
+- systems/batching-parallel
+loop_topology: shifted-parallel
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Observes that queries and keys in looped Transformers converge to their final-depth
   values earlier than values do, and introduces Depth-Asynchronous Self-Speculation,
   where shallow drafts read full-depth prefix values; the DAS-Wave variant gives 4.00

@@ -25,6 +25,7 @@
     "papers/2009.06211.yaml",
     "papers/2012.04124.yaml",
     "papers/2101.00234.yaml",
+    "papers/2103.12803.yaml",
     "papers/2104.06022.yaml",
     "papers/2106.04537.yaml",
     "papers/2106.14342.yaml",
@@ -43,6 +44,7 @@
     "papers/2310.10845.yaml",
     "papers/2311.12424.yaml",
     "papers/2402.01107.yaml",
+    "papers/2402.04029.yaml",
     "papers/2402.13572.yaml",
     "papers/2405.16039.yaml",
     "papers/2409.15647.yaml",
@@ -62,13 +64,16 @@
     "papers/2508.16745.yaml",
     "papers/2509.23314.yaml",
     "papers/2510.04871.yaml",
+    "papers/2510.10089.yaml",
     "papers/2510.14961.yaml",
     "papers/2510.24824.yaml",
     "papers/2510.25741.yaml",
     "papers/2511.07384.yaml",
     "papers/2511.08577.yaml",
     "papers/2512.14693.yaml",
+    "papers/2601.10679.yaml",
     "papers/2601.21582.yaml",
+    "papers/2602.02156.yaml",
     "papers/2602.05999.yaml",
     "papers/2602.07845.yaml",
     "papers/2602.08864.yaml",
@@ -77,12 +82,14 @@
     "papers/2602.11451.yaml",
     "papers/2602.11698.yaml",
     "papers/2603.01914.yaml",
+    "papers/2603.02193.yaml",
     "papers/2603.04971.yaml",
     "papers/2603.05234.yaml",
     "papers/2603.08082.yaml",
     "papers/2603.08391.yaml",
     "papers/2603.19714.yaml",
     "papers/2603.21676.yaml",
+    "papers/2603.29057.yaml",
     "papers/2604.07822.yaml",
     "papers/2604.09168.yaml",
     "papers/2604.09870.yaml",
@@ -138,12 +145,14 @@
     "papers/2606.04678.yaml",
     "papers/2606.06245.yaml",
     "papers/2606.06574.yaml",
+    "papers/2606.09357.yaml",
     "papers/2606.14498.yaml",
     "papers/2606.18023.yaml",
     "papers/2606.18206.yaml",
     "papers/2606.18208.yaml",
     "papers/2606.18524.yaml",
     "papers/2606.22462.yaml",
+    "papers/2606.24898.yaml",
     "papers/2606.26488.yaml",
     "papers/2606.29983.yaml",
     "papers/2606.31779.yaml",
@@ -161,20 +170,25 @@
     "papers/2607.13491.yaml",
     "papers/2607.15456.yaml",
     "papers/2607.16051.yaml",
+    "papers/2607.16237.yaml",
     "papers/2607.18618.yaml",
     "papers/2607.20519.yaml",
+    "papers/2607.20594.yaml",
+    "papers/2607.22083.yaml",
     "papers/2607.27656.yaml",
     "papers/2607.28751.yaml",
     "papers/2607.28989.yaml",
     "papers/2608.03263.yaml",
     "papers/2608.03624.yaml",
     "papers/2608.04879.yaml",
+    "papers/2608.06727.yaml",
     "papers/2608.08113.yaml",
     "papers/2608.08888.yaml",
     "papers/2608.09444.yaml",
     "papers/2608.09888.yaml",
     "papers/2608.11233.yaml",
     "papers/2608.11352.yaml",
+    "papers/2608.13141.yaml",
     "papers/2608.14856.yaml",
     "papers/2608.15062.yaml",
     "papers/2608.16085.yaml",
@@ -282,15 +296,15 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 235
+        "count": 245
       },
       {
         "label": "implicit-layer",
-        "count": 35
+        "count": 37
       },
       {
         "label": "hierarchical-loop",
-        "count": 25
+        "count": 27
       },
       {
         "label": "parallel-loop",
@@ -300,53 +314,53 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 222
+        "count": 229
       },
       {
         "label": "inference-algorithm",
-        "count": 174
+        "count": 179
       },
       {
         "label": "training-algorithm",
-        "count": 118
+        "count": 122
       },
       {
         "label": "objective-loss",
-        "count": 30
+        "count": 32
       },
       {
         "label": "data",
-        "count": 7
+        "count": 8
       }
     ],
     "domain": [
       {
         "label": "efficiency",
+        "count": 133
+      },
+      {
+        "label": "reasoning",
         "count": 129
       },
       {
         "label": "language-modeling",
-        "count": 126
-      },
-      {
-        "label": "reasoning",
-        "count": 125
+        "count": 128
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 63
+        "count": 68
       },
       {
         "label": "adaptive-compute",
-        "count": 44
-      },
-      {
-        "label": "theory",
-        "count": 37
+        "count": 46
       },
       {
         "label": "vision",
-        "count": 37
+        "count": 42
+      },
+      {
+        "label": "theory",
+        "count": 40
       },
       {
         "label": "scaling",
@@ -354,7 +368,7 @@
       },
       {
         "label": "memory-efficiency",
-        "count": 28
+        "count": 29
       },
       {
         "label": "graph-data",
@@ -365,12 +379,12 @@
         "count": 16
       },
       {
-        "label": "scientific-ml",
+        "label": "multimodal",
         "count": 9
       },
       {
-        "label": "multimodal",
-        "count": 8
+        "label": "scientific-ml",
+        "count": 9
       },
       {
         "label": "machine-translation",
@@ -386,14 +400,14 @@
       },
       {
         "label": "hardware-aware",
-        "count": 3
-      },
-      {
-        "label": "recommendation",
-        "count": 3
+        "count": 4
       },
       {
         "label": "speech-recognition",
+        "count": 4
+      },
+      {
+        "label": "recommendation",
         "count": 3
       },
       {
@@ -402,6 +416,10 @@
       },
       {
         "label": "alignment",
+        "count": 2
+      },
+      {
+        "label": "biology",
         "count": 2
       },
       {
@@ -415,10 +433,6 @@
       {
         "label": "world-modeling",
         "count": 2
-      },
-      {
-        "label": "biology",
-        "count": 1
       },
       {
         "label": "electronic-structure",

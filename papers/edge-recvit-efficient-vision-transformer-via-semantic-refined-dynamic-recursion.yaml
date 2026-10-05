@@ -23,6 +23,17 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/vision
+- design/depth-control
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Introduces Edge-RecViT, combining a fully shared recursive ViT hidden layer
   with an edge-aware token ranker that allocates per-token depth and early exits for
   parameter- and FLOP-efficient vision.

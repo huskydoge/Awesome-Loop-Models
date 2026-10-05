@@ -26,6 +26,17 @@ tags:
 - looped-transformer
 - looped-llm
 - DiscoLoop
+survey_section:
+- design/residual-injection
+- interpretability
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- data-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Introduces DiscoLoop, a looping architecture for multi-hop reasoning that carries
   both discrete embedding and continuous hidden-state channels across recurrent loop
   steps, improving generalization and training efficiency over looped-transformer

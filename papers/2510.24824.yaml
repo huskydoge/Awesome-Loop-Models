@@ -29,6 +29,19 @@ tags:
 focus_tags:
 - inference-algorithm
 - architecture
+survey_section:
+- design/topology
+- scaling/test-time
+- systems/batching-parallel
+loop_topology: shifted-parallel
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+- memory-efficiency
+comparison:
+- unclear
+survey_core: true
 desc: Introduces the Parallel Loop Transformer, which preserves looped-model accuracy
   while reducing latency and memory through cross-loop parallelism and shared-loop
   KV representations.

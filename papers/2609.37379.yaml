@@ -20,6 +20,17 @@ domain_tags:
 - language-modeling
 focus_tags:
 - architecture
+survey_section:
+- design/residual-injection
+- design/state-memory
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- iso-flop
+survey_core: false
 desc: Views the looped hidden state as a fast weight and derives loop transitions
   of looped Transformers as local optimizer updates toward implicit targets; aligning
   existing transitions and the resulting OperLoop (weight decay, adaptive step size,

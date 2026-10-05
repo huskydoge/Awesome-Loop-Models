@@ -22,6 +22,16 @@ focus_tags:
 - training-algorithm
 tags:
 - LOTUS
+survey_section:
+- train/supervision
+- benefits/efficiency
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Introduces LOTUS, a looped padded Transformer that reuses recurrent-depth weights
   for parallel latent chain-of-thought blocks, matching explicit CoT at 3B scale while
   reducing thought-phase latency.

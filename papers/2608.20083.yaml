@@ -17,6 +17,14 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/graphs-science
+loop_topology: unspecified
+sharing: unspecified
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Introduces SABET-QA, which iteratively refines temporal knowledge-graph reasoning
   states across four hops using a shared learned working-memory update, bidirectional
   entity/time scoring, and adaptive hop aggregation.

@@ -19,6 +19,15 @@ domain_tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- applications/embodied-other
+loop_topology: partial
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
 desc: Proposes RECAP, a CTR model whose cross-network towers share core interaction
   weights across recursive steps and aggregate predictions over inference-time adapter
   routes, combining this with distillation and EMA as parameter-efficient estimator

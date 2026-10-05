@@ -20,6 +20,16 @@ tags:
 - GFPR
 focus_tags:
 - architecture
+survey_section:
+- design/residual-injection
+- benefits/limits
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: fixed
+claims:
+- stability
+comparison: []
+survey_core: false
 desc: Introduces Geometric Fixed-Point Reasoning, which iterates a weight-tied map
   on a product of simplices so the recurrent state is itself the categorical prediction
   and a fixed point exists for any parameters; a 7M-parameter model reaches 95.1 percent

@@ -22,6 +22,20 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- train/gradients
+- design/topology
+- benefits/efficiency
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- memory-efficiency
+- compute-efficiency
+- stability
+comparison:
+- unclear
+survey_core: false
 desc: Introduces Attractor Models, where a backbone proposes output embeddings and
   an attractor module iteratively solves a fixed point with implicit differentiation,
   improving looped language modeling and small-model reasoning while allowing adaptive

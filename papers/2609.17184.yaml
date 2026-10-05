@@ -19,6 +19,15 @@ domain_tags:
 - efficiency
 focus_tags:
 - inference-algorithm
+survey_section:
+- systems/batching-parallel
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Introduces a training-free self-speculative decoding pipeline for looped Transformers
   that drafts from intermediate recurrent states, overlaps drafting with final-depth
   verification, and preserves the target distribution while substantially reducing

@@ -22,6 +22,18 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/loop-x
+- benefits/expressivity
+- foundations/implicit
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- expressivity
+comparison:
+- unclear
+survey_core: false
 desc: Introduces implicit state-space language models that iterate a shared transition
   toward a fixed point, recovering RNN-like expressivity while retaining mostly parallel
   training.

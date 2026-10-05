@@ -20,6 +20,14 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/residual-injection
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Introduces Source-Centered State Evolution for looped Transformers, preserving
   an input-conditioned anchor while allowing a shared recurrent block to drive state-dependent
   computation across loop depth.

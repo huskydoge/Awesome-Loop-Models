@@ -16,6 +16,16 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/graphs-science
+- benefits/limits
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- failure-mode
+comparison: []
+survey_core: false
 desc: Proves finite-time separation, near-collision bounds, and distributional equivariance
   for recurrent GNNs that reuse one message-passing operator with persistent Gaussian
   perturbations.

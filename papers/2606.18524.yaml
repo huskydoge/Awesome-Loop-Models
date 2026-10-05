@@ -24,6 +24,17 @@ focus_tags:
 tags:
 - looped-transformer
 - depth-scaling
+survey_section:
+- train/stability
+- design/residual-injection
+- scaling/compute-optimal
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- stability
+comparison: []
+survey_core: false
 desc: Analyzes residual scaling in looped weight-tied Transformers, showing that correlated
   shared-block updates require stronger 1/N residual scaling across loop count and
   enable hyperparameter transfer from small to large recurrent depths.

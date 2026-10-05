@@ -22,6 +22,20 @@ domain_tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- scaling/compute-optimal
+- train/supervision
+- benefits/limits
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- failure-mode
+comparison:
+- iso-flop
+- iso-param
+survey_core: false
 desc: Provides a controlled empirical study of single-block recurrent Vision Transformers,
   comparing shared-block recurrence against independently parameterized depth, Neural
   ODE training, and deep supervision under matched CIFAR-100 protocols.

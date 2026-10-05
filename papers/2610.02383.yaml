@@ -23,6 +23,18 @@ tags:
 - memory-banks
 focus_tags:
 - architecture
+survey_section:
+- systems/kv-memory
+- design/state-memory
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+- param-efficiency
+comparison:
+- iso-param
+survey_core: false
 desc: Pretrains looped language models in which only the first recursion writes a
   KV cache and later recursions read it while keeping a short local window; at 150M
   to 1B parameters the Looped Prediction Transformer and its gated-DeltaNet hybrid

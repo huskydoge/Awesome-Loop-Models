@@ -27,6 +27,18 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/loop-x
+- systems/kv-memory
+- train/retrofitting
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+- expressivity
+comparison: []
+survey_core: false
 desc: Introduces LT2, a looped-transformer family that replaces quadratic attention
   with linear or sparse attention so repeated loop steps refine memory and expand
   receptive field while keeping inference more scalable.

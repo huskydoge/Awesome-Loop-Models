@@ -20,6 +20,17 @@ tags:
 focus_tags:
 - objective-loss
 - training-algorithm
+survey_section:
+- train/stability
+- foundations/implicit
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- stability
+- memory-efficiency
+comparison: []
+survey_core: false
 desc: Regularizes the Jacobian of DEQ update equations to stabilize forward and backward
   fixed-point solves with minimal additional cost.
 links:

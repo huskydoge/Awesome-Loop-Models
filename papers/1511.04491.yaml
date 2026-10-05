@@ -18,6 +18,17 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- applications/vision
+- foundations/depth-sharing
+- train/supervision
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: true
 desc: Introduces DRCN, which applies one convolutional layer recursively up to 16
   times and uses recursive supervision plus a skip connection to train a deep image
   super-resolution model without depth-proportional parameters.

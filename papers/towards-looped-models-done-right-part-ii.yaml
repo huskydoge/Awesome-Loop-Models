@@ -28,6 +28,23 @@ focus_tags:
 - training-algorithm
 - architecture
 - inference-algorithm
+survey_section:
+- train/gradients
+- systems/kv-memory
+- design/depth-control
+- design/residual-injection
+- train/post-training
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: sampled-train
+claims:
+- memory-efficiency
+- compute-efficiency
+- stability
+comparison:
+- iso-param
+- iso-depth
+survey_core: false
 desc: Argues that once a looped language model's recurrent states approach fixed points,
   the endpoint can replace the trajectory, enabling truncated backpropagation, terminal
   KV sharing, distilled prefill up to 1.79x faster, and RL updates from saved rollout

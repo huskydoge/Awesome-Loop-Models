@@ -26,6 +26,15 @@ focus_tags:
 - objective-loss
 - training-algorithm
 - inference-algorithm
+survey_section:
+- train/post-training
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Proposes LoopRPT, a reinforcement pre-training method for looped language models
   that assigns learning signals to latent iterations, improving accuracy-compute trade-offs
   and strengthening early-stage reasoning on Ouro.

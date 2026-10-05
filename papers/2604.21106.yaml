@@ -22,6 +22,18 @@ tags:
 - iso-depth
 focus_tags:
 - architecture
+survey_section:
+- scaling/compute-optimal
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- compute-efficiency
+comparison:
+- iso-depth
+- iso-flop
+survey_core: false
 desc: Measures the parameter value of recurrence in looped language models with iso-depth
   scaling laws, estimating how extra recurrent passes trade off against unique depth
   and training compute.

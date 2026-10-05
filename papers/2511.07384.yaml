@@ -26,6 +26,18 @@ focus_tags:
 - training-algorithm
 tags:
 - depth-recurrent
+survey_section:
+- train/retrofitting
+- design/depth-control
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: sampled-train
+claims:
+- compute-efficiency
+- test-time-scaling
+comparison:
+- iso-flop
+survey_core: true
 desc: Retrofits pretrained feedforward language models with depth recurrence, preserving
   performance with less total training compute and achieving better mathematics performance
   than continued post-training of the feedforward model at a matched compute budget.

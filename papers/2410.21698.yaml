@@ -20,6 +20,16 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/expressivity
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- expressivity
+comparison:
+- unclear
+survey_core: false
 desc: Analyzes depth for diverse in-context linear-regression tasks, proving matching
   expressivity for looped Transformers together with stronger distribution-shift robustness
   and monotonic loss across depth.

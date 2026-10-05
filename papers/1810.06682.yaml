@@ -18,6 +18,15 @@ tags:
 - weight-tying
 focus_tags:
 - architecture
+survey_section:
+- design/loop-x
+- foundations/recurrence
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Introduces Trellis Networks, temporal convolutional sequence models that tie
   weights across depth and inject inputs at every layer, thereby generalizing truncated
   recurrent networks.

@@ -25,6 +25,16 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/vision
+- benefits/efficiency
+loop_topology: unspecified
+sharing: unspecified
+depth_control: unspecified
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Combines in-context learning with recurrent latent memory and iterative latent-space
   computation, improving ARC-AGI-1 cost efficiency with a 150M-parameter recurrent
   reasoning model.

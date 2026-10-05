@@ -23,6 +23,19 @@ domain_tags:
 focus_tags:
 - objective-loss
 - inference-algorithm
+survey_section:
+- benefits/limits
+- scaling/test-time
+- train/supervision
+loop_topology: whole-stack
+sharing: full
+depth_control: unspecified
+claims:
+- failure-mode
+- test-time-scaling
+- length-generalization
+comparison: []
+survey_core: false
 desc: Characterizes recurrent operators as settling, marginal, or drifting, derives
   a depth-safety condition, and causally links a terminal fixed-point objective to
   stable test-time-depth extrapolation.

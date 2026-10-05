@@ -17,50 +17,140 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
-- `hierarchical-loop` (25)
-- `flat-loop` (235)
+- `hierarchical-loop` (27)
+- `flat-loop` (245)
 - `parallel-loop` (7)
-- `implicit-layer` (35)
+- `implicit-layer` (37)
 
 ## focus_tags
 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
-- `objective-loss` (30)
-- `training-algorithm` (118)
-- `architecture` (222)
-- `data` (7)
-- `inference-algorithm` (174)
+- `objective-loss` (32)
+- `training-algorithm` (122)
+- `architecture` (229)
+- `data` (8)
+- `inference-algorithm` (179)
+
+## Survey sections (`survey_section`)
+
+Controlled vocabulary aligned with the Looped Models Survey outline. List every section where the paper belongs; the first entry is its primary section. Counts are primary / any.
+
+- `foundations/recurrence` — Foundations: Recurrent networks and weight sharing across computation (2 / 3)
+- `foundations/depth-sharing` — Foundations: Weight sharing across network depth (4 / 6)
+- `foundations/implicit` — Foundations: Deep equilibrium and implicit models (6 / 9)
+- `foundations/algorithmic` — Foundations: Iterative and algorithmic computation (3 / 6)
+- `benefits/efficiency` — What Looping Buys: Parameter, data, and compute efficiency (7 / 31)
+- `benefits/expressivity` — What Looping Buys: Expressivity and reasoning capacity (17 / 21)
+- `benefits/generalization` — What Looping Buys: Length, easy-to-hard, and compositional generalization (9 / 17)
+- `benefits/limits` — What Looping Buys: Limits and failure modes (9 / 29)
+- `design/topology` — Architecture: Loop topology (10 / 25)
+- `design/residual-injection` — Architecture: Residual manipulation, input injection, and initialization (8 / 29)
+- `design/state-memory` — Architecture: Recurrent state and loop-time memory (7 / 14)
+- `design/sharing-scheme` — Architecture: Weight-sharing schemes and iteration-dependent computation (5 / 21)
+- `design/depth-control` — Architecture: Controlling recurrence depth (13 / 45)
+- `design/loop-x` — Architecture: Loop x MoE, efficient mixers, and diffusion (17 / 22)
+- `train/supervision` — Training: Supervision and credit assignment (3 / 23)
+- `train/gradients` — Training: BPTT, truncated BPTT, and implicit gradients (7 / 15)
+- `train/stability` — Training: Loop-specific optimization and stability (12 / 20)
+- `train/post-training` — Training: Post-training and reinforcement learning (4 / 9)
+- `train/retrofitting` — Training: Retrofitting pretrained models into looped models (9 / 14)
+- `scaling/compute-optimal` — Scaling: Parameter, depth, and compute-optimal scaling (7 / 15)
+- `scaling/test-time` — Scaling: Test-time scaling (9 / 32)
+- `systems/quantization-edge` — Systems: Quantization and edge deployment (6 / 9)
+- `systems/kv-memory` — Systems: KV cache and memory (6 / 13)
+- `systems/batching-parallel` — Systems: Loop-level batching, scheduling, and parallel execution (5 / 8)
+- `interpretability` — Interpretability: Mechanistic interpretability of looped models (20 / 28)
+- `applications/language-speech-multimodal` — Applications: Language, code, speech, and multimodal tasks (21 / 25)
+- `applications/vision` — Applications: Visual recognition, restoration, and generation (17 / 23)
+- `applications/flow-3d` — Applications: Flow, stereo, and 3D geometry (5 / 5)
+- `applications/graphs-science` — Applications: Graphs, structured data, and scientific modeling (14 / 21)
+- `applications/embodied-other` — Applications: Embodied AI and other domains (20 / 23)
+- `outlook/diffusion` — Outlook: Unification with diffusion models (1 / 6)
+
+## `loop_topology`
+
+Controlled vocabulary. Where the loop sits in the network (single value).
+
+- `whole-stack` (122)
+- `prelude-core-coda` (27)
+- `partial` (31)
+- `hierarchical` (26)
+- `shifted-parallel` (8)
+- `implicit-fixed-point` (35)
+- `unspecified` (34)
+
+## `sharing`
+
+Controlled vocabulary. How parameters are shared across iterations (single value).
+
+- `full` (250)
+- `partial-adapter` (14)
+- `expert-routed` (10)
+- `unspecified` (9)
+
+## `depth_control`
+
+Controlled vocabulary. How the number of iterations is decided (single value).
+
+- `fixed` (125)
+- `sampled-train` (13)
+- `adaptive-halting` (53)
+- `convergence` (42)
+- `unspecified` (50)
+
+## `claims`
+
+Controlled vocabulary. What the paper argues looping buys or costs (list).
+
+- `param-efficiency` (83)
+- `compute-efficiency` (93)
+- `memory-efficiency` (36)
+- `data-efficiency` (17)
+- `expressivity` (26)
+- `length-generalization` (27)
+- `test-time-scaling` (51)
+- `stability` (34)
+- `failure-mode` (41)
+
+## `comparison`
+
+Controlled vocabulary. Which quantity is held fixed when the paper compares looped and non-looped models (list; empty when there is no such comparison).
+
+- `iso-param` (29)
+- `iso-flop` (22)
+- `iso-depth` (17)
+- `unclear` (42)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `efficiency` (129)
-- `language-modeling` (126)
-- `reasoning` (125)
-- `algorithmic-reasoning` (63)
-- `adaptive-compute` (44)
-- `theory` (37)
-- `vision` (37)
+- `efficiency` (133)
+- `reasoning` (129)
+- `language-modeling` (128)
+- `algorithmic-reasoning` (68)
+- `adaptive-compute` (46)
+- `vision` (42)
+- `theory` (40)
 - `scaling` (35)
-- `memory-efficiency` (28)
+- `memory-efficiency` (29)
 - `graph-data` (18)
 - `sequence-modeling` (16)
+- `multimodal` (9)
 - `scientific-ml` (9)
-- `multimodal` (8)
 - `machine-translation` (6)
 - `rl-control` (5)
 - `compositional-reasoning` (4)
-- `hardware-aware` (3)
+- `hardware-aware` (4)
+- `speech-recognition` (4)
 - `recommendation` (3)
-- `speech-recognition` (3)
 - `tabular-data` (3)
 - `alignment` (2)
+- `biology` (2)
 - `robotics-vla` (2)
 - `wireless-communications` (2)
 - `world-modeling` (2)
-- `biology` (1)
 - `electronic-structure` (1)
 - `FLOPs-efficiency` (1)
 - `hyperspectral-imaging` (1)
@@ -75,19 +165,19 @@ Observed browser-facing domain tags currently used across the repo.
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (36)
-- `weight-tying` (13)
-- `DEQ` (12)
+- `looped-transformer` (40)
+- `weight-tying` (15)
+- `DEQ` (14)
+- `TRM` (14)
 - `halting` (12)
+- `HRM` (12)
 - `MoE` (12)
-- `TRM` (12)
+- `looped-llm` (11)
+- `recursive-transformer` (11)
 - `convergence` (10)
-- `HRM` (10)
 - `Ouro` (10)
 - `depth-recurrent` (9)
-- `looped-llm` (9)
 - `Huginn` (8)
-- `recursive-transformer` (8)
 - `shared-weight-recurrence` (8)
 - `ACT` (7)
 - `test-time-compute` (7)
@@ -98,11 +188,12 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `universal-transformer` (5)
 - `UT` (5)
 - `adaptive-computation-time` (4)
+- `mechanistic-analysis` (4)
 - `fixed-point-analysis` (3)
 - `LoopMoE` (3)
-- `mechanistic-analysis` (3)
 - `Parcae` (3)
 - `activation-compression` (2)
+- `EqR` (2)
 - `flow matching` (2)
 - `HRM-Text` (2)
 - `hyper-connections` (2)
@@ -146,7 +237,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `DRM` (1)
 - `DVLT` (1)
 - `ELT` (1)
-- `EqR` (1)
 - `Exact-ZOH` (1)
 - `FlashLoop` (1)
 - `FlexLoop` (1)

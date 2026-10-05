@@ -17,6 +17,15 @@ domain_tags:
 - scientific-ml
 focus_tags:
 - architecture
+survey_section:
+- applications/graphs-science
+- design/residual-injection
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims: []
+comparison: []
+survey_core: false
 desc: Introduces SILVA Networks as structured implicit layers, separating stimulus,
   local interaction, global interaction, damping, and readout inside trainable fixed-point
   dynamics.

@@ -26,6 +26,16 @@ tags:
 - Huginn
 focus_tags:
 - inference-algorithm
+survey_section:
+- scaling/test-time
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- test-time-scaling
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Proposes LoopCD, a training-free contrastive decoding method that contrasts
   a looped Transformer's final-loop prediction with an earlier recurrent pass in logit
   or hidden-state space; across four looped model families it raises Ouro-2.6B-Thinking

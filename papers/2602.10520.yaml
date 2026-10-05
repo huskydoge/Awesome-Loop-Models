@@ -19,6 +19,14 @@ tags:
 focus_tags:
 - objective-loss
 - training-algorithm
+survey_section:
+- train/post-training
+loop_topology: whole-stack
+sharing: full
+depth_control: unspecified
+claims: []
+comparison: []
+survey_core: false
 desc: Introduces RLTT, a reinforcement-learning objective that assigns reward across
   the full latent thought trajectory of looped language models rather than only the
   final latent state.

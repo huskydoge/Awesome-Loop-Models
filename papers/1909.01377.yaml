@@ -21,6 +21,19 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- foundations/implicit
+- train/gradients
+- systems/kv-memory
+- design/residual-injection
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- memory-efficiency
+comparison:
+- iso-param
+survey_core: true
 desc: Proposes DEQ, which directly solves for the fixed point of an infinite-depth
   weight-tied network and uses implicit differentiation to train with constant activation
   memory.

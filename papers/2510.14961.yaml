@@ -20,6 +20,17 @@ tags:
 - depth-recurrent
 focus_tags:
 - inference-algorithm
+survey_section:
+- systems/batching-parallel
+- outlook/diffusion
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: unspecified
+claims:
+- compute-efficiency
+- expressivity
+comparison: []
+survey_core: false
 desc: Introduces a diffusion-forcing sampler that advances new tokens while refining
   their recurrent-depth latent states in parallel, accelerating existing 3.5B looped
   language models by up to 5x without retraining.

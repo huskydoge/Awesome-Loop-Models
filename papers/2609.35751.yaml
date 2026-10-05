@@ -25,6 +25,16 @@ tags:
 - MoE
 focus_tags:
 - architecture
+survey_section:
+- design/loop-x
+- design/sharing-scheme
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
 desc: Proposes Foil for looped mixture-of-experts models, which halves the expert
   layers while doubling experts per layer and passes, and gives each pass its own
   attention while experts and routers stay shared; at equal parameters and compute,

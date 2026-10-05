@@ -17,6 +17,16 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/flow-3d
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- compute-efficiency
+comparison: []
+survey_core: true
 desc: Introduces RAFT, which builds an all-pairs correlation volume and repeatedly
   applies a learned recurrent update operator to refine a dense optical-flow field.
 links:

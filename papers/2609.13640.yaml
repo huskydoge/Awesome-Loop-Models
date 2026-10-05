@@ -25,6 +25,17 @@ focus_tags:
 - objective-loss
 - architecture
 - training-algorithm
+survey_section:
+- applications/embodied-other
+- train/supervision
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Iterates one shared Transformer block as a quantile-transport trajectory and
   supervises intermediate recurrent states with forecasting and path-position losses.
 links:

@@ -17,6 +17,18 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/graphs-science
+- train/gradients
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- memory-efficiency
+- stability
+- failure-mode
+comparison: []
+survey_core: false
 desc: Composes learned full-trajectory subsystem surrogates through a Newton-Krylov
   fixed-point solve, replacing 1,500-step rollouts with 4-10 solver iterations and
   using an implicit adjoint whose memory is independent of solver depth.

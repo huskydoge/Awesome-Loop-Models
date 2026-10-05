@@ -26,6 +26,18 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/embodied-other
+- scaling/test-time
+loop_topology: partial
+sharing: full
+depth_control: convergence
+claims:
+- test-time-scaling
+- memory-efficiency
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Introduces RD-VLA, a vision-language-action architecture with a weight-tied
   recurrent action head and adaptive stopping, enabling latent test-time compute scaling
   for robotics with constant memory footprint.

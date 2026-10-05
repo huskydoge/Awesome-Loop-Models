@@ -1,0 +1,35 @@
+title: 'LA-Sign: Looped Transformers with Geometry-aware Alignment for Skeleton-based Sign Language Recognition'
+authors:
+- 'Muxin Pu'
+- 'Mei Kuan Lim'
+- 'Chun Yong Chong'
+- 'Chen Change Loy'
+year: 2026
+published_date: '2026-03-30'
+added_date: "2026-10-01"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- multimodal
+tags:
+- 'looped-transformer'
+focus_tags:
+- architecture
+- objective-loss
+survey_section:
+- applications/language-speech-multimodal
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
+desc: 'Proposes LA-Sign for skeleton-based isolated sign language recognition, a looped transformer that refines motion representations with shared parameters plus a hyperbolic geometry-aware contrastive alignment, reaching state-of-the-art results on WLASL and MSASL with fewer unique layers.'
+links:
+  arxiv: https://arxiv.org/abs/2603.29057
+  alphaxiv: https://www.alphaxiv.org/abs/2603.29057

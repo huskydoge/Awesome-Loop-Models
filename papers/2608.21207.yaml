@@ -19,6 +19,14 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- applications/embodied-other
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Introduces CAIR, which applies one tied-weight Transformer refiner over three
   successive passes to correct a learned physiological time-series interpolation under
   realistic missingness.

@@ -16,6 +16,15 @@ domain_tags:
 focus_tags:
 - training-algorithm
 - inference-algorithm
+survey_section:
+- train/stability
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- stability
+comparison: []
+survey_core: false
 desc: Develops a certified continuation framework for deep equilibrium inference and
   training, using homotopy and rounded Newton tracking to obtain polynomial bit-complexity
   guarantees on a formally specified promise class.

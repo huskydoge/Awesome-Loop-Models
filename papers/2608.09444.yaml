@@ -17,6 +17,16 @@ domain_tags:
 - adaptive-compute
 focus_tags:
 - inference-algorithm
+survey_section:
+- systems/batching-parallel
+- design/topology
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Introduces continuous depth batching for looped language models, scheduling
   shared-block loop iterations and boundary stages separately so adaptive-depth inference
   can realize most of its theoretical speed-up.

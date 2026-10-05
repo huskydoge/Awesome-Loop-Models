@@ -18,6 +18,15 @@ focus_tags:
 - inference-algorithm
 tags:
 - LLA
+survey_section:
+- systems/kv-memory
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+comparison: []
+survey_core: false
 desc: Introduces Looped Latent Attention, a cross-loop KV-cache compression method
   that exploits low-rank recurrence structure in looped, weight-tied Transformers
   without collapsing all loops into one state.

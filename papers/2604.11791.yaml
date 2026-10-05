@@ -22,6 +22,14 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- interpretability
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Mechanistically analyzes explicit cyclic recurrence in looped language models,
   finding that many studied models approach layer-specific cyclic fixed points and
   that recurrent blocks repeatedly reproduce feedforward-like stages of inference,

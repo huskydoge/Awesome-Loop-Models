@@ -16,6 +16,19 @@ domain_tags:
 - adaptive-compute
 focus_tags:
 - architecture
+survey_section:
+- applications/embodied-other
+- design/depth-control
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+- compute-efficiency
+- test-time-scaling
+comparison:
+- iso-flop
+survey_core: false
 desc: Introduces LoopICL, a tabular in-context-learning foundation model built from
   a single transformer block unrolled with cell and row streams and a learned exit
   gate; it matches TabICLv2 on TabArena and TALENT at equal FLOPs with nearly 90%

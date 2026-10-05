@@ -1,0 +1,42 @@
+title: 'LoopViT: Scaling Visual ARC with Looped Transformers'
+authors:
+- 'Wen-Jie Shu'
+- 'Xuerui Qiu'
+- 'Rui-Jie Zhu'
+- 'Harold Haodong Chen'
+- 'Yexin Liu'
+- 'Harry Yang'
+year: 2026
+published_date: '2026-02-02'
+added_date: "2026-10-01"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- algorithmic-reasoning
+- adaptive-compute
+tags:
+- 'looped-transformer'
+- 'weight-tying'
+focus_tags:
+- architecture
+- inference-algorithm
+survey_section:
+- applications/vision
+- design/depth-control
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+- test-time-scaling
+comparison: []
+survey_core: false
+desc: 'Proposes Loop-ViT for visual ARC, iterating one weight-tied hybrid convolution-attention block with a parameter-free entropy-based dynamic exit; an 18M-parameter model reaches 65.8% on ARC-AGI-1, beating 73M-parameter ensembles.'
+links:
+  arxiv: https://arxiv.org/abs/2602.02156
+  alphaxiv: https://www.alphaxiv.org/abs/2602.02156
+  github: https://github.com/WenjieShu/LoopViT

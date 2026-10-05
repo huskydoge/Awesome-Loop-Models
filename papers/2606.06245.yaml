@@ -19,6 +19,16 @@ focus_tags:
 - architecture
 - objective-loss
 - inference-algorithm
+survey_section:
+- applications/embodied-other
+- scaling/test-time
+loop_topology: shifted-parallel
+sharing: full
+depth_control: fixed
+claims:
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Introduces a VLA latent-reasoning policy that initializes multiple latent hypotheses,
   refines them for K weight-tied steps, and aggregates them before action decoding.
 links:

@@ -29,6 +29,16 @@ tags:
 focus_tags:
 - architecture
 - data
+survey_section:
+- foundations/algorithmic
+- applications/graphs-science
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: unspecified
+claims:
+- length-generalization
+comparison: []
+survey_core: false
 desc: Presents a single shared GNN processor trained jointly across all 30 CLRS algorithmic
   tasks, with task-specific encoders and decoders and improvements to representations,
   training, and processor architecture.

@@ -15,6 +15,16 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/expressivity
+- applications/graphs-science
+loop_topology: whole-stack
+sharing: full
+depth_control: convergence
+claims:
+- expressivity
+comparison: []
+survey_core: false
 desc: Characterizes set-aggregation recurrent GNNs that iterate one shared block to
   convergence through an effective two-way equivalence with a fixed-point logic fragment
   supporting reachability and safety.

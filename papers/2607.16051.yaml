@@ -27,6 +27,18 @@ focus_tags:
 tags:
 - Loopie
 - MoE
+survey_section:
+- scaling/compute-optimal
+- design/loop-x
+- systems/batching-parallel
+loop_topology: unspecified
+sharing: unspecified
+depth_control: unspecified
+claims:
+- compute-efficiency
+comparison:
+- iso-flop
+survey_core: false
 desc: Introduces the Loopie MoE looped Transformer series, arguing that repeated reuse
   of compact Transformer blocks can outperform compute-matched vanilla Transformer
   baselines and support strong post-trained reasoning.

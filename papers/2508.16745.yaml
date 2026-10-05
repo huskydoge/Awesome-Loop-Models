@@ -32,6 +32,17 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/limits
+- scaling/test-time
+loop_topology: unspecified
+sharing: unspecified
+depth_control: unspecified
+claims:
+- failure-mode
+- test-time-scaling
+comparison: []
+survey_core: false
 desc: Benchmarks recurrent depth on disjoint-rule cellular automata, finding that
   layer- and model-level ACT add roughly one effective reasoning step through shared
   adaptive updates but remain bounded on longer rollouts.

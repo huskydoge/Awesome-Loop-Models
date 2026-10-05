@@ -24,6 +24,17 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- systems/kv-memory
+- design/state-memory
+loop_topology: whole-stack
+sharing: full
+depth_control: unspecified
+claims:
+- memory-efficiency
+comparison:
+- iso-param
+survey_core: false
 desc: Introduces MELT, which maintains one fixed-size KV cache per layer across recurrent
   reasoning loops, updates it through learned gating, and adapts pretrained Ouro models
   with chunk-wise two-phase training to keep cache memory independent of loop depth.

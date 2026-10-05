@@ -26,6 +26,19 @@ tags:
 focus_tags:
 - training-algorithm
 - data
+survey_section:
+- train/stability
+- train/retrofitting
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+- data-efficiency
+comparison:
+- iso-param
+- iso-flop
+survey_core: false
 desc: 'Gives compute-efficient recipes for looped language models: a from-scratch
   pipeline that cuts training from Ouro''s 7.7T to 310B tokens using mid-training,
   learning-rate warmup and stronger exit-gate regularization, yielding a 1.4B LoopLM

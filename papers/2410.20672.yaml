@@ -24,6 +24,19 @@ focus_tags:
 - architecture
 - training-algorithm
 - inference-algorithm
+survey_section:
+- train/retrofitting
+- design/sharing-scheme
+- benefits/efficiency
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- param-efficiency
+- compute-efficiency
+comparison:
+- iso-param
+survey_core: true
 desc: Converts pretrained LLMs into compact Recursive and Relaxed Recursive Transformers
   by repeatedly reusing one block of layers with depth-specific LoRA deltas; simulated
   oracle-exit results for continuous depth-wise batching suggest a potential 2–3×

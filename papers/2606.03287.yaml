@@ -20,6 +20,15 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- applications/flow-3d
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
 desc: Implements bundle-adjustment-style 3D reconstruction updates as a repeatable
   lightweight Transformer layer in implicit token space, improving pose and reconstruction
   estimates across iterations.

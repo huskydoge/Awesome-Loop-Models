@@ -21,6 +21,16 @@ domain_tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- benefits/limits
+- interpretability
+loop_topology: unspecified
+sharing: unspecified
+depth_control: unspecified
+claims:
+- failure-mode
+comparison: []
+survey_core: false
 desc: Studies recurrent-depth reasoners as dynamical systems, finding that harder
   tasks produce fractal convergence-time basins through saddle-mediated transient
   chaos and tracing their emergence during training of a looped Transformer.

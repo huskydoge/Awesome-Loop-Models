@@ -21,6 +21,15 @@ focus_tags:
 - inference-algorithm
 tags:
 - RSF-GLLM
+survey_section:
+- applications/graphs-science
+loop_topology: partial
+sharing: full
+depth_control: unspecified
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
 desc: Introduces a GRU-guided Recurrent Soft-Flow module that repeatedly updates query
   state and propagates relevance over a knowledge graph, then textualizes the resulting
   paths for grounded LLM answer generation.

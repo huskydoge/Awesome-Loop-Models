@@ -1,0 +1,36 @@
+title: 'MergeOver: Post-Training Token Merging for Recursive Vision Transformers'
+authors:
+- 'Junseo Kim'
+- 'Uraz Odyurt'
+- 'Amirreza Yousefzadeh'
+year: 2026
+published_date: '2026-08-13'
+added_date: "2026-10-01"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- efficiency
+- memory-efficiency
+tags:
+- 'recursive-transformer'
+focus_tags:
+- inference-algorithm
+survey_section:
+- systems/quantization-edge
+- applications/vision
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: 'Proposes MergeOver, a post-training method that adds token merging to the weight-shared Sliced Recursive Transformer, cutting peak activation memory by about 37% on ImageNet-1K and reducing Raspberry Pi 5 latency at a 1.47-point top-1 cost without retraining.'
+links:
+  arxiv: https://arxiv.org/abs/2608.13141
+  alphaxiv: https://www.alphaxiv.org/abs/2608.13141

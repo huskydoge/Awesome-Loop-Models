@@ -22,6 +22,18 @@ tags:
 focus_tags:
 - training-algorithm
 - inference-algorithm
+survey_section:
+- design/depth-control
+- train/post-training
+- applications/embodied-other
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- failure-mode
+comparison: []
+survey_core: false
 desc: Shows that pretrained looped RL policies specialize to their trained recurrent
   depth and proposes FlexLoop, a post-training method using adjacent-depth policy
   distillation so decisions stay reliable at shallower depths and can stop per state

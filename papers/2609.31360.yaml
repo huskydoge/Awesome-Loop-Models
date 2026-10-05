@@ -22,6 +22,18 @@ tags:
 - RE-PoLar
 focus_tags:
 - inference-algorithm
+survey_section:
+- train/retrofitting
+- design/depth-control
+loop_topology: partial
+sharing: full
+depth_control: adaptive-halting
+claims:
+- failure-mode
+- test-time-scaling
+comparison:
+- iso-param
+survey_core: false
 desc: Reproduces program-of-layers (PoLar) search across five LLMs, confirming that
   inputs benefit from skipping and repeating contiguous layer blocks within one forward
   pass, that harder questions need more layer repeats, and that a few generic programs

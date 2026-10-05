@@ -16,6 +16,16 @@ focus_tags:
 - architecture
 tags:
 - looped-transformer
+survey_section:
+- train/stability
+- design/residual-injection
+loop_topology: whole-stack
+sharing: full
+depth_control: unspecified
+claims:
+- stability
+comparison: []
+survey_core: false
 desc: Analyzes pre-LayerNorm looped Transformers as recurrent systems, arguing that
   LayerNorm acts as implicit gain control for stable memory routing.
 links:

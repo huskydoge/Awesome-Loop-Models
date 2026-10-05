@@ -27,6 +27,18 @@ tags:
 focus_tags:
 - training-algorithm
 - architecture
+survey_section:
+- train/stability
+- train/gradients
+- design/topology
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- stability
+- length-generalization
+comparison: []
+survey_core: false
 desc: Compares HRM, TRM and URM-style recursive reasoners under one pipeline across
   six algorithmic domains and finds that an intermediate gradient horizon, large physical
   batches and bounded, gated recurrent-state updates matter more than an explicit

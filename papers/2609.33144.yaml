@@ -21,6 +21,18 @@ tags:
 - DR-Loop
 focus_tags:
 - training-algorithm
+survey_section:
+- interpretability
+- benefits/generalization
+- benefits/limits
+loop_topology: whole-stack
+sharing: full
+depth_control: unspecified
+claims:
+- length-generalization
+- failure-mode
+comparison: []
+survey_core: false
 desc: Mechanistically compares two looped-Transformer recurrence-training schemes
   on polynomial iteration, finite-state composition, and knowledge-graph traversal,
   showing that one updates a state at a fixed readout while the other propagates an

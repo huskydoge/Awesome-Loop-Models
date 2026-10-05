@@ -16,6 +16,16 @@ tags:
 focus_tags:
 - architecture
 - training-algorithm
+survey_section:
+- foundations/algorithmic
+- benefits/generalization
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- length-generalization
+comparison: []
+survey_core: false
 desc: Introduces Neural GPUs, a recurrent convolutional architecture that learns parallel
   algorithms like addition and multiplication through repeated application of a shared
   convolutional recurrent block.

@@ -22,6 +22,19 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/loop-x
+- scaling/compute-optimal
+- design/depth-control
+loop_topology: whole-stack
+sharing: expert-routed
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- memory-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Shows that MoE-style sparse layers can make looped language models scale better
   than dense looped transformers, with routing divergence across repeated shared layers
   recovering expressivity and loop boundaries serving as effective early-exit points.

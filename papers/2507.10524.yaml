@@ -29,6 +29,20 @@ focus_tags:
 - architecture
 - inference-algorithm
 - training-algorithm
+survey_section:
+- design/depth-control
+- scaling/compute-optimal
+- systems/batching-parallel
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+- compute-efficiency
+- memory-efficiency
+comparison:
+- iso-flop
+survey_core: true
 desc: Introduces MoR, a recursive Transformer that reuses a shared layer stack while
   routing each token to a learned recursion depth and restricting attention and KV
   caching to tokens active at that depth.

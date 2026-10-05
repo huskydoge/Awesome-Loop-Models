@@ -19,6 +19,19 @@ tags:
 - LoopLM
 focus_tags:
 - architecture
+survey_section:
+- design/topology
+- design/residual-injection
+- benefits/limits
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: unspecified
+claims:
+- test-time-scaling
+- length-generalization
+- failure-mode
+comparison: []
+survey_core: false
 desc: 'Controlled study of when recurrence helps looped language models: extra loops
   can improve reasoning beyond the training horizon while degrading knowledge, layer
   and iteration allocation matters beyond effective depth, and channel-wise history-state

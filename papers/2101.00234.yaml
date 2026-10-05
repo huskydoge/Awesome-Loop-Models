@@ -20,6 +20,17 @@ tags:
 - weight-tying
 focus_tags:
 - architecture
+survey_section:
+- foundations/depth-sharing
+- benefits/efficiency
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- unclear
+survey_core: false
 desc: Combines sandwich-style cross-layer sharing with self-attentive factorized embeddings
   to reduce generative Transformer parameters while preserving or improving task performance.
 links:

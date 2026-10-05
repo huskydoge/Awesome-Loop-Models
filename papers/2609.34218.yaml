@@ -24,6 +24,15 @@ tags:
 - LoRA
 focus_tags:
 - training-algorithm
+survey_section:
+- train/post-training
+- design/sharing-scheme
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
 desc: Finds that LoRA adapters shared across the loops of a looped language model
   are biased toward late loop positions and proposes Loop Dropout, which randomly
   masks per-loop adapter applications with inverse-survival rescaling, improving mathematical

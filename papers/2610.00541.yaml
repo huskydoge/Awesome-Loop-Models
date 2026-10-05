@@ -22,6 +22,18 @@ tags:
 focus_tags:
 - architecture
 - inference-algorithm
+survey_section:
+- design/sharing-scheme
+- scaling/test-time
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- test-time-scaling
+comparison:
+- iso-depth
+survey_core: false
 desc: Introduces the Random Recursive Model, which keeps a small pool of learned layers
   and, at each of T recursive steps, samples one layer with replacement, so depth
   can vary at inference and Monte Carlo inference becomes possible; on CIFAR-10, Sudoku,
