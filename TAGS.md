@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (25)
-- `flat-loop` (227)
+- `flat-loop` (228)
 - `parallel-loop` (7)
 - `implicit-layer` (35)
 
@@ -27,24 +27,24 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (30)
-- `training-algorithm` (114)
-- `architecture` (215)
+- `training-algorithm` (115)
+- `architecture` (216)
 - `data` (7)
-- `inference-algorithm` (171)
+- `inference-algorithm` (172)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `efficiency` (126)
-- `language-modeling` (123)
+- `efficiency` (127)
+- `language-modeling` (124)
 - `reasoning` (122)
 - `algorithmic-reasoning` (62)
 - `adaptive-compute` (41)
 - `theory` (37)
 - `vision` (37)
 - `scaling` (35)
-- `memory-efficiency` (27)
+- `memory-efficiency` (28)
 - `graph-data` (18)
 - `sequence-modeling` (16)
 - `scientific-ml` (9)
@@ -84,11 +84,11 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `convergence` (10)
 - `HRM` (10)
 - `Ouro` (10)
+- `depth-recurrent` (9)
 - `looped-llm` (9)
-- `depth-recurrent` (8)
+- `Huginn` (8)
 - `shared-weight-recurrence` (8)
 - `ACT` (7)
-- `Huginn` (7)
 - `recursive-transformer` (7)
 - `test-time-compute` (7)
 - `depth-scaling` (5)
@@ -98,10 +98,11 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `universal-transformer` (5)
 - `UT` (5)
 - `adaptive-computation-time` (4)
+- `fixed-point-analysis` (3)
 - `LoopMoE` (3)
 - `mechanistic-analysis` (3)
+- `Parcae` (3)
 - `activation-compression` (2)
-- `fixed-point-analysis` (2)
 - `flow matching` (2)
 - `HRM-Text` (2)
 - `hyper-connections` (2)
@@ -109,7 +110,6 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `memory-banks` (2)
 - `mythos` (2)
 - `NCA` (2)
-- `Parcae` (2)
 - `PLT` (2)
 - `PoLar` (2)
 - `RecRec` (2)
@@ -205,6 +205,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `multi-resolution-recursion` (1)
 - `nanoTabPFNlooped` (1)
 - `Neural GPU` (1)
+- `OrthoInj` (1)
 - `PERL` (1)
 - `phantom-gradient` (1)
 - `preference-probing` (1)

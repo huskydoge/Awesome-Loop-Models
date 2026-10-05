@@ -1,0 +1,36 @@
+title: "Towards Looped Models Done Right Part II: Rethinking at Fixed Points"
+authors:
+- "Benhao Huang"
+- "Chufan Shi"
+- "Junlin Chen"
+- "Shicheng Wen"
+- "Zhengzhong Liu"
+- "Eric Xing"
+- "Xuezhe Ma"
+year: 2026
+published_date: "2026-10-02"
+added_date: "2026-10-04"
+venue: "IFM Research"
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- memory-efficiency
+tags:
+- "Huginn"
+- "Parcae"
+- "OrthoInj"
+- "fixed-point-analysis"
+- "depth-recurrent"
+focus_tags:
+- training-algorithm
+- architecture
+- inference-algorithm
+desc: "Argues that once a looped language model's recurrent states approach fixed points, the endpoint can replace the trajectory, enabling truncated backpropagation, terminal KV sharing, distilled prefill up to 1.79x faster, and RL updates from saved rollout states about 2x faster; it shapes those fixed points with a depth prior learned from prediction feedback plus an entropy term and with orthogonal input injection, and at 1.6B parameters the learned prior with a 3x smaller KV cache matches the downstream average of fixed-depth training with the full cache."
+links:
+  alphaxiv: https://www.alphaxiv.org/abs/2610.looped-models-fixed-points
+  paper: https://www.alphaxiv.org/pdf/2610.looped-models-fixed-points
+  github: https://github.com/ifm-ai/xllm-loop
