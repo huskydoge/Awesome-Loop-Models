@@ -1,0 +1,27 @@
+title: 'Scheduling Recursive Reasoning in Looped Transformers'
+authors:
+- Boyuan Wang
+- Chengyao Yu
+- Jiaxi Ren
+- Hongxin Wei
+- Bingyi Jing
+- Yuxin Tao
+year: 2026
+published_date: '2026-09-29'
+added_date: "2026-09-30"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- reasoning
+- algorithmic-reasoning
+- adaptive-compute
+focus_tags:
+- inference-algorithm
+- training-algorithm
+desc: 'Proposes TAPS, a scheduler that adapts the step size of each shared-parameter recurrent update online by balancing persistent progress against fluctuation, improving terminal accuracy of looped reasoning models without retraining and giving up to 1.56x wall-clock speedup at matched accuracy when used in training.'
+links:
+  arxiv: https://arxiv.org/abs/2609.36653
+  alphaxiv: https://www.alphaxiv.org/abs/2609.36653

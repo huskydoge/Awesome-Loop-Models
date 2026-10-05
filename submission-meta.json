@@ -251,6 +251,13 @@
     "papers/2609.35274.yaml",
     "papers/2609.35748.yaml",
     "papers/2609.35751.yaml",
+    "papers/2609.36108.yaml",
+    "papers/2609.36636.yaml",
+    "papers/2609.36653.yaml",
+    "papers/2609.37379.yaml",
+    "papers/2609.37432.yaml",
+    "papers/2609.37818.yaml",
+    "papers/2609.37905.yaml",
     "papers/2609.38426.yaml",
     "papers/2609.39892.yaml",
     "papers/2609.39967.yaml",
@@ -275,7 +282,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 228
+        "count": 235
       },
       {
         "label": "implicit-layer",
@@ -293,15 +300,15 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 216
+        "count": 222
       },
       {
         "label": "inference-algorithm",
-        "count": 172
+        "count": 174
       },
       {
         "label": "training-algorithm",
-        "count": 115
+        "count": 118
       },
       {
         "label": "objective-loss",
@@ -315,23 +322,23 @@
     "domain": [
       {
         "label": "efficiency",
-        "count": 127
+        "count": 129
       },
       {
         "label": "language-modeling",
-        "count": 124
+        "count": 126
       },
       {
         "label": "reasoning",
-        "count": 122
+        "count": 125
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 62
+        "count": 63
       },
       {
         "label": "adaptive-compute",
-        "count": 41
+        "count": 44
       },
       {
         "label": "theory",
@@ -363,18 +370,18 @@
       },
       {
         "label": "multimodal",
-        "count": 7
+        "count": 8
       },
       {
         "label": "machine-translation",
         "count": 6
       },
       {
-        "label": "compositional-reasoning",
-        "count": 4
+        "label": "rl-control",
+        "count": 5
       },
       {
-        "label": "rl-control",
+        "label": "compositional-reasoning",
         "count": 4
       },
       {
@@ -382,23 +389,23 @@
         "count": 3
       },
       {
+        "label": "recommendation",
+        "count": 3
+      },
+      {
+        "label": "speech-recognition",
+        "count": 3
+      },
+      {
+        "label": "tabular-data",
+        "count": 3
+      },
+      {
         "label": "alignment",
         "count": 2
       },
       {
-        "label": "recommendation",
-        "count": 2
-      },
-      {
         "label": "robotics-vla",
-        "count": 2
-      },
-      {
-        "label": "speech-recognition",
-        "count": 2
-      },
-      {
-        "label": "tabular-data",
         "count": 2
       },
       {

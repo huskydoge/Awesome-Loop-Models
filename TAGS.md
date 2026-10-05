@@ -18,7 +18,7 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
 - `hierarchical-loop` (25)
-- `flat-loop` (228)
+- `flat-loop` (235)
 - `parallel-loop` (7)
 - `implicit-layer` (35)
 
@@ -27,20 +27,20 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
 - `objective-loss` (30)
-- `training-algorithm` (115)
-- `architecture` (216)
+- `training-algorithm` (118)
+- `architecture` (222)
 - `data` (7)
-- `inference-algorithm` (172)
+- `inference-algorithm` (174)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `efficiency` (127)
-- `language-modeling` (124)
-- `reasoning` (122)
-- `algorithmic-reasoning` (62)
-- `adaptive-compute` (41)
+- `efficiency` (129)
+- `language-modeling` (126)
+- `reasoning` (125)
+- `algorithmic-reasoning` (63)
+- `adaptive-compute` (44)
 - `theory` (37)
 - `vision` (37)
 - `scaling` (35)
@@ -48,16 +48,16 @@ Observed browser-facing domain tags currently used across the repo.
 - `graph-data` (18)
 - `sequence-modeling` (16)
 - `scientific-ml` (9)
-- `multimodal` (7)
+- `multimodal` (8)
 - `machine-translation` (6)
+- `rl-control` (5)
 - `compositional-reasoning` (4)
-- `rl-control` (4)
 - `hardware-aware` (3)
+- `recommendation` (3)
+- `speech-recognition` (3)
+- `tabular-data` (3)
 - `alignment` (2)
-- `recommendation` (2)
 - `robotics-vla` (2)
-- `speech-recognition` (2)
-- `tabular-data` (2)
 - `wireless-communications` (2)
 - `world-modeling` (2)
 - `biology` (1)
@@ -91,9 +91,9 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `shared-weight-recurrence` (8)
 - `ACT` (7)
 - `test-time-compute` (7)
+- `LoopLM` (6)
 - `depth-scaling` (5)
 - `latent-refinement` (5)
-- `LoopLM` (5)
 - `LoRA` (5)
 - `universal-transformer` (5)
 - `UT` (5)
