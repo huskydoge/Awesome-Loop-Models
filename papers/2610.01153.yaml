@@ -1,14 +1,14 @@
-title: "Looping Beyond Twice: A Scalable Recipe for Looped Mixture-of-Experts"
+title: 'Looping Beyond Twice: A Scalable Recipe for Looped Mixture-of-Experts'
 authors:
-- "Di He"
-- "Pengxiang Li"
-- "Da Chang"
-- "Qingyan Meng"
-- "Lu Yin"
-- "Shiwei Liu"
+- Di He
+- Pengxiang Li
+- Da Chang
+- Qingyan Meng
+- Lu Yin
+- Shiwei Liu
 year: 2026
-published_date: "2026-10-01"
-added_date: "2026-10-04"
+published_date: '2026-10-01'
+added_date: '2026-10-04'
 venue: arXiv
 category: designs
 foundation: false
@@ -18,13 +18,28 @@ domain_tags:
 - language-modeling
 - scaling
 tags:
-- "LOOM"
-- "MoE"
-- "LoopMoE"
+- LOOM
+- MoE
+- LoopMoE
 focus_tags:
 - architecture
-desc: "Diagnoses hidden-state variance growth and expert-selection collapse as the obstacles to looping MoE language models more than twice and proposes LOOM, which scales residual updates, re-injects the input embedding at every loop, uses per-loop routers and adds a Looping Residual; 100M to 1.7B models scale stably to 9 to 12 loops, and the 1.7B model at 9 loops lowers perplexity from 9.62 to 7.77."
+desc: Diagnoses hidden-state variance growth and expert-selection collapse as the
+  obstacles to looping MoE language models more than twice and proposes LOOM, which
+  scales residual updates, re-injects the input embedding at every loop, uses per-loop
+  routers and adds a Looping Residual; 100M to 1.7B models scale stably to 9 to 12
+  loops, and the 1.7B model at 9 loops lowers perplexity from 9.62 to 7.77.
 links:
   arxiv: https://arxiv.org/abs/2610.01153
   alphaxiv: https://www.alphaxiv.org/abs/2610.01153
   github: https://github.com/hed-ucas/LOOM
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-10-05'

@@ -1,16 +1,16 @@
-title: "Decoding Looped Transformers Better for (Almost) Free"
+title: Decoding Looped Transformers Better for (Almost) Free
 authors:
-- "Weihao Liu"
-- "Huangjie Zheng"
-- "Tianrong Chen"
-- "Rohit Dilip"
-- "Richard He Bai"
-- "Yizhu Jiao"
-- "Yuyang Wang"
-- "Ruixiang Zhang"
+- Weihao Liu
+- Huangjie Zheng
+- Tianrong Chen
+- Rohit Dilip
+- Richard He Bai
+- Yizhu Jiao
+- Yuyang Wang
+- Ruixiang Zhang
 year: 2026
-published_date: "2026-10-01"
-added_date: "2026-10-04"
+published_date: '2026-10-01'
+added_date: '2026-10-04'
 venue: arXiv
 category: designs
 foundation: false
@@ -21,12 +21,23 @@ domain_tags:
 - reasoning
 - efficiency
 tags:
-- "LoopCD"
-- "Ouro"
-- "Huginn"
+- LoopCD
+- Ouro
+- Huginn
 focus_tags:
 - inference-algorithm
-desc: "Proposes LoopCD, a training-free contrastive decoding method that contrasts a looped Transformer's final-loop prediction with an earlier recurrent pass in logit or hidden-state space; across four looped model families it raises Ouro-2.6B-Thinking AIME 2024 pass@1 from 61.88 to 73.33 percent and lets models halve their loops while matching full-depth baselines, cutting forward FLOPs by 22.5 to 48.2 percent."
+desc: Proposes LoopCD, a training-free contrastive decoding method that contrasts
+  a looped Transformer's final-loop prediction with an earlier recurrent pass in logit
+  or hidden-state space; across four looped model families it raises Ouro-2.6B-Thinking
+  AIME 2024 pass@1 from 61.88 to 73.33 percent and lets models halve their loops while
+  matching full-depth baselines, cutting forward FLOPs by 22.5 to 48.2 percent.
 links:
   arxiv: https://arxiv.org/abs/2610.02185
   alphaxiv: https://www.alphaxiv.org/abs/2610.02185
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-05'

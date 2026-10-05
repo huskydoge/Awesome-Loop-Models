@@ -1,11 +1,11 @@
-title: "On the Chain-of-Thought Monitorability of Looped Language Models"
+title: On the Chain-of-Thought Monitorability of Looped Language Models
 authors:
-- "Han Wang"
-- "Ishwar B Balappanawar"
-- "Huan Zhang"
+- Han Wang
+- Ishwar B Balappanawar
+- Huan Zhang
 year: 2026
-published_date: "2026-10-02"
-added_date: "2026-10-04"
+published_date: '2026-10-02'
+added_date: '2026-10-04'
 venue: arXiv
 category: analysis
 foundation: false
@@ -16,11 +16,20 @@ domain_tags:
 - language-modeling
 - reasoning
 tags:
-- "Ouro"
-- "looped-llm"
+- Ouro
+- looped-llm
 focus_tags:
 - inference-algorithm
-desc: "Gives the first systematic evaluation of chain-of-thought monitorability in looped language models on eight MonitorBench tasks, varying Ouro loop depth and comparing against non-looped models matched by parameters, layer count or effective depth; deeper loops reduce monitorability on some cue-answer stress tests, but looped models are not systematically less monitorable than matched non-looped models."
+desc: Gives the first systematic evaluation of chain-of-thought monitorability in
+  looped language models on eight MonitorBench tasks, varying Ouro loop depth and
+  comparing against non-looped models matched by parameters, layer count or effective
+  depth; deeper loops reduce monitorability on some cue-answer stress tests, but looped
+  models are not systematically less monitorable than matched non-looped models.
 links:
   arxiv: https://arxiv.org/abs/2610.02741
   alphaxiv: https://www.alphaxiv.org/abs/2610.02741
+citation_source_best: opencitations
+citations: 0
+citation_sources:
+  opencitations: 0
+metrics_updated: '2026-10-05'

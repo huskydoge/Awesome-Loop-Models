@@ -4,7 +4,7 @@ authors:
 - Katharina Eggensperger
 year: 2026
 published_date: '2026-09-28'
-added_date: "2026-09-30"
+added_date: '2026-09-30'
 venue: arXiv
 category: applications
 foundation: false
@@ -16,8 +16,22 @@ domain_tags:
 - adaptive-compute
 focus_tags:
 - architecture
-desc: 'Introduces LoopICL, a tabular in-context-learning foundation model built from a single transformer block unrolled with cell and row streams and a learned exit gate; it matches TabICLv2 on TabArena and TALENT at equal FLOPs with nearly 90% fewer parameters and lets users trade inference cost for accuracy.'
+desc: Introduces LoopICL, a tabular in-context-learning foundation model built from
+  a single transformer block unrolled with cell and row streams and a learned exit
+  gate; it matches TabICLv2 on TabArena and TALENT at equal FLOPs with nearly 90%
+  fewer parameters and lets users trade inference cost for accuracy.
 links:
   arxiv: https://arxiv.org/abs/2609.36108
   alphaxiv: https://www.alphaxiv.org/abs/2609.36108
   github: https://github.com/amirbalef/loopicl
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 2
+star_sources:
+  github_api: 2
+metrics_updated: '2026-10-05'

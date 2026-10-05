@@ -1,20 +1,20 @@
-title: "LoopVL: Recurrent Visual Intelligence"
+title: 'LoopVL: Recurrent Visual Intelligence'
 authors:
-- "Zhe Qian"
-- "Ziyang Gong"
-- "Zhongxing Xu"
-- "Hehan Li"
-- "Zhonghua Wang"
-- "Fei Luo"
-- "Mingxuan Wang"
-- "Xue Yang"
-- "Shiwei liu"
-- "Yanbiao Ma"
-- "Junchi Yan"
-- "Jungong Han"
+- Zhe Qian
+- Ziyang Gong
+- Zhongxing Xu
+- Hehan Li
+- Zhonghua Wang
+- Fei Luo
+- Mingxuan Wang
+- Xue Yang
+- Shiwei liu
+- Yanbiao Ma
+- Junchi Yan
+- Jungong Han
 year: 2026
-published_date: "2026-09-29"
-added_date: "2026-10-04"
+published_date: '2026-09-29'
+added_date: '2026-10-04'
 venue: arXiv
 category: applications
 foundation: false
@@ -25,15 +25,30 @@ domain_tags:
 - vision
 - reasoning
 tags:
-- "LoopVL"
-- "HRM-Text"
-- "looped-transformer"
+- LoopVL
+- HRM-Text
+- looped-transformer
 focus_tags:
 - architecture
 - training-algorithm
-desc: "Extends looped Transformers to vision-language models: LoopVL reuses two 16-layer L/H Transformer stacks under a Module-Loop and Model-Loop schedule, executing 128 layer calls from 32 unique layers, and after language pretraining, multimodal training and post-training it outperforms similarly sized and larger non-recurrent VLMs on multimodal understanding and visual reasoning benchmarks."
+desc: 'Extends looped Transformers to vision-language models: LoopVL reuses two 16-layer
+  L/H Transformer stacks under a Module-Loop and Model-Loop schedule, executing 128
+  layer calls from 32 unique layers, and after language pretraining, multimodal training
+  and post-training it outperforms similarly sized and larger non-recurrent VLMs on
+  multimodal understanding and visual reasoning benchmarks.'
 links:
   arxiv: https://arxiv.org/abs/2609.38426
   alphaxiv: https://www.alphaxiv.org/abs/2609.38426
   github: https://github.com/Tier-Flow/LoopVL
   hf: https://huggingface.co/TierFlow/LoopVL
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 87
+star_sources:
+  github_api: 87
+metrics_updated: '2026-10-05'

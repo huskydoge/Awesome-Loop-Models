@@ -1,10 +1,10 @@
-title: "Random Recursive Models"
+title: Random Recursive Models
 authors:
-- "Jama Hussein Mohamud"
-- "Mirco Ravanelli"
+- Jama Hussein Mohamud
+- Mirco Ravanelli
 year: 2026
-published_date: "2026-09-30"
-added_date: "2026-10-04"
+published_date: '2026-09-30'
+added_date: '2026-10-04'
 venue: arXiv
 category: designs
 foundation: false
@@ -15,14 +15,25 @@ domain_tags:
 - reasoning
 - vision
 tags:
-- "recursive-transformer"
-- "TRM"
-- "HRM"
-- "test-time-compute"
+- recursive-transformer
+- TRM
+- HRM
+- test-time-compute
 focus_tags:
 - architecture
 - inference-algorithm
-desc: "Introduces the Random Recursive Model, which keeps a small pool of learned layers and, at each of T recursive steps, samples one layer with replacement, so depth can vary at inference and Monte Carlo inference becomes possible; on CIFAR-10, Sudoku, Zebra, Sudoku-Extreme, Maze-Hard and ARC-AGI-1 it matches or beats fixed-order and HRM/TRM baselines, often with 50 to 75 percent fewer parameters."
+desc: Introduces the Random Recursive Model, which keeps a small pool of learned layers
+  and, at each of T recursive steps, samples one layer with replacement, so depth
+  can vary at inference and Monte Carlo inference becomes possible; on CIFAR-10, Sudoku,
+  Zebra, Sudoku-Extreme, Maze-Hard and ARC-AGI-1 it matches or beats fixed-order and
+  HRM/TRM baselines, often with 50 to 75 percent fewer parameters.
 links:
   arxiv: https://arxiv.org/abs/2610.00541
   alphaxiv: https://www.alphaxiv.org/abs/2610.00541
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-05'
