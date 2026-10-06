@@ -1,12 +1,12 @@
 title: 'LAST: Looped Audio Spectrogram Transformer'
 authors:
-- 'Haider Al-Tahan'
-- 'Sean O''Brien'
-- 'Anastasia Razdaibiedina'
-- 'N. Apurva Ratan Murty'
+- Haider Al-Tahan
+- Sean O'Brien
+- Anastasia Razdaibiedina
+- N. Apurva Ratan Murty
 year: 2026
-published_date: "2026-10-01"
-added_date: "2026-10-05"
+published_date: '2026-10-01'
+added_date: '2026-10-05'
 venue: arXiv
 category: applications
 foundation: false
@@ -31,13 +31,19 @@ claims:
 comparison:
 - iso-param
 survey_core: false
-desc: >-
-  Loops a shared stack of audio spectrogram transformer blocks but, after the first full
-  pass, updates only the class token against cached audio keys and values, so extra
-  passes are nearly free; on AudioSet a ten-pass model reaches 0.345 mAP, 2.1 percent
-  relative above a twelve-layer sequential transformer with 49.4 percent fewer
-  parameters and 42 percent fewer MACs, while full-token recurrence with the same blocks
-  degrades with depth.
+desc: Loops a shared stack of audio spectrogram transformer blocks but, after the
+  first full pass, updates only the class token against cached audio keys and values,
+  so extra passes are nearly free; on AudioSet a ten-pass model reaches 0.345 mAP,
+  2.1 percent relative above a twelve-layer sequential transformer with 49.4 percent
+  fewer parameters and 42 percent fewer MACs, while full-token recurrence with the
+  same blocks degrades with depth.
 links:
   arxiv: https://arxiv.org/abs/2610.01926
   alphaxiv: https://www.alphaxiv.org/abs/2610.01926
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-06'

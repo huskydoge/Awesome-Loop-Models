@@ -1,21 +1,21 @@
 title: 'ALoDLM: Adaptively Looped Diffusion Language Models'
 authors:
-- 'Liancheng Fang'
-- 'Zhuowei Li'
-- 'Youngeun Kim'
-- 'Tianchen Zhao'
-- 'Rajat Koner'
-- 'Jiaye Wu'
-- 'Linghan Xu'
-- 'Xuanbai Chen'
-- 'Xiang Xu'
-- 'Zheng Zhang'
-- 'Jakub Zablocki'
-- 'Nishant Sankaran'
-- 'Yifan Xing'
+- Liancheng Fang
+- Zhuowei Li
+- Youngeun Kim
+- Tianchen Zhao
+- Rajat Koner
+- Jiaye Wu
+- Linghan Xu
+- Xuanbai Chen
+- Xiang Xu
+- Zheng Zhang
+- Jakub Zablocki
+- Nishant Sankaran
+- Yifan Xing
 year: 2026
-published_date: "2026-10-03"
-added_date: "2026-10-05"
+published_date: '2026-10-03'
+added_date: '2026-10-05'
 venue: arXiv
 category: designs
 foundation: false
@@ -46,15 +46,23 @@ claims:
 comparison:
 - iso-param
 survey_core: false
-desc: >-
-  Adds an inner loop to each denoising step of a diffusion language model: a shared
-  recurrent core of Transformer layers is reapplied while confident tokens commit as
-  discrete context and unresolved tokens keep refining their latent states, with a
-  learned exit gate trained through a conditional ELBO over token-wise exit schedules;
-  converted from Qwen3 by SFT on 5B tokens, ALoDLM averages 65.5 and 80.3 over eleven
-  benchmarks at 1.7B and 8B, above all evaluated diffusion LMs and the Qwen3 AR
-  baselines.
+desc: 'Adds an inner loop to each denoising step of a diffusion language model: a
+  shared recurrent core of Transformer layers is reapplied while confident tokens
+  commit as discrete context and unresolved tokens keep refining their latent states,
+  with a learned exit gate trained through a conditional ELBO over token-wise exit
+  schedules; converted from Qwen3 by SFT on 5B tokens, ALoDLM averages 65.5 and 80.3
+  over eleven benchmarks at 1.7B and 8B, above all evaluated diffusion LMs and the
+  Qwen3 AR baselines.'
 links:
   arxiv: https://arxiv.org/abs/2610.04198
   alphaxiv: https://www.alphaxiv.org/abs/2610.04198
   github: https://github.com/amazon-science/ALoDLM
+citation_source_best: opencitations
+citations: 0
+citation_sources:
+  opencitations: 0
+star_source_best: github_api
+github_stars: 1
+star_sources:
+  github_api: 1
+metrics_updated: '2026-10-06'
