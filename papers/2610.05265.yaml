@@ -1,0 +1,45 @@
+title: 'Loopy: Low-Bit Quantization Framework for Looped Language Models'
+authors:
+- 'Zeyu Li'
+- 'Yipu Zhang'
+- 'Jintao Chen'
+- 'Xin Li'
+- 'Wei Zhang'
+year: 2026
+published_date: "2026-10-04"
+added_date: "2026-10-05"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- memory-efficiency
+tags:
+- Ouro
+- Huginn
+- LoopLM
+focus_tags:
+- inference-algorithm
+survey_section:
+- systems/quantization-edge
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+- failure-mode
+comparison: []
+survey_core: false
+desc: >-
+  Post-training quantization for looped language models that picks one shared rotation
+  and channel-scaling configuration for the recurrent core by its final loss at the
+  target deployment depth, using progressive full-depth evaluation to cut calibration
+  cost; across Ouro, Huginn and Recurrent-Llama at W4A8 and W4A4 it gives the best low-
+  bit results, reducing Ouro-1.4B W4A4 LAMBADA perplexity by 36.5 percent relative to
+  SpinQuant.
+links:
+  arxiv: https://arxiv.org/abs/2610.05265
+  alphaxiv: https://www.alphaxiv.org/abs/2610.05265
