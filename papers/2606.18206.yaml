@@ -45,9 +45,9 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2606.18206
   github: https://github.com/nilskiKonjIzDunava/fprm
   hf: https://huggingface.co/fixed-point-reasoners/fprm
-citations: 20
+citations: 21
 citation_sources:
-  semantic_scholar: 20
+  semantic_scholar: 21
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
@@ -55,4 +55,4 @@ github_stars: 31
 star_sources:
   github_api: 31
 star_source_best: github_api
-metrics_updated: '2026-10-02'
+metrics_updated: '2026-10-06'

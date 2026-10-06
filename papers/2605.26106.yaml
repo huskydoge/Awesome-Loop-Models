@@ -48,10 +48,10 @@ desc: Introduces LoopMDM, selectively looping early-middle transformer layers in
 links:
   arxiv: https://arxiv.org/abs/2605.26106
   alphaxiv: https://www.alphaxiv.org/abs/2605.26106
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-07-20'
+metrics_updated: '2026-10-06'
