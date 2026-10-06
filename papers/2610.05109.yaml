@@ -1,0 +1,48 @@
+title: 'LoopMoEVR: Loop-Based Degradation-Aware Mixture-of-Experts for Unified UHD Video Restoration'
+authors:
+- 'Yucheng Xin'
+- 'Runci Bai'
+- 'Yongcong Wang'
+- 'Guangwei Gao'
+- 'Jiao Liu'
+- 'Dianjie Lu'
+- 'Linwei Fan'
+- 'Zhuoran Zheng'
+year: 2026
+published_date: "2026-10-04"
+added_date: "2026-10-05"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- efficiency
+- adaptive-compute
+tags:
+- LoopMoEVR
+- LoopMoE
+- MoE
+focus_tags:
+- architecture
+survey_section:
+- applications/vision
+- design/depth-control
+loop_topology: prelude-core-coda
+sharing: partial-adapter
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
+desc: >-
+  Restores ultra-high-definition video with one parameter-shared loop that refines
+  latent video features using degradation-conditioned low-rank loop embeddings, spatio-
+  temporal iterative adaptive normalization and state-aware expert modulation, while an
+  input-conditioned depth predictor chooses four or five iterations; with about 0.884M
+  parameters a single model handles dehazing, deraining, denoising and low-light
+  enhancement and attains the best mean PSNR on UHV-4K-AIO.
+links:
+  arxiv: https://arxiv.org/abs/2610.05109
+  alphaxiv: https://www.alphaxiv.org/abs/2610.05109

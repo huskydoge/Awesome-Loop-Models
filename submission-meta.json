@@ -281,9 +281,14 @@
     "papers/2610.00541.yaml",
     "papers/2610.00673.yaml",
     "papers/2610.01153.yaml",
+    "papers/2610.01926.yaml",
     "papers/2610.02185.yaml",
     "papers/2610.02383.yaml",
     "papers/2610.02741.yaml",
+    "papers/2610.04198.yaml",
+    "papers/2610.05109.yaml",
+    "papers/2610.05265.yaml",
+    "papers/2610.05538.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -296,7 +301,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 245
+        "count": 250
       },
       {
         "label": "implicit-layer",
@@ -314,11 +319,11 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 229
+        "count": 233
       },
       {
         "label": "inference-algorithm",
-        "count": 179
+        "count": 181
       },
       {
         "label": "training-algorithm",
@@ -326,7 +331,7 @@
       },
       {
         "label": "objective-loss",
-        "count": 32
+        "count": 34
       },
       {
         "label": "data",
@@ -336,15 +341,15 @@
     "domain": [
       {
         "label": "efficiency",
-        "count": 133
-      },
-      {
-        "label": "reasoning",
-        "count": 129
+        "count": 136
       },
       {
         "label": "language-modeling",
-        "count": 128
+        "count": 130
+      },
+      {
+        "label": "reasoning",
+        "count": 130
       },
       {
         "label": "algorithmic-reasoning",
@@ -352,11 +357,11 @@
       },
       {
         "label": "adaptive-compute",
-        "count": 46
+        "count": 49
       },
       {
         "label": "vision",
-        "count": 42
+        "count": 44
       },
       {
         "label": "theory",
@@ -368,7 +373,7 @@
       },
       {
         "label": "memory-efficiency",
-        "count": 29
+        "count": 30
       },
       {
         "label": "graph-data",
@@ -433,6 +438,10 @@
       {
         "label": "world-modeling",
         "count": 2
+      },
+      {
+        "label": "audio-classification",
+        "count": 1
       },
       {
         "label": "electronic-structure",

@@ -1,0 +1,60 @@
+title: 'ALoDLM: Adaptively Looped Diffusion Language Models'
+authors:
+- 'Liancheng Fang'
+- 'Zhuowei Li'
+- 'Youngeun Kim'
+- 'Tianchen Zhao'
+- 'Rajat Koner'
+- 'Jiaye Wu'
+- 'Linghan Xu'
+- 'Xuanbai Chen'
+- 'Xiang Xu'
+- 'Zheng Zhang'
+- 'Jakub Zablocki'
+- 'Nishant Sankaran'
+- 'Yifan Xing'
+year: 2026
+published_date: "2026-10-03"
+added_date: "2026-10-05"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+- adaptive-compute
+tags:
+- ALoDLM
+- masked-diffusion-language-model
+- halting
+focus_tags:
+- architecture
+- objective-loss
+- inference-algorithm
+survey_section:
+- design/depth-control
+- outlook/diffusion
+- train/retrofitting
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: adaptive-halting
+claims:
+- test-time-scaling
+- compute-efficiency
+comparison:
+- iso-param
+survey_core: false
+desc: >-
+  Adds an inner loop to each denoising step of a diffusion language model: a shared
+  recurrent core of Transformer layers is reapplied while confident tokens commit as
+  discrete context and unresolved tokens keep refining their latent states, with a
+  learned exit gate trained through a conditional ELBO over token-wise exit schedules;
+  converted from Qwen3 by SFT on 5B tokens, ALoDLM averages 65.5 and 80.3 over eleven
+  benchmarks at 1.7B and 8B, above all evaluated diffusion LMs and the Qwen3 AR
+  baselines.
+links:
+  arxiv: https://arxiv.org/abs/2610.04198
+  alphaxiv: https://www.alphaxiv.org/abs/2610.04198
+  github: https://github.com/amazon-science/ALoDLM

@@ -1,0 +1,50 @@
+title: 'LiFT: Loop Flow Transformers'
+authors:
+- 'Mohammad Mahdi Derakhshani'
+- 'Pedro M. P. Curvo'
+- 'Gertjan J. Burghouts'
+- 'Jan-Willem van de Meent'
+- 'Cees G. M. Snoek'
+year: 2026
+published_date: "2026-10-04"
+added_date: "2026-10-05"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- vision
+- adaptive-compute
+tags:
+- flow matching
+- looped-transformer
+focus_tags:
+- architecture
+- objective-loss
+survey_section:
+- applications/vision
+- train/supervision
+- scaling/test-time
+- outlook/diffusion
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: sampled-train
+claims:
+- param-efficiency
+- compute-efficiency
+- test-time-scaling
+comparison:
+- iso-flop
+- iso-depth
+survey_core: false
+desc: >-
+  Splits a Diffusion Transformer into a prelude, a depth-conditioned shared recurrent
+  core and a prediction head, and supervises every loop with a point on a straight path
+  from the model's initial estimate to the flow-matching target indexed by a continuous
+  depth coordinate, so the core can be looped far beyond its training depth; on ImageNet
+  256x256 LiFT-L/2 reaches an FID 3.34 lower than a dense DiT-XL/2 with about 60 percent
+  fewer parameters and 52 percent fewer inference FLOPs.
+links:
+  arxiv: https://arxiv.org/abs/2610.05538
+  alphaxiv: https://www.alphaxiv.org/abs/2610.05538
