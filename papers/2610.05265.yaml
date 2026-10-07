@@ -42,8 +42,9 @@ desc: Post-training quantization for looped language models that picks one share
 links:
   arxiv: https://arxiv.org/abs/2610.05265
   alphaxiv: https://www.alphaxiv.org/abs/2610.05265
-citation_source_best: opencitations
+citation_source_best: semantic_scholar
 citations: 0
 citation_sources:
   opencitations: 0
-metrics_updated: '2026-10-06'
+  semantic_scholar: 0
+metrics_updated: '2026-10-07'

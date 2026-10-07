@@ -34,9 +34,9 @@ links:
   arxiv: https://arxiv.org/abs/1910.10593
   openreview: https://openreview.net/forum?id=SkgKO0EtvS
 citation_source_best: semantic_scholar
-citations: 205
+citations: 206
 citation_sources:
-  semantic_scholar: 205
+  semantic_scholar: 206
   openalex: 24
   opencitations: 0
-metrics_updated: '2026-10-02'
+metrics_updated: '2026-10-07'
