@@ -1,0 +1,41 @@
+title: 'SanSi: A Looped Typed Decision Model for System 1.5 Thinking'
+authors:
+- Shuyu Gan
+- Young-Jun Lee
+- Dongyeop Kang
+year: 2026
+published_date: '2026-10-06'
+added_date: "2026-10-06"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- reasoning
+tags:
+- SanSi
+- Ouro
+- LoRA
+focus_tags:
+- training-algorithm
+- inference-algorithm
+survey_section:
+- scaling/test-time
+- train/supervision
+- train/post-training
+loop_topology: whole-stack
+sharing: unspecified
+depth_control: fixed
+claims:
+- test-time-scaling
+- length-generalization
+comparison:
+- unclear
+survey_core: false
+desc: 'Turns the pretrained looped language model Ouro into a typed decision model that returns option probabilities without generating text: LoRA adapters and a small readout read the answer after every pass of the 24-layer stack and train each loop with a proper scoring rule, so one model serves budgets from one to eight loops; on 10,027 decisions from 59 sources it reaches 72.0 percent, 13.5 points above a non-looped model of the same shape trained with the same recipe, and loops extend solvable depth beyond training.'
+links:
+  arxiv: https://arxiv.org/abs/2610.07730
+  alphaxiv: https://www.alphaxiv.org/abs/2610.07730
+  project: https://minnesotanlp.github.io/Sansi/
