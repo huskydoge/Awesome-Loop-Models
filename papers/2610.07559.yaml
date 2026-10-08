@@ -1,0 +1,44 @@
+title: 'TAFFY: A Task-Adaptive Tabular Foundation Model with In-Context Diversity'
+authors:
+- Zijian Li
+- Xiangchen Song
+- Gongxu Luo
+- Jie Qiao
+- Ruichu Cai
+- Zhenhao Chen
+- Xinshuai Dong
+- Fan Feng
+- Guangyi Chen
+- Kun Zhang
+year: 2026
+published_date: '2026-10-06'
+added_date: "2026-10-08"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- tabular-data
+tags:
+- TAFFY
+- looped-transformer
+focus_tags:
+- architecture
+- data
+survey_section:
+- applications/graphs-science
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
+desc: Tabular foundation model that reapplies one shared twelve-block in-context-learning
+  transformer for several passes and scales the last pass's update with a gate computed
+  from support-set statistics, pretrained on synthetic contexts that mix related causal
+  environments; with four loops it gets the lowest average rank on six classification
+  suites, and its regression model ranks first on five suites.
+links:
+  arxiv: https://arxiv.org/abs/2610.07559
+  alphaxiv: https://www.alphaxiv.org/abs/2610.07559

@@ -33,6 +33,7 @@ desc: Parallelizes self-speculative decoding for looped language models by batch
 links:
   arxiv: https://arxiv.org/abs/2609.23033
   alphaxiv: https://www.alphaxiv.org/abs/2609.23033
+  github: https://github.com/summerbro-hhj/wavefront-decoding
 citation_source_best: semantic_scholar
 citations: 0
 citation_sources:

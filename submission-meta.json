@@ -292,9 +292,14 @@
     "papers/2610.05265.yaml",
     "papers/2610.05538.yaml",
     "papers/2610.06949.yaml",
+    "papers/2610.07559.yaml",
     "papers/2610.07730.yaml",
     "papers/2610.07940.yaml",
     "papers/2610.08518.yaml",
+    "papers/2610.08830.yaml",
+    "papers/2610.09013.yaml",
+    "papers/2610.09876.yaml",
+    "papers/2610.10381.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -307,7 +312,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 255
+        "count": 259
       },
       {
         "label": "implicit-layer",
@@ -315,7 +320,7 @@
       },
       {
         "label": "hierarchical-loop",
-        "count": 28
+        "count": 29
       },
       {
         "label": "parallel-loop",
@@ -325,49 +330,49 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 237
+        "count": 240
       },
       {
         "label": "inference-algorithm",
-        "count": 184
+        "count": 187
       },
       {
         "label": "training-algorithm",
-        "count": 123
+        "count": 125
       },
       {
         "label": "objective-loss",
-        "count": 34
+        "count": 35
       },
       {
         "label": "data",
-        "count": 8
+        "count": 9
       }
     ],
     "domain": [
       {
         "label": "efficiency",
-        "count": 138
+        "count": 141
       },
       {
         "label": "language-modeling",
-        "count": 132
+        "count": 134
       },
       {
         "label": "reasoning",
-        "count": 131
+        "count": 132
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 70
+        "count": 71
       },
       {
         "label": "adaptive-compute",
-        "count": 50
+        "count": 52
       },
       {
         "label": "vision",
-        "count": 46
+        "count": 47
       },
       {
         "label": "theory",
@@ -379,7 +384,7 @@
       },
       {
         "label": "memory-efficiency",
-        "count": 32
+        "count": 34
       },
       {
         "label": "graph-data",
@@ -391,7 +396,7 @@
       },
       {
         "label": "multimodal",
-        "count": 11
+        "count": 12
       },
       {
         "label": "scientific-ml",
@@ -418,11 +423,11 @@
         "count": 4
       },
       {
-        "label": "recommendation",
-        "count": 3
+        "label": "tabular-data",
+        "count": 4
       },
       {
-        "label": "tabular-data",
+        "label": "recommendation",
         "count": 3
       },
       {

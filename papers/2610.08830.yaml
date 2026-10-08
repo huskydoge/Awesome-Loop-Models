@@ -1,0 +1,53 @@
+title: 'MoR-MLLM: Mixture of Recursions for Efficient Multimodal Large Language Models'
+authors:
+- Pengcheng Zheng
+- Chaoning Zhang
+- Jiaxin Yan
+- Sihan Cao
+- Jianwei Zhang
+- Xudong Wang
+- Jiaquan Zhang
+- Jewon Lee
+- Tae-Ho Kim
+- Yang Yang
+- Heng Tao Shen
+year: 2026
+published_date: '2026-09-27'
+added_date: "2026-10-08"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- multimodal
+- adaptive-compute
+- efficiency
+tags:
+- MoR
+- MoR-MLLM
+- recursive-transformer
+focus_tags:
+- architecture
+- training-algorithm
+survey_section:
+- train/retrofitting
+- design/depth-control
+- applications/language-speech-multimodal
+loop_topology: partial
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- memory-efficiency
+comparison:
+- unclear
+survey_core: false
+desc: Brings Mixture-of-Recursions to multimodal LLMs by replacing grouped middle layers
+  of a Phi-2 backbone with shared recursive blocks whose routers pick a recursion depth
+  per visual or text token, trained with a three-stage MoR-Tuning recipe and an entropy
+  routing loss; against LLaVA-1.5-7B it cuts inference TFLOPs by 86.6 percent on average
+  while staying competitive on nine vision-language benchmarks.
+links:
+  arxiv: https://arxiv.org/abs/2610.08830
+  alphaxiv: https://www.alphaxiv.org/abs/2610.08830
