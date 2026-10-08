@@ -1,10 +1,10 @@
-title: '2D Spatial Reasoning with Adaptive Neural Cellular Automata'
+title: 2D Spatial Reasoning with Adaptive Neural Cellular Automata
 authors:
 - Martin Spitznagel
 - Janis Keuper
 year: 2026
 published_date: '2026-10-06'
-added_date: "2026-10-06"
+added_date: '2026-10-06'
 venue: arXiv
 category: designs
 foundation: false
@@ -28,8 +28,23 @@ claims:
 - param-efficiency
 comparison: []
 survey_core: false
-desc: 'Replaces the fixed local perception of a neural cellular automaton with deformable convolutions whose offsets are predicted from the current cell state, so the same learned update rule, iterated over many steps, can adapt its receptive field across grid positions and steps; with about 165-256k parameters it solves 87.8 percent of hard array Sudokus (vs 78.2 for a 3x3 NCA) and finds valid optimal maze paths 94.2 percent of the time, above reported HRM and TRM results.'
+desc: Replaces the fixed local perception of a neural cellular automaton with deformable
+  convolutions whose offsets are predicted from the current cell state, so the same
+  learned update rule, iterated over many steps, can adapt its receptive field across
+  grid positions and steps; with about 165-256k parameters it solves 87.8 percent
+  of hard array Sudokus (vs 78.2 for a 3x3 NCA) and finds valid optimal maze paths
+  94.2 percent of the time, above reported HRM and TRM results.
 links:
   arxiv: https://arxiv.org/abs/2610.08518
   alphaxiv: https://www.alphaxiv.org/abs/2610.08518
   github: https://github.com/mspitzna/NCAtorch
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 15
+star_sources:
+  github_api: 15
+metrics_updated: '2026-10-08'

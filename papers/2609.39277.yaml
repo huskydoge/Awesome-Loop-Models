@@ -7,7 +7,7 @@ authors:
 - Virginia Smith
 year: 2026
 published_date: '2026-09-30'
-added_date: "2026-10-06"
+added_date: '2026-10-06'
 venue: arXiv
 category: analysis
 foundation: false
@@ -42,7 +42,20 @@ claims:
 - stability
 comparison: []
 survey_core: false
-desc: 'Tests why compressed looped models collapse across more than 30 models from five families (HRM/TRM puzzle reasoners, recurrent convnets, DEQs, looped language models, diffusion samplers) and finds that rounding error accumulates only for loops that never settle; for settling loops a fixed weight error just shifts the fixed point, so a controller that stops at the halting head and finishes with a few 8-bit loops lifts compressed Sudoku-Extreme models from 61.1 to 75.8 at under a third of the weight traffic.'
+desc: Tests why compressed looped models collapse across more than 30 models from
+  five families (HRM/TRM puzzle reasoners, recurrent convnets, DEQs, looped language
+  models, diffusion samplers) and finds that rounding error accumulates only for loops
+  that never settle; for settling loops a fixed weight error just shifts the fixed
+  point, so a controller that stops at the halting head and finishes with a few 8-bit
+  loops lifts compressed Sudoku-Extreme models from 61.1 to 75.8 at under a third
+  of the weight traffic.
 links:
   arxiv: https://arxiv.org/abs/2609.39277
   alphaxiv: https://www.alphaxiv.org/abs/2609.39277
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-08'
