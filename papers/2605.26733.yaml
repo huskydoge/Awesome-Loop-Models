@@ -50,13 +50,13 @@ links:
   arxiv: https://arxiv.org/abs/2605.26733
   alphaxiv: https://www.alphaxiv.org/abs/2605.26733
   github: https://github.com/njuyxw/STARS
-citations: 15
+citations: 17
 citation_sources:
-  semantic_scholar: 15
+  semantic_scholar: 17
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-09-30'
+metrics_updated: '2026-10-07'
 github_stars: 9
 star_sources:
   github_api: 9

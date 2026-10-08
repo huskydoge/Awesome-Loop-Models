@@ -37,14 +37,14 @@ desc: Studies implicit reasoning in recurrent-depth transformers, showing that i
 links:
   arxiv: https://arxiv.org/abs/2604.07822
   github: https://github.com/OSU-NLP-Group/Loop-Think-Generalize
-citations: 33
+citations: 34
 citation_sources:
-  semantic_scholar: 33
+  semantic_scholar: 34
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-10-06'
-github_stars: 102
+metrics_updated: '2026-10-07'
+github_stars: 103
 star_sources:
-  github_api: 102
+  github_api: 103
 star_source_best: github_api

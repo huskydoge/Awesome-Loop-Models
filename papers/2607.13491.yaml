@@ -39,13 +39,13 @@ links:
   arxiv: https://arxiv.org/abs/2607.13491
   alphaxiv: https://www.alphaxiv.org/abs/2607.13491
   github: https://github.com/lszshu/DeepLoop
-citations: 4
+citations: 5
 citation_sources:
-  semantic_scholar: 4
+  semantic_scholar: 5
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-10-02'
+metrics_updated: '2026-10-07'
 github_stars: 44
 star_sources:
   github_api: 44
