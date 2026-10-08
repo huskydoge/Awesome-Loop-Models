@@ -1,0 +1,48 @@
+title: 'A Tilted Bowl Is Not a Slippery Slope: Compressing Looped Models'
+authors:
+- Steven Kolawole
+- Pearse Jim
+- Opegbemi M. Busoye
+- Glory Bagai
+- Virginia Smith
+year: 2026
+published_date: '2026-09-30'
+added_date: "2026-10-06"
+venue: arXiv
+category: analysis
+foundation: false
+mechanism_tags:
+- flat-loop
+- hierarchical-loop
+- implicit-layer
+domain_tags:
+- algorithmic-reasoning
+- efficiency
+- memory-efficiency
+tags:
+- TRM
+- HRM
+- Huginn
+- Ouro
+- DEQ
+- fixed-point-analysis
+focus_tags:
+- inference-algorithm
+survey_section:
+- systems/quantization-edge
+- benefits/limits
+- design/depth-control
+- foundations/implicit
+loop_topology: unspecified
+sharing: full
+depth_control: adaptive-halting
+claims:
+- memory-efficiency
+- failure-mode
+- stability
+comparison: []
+survey_core: false
+desc: 'Tests why compressed looped models collapse across more than 30 models from five families (HRM/TRM puzzle reasoners, recurrent convnets, DEQs, looped language models, diffusion samplers) and finds that rounding error accumulates only for loops that never settle; for settling loops a fixed weight error just shifts the fixed point, so a controller that stops at the halting head and finishes with a few 8-bit loops lifts compressed Sudoku-Extreme models from 61.1 to 75.8 at under a third of the weight traffic.'
+links:
+  arxiv: https://arxiv.org/abs/2609.39277
+  alphaxiv: https://www.alphaxiv.org/abs/2609.39277
