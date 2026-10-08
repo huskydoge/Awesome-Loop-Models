@@ -43,9 +43,9 @@ links:
   github: https://github.com/google-research/ALBERT
   openreview: https://openreview.net/forum?id=H1eA7AEtvS
 citation_source_best: semantic_scholar
-citations: 7761
+citations: 7762
 citation_sources:
-  semantic_scholar: 7761
+  semantic_scholar: 7762
   openalex: 981
   opencitations: 125
 star_source_best: github_api
