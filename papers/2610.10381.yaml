@@ -1,0 +1,44 @@
+title: 'ResidualQuant: KV Cache Quantization for Looped Transformers with 2-Bit Residuals'
+authors:
+- Heejun Kim
+- Junyoung Lee
+- SangLyul Cho
+- Dongsu Han
+- Insu Han
+- Sehoon Kim
+year: 2026
+published_date: '2026-10-07'
+added_date: "2026-10-08"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- memory-efficiency
+tags:
+- Ouro
+- Huginn
+- ResidualQuant
+focus_tags:
+- inference-algorithm
+survey_section:
+- systems/kv-memory
+- systems/quantization-edge
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+comparison: []
+survey_core: false
+desc: KV cache quantization for looped transformers that exploits the similarity of
+  KV states across loops, storing the final-loop KV as an anchor and the other loops
+  as 2-bit residuals with least-squares scaling, rotation and loop-wise mixed precision;
+  on Ouro-1.4B and Huginn-3.5B it stays near BF16 accuracy while cutting KV storage by
+  80.7 percent and raises decode throughput up to 2.73x.
+links:
+  arxiv: https://arxiv.org/abs/2610.10381
+  alphaxiv: https://www.alphaxiv.org/abs/2610.10381

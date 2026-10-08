@@ -1,0 +1,46 @@
+title: 'Think Before You Paint: Recursive Latent Reasoning for Diffusion Models'
+authors:
+- Paweł Skierś
+- Małgorzata Grzanka
+- Wojciech Masarczyk
+- Jan-Willem van de Meent
+- Kamil Deja
+year: 2026
+published_date: '2026-10-07'
+added_date: "2026-10-08"
+venue: arXiv
+category: applications
+foundation: false
+mechanism_tags:
+- hierarchical-loop
+domain_tags:
+- vision
+- algorithmic-reasoning
+- reasoning
+tags:
+- TRM
+- PaTh
+focus_tags:
+- architecture
+- inference-algorithm
+survey_section:
+- applications/vision
+- design/loop-x
+- outlook/diffusion
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims:
+- expressivity
+- param-efficiency
+comparison:
+- unclear
+survey_core: false
+desc: Painter-Thinker couples a TRM-style recursive reasoner, which refines a latent
+  state inside every denoising step, to a frozen diffusion model through ControlNet adapters
+  and trains it only with the reconstruction loss; with 10M parameters it solves 92.5
+  percent of hard and 71.2 percent of extreme MNIST Sudoku puzzles, versus 75 and 4.1
+  percent for the prior best, and also helps on mazes, Queens and CLEVR relations.
+links:
+  arxiv: https://arxiv.org/abs/2610.09876
+  alphaxiv: https://www.alphaxiv.org/abs/2610.09876

@@ -1,0 +1,49 @@
+title: Enabling Dynamic Computation in Looped LMs
+authors:
+- Aayush Mishra
+- Arnau Padrés Masdemont
+- Victor Conchello Vendrell
+- Jordi Ros Giralt
+- Arash Behboodi
+- Fabio Valerio Massoli
+year: 2026
+published_date: '2026-10-06'
+added_date: "2026-10-08"
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- adaptive-compute
+- efficiency
+- memory-efficiency
+tags:
+- Ouro
+- LoopLM
+- halting
+focus_tags:
+- inference-algorithm
+- objective-loss
+- training-algorithm
+survey_section:
+- design/depth-control
+- systems/kv-memory
+- train/supervision
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+- memory-efficiency
+comparison: []
+survey_core: false
+desc: Makes early exit in Ouro-style looped language models actually save compute with
+  Ragged KV, where later tokens reuse each earlier token's exit-depth KV entries instead
+  of forcing all loops, cutting FLOPs and KV memory by up to 30 percent at full-depth
+  quality; it also replaces Ouro's per-token exit prior with a batch-level prior so tokens
+  exit at genuinely different depths.
+links:
+  arxiv: https://arxiv.org/abs/2610.09013
+  alphaxiv: https://www.alphaxiv.org/abs/2610.09013

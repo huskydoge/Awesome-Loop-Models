@@ -17,8 +17,8 @@ This file is auto-generated from `papers/*.yaml` and `blogs/*.yaml` by `scripts/
 
 Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, `flat-loop`, `parallel-loop`, or `implicit-layer`.
 
-- `hierarchical-loop` (27)
-- `flat-loop` (250)
+- `hierarchical-loop` (28)
+- `flat-loop` (254)
 - `parallel-loop` (7)
 - `implicit-layer` (37)
 
@@ -26,11 +26,11 @@ Loop Mechanism is a controlled loop-form tag set. Use only `hierarchical-loop`, 
 
 Controlled vocabulary. The build validates these values, and the interactive browser uses them as filter chips.
 
-- `objective-loss` (34)
-- `training-algorithm` (122)
-- `architecture` (233)
-- `data` (8)
-- `inference-algorithm` (181)
+- `objective-loss` (35)
+- `training-algorithm` (124)
+- `architecture` (236)
+- `data` (9)
+- `inference-algorithm` (184)
 
 ## Survey sections (`survey_section`)
 
@@ -48,43 +48,43 @@ Controlled vocabulary aligned with the Looped Models Survey outline. List every 
 - `design/residual-injection` — Architecture: Residual manipulation, input injection, and initialization (8 / 29)
 - `design/state-memory` — Architecture: Recurrent state and loop-time memory (7 / 14)
 - `design/sharing-scheme` — Architecture: Weight-sharing schemes and iteration-dependent computation (5 / 21)
-- `design/depth-control` — Architecture: Controlling recurrence depth (14 / 47)
-- `design/loop-x` — Architecture: Loop x MoE, efficient mixers, and diffusion (17 / 22)
-- `train/supervision` — Training: Supervision and credit assignment (3 / 24)
+- `design/depth-control` — Architecture: Controlling recurrence depth (15 / 49)
+- `design/loop-x` — Architecture: Loop x MoE, efficient mixers, and diffusion (17 / 23)
+- `train/supervision` — Training: Supervision and credit assignment (3 / 25)
 - `train/gradients` — Training: BPTT, truncated BPTT, and implicit gradients (7 / 15)
 - `train/stability` — Training: Loop-specific optimization and stability (12 / 20)
 - `train/post-training` — Training: Post-training and reinforcement learning (4 / 9)
-- `train/retrofitting` — Training: Retrofitting pretrained models into looped models (9 / 15)
+- `train/retrofitting` — Training: Retrofitting pretrained models into looped models (10 / 16)
 - `scaling/compute-optimal` — Scaling: Parameter, depth, and compute-optimal scaling (7 / 15)
 - `scaling/test-time` — Scaling: Test-time scaling (9 / 33)
-- `systems/quantization-edge` — Systems: Quantization and edge deployment (7 / 10)
-- `systems/kv-memory` — Systems: KV cache and memory (6 / 13)
+- `systems/quantization-edge` — Systems: Quantization and edge deployment (7 / 11)
+- `systems/kv-memory` — Systems: KV cache and memory (7 / 15)
 - `systems/batching-parallel` — Systems: Loop-level batching, scheduling, and parallel execution (5 / 8)
 - `interpretability` — Interpretability: Mechanistic interpretability of looped models (20 / 28)
-- `applications/language-speech-multimodal` — Applications: Language, code, speech, and multimodal tasks (22 / 26)
-- `applications/vision` — Applications: Visual recognition, restoration, and generation (19 / 25)
+- `applications/language-speech-multimodal` — Applications: Language, code, speech, and multimodal tasks (22 / 27)
+- `applications/vision` — Applications: Visual recognition, restoration, and generation (20 / 26)
 - `applications/flow-3d` — Applications: Flow, stereo, and 3D geometry (5 / 5)
-- `applications/graphs-science` — Applications: Graphs, structured data, and scientific modeling (14 / 21)
+- `applications/graphs-science` — Applications: Graphs, structured data, and scientific modeling (15 / 22)
 - `applications/embodied-other` — Applications: Embodied AI and other domains (20 / 23)
-- `outlook/diffusion` — Outlook: Unification with diffusion models (1 / 8)
+- `outlook/diffusion` — Outlook: Unification with diffusion models (1 / 9)
 
 ## `loop_topology`
 
 Controlled vocabulary. Where the loop sits in the network (single value).
 
-- `whole-stack` (123)
+- `whole-stack` (125)
 - `prelude-core-coda` (30)
-- `partial` (31)
-- `hierarchical` (26)
+- `partial` (32)
+- `hierarchical` (27)
 - `shifted-parallel` (8)
 - `implicit-fixed-point` (35)
-- `unspecified` (35)
+- `unspecified` (36)
 
 ## `sharing`
 
 Controlled vocabulary. How parameters are shared across iterations (single value).
 
-- `full` (254)
+- `full` (259)
 - `partial-adapter` (15)
 - `expert-routed` (10)
 - `unspecified` (9)
@@ -93,9 +93,9 @@ Controlled vocabulary. How parameters are shared across iterations (single value
 
 Controlled vocabulary. How the number of iterations is decided (single value).
 
-- `fixed` (127)
+- `fixed` (130)
 - `sampled-train` (14)
-- `adaptive-halting` (55)
+- `adaptive-halting` (57)
 - `convergence` (42)
 - `unspecified` (50)
 
@@ -103,11 +103,11 @@ Controlled vocabulary. How the number of iterations is decided (single value).
 
 Controlled vocabulary. What the paper argues looping buys or costs (list).
 
-- `param-efficiency` (86)
-- `compute-efficiency` (96)
-- `memory-efficiency` (37)
+- `param-efficiency` (87)
+- `compute-efficiency` (98)
+- `memory-efficiency` (40)
 - `data-efficiency` (17)
-- `expressivity` (26)
+- `expressivity` (27)
 - `length-generalization` (27)
 - `test-time-scaling` (53)
 - `stability` (34)
@@ -120,32 +120,32 @@ Controlled vocabulary. Which quantity is held fixed when the paper compares loop
 - `iso-param` (31)
 - `iso-flop` (23)
 - `iso-depth` (18)
-- `unclear` (42)
+- `unclear` (44)
 
 ## domain_tags
 
 Observed browser-facing domain tags currently used across the repo.
 
-- `efficiency` (136)
-- `language-modeling` (130)
-- `reasoning` (130)
-- `algorithmic-reasoning` (68)
-- `adaptive-compute` (49)
-- `vision` (44)
+- `efficiency` (139)
+- `language-modeling` (132)
+- `reasoning` (131)
+- `algorithmic-reasoning` (69)
+- `adaptive-compute` (51)
+- `vision` (45)
 - `theory` (40)
 - `scaling` (35)
-- `memory-efficiency` (30)
+- `memory-efficiency` (32)
 - `graph-data` (18)
 - `sequence-modeling` (16)
-- `multimodal` (9)
+- `multimodal` (10)
 - `scientific-ml` (9)
 - `machine-translation` (6)
 - `rl-control` (5)
 - `compositional-reasoning` (4)
 - `hardware-aware` (4)
 - `speech-recognition` (4)
+- `tabular-data` (4)
 - `recommendation` (3)
-- `tabular-data` (3)
 - `alignment` (2)
 - `biology` (2)
 - `robotics-vla` (2)
@@ -166,22 +166,22 @@ Observed browser-facing domain tags currently used across the repo.
 
 Observed alias tags currently used across the repo. These do not appear as browser filter chips, but contributors should still prefer existing spellings.
 
-- `looped-transformer` (42)
+- `looped-transformer` (43)
+- `TRM` (15)
 - `weight-tying` (15)
 - `DEQ` (14)
-- `TRM` (14)
-- `halting` (13)
+- `halting` (14)
 - `MoE` (13)
+- `Ouro` (13)
 - `HRM` (12)
+- `recursive-transformer` (12)
 - `looped-llm` (11)
-- `Ouro` (11)
-- `recursive-transformer` (11)
 - `convergence` (10)
+- `Huginn` (10)
 - `depth-recurrent` (9)
-- `Huginn` (9)
+- `LoopLM` (8)
 - `shared-weight-recurrence` (8)
 - `ACT` (7)
-- `LoopLM` (7)
 - `test-time-compute` (7)
 - `depth-scaling` (5)
 - `latent-refinement` (5)
@@ -201,6 +201,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `implicit GNN` (2)
 - `masked-diffusion-language-model` (2)
 - `memory-banks` (2)
+- `MoR` (2)
 - `mythos` (2)
 - `NCA` (2)
 - `PLT` (2)
@@ -290,13 +291,14 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `MoDr` (1)
 - `MoEE` (1)
 - `MoEUT` (1)
-- `MoR` (1)
+- `MoR-MLLM` (1)
 - `MOUE` (1)
 - `MPCoT` (1)
 - `MR-Loop` (1)
 - `multi-resolution-recursion` (1)
 - `nanoTabPFNlooped` (1)
 - `Neural GPU` (1)
+- `PaTh` (1)
 - `PERL` (1)
 - `phantom-gradient` (1)
 - `preference-probing` (1)
@@ -308,6 +310,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `RE-PoLar` (1)
 - `recurrent-scaling` (1)
 - `RecursiveVLM` (1)
+- `ResidualQuant` (1)
 - `reverse-residual` (1)
 - `RGNN` (1)
 - `RIM` (1)
@@ -320,6 +323,7 @@ Observed alias tags currently used across the repo. These do not appear as brows
 - `SRM` (1)
 - `stability-analysis` (1)
 - `STARS` (1)
+- `TAFFY` (1)
 - `TaH` (1)
 - `TaH2` (1)
 - `Think-at-Hard` (1)

@@ -289,6 +289,11 @@
     "papers/2610.05109.yaml",
     "papers/2610.05265.yaml",
     "papers/2610.05538.yaml",
+    "papers/2610.07559.yaml",
+    "papers/2610.08830.yaml",
+    "papers/2610.09013.yaml",
+    "papers/2610.09876.yaml",
+    "papers/2610.10381.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -301,7 +306,7 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 250
+        "count": 254
       },
       {
         "label": "implicit-layer",
@@ -309,7 +314,7 @@
       },
       {
         "label": "hierarchical-loop",
-        "count": 27
+        "count": 28
       },
       {
         "label": "parallel-loop",
@@ -319,49 +324,49 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 233
+        "count": 236
       },
       {
         "label": "inference-algorithm",
-        "count": 181
+        "count": 184
       },
       {
         "label": "training-algorithm",
-        "count": 122
+        "count": 124
       },
       {
         "label": "objective-loss",
-        "count": 34
+        "count": 35
       },
       {
         "label": "data",
-        "count": 8
+        "count": 9
       }
     ],
     "domain": [
       {
         "label": "efficiency",
-        "count": 136
+        "count": 139
       },
       {
         "label": "language-modeling",
-        "count": 130
+        "count": 132
       },
       {
         "label": "reasoning",
-        "count": 130
+        "count": 131
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 68
+        "count": 69
       },
       {
         "label": "adaptive-compute",
-        "count": 49
+        "count": 51
       },
       {
         "label": "vision",
-        "count": 44
+        "count": 45
       },
       {
         "label": "theory",
@@ -373,7 +378,7 @@
       },
       {
         "label": "memory-efficiency",
-        "count": 30
+        "count": 32
       },
       {
         "label": "graph-data",
@@ -385,7 +390,7 @@
       },
       {
         "label": "multimodal",
-        "count": 9
+        "count": 10
       },
       {
         "label": "scientific-ml",
@@ -412,11 +417,11 @@
         "count": 4
       },
       {
-        "label": "recommendation",
-        "count": 3
+        "label": "tabular-data",
+        "count": 4
       },
       {
-        "label": "tabular-data",
+        "label": "recommendation",
         "count": 3
       },
       {
