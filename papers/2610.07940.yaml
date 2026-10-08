@@ -1,0 +1,50 @@
+title: Hybrid Latent Attention for Looped Language Models
+authors:
+- Yuhan Chen
+- Siyuan Zhang
+- Nan Wang
+- Feiyang Kang
+- Ruoxi Jia
+year: 2026
+published_date: '2026-10-06'
+added_date: '2026-10-06'
+venue: arXiv
+category: designs
+foundation: false
+mechanism_tags:
+- flat-loop
+domain_tags:
+- language-modeling
+- efficiency
+- memory-efficiency
+tags:
+- HLA
+- Ouro
+focus_tags:
+- architecture
+- inference-algorithm
+survey_section:
+- systems/kv-memory
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Cuts the per-loop KV cache of looped language models by keeping exact keys and
+  values only in a sliding window of recent tokens and storing each older token as
+  a compact latent that every loop's query reads directly; uptrained on frozen Ouro-1.4B
+  and Ouro-2.6B (four loops), it shrinks the cache 10.7x per token, fits 4.0-8.8x
+  more concurrent sequences, speeds decoding up to 7.4x at 16K context, and keeps
+  over 97 percent of the original benchmark accuracy.
+links:
+  arxiv: https://arxiv.org/abs/2610.07940
+  alphaxiv: https://www.alphaxiv.org/abs/2610.07940
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-08'

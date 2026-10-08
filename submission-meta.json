@@ -273,6 +273,8 @@
     "papers/2609.37818.yaml",
     "papers/2609.37905.yaml",
     "papers/2609.38426.yaml",
+    "papers/2609.39277.yaml",
+    "papers/2609.39456.yaml",
     "papers/2609.39892.yaml",
     "papers/2609.39967.yaml",
     "papers/2609.40305.yaml",
@@ -289,7 +291,11 @@
     "papers/2610.05109.yaml",
     "papers/2610.05265.yaml",
     "papers/2610.05538.yaml",
+    "papers/2610.06949.yaml",
     "papers/2610.07559.yaml",
+    "papers/2610.07730.yaml",
+    "papers/2610.07940.yaml",
+    "papers/2610.08518.yaml",
     "papers/2610.08830.yaml",
     "papers/2610.09013.yaml",
     "papers/2610.09876.yaml",
@@ -306,15 +312,15 @@
     "mechanism": [
       {
         "label": "flat-loop",
-        "count": 254
+        "count": 259
       },
       {
         "label": "implicit-layer",
-        "count": 37
+        "count": 39
       },
       {
         "label": "hierarchical-loop",
-        "count": 28
+        "count": 29
       },
       {
         "label": "parallel-loop",
@@ -324,15 +330,15 @@
     "focus": [
       {
         "label": "architecture",
-        "count": 236
+        "count": 240
       },
       {
         "label": "inference-algorithm",
-        "count": 184
+        "count": 187
       },
       {
         "label": "training-algorithm",
-        "count": 124
+        "count": 125
       },
       {
         "label": "objective-loss",
@@ -346,27 +352,27 @@
     "domain": [
       {
         "label": "efficiency",
-        "count": 139
+        "count": 141
       },
       {
         "label": "language-modeling",
-        "count": 132
+        "count": 134
       },
       {
         "label": "reasoning",
-        "count": 131
+        "count": 132
       },
       {
         "label": "algorithmic-reasoning",
-        "count": 69
+        "count": 71
       },
       {
         "label": "adaptive-compute",
-        "count": 51
+        "count": 52
       },
       {
         "label": "vision",
-        "count": 45
+        "count": 47
       },
       {
         "label": "theory",
@@ -378,7 +384,7 @@
       },
       {
         "label": "memory-efficiency",
-        "count": 32
+        "count": 34
       },
       {
         "label": "graph-data",
@@ -390,7 +396,7 @@
       },
       {
         "label": "multimodal",
-        "count": 10
+        "count": 12
       },
       {
         "label": "scientific-ml",

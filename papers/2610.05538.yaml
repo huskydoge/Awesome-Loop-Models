@@ -52,4 +52,5 @@ citations: 0
 citation_sources:
   opencitations: 0
   semantic_scholar: 0
-metrics_updated: '2026-10-07'
+  openalex: 0
+metrics_updated: '2026-10-08'
