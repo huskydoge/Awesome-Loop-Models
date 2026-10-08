@@ -8,7 +8,7 @@ authors:
 - Fabio Valerio Massoli
 year: 2026
 published_date: '2026-10-06'
-added_date: "2026-10-08"
+added_date: '2026-10-08'
 venue: arXiv
 category: designs
 foundation: false
@@ -39,11 +39,17 @@ claims:
 - memory-efficiency
 comparison: []
 survey_core: false
-desc: Makes early exit in Ouro-style looped language models actually save compute with
-  Ragged KV, where later tokens reuse each earlier token's exit-depth KV entries instead
-  of forcing all loops, cutting FLOPs and KV memory by up to 30 percent at full-depth
-  quality; it also replaces Ouro's per-token exit prior with a batch-level prior so tokens
-  exit at genuinely different depths.
+desc: Makes early exit in Ouro-style looped language models actually save compute
+  with Ragged KV, where later tokens reuse each earlier token's exit-depth KV entries
+  instead of forcing all loops, cutting FLOPs and KV memory by up to 30 percent at
+  full-depth quality; it also replaces Ouro's per-token exit prior with a batch-level
+  prior so tokens exit at genuinely different depths.
 links:
   arxiv: https://arxiv.org/abs/2610.09013
   alphaxiv: https://www.alphaxiv.org/abs/2610.09013
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-08'

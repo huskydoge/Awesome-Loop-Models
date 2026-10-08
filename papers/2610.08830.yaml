@@ -13,7 +13,7 @@ authors:
 - Heng Tao Shen
 year: 2026
 published_date: '2026-09-27'
-added_date: "2026-10-08"
+added_date: '2026-10-08'
 venue: arXiv
 category: designs
 foundation: false
@@ -43,11 +43,17 @@ claims:
 comparison:
 - unclear
 survey_core: false
-desc: Brings Mixture-of-Recursions to multimodal LLMs by replacing grouped middle layers
-  of a Phi-2 backbone with shared recursive blocks whose routers pick a recursion depth
-  per visual or text token, trained with a three-stage MoR-Tuning recipe and an entropy
-  routing loss; against LLaVA-1.5-7B it cuts inference TFLOPs by 86.6 percent on average
-  while staying competitive on nine vision-language benchmarks.
+desc: Brings Mixture-of-Recursions to multimodal LLMs by replacing grouped middle
+  layers of a Phi-2 backbone with shared recursive blocks whose routers pick a recursion
+  depth per visual or text token, trained with a three-stage MoR-Tuning recipe and
+  an entropy routing loss; against LLaVA-1.5-7B it cuts inference TFLOPs by 86.6 percent
+  on average while staying competitive on nine vision-language benchmarks.
 links:
   arxiv: https://arxiv.org/abs/2610.08830
   alphaxiv: https://www.alphaxiv.org/abs/2610.08830
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-08'
