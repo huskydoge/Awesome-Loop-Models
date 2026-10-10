@@ -36,9 +36,9 @@ desc: Analyzes depth for diverse in-context linear-regression tasks, proving mat
 links:
   arxiv: https://arxiv.org/abs/2410.21698
 citation_source_best: semantic_scholar
-citations: 10
+citations: 11
 citation_sources:
-  semantic_scholar: 10
+  semantic_scholar: 11
   openalex: 0
   opencitations: 0
-metrics_updated: '2026-09-07'
+metrics_updated: '2026-10-10'

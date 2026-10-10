@@ -36,13 +36,13 @@ links:
   github: https://github.com/watcl-lab/graphalgosimulation
   openreview: https://openreview.net/forum?id=aA2326y3hf
 citation_source_best: semantic_scholar
-citations: 37
+citations: 38
 citation_sources:
-  semantic_scholar: 37
+  semantic_scholar: 38
   openalex: 1
   opencitations: 0
 star_source_best: github_api
 github_stars: 5
 star_sources:
   github_api: 5
-metrics_updated: '2026-09-07'
+metrics_updated: '2026-10-10'

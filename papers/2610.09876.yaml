@@ -45,8 +45,10 @@ desc: Painter-Thinker couples a TRM-style recursive reasoner, which refines a la
 links:
   arxiv: https://arxiv.org/abs/2610.09876
   alphaxiv: https://www.alphaxiv.org/abs/2610.09876
-citation_source_best: opencitations
+citation_source_best: semantic_scholar
 citations: 0
 citation_sources:
   opencitations: 0
-metrics_updated: '2026-10-08'
+  semantic_scholar: 0
+  openalex: 0
+metrics_updated: '2026-10-10'

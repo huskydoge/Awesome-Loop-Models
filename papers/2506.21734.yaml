@@ -45,14 +45,14 @@ desc: 'Proposes HRM, a brain-inspired recurrent architecture with two coupled mo
 links:
   arxiv: https://arxiv.org/abs/2506.21734
   github: https://github.com/sapientinc/HRM
-citations: 172
+citations: 178
 citation_sources:
-  semantic_scholar: 172
+  semantic_scholar: 178
   openalex: 2
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-10-08'
+metrics_updated: '2026-10-10'
 star_source_best: github_api
-github_stars: 12649
+github_stars: 12650
 star_sources:
-  github_api: 12649
+  github_api: 12650

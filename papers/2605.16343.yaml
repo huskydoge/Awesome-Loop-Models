@@ -36,9 +36,9 @@ desc: Introduces LoopQ, a loop-aware post-training quantization framework that p
 links:
   arxiv: https://arxiv.org/abs/2605.16343
 citation_source_best: semantic_scholar
-citations: 4
+citations: 5
 citation_sources:
-  semantic_scholar: 4
+  semantic_scholar: 5
   openalex: 0
   opencitations: 0
-metrics_updated: '2026-10-07'
+metrics_updated: '2026-10-10'
