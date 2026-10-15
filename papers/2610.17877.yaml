@@ -42,7 +42,8 @@ desc: Introduces LoopREG, which re-applies the representation-supervised block o
 links:
   arxiv: https://arxiv.org/abs/2610.17877
 citations: 0
-citation_source_best: opencitations
+citation_source_best: semantic_scholar
 citation_sources:
   opencitations: 0
-metrics_updated: '2026-10-14'
+  semantic_scholar: 0
+metrics_updated: '2026-10-15'

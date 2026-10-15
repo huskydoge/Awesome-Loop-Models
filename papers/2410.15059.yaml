@@ -25,13 +25,13 @@ links:
   github: https://github.com/HekpoMaH/DEAR
   openreview: https://openreview.net/forum?id=SuLxkxCENa
 citation_source_best: semantic_scholar
-citations: 7
+citations: 9
 citation_sources:
-  semantic_scholar: 7
+  semantic_scholar: 9
   openalex: 1
   opencitations: 0
 star_source_best: github_api
 github_stars: 4
 star_sources:
   github_api: 4
-metrics_updated: '2026-10-12'
+metrics_updated: '2026-10-15'

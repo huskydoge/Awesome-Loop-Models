@@ -26,7 +26,8 @@ desc: Shows that running Ouro and Huginn recurrent-depth language models at fewe
 links:
   arxiv: https://arxiv.org/abs/2610.15218
 citations: 0
-citation_source_best: opencitations
+citation_source_best: semantic_scholar
 citation_sources:
   opencitations: 0
-metrics_updated: '2026-10-14'
+  semantic_scholar: 0
+metrics_updated: '2026-10-15'

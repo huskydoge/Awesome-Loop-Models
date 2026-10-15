@@ -27,10 +27,10 @@ desc: Introduces Readout Feedback, which converts intermediate predictions into 
 links:
   arxiv: https://arxiv.org/abs/2608.24136
   alphaxiv: https://www.alphaxiv.org/abs/2608.24136
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-08-31'
+metrics_updated: '2026-10-15'
