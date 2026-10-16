@@ -1,0 +1,22 @@
+title: 'Riding the Fixed-Point Curve: Image Classification in the Continuous Thought Machine'
+authors:
+- Thomas Hannagan
+year: 2026
+published_date: "2026-10-13"
+added_date: "2026-10-15"
+venue: arXiv
+survey_section:
+- understanding/why
+- understanding/interpretability
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- stability
+comparison: []
+desc: Analyzes the recurrent tick map of an ImageNet Continuous Thought Machine, showing
+  each tick is an attracting but strongly non-normal map whose state trails a moving
+  fixed point by one tick, and that shuffling attention queries across images costs only
+  7 percent of accuracy.
+links:
+  arxiv: https://arxiv.org/abs/2610.19220

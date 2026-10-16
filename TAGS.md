@@ -38,14 +38,14 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§5 Learning Algorithms**
 
-- `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (24 / 69)
+- `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (25 / 70)
 - `training/post-training` — §5.2 Post-training and reinforcement learning (7 / 13)
 - `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (11 / 17)
 
 **§6 Scaling Laws**
 
 - `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (9 / 18)
-- `scaling/test-time` — §6.2 Test-time scaling (12 / 45)
+- `scaling/test-time` — §6.2 Test-time scaling (12 / 46)
 
 **§7 Systems and Infrastructure**
 
@@ -57,8 +57,8 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§8 Understanding Why Looped Models Work**
 
-- `understanding/why` — §8.1 Why looped models work (1 / 12)
-- `understanding/interpretability` — §8.2 Mechanistic interpretability (21 / 31)
+- `understanding/why` — §8.1 Why looped models work (2 / 13)
+- `understanding/interpretability` — §8.2 Mechanistic interpretability (21 / 32)
 - `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (11 / 37)
 
 **§9 Applications**
@@ -73,7 +73,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§10 Open Problems**
 
-- `open-problems/diffusion` — §10.1 Unification with diffusion models (2 / 10)
+- `open-problems/diffusion` — §10.1 Unification with diffusion models (2 / 11)
 - `open-problems/depth-into-time` — §10.2 Folding depth into time (0 / 5)
 - `open-problems/monitorability-safety` — §10.3 Monitorability and safety (1 / 4)
 
@@ -82,9 +82,9 @@ List every section the entry belongs to; the first entry is its primary section.
 Where the loop sits in the network (one value, papers only).
 
 - `whole-stack` (136)
-- `prelude-core-coda` (39)
+- `prelude-core-coda` (40)
 - `partial` (33)
-- `hierarchical` (34)
+- `hierarchical` (35)
 - `shifted-parallel` (8)
 - `implicit-fixed-point` (36)
 - `unspecified` (40)
@@ -93,7 +93,7 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (286)
+- `full` (288)
 - `partial-adapter` (19)
 - `expert-routed` (11)
 - `unspecified` (10)
@@ -102,10 +102,10 @@ How parameters are shared across iterations (one value, papers only).
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (146)
+- `fixed` (147)
 - `sampled-train` (22)
 - `adaptive-halting` (62)
-- `convergence` (43)
+- `convergence` (44)
 - `unspecified` (53)
 
 ## Claims (`claims`)
@@ -118,8 +118,8 @@ What the paper argues looping buys or costs (list, papers only).
 - `data-efficiency` (18)
 - `expressivity` (28)
 - `length-generalization` (34)
-- `test-time-scaling` (65)
-- `stability` (39)
+- `test-time-scaling` (66)
+- `stability` (40)
 - `failure-mode` (51)
 
 ## Looped-vs-untied comparison (`comparison`)

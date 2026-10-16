@@ -1,0 +1,29 @@
+title: Diffusion as a Training Curriculum for Timestep-Free Iterative Reasoning
+authors:
+- Mariia Drozdova
+- Aidan Sirbu
+- Pietro Miotti
+- Robert Obryk
+- Mayalen Etcheverry
+- Eyvind Niklasson
+- Blake Richards
+year: 2026
+published_date: "2026-09-01"
+added_date: "2026-10-15"
+venue: arXiv
+survey_section:
+- training/supervision-optimization
+- open-problems/diffusion
+- scaling/test-time
+loop_topology: hierarchical
+sharing: full
+depth_control: convergence
+claims:
+- test-time-scaling
+comparison: []
+desc: Adds a persistent hidden state to a timestep-free denoiser built from a looped
+  weight-shared Transformer or convolutional block, using diffusion only as a training
+  curriculum, and reaches 99.90 percent exact solve on Sudoku-Extreme and 98.93 percent
+  on Maze-Unique with accuracy rising past trained depths.
+links:
+  arxiv: https://arxiv.org/abs/2609.01449
