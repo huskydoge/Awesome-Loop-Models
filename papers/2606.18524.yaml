@@ -27,10 +27,10 @@ desc: Analyzes residual scaling in looped weight-tied Transformers, showing that
 links:
   arxiv: https://arxiv.org/abs/2606.18524
   alphaxiv: https://www.alphaxiv.org/abs/2606.18524
-citations: 10
-metrics_updated: '2026-10-15'
+citations: 11
+metrics_updated: '2026-10-16'
 citation_sources:
-  semantic_scholar: 10
+  semantic_scholar: 11
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar

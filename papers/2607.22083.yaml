@@ -47,9 +47,9 @@ links:
   arxiv: https://arxiv.org/abs/2607.22083
   alphaxiv: https://www.alphaxiv.org/abs/2607.22083
 citation_source_best: semantic_scholar
-citations: 10
+citations: 11
 citation_sources:
-  semantic_scholar: 10
+  semantic_scholar: 11
   openalex: 0
   opencitations: 0
-metrics_updated: '2026-10-15'
+metrics_updated: '2026-10-16'
