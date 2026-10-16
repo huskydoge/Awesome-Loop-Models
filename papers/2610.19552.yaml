@@ -1,0 +1,27 @@
+title: 'Test-Time Forecasting: Recurrent Depth Enables In-Context Dynamics Prediction'
+authors:
+- Jeffrey B. Lai
+- John Quinn
+- Anthony Bao
+- William Gilpin
+year: 2026
+published_date: "2026-10-14"
+added_date: "2026-10-15"
+venue: arXiv
+survey_section:
+- capabilities/expressivity
+- applications/graphs-science
+- scaling/test-time
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: sampled-train
+claims:
+- expressivity
+- test-time-scaling
+comparison: []
+desc: Shows that a single looped linear-attention layer can emulate dynamic mode decomposition
+  in context and builds Test-Time Forecasting models that, trained only for one-step
+  prediction, forecast out-of-distribution ODE and PDE dynamics with error falling as
+  loops increase.
+links:
+  arxiv: https://arxiv.org/abs/2610.19552

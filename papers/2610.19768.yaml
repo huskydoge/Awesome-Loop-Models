@@ -1,0 +1,29 @@
+title: Learning to Compute Is Not Learning to Retain or Reuse in Looped Transformers
+authors:
+- Peilong Zhou
+- Hongtao Zhang
+- Yulong Huang
+- Cangyuan Li
+- Mingyu Chen
+- Ying Wang
+year: 2026
+published_date: "2026-10-14"
+added_date: "2026-10-15"
+venue: arXiv
+survey_section:
+- understanding/failure-modes
+- training/supervision-optimization
+- understanding/interpretability
+loop_topology: whole-stack
+sharing: full
+depth_control: sampled-train
+claims:
+- failure-mode
+- length-generalization
+comparison: []
+desc: Separates computation, retention and reuse in a weight-tied looped transformer
+  executing Mealy machines, showing that final-only training keeps just 22 percent of
+  loop-32 answers at loop 64 while supervising one random position per example keeps
+  99.8 percent.
+links:
+  arxiv: https://arxiv.org/abs/2610.19768

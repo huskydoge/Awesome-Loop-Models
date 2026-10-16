@@ -1,0 +1,36 @@
+title: 'LatentLoop: Scaling Looped MoE Models with Asymmetric Compute Allocation'
+authors:
+- Zefeng He
+- Yunkai Chai
+- Xiaoyang Chen
+- Tong Zhu
+- Zongliang Wu
+- Yun Luo
+- Yafu Li
+- Yu Cheng
+year: 2026
+published_date: "2026-10-14"
+added_date: "2026-10-15"
+venue: arXiv
+survey_section:
+- architecture/hybrid
+- architecture/sharing
+- scaling/compute-optimal
+- capabilities/efficiency
+loop_topology: prelude-core-coda
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- compute-efficiency
+- param-efficiency
+comparison:
+- iso-param
+- iso-flop
+desc: Introduces LatentLoop, a looped MoE whose middle block runs its first visit on
+  a 2x-compressed sequence and its second at full resolution with shared experts and
+  per-visit attention, achieving the lowest validation loss at all 15 matched budgets
+  from 1.3B to 7B parameters.
+links:
+  arxiv: https://arxiv.org/abs/2610.19975
+  github: https://github.com/lcqysl/LatentLoop
+  project: https://latentloop-project.github.io/
