@@ -9,8 +9,8 @@ authors:
 - Yafu Li
 - Yu Cheng
 year: 2026
-published_date: "2026-10-14"
-added_date: "2026-10-15"
+published_date: '2026-10-14'
+added_date: '2026-10-15'
 venue: arXiv
 survey_section:
 - architecture/hybrid
@@ -26,11 +26,22 @@ claims:
 comparison:
 - iso-param
 - iso-flop
-desc: Introduces LatentLoop, a looped MoE whose middle block runs its first visit on
-  a 2x-compressed sequence and its second at full resolution with shared experts and
-  per-visit attention, achieving the lowest validation loss at all 15 matched budgets
-  from 1.3B to 7B parameters.
+desc: Introduces LatentLoop, a looped MoE whose middle block runs its first visit
+  on a 2x-compressed sequence and its second at full resolution with shared experts
+  and per-visit attention, achieving the lowest validation loss at all 15 matched
+  budgets from 1.3B to 7B parameters.
 links:
   arxiv: https://arxiv.org/abs/2610.19975
   github: https://github.com/lcqysl/LatentLoop
   project: https://latentloop-project.github.io/
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 10
+star_sources:
+  github_api: 10
+metrics_updated: '2026-10-16'

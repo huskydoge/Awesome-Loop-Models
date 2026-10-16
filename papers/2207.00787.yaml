@@ -30,8 +30,8 @@ citation_source_best: semantic_scholar
 citations: 69
 citation_sources:
   semantic_scholar: 69
-  openalex: 7
+  openalex: 9
   opencitations: 0
-metrics_updated: '2026-10-12'
+metrics_updated: '2026-10-16'
 peer_reviewed: true
 venue_source: https://proceedings.neurips.cc/paper_files/paper/2022/hash/d301e2878a7ebadf1a95029e904fc7d0-Abstract-Conference.html

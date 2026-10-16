@@ -24,9 +24,9 @@ desc: Retrofits frozen pretrained transformers with a training-free inference wr
 links:
   arxiv: https://arxiv.org/abs/2605.23872
   alphaxiv: https://www.alphaxiv.org/abs/2605.23872
-citations: 15
+citations: 16
 citation_sources:
-  semantic_scholar: 15
+  semantic_scholar: 16
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar

@@ -5,8 +5,8 @@ authors:
 - Anthony Bao
 - William Gilpin
 year: 2026
-published_date: "2026-10-14"
-added_date: "2026-10-15"
+published_date: '2026-10-14'
+added_date: '2026-10-15'
 venue: arXiv
 survey_section:
 - capabilities/expressivity
@@ -21,7 +21,14 @@ claims:
 comparison: []
 desc: Shows that a single looped linear-attention layer can emulate dynamic mode decomposition
   in context and builds Test-Time Forecasting models that, trained only for one-step
-  prediction, forecast out-of-distribution ODE and PDE dynamics with error falling as
-  loops increase.
+  prediction, forecast out-of-distribution ODE and PDE dynamics with error falling
+  as loops increase.
 links:
   arxiv: https://arxiv.org/abs/2610.19552
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-16'

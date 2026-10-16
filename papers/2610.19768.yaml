@@ -7,8 +7,8 @@ authors:
 - Mingyu Chen
 - Ying Wang
 year: 2026
-published_date: "2026-10-14"
-added_date: "2026-10-15"
+published_date: '2026-10-14'
+added_date: '2026-10-15'
 venue: arXiv
 survey_section:
 - understanding/failure-modes
@@ -22,8 +22,15 @@ claims:
 - length-generalization
 comparison: []
 desc: Separates computation, retention and reuse in a weight-tied looped transformer
-  executing Mealy machines, showing that final-only training keeps just 22 percent of
-  loop-32 answers at loop 64 while supervising one random position per example keeps
-  99.8 percent.
+  executing Mealy machines, showing that final-only training keeps just 22 percent
+  of loop-32 answers at loop 64 while supervising one random position per example
+  keeps 99.8 percent.
 links:
   arxiv: https://arxiv.org/abs/2610.19768
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-16'

@@ -8,8 +8,8 @@ authors:
 - Eyvind Niklasson
 - Blake Richards
 year: 2026
-published_date: "2026-09-01"
-added_date: "2026-10-15"
+published_date: '2026-09-01'
+added_date: '2026-10-15'
 venue: arXiv
 survey_section:
 - training/supervision-optimization
@@ -27,3 +27,10 @@ desc: Adds a persistent hidden state to a timestep-free denoiser built from a lo
   on Maze-Unique with accuracy rising past trained depths.
 links:
   arxiv: https://arxiv.org/abs/2609.01449
+citation_source_best: semantic_scholar
+citations: 3
+citation_sources:
+  semantic_scholar: 3
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-16'

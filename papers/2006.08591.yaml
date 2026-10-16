@@ -28,7 +28,7 @@ citation_source_best: semantic_scholar
 citations: 178
 citation_sources:
   semantic_scholar: 178
-  openalex: 13
+  openalex: 43
   opencitations: 0
 star_source_best: github_api
 github_stars: 54
