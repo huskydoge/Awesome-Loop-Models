@@ -3,7 +3,7 @@
 Thank you for contributing.
 
 This repository curates:
-- papers on loop models — architectures where, within a single forward process, a shared learned internal layer, block, module, or operator is reused
+- papers on loop models — architectures where a shared learned internal layer, block, module, or operator is reused, within a single forward pass or by feeding a computed state back through the same layers for the next token or step
 - selected long-form technical blogs about loop models
 
 ---
@@ -55,13 +55,14 @@ descriptions, or taxonomy-section and design-axis accuracy. See
 
 The strict paper catalog targets work where:
 
-> Within one model forward process, a shared learned internal layer, block, module, or operator is reused.
+> A shared learned internal layer, block, module, or operator is reused, either along depth within one forward pass or along time, by feeding a state it computed back through the same layers for the next token or step.
 
 Good fits:
 - recurrent-depth / looped transformers
 - adaptive halting over repeated block application
 - deep equilibrium / fixed-point / implicit-layer models
 - shared processors repeatedly executed for algorithmic reasoning
+- depth folded into time: Feedback Transformers, Latent Recurrent Transformers, shift-1 and pipelined loops that feed a high-level state back through the same layers for the next token
 
 Usually out of scope:
 - agent loops
@@ -72,7 +73,7 @@ Usually out of scope:
 - untied depth scaling
 - external search or planning over arbitrary layer orders when the qualifying loop is not a shared internal forward-process recurrence
 
-Standard sequence-time recurrence alone is not enough; the repo's target is iterative depth or latent recurrence inside one forward pass.
+Recurrence over time counts when it reuses the model's layers on a state they already computed. Ordinary sequence recurrence (RNN, LSTM, state-space or linear-attention updates that only carry a memory across steps) is not enough by itself, and neither is COCONUT-style latent chain-of-thought that only feeds the last hidden state back as the next input.
 
 Rare curator-approved exceptions may use `catalog_fit: adjacent`. These entries stay visible for conceptual value, and are explicitly labeled outside strict scope. Omit `catalog_fit` for normal strict-scope submissions.
 
