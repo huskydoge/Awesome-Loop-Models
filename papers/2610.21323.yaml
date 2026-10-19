@@ -6,7 +6,7 @@ authors:
 - Todd Zickler
 year: 2026
 published_date: '2026-10-15'
-added_date: "2026-10-18"
+added_date: '2026-10-18'
 venue: arXiv
 survey_section:
 - applications/language-speech-multimodal
@@ -21,7 +21,14 @@ comparison:
 survey_core: false
 desc: Loops a span of frozen pretrained vision-encoder blocks with shared question-conditioned
   AdaLN modulation inside a VLM and stops when answers stabilize; on six procedural
-  visual-reasoning tasks it lifts Qwen2.5-VL-3B to 64.6 percent vs 60.0 for a
-  parameter-matched single-pass baseline.
+  visual-reasoning tasks it lifts Qwen2.5-VL-3B to 64.6 percent vs 60.0 for a parameter-matched
+  single-pass baseline.
 links:
   arxiv: https://arxiv.org/abs/2610.21323
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-19'

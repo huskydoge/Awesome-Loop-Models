@@ -6,7 +6,7 @@ authors:
 - Lichao Sun
 year: 2026
 published_date: '2026-10-14'
-added_date: "2026-10-18"
+added_date: '2026-10-18'
 venue: arXiv
 survey_section:
 - architecture/depth-control
@@ -23,10 +23,21 @@ comparison:
 survey_core: false
 desc: Fine-tunes natively looped LMs into single-pass multiple-choice decision models
   that read the options after every loop step, with a learned stopper choosing depth
-  per question; a 2.6B LEV rises from 63.2 to 76.2 percent on JevBench from depth 1
-  to 4 and on-demand depth saves 15 to 24 percent of compute.
+  per question; a 2.6B LEV rises from 63.2 to 76.2 percent on JevBench from depth
+  1 to 4 and on-demand depth saves 15 to 24 percent of compute.
 links:
   arxiv: https://arxiv.org/abs/2610.20951
   github: https://github.com/OpenLAIR/lev
   hf: https://huggingface.co/collections/songdj/lev
   project: https://openlair.github.io/lev/
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 2
+star_sources:
+  github_api: 2
+metrics_updated: '2026-10-19'
