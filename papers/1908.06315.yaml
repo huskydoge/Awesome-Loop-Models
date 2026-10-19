@@ -25,12 +25,12 @@ links:
   paper: https://epubs.siam.org/doi/10.1137/20M1358517
   github: https://github.com/alicia-tsai/implicit-deep-learning
 citation_source_best: semantic_scholar
-citations: 228
+citations: 229
 citation_sources:
-  semantic_scholar: 228
+  semantic_scholar: 229
   openalex: 107
   opencitations: 77
-  crossref: 79
+  crossref: 80
 star_source_best: github_api
 github_stars: 3
 star_sources:
