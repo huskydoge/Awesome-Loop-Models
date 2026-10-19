@@ -30,13 +30,13 @@ links:
   github: https://github.com/jacobfa/Attractor
   hf: https://huggingface.co/jacobfa1/attractor-770m
   openreview: https://openreview.net/forum?id=AlZtpLVXKf
-citations: 14
+citations: 15
 citation_sources:
-  semantic_scholar: 14
+  semantic_scholar: 15
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-10-15'
+metrics_updated: '2026-10-19'
 github_stars: 31
 star_sources:
   github_api: 31

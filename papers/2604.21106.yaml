@@ -27,13 +27,13 @@ desc: Measures the parameter value of recurrence in looped language models with 
 links:
   arxiv: https://arxiv.org/abs/2604.21106
   github: https://github.com/kschwethelm/looped-lm-scaling
-citations: 27
+citations: 28
 citation_sources:
-  semantic_scholar: 27
+  semantic_scholar: 28
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-10-16'
+metrics_updated: '2026-10-19'
 star_source_best: github_api
 github_stars: 10
 star_sources:
