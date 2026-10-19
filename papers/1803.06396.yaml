@@ -31,15 +31,15 @@ links:
   paper: https://proceedings.mlr.press/v80/liao18c.html
   github: https://github.com/lrjconan/RBP
 citation_source_best: semantic_scholar
-citations: 142
+citations: 143
 citation_sources:
-  semantic_scholar: 142
+  semantic_scholar: 143
   openalex: 58
   opencitations: 0
 star_source_best: github_api
 github_stars: 42
 star_sources:
   github_api: 42
-metrics_updated: '2026-10-18'
+metrics_updated: '2026-10-19'
 peer_reviewed: true
 venue_source: https://proceedings.mlr.press/v80/liao18c.html

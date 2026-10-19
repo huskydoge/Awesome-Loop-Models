@@ -9,7 +9,7 @@ authors:
 - Zhiyong Chen
 year: 2026
 published_date: '2026-10-15'
-added_date: "2026-10-18"
+added_date: '2026-10-18'
 venue: arXiv
 survey_section:
 - systems/batching-parallel
@@ -26,3 +26,10 @@ desc: Adds a lightweight drafter that predicts several future tokens from early-
   over autoregressive decoding on Ouro and Raven models.
 links:
   arxiv: https://arxiv.org/abs/2610.21594
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-19'

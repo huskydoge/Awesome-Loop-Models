@@ -19,10 +19,10 @@ desc: Probes frozen Ouro loop states with lightweight evaluators on HH-RLHF, fin
   organization rather than direct prediction of noisy human annotations.
 links:
   arxiv: https://arxiv.org/abs/2604.09870
-citations: 2
-metrics_updated: '2026-08-27'
+citations: 3
+metrics_updated: '2026-10-19'
 citation_sources:
-  semantic_scholar: 2
+  semantic_scholar: 3
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar

@@ -22,13 +22,13 @@ desc: Analyzes Asymmetric Input Recurrence, a two-state shared-weight recurrent 
 links:
   arxiv: https://arxiv.org/abs/2605.17811
   github: https://github.com/juchengshen/air
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   opencitations: 0
   openalex: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-09-03'
+metrics_updated: '2026-10-19'
 github_stars: 2
 star_sources:
   github_api: 2
