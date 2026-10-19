@@ -1,0 +1,28 @@
+title: Retrofitting Recurrent Vision-Language Models from Pretrained Backbones
+authors:
+- Madhav Iyengar
+- Andreas Geiger
+- Hilde Kühne
+year: 2026
+published_date: '2026-10-15'
+added_date: "2026-10-18"
+venue: arXiv
+survey_section:
+- training/retrofitting
+- applications/language-speech-multimodal
+- architecture/residual-init
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- iso-param
+survey_core: false
+desc: Prunes layers from TinyLLaVA's language backbone and loops an 8-layer core with
+  a shared linear input-injection adapter, then recovers it with distillation; the
+  retrofitted VLM averages 58.13 vs 55.80 for the unpruned model on nine benchmarks
+  while storing 23.3 percent fewer language parameters.
+links:
+  arxiv: https://arxiv.org/abs/2610.22075
+  project: https://madhavesdios.github.io/recurrent-vlms

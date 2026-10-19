@@ -1,0 +1,28 @@
+title: 'LoopAhead: Speculating Ahead for Faster Decoding in Looped Language Models'
+authors:
+- Zixuan Liu
+- Nan Xue
+- Rui Bao
+- Yuhang Xu
+- Xiaofeng Cao
+- Jiangchao Yao
+- Zhiyong Chen
+year: 2026
+published_date: '2026-10-15'
+added_date: "2026-10-18"
+venue: arXiv
+survey_section:
+- systems/batching-parallel
+loop_topology: shifted-parallel
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Adds a lightweight drafter that predicts several future tokens from early-loop
+  states of a frozen looped LM and uses intermediate-loop feedback to pause wrong
+  branches in a depth-pipelined batch, reaching up to 7.82x lossless decoding speedup
+  over autoregressive decoding on Ouro and Raven models.
+links:
+  arxiv: https://arxiv.org/abs/2610.21594

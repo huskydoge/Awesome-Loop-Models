@@ -1,0 +1,32 @@
+title: 'LEV: Thinking Fast and Deep with Looped Decision Models'
+authors:
+- Dingjie Song
+- Zhiling Yan
+- Yuxuan Zhang
+- Lichao Sun
+year: 2026
+published_date: '2026-10-14'
+added_date: "2026-10-18"
+venue: arXiv
+survey_section:
+- architecture/depth-control
+- scaling/test-time
+- training/post-training
+loop_topology: whole-stack
+sharing: full
+depth_control: adaptive-halting
+claims:
+- test-time-scaling
+- compute-efficiency
+comparison:
+- unclear
+survey_core: false
+desc: Fine-tunes natively looped LMs into single-pass multiple-choice decision models
+  that read the options after every loop step, with a learned stopper choosing depth
+  per question; a 2.6B LEV rises from 63.2 to 76.2 percent on JevBench from depth 1
+  to 4 and on-demand depth saves 15 to 24 percent of compute.
+links:
+  arxiv: https://arxiv.org/abs/2610.20951
+  github: https://github.com/OpenLAIR/lev
+  hf: https://huggingface.co/collections/songdj/lev
+  project: https://openlair.github.io/lev/
