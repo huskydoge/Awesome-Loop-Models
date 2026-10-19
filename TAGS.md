@@ -21,7 +21,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§3 Capabilities, Benefits and Trade-offs**
 
-- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (7 / 38)
+- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (7 / 39)
 - `capabilities/expressivity` — §3.2 Expressivity and reasoning capacity (18 / 22)
 - `capabilities/generalization` — §3.3 Length, easy-to-hard, and compositional generalization (11 / 23)
 
@@ -44,7 +44,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§6 Scaling Laws**
 
-- `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (9 / 18)
+- `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (9 / 19)
 - `scaling/test-time` — §6.2 Test-time scaling (12 / 47)
 
 **§7 Systems and Infrastructure**
@@ -74,7 +74,7 @@ List every section the entry belongs to; the first entry is its primary section.
 **§10 Open Problems**
 
 - `open-problems/diffusion` — §10.1 Unification with diffusion models (2 / 11)
-- `open-problems/depth-into-time` — §10.2 Folding depth into time (0 / 5)
+- `open-problems/depth-into-time` — §10.2 Folding depth into time (1 / 6)
 - `open-problems/monitorability-safety` — §10.3 Monitorability and safety (1 / 4)
 
 ## Loop topology (`loop_topology`)
@@ -85,7 +85,7 @@ Where the loop sits in the network (one value, papers only).
 - `prelude-core-coda` (42)
 - `partial` (33)
 - `hierarchical` (35)
-- `shifted-parallel` (9)
+- `shifted-parallel` (10)
 - `implicit-fixed-point` (36)
 - `unspecified` (40)
 
@@ -93,7 +93,7 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (292)
+- `full` (293)
 - `partial-adapter` (19)
 - `expert-routed` (11)
 - `unspecified` (10)
@@ -103,7 +103,7 @@ How parameters are shared across iterations (one value, papers only).
 How the number of iterations is decided (one value, papers only).
 
 - `fixed` (149)
-- `sampled-train` (22)
+- `sampled-train` (23)
 - `adaptive-halting` (64)
 - `convergence` (44)
 - `unspecified` (53)
@@ -112,7 +112,7 @@ How the number of iterations is decided (one value, papers only).
 
 What the paper argues looping buys or costs (list, papers only).
 
-- `param-efficiency` (95)
+- `param-efficiency` (96)
 - `compute-efficiency` (111)
 - `memory-efficiency` (44)
 - `data-efficiency` (18)
@@ -127,6 +127,6 @@ What the paper argues looping buys or costs (list, papers only).
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
 - `iso-param` (39)
-- `iso-flop` (26)
-- `iso-depth` (20)
+- `iso-flop` (27)
+- `iso-depth` (21)
 - `unclear` (46)
