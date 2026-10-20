@@ -1,15 +1,16 @@
-title: 'Towards Looped Models Done Right, Part I: Topology, Input Injection, Recurrent-State Design'
+title: 'Towards Looped Models Done Right, Part I: Topology, Input Injection, Recurrent-State
+  Design'
 authors:
-- 'Benhao Huang'
-- 'Chufan Shi'
-- 'Junlin Chen'
-- 'Shicheng Wen'
-- 'Zhengzhong Liu'
-- 'Eric Xing'
-- 'Xuezhe Ma'
+- Benhao Huang
+- Chufan Shi
+- Junlin Chen
+- Shicheng Wen
+- Zhengzhong Liu
+- Eric Xing
+- Xuezhe Ma
 year: 2026
-published_date: "2026-10-16"
-added_date: "2026-10-19"
+published_date: '2026-10-16'
+added_date: '2026-10-19'
 venue: arXiv
 survey_section:
 - architecture/topology
@@ -26,10 +27,23 @@ comparison:
 - iso-depth
 - iso-flop
 survey_core: false
-desc: 'Isolates recurrence placement, input injection and recurrent-state design in looped LMs at matched scale, favoring a Huginn-style prelude-core-coda sandwich with input injection; at 730M parameters and 336B tokens it beats Ouro on all ten benchmarks, and the advantage carries to 8B-A0.8B MoE models.'
+desc: Isolates recurrence placement, input injection and recurrent-state design in
+  looped LMs at matched scale, favoring a Huginn-style prelude-core-coda sandwich
+  with input injection; at 730M parameters and 336B tokens it beats Ouro on all ten
+  benchmarks, and the advantage carries to 8B-A0.8B MoE models.
 links:
   arxiv: https://arxiv.org/abs/2610.23036
   github: https://github.com/ifm-ai/xllm-loop
   comment:
   - label: Blog version (IFM Research)
     url: https://ifm-research.notion.site/Towards-Looped-Models-Done-Right-3ade511912ec8128987dfeb7a5580043
+citation_source_best: semantic_scholar
+citations: 4
+citation_sources:
+  semantic_scholar: 4
+  opencitations: 0
+star_source_best: github_api
+github_stars: 49
+star_sources:
+  github_api: 49
+metrics_updated: '2026-10-20'

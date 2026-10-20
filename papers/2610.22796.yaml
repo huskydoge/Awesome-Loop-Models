@@ -1,9 +1,9 @@
-title: 'Causal Latent Workspaces for Looped Transformers'
+title: Causal Latent Workspaces for Looped Transformers
 authors:
-- 'Ilia Zaznov'
+- Ilia Zaznov
 year: 2026
-published_date: "2026-10-16"
-added_date: "2026-10-19"
+published_date: '2026-10-16'
+added_date: '2026-10-19'
 venue: arXiv
 survey_section:
 - architecture/state-memory
@@ -16,7 +16,20 @@ comparison:
 - iso-param
 - iso-depth
 survey_core: false
-desc: 'Adds a causal latent workspace to a four-round anchored shared-block Transformer: positions write gated vectors into prefix slots and read content-addressed summaries between rounds; at 101.71M parameters it reaches byte-level perplexity 2.7820 on WikiText-103, about 1% better than the best non-workspace control.'
+desc: 'Adds a causal latent workspace to a four-round anchored shared-block Transformer:
+  positions write gated vectors into prefix slots and read content-addressed summaries
+  between rounds; at 101.71M parameters it reaches byte-level perplexity 2.7820 on
+  WikiText-103, about 1% better than the best non-workspace control.'
 links:
   arxiv: https://arxiv.org/abs/2610.22796
   github: https://github.com/izaznov/causal-latent-workspace-transformer
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 1
+star_sources:
+  github_api: 1
+metrics_updated: '2026-10-20'
