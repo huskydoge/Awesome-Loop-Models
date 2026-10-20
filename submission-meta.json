@@ -335,7 +335,6 @@
     "papers/2610.21594.yaml",
     "papers/2610.22075.yaml",
     "papers/2610.22796.yaml",
-    "papers/2610.22957.yaml",
     "papers/2610.23036.yaml",
     "papers/2610.23302.yaml",
     "papers/2610.23353.yaml",
@@ -676,7 +675,7 @@
       },
       {
         "label": "architecture/depth-control",
-        "count": 61
+        "count": 60
       },
       {
         "label": "scaling/test-time",
@@ -696,7 +695,7 @@
       },
       {
         "label": "applications/language-speech-multimodal",
-        "count": 34
+        "count": 33
       },
       {
         "label": "understanding/interpretability",
@@ -822,7 +821,7 @@
       },
       {
         "label": "partial",
-        "count": 34
+        "count": 33
       },
       {
         "label": "shifted-parallel",
@@ -836,7 +835,7 @@
       },
       {
         "label": "partial-adapter",
-        "count": 20
+        "count": 19
       },
       {
         "label": "expert-routed",
@@ -854,7 +853,7 @@
       },
       {
         "label": "adaptive-halting",
-        "count": 67
+        "count": 66
       },
       {
         "label": "unspecified",
