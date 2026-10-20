@@ -1,0 +1,22 @@
+title: 'Query-adaptive Recurrent Tokenization'
+authors:
+- 'Bavesh Balaji'
+- 'Pranav Gopinath'
+- 'Pouya Sadeghi'
+- 'Sirisha Rambhatla'
+year: 2026
+published_date: "2026-10-16"
+added_date: "2026-10-19"
+venue: arXiv
+survey_section:
+- applications/language-speech-multimodal
+- architecture/depth-control
+loop_topology: partial
+sharing: partial-adapter
+depth_control: adaptive-halting
+claims: []
+comparison: []
+survey_core: false
+desc: 'Introduces QART, a visual tokenizer whose shared three-layer Transformer refines query-conditioned slots over recurrent rounds, adding slots until query-relevant features are reconstructed and then halting; it reaches 81.96 percent on Visual7W and 76.37 percent on VQAv2 with about 29 visual tokens.'
+links:
+  arxiv: https://arxiv.org/abs/2610.22957

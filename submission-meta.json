@@ -334,6 +334,11 @@
     "papers/2610.21323.yaml",
     "papers/2610.21594.yaml",
     "papers/2610.22075.yaml",
+    "papers/2610.22796.yaml",
+    "papers/2610.22957.yaml",
+    "papers/2610.23036.yaml",
+    "papers/2610.23302.yaml",
+    "papers/2610.23353.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -671,7 +676,7 @@
       },
       {
         "label": "architecture/depth-control",
-        "count": 60
+        "count": 61
       },
       {
         "label": "scaling/test-time",
@@ -679,19 +684,19 @@
       },
       {
         "label": "capabilities/efficiency",
-        "count": 39
+        "count": 41
+      },
+      {
+        "label": "architecture/residual-init",
+        "count": 37
       },
       {
         "label": "understanding/failure-modes",
         "count": 37
       },
       {
-        "label": "architecture/residual-init",
-        "count": 35
-      },
-      {
         "label": "applications/language-speech-multimodal",
-        "count": 33
+        "count": 34
       },
       {
         "label": "understanding/interpretability",
@@ -699,6 +704,10 @@
       },
       {
         "label": "applications/vision",
+        "count": 29
+      },
+      {
+        "label": "architecture/topology",
         "count": 28
       },
       {
@@ -706,20 +715,16 @@
         "count": 27
       },
       {
-        "label": "architecture/topology",
-        "count": 27
+        "label": "architecture/hybrid",
+        "count": 25
       },
       {
         "label": "architecture/sharing",
         "count": 25
       },
       {
-        "label": "architecture/hybrid",
-        "count": 24
-      },
-      {
         "label": "applications/embodied-other",
-        "count": 23
+        "count": 24
       },
       {
         "label": "capabilities/generalization",
@@ -730,16 +735,16 @@
         "count": 22
       },
       {
+        "label": "architecture/state-memory",
+        "count": 20
+      },
+      {
         "label": "scaling/compute-optimal",
         "count": 19
       },
       {
         "label": "training/retrofitting",
         "count": 19
-      },
-      {
-        "label": "architecture/state-memory",
-        "count": 18
       },
       {
         "label": "systems/kv-memory",
@@ -797,27 +802,27 @@
     "loop_topology": [
       {
         "label": "whole-stack",
-        "count": 137
+        "count": 138
       },
       {
         "label": "prelude-core-coda",
-        "count": 42
+        "count": 44
       },
       {
         "label": "unspecified",
         "count": 40
       },
       {
+        "label": "hierarchical",
+        "count": 36
+      },
+      {
         "label": "implicit-fixed-point",
         "count": 36
       },
       {
-        "label": "hierarchical",
-        "count": 35
-      },
-      {
         "label": "partial",
-        "count": 33
+        "count": 34
       },
       {
         "label": "shifted-parallel",
@@ -827,11 +832,11 @@
     "sharing": [
       {
         "label": "full",
-        "count": 293
+        "count": 297
       },
       {
         "label": "partial-adapter",
-        "count": 19
+        "count": 20
       },
       {
         "label": "expert-routed",
@@ -845,11 +850,11 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 149
+        "count": 151
       },
       {
         "label": "adaptive-halting",
-        "count": 64
+        "count": 67
       },
       {
         "label": "unspecified",
@@ -871,7 +876,7 @@
       },
       {
         "label": "param-efficiency",
-        "count": 96
+        "count": 99
       },
       {
         "label": "test-time-scaling",
@@ -909,15 +914,15 @@
       },
       {
         "label": "iso-param",
-        "count": 39
+        "count": 42
       },
       {
         "label": "iso-flop",
-        "count": 27
+        "count": 28
       },
       {
         "label": "iso-depth",
-        "count": 21
+        "count": 23
       }
     ]
   }

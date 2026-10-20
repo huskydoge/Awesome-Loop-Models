@@ -21,7 +21,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§3 Capabilities, Benefits and Trade-offs**
 
-- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (7 / 39)
+- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (7 / 41)
 - `capabilities/expressivity` — §3.2 Expressivity and reasoning capacity (18 / 22)
 - `capabilities/generalization` — §3.3 Length, easy-to-hard, and compositional generalization (11 / 23)
 
@@ -29,12 +29,12 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§4 Architecture and Design**
 
-- `architecture/topology` — §4.1 Loop topology (11 / 27)
-- `architecture/residual-init` — §4.2 Residual manipulation and initialization (10 / 35)
-- `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (8 / 18)
+- `architecture/topology` — §4.1 Loop topology (12 / 28)
+- `architecture/residual-init` — §4.2 Residual manipulation and initialization (10 / 37)
+- `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (9 / 20)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (6 / 25)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (20 / 60)
-- `architecture/hybrid` — §4.6 Hybrid looped architectures (18 / 24)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (20 / 61)
+- `architecture/hybrid` — §4.6 Hybrid looped architectures (18 / 25)
 
 **§5 Learning Algorithms**
 
@@ -63,11 +63,11 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§9 Applications**
 
-- `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (25 / 33)
-- `applications/vision` — §9.2 Visual recognition, restoration, and generation (20 / 28)
+- `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (26 / 34)
+- `applications/vision` — §9.2 Visual recognition, restoration, and generation (21 / 29)
 - `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (5 / 5)
 - `applications/graphs-science` — §9.4 Graphs, structured data, and scientific modeling (18 / 27)
-- `applications/embodied-other` — §9.5 Embodied AI and other domains (20 / 23)
+- `applications/embodied-other` — §9.5 Embodied AI and other domains (21 / 24)
 
 ### Part V. Open Problems
 
@@ -81,10 +81,10 @@ List every section the entry belongs to; the first entry is its primary section.
 
 Where the loop sits in the network (one value, papers only).
 
-- `whole-stack` (137)
-- `prelude-core-coda` (42)
-- `partial` (33)
-- `hierarchical` (35)
+- `whole-stack` (138)
+- `prelude-core-coda` (44)
+- `partial` (34)
+- `hierarchical` (36)
 - `shifted-parallel` (10)
 - `implicit-fixed-point` (36)
 - `unspecified` (40)
@@ -93,8 +93,8 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (293)
-- `partial-adapter` (19)
+- `full` (297)
+- `partial-adapter` (20)
 - `expert-routed` (11)
 - `unspecified` (10)
 
@@ -102,9 +102,9 @@ How parameters are shared across iterations (one value, papers only).
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (149)
+- `fixed` (151)
 - `sampled-train` (23)
-- `adaptive-halting` (64)
+- `adaptive-halting` (67)
 - `convergence` (44)
 - `unspecified` (53)
 
@@ -112,7 +112,7 @@ How the number of iterations is decided (one value, papers only).
 
 What the paper argues looping buys or costs (list, papers only).
 
-- `param-efficiency` (96)
+- `param-efficiency` (99)
 - `compute-efficiency` (111)
 - `memory-efficiency` (44)
 - `data-efficiency` (18)
@@ -126,7 +126,7 @@ What the paper argues looping buys or costs (list, papers only).
 
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
-- `iso-param` (39)
-- `iso-flop` (27)
-- `iso-depth` (21)
+- `iso-param` (42)
+- `iso-flop` (28)
+- `iso-depth` (23)
 - `unclear` (46)
