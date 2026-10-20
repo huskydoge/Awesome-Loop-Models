@@ -23,6 +23,7 @@ desc: Adds a lightweight trainable recursive latent block to a frozen LLM backbo
 links:
   arxiv: https://arxiv.org/abs/2608.08113
   alphaxiv: https://www.alphaxiv.org/abs/2608.08113
+  github: https://github.com/mdgspace/Think-Deep-Speak-Once-ReLIT
 citations: 1
 citation_sources:
   semantic_scholar: 1

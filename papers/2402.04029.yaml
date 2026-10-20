@@ -23,6 +23,7 @@ desc: Introduces positive concave DEQ models that, via nonlinear Perron-Frobeniu
 links:
   arxiv: https://arxiv.org/abs/2402.04029
   alphaxiv: https://www.alphaxiv.org/abs/2402.04029
+  github: https://github.com/mateuszgabor/pcdeq
 citation_source_best: semantic_scholar
 citations: 8
 citation_sources:

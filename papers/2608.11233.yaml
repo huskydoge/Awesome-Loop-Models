@@ -25,6 +25,7 @@ desc: Retrofits Qwen2.5-0.5B with a weight-tied recurrent middle block and re-en
 links:
   arxiv: https://arxiv.org/abs/2608.11233
   alphaxiv: https://www.alphaxiv.org/abs/2608.11233
+  github: https://github.com/mshapiro123/recurrent-qwen-svgd
 citations: 7
 citation_sources:
   semantic_scholar: 7
