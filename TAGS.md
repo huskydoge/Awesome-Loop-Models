@@ -33,7 +33,7 @@ List every section the entry belongs to; the first entry is its primary section.
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (10 / 37)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (9 / 20)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (6 / 25)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (20 / 61)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (20 / 60)
 - `architecture/hybrid` — §4.6 Hybrid looped architectures (18 / 25)
 
 **§5 Learning Algorithms**
@@ -63,7 +63,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§9 Applications**
 
-- `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (26 / 34)
+- `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (25 / 33)
 - `applications/vision` — §9.2 Visual recognition, restoration, and generation (21 / 29)
 - `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (5 / 5)
 - `applications/graphs-science` — §9.4 Graphs, structured data, and scientific modeling (18 / 27)
@@ -83,7 +83,7 @@ Where the loop sits in the network (one value, papers only).
 
 - `whole-stack` (138)
 - `prelude-core-coda` (44)
-- `partial` (34)
+- `partial` (33)
 - `hierarchical` (36)
 - `shifted-parallel` (10)
 - `implicit-fixed-point` (36)
@@ -94,7 +94,7 @@ Where the loop sits in the network (one value, papers only).
 How parameters are shared across iterations (one value, papers only).
 
 - `full` (297)
-- `partial-adapter` (20)
+- `partial-adapter` (19)
 - `expert-routed` (11)
 - `unspecified` (10)
 
@@ -104,7 +104,7 @@ How the number of iterations is decided (one value, papers only).
 
 - `fixed` (151)
 - `sampled-train` (23)
-- `adaptive-halting` (67)
+- `adaptive-halting` (66)
 - `convergence` (44)
 - `unspecified` (53)
 

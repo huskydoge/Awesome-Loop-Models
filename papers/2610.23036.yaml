@@ -30,3 +30,6 @@ desc: 'Isolates recurrence placement, input injection and recurrent-state design
 links:
   arxiv: https://arxiv.org/abs/2610.23036
   github: https://github.com/ifm-ai/xllm-loop
+  comment:
+  - label: Blog version (IFM Research)
+    url: https://ifm-research.notion.site/Towards-Looped-Models-Done-Right-3ade511912ec8128987dfeb7a5580043
