@@ -1,11 +1,12 @@
-title: 'Looped GNNs Beyond Fixed Depth: Graph Size Generalization and Parameter-Efficient Adaptation'
+title: 'Looped GNNs Beyond Fixed Depth: Graph Size Generalization and Parameter-Efficient
+  Adaptation'
 authors:
 - Zhiyang Wang
 - Zhishang Luo
 - Yusu Wang
 year: 2026
-published_date: "2026-10-16"
-added_date: "2026-10-20"
+published_date: '2026-10-16'
+added_date: '2026-10-20'
 venue: arXiv
 survey_section:
 - capabilities/generalization
@@ -20,6 +21,15 @@ claims:
 comparison:
 - unclear
 survey_core: false
-desc: Reapplies a pretrained shared GNN processor beyond its training depth to generalize to larger graphs, and introduces Loop-Freeze-Steer, a small FiLM controller that steers the frozen processor; on chip placement it comes within 4% of full fine-tuning while training 2.9% of the parameters.
+desc: Reapplies a pretrained shared GNN processor beyond its training depth to generalize
+  to larger graphs, and introduces Loop-Freeze-Steer, a small FiLM controller that
+  steers the frozen processor; on chip placement it comes within 4% of full fine-tuning
+  while training 2.9% of the parameters.
 links:
   arxiv: https://arxiv.org/abs/2610.24112
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-21'

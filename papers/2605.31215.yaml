@@ -30,10 +30,14 @@ links:
   arxiv: https://arxiv.org/abs/2605.31215
   github: https://github.com/andreamiele/fp-mgm
   alphaxiv: https://www.alphaxiv.org/abs/2605.31215
-citations: 5
-metrics_updated: '2026-10-15'
+citations: 6
+metrics_updated: '2026-10-21'
 citation_sources:
-  semantic_scholar: 5
+  semantic_scholar: 6
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
+star_source_best: github_api
+github_stars: 6
+star_sources:
+  github_api: 6

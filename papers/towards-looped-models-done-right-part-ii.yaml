@@ -40,11 +40,11 @@ links:
   paper: https://www.alphaxiv.org/pdf/2610.looped-models-fixed-points
   github: https://github.com/ifm-ai/xllm-loop
 star_source_best: github_api
-github_stars: 49
+github_stars: 52
 star_sources:
-  github_api: 49
-metrics_updated: '2026-10-19'
+  github_api: 52
+metrics_updated: '2026-10-21'
 citation_source_best: semantic_scholar
-citations: 1
+citations: 2
 citation_sources:
-  semantic_scholar: 1
+  semantic_scholar: 2

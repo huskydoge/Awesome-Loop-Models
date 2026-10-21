@@ -3,8 +3,8 @@ authors:
 - Kehang Zhou
 - Pinyan Lu
 year: 2026
-published_date: "2026-10-19"
-added_date: "2026-10-20"
+published_date: '2026-10-19'
+added_date: '2026-10-20'
 venue: arXiv
 survey_section:
 - capabilities/expressivity
@@ -15,6 +15,15 @@ claims:
 - expressivity
 comparison: []
 survey_core: false
-desc: Constructs constant-bit-size looped Transformers that apply one shared decoder block L times per generated token, interpolating between chain-of-thought and latent thought; they simulate time-t, space-s Turing machines with both the context window and the number of generated tokens cut by a factor of L.
+desc: Constructs constant-bit-size looped Transformers that apply one shared decoder
+  block L times per generated token, interpolating between chain-of-thought and latent
+  thought; they simulate time-t, space-s Turing machines with both the context window
+  and the number of generated tokens cut by a factor of L.
 links:
   arxiv: https://arxiv.org/abs/2610.25998
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-21'

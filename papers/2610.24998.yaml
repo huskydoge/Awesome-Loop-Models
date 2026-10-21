@@ -8,8 +8,8 @@ authors:
 - Kyuhong Shim
 - Sungeun Hong
 year: 2026
-published_date: "2026-10-18"
-added_date: "2026-10-20"
+published_date: '2026-10-18'
+added_date: '2026-10-20'
 venue: arXiv
 survey_section:
 - architecture/topology
@@ -23,7 +23,16 @@ claims:
 comparison:
 - iso-depth
 survey_core: false
-desc: Splits a recursive Transformer's core into contiguous blocks that are each looped R times before the next, between layer-wise repetition and whole-stack cycling; at 360M scale with two loops it reaches 40.20 average accuracy with 157M unique parameters versus 39.74 for a 315M vanilla model.
+desc: Splits a recursive Transformer's core into contiguous blocks that are each looped
+  R times before the next, between layer-wise repetition and whole-stack cycling;
+  at 360M scale with two loops it reaches 40.20 average accuracy with 157M unique
+  parameters versus 39.74 for a 315M vanilla model.
 links:
   arxiv: https://arxiv.org/abs/2610.24998
   project: https://aim-skku.github.io/BRT/
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-21'

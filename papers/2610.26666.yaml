@@ -1,4 +1,5 @@
-title: 'Nested Shared-Operator Recursion on ARC-AGI-1: An Empirical Study of HRM, TRM and URM'
+title: 'Nested Shared-Operator Recursion on ARC-AGI-1: An Empirical Study of HRM,
+  TRM and URM'
 authors:
 - Sara Neri
 - Eugenio Gaeta
@@ -6,8 +7,8 @@ authors:
 - Andrea Facchinetti
 - Giuseppe Fico
 year: 2026
-published_date: "2026-10-19"
-added_date: "2026-10-20"
+published_date: '2026-10-19'
+added_date: '2026-10-20'
 venue: arXiv
 survey_section:
 - understanding/failure-modes
@@ -19,7 +20,20 @@ claims:
 - failure-mode
 comparison: []
 survey_core: false
-desc: Adds a persistent intermediate state, updated by the same shared operator that nests repeated fast-state updates, to HRM, TRM and URM at matched parameter counts; on ARC-AGI-1 under a single-GPU budget the nested variants show no consistent gain, and exact solving stays near zero for all models.
+desc: Adds a persistent intermediate state, updated by the same shared operator that
+  nests repeated fast-state updates, to HRM, TRM and URM at matched parameter counts;
+  on ARC-AGI-1 under a single-GPU budget the nested variants show no consistent gain,
+  and exact solving stays near zero for all models.
 links:
   arxiv: https://arxiv.org/abs/2610.26666
   github: https://github.com/saraneri01/fractal-recursion
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-10-21'
