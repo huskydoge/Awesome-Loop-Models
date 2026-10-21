@@ -23,6 +23,7 @@ desc: Introduces AdaR, an adaptive recurrent graph model that repeatedly applies
   compute on graph tasks without changing model parameters.
 links:
   arxiv: https://arxiv.org/abs/2606.22462
+  github: https://github.com/sunjss/AdaR
   alphaxiv: https://www.alphaxiv.org/abs/2606.22462
 citations: 1
 citation_sources:
