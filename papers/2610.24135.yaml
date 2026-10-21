@@ -1,0 +1,25 @@
+title: 'Inside the Loop: A Mechanistic Study of Weight-Tied Transformers on Depth-Bound Algorithmic Tasks'
+authors:
+- Magnus Sesodia
+- Juil Sock
+- Philip Torr
+- Christian Schroeder de Witt
+year: 2026
+published_date: "2026-10-16"
+added_date: "2026-10-20"
+venue: arXiv
+survey_section:
+- understanding/interpretability
+- understanding/why
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- iso-depth
+survey_core: false
+desc: Probes weight-tied Transformers on multi-hop permutation traversal and finds the loop advances through intermediate hops in a staircase across iterations; a four-layer block looped eight times solves the task in 5 of 5 seeds, while an identically trained untied 32-layer model solves it in none.
+links:
+  arxiv: https://arxiv.org/abs/2610.24135
+  github: https://github.com/magnus-sesodia/insidetheloop
