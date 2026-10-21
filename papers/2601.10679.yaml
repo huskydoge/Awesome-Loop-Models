@@ -23,6 +23,7 @@ desc: Mechanistic study of the Hierarchical Reasoning Model showing it can fail 
   fixed point first, i.e. it guesses.
 links:
   arxiv: https://arxiv.org/abs/2601.10679
+  github: https://github.com/renrua52/hrm-mechanistic-analysis
   alphaxiv: https://www.alphaxiv.org/abs/2601.10679
 citation_source_best: semantic_scholar
 citations: 10

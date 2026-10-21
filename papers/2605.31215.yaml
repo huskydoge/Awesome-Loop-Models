@@ -28,6 +28,7 @@ desc: Replaces part of a masked generative model denoiser with a fixed-point sol
   to adapt depth with fewer parameters.
 links:
   arxiv: https://arxiv.org/abs/2605.31215
+  github: https://github.com/andreamiele/fp-mgm
   alphaxiv: https://www.alphaxiv.org/abs/2605.31215
 citations: 5
 metrics_updated: '2026-10-15'
