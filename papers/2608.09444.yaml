@@ -24,9 +24,9 @@ links:
   arxiv: https://arxiv.org/abs/2608.09444
   alphaxiv: https://www.alphaxiv.org/abs/2608.09444
   github: https://github.com/kschwethelm/continuous-depth-batching
-citations: 8
+citations: 9
 citation_sources:
-  semantic_scholar: 8
+  semantic_scholar: 9
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
