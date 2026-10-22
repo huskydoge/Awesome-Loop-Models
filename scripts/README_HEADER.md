@@ -2,7 +2,7 @@
 
 # Awesome Loop Models
 
-**Models that compute by looping: one learned layer, block, or operator, reused inside a single forward pass.**
+**Models that compute by looping: one learned layer, block, or operator, reused across depth or folded into time.**
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![Website](https://img.shields.io/badge/🌐%20Live%20Website-Link-blue?style=flat-square)]({{PUBLIC_INDEX_URL}})
@@ -24,9 +24,9 @@
 
 ## What is a loop model?
 
-> Within a single forward pass, a shared learned layer, block, module, or operator is reused.
+> A shared learned layer, block, module, or operator is reused, either along depth within one forward pass or along time, by feeding a state it computed back through the same layers for the next token or step.
 
-That covers looped, recurrent-depth, and weight-tied Transformers, adaptive halting over a reused block, deep-equilibrium and implicit layers, and shared neural algorithmic processors, plus theory and analysis of all of these. It leaves out agent loops, repeated full-model calls, diffusion-style iterative inference, and plain recurrence over time steps. [TAXONOMY.md](TAXONOMY.md) has the full rules.
+That covers looped, recurrent-depth, and weight-tied Transformers, adaptive halting over a reused block, deep-equilibrium and implicit layers, shared neural algorithmic processors, and models that fold depth into time by feeding high-level states back through the same layers (Feedback Transformers, Latent Recurrent Transformers, shift-1 loops), plus theory and analysis of all of these. It leaves out agent loops, repeated full-model calls, diffusion-style iterative inference, and ordinary sequence recurrence that only carries a memory across steps. [TAXONOMY.md](TAXONOMY.md) has the full rules.
 
 <details>
 <summary>Where the scope boundary sits</summary>

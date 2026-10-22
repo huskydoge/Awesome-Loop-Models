@@ -4,9 +4,12 @@
 
 The strict loop-model catalog targets papers where:
 
-> Within one model forward process, a shared learned internal layer, block, module, or operator is reused.
+> A shared learned internal layer, block, module, or operator is reused, either along depth within one forward pass or along time, by feeding a state it computed back through the same layers for the next token or step.
 
-This is the main scope boundary. The qualifying loop must be inside the model's forward computation, not an external optimization, search, planning, or solver routine.
+This is the main scope boundary. The qualifying loop must be inside the model's own computation, not an external optimization, search, planning, or solver routine. Both directions of reuse count:
+
+- **Depth recurrence:** the same block is applied repeatedly to the same position within one forward pass (looped, recurrent-depth, weight-tied and implicit models).
+- **Depth folded into time:** a high-level or late-layer state computed for one token or step is fed back into the same layers' computation for the next one (Feedback Transformers, Latent Recurrent Transformers, shift-1 and pipelined loops). The topic map files these under §10.2 `open-problems/depth-into-time`.
 
 ## Scope Scale
 
@@ -17,7 +20,7 @@ The easiest way to understand the boundary is as a scale:
 3. Latent reasoning / multi-pass inference
 4. Loop model
 
-Only the fourth category is the main target of this repo. Standard sequence-time recurrence across tokens or timesteps is not enough by itself; the repo's target is iterative depth or latent recurrence inside one forward pass.
+Only the fourth category is the main target of this repo. Recurrence over time counts when it reuses the model's layers on a state they already computed, so that depth is folded into time. Ordinary sequence recurrence, where a recurrent cell or state-space update only carries a memory from one step to the next, does not count by itself.
 
 ### Adjacent-work exception
 
@@ -26,6 +29,7 @@ A rare, curator-approved paper may remain for its conceptual value with `catalog
 ## In Scope
 
 - recurrent-depth / weight-tied transformers
+- depth folded into time: high-level states fed back through the same layers for the next token or step
 - adaptive halting over a reused recurrent block
 - deep equilibrium / fixed-point / implicit-layer models
 - shared processors repeatedly executed in neural algorithmic reasoning
@@ -43,7 +47,8 @@ A rare, curator-approved paper may remain for its conceptual value with `catalog
 - recursive model calls
 - untied depth scaling without explicit reuse of layers
 - external search or planning over arbitrary layer orders when the qualifying loop is not a shared internal forward-process recurrence
-- sequence recurrence papers that do not add a genuine loop-model architectural argument beyond standard recurrence
+- ordinary sequence recurrence (RNN, LSTM, state-space or linear-attention updates) that carries a memory across steps without feeding a computed state back through the same layers
+- continuous latent chain-of-thought that only feeds the last hidden state back as the next input embedding (COCONUT-style) without cross-token feedback into the layers
 
 ## Organization: the topic map
 
@@ -97,7 +102,7 @@ Chapters: §2 From Recurrent Computation to Iterative Depth; §3 Capabilities, B
 
 ### Choosing sections
 
-1. First check scope: is a shared learned layer, block, module or operator reused inside one forward pass? If not, drop the paper.
+1. First check scope: is a shared learned layer, block, module or operator reused, either within one forward pass or by feeding a computed state back through the same layers for the next token or step? If not, drop the paper.
 2. Pick the **primary** section by the paper's main contribution, i.e. the section where a reader would look for it first.
    - A design evaluated on language modeling is an `architecture/*`, `training/*`, `scaling/*` or `systems/*` paper, not `applications/language-speech-multimodal`. Use an `applications/*` section as primary only when the main takeaway is about that external domain.
    - Theory of what loops can compute goes to `capabilities/expressivity`; an analysis of why a trained looped model works goes to `understanding/why`; probing and circuits go to `understanding/interpretability`; negative results go to `understanding/failure-modes`.
