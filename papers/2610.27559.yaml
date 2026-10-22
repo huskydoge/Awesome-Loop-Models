@@ -11,8 +11,8 @@ authors:
 - Haoteng Tang
 - Yonghui Wu
 year: 2026
-published_date: "2026-10-20"
-added_date: "2026-10-21"
+published_date: '2026-10-20'
+added_date: '2026-10-21'
 venue: arXiv
 survey_section:
 - applications/language-speech-multimodal
@@ -23,6 +23,14 @@ claims: []
 comparison:
 - unclear
 survey_core: false
-desc: Jointly fine-tunes looped Ouro and HRM-Text models against Qwen3 on 13 clinical NLP datasets, finding Ouro-1.4B-Thinking beats Qwen3-1.7B on 11 of 13 and Ouro-2.6B-Thinking is competitive with Qwen3-8B, with the largest gains on inference and question answering.
+desc: Jointly fine-tunes looped Ouro and HRM-Text models against Qwen3 on 13 clinical
+  NLP datasets, finding Ouro-1.4B-Thinking beats Qwen3-1.7B on 11 of 13 and Ouro-2.6B-Thinking
+  is competitive with Qwen3-8B, with the largest gains on inference and question answering.
 links:
   arxiv: https://arxiv.org/abs/2610.27559
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-22'
