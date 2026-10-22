@@ -1,0 +1,33 @@
+title: 'PAR: Progress-Aligned Recurrence for Length Generalization in State Tracking'
+authors:
+- Pan Wang
+- Yihao Hu
+- Guangyuan Dong
+- Yitong Lin
+- Hang Wang
+- Zimi Liu
+- Zhihao Wen
+- Jianshe Li
+- Jiang-Ming Yang
+- Wei Wu
+- Yongqi Tong
+year: 2026
+published_date: "2026-10-20"
+added_date: "2026-10-21"
+venue: arXiv
+survey_section:
+- capabilities/generalization
+- training/supervision-optimization
+- training/retrofitting
+- architecture/depth-control
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: adaptive-halting
+claims:
+- length-generalization
+comparison:
+- unclear
+survey_core: false
+desc: Trains each iteration of a retrofitted Qwen2.5-0.5B prelude-core-coda loop to match the state after the first k operations and rescales recurrent states to first-iteration norms, reaching 95.5% swap-S5 accuracy at 16x the training length versus 55.7% for RLT.
+links:
+  arxiv: https://arxiv.org/abs/2610.27628
