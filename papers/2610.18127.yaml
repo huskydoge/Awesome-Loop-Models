@@ -25,10 +25,10 @@ desc: Inspects eight released looped language models with five mechanistic lense
   loops stay robust.
 links:
   arxiv: https://arxiv.org/abs/2610.18127
-citations: 0
+citations: 1
 citation_source_best: semantic_scholar
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   opencitations: 0
   openalex: 0
-metrics_updated: '2026-10-16'
+metrics_updated: '2026-10-22'

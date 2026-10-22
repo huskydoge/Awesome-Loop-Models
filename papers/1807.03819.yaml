@@ -27,14 +27,19 @@ desc: Introduces the Universal Transformer, which repeatedly applies shared self
   under the paper's stated assumptions the architecture is Turing-complete.
 links:
   arxiv: https://arxiv.org/abs/1807.03819
+  github: https://github.com/tensorflow/tensor2tensor
   openreview: https://openreview.net/forum?id=HyzdRiR9Y7
   comment:
   - label: Reza Bayat reading list (#3)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20
-citations: 1138
+citations: 1153
 citation_sources:
-  semantic_scholar: 1138
+  semantic_scholar: 1153
   openalex: 440
   opencitations: 4
 citation_source_best: semantic_scholar
-metrics_updated: '2026-10-19'
+metrics_updated: '2026-10-22'
+star_source_best: github_api
+github_stars: 17474
+star_sources:
+  github_api: 17474

@@ -1,0 +1,42 @@
+title: 'Spherical Fixed-Point Reasoners: Adaptive Loop Halting on the Hypersphere'
+authors:
+- Arber Zela
+- Artavazd Maranjyan
+- Pol Puigdemont
+- David Berghaus
+- Valentyn Boreiko
+- Volkan Cevher
+year: 2026
+published_date: '2026-10-19'
+added_date: '2026-10-20'
+venue: arXiv
+survey_section:
+- architecture/depth-control
+- architecture/residual-init
+- understanding/interpretability
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- stability
+- test-time-scaling
+comparison: []
+survey_core: false
+desc: Runs a weight-tied normalized-Transformer block as a damped fixed-point solver
+  on the unit hypersphere with geodesic injection, slerp damping and angular halting,
+  proves convergence conditions, and reaches 96.6% on Sudoku-Extreme, 87.9% on Maze-Hard
+  and 59.1% on Mini-ARC.
+links:
+  arxiv: https://arxiv.org/abs/2610.25646
+  github: https://github.com/arberzela/sfprm
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+star_source_best: github_api
+github_stars: 9
+star_sources:
+  github_api: 9
+metrics_updated: '2026-10-22'

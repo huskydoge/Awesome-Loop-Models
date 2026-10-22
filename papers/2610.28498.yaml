@@ -1,0 +1,26 @@
+title: 'Present but Hard to Read: Probing Latent Reasoning with Minimal Pairs'
+authors:
+- Aur Shalev Merin
+year: 2026
+published_date: '2026-10-20'
+added_date: '2026-10-21'
+venue: arXiv
+survey_section:
+- understanding/interpretability
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
+desc: Shows with minimal-pair probes that a copied digit is present in looped Ouro-1.4B's
+  state even when standard probes read it at 0.36, and finds an intermediate a+b value
+  that is readable across loops but not used for the answer under patching.
+links:
+  arxiv: https://arxiv.org/abs/2610.28498
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-22'

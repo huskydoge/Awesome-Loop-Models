@@ -36,16 +36,16 @@ links:
   arxiv: https://arxiv.org/abs/2209.11142
   paper: https://proceedings.mlr.press/v198/ibarz22a.html
   github: https://github.com/google-deepmind/clrs
-citations: 78
+citations: 80
 citation_sources:
-  semantic_scholar: 78
+  semantic_scholar: 80
   openalex: 12
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-10-19'
+metrics_updated: '2026-10-22'
 star_source_best: github_api
-github_stars: 548
+github_stars: 549
 star_sources:
-  github_api: 548
+  github_api: 549
 peer_reviewed: true
 venue_source: https://proceedings.mlr.press/v198/ibarz22a.html

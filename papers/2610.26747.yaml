@@ -1,0 +1,42 @@
+title: 'recAMPLIFY: Large-Scale Pretraining of Recursive Protein Language Models'
+authors:
+- Saurav Jha
+- Qianli Liao
+- Robert Vernon
+- Sarath Chandar
+- Quentin Fournier
+year: 2026
+published_date: '2026-10-19'
+added_date: '2026-10-20'
+venue: arXiv
+survey_section:
+- applications/graphs-science
+- architecture/depth-control
+- scaling/test-time
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+- test-time-scaling
+comparison:
+- unclear
+survey_core: false
+desc: Pretrains recAMPLIFY, a masked protein language model whose weight-tied Transformer
+  core refines residue states over adjustable cycles; with 155M unique parameters
+  on 2T tokens it beats AMPLIFY-350M on fold accuracy (0.696 vs 0.568), and Gated
+  Mixture Recurrence halting cuts expected cycles by 32 to 40%.
+links:
+  arxiv: https://arxiv.org/abs/2610.26747
+  github: https://github.com/chandar-lab/AMPLIFY/tree/recamplify
+  hf: https://huggingface.co/chandar-lab/recamplify
+citation_source_best: openalex
+citations: 0
+citation_sources:
+  opencitations: 0
+  openalex: 0
+star_source_best: github_api
+github_stars: 136
+star_sources:
+  github_api: 136
+metrics_updated: '2026-10-22'

@@ -6,7 +6,7 @@ authors:
 - Yong Jae Lee
 year: 2026
 published_date: '2026-09-18'
-added_date: "2026-10-18"
+added_date: '2026-10-18'
 venue: arXiv
 survey_section:
 - open-problems/depth-into-time
@@ -23,8 +23,19 @@ comparison:
 survey_core: false
 desc: Inserts latent thought tokens that reuse the shared backbone of a Latent Recurrent
   Transformer, whose final hidden state feeds the next token; one thought token recovers
-  89 percent of the gain from doubling depth with about 48 percent fewer parameters and
-  overtakes a two-loop Transformer at matched training FLOPs.
+  89 percent of the gain from doubling depth with about 48 percent fewer parameters
+  and overtakes a two-loop Transformer at matched training FLOPs.
 links:
   arxiv: https://arxiv.org/abs/2609.21605
   github: https://github.com/OoDBag/Latent_recurrent_transformer
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 9
+star_sources:
+  github_api: 9
+metrics_updated: '2026-10-19'

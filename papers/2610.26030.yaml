@@ -1,0 +1,41 @@
+title: Truncate or Not? A Scaling Study of Looped Transformers with Truncated Backpropagation
+authors:
+- Xuyuan Xiong
+- Siyu Chen
+- Zihan Shao
+- Yue Su
+- Weiyang Jin
+- Ping Luo
+- Zhuoran Yang
+- Xihui Liu
+year: 2026
+published_date: '2026-10-19'
+added_date: '2026-10-20'
+venue: arXiv
+survey_section:
+- scaling/compute-optimal
+- training/supervision-optimization
+- capabilities/efficiency
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- compute-efficiency
+comparison:
+- iso-flop
+- iso-depth
+survey_core: false
+desc: Fits an effective-parameter scaling law over nearly 600 looped-Transformer runs
+  varying forward and backpropagated loops; full BPTT through fewer loops beats truncated
+  BPTT at matched compute, and two fully trained loops beat the compute-optimal non-looped
+  model with 27% fewer parameters at 8% more compute.
+links:
+  arxiv: https://arxiv.org/abs/2610.26030
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+metrics_updated: '2026-10-22'

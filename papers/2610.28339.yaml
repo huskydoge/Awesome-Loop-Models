@@ -1,0 +1,34 @@
+title: 'HistoLoop: Iterative Contextual Inference with a Looped Transformer for Histology-Based
+  Spatial Gene Expression Prediction'
+authors:
+- Ziang Liu
+- Jie Liu
+- Shuai Li
+- Yigui Feng
+- Qinglin Wang
+year: 2026
+published_date: '2026-10-20'
+added_date: '2026-10-21'
+venue: arXiv
+survey_section:
+- applications/vision
+- architecture/state-memory
+loop_topology: prelude-core-coda
+sharing: partial-adapter
+depth_control: fixed
+claims: []
+comparison:
+- iso-param
+survey_core: false
+desc: Predicts spatial gene expression from H&E images with a shared spatial Transformer
+  and retrieval module looped coarse-to-fine over persistent spot states, reaching
+  0.480 macro HVG50 Pearson correlation on HEST-Bench versus 0.386 for a parameter-matched
+  unlooped model.
+links:
+  arxiv: https://arxiv.org/abs/2610.28339
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-22'

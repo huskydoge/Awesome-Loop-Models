@@ -1,0 +1,38 @@
+title: 'UpLoop: Upcycling Large Language Models with Gated Loop'
+authors:
+- Tieyuan Chen
+- Huabin Liu
+- Yingtao Zhang
+- Shijie Li
+- Tengyu Pan
+- Weiyao Lin
+- Jianguo Li
+year: 2026
+published_date: '2026-10-18'
+added_date: '2026-10-20'
+venue: arXiv
+survey_section:
+- training/retrofitting
+- architecture/residual-init
+- training/supervision-optimization
+loop_topology: prelude-core-coda
+sharing: partial-adapter
+depth_control: sampled-train
+claims:
+- test-time-scaling
+comparison:
+- iso-param
+survey_core: false
+desc: Upcycles a pretrained LLM by looping each selected middle layer locally and
+  gating the attention and MLP residual writes of later loops per layer and loop;
+  from Qwen3-4B Base with SFT, the 20-benchmark average rises from 51.90 (non-looped)
+  to 58.07 at three loops, past the usual two-loop saturation.
+links:
+  arxiv: https://arxiv.org/abs/2610.25004
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+metrics_updated: '2026-10-22'

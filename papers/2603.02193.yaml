@@ -29,13 +29,13 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2603.02193
   github: https://github.com/ml-jku/SE-RRM
 citation_source_best: semantic_scholar
-citations: 3
+citations: 4
 citation_sources:
-  semantic_scholar: 3
+  semantic_scholar: 4
   openalex: 0
   opencitations: 0
 star_source_best: github_api
 github_stars: 18
 star_sources:
   github_api: 18
-metrics_updated: '2026-10-15'
+metrics_updated: '2026-10-22'

@@ -1,0 +1,33 @@
+title: 'RTSM: Adapting Recursive Models to Multivariate Time-Series Classification'
+authors:
+- Georg Tenzing
+- Anna Tegon
+- Luca Benini
+- Thorir Mar Ingolfsson
+year: 2026
+published_date: '2026-10-16'
+added_date: '2026-10-19'
+venue: arXiv
+survey_section:
+- applications/embodied-other
+- capabilities/efficiency
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: adaptive-halting
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
+desc: Adapts TRM-style weight-tied refinement to multivariate time-series classification
+  with a convolutional tokenizer, a single-state shared attention module applied 48
+  times, and a pooled readout; it reaches 72.81 percent mean accuracy on the 30 UEA
+  datasets, 1.60 points above MambaSL.
+links:
+  arxiv: https://arxiv.org/abs/2610.23353
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+metrics_updated: '2026-10-21'
