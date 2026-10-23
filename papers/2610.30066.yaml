@@ -1,0 +1,29 @@
+title: Looped Uniform Diffusion Language Models
+authors:
+- Saiteja Utpala
+- Chieh-Hsin Lai
+- Yuki Mitsufuji
+- Praneeth Vepakomma
+year: 2026
+published_date: "2026-10-21"
+added_date: "2026-10-22"
+venue: arXiv
+survey_section:
+- open-problems/diffusion
+- capabilities/efficiency
+- architecture/depth-control
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: sampled-train
+claims:
+- compute-efficiency
+- test-time-scaling
+comparison:
+- iso-flop
+- iso-param
+survey_core: false
+desc: Loops a two-block slice of a 170M uniform-diffusion denoiser inside each denoising step with random loop counts in training, matching a non-looped model's validation NLL with up to 2.8x (OpenWebText) and 3.3x (FineWeb-Edu) fewer training FLOPs and up to 9.8% lower generative perplexity at matched NFE.
+links:
+  arxiv: https://arxiv.org/abs/2610.30066
+  github: https://github.com/SaitejaUtpala/looped_udlm
+  hf: https://huggingface.co/saitejautpala/looped_udlm

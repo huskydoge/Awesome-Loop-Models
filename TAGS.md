@@ -21,7 +21,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§3 Capabilities, Benefits and Trade-offs**
 
-- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (7 / 43)
+- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (7 / 44)
 - `capabilities/expressivity` — §3.2 Expressivity and reasoning capacity (19 / 23)
 - `capabilities/generalization` — §3.3 Length, easy-to-hard, and compositional generalization (13 / 25)
 
@@ -33,12 +33,12 @@ List every section the entry belongs to; the first entry is its primary section.
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (10 / 39)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (9 / 22)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (6 / 27)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (21 / 63)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (21 / 65)
 - `architecture/hybrid` — §4.6 Hybrid looped architectures (18 / 25)
 
 **§5 Learning Algorithms**
 
-- `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (25 / 73)
+- `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (26 / 74)
 - `training/post-training` — §5.2 Post-training and reinforcement learning (7 / 14)
 - `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (13 / 21)
 
@@ -67,13 +67,13 @@ List every section the entry belongs to; the first entry is its primary section.
 - `applications/vision` — §9.2 Visual recognition, restoration, and generation (22 / 30)
 - `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (5 / 5)
 - `applications/graphs-science` — §9.4 Graphs, structured data, and scientific modeling (19 / 29)
-- `applications/embodied-other` — §9.5 Embodied AI and other domains (21 / 24)
+- `applications/embodied-other` — §9.5 Embodied AI and other domains (22 / 25)
 
 ### Part V. Open Problems
 
 **§10 Open Problems**
 
-- `open-problems/diffusion` — §10.1 Unification with diffusion models (2 / 11)
+- `open-problems/diffusion` — §10.1 Unification with diffusion models (3 / 12)
 - `open-problems/depth-into-time` — §10.2 Folding depth into time (1 / 6)
 - `open-problems/monitorability-safety` — §10.3 Monitorability and safety (1 / 4)
 
@@ -81,19 +81,19 @@ List every section the entry belongs to; the first entry is its primary section.
 
 Where the loop sits in the network (one value, papers only).
 
-- `whole-stack` (142)
-- `prelude-core-coda` (52)
+- `whole-stack` (143)
+- `prelude-core-coda` (53)
 - `partial` (33)
 - `hierarchical` (37)
 - `shifted-parallel` (10)
 - `implicit-fixed-point` (37)
-- `unspecified` (40)
+- `unspecified` (41)
 
 ## Sharing (`sharing`)
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (307)
+- `full` (310)
 - `partial-adapter` (23)
 - `expert-routed` (11)
 - `unspecified` (10)
@@ -103,22 +103,22 @@ How parameters are shared across iterations (one value, papers only).
 How the number of iterations is decided (one value, papers only).
 
 - `fixed` (159)
-- `sampled-train` (24)
-- `adaptive-halting` (69)
+- `sampled-train` (25)
+- `adaptive-halting` (70)
 - `convergence` (45)
-- `unspecified` (54)
+- `unspecified` (55)
 
 ## Claims (`claims`)
 
 What the paper argues looping buys or costs (list, papers only).
 
 - `param-efficiency` (105)
-- `compute-efficiency` (112)
+- `compute-efficiency` (114)
 - `memory-efficiency` (44)
 - `data-efficiency` (18)
 - `expressivity` (29)
 - `length-generalization` (36)
-- `test-time-scaling` (70)
+- `test-time-scaling` (71)
 - `stability` (41)
 - `failure-mode` (52)
 
@@ -126,7 +126,7 @@ What the paper argues looping buys or costs (list, papers only).
 
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
-- `iso-param` (45)
-- `iso-flop` (29)
+- `iso-param` (46)
+- `iso-flop` (30)
 - `iso-depth` (26)
-- `unclear` (50)
+- `unclear` (51)
