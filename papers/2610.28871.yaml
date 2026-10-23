@@ -2,8 +2,8 @@ title: How Much Gradient Does Truncated Backprop Lose in Looped Transformers?
 authors:
 - Aur Shalev Merin
 year: 2026
-published_date: "2026-10-20"
-added_date: "2026-10-22"
+published_date: '2026-10-20'
+added_date: '2026-10-22'
 venue: arXiv
 survey_section:
 - training/supervision-optimization
@@ -13,7 +13,20 @@ depth_control: unspecified
 claims: []
 comparison: []
 survey_core: false
-desc: Measures exactly, from one backward pass, how much weight gradient truncated backprop drops on nine looped language models; the lost share barely changes from 32 to 64 loops, keeping two of Ouro's four loops loses 81% of the final output's gradient, and the loss falls by 0.07-0.22 during fine-tuning.
+desc: Measures exactly, from one backward pass, how much weight gradient truncated
+  backprop drops on nine looped language models; the lost share barely changes from
+  32 to 64 loops, keeping two of Ouro's four loops loses 81% of the final output's
+  gradient, and the loss falls by 0.07-0.22 during fine-tuning.
 links:
   arxiv: https://arxiv.org/abs/2610.28871
   github: https://github.com/Aur-Shalev-Merin/lost-gradient-looped-transformers
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-10-23'

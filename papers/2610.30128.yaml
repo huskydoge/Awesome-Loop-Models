@@ -1,4 +1,5 @@
-title: 'Think Harder Where It Matters: Item-Level Adaptive Recursion for Sequential Recommendation'
+title: 'Think Harder Where It Matters: Item-Level Adaptive Recursion for Sequential
+  Recommendation'
 authors:
 - Zhanshuo Cao
 - Jiakai Tang
@@ -6,8 +7,8 @@ authors:
 - Sunhao Dai
 - Jun Xu
 year: 2026
-published_date: "2026-10-21"
-added_date: "2026-10-22"
+published_date: '2026-10-21'
+added_date: '2026-10-22'
 venue: arXiv
 survey_section:
 - applications/embodied-other
@@ -20,7 +21,20 @@ claims:
 comparison:
 - unclear
 survey_core: false
-desc: Introduces LoopRec, which recurses one weight-shared recommender block and lets a learned gate stop or continue each history item at every recursion; it improves all 48 backbone-dataset-metric comparisons over fixed-depth SASRec, BSARec, NextItNet and LRURec, by up to 37% NDCG@20.
+desc: Introduces LoopRec, which recurses one weight-shared recommender block and lets
+  a learned gate stop or continue each history item at every recursion; it improves
+  all 48 backbone-dataset-metric comparisons over fixed-depth SASRec, BSARec, NextItNet
+  and LRURec, by up to 37% NDCG@20.
 links:
   arxiv: https://arxiv.org/abs/2610.30128
   github: https://github.com/Elpmis117/LoopRec
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-10-23'
