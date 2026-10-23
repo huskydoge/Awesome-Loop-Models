@@ -35,6 +35,7 @@ citations: 0
 citation_sources:
   semantic_scholar: 0
   opencitations: 0
+  openalex: 0
 star_source_best: github_api
 github_stars: 1
 star_sources:
