@@ -33,7 +33,7 @@ List every section the entry belongs to; the first entry is its primary section.
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (10 / 39)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (9 / 22)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (6 / 27)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (21 / 65)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (21 / 66)
 - `architecture/hybrid` — §4.6 Hybrid looped architectures (18 / 25)
 
 **§5 Learning Algorithms**
@@ -50,7 +50,7 @@ List every section the entry belongs to; the first entry is its primary section.
 **§7 Systems and Infrastructure**
 
 - `systems/quantization-edge` — §7.1 Quantization and edge deployment (10 / 14)
-- `systems/kv-memory` — §7.2 KV cache and memory (8 / 18)
+- `systems/kv-memory` — §7.2 KV cache and memory (9 / 19)
 - `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (6 / 9)
 
 ### Part IV. Understanding and Applications
@@ -82,7 +82,7 @@ List every section the entry belongs to; the first entry is its primary section.
 Where the loop sits in the network (one value, papers only).
 
 - `whole-stack` (143)
-- `prelude-core-coda` (53)
+- `prelude-core-coda` (54)
 - `partial` (33)
 - `hierarchical` (37)
 - `shifted-parallel` (10)
@@ -93,7 +93,7 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (310)
+- `full` (311)
 - `partial-adapter` (23)
 - `expert-routed` (11)
 - `unspecified` (10)
@@ -103,7 +103,7 @@ How parameters are shared across iterations (one value, papers only).
 How the number of iterations is decided (one value, papers only).
 
 - `fixed` (159)
-- `sampled-train` (25)
+- `sampled-train` (26)
 - `adaptive-halting` (70)
 - `convergence` (45)
 - `unspecified` (55)
@@ -114,7 +114,7 @@ What the paper argues looping buys or costs (list, papers only).
 
 - `param-efficiency` (105)
 - `compute-efficiency` (114)
-- `memory-efficiency` (44)
+- `memory-efficiency` (45)
 - `data-efficiency` (18)
 - `expressivity` (29)
 - `length-generalization` (36)
