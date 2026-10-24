@@ -1,0 +1,26 @@
+title: 'BeNice! Closing Looping''s Inference-Memory Gap via KV-Sharing'
+authors:
+- Hayden Prairie
+- Jacob M. Ryan
+- Taylor Berg-Kirkpatrick
+- Daniel Y. Fu
+year: 2026
+published_date: '2026-10-22'
+added_date: '2026-10-24'
+venue: arXiv
+survey_section:
+- systems/kv-memory
+- architecture/depth-control
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: sampled-train
+claims:
+- memory-efficiency
+comparison: []
+survey_core: false
+desc: Reuses the final recurrence's KV-cache for all earlier recurrences of a looped
+  LM; stochastic-depth pretraining makes this work, and BeNice!, a post-training
+  loss, keeps the first recurrence compatible with the shared cache.
+links:
+  arxiv: https://arxiv.org/abs/2610.31633
+  alphaxiv: https://www.alphaxiv.org/abs/2610.31633
