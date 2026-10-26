@@ -33,14 +33,14 @@ List every section the entry belongs to; the first entry is its primary section.
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (10 / 39)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (9 / 22)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (6 / 27)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (21 / 66)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (21 / 67)
 - `architecture/hybrid` — §4.6 Hybrid looped architectures (18 / 25)
 
 **§5 Learning Algorithms**
 
 - `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (26 / 74)
 - `training/post-training` — §5.2 Post-training and reinforcement learning (7 / 14)
-- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (13 / 21)
+- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (13 / 22)
 
 **§6 Scaling Laws**
 
@@ -57,13 +57,13 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§8 Understanding Why Looped Models Work**
 
-- `understanding/why` — §8.1 Why looped models work (2 / 14)
-- `understanding/interpretability` — §8.2 Mechanistic interpretability (23 / 35)
+- `understanding/why` — §8.1 Why looped models work (3 / 15)
+- `understanding/interpretability` — §8.2 Mechanistic interpretability (23 / 36)
 - `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (12 / 38)
 
 **§9 Applications**
 
-- `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (26 / 34)
+- `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (27 / 35)
 - `applications/vision` — §9.2 Visual recognition, restoration, and generation (22 / 30)
 - `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (5 / 5)
 - `applications/graphs-science` — §9.4 Graphs, structured data, and scientific modeling (19 / 29)
@@ -82,7 +82,7 @@ List every section the entry belongs to; the first entry is its primary section.
 Where the loop sits in the network (one value, papers only).
 
 - `whole-stack` (143)
-- `prelude-core-coda` (54)
+- `prelude-core-coda` (56)
 - `partial` (33)
 - `hierarchical` (37)
 - `shifted-parallel` (10)
@@ -93,8 +93,8 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (311)
-- `partial-adapter` (23)
+- `full` (312)
+- `partial-adapter` (24)
 - `expert-routed` (11)
 - `unspecified` (10)
 
@@ -102,9 +102,9 @@ How parameters are shared across iterations (one value, papers only).
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (159)
+- `fixed` (160)
 - `sampled-train` (26)
-- `adaptive-halting` (70)
+- `adaptive-halting` (71)
 - `convergence` (45)
 - `unspecified` (55)
 
@@ -126,7 +126,7 @@ What the paper argues looping buys or costs (list, papers only).
 
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
-- `iso-param` (46)
-- `iso-flop` (30)
-- `iso-depth` (26)
+- `iso-param` (47)
+- `iso-flop` (31)
+- `iso-depth` (27)
 - `unclear` (51)

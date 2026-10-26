@@ -1,0 +1,27 @@
+title: How Depth Growth and Looping Shape In-Context Learning in Language Models
+authors:
+- Ferdinand Kapl
+- Kaitlin Maile
+- Stefan Bauer
+- Johannes von Oswald
+year: 2026
+published_date: "2026-10-22"
+added_date: "2026-10-25"
+venue: arXiv
+survey_section:
+- understanding/why
+- understanding/interpretability
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims: []
+comparison:
+- iso-flop
+- iso-depth
+survey_core: false
+desc: Compares weight-tied looped and depth-grown language models up to 3B with dense
+  models of matched inference FLOPs and effective depth, finding that both learn in-context
+  earlier, keep that ability longer and lean more on induction heads, though the 3B
+  looped model trails dense on nine-task MC (60.53 vs 61.33).
+links:
+  arxiv: https://arxiv.org/abs/2610.31421

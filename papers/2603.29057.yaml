@@ -24,6 +24,7 @@ desc: Proposes LA-Sign for skeleton-based isolated sign language recognition, a 
   and MSASL with fewer unique layers.
 links:
   arxiv: https://arxiv.org/abs/2603.29057
+  github: https://github.com/mpuu00001/LA-Sign
   alphaxiv: https://www.alphaxiv.org/abs/2603.29057
 citation_source_best: semantic_scholar
 citations: 0
