@@ -7,8 +7,8 @@ authors:
 - Tianyi Wang
 - Junchi Yan
 year: 2026
-published_date: "2026-10-22"
-added_date: "2026-10-25"
+published_date: '2026-10-22'
+added_date: '2026-10-25'
 venue: arXiv
 survey_section:
 - applications/language-speech-multimodal
@@ -27,3 +27,10 @@ desc: Introduces LoopLook, which re-applies a middle-to-late window of a pretrai
   from 55.9 to 64.5 at 5.1-6.5% extra time to first token.
 links:
   arxiv: https://arxiv.org/abs/2610.30824
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-26'

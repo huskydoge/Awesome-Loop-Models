@@ -27,10 +27,14 @@ links:
   github: https://github.com/dartemasov/brt-channel-estimation
   paper: https://doi.org/10.1109/ACCESS.2025.3639689
 citations: 1
-metrics_updated: '2026-08-18'
+metrics_updated: '2026-10-26'
 citation_sources:
   semantic_scholar: 1
   openalex: 1
   opencitations: 0
   crossref: 1
 citation_source_best: semantic_scholar
+star_source_best: github_api
+github_stars: 3
+star_sources:
+  github_api: 3

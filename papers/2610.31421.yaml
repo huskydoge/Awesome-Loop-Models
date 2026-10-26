@@ -5,8 +5,8 @@ authors:
 - Stefan Bauer
 - Johannes von Oswald
 year: 2026
-published_date: "2026-10-22"
-added_date: "2026-10-25"
+published_date: '2026-10-22'
+added_date: '2026-10-25'
 venue: arXiv
 survey_section:
 - understanding/why
@@ -25,3 +25,10 @@ desc: Compares weight-tied looped and depth-grown language models up to 3B with 
   looped model trails dense on nine-task MC (60.53 vs 61.33).
 links:
   arxiv: https://arxiv.org/abs/2610.31421
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-26'
