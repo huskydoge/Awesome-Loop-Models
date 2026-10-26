@@ -355,6 +355,8 @@
     "papers/2610.28871.yaml",
     "papers/2610.30066.yaml",
     "papers/2610.30128.yaml",
+    "papers/2610.30824.yaml",
+    "papers/2610.31421.yaml",
     "papers/2610.31633.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
@@ -693,7 +695,7 @@
       },
       {
         "label": "architecture/depth-control",
-        "count": 66
+        "count": 67
       },
       {
         "label": "scaling/test-time",
@@ -713,11 +715,11 @@
       },
       {
         "label": "understanding/interpretability",
-        "count": 35
+        "count": 36
       },
       {
         "label": "applications/language-speech-multimodal",
-        "count": 34
+        "count": 35
       },
       {
         "label": "architecture/topology",
@@ -757,7 +759,7 @@
       },
       {
         "label": "training/retrofitting",
-        "count": 21
+        "count": 22
       },
       {
         "label": "scaling/compute-optimal",
@@ -768,15 +770,15 @@
         "count": 19
       },
       {
+        "label": "understanding/why",
+        "count": 15
+      },
+      {
         "label": "systems/quantization-edge",
         "count": 14
       },
       {
         "label": "training/post-training",
-        "count": 14
-      },
-      {
-        "label": "understanding/why",
         "count": 14
       },
       {
@@ -823,7 +825,7 @@
       },
       {
         "label": "prelude-core-coda",
-        "count": 54
+        "count": 56
       },
       {
         "label": "unspecified",
@@ -849,11 +851,11 @@
     "sharing": [
       {
         "label": "full",
-        "count": 311
+        "count": 312
       },
       {
         "label": "partial-adapter",
-        "count": 23
+        "count": 24
       },
       {
         "label": "expert-routed",
@@ -867,11 +869,11 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 159
+        "count": 160
       },
       {
         "label": "adaptive-halting",
-        "count": 70
+        "count": 71
       },
       {
         "label": "unspecified",
@@ -931,15 +933,15 @@
       },
       {
         "label": "iso-param",
-        "count": 46
+        "count": 47
       },
       {
         "label": "iso-flop",
-        "count": 30
+        "count": 31
       },
       {
         "label": "iso-depth",
-        "count": 26
+        "count": 27
       }
     ]
   }

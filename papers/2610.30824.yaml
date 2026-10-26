@@ -1,0 +1,29 @@
+title: 'Loop to Look Better: Learning Adaptive Depth for Question-Guided Perception
+  in Vision-Language Models'
+authors:
+- Wencheng Ye
+- Anning Hu
+- Hongye Fang
+- Tianyi Wang
+- Junchi Yan
+year: 2026
+published_date: "2026-10-22"
+added_date: "2026-10-25"
+venue: arXiv
+survey_section:
+- applications/language-speech-multimodal
+- architecture/depth-control
+- training/retrofitting
+loop_topology: prelude-core-coda
+sharing: partial-adapter
+depth_control: adaptive-halting
+claims: []
+comparison:
+- iso-param
+survey_core: false
+desc: Introduces LoopLook, which re-applies a middle-to-late window of a pretrained
+  VLM vision encoder with shared weights, question-conditioned modulation, a learned
+  exit head and token-wise fusion of loop states; on Qwen2.5-VL-3B it lifts MMStar
+  from 55.9 to 64.5 at 5.1-6.5% extra time to first token.
+links:
+  arxiv: https://arxiv.org/abs/2610.30824

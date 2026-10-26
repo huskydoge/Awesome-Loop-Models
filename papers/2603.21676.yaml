@@ -25,6 +25,7 @@ desc: Introduces a depth-recurrent Transformer for compositional generalization,
   latent iteration.
 links:
   arxiv: https://arxiv.org/abs/2603.21676
+  github: https://github.com/hhchen1105/Depth-Recurrent-Transformer
 citations: 7
 citation_sources:
   semantic_scholar: 7
