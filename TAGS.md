@@ -29,37 +29,37 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§4 Architecture and Design**
 
-- `architecture/topology` — §4.1 Loop topology (14 / 31)
-- `architecture/residual-init` — §4.2 Residual manipulation and initialization (10 / 39)
+- `architecture/topology` — §4.1 Loop topology (14 / 32)
+- `architecture/residual-init` — §4.2 Residual manipulation and initialization (10 / 40)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (9 / 22)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (6 / 27)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (21 / 67)
-- `architecture/hybrid` — §4.6 Hybrid looped architectures (18 / 25)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (23 / 69)
+- `architecture/hybrid` — §4.6 Hybrid looped architectures (18 / 26)
 
 **§5 Learning Algorithms**
 
 - `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (26 / 74)
-- `training/post-training` — §5.2 Post-training and reinforcement learning (7 / 14)
+- `training/post-training` — §5.2 Post-training and reinforcement learning (7 / 15)
 - `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (13 / 22)
 
 **§6 Scaling Laws**
 
 - `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (10 / 20)
-- `scaling/test-time` — §6.2 Test-time scaling (12 / 48)
+- `scaling/test-time` — §6.2 Test-time scaling (12 / 49)
 
 **§7 Systems and Infrastructure**
 
 - `systems/quantization-edge` — §7.1 Quantization and edge deployment (10 / 14)
 - `systems/kv-memory` — §7.2 KV cache and memory (9 / 19)
-- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (6 / 9)
+- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (6 / 10)
 
 ### Part IV. Understanding and Applications
 
 **§8 Understanding Why Looped Models Work**
 
-- `understanding/why` — §8.1 Why looped models work (3 / 15)
+- `understanding/why` — §8.1 Why looped models work (4 / 16)
 - `understanding/interpretability` — §8.2 Mechanistic interpretability (23 / 36)
-- `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (12 / 38)
+- `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (12 / 39)
 
 **§9 Applications**
 
@@ -81,9 +81,9 @@ List every section the entry belongs to; the first entry is its primary section.
 
 Where the loop sits in the network (one value, papers only).
 
-- `whole-stack` (143)
-- `prelude-core-coda` (56)
-- `partial` (33)
+- `whole-stack` (144)
+- `prelude-core-coda` (57)
+- `partial` (34)
 - `hierarchical` (37)
 - `shifted-parallel` (10)
 - `implicit-fixed-point` (37)
@@ -93,8 +93,8 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (312)
-- `partial-adapter` (24)
+- `full` (314)
+- `partial-adapter` (25)
 - `expert-routed` (11)
 - `unspecified` (10)
 
@@ -102,9 +102,9 @@ How parameters are shared across iterations (one value, papers only).
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (160)
-- `sampled-train` (26)
-- `adaptive-halting` (71)
+- `fixed` (161)
+- `sampled-train` (27)
+- `adaptive-halting` (72)
 - `convergence` (45)
 - `unspecified` (55)
 
@@ -113,20 +113,20 @@ How the number of iterations is decided (one value, papers only).
 What the paper argues looping buys or costs (list, papers only).
 
 - `param-efficiency` (105)
-- `compute-efficiency` (114)
+- `compute-efficiency` (116)
 - `memory-efficiency` (45)
 - `data-efficiency` (18)
 - `expressivity` (29)
 - `length-generalization` (36)
-- `test-time-scaling` (71)
+- `test-time-scaling` (73)
 - `stability` (41)
-- `failure-mode` (52)
+- `failure-mode` (53)
 
 ## Looped-vs-untied comparison (`comparison`)
 
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
-- `iso-param` (47)
+- `iso-param` (48)
 - `iso-flop` (31)
-- `iso-depth` (27)
+- `iso-depth` (28)
 - `unclear` (51)

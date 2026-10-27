@@ -1,0 +1,25 @@
+title: "Agreement rather than normalisation keeps depth reusable in looped language models"
+authors:
+  - "Ivan Viakhirev"
+  - "Kirill Borodin"
+  - "Maxim Abramov"
+  - "Grach Mkrtchian"
+year: 2026
+published_date: "2026-10-22"
+added_date: "2026-10-26"
+venue: "arXiv"
+survey_section:
+  - "understanding/why"
+  - "architecture/residual-init"
+  - "scaling/test-time"
+loop_topology: "whole-stack"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "test-time-scaling"
+comparison:
+  - "iso-depth"
+survey_core: false
+desc: "Shows that extra loop steps stay usable because training and inference loops agree, not because of loop-boundary normalisation: removing Ouro's between-step norm drops it to zero accuracy at its trained budget, yet 19M models trained without it extrapolate better (0.932 vs 0.584 at 8x budget)."
+links:
+  arxiv: "https://arxiv.org/abs/2610.31943"

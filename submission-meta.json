@@ -358,6 +358,9 @@
     "papers/2610.30824.yaml",
     "papers/2610.31421.yaml",
     "papers/2610.31633.yaml",
+    "papers/2610.31943.yaml",
+    "papers/2610.32246.yaml",
+    "papers/2610.32492.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -695,11 +698,11 @@
       },
       {
         "label": "architecture/depth-control",
-        "count": 67
+        "count": 69
       },
       {
         "label": "scaling/test-time",
-        "count": 48
+        "count": 49
       },
       {
         "label": "capabilities/efficiency",
@@ -707,11 +710,11 @@
       },
       {
         "label": "architecture/residual-init",
-        "count": 39
+        "count": 40
       },
       {
         "label": "understanding/failure-modes",
-        "count": 38
+        "count": 39
       },
       {
         "label": "understanding/interpretability",
@@ -723,7 +726,7 @@
       },
       {
         "label": "architecture/topology",
-        "count": 31
+        "count": 32
       },
       {
         "label": "applications/vision",
@@ -738,11 +741,11 @@
         "count": 27
       },
       {
-        "label": "applications/embodied-other",
-        "count": 25
+        "label": "architecture/hybrid",
+        "count": 26
       },
       {
-        "label": "architecture/hybrid",
+        "label": "applications/embodied-other",
         "count": 25
       },
       {
@@ -771,14 +774,14 @@
       },
       {
         "label": "understanding/why",
+        "count": 16
+      },
+      {
+        "label": "training/post-training",
         "count": 15
       },
       {
         "label": "systems/quantization-edge",
-        "count": 14
-      },
-      {
-        "label": "training/post-training",
         "count": 14
       },
       {
@@ -791,7 +794,7 @@
       },
       {
         "label": "systems/batching-parallel",
-        "count": 9
+        "count": 10
       },
       {
         "label": "foundations/algorithmic",
@@ -821,11 +824,11 @@
     "loop_topology": [
       {
         "label": "whole-stack",
-        "count": 143
+        "count": 144
       },
       {
         "label": "prelude-core-coda",
-        "count": 56
+        "count": 57
       },
       {
         "label": "unspecified",
@@ -841,7 +844,7 @@
       },
       {
         "label": "partial",
-        "count": 33
+        "count": 34
       },
       {
         "label": "shifted-parallel",
@@ -851,11 +854,11 @@
     "sharing": [
       {
         "label": "full",
-        "count": 312
+        "count": 314
       },
       {
         "label": "partial-adapter",
-        "count": 24
+        "count": 25
       },
       {
         "label": "expert-routed",
@@ -869,11 +872,11 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 160
+        "count": 161
       },
       {
         "label": "adaptive-halting",
-        "count": 71
+        "count": 72
       },
       {
         "label": "unspecified",
@@ -885,13 +888,13 @@
       },
       {
         "label": "sampled-train",
-        "count": 26
+        "count": 27
       }
     ],
     "claims": [
       {
         "label": "compute-efficiency",
-        "count": 114
+        "count": 116
       },
       {
         "label": "param-efficiency",
@@ -899,11 +902,11 @@
       },
       {
         "label": "test-time-scaling",
-        "count": 71
+        "count": 73
       },
       {
         "label": "failure-mode",
-        "count": 52
+        "count": 53
       },
       {
         "label": "memory-efficiency",
@@ -933,7 +936,7 @@
       },
       {
         "label": "iso-param",
-        "count": 47
+        "count": 48
       },
       {
         "label": "iso-flop",
@@ -941,7 +944,7 @@
       },
       {
         "label": "iso-depth",
-        "count": 27
+        "count": 28
       }
     ]
   }
