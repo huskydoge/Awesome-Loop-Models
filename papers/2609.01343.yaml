@@ -32,9 +32,9 @@ desc: Introduces a compute-matched sparse MoE Transformer that applies the same 
 links:
   arxiv: https://arxiv.org/abs/2609.01343
   alphaxiv: https://www.alphaxiv.org/abs/2609.01343
-citations: 25
+citations: 26
 citation_sources:
-  semantic_scholar: 25
+  semantic_scholar: 26
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
