@@ -1,25 +1,34 @@
-title: "Do Halting Heads Really Save Compute in Looped Language Models?"
+title: Do Halting Heads Really Save Compute in Looped Language Models?
 authors:
-  - "Tsung-Han Wu"
-  - "Minsuk Heo"
-  - "Kenny Tan"
+- Tsung-Han Wu
+- Minsuk Heo
+- Kenny Tan
 year: 2026
-published_date: "2026-10-23"
-added_date: "2026-10-26"
-venue: "arXiv"
+published_date: '2026-10-23'
+added_date: '2026-10-26'
+venue: arXiv
 survey_section:
-  - "architecture/depth-control"
-  - "understanding/failure-modes"
-  - "systems/batching-parallel"
-loop_topology: "prelude-core-coda"
-sharing: "full"
-depth_control: "adaptive-halting"
+- architecture/depth-control
+- understanding/failure-modes
+- systems/batching-parallel
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: adaptive-halting
 claims:
-  - "compute-efficiency"
-  - "failure-mode"
+- compute-efficiency
+- failure-mode
 comparison:
-  - "iso-param"
+- iso-param
 survey_core: false
-desc: "Pretrains looped language models up to 1.3B with halting heads and finds that mixture-loss heads still run 7.6-7.9 of 8 iterations, while early-stopping per-step heads lose most of their 0.02 BPB lead once batched passes run until the slowest token stops; proposes a pre-training test that bounds a head's gain."
+desc: Pretrains looped language models up to 1.3B with halting heads and finds that
+  mixture-loss heads still run 7.6-7.9 of 8 iterations, while early-stopping per-step
+  heads lose most of their 0.02 BPB lead once batched passes run until the slowest
+  token stops; proposes a pre-training test that bounds a head's gain.
 links:
-  arxiv: "https://arxiv.org/abs/2610.32246"
+  arxiv: https://arxiv.org/abs/2610.32246
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-27'

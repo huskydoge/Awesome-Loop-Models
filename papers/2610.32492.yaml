@@ -1,27 +1,36 @@
-title: "Accordion: Elastic-Depth Inference via Fixed-Prefix Layer Looping"
+title: 'Accordion: Elastic-Depth Inference via Fixed-Prefix Layer Looping'
 authors:
-  - "Yudong Zhang"
-  - "Wei Ding"
-  - "Kaili Zheng"
-  - "Yuchen Ding"
-  - "Zhenyu Zhang"
+- Yudong Zhang
+- Wei Ding
+- Kaili Zheng
+- Yuchen Ding
+- Zhenyu Zhang
 year: 2026
-published_date: "2026-10-23"
-added_date: "2026-10-26"
-venue: "arXiv"
+published_date: '2026-10-23'
+added_date: '2026-10-26'
+venue: arXiv
 survey_section:
-  - "architecture/depth-control"
-  - "architecture/hybrid"
-  - "architecture/topology"
-  - "training/post-training"
-loop_topology: "partial"
-sharing: "partial-adapter"
-depth_control: "sampled-train"
+- architecture/depth-control
+- architecture/hybrid
+- architecture/topology
+- training/post-training
+loop_topology: partial
+sharing: partial-adapter
+depth_control: sampled-train
 claims:
-  - "compute-efficiency"
-  - "test-time-scaling"
+- compute-efficiency
+- test-time-scaling
 comparison: []
 survey_core: false
-desc: "Introduces Accordion, a 6B-A0.5B MoE language model that runs each layer of a growing prefix of its middle window twice to offer five depth budgets from one set of weights; after 3.6T tokens the deepest budget lifts a 37-task average from 47.05 to 50.06, and the middle budget keeps 89% of the gain."
+desc: Introduces Accordion, a 6B-A0.5B MoE language model that runs each layer of
+  a growing prefix of its middle window twice to offer five depth budgets from one
+  set of weights; after 3.6T tokens the deepest budget lifts a 37-task average from
+  47.05 to 50.06, and the middle budget keeps 89% of the gain.
 links:
-  arxiv: "https://arxiv.org/abs/2610.32492"
+  arxiv: https://arxiv.org/abs/2610.32492
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-27'

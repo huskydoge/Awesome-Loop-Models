@@ -33,10 +33,10 @@ citation_sources:
   openalex: 323
   opencitations: 0
 citation_source_best: semantic_scholar
-github_stars: 811
+github_stars: 812
 star_sources:
-  github_api: 811
+  github_api: 812
 star_source_best: github_api
-metrics_updated: '2026-10-26'
+metrics_updated: '2026-10-27'
 peer_reviewed: true
 venue_source: https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html

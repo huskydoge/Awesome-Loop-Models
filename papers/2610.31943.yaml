@@ -1,25 +1,35 @@
-title: "Agreement rather than normalisation keeps depth reusable in looped language models"
+title: Agreement rather than normalisation keeps depth reusable in looped language
+  models
 authors:
-  - "Ivan Viakhirev"
-  - "Kirill Borodin"
-  - "Maxim Abramov"
-  - "Grach Mkrtchian"
+- Ivan Viakhirev
+- Kirill Borodin
+- Maxim Abramov
+- Grach Mkrtchian
 year: 2026
-published_date: "2026-10-22"
-added_date: "2026-10-26"
-venue: "arXiv"
+published_date: '2026-10-22'
+added_date: '2026-10-26'
+venue: arXiv
 survey_section:
-  - "understanding/why"
-  - "architecture/residual-init"
-  - "scaling/test-time"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "fixed"
+- understanding/why
+- architecture/residual-init
+- scaling/test-time
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
 claims:
-  - "test-time-scaling"
+- test-time-scaling
 comparison:
-  - "iso-depth"
+- iso-depth
 survey_core: false
-desc: "Shows that extra loop steps stay usable because training and inference loops agree, not because of loop-boundary normalisation: removing Ouro's between-step norm drops it to zero accuracy at its trained budget, yet 19M models trained without it extrapolate better (0.932 vs 0.584 at 8x budget)."
+desc: 'Shows that extra loop steps stay usable because training and inference loops
+  agree, not because of loop-boundary normalisation: removing Ouro''s between-step
+  norm drops it to zero accuracy at its trained budget, yet 19M models trained without
+  it extrapolate better (0.932 vs 0.584 at 8x budget).'
 links:
-  arxiv: "https://arxiv.org/abs/2610.31943"
+  arxiv: https://arxiv.org/abs/2610.31943
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-27'
