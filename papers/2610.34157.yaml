@@ -1,0 +1,27 @@
+title: "LoopGR: Parameter-Efficient Scaling for Generative Recommendation via Recurrent Depth"
+authors:
+  - "Huizhe Zhang"
+  - "Yudong Li"
+  - "Liang Chen"
+  - "Chengxiang Zhuo"
+  - "Zang Li"
+year: 2026
+published_date: "2026-10-25"
+added_date: "2026-10-27"
+venue: "arXiv"
+survey_section:
+  - "applications/embodied-other"
+  - "training/supervision-optimization"
+  - "capabilities/efficiency"
+loop_topology: "hierarchical"
+sharing: "partial-adapter"
+depth_control: "fixed"
+claims:
+  - "param-efficiency"
+comparison:
+  - "iso-param"
+  - "iso-flop"
+survey_core: false
+desc: "Introduces LoopGR, a generative recommender that alternates a shared decoder with a shared lightweight context updater in nested cycles per generated item and distills low-budget students along the recurrent trajectory; it outperforms strong baselines on Amazon and industrial data with up to 52% fewer parameters."
+links:
+  arxiv: "https://arxiv.org/abs/2610.34157"
