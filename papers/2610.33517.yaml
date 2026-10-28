@@ -1,0 +1,22 @@
+title: "One Model, Two Paths: Balancing Single-Pass and Looped Performance in Language Models"
+authors:
+  - "Jiarun Shen"
+  - "Lei Zhao"
+  - "Xiao Li"
+year: 2026
+published_date: "2026-10-24"
+added_date: "2026-10-27"
+venue: "arXiv"
+survey_section:
+  - "training/retrofitting"
+  - "training/supervision-optimization"
+loop_topology: "prelude-core-coda"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "failure-mode"
+comparison: []
+survey_core: false
+desc: "Retrofits a pretrained 134M language model to also run its middle blocks twice and studies joint losses on both paths; loop-only training worsens single-pass NLL by 0.171, while weighting the single-pass loss and distilling from the frozen original keep it within tolerance and still improve the looped path."
+links:
+  arxiv: "https://arxiv.org/abs/2610.33517"
