@@ -1,25 +1,34 @@
-title: "Recursive CLIP: Vision-Language Distillation with Looped Transformer Blocks"
+title: 'Recursive CLIP: Vision-Language Distillation with Looped Transformer Blocks'
 authors:
-  - "Szymon Mazurek"
-  - "Alberto Presta"
-  - "Michał Byra"
+- Szymon Mazurek
+- Alberto Presta
+- Michał Byra
 year: 2026
-published_date: "2026-10-25"
-added_date: "2026-10-27"
-venue: "arXiv"
+published_date: '2026-10-25'
+added_date: '2026-10-27'
+venue: arXiv
 survey_section:
-  - "applications/language-speech-multimodal"
-  - "capabilities/efficiency"
-  - "training/supervision-optimization"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "fixed"
+- applications/language-speech-multimodal
+- capabilities/efficiency
+- training/supervision-optimization
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
 claims:
-  - "param-efficiency"
+- param-efficiency
 comparison:
-  - "iso-flop"
-  - "iso-depth"
+- iso-flop
+- iso-depth
 survey_core: false
-desc: "Builds CLIP encoders from N transformer blocks applied M times at ViT-B/16 depth and trains them by distillation on CC3M+CC12M; one block looped 12 times halves parameters and reaches 56.7% ImageNet zero-shot against 72.5% for the distilled untied ViT-B, and output-level losses beat feature matching."
+desc: Builds CLIP encoders from N transformer blocks applied M times at ViT-B/16 depth
+  and trains them by distillation on CC3M+CC12M; one block looped 12 times halves
+  parameters and reaches 56.7% ImageNet zero-shot against 72.5% for the distilled
+  untied ViT-B, and output-level losses beat feature matching.
 links:
-  arxiv: "https://arxiv.org/abs/2610.34563"
+  arxiv: https://arxiv.org/abs/2610.34563
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-28'

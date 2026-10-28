@@ -19,9 +19,9 @@ desc: Shows with minimal-pair probes that a copied digit is present in looped Ou
 links:
   arxiv: https://arxiv.org/abs/2610.28498
 citation_source_best: semantic_scholar
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   opencitations: 0
   openalex: 0
-metrics_updated: '2026-10-23'
+metrics_updated: '2026-10-28'

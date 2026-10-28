@@ -26,12 +26,12 @@ links:
   github: https://github.com/seal-rg/recurrent-pretraining
   openreview: https://openreview.net/forum?id=h7WBYYJF1Q
 citation_source_best: semantic_scholar
-citations: 10
+citations: 11
 citation_sources:
-  semantic_scholar: 10
+  semantic_scholar: 11
   opencitations: 0
 star_source_best: github_api
 github_stars: 986
 star_sources:
   github_api: 986
-metrics_updated: '2026-10-26'
+metrics_updated: '2026-10-28'

@@ -1,22 +1,32 @@
-title: "ScaleRLT: Exact Log-Probabilities and Fast Deferred Rollouts for Reinforcement Learning on Looped Transformers"
+title: 'ScaleRLT: Exact Log-Probabilities and Fast Deferred Rollouts for Reinforcement
+  Learning on Looped Transformers'
 authors:
-  - "Dezhen Lu"
-  - "Zixiang Ni"
-  - "Runguo Li"
+- Dezhen Lu
+- Zixiang Ni
+- Runguo Li
 year: 2026
-published_date: "2026-10-25"
-added_date: "2026-10-27"
-venue: "arXiv"
+published_date: '2026-10-25'
+added_date: '2026-10-27'
+venue: arXiv
 survey_section:
-  - "training/post-training"
-  - "systems/batching-parallel"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "fixed"
+- training/post-training
+- systems/batching-parallel
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
 claims:
-  - "compute-efficiency"
+- compute-efficiency
 comparison: []
 survey_core: false
-desc: "Makes GRPO on the looped Ouro-1.4B fast and exact by batching deferred deep loops in rollouts and replaying the rollout's own schedule for learner log-probabilities; the replay matches rollouts bit for bit in all 195 tested cells, deferral lifts rollout throughput 1.47-1.56x, and two-node updates run 2.71x faster."
+desc: Makes GRPO on the looped Ouro-1.4B fast and exact by batching deferred deep
+  loops in rollouts and replaying the rollout's own schedule for learner log-probabilities;
+  the replay matches rollouts bit for bit in all 195 tested cells, deferral lifts
+  rollout throughput 1.47-1.56x, and two-node updates run 2.71x faster.
 links:
-  arxiv: "https://arxiv.org/abs/2610.34427"
+  arxiv: https://arxiv.org/abs/2610.34427
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-28'

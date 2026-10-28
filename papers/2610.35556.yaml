@@ -1,29 +1,38 @@
-title: "LoopFold: Parallelizing Recurrent Depth in Looped Transformers"
+title: 'LoopFold: Parallelizing Recurrent Depth in Looped Transformers'
 authors:
-  - "Feichen Song"
-  - "Boyi Zeng"
-  - "Yiqin Hao"
-  - "Shixiang Song"
-  - "He Li"
-  - "Yizhou Yang"
-  - "Zitong Wang"
-  - "Yifan Liu"
-  - "Ziwei He"
-  - "Zhouhan Lin"
+- Feichen Song
+- Boyi Zeng
+- Yiqin Hao
+- Shixiang Song
+- He Li
+- Yizhou Yang
+- Zitong Wang
+- Yifan Liu
+- Ziwei He
+- Zhouhan Lin
 year: 2026
-published_date: "2026-10-26"
-added_date: "2026-10-27"
-venue: "arXiv"
+published_date: '2026-10-26'
+added_date: '2026-10-27'
+venue: arXiv
 survey_section:
-  - "systems/batching-parallel"
-  - "capabilities/efficiency"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "fixed"
+- systems/batching-parallel
+- capabilities/efficiency
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
 claims:
-  - "compute-efficiency"
+- compute-efficiency
 comparison: []
 survey_core: false
-desc: "Introduces LoopFold, which uses a learned predictor to start later loops of a looped transformer before earlier ones finish and a corrector to refine them; 1.4B models rise from 53.41% to 56.38% average zero-shot accuracy as depth grows, with 46% lower latency than a nine-loop vanilla model."
+desc: Introduces LoopFold, which uses a learned predictor to start later loops of
+  a looped transformer before earlier ones finish and a corrector to refine them;
+  1.4B models rise from 53.41% to 56.38% average zero-shot accuracy as depth grows,
+  with 46% lower latency than a nine-loop vanilla model.
 links:
-  arxiv: "https://arxiv.org/abs/2610.35556"
+  arxiv: https://arxiv.org/abs/2610.35556
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-28'

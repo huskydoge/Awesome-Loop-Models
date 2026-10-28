@@ -1,23 +1,33 @@
-title: "Prefix Keys and Values Matter Late: RIPE Caching for Self-Speculative Decoding in Looped Language Models"
+title: 'Prefix Keys and Values Matter Late: RIPE Caching for Self-Speculative Decoding
+  in Looped Language Models'
 authors:
-  - "Dezhen Lu"
-  - "Runguo Li"
-  - "Zixiang Ni"
+- Dezhen Lu
+- Runguo Li
+- Zixiang Ni
 year: 2026
-published_date: "2026-10-25"
-added_date: "2026-10-27"
-venue: "arXiv"
+published_date: '2026-10-25'
+added_date: '2026-10-27'
+venue: arXiv
 survey_section:
-  - "systems/kv-memory"
-  - "understanding/why"
-loop_topology: "prelude-core-coda"
-sharing: "full"
-depth_control: "fixed"
+- systems/kv-memory
+- understanding/why
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
 claims:
-  - "memory-efficiency"
-  - "compute-efficiency"
+- memory-efficiency
+- compute-efficiency
 comparison: []
 survey_core: false
-desc: "Shows that in Huginn-0125 and Raven-Llama only late loops need accurate prefix keys and values and proposes RIPE, which caches the deepest loop plane plus a recent full-depth window; on Huginn a 64-position window uses 11.9% of cache memory, removes 89% of high-error tail positions, and self-speculation hits 2.58x."
+desc: Shows that in Huginn-0125 and Raven-Llama only late loops need accurate prefix
+  keys and values and proposes RIPE, which caches the deepest loop plane plus a recent
+  full-depth window; on Huginn a 64-position window uses 11.9% of cache memory, removes
+  89% of high-error tail positions, and self-speculation hits 2.58x.
 links:
-  arxiv: "https://arxiv.org/abs/2610.34436"
+  arxiv: https://arxiv.org/abs/2610.34436
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-10-28'
