@@ -25,9 +25,9 @@ links:
   paper: https://proceedings.mlr.press/v139/bai21b.html
   github: https://github.com/locuslab/deq
 citation_source_best: semantic_scholar
-citations: 110
+citations: 111
 citation_sources:
-  semantic_scholar: 110
+  semantic_scholar: 111
   openalex: 14
   opencitations: 0
 star_source_best: github_api

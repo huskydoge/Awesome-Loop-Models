@@ -27,9 +27,9 @@ links:
   paper: https://proceedings.neurips.cc/paper/2020/hash/8b5c8441a8ff8e151b191c53c1842a38-Abstract.html
   github: https://github.com/SwiftieH/IGNN
 citation_source_best: semantic_scholar
-citations: 193
+citations: 195
 citation_sources:
-  semantic_scholar: 193
+  semantic_scholar: 195
   openalex: 66
   opencitations: 0
 star_source_best: github_api

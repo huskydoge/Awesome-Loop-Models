@@ -25,9 +25,9 @@ links:
   paper: https://proceedings.neurips.cc/paper_files/paper/2020/hash/798d1c2813cbdf8bcdb388db0e32d496-Abstract.html
   github: https://github.com/locuslab/monotone_op_net
 citation_source_best: semantic_scholar
-citations: 182
+citations: 183
 citation_sources:
-  semantic_scholar: 182
+  semantic_scholar: 183
   openalex: 43
   opencitations: 0
 star_source_best: github_api

@@ -26,9 +26,9 @@ links:
   paper: https://openaccess.thecvf.com/content/CVPR2026/html/Li_Edge-RecViT_Efficient_Vision_Transformer_via_Semantic-Refined_Dynamic_Recursion_CVPR_2026_paper.html
   github: https://github.com/RicardoLee510520/Edge-RecViT
 star_source_best: github_api
-github_stars: 9
+github_stars: 10
 star_sources:
-  github_api: 9
-metrics_updated: '2026-10-12'
+  github_api: 10
+metrics_updated: '2026-10-29'
 peer_reviewed: true
 venue_source: https://openaccess.thecvf.com/content/CVPR2026/html/Li_Edge-RecViT_Efficient_Vision_Transformer_via_Semantic-Refined_Dynamic_Recursion_CVPR_2026_paper.html

@@ -26,9 +26,9 @@ links:
   arxiv: https://arxiv.org/abs/2204.08442
   github: https://github.com/locuslab/deq-flow
 citation_source_best: semantic_scholar
-citations: 98
+citations: 99
 citation_sources:
-  semantic_scholar: 98
+  semantic_scholar: 99
   openalex: 49
   opencitations: 0
 star_source_best: github_api

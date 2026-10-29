@@ -24,9 +24,9 @@ links:
   arxiv: https://arxiv.org/abs/2006.08656
   paper: https://proceedings.neurips.cc/paper_files/paper/2020/hash/3812f9a59b634c2a9c574610eaba5bed-Abstract.html
   github: https://github.com/locuslab/mdeq
-citations: 276
+citations: 278
 citation_sources:
-  semantic_scholar: 276
+  semantic_scholar: 278
   openalex: 93
   opencitations: 0
 citation_source_best: semantic_scholar

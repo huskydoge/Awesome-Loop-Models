@@ -23,13 +23,13 @@ links:
   arxiv: https://arxiv.org/abs/1511.08228
   github: https://github.com/openai/neural-gpu
   paper: https://research.google/pubs/neural-gpus-learn-algorithms/
-citations: 411
+citations: 412
 citation_sources:
-  semantic_scholar: 411
+  semantic_scholar: 412
   openalex: 224
   opencitations: 1
 citation_source_best: semantic_scholar
-metrics_updated: '2026-10-24'
+metrics_updated: '2026-10-29'
 star_source_best: github_api
 github_stars: 145
 star_sources:
