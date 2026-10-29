@@ -33,8 +33,8 @@ citation_sources:
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-10-28'
-github_stars: 107
+metrics_updated: '2026-10-29'
+github_stars: 108
 star_sources:
-  github_api: 107
+  github_api: 108
 star_source_best: github_api
