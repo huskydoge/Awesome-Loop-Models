@@ -24,6 +24,7 @@ desc: Introduces i-DEQ, an inertial deep-equilibrium image-restoration model tha
   improving stability and robustness while roughly halving DEQ inference time.
 links:
   arxiv: https://arxiv.org/abs/2605.19705
+  github: https://github.com/antoninclerc/i-DEQ
 citations: 0
 citation_sources:
   semantic_scholar: 0
