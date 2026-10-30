@@ -1,11 +1,12 @@
-title: "Multiclass Boundary Refinement with Neural Cellular Automata for Remote Sensing Land Cover Segmentation"
+title: Multiclass Boundary Refinement with Neural Cellular Automata for Remote Sensing
+  Land Cover Segmentation
 authors:
 - Pascoassis Souza Santos Meira
 - Gilson Antonio Giraldi
 - Rafael Duarte Coelho dos Santos
 year: 2026
-published_date: "2026-10-21"
-added_date: "2026-10-29"
+published_date: '2026-10-21'
+added_date: '2026-10-29'
 venue: arXiv
 survey_section:
 - applications/vision
@@ -15,6 +16,15 @@ depth_control: sampled-train
 claims: []
 comparison: []
 survey_core: false
-desc: Introduces BRNCA, a neural cellular automaton whose single shared local rule is iterated 64 steps on a frozen segmenter's class probabilities; on LandCover.ai it lifts mean Boundary IoU from 46.63 to 48.99, with the largest gain on woodland.
+desc: Introduces BRNCA, a neural cellular automaton whose single shared local rule
+  is iterated 64 steps on a frozen segmenter's class probabilities; on LandCover.ai
+  it lifts mean Boundary IoU from 46.63 to 48.99, with the largest gain on woodland.
 links:
   arxiv: https://arxiv.org/abs/2610.30007
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-10-30'

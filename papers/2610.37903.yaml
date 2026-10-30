@@ -1,9 +1,9 @@
-title: "Think Twice: The Metis-1.6 Technical Report"
+title: 'Think Twice: The Metis-1.6 Technical Report'
 authors:
 - Giulianno Vollmer
 year: 2026
-published_date: "2026-10-27"
-added_date: "2026-10-29"
+published_date: '2026-10-27'
+added_date: '2026-10-29'
 venue: arXiv
 survey_section:
 - architecture/hybrid
@@ -18,7 +18,15 @@ claims:
 comparison:
 - iso-depth
 survey_core: false
-desc: Reports Metis-1.6, 2.94B and 10.23B Mamba-2/attention MoE models that run their whole weight-shared stack twice per token with pass-indexed LoRA and a cross-pass memory; the larger reaches 67.50% on AIME 2025, while ablations show its tied loop trails an unrolled model with twice the parameters.
+desc: Reports Metis-1.6, 2.94B and 10.23B Mamba-2/attention MoE models that run their
+  whole weight-shared stack twice per token with pass-indexed LoRA and a cross-pass
+  memory; the larger reaches 67.50% on AIME 2025, while ablations show its tied loop
+  trails an unrolled model with twice the parameters.
 links:
   arxiv: https://arxiv.org/abs/2610.37903
   hf: https://huggingface.co/Lernex
+citation_source_best: opencitations
+citations: 0
+citation_sources:
+  opencitations: 0
+metrics_updated: '2026-10-30'
