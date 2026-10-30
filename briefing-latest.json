@@ -1,32 +1,63 @@
 {
-  "date": "2026-10-28",
-  "title": "Daily Loop-Model Briefing - 2026-10-28",
-  "status": "watchlist",
-  "summary": "No new paper met the loop-model bar today. The closest candidate, a latent-reasoning ranker for generative recommendation, runs its whole backbone again for each reasoning step instead of reusing an internal block. Two existing entries gain the code repositories their papers name.",
+  "date": "2026-10-29",
+  "title": "Daily Loop-Model Briefing - 2026-10-29",
+  "status": "added",
+  "summary": "Four additions take shared, repeatedly applied blocks into new settings: an on-device speech recognizer distilled into a few recurrent Conformer blocks, a tiny recursive robot policy, a pair of looped Mamba-2/attention mixture-of-experts language models, and a neural cellular automaton that sharpens land-cover segmentation boundaries.",
   "highlights": [
-    "Refiner adds latent reasoning steps to a generative ranking model, but each step reruns the full LoRA-adapted transformer on a longer sequence, so it is a repeated full-model pass.",
-    "The inertial deep-equilibrium image-restoration model i-DEQ and the mechanistic study of the Hierarchical Reasoning Model now link the code repositories named in their papers."
+    "A speech encoder built from two shared Conformer blocks (14.2M parameters) recovers 97.4% of the 108.9M STT-480ms teacher's accuracy, and four blocks match its 11.05% average WER.",
+    "Tiny Recursive Policy reuses one small block for nested latent refinement at every control step; its 4.2M backbone scores 0.919 on LIBERO-LONG against 0.897 for a 336M flow policy.",
+    "Metis-1.6 runs its whole hybrid MoE stack twice per token; its own ablations find the tied two-pass loop behind an unrolled model with twice the parameters, while a partly untied successor design beats it."
   ],
   "candidates": [
     {
-      "id": "2610.36890",
-      "title": "Latent Residual Reasoning for Ranking in Generative Recommendation",
-      "verdict": "near-miss",
-      "url": "https://arxiv.org/abs/2610.36890"
+      "id": "2610.37833",
+      "title": "Depth through Recurrence: Towards Ultra-Efficient On-Device ASR",
+      "verdict": "added",
+      "url": "https://arxiv.org/abs/2610.37833"
     },
     {
-      "id": "2610.36574",
-      "title": "ADTGuard: Adaptive Depth-Time Safeguard for Streaming Inference in Large Language Models",
-      "verdict": "near-miss",
-      "url": "https://arxiv.org/abs/2610.36574"
+      "id": "2610.33288",
+      "title": "Tiny Recursive Policy: Recursive Latent Refinement for Visuomotor Control",
+      "verdict": "added",
+      "url": "https://arxiv.org/abs/2610.33288"
     },
     {
-      "id": "2610.36795",
-      "title": "An Algebra of Transformers",
+      "id": "2610.37903",
+      "title": "Think Twice: The Metis-1.6 Technical Report",
+      "verdict": "added",
+      "url": "https://arxiv.org/abs/2610.37903"
+    },
+    {
+      "id": "2610.30007",
+      "title": "Multiclass Boundary Refinement with Neural Cellular Automata for Remote Sensing Land Cover Segmentation",
+      "verdict": "added",
+      "url": "https://arxiv.org/abs/2610.30007"
+    },
+    {
+      "id": "2610.30068",
+      "title": "Loopholing All the Way: Language Modeling with pure Self-Conditioning",
       "verdict": "near-miss",
-      "url": "https://arxiv.org/abs/2610.36795"
+      "url": "https://arxiv.org/abs/2610.30068"
+    },
+    {
+      "id": "2610.38255",
+      "title": "ParaTTT: Parallelizing Test-Time Training Layers with Deep Memories",
+      "verdict": "near-miss",
+      "url": "https://arxiv.org/abs/2610.38255"
+    },
+    {
+      "id": "2610.36925",
+      "title": "Vision-Language Agents Can Learn in Their Own Latent Worlds",
+      "verdict": "near-miss",
+      "url": "https://arxiv.org/abs/2610.36925"
+    },
+    {
+      "id": "2610.36809",
+      "title": "Latent Visual Contrastive Reasoning with Multi-Branch Exploration",
+      "verdict": "near-miss",
+      "url": "https://arxiv.org/abs/2610.36809"
     }
   ],
-  "source_path": "briefings/2026/10/2026-10-28.md",
-  "body_markdown": "# Daily Loop-Model Briefing - 2026-10-28\n\n## Outcome\n\nNo paper was added. Today's arXiv listings had many papers that use the words loop,\nrecursive or recurrent, but most were agent loops, recursive self-improvement pipelines,\nclosed-loop control or ordinary recurrent networks. None of the three closest candidates\nreuses a learned internal block within one forward pass.\n\n## Added\n\nNone today.\n\n## Catalog update\n\nThis run checked one fifth of the existing catalog (74 papers) for publication venue,\nofficial code links and community comment links. Two entries gained code links, both taken\nfrom the paper itself and confirmed against the repository's README:\n\n- *i-DEQ: A stable inertial deep equilibrium model for image restoration*\n  ([2605.19705](https://arxiv.org/abs/2605.19705)) now links\n  [antoninclerc/i-DEQ](https://github.com/antoninclerc/i-DEQ), which its experiments section\n  names as the code release.\n- *Dissecting Hierarchical Reasoning Models: A Mechanistic Study*\n  ([2609.22197](https://arxiv.org/abs/2609.22197)) now links\n  [LeoRodrigues05/HRM](https://github.com/LeoRodrigues05/HRM), which the paper's title block\n  names as its code repository.\n\nVenues were not changed. Five papers in this group state an acceptance on arXiv that the\ncatalog does not yet record (ECCV 2026, NeurIPS 2026, EMNLP 2026, a NeurIPS 2026 workshop and\nan ICLR 2026 workshop), but no official proceedings or acceptance page could be confirmed\ntoday, so they stay as they are for now.\n\n## Near misses\n\n- **Latent Residual Reasoning for Ranking in Generative Recommendation**\n  ([2610.36890](https://arxiv.org/abs/2610.36890)): Refiner refines ranking scores over several\n  latent reasoning steps, but each step appends reasoning tokens and runs the whole LoRA-adapted\n  transformer again, which is a repeated full-model pass rather than a reused internal block.\n- **ADTGuard** ([2610.36574](https://arxiv.org/abs/2610.36574)): a streaming safety guard that\n  reads safety signals from different layers of a language model; it chooses which layers to\n  observe but does not reuse any of them.\n- **An Algebra of Transformers** ([2610.36795](https://arxiv.org/abs/2610.36795)): a formal\n  algebra for reasoning about transformer programs, whose recursion operator is a logical\n  construct rather than a model that reuses its layers."
+  "source_path": "briefings/2026/10/2026-10-29.md",
+  "body_markdown": "# Daily Loop-Model Briefing - 2026-10-29\n\n## Outcome\n\nFour papers were added, each applying a shared block repeatedly inside one forward pass in a\ndifferent domain: speech recognition on edge devices, robot manipulation, a looped hybrid\nlanguage model, and boundary refinement for remote-sensing segmentation. The robot policy and\nthe segmentation refiner were posted earlier in the month and are included now. None of the four cites Benhao Huang's\nwork.\n\n## Added\n\n### Depth through Recurrence: Towards Ultra-Efficient On-Device ASR\n[arXiv:2610.37833](https://arxiv.org/abs/2610.37833) · Code: none stated in the paper\n\n**TL;DR:** Deep speech encoders are distilled into a handful of shared Conformer blocks, each\napplied several times in a row, keeping the teacher's depth and most of its accuracy at a\nfraction of the parameters.\n\n- **Setup:** Students distilled from STT-480ms (streaming, 108.9M encoder parameters) and\n  Parakeet-TDT-0.6B-v2 (608.9M), trained on a seven-corpus public mixture and scored by word\n  error rate on the eight Open ASR Leaderboard benchmarks.\n- **Mechanism / Method:** Layer-wise CKA similarity splits the teacher's encoder into K\n  contiguous groups; each group becomes one shared block, initialized as the average of its\n  teacher layers and applied as many times as the group had layers. Training combines the ASR\n  loss with encoder distillation at group boundaries and decoder KL distillation. A\n  speaker-conditioned MoE-LoRA extension personalizes the frozen backbone.\n- **Results:** With K = 2 (14.2M) the STT student reaches 13.40% average WER against the\n  teacher's 11.05%, which the paper reports as 97.4% of its accuracy; K = 4 (26.8M) reaches\n  10.72%. A four-block Parakeet student (105M) reaches 7.62% against 6.05%. Weight reuse cuts\n  encoder latency by up to 1.21x on GPU and 1.03-1.07x on CPU at comparable FLOPs.\n- **Caveat:** Several training corpora overlap the teachers' own training data and the\n  benchmarks' domains, so students that beat the teacher do not show recurrence beating untied\n  depth; there is no untied student of the same size.\n- **Why added:** Every student encoder is a short sequence of weight-shared blocks, each\n  reused several times within one forward pass.\n\n### Tiny Recursive Policy: Recursive Latent Refinement for Visuomotor Control\n[arXiv:2610.33288](https://arxiv.org/abs/2610.33288) · Code: none stated in the paper\n\n**TL;DR:** A behaviour-cloning policy refines a pair of latent states with one small shared\nblock in nested cycles at every control step and carries them forward, giving strong results\nwith a few million parameters.\n\n- **Setup:** Multi-task and five-shot behaviour cloning on LIBERO-90, LIBERO-LONG, MetaWorld\n  ML45 and the memory-dependent LIBERO-Mem, against ResNet-T, ACT, VQ-BeT, QueST, Diffusion\n  Policy, MIP and a flow policy.\n- **Mechanism / Method:** In the style of Tiny Recursive Models, one shared module updates a\n  low-level latent K times inside each of R high-level cycles (default three cycles of six\n  steps), with gradients only through the last cycle. The final high-level state is decoded\n  into an action chunk and both states carry over to the next control step.\n- **Results:** The 4.2M-parameter backbone scores 0.929 on LIBERO-90 and 0.919 on LIBERO-LONG,\n  ahead of the 336.3M flow policy (0.899 and 0.897), and 0.597 on LIBERO-Mem against about\n  0.41 for the best baseline. With a single cycle the carry hurts: LIBERO-LONG falls to 0.206.\n- **Caveat:** All results are in simulation, and extra cycles beyond the default reduce\n  performance rather than helping.\n- **Why added:** The same learned block is applied repeatedly within each policy evaluation.\n\n### Think Twice: The Metis-1.6 Technical Report\n[arXiv:2610.37903](https://arxiv.org/abs/2610.37903) · Models: [huggingface.co/Lernex](https://huggingface.co/Lernex)\n\n**TL;DR:** Two language models trained from scratch by a single author run their whole hybrid\nMamba-2/attention mixture-of-experts stack twice per token, and the report details what did\nand did not work.\n\n- **Setup:** Praxis (2.94B parameters, 12 layers) and Logos (10.23B, 20 layers), each trained\n  on 1.02T tokens including context extension to 131,072 tokens and supervised fine-tuning,\n  evaluated on 40 post-training benchmarks, plus 10B-token proxy ablations of the loop design.\n- **Mechanism / Method:** Every token makes exactly two passes through the same stack. All\n  weights are shared except a pass-indexed rank-8 low-rank update on attention and pass\n  embeddings, and a gated cross-pass memory lets the second pass read what the first wrote.\n- **Results:** Logos averages 52.93 across the benchmarks, seventh of 17 comparison models,\n  and scores 67.50% on AIME 2025. In the ablations the tied two-pass loop (2.5993 nats) trails\n  an unrolled one-pass model with twice the parameters (2.5774), while a successor design with\n  per-pass routers, a cross-pass highway and untied mixers reaches 2.5529.\n- **Caveat:** The comparison against open models is not controlled for data or recipe, the\n  report is weak on code, instruction following and long context, and the unrolled-versus-\n  looped results come only from small proxy runs.\n- **Why added:** Both released models apply one weight-shared stack twice in every forward\n  pass, and the report studies how tying, untying and memory across passes change the result.\n\n### Multiclass Boundary Refinement with Neural Cellular Automata for Remote Sensing Land Cover Segmentation\n[arXiv:2610.30007](https://arxiv.org/abs/2610.30007) · Code: none stated in the paper\n\n**TL;DR:** A neural cellular automaton repeatedly applies one small learned local rule to a\nfrozen segmenter's class probabilities to move land-cover boundaries closer to the truth.\n\n- **Setup:** A frozen DPT-DINOv2 segmenter on LandCover.ai, scored by Boundary IoU, with an\n  ablation over the number of hidden channels and the rule's width.\n- **Mechanism / Method:** A shallow MLP shared by every cell updates the probabilities and\n  free hidden channels from fixed neighbourhood filters and an image context vector, keeping\n  the probabilities on the simplex with a log-space update. The rule runs 32 to 64 steps in\n  training, trained by backpropagation through time, and 64 steps at inference.\n- **Results:** The best setting lifts mean Boundary IoU from 46.63 to 48.99, with +8.5 points\n  on woodland and +0.54 points of overall mIoU.\n- **Caveat:** One segmenter, one dataset and no comparison with other boundary refiners; the\n  gain peaks at the training step count and decays if the automaton runs longer.\n- **Why added:** One learned update rule is iterated many times inside the refiner's forward\n  pass.\n\n## Catalog update\n\nThis run checked one fifth of the existing catalog (71 papers) for publication venue, official\ncode links and community comment links. No entry was changed today.\n\nTwo papers in this group name a code repository in their own text that the catalog does not\nyet link: *RecurTrace: Adaptive Latent Reasoning with Loop-Time Memory*\n([2609.03379](https://arxiv.org/abs/2609.03379)) and *Stabilizing Extrapolation in Looped\nTransformers via Learned Stochastic Stopping* ([2606.29983](https://arxiv.org/abs/2606.29983)).\n*Loop the Loopies!* ([2607.16051](https://arxiv.org/abs/2607.16051)) names released model\ncheckpoints. The repositories could not be opened today, so these links will be added once\nthey are confirmed. Venues were not changed: acceptances stated only in arXiv comments still\nneed an official proceedings or acceptance page.\n\n## Near misses\n\n- **Loopholing All the Way** ([2610.30068](https://arxiv.org/abs/2610.30068)): a diffusion\n  language model that carries expected embeddings between denoising steps; each step is a\n  full denoiser call, which is diffusion-style iterative inference.\n- **ParaTTT** ([2610.38255](https://arxiv.org/abs/2610.38255)): parallelizes test-time\n  training layers by fixed-point refinement of the inner-loop gradients; the recurrence is a\n  sequence memory across tokens, not a reused block over depth.\n- **Vision-Language Agents Can Learn in Their Own Latent Worlds**\n  ([2610.36925](https://arxiv.org/abs/2610.36925)): uses a VLM as a latent transition model\n  for model-based reinforcement learning, which calls the full model repeatedly.\n- **Latent Visual Contrastive Reasoning with Multi-Branch Exploration**\n  ([2610.36809](https://arxiv.org/abs/2610.36809)): latent visual reasoning branches trained\n  by fine-tuning, with no internal block reused."
 }
