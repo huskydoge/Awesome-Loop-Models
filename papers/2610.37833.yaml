@@ -1,0 +1,30 @@
+title: "Depth through Recurrence: Towards Ultra-Efficient On-Device ASR"
+authors:
+- Chen Feng
+- Tianyi Xu
+- Ramchalam Kinattinkara Ramakrishnan
+- Yicheng Lin
+- Shaojie Zhuo
+- Zhaocong Yuan
+- Chenzheng Su
+- Xiaopeng Zhang
+year: 2026
+published_date: "2026-10-27"
+added_date: "2026-10-29"
+venue: arXiv
+survey_section:
+- applications/language-speech-multimodal
+- training/retrofitting
+- systems/quantization-edge
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+- memory-efficiency
+comparison:
+- iso-depth
+survey_core: false
+desc: Distills deep ASR encoders into a few CKA-grouped shared Conformer blocks applied recurrently at the teacher's depth; two blocks (14.2M) recover 97.4% of STT-480ms accuracy and four blocks (26.8M) match its 11.05% average WER on the Open ASR Leaderboard.
+links:
+  arxiv: https://arxiv.org/abs/2610.37833

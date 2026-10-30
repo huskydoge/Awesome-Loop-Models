@@ -1,0 +1,21 @@
+title: "Tiny Recursive Policy: Recursive Latent Refinement for Visuomotor Control"
+authors:
+- Hakan Aktas
+- Cengiz Oztireli
+year: 2026
+published_date: "2026-10-23"
+added_date: "2026-10-29"
+venue: arXiv
+survey_section:
+- applications/embodied-other
+- architecture/state-memory
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison: []
+survey_core: false
+desc: Introduces Tiny Recursive Policy, a behaviour-cloning policy that refines high- and low-level latents with one shared transformer block at each control step and carries them across steps; its 4.2M backbone reaches 0.919 on LIBERO-LONG and 0.597 on LIBERO-Mem.
+links:
+  arxiv: https://arxiv.org/abs/2610.33288
