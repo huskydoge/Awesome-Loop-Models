@@ -29,13 +29,13 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2609.19107
   github: https://github.com/qlabs-eng/scaling-exponents
 citation_source_best: semantic_scholar
-citations: 5
+citations: 6
 citation_sources:
-  semantic_scholar: 5
+  semantic_scholar: 6
   opencitations: 0
   openalex: 0
 star_source_best: github_api
 github_stars: 23
 star_sources:
   github_api: 23
-metrics_updated: '2026-10-27'
+metrics_updated: '2026-10-30'

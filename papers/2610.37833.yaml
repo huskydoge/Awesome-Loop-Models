@@ -30,8 +30,9 @@ desc: Distills deep ASR encoders into a few CKA-grouped shared Conformer blocks 
   accuracy and four blocks (26.8M) match its 11.05% average WER on the Open ASR Leaderboard.
 links:
   arxiv: https://arxiv.org/abs/2610.37833
-citation_source_best: opencitations
+citation_source_best: semantic_scholar
 citations: 0
 citation_sources:
   opencitations: 0
+  semantic_scholar: 0
 metrics_updated: '2026-10-30'
