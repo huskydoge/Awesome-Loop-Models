@@ -26,12 +26,12 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2609.23033
   github: https://github.com/summerbro-hhj/wavefront-decoding
 citation_source_best: semantic_scholar
-citations: 2
+citations: 3
 citation_sources:
-  semantic_scholar: 2
+  semantic_scholar: 3
   openalex: 0
   opencitations: 0
-metrics_updated: '2026-10-28'
+metrics_updated: '2026-10-31'
 star_source_best: github_api
 github_stars: 3
 star_sources:
