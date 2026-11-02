@@ -1,0 +1,27 @@
+title: 'Compute Has Shape: Self-Morphing the Internal Computation of Frozen LLMs'
+authors:
+- Junxi Wu
+- Yiwen Guo
+- Shu-Tao Xia
+year: 2026
+published_date: "2026-10-28"
+added_date: "2026-11-01"
+venue: arXiv
+survey_section:
+- scaling/test-time
+- training/retrofitting
+- architecture/depth-control
+loop_topology: partial
+sharing: full
+depth_control: adaptive-halting
+claims:
+- test-time-scaling
+comparison: []
+survey_core: false
+desc: Introduces SelfMorph, where a lightweight selector reads a frozen LLM's prompt
+  hidden states and picks per input between the plain pass, serially repeating a mid-depth
+  layer span, or branching it; on 4B-27B backbones it gives an 8.06 percent mean relative
+  gain in distribution and 4.45 percent on unseen benchmarks.
+links:
+  arxiv: https://arxiv.org/abs/2610.38382
+  github: https://github.com/creator-xi/SelfMorph
