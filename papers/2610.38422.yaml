@@ -1,0 +1,23 @@
+title: 'Deeper Backpropagation or More Updates? Training Looped Language Models Across Budgets'
+authors:
+- Jiarun Shen
+- Xiao Li
+year: 2026
+published_date: "2026-10-28"
+added_date: "2026-11-01"
+venue: arXiv
+survey_section:
+- training/supervision-optimization
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: sampled-train
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Compares four- and eight-iteration truncated backpropagation windows for Parcae
+  looped language models at matched training time, finding that the shorter window's
+  extra updates beat deeper backpropagation at small budgets but lose much of that
+  advantage when the budget grows fourfold.
+links:
+  arxiv: https://arxiv.org/abs/2610.38422
