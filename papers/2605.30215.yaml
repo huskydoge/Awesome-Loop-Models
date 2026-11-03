@@ -38,13 +38,13 @@ links:
   project: https://research.nvidia.com/labs/dvl/projects/dvlt/
   github: https://github.com/nv-tlabs/dvlt
 citations: 10
-metrics_updated: '2026-10-31'
+metrics_updated: '2026-11-03'
 citation_sources:
   semantic_scholar: 10
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-github_stars: 477
+github_stars: 482
 star_sources:
-  github_api: 477
+  github_api: 482
 star_source_best: github_api
