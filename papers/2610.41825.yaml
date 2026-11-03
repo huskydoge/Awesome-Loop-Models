@@ -1,0 +1,32 @@
+title: 'Where KV-Cache Error Lives in Looped Language Models: A Diagnostic Study of Ouro and Huginn'
+authors:
+- Dezhen Lu
+- Runguo Li
+- Zixiang Ni
+- Yuchen Tang
+- Xingquan Kong
+- Jiaxing Yang
+- Jiarui Guo
+- Lingxiang Gao
+year: 2026
+published_date: "2026-10-30"
+added_date: "2026-11-02"
+venue: arXiv
+survey_section:
+- systems/kv-memory
+- systems/quantization-edge
+- understanding/failure-modes
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+- failure-mode
+comparison: []
+survey_core: false
+desc: Diagnoses KV-cache quantization error across the per-loop KV planes of Ouro-1.4B
+  and Huginn, finding that values hold 94% of diagonal Fisher mass while keys cause 89%
+  of measured KL, and that a per-cell bit allocator lowers one-step KL at 25-48% of BF16
+  bytes.
+links:
+  arxiv: https://arxiv.org/abs/2610.41825
