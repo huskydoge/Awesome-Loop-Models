@@ -1,4 +1,5 @@
-title: 'UpLoop: Training Looped Transformers via Upcycling at No Extra Pretraining Compute'
+title: 'UpLoop: Training Looped Transformers via Upcycling at No Extra Pretraining
+  Compute'
 authors:
 - Cheng Liang
 - Tengfei Zhang
@@ -6,8 +7,8 @@ authors:
 - Yanfeng Wang
 - Zhouhan Lin
 year: 2026
-published_date: "2026-10-30"
-added_date: "2026-11-02"
+published_date: '2026-10-30'
+added_date: '2026-11-02'
 venue: arXiv
 survey_section:
 - training/retrofitting
@@ -25,8 +26,15 @@ comparison:
 - iso-depth
 survey_core: false
 desc: Grows a shallow transformer by layer copying during pretraining and spends the
-  saved FLOPs on running a shared four-layer middle block twice, matching a dense baseline's
-  parameters, tokens and training FLOPs; at 1.3B it lifts the 22-task average from 22.99
-  to 27.52.
+  saved FLOPs on running a shared four-layer middle block twice, matching a dense
+  baseline's parameters, tokens and training FLOPs; at 1.3B it lifts the 22-task average
+  from 22.99 to 27.52.
 links:
   arxiv: https://arxiv.org/abs/2610.41720
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-03'

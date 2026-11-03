@@ -1,10 +1,11 @@
-title: 'There Is No Free Loop: When Does Looping a Trained Model Pay for Its Inference Compute?'
+title: 'There Is No Free Loop: When Does Looping a Trained Model Pay for Its Inference
+  Compute?'
 authors:
 - Rhea Sanjay Sukthanker
 - Pashmina Cameron
 year: 2026
-published_date: "2026-10-30"
-added_date: "2026-11-02"
+published_date: '2026-10-30'
+added_date: '2026-11-02'
 venue: arXiv
 survey_section:
 - understanding/failure-modes
@@ -22,8 +23,15 @@ comparison:
 - iso-flop
 survey_core: false
 desc: Tests loops that re-apply a span of a trained model's layers against an identically
-  trained unlooped twin and an equal-FLOP baseline; across Qwen3 and Qwen3.5 models from
-  0.8B to 9B only the 0.8B loop beats its twin (48.3% vs 44.2%), while looping slows decoding
-  1.2-1.3x.
+  trained unlooped twin and an equal-FLOP baseline; across Qwen3 and Qwen3.5 models
+  from 0.8B to 9B only the 0.8B loop beats its twin (48.3% vs 44.2%), while looping
+  slows decoding 1.2-1.3x.
 links:
   arxiv: https://arxiv.org/abs/2610.42030
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-03'
