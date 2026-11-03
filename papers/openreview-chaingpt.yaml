@@ -17,7 +17,14 @@ depth_control: adaptive-halting
 claims: []
 comparison: []
 survey_core: false
-desc: Introduces ChainGPT, a dual-reasoning recurrent-depth architecture that combines multi-substep state updates and state-guided sparse attention to move reasoning into latent computation, with adaptive stopping as a supporting mechanism.
+desc: Introduces ChainGPT, a dual-reasoning recurrent-depth architecture that combines
+  multi-substep state updates and state-guided sparse attention to move reasoning
+  into latent computation, with adaptive stopping as a supporting mechanism.
 links:
   openreview: https://openreview.net/forum?id=kdZbxizwGK
   paper: https://openreview.net/pdf?id=kdZbxizwGK
+citation_source_best: semantic_scholar
+citations: 2
+citation_sources:
+  semantic_scholar: 2
+metrics_updated: '2026-11-03'

@@ -26,10 +26,10 @@ desc: Proposes Jacobian-Free Backpropagation for implicit networks, which skips 
 links:
   arxiv: https://arxiv.org/abs/2103.12803
   alphaxiv: https://www.alphaxiv.org/abs/2103.12803
-citation_source_best: semantic_scholar
-citations: 150
+citation_source_best: openalex
+citations: 55
 citation_sources:
-  semantic_scholar: 150
+  semantic_scholar: 29
   opencitations: 0
-  openalex: 52
-metrics_updated: '2026-10-29'
+  openalex: 55
+metrics_updated: '2026-11-03'
