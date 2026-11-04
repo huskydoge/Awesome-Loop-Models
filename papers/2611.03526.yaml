@@ -1,0 +1,29 @@
+title: "Library of Layers (LoL): Adaptively Ordering Transformer Layers at Runtime"
+authors:
+  - "Abdellah Rahmani"
+  - "Sean McLeish"
+  - "Ang Li"
+  - "Sanae Lotfi"
+  - "Pascal Frossard"
+  - "Micah Goldblum"
+year: 2026
+published_date: "2026-11-02"
+added_date: "2026-11-03"
+venue: "arXiv"
+survey_section:
+  - "architecture/sharing"
+  - "architecture/hybrid"
+loop_topology: "prelude-core-coda"
+sharing: "expert-routed"
+depth_control: "fixed"
+claims:
+  - "param-efficiency"
+  - "compute-efficiency"
+comparison:
+  - "iso-param"
+  - "iso-flop"
+survey_core: false
+desc: "Replaces a fixed layer stack with a learned router that picks which block from a shared library to apply at each routed depth, so blocks can repeat; it matches parameter-matched Huginn looped models in loss and stays within 2 standard errors of FLOPs-matched dense 1B models on five benchmarks."
+links:
+  arxiv: "https://arxiv.org/abs/2611.03526"
+  github: "https://github.com/arahmani1/library-of-layers"

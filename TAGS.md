@@ -32,9 +32,9 @@ List every section the entry belongs to; the first entry is its primary section.
 - `architecture/topology` — §4.1 Loop topology (14 / 32)
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (10 / 40)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (10 / 26)
-- `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (6 / 28)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (23 / 70)
-- `architecture/hybrid` — §4.6 Hybrid looped architectures (19 / 28)
+- `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (7 / 29)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (24 / 72)
+- `architecture/hybrid` — §4.6 Hybrid looped architectures (19 / 29)
 
 **§5 Learning Algorithms**
 
@@ -65,7 +65,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 - `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (29 / 37)
 - `applications/vision` — §9.2 Visual recognition, restoration, and generation (23 / 31)
-- `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (5 / 5)
+- `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (6 / 6)
 - `applications/graphs-science` — §9.4 Graphs, structured data, and scientific modeling (20 / 30)
 - `applications/embodied-other` — §9.5 Embodied AI and other domains (24 / 27)
 
@@ -81,8 +81,8 @@ List every section the entry belongs to; the first entry is its primary section.
 
 Where the loop sits in the network (one value, papers only).
 
-- `whole-stack` (152)
-- `prelude-core-coda` (61)
+- `whole-stack` (153)
+- `prelude-core-coda` (63)
 - `partial` (36)
 - `hierarchical` (39)
 - `shifted-parallel` (10)
@@ -93,40 +93,40 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (329)
+- `full` (331)
 - `partial-adapter` (27)
-- `expert-routed` (11)
+- `expert-routed` (12)
 - `unspecified` (10)
 
 ## Depth control (`depth_control`)
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (176)
+- `fixed` (177)
 - `sampled-train` (29)
-- `adaptive-halting` (72)
-- `convergence` (45)
+- `adaptive-halting` (73)
+- `convergence` (46)
 - `unspecified` (55)
 
 ## Claims (`claims`)
 
 What the paper argues looping buys or costs (list, papers only).
 
-- `param-efficiency` (113)
-- `compute-efficiency` (123)
+- `param-efficiency` (114)
+- `compute-efficiency` (125)
 - `memory-efficiency` (49)
 - `data-efficiency` (18)
 - `expressivity` (29)
 - `length-generalization` (36)
-- `test-time-scaling` (73)
-- `stability` (41)
+- `test-time-scaling` (74)
+- `stability` (42)
 - `failure-mode` (57)
 
 ## Looped-vs-untied comparison (`comparison`)
 
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
-- `iso-param` (52)
-- `iso-flop` (37)
+- `iso-param` (53)
+- `iso-flop` (38)
 - `iso-depth` (32)
 - `unclear` (51)

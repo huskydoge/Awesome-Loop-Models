@@ -1,0 +1,20 @@
+title: "When Does Adaptive Halting Win? Selection Rules Matter in Looped Language Models"
+authors:
+  - "Mahesh Reddy Pagadala"
+year: 2026
+published_date: "2026-11-02"
+added_date: "2026-11-03"
+venue: "arXiv"
+survey_section:
+  - "architecture/depth-control"
+loop_topology: "whole-stack"
+sharing: "full"
+depth_control: "adaptive-halting"
+claims:
+  - "compute-efficiency"
+comparison: []
+survey_core: false
+desc: "Compares a trained stability probe with Ouro-1.4B's native exit gate for per-question halting over four loops in pre-registered tests, finding that the probe saves more loop budget under a bootstrap-screened 1 pp loss rule (+0.053 macro saving) but loses under a point-only rule (-0.022)."
+links:
+  arxiv: "https://arxiv.org/abs/2611.02333"
+  github: "https://github.com/lonewolf15116/lookahead-halting"
