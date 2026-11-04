@@ -37,14 +37,14 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2605.30215
   project: https://research.nvidia.com/labs/dvl/projects/dvlt/
   github: https://github.com/nv-tlabs/dvlt
-citations: 10
+citations: 11
 metrics_updated: '2026-11-04'
 citation_sources:
-  semantic_scholar: 10
+  semantic_scholar: 11
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-github_stars: 483
+github_stars: 485
 star_sources:
-  github_api: 483
+  github_api: 485
 star_source_best: github_api

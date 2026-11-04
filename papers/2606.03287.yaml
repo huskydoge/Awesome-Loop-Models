@@ -24,14 +24,14 @@ links:
   arxiv: https://arxiv.org/abs/2606.03287
   alphaxiv: https://www.alphaxiv.org/abs/2606.03287
   github: https://github.com/zhangganlin/BA-T
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
 metrics_updated: '2026-11-04'
-github_stars: 44
+github_stars: 45
 star_sources:
-  github_api: 44
+  github_api: 45
 star_source_best: github_api
