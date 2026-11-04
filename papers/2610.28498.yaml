@@ -18,6 +18,7 @@ desc: Shows with minimal-pair probes that a copied digit is present in looped Ou
   that is readable across loops but not used for the answer under patching.
 links:
   arxiv: https://arxiv.org/abs/2610.28498
+  github: https://github.com/Aur-Shalev-Merin/present-but-hard-to-read
 citation_source_best: semantic_scholar
 citations: 1
 citation_sources:

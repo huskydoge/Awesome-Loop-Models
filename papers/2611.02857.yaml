@@ -1,0 +1,26 @@
+title: "Solv3R: 3D Looped Transformer as a Multi-view Solver"
+authors:
+  - "Jeong-gi Kwak"
+  - "Andrea Tagliasacchi"
+  - "Sho Kagami"
+  - "Yuki Ono"
+  - "Kwang Moo Yi"
+year: 2026
+published_date: "2026-11-02"
+added_date: "2026-11-03"
+venue: "arXiv"
+survey_section:
+  - "applications/flow-3d"
+  - "architecture/depth-control"
+loop_topology: "prelude-core-coda"
+sharing: "full"
+depth_control: "convergence"
+claims:
+  - "stability"
+  - "test-time-scaling"
+comparison: []
+survey_core: false
+desc: "Loops one fully shared, iteration-independent transformer block over a multi-view geometry state so reconstructions can be refined or extended with new views and stopped at convergence; the 117M model raises DTU AUC@3 from 83.3 to 85.5 with 3-4 extra solver calls on average."
+links:
+  arxiv: "https://arxiv.org/abs/2611.02857"
+  project: "https://ubc-vision.github.io/solv3r/"
