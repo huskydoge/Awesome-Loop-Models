@@ -1,22 +1,36 @@
-title: "CoReMatch: Recurrent Continuous Coordinate Refinement for Real-Time Robotic Feature Matching"
+title: 'CoReMatch: Recurrent Continuous Coordinate Refinement for Real-Time Robotic
+  Feature Matching'
 authors:
-  - "Robert J. Wang"
-  - "Charles Ling"
-  - "Boyu Wang"
+- Robert J. Wang
+- Charles Ling
+- Boyu Wang
 year: 2026
-published_date: "2026-11-02"
-added_date: "2026-11-04"
-venue: "arXiv"
+published_date: '2026-11-02'
+added_date: '2026-11-04'
+venue: arXiv
 survey_section:
-  - "applications/flow-3d"
-loop_topology: "partial"
-sharing: "full"
-depth_control: "fixed"
+- applications/flow-3d
+loop_topology: partial
+sharing: full
+depth_control: fixed
 claims:
-  - "compute-efficiency"
+- compute-efficiency
 comparison: []
 survey_core: false
-desc: "Refines feature correspondences in continuous coordinates with a recurrent update operator whose parameters are shared across iterations, so the step count can change at runtime; CoReMatch-L reaches 59.5 MegaDepth AUC@5 versus 56.4 for Efficient LoFTR while running about 3x faster on Jetson AGX Orin."
+desc: Refines feature correspondences in continuous coordinates with a recurrent update
+  operator whose parameters are shared across iterations, so the step count can change
+  at runtime; CoReMatch-L reaches 59.5 MegaDepth AUC@5 versus 56.4 for Efficient LoFTR
+  while running about 3x faster on Jetson AGX Orin.
 links:
-  arxiv: "https://arxiv.org/abs/2611.03932"
-  github: "https://github.com/edge-cv/CoReMatch"
+  arxiv: https://arxiv.org/abs/2611.03932
+  github: https://github.com/edge-cv/CoReMatch
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-11-05'

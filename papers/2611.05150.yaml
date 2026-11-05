@@ -1,26 +1,36 @@
-title: "What Sets the Serving Speed of Looped Language Models? Measurements and Optimizations Graded by Exactness"
+title: What Sets the Serving Speed of Looped Language Models? Measurements and Optimizations
+  Graded by Exactness
 authors:
-  - "Dezhen Lu"
-  - "Runguo Li"
-  - "Zixiang Ni"
-  - "Yuchen Tang"
-  - "Xingquan Kong"
-  - "Jiaxing Yang"
-  - "Jiarui Guo"
-  - "Lingxiang Gao"
+- Dezhen Lu
+- Runguo Li
+- Zixiang Ni
+- Yuchen Tang
+- Xingquan Kong
+- Jiaxing Yang
+- Jiarui Guo
+- Lingxiang Gao
 year: 2026
-published_date: "2026-11-03"
-added_date: "2026-11-04"
-venue: "arXiv"
+published_date: '2026-11-03'
+added_date: '2026-11-04'
+venue: arXiv
 survey_section:
-  - "systems/batching-parallel"
-loop_topology: "unspecified"
-sharing: "full"
-depth_control: "fixed"
+- systems/batching-parallel
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
 claims:
-  - "compute-efficiency"
+- compute-efficiency
 comparison: []
 survey_core: false
-desc: "Measures serving of Ouro and Huginn-0125 in a looped-model engine and grades optimizations by exactness, finding per-token kernel count rather than loop submissions sets speed; bitwise-exact kernel fusion gives 1.11-1.59x and released defaults serve Huginn 1.77-3.16x faster than the base engine."
+desc: Measures serving of Ouro and Huginn-0125 in a looped-model engine and grades
+  optimizations by exactness, finding per-token kernel count rather than loop submissions
+  sets speed; bitwise-exact kernel fusion gives 1.11-1.59x and released defaults serve
+  Huginn 1.77-3.16x faster than the base engine.
 links:
-  arxiv: "https://arxiv.org/abs/2611.05150"
+  arxiv: https://arxiv.org/abs/2611.05150
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-11-05'

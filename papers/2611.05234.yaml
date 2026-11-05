@@ -1,25 +1,38 @@
-title: "ARLoop: Fully-Open Pre-trained Looped Transformers with Attention Residuals"
+title: 'ARLoop: Fully-Open Pre-trained Looped Transformers with Attention Residuals'
 authors:
-  - "Yuekun Yao"
-  - "Yupei Du"
-  - "Dawei Zhu"
-  - "Huan Sun"
+- Yuekun Yao
+- Yupei Du
+- Dawei Zhu
+- Huan Sun
 year: 2026
-published_date: "2026-11-03"
-added_date: "2026-11-04"
-venue: "arXiv"
+published_date: '2026-11-03'
+added_date: '2026-11-04'
+venue: arXiv
 survey_section:
-  - "architecture/residual-init"
-  - "architecture/state-memory"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "fixed"
+- architecture/residual-init
+- architecture/state-memory
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
 claims:
-  - "param-efficiency"
+- param-efficiency
 comparison:
-  - "iso-depth"
+- iso-depth
 survey_core: false
-desc: "Replaces residual connections in a fully looped transformer with sliding-window attention over earlier depth blocks; it lowers perplexity versus PreNorm loops at 140M and 370M, and a 1.2B model trained on 0.5T tokens with three recurrences scores 63.1 on GSM8K versus 26.1 for Huginn-3.5B."
+desc: Replaces residual connections in a fully looped transformer with sliding-window
+  attention over earlier depth blocks; it lowers perplexity versus PreNorm loops at
+  140M and 370M, and a 1.2B model trained on 0.5T tokens with three recurrences scores
+  63.1 on GSM8K versus 26.1 for Huginn-3.5B.
 links:
-  arxiv: "https://arxiv.org/abs/2611.05234"
-  github: "https://github.com/OSU-NLP-Group/ARLoop"
+  arxiv: https://arxiv.org/abs/2611.05234
+  github: https://github.com/OSU-NLP-Group/ARLoop
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 5
+star_sources:
+  github_api: 5
+metrics_updated: '2026-11-05'

@@ -1,24 +1,33 @@
-title: "Best-of-Depth: Learning Exploratory Dynamics in Looped Transformers"
+title: 'Best-of-Depth: Learning Exploratory Dynamics in Looped Transformers'
 authors:
-  - "Shota Takashiro"
-  - "Takeshi Kojima"
-  - "Masanori Koyama"
-  - "Kohei Hayashi"
-  - "Yusuke Iwasawa"
+- Shota Takashiro
+- Takeshi Kojima
+- Masanori Koyama
+- Kohei Hayashi
+- Yusuke Iwasawa
 year: 2026
-published_date: "2026-11-03"
-added_date: "2026-11-04"
-venue: "arXiv"
+published_date: '2026-11-03'
+added_date: '2026-11-04'
+venue: arXiv
 survey_section:
-  - "training/supervision-optimization"
-  - "training/post-training"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "fixed"
+- training/supervision-optimization
+- training/post-training
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
 claims: []
 comparison:
-  - "unclear"
+- unclear
 survey_core: false
-desc: "Trains a looped transformer's recurrent trajectory as a candidate set by minimizing the loss at the best depth, so different valid answers can appear at different depths; N-Queens coverage reaches 91.03% versus 45.75% for final-depth training, and fine-tuned Huginn gains pooled code success."
+desc: Trains a looped transformer's recurrent trajectory as a candidate set by minimizing
+  the loss at the best depth, so different valid answers can appear at different depths;
+  N-Queens coverage reaches 91.03% versus 45.75% for final-depth training, and fine-tuned
+  Huginn gains pooled code success.
 links:
-  arxiv: "https://arxiv.org/abs/2611.04663"
+  arxiv: https://arxiv.org/abs/2611.04663
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-11-05'

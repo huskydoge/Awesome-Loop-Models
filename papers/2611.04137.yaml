@@ -1,26 +1,35 @@
-title: "LoopKV: Loop-Aware KV Cache Compression for Serving Looped Transformers"
+title: 'LoopKV: Loop-Aware KV Cache Compression for Serving Looped Transformers'
 authors:
-  - "Tianle Zhou"
-  - "Yang Zhang"
-  - "Tianyu Wu"
-  - "Zhuohan Wang"
-  - "William Nixon"
-  - "Juncheng Yang"
+- Tianle Zhou
+- Yang Zhang
+- Tianyu Wu
+- Zhuohan Wang
+- William Nixon
+- Juncheng Yang
 year: 2026
-published_date: "2026-11-03"
-added_date: "2026-11-04"
-venue: "arXiv"
+published_date: '2026-11-03'
+added_date: '2026-11-04'
+venue: arXiv
 survey_section:
-  - "systems/kv-memory"
-  - "systems/quantization-edge"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "fixed"
+- systems/kv-memory
+- systems/quantization-edge
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
 claims:
-  - "memory-efficiency"
-  - "compute-efficiency"
+- memory-efficiency
+- compute-efficiency
 comparison: []
 survey_core: false
-desc: "Profiles quantization damage for every (loop, layer) cell of Ouro and plans 4-bit, 2-bit or final-loop KV reuse per cell, run by one fused vLLM kernel; on Ouro-1.4B it stores 35% less KV than uniform 4-bit KIVI and sustains 1.7-2.2x its goodput under a latency target."
+desc: Profiles quantization damage for every (loop, layer) cell of Ouro and plans
+  4-bit, 2-bit or final-loop KV reuse per cell, run by one fused vLLM kernel; on Ouro-1.4B
+  it stores 35% less KV than uniform 4-bit KIVI and sustains 1.7-2.2x its goodput
+  under a latency target.
 links:
-  arxiv: "https://arxiv.org/abs/2611.04137"
+  arxiv: https://arxiv.org/abs/2611.04137
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-11-05'
