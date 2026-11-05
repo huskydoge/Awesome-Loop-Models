@@ -30,28 +30,28 @@ List every section the entry belongs to; the first entry is its primary section.
 **§4 Architecture and Design**
 
 - `architecture/topology` — §4.1 Loop topology (14 / 32)
-- `architecture/residual-init` — §4.2 Residual manipulation and initialization (10 / 40)
-- `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (10 / 26)
+- `architecture/residual-init` — §4.2 Residual manipulation and initialization (11 / 41)
+- `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (10 / 27)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (7 / 29)
 - `architecture/depth-control` — §4.5 Controlling recurrence depth (24 / 72)
 - `architecture/hybrid` — §4.6 Hybrid looped architectures (19 / 29)
 
 **§5 Learning Algorithms**
 
-- `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (26 / 78)
-- `training/post-training` — §5.2 Post-training and reinforcement learning (8 / 17)
+- `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (27 / 79)
+- `training/post-training` — §5.2 Post-training and reinforcement learning (8 / 19)
 - `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (15 / 26)
 
 **§6 Scaling Laws**
 
 - `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (10 / 23)
-- `scaling/test-time` — §6.2 Test-time scaling (12 / 49)
+- `scaling/test-time` — §6.2 Test-time scaling (13 / 50)
 
 **§7 Systems and Infrastructure**
 
-- `systems/quantization-edge` — §7.1 Quantization and edge deployment (10 / 16)
-- `systems/kv-memory` — §7.2 KV cache and memory (12 / 22)
-- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (7 / 12)
+- `systems/quantization-edge` — §7.1 Quantization and edge deployment (10 / 18)
+- `systems/kv-memory` — §7.2 KV cache and memory (14 / 25)
+- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (8 / 13)
 
 ### Part IV. Understanding and Applications
 
@@ -65,7 +65,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 - `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (29 / 37)
 - `applications/vision` — §9.2 Visual recognition, restoration, and generation (23 / 31)
-- `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (6 / 6)
+- `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (7 / 7)
 - `applications/graphs-science` — §9.4 Graphs, structured data, and scientific modeling (20 / 30)
 - `applications/embodied-other` — §9.5 Embodied AI and other domains (24 / 27)
 
@@ -81,19 +81,19 @@ List every section the entry belongs to; the first entry is its primary section.
 
 Where the loop sits in the network (one value, papers only).
 
-- `whole-stack` (153)
-- `prelude-core-coda` (63)
-- `partial` (36)
+- `whole-stack` (156)
+- `prelude-core-coda` (64)
+- `partial` (37)
 - `hierarchical` (39)
 - `shifted-parallel` (10)
 - `implicit-fixed-point` (37)
-- `unspecified` (42)
+- `unspecified` (44)
 
 ## Sharing (`sharing`)
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (331)
+- `full` (338)
 - `partial-adapter` (27)
 - `expert-routed` (12)
 - `unspecified` (10)
@@ -102,8 +102,8 @@ How parameters are shared across iterations (one value, papers only).
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (177)
-- `sampled-train` (29)
+- `fixed` (183)
+- `sampled-train` (30)
 - `adaptive-halting` (73)
 - `convergence` (46)
 - `unspecified` (55)
@@ -112,13 +112,13 @@ How the number of iterations is decided (one value, papers only).
 
 What the paper argues looping buys or costs (list, papers only).
 
-- `param-efficiency` (114)
-- `compute-efficiency` (125)
-- `memory-efficiency` (49)
+- `param-efficiency` (115)
+- `compute-efficiency` (129)
+- `memory-efficiency` (52)
 - `data-efficiency` (18)
 - `expressivity` (29)
 - `length-generalization` (36)
-- `test-time-scaling` (74)
+- `test-time-scaling` (75)
 - `stability` (42)
 - `failure-mode` (57)
 
@@ -128,5 +128,5 @@ Which quantity is held fixed when the paper compares looped and untied models (l
 
 - `iso-param` (53)
 - `iso-flop` (38)
-- `iso-depth` (32)
-- `unclear` (51)
+- `iso-depth` (33)
+- `unclear` (52)
