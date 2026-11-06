@@ -25,10 +25,10 @@ desc: Guides each reuse of a shared Transformer stack with a soft multi-token al
 links:
   arxiv: https://arxiv.org/abs/2608.03624
   alphaxiv: https://www.alphaxiv.org/abs/2608.03624
-citations: 3
+citations: 4
 citation_sources:
-  semantic_scholar: 3
+  semantic_scholar: 4
   openalex: 0
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-10-03'
+metrics_updated: '2026-11-06'
