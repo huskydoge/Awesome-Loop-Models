@@ -388,6 +388,8 @@
     "papers/2611.05150.yaml",
     "papers/2611.05234.yaml",
     "papers/2611.05304.yaml",
+    "papers/2611.06206.yaml",
+    "papers/2611.06835.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -725,22 +727,22 @@
       },
       {
         "label": "architecture/depth-control",
-        "count": 72
+        "count": 73
       },
       {
         "label": "capabilities/efficiency",
-        "count": 50
+        "count": 51
       },
       {
         "label": "scaling/test-time",
         "count": 50
       },
       {
-        "label": "architecture/residual-init",
-        "count": 41
+        "label": "understanding/failure-modes",
+        "count": 42
       },
       {
-        "label": "understanding/failure-modes",
+        "label": "architecture/residual-init",
         "count": 41
       },
       {
@@ -753,7 +755,7 @@
       },
       {
         "label": "architecture/topology",
-        "count": 32
+        "count": 33
       },
       {
         "label": "applications/vision",
@@ -780,15 +782,15 @@
         "count": 27
       },
       {
+        "label": "systems/kv-memory",
+        "count": 26
+      },
+      {
         "label": "training/retrofitting",
         "count": 26
       },
       {
         "label": "capabilities/generalization",
-        "count": 25
-      },
-      {
-        "label": "systems/kv-memory",
         "count": 25
       },
       {
@@ -851,7 +853,7 @@
     "loop_topology": [
       {
         "label": "whole-stack",
-        "count": 156
+        "count": 157
       },
       {
         "label": "prelude-core-coda",
@@ -866,11 +868,11 @@
         "count": 39
       },
       {
-        "label": "implicit-fixed-point",
-        "count": 37
+        "label": "partial",
+        "count": 38
       },
       {
-        "label": "partial",
+        "label": "implicit-fixed-point",
         "count": 37
       },
       {
@@ -881,7 +883,7 @@
     "sharing": [
       {
         "label": "full",
-        "count": 338
+        "count": 340
       },
       {
         "label": "partial-adapter",
@@ -899,7 +901,7 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 183
+        "count": 184
       },
       {
         "label": "adaptive-halting",
@@ -915,7 +917,7 @@
       },
       {
         "label": "sampled-train",
-        "count": 30
+        "count": 31
       }
     ],
     "claims": [
@@ -929,15 +931,15 @@
       },
       {
         "label": "test-time-scaling",
-        "count": 75
+        "count": 76
       },
       {
         "label": "failure-mode",
-        "count": 57
+        "count": 58
       },
       {
         "label": "memory-efficiency",
-        "count": 52
+        "count": 53
       },
       {
         "label": "stability",
@@ -953,13 +955,13 @@
       },
       {
         "label": "data-efficiency",
-        "count": 18
+        "count": 19
       }
     ],
     "comparison": [
       {
         "label": "iso-param",
-        "count": 53
+        "count": 55
       },
       {
         "label": "unclear",
@@ -967,7 +969,7 @@
       },
       {
         "label": "iso-flop",
-        "count": 38
+        "count": 39
       },
       {
         "label": "iso-depth",
