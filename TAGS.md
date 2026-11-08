@@ -33,19 +33,19 @@ List every section the entry belongs to; the first entry is its primary section.
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (11 / 41)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (10 / 27)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (7 / 30)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (24 / 75)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (24 / 74)
 - `architecture/hybrid` — §4.6 Hybrid looped architectures (19 / 29)
 
 **§5 Learning Algorithms**
 
 - `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (28 / 80)
 - `training/post-training` — §5.2 Post-training and reinforcement learning (8 / 19)
-- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (15 / 27)
+- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (15 / 26)
 
 **§6 Scaling Laws**
 
 - `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (11 / 24)
-- `scaling/test-time` — §6.2 Test-time scaling (14 / 51)
+- `scaling/test-time` — §6.2 Test-time scaling (13 / 50)
 
 **§7 Systems and Infrastructure**
 
@@ -83,7 +83,7 @@ Where the loop sits in the network (one value, papers only).
 
 - `whole-stack` (158)
 - `prelude-core-coda` (66)
-- `partial` (40)
+- `partial` (39)
 - `hierarchical` (39)
 - `shifted-parallel` (10)
 - `implicit-fixed-point` (38)
@@ -93,7 +93,7 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (347)
+- `full` (346)
 - `partial-adapter` (27)
 - `expert-routed` (12)
 - `unspecified` (10)
@@ -104,7 +104,7 @@ How the number of iterations is decided (one value, papers only).
 
 - `fixed` (187)
 - `sampled-train` (32)
-- `adaptive-halting` (74)
+- `adaptive-halting` (73)
 - `convergence` (48)
 - `unspecified` (55)
 
@@ -118,7 +118,7 @@ What the paper argues looping buys or costs (list, papers only).
 - `data-efficiency` (20)
 - `expressivity` (29)
 - `length-generalization` (36)
-- `test-time-scaling` (77)
+- `test-time-scaling` (76)
 - `stability` (43)
 - `failure-mode` (59)
 
