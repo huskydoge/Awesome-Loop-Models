@@ -1,0 +1,28 @@
+title: 'DEQ-Stereo: Deep Euilibrium Video Stereo Matching via Adaptive Convergence'
+authors:
+- Kiljoon Han
+- Kyumin Hwang
+- Wonheok Choi
+- Jeonghoon Kim
+- Sunghoom Im
+year: 2026
+published_date: "2026-10-29"
+added_date: "2026-11-01"
+venue: arXiv
+survey_section:
+- applications/flow-3d
+- architecture/depth-control
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
+claims:
+- compute-efficiency
+- stability
+comparison: []
+survey_core: false
+desc: Recasts iterative video stereo refinement as a deep equilibrium fixed point solved
+  by Broyden iterations until convergence, with a simplified gated update and a warm-started
+  hidden state across frames; it reports 0.45 EPE on SceneFlow and a 34 percent runtime
+  cut from the cross-frame warm start.
+links:
+  arxiv: https://arxiv.org/abs/2610.39701

@@ -374,6 +374,13 @@
     "papers/2610.35556.yaml",
     "papers/2610.37833.yaml",
     "papers/2610.37903.yaml",
+    "papers/2610.38382.yaml",
+    "papers/2610.38422.yaml",
+    "papers/2610.38479.yaml",
+    "papers/2610.38822.yaml",
+    "papers/2610.38951.yaml",
+    "papers/2610.39701.yaml",
+    "papers/2610.40325.yaml",
     "papers/2610.41720.yaml",
     "papers/2610.41819.yaml",
     "papers/2610.41825.yaml",
@@ -723,19 +730,19 @@
     "survey_section": [
       {
         "label": "training/supervision-optimization",
-        "count": 79
+        "count": 80
       },
       {
         "label": "architecture/depth-control",
-        "count": 73
+        "count": 75
       },
       {
         "label": "capabilities/efficiency",
-        "count": 51
+        "count": 52
       },
       {
         "label": "scaling/test-time",
-        "count": 50
+        "count": 51
       },
       {
         "label": "understanding/failure-modes",
@@ -755,22 +762,22 @@
       },
       {
         "label": "architecture/topology",
-        "count": 33
+        "count": 34
+      },
+      {
+        "label": "applications/graphs-science",
+        "count": 31
       },
       {
         "label": "applications/vision",
         "count": 31
       },
       {
-        "label": "applications/graphs-science",
+        "label": "architecture/sharing",
         "count": 30
       },
       {
         "label": "architecture/hybrid",
-        "count": 29
-      },
-      {
-        "label": "architecture/sharing",
         "count": 29
       },
       {
@@ -782,11 +789,11 @@
         "count": 27
       },
       {
-        "label": "systems/kv-memory",
-        "count": 26
+        "label": "training/retrofitting",
+        "count": 27
       },
       {
-        "label": "training/retrofitting",
+        "label": "systems/kv-memory",
         "count": 26
       },
       {
@@ -794,11 +801,11 @@
         "count": 25
       },
       {
-        "label": "capabilities/expressivity",
-        "count": 23
+        "label": "scaling/compute-optimal",
+        "count": 24
       },
       {
-        "label": "scaling/compute-optimal",
+        "label": "capabilities/expressivity",
         "count": 23
       },
       {
@@ -815,7 +822,7 @@
       },
       {
         "label": "systems/batching-parallel",
-        "count": 13
+        "count": 14
       },
       {
         "label": "open-problems/diffusion",
@@ -826,19 +833,19 @@
         "count": 11
       },
       {
+        "label": "applications/flow-3d",
+        "count": 9
+      },
+      {
         "label": "foundations/algorithmic",
         "count": 8
       },
       {
-        "label": "applications/flow-3d",
+        "label": "open-problems/depth-into-time",
         "count": 7
       },
       {
         "label": "foundations/depth-sharing",
-        "count": 6
-      },
-      {
-        "label": "open-problems/depth-into-time",
         "count": 6
       },
       {
@@ -853,27 +860,27 @@
     "loop_topology": [
       {
         "label": "whole-stack",
-        "count": 157
+        "count": 158
       },
       {
         "label": "prelude-core-coda",
-        "count": 64
+        "count": 66
       },
       {
         "label": "unspecified",
-        "count": 44
+        "count": 45
+      },
+      {
+        "label": "partial",
+        "count": 40
       },
       {
         "label": "hierarchical",
         "count": 39
       },
       {
-        "label": "partial",
-        "count": 38
-      },
-      {
         "label": "implicit-fixed-point",
-        "count": 37
+        "count": 38
       },
       {
         "label": "shifted-parallel",
@@ -883,7 +890,7 @@
     "sharing": [
       {
         "label": "full",
-        "count": 340
+        "count": 347
       },
       {
         "label": "partial-adapter",
@@ -901,11 +908,11 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 184
+        "count": 187
       },
       {
         "label": "adaptive-halting",
-        "count": 73
+        "count": 74
       },
       {
         "label": "unspecified",
@@ -913,29 +920,29 @@
       },
       {
         "label": "convergence",
-        "count": 46
+        "count": 48
       },
       {
         "label": "sampled-train",
-        "count": 31
+        "count": 32
       }
     ],
     "claims": [
       {
         "label": "compute-efficiency",
-        "count": 129
+        "count": 133
       },
       {
         "label": "param-efficiency",
-        "count": 115
+        "count": 116
       },
       {
         "label": "test-time-scaling",
-        "count": 76
+        "count": 77
       },
       {
         "label": "failure-mode",
-        "count": 58
+        "count": 59
       },
       {
         "label": "memory-efficiency",
@@ -943,7 +950,7 @@
       },
       {
         "label": "stability",
-        "count": 42
+        "count": 43
       },
       {
         "label": "length-generalization",
@@ -955,13 +962,13 @@
       },
       {
         "label": "data-efficiency",
-        "count": 19
+        "count": 20
       }
     ],
     "comparison": [
       {
         "label": "iso-param",
-        "count": 55
+        "count": 56
       },
       {
         "label": "unclear",
@@ -969,7 +976,7 @@
       },
       {
         "label": "iso-flop",
-        "count": 39
+        "count": 40
       },
       {
         "label": "iso-depth",

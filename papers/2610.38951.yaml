@@ -1,0 +1,29 @@
+title: 'GradSplat: Gradients Inside the Forward Pass for Feed-Forward 3D Gaussian Splatting'
+authors:
+- Jingong Chen
+- Linlian Jiang
+- Guangyuan Li
+- Xinxin Zuo
+- Yang Wang
+- Chulwoo Pack
+- Kyle Gao
+- Kwanghee Won
+year: 2026
+published_date: "2026-10-28"
+added_date: "2026-11-01"
+venue: arXiv
+survey_section:
+- applications/flow-3d
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
+desc: Refines a feed-forward 3D Gaussian Splatting model's own Gaussians inside its forward
+  pass with three appearance and five shape steps, each group applying one shared learned
+  recurrent update to photometric gradients on the input views; it has the best PSNR and
+  SSIM among nine methods on six-view RealEstate10K.
+links:
+  arxiv: https://arxiv.org/abs/2610.38951
+  github: https://github.com/Jingong-Chen/GradSplat

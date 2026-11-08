@@ -7,7 +7,9 @@ authors:
 year: 2026
 published_date: '2026-10-09'
 added_date: '2026-10-14'
-venue: arXiv
+venue: AXIOM Workshop @ NeurIPS
+peer_reviewed: true
+venue_source: https://neurips.cc/virtual/2026/156984
 survey_section:
 - architecture/depth-control
 - capabilities/efficiency
