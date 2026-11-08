@@ -21,10 +21,10 @@ desc: Analyzes recurrent graph neural networks that repeatedly apply message pas
   output-converging, and halting RGNN variants.
 links:
   arxiv: https://arxiv.org/abs/2604.25551
-citations: 0
-metrics_updated: '2026-08-03'
+citations: 1
+metrics_updated: '2026-11-08'
 citation_sources:
   semantic_scholar: 0
-  openalex: 0
+  openalex: 1
   opencitations: 0
-citation_source_best: semantic_scholar
+citation_source_best: openalex

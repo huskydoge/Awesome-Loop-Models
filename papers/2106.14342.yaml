@@ -28,12 +28,12 @@ citation_source_best: semantic_scholar
 citations: 113
 citation_sources:
   semantic_scholar: 113
-  openalex: 18
+  openalex: 45
   opencitations: 0
 star_source_best: github_api
 github_stars: 814
 star_sources:
   github_api: 814
-metrics_updated: '2026-11-05'
+metrics_updated: '2026-11-08'
 peer_reviewed: true
 venue_source: https://proceedings.mlr.press/v139/bai21b.html

@@ -29,10 +29,10 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2606.01495
   github: https://github.com/ccapps42/CART
 citations: 5
-metrics_updated: '2026-10-19'
+metrics_updated: '2026-11-08'
 citation_sources:
   semantic_scholar: 5
-  openalex: 0
+  openalex: 5
   opencitations: 0
 citation_source_best: semantic_scholar
 github_stars: 1

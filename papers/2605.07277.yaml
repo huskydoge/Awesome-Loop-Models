@@ -22,10 +22,10 @@ desc: Studies weight-tied dynamics for set-valued solution maps, proving that re
   and exhibits an accuracy-diversity tradeoff.
 links:
   arxiv: https://arxiv.org/abs/2605.07277
-citations: 0
+citations: 1
 citation_sources:
   semantic_scholar: 0
-  openalex: 0
+  openalex: 1
   opencitations: 0
-citation_source_best: semantic_scholar
-metrics_updated: '2026-07-20'
+citation_source_best: openalex
+metrics_updated: '2026-11-08'

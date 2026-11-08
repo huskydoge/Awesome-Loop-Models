@@ -1,10 +1,11 @@
-title: Recurrent Bipartite Graph Neural Networks for QC-MDPC Error Decoding in McEliece Cryptosystems
+title: Recurrent Bipartite Graph Neural Networks for QC-MDPC Error Decoding in McEliece
+  Cryptosystems
 authors:
 - Parth Rajeshkumar Tandel
 - Elisabeth Fink
 year: 2026
-published_date: "2026-10-28"
-added_date: "2026-11-01"
+published_date: '2026-10-28'
+added_date: '2026-11-01'
 venue: arXiv
 survey_section:
 - applications/graphs-science
@@ -14,9 +15,16 @@ depth_control: convergence
 claims: []
 comparison: []
 survey_core: false
-desc: Decodes QC-MDPC post-quantum codes with a 110K-parameter graph network that reuses
-  one set of message MLPs and node GRU cells for up to 12 Tanner-graph iterations, stopping
-  once the syndrome is satisfied; on 20 unseen matrices it cuts decoding failures by 63.7
-  percent against Min-Sum at error weight 10.
+desc: Decodes QC-MDPC post-quantum codes with a 110K-parameter graph network that
+  reuses one set of message MLPs and node GRU cells for up to 12 Tanner-graph iterations,
+  stopping once the syndrome is satisfied; on 20 unseen matrices it cuts decoding
+  failures by 63.7 percent against Min-Sum at error weight 10.
 links:
   arxiv: https://arxiv.org/abs/2610.38479
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-08'

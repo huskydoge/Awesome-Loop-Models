@@ -21,13 +21,13 @@ links:
   arxiv: https://arxiv.org/abs/2607.10681
   alphaxiv: https://www.alphaxiv.org/abs/2607.10681
   github: https://github.com/clojure-finance/mythjure/tree/paper-v1
-citations: 2
+citations: 3
 citation_sources:
   semantic_scholar: 2
-  openalex: 0
+  openalex: 3
   opencitations: 0
-citation_source_best: semantic_scholar
-metrics_updated: '2026-10-26'
+citation_source_best: openalex
+metrics_updated: '2026-11-08'
 star_source_best: github_api
 github_stars: 1
 star_sources:

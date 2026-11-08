@@ -31,9 +31,9 @@ links:
 citations: 319
 citation_sources:
   semantic_scholar: 319
-  openalex: 8
+  openalex: 69
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-11-07'
+metrics_updated: '2026-11-08'
 peer_reviewed: true
 venue_source: https://proceedings.mlr.press/v202/giannou23a.html

@@ -33,13 +33,13 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2608.08888
   github: https://github.com/xidulu/Full-bandwidth-transformer
 citations: 8
-metrics_updated: '2026-11-07'
+metrics_updated: '2026-11-08'
 citation_sources:
   semantic_scholar: 8
-  openalex: 0
+  openalex: 6
   opencitations: 0
 citation_source_best: semantic_scholar
 star_source_best: github_api
-github_stars: 16
+github_stars: 17
 star_sources:
-  github_api: 16
+  github_api: 17

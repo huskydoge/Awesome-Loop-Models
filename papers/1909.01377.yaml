@@ -27,16 +27,16 @@ links:
   arxiv: https://arxiv.org/abs/1909.01377
   paper: https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html
   github: https://github.com/locuslab/deq
-citations: 1087
+citations: 1088
 citation_sources:
-  semantic_scholar: 1087
-  openalex: 342
+  semantic_scholar: 1088
+  openalex: 398
   opencitations: 0
 citation_source_best: semantic_scholar
 github_stars: 814
 star_sources:
   github_api: 814
 star_source_best: github_api
-metrics_updated: '2026-11-07'
+metrics_updated: '2026-11-08'
 peer_reviewed: true
 venue_source: https://proceedings.neurips.cc/paper/2019/hash/01386bd6d8e091c2ab4c7c7de644d37b-Abstract.html

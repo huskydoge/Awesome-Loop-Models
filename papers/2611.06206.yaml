@@ -1,4 +1,5 @@
-title: "Loop Before You Leap: What Recurrent Depth Can and Cannot Buy in Data-Limited Pretraining"
+title: 'Loop Before You Leap: What Recurrent Depth Can and Cannot Buy in Data-Limited
+  Pretraining'
 authors:
 - Daichi Hotta
 - Yohei Kobashi
@@ -6,9 +7,9 @@ authors:
 - Yusuke Iwasawa
 - Yutaka Matsuo
 year: 2026
-published_date: "2026-11-04"
-added_date: "2026-11-05"
-venue: arXiv
+published_date: '2026-11-04'
+added_date: '2026-11-05'
+venue: "Second BabyLM Workshop"
 survey_section:
 - capabilities/efficiency
 - understanding/failure-modes
@@ -22,6 +23,18 @@ comparison:
 - iso-param
 - iso-flop
 survey_core: false
-desc: Compares a 12-layer stack looped four times with standard Transformers under a 100M-word BabyLM budget; the loop beats a compute-matched 48-layer model by 5.4 BLiMP points in text-only training but does not reduce the roughly 3.8-point drop from multimodal training.
+desc: Compares a 12-layer stack looped four times with standard Transformers under
+  a 100M-word BabyLM budget; the loop beats a compute-matched 48-layer model by 5.4
+  BLiMP points in text-only training but does not reduce the roughly 3.8-point drop
+  from multimodal training.
 links:
   arxiv: https://arxiv.org/abs/2611.06206
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-08'
+peer_reviewed: true
+venue_source: "https://aclanthology.org/2026.babylm-main.43/"

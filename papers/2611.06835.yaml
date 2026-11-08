@@ -1,4 +1,4 @@
-title: "LooM: Loop-Invariant Memory for Causal Encoder-Decoder Language Models"
+title: 'LooM: Loop-Invariant Memory for Causal Encoder-Decoder Language Models'
 authors:
 - Lele Yang
 - Muxi Diao
@@ -11,8 +11,8 @@ authors:
 - Zhanyu Ma
 - Weiran Xu
 year: 2026
-published_date: "2026-11-04"
-added_date: "2026-11-05"
+published_date: '2026-11-04'
+added_date: '2026-11-05'
 venue: arXiv
 survey_section:
 - systems/kv-memory
@@ -27,6 +27,16 @@ claims:
 comparison:
 - iso-param
 survey_core: false
-desc: Loops each reader layer of a causal encoder-decoder independently while publishing each token's local KV entry only on its first visit, so one 204M checkpoint serves 3-21 layer calls at a fixed cache size and beats a single-pass model by 0.020 nats test cross-entropy at 21 calls.
+desc: Loops each reader layer of a causal encoder-decoder independently while publishing
+  each token's local KV entry only on its first visit, so one 204M checkpoint serves
+  3-21 layer calls at a fixed cache size and beats a single-pass model by 0.020 nats
+  test cross-entropy at 21 calls.
 links:
   arxiv: https://arxiv.org/abs/2611.06835
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-08'

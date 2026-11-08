@@ -25,13 +25,13 @@ links:
   arxiv: https://arxiv.org/abs/2310.10845
   openreview: https://openreview.net/forum?id=7igPXQFupX
   github: https://github.com/epfml/cotformer
-citations: 10
+citations: 21
 citation_sources:
   semantic_scholar: 10
-  openalex: 2
+  openalex: 21
   opencitations: 0
-citation_source_best: semantic_scholar
-metrics_updated: '2026-11-04'
+citation_source_best: openalex
+metrics_updated: '2026-11-08'
 github_stars: 7
 star_sources:
   github_api: 7

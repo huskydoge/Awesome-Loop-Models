@@ -24,10 +24,10 @@ desc: Introduces Source-Centered State Evolution for looped Transformers, preser
 links:
   arxiv: https://arxiv.org/abs/2607.27656
   alphaxiv: https://www.alphaxiv.org/abs/2607.27656
-citations: 1
+citations: 2
 citation_sources:
   semantic_scholar: 1
-  openalex: 0
+  openalex: 2
   opencitations: 0
-citation_source_best: semantic_scholar
-metrics_updated: '2026-09-29'
+citation_source_best: openalex
+metrics_updated: '2026-11-08'

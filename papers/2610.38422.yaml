@@ -1,10 +1,11 @@
-title: 'Deeper Backpropagation or More Updates? Training Looped Language Models Across Budgets'
+title: Deeper Backpropagation or More Updates? Training Looped Language Models Across
+  Budgets
 authors:
 - Jiarun Shen
 - Xiao Li
 year: 2026
-published_date: "2026-10-28"
-added_date: "2026-11-01"
+published_date: '2026-10-28'
+added_date: '2026-11-01'
 venue: arXiv
 survey_section:
 - training/supervision-optimization
@@ -21,3 +22,10 @@ desc: Compares four- and eight-iteration truncated backpropagation windows for P
   advantage when the budget grows fourfold.
 links:
   arxiv: https://arxiv.org/abs/2610.38422
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-08'

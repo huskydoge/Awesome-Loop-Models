@@ -30,13 +30,13 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2608.15062
   github: https://github.com/Amr-Hegazy1/gated-recurrent-transformer
   hf: https://huggingface.co/collections/Amr-Hegazy/gated-recurrent-transformer-grt
-citations: 4
+citations: 8
 citation_sources:
   semantic_scholar: 4
-  openalex: 0
+  openalex: 8
   opencitations: 0
-citation_source_best: semantic_scholar
-metrics_updated: '2026-10-15'
+citation_source_best: openalex
+metrics_updated: '2026-11-08'
 star_source_best: github_api
 github_stars: 19
 star_sources:

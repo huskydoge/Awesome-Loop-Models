@@ -28,10 +28,10 @@ links:
   comment:
   - label: Turing Posts
     url: https://x.com/TheTuringPost/status/2047720038342476187?s=20
-citations: 19
+citations: 22
 citation_sources:
   semantic_scholar: 19
-  openalex: 0
+  openalex: 22
   opencitations: 0
-citation_source_best: semantic_scholar
-metrics_updated: '2026-11-06'
+citation_source_best: openalex
+metrics_updated: '2026-11-08'

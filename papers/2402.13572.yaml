@@ -31,13 +31,13 @@ links:
   arxiv: https://arxiv.org/abs/2402.13572
   openreview: https://openreview.net/forum?id=oYP2Pd5aQt
   github: https://github.com/chuanyang-Zheng/Algoformer
-citations: 8
+citations: 13
 citation_sources:
   semantic_scholar: 8
-  openalex: 1
+  openalex: 13
   opencitations: 0
-citation_source_best: semantic_scholar
-metrics_updated: '2026-11-04'
+citation_source_best: openalex
+metrics_updated: '2026-11-08'
 github_stars: 1
 star_sources:
   github_api: 1

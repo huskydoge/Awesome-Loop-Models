@@ -6,8 +6,8 @@ authors:
 - Jeonghoon Kim
 - Sunghoom Im
 year: 2026
-published_date: "2026-10-29"
-added_date: "2026-11-01"
+published_date: '2026-10-29'
+added_date: '2026-11-01'
 venue: arXiv
 survey_section:
 - applications/flow-3d
@@ -20,9 +20,16 @@ claims:
 - stability
 comparison: []
 survey_core: false
-desc: Recasts iterative video stereo refinement as a deep equilibrium fixed point solved
-  by Broyden iterations until convergence, with a simplified gated update and a warm-started
-  hidden state across frames; it reports 0.45 EPE on SceneFlow and a 34 percent runtime
-  cut from the cross-frame warm start.
+desc: Recasts iterative video stereo refinement as a deep equilibrium fixed point
+  solved by Broyden iterations until convergence, with a simplified gated update and
+  a warm-started hidden state across frames; it reports 0.45 EPE on SceneFlow and
+  a 34 percent runtime cut from the cross-frame warm start.
 links:
   arxiv: https://arxiv.org/abs/2610.39701
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-08'

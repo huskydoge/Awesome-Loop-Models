@@ -28,13 +28,13 @@ links:
   comment:
   - label: Benhao's reading note
     url: https://x.com/huskydogewoof/status/2032232642947494107?s=20
-citations: 6
+citations: 7
 citation_sources:
   semantic_scholar: 6
-  openalex: 1
+  openalex: 7
   opencitations: 0
-citation_source_best: semantic_scholar
-metrics_updated: '2026-11-05'
+citation_source_best: openalex
+metrics_updated: '2026-11-08'
 github_stars: 5
 star_sources:
   github_api: 5

@@ -4,8 +4,8 @@ authors:
 - Yiwen Guo
 - Shu-Tao Xia
 year: 2026
-published_date: "2026-10-28"
-added_date: "2026-11-01"
+published_date: '2026-10-28'
+added_date: '2026-11-01'
 venue: arXiv
 survey_section:
 - scaling/test-time
@@ -25,3 +25,14 @@ desc: Introduces SelfMorph, where a lightweight selector reads a frozen LLM's pr
 links:
   arxiv: https://arxiv.org/abs/2610.38382
   github: https://github.com/creator-xi/SelfMorph
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 2
+star_sources:
+  github_api: 2
+metrics_updated: '2026-11-08'
