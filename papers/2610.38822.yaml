@@ -1,0 +1,24 @@
+title: 'CopyLoop: Fast Looped Transformer Decoding via Context Copying and Shallow Screening'
+authors:
+- Wenyu Du
+- Stephen Chung
+year: 2026
+published_date: "2026-10-28"
+added_date: "2026-11-01"
+venue: arXiv
+survey_section:
+- systems/batching-parallel
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Introduces CopyLoop, a training-free decoder for looped transformers that copies
+  multi-token suffixes from earlier context, screens them at a shallow loop depth and
+  pipelines surviving positions toward full-depth verification, reaching 2.98-10.70x
+  speedups on Ouro, Raven and Huginn base models.
+links:
+  arxiv: https://arxiv.org/abs/2610.38822
+  github: https://github.com/dualverse-ai/copyloop
