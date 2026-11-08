@@ -21,7 +21,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§3 Capabilities, Benefits and Trade-offs**
 
-- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (7 / 51)
+- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (8 / 52)
 - `capabilities/expressivity` — §3.2 Expressivity and reasoning capacity (19 / 23)
 - `capabilities/generalization` — §3.3 Length, easy-to-hard, and compositional generalization (13 / 25)
 
@@ -29,11 +29,11 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§4 Architecture and Design**
 
-- `architecture/topology` — §4.1 Loop topology (14 / 33)
+- `architecture/topology` — §4.1 Loop topology (14 / 34)
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (11 / 41)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (10 / 27)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (7 / 30)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (24 / 74)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (24 / 75)
 - `architecture/hybrid` — §4.6 Hybrid looped architectures (19 / 29)
 
 **§5 Learning Algorithms**
@@ -50,7 +50,7 @@ List every section the entry belongs to; the first entry is its primary section.
 **§7 Systems and Infrastructure**
 
 - `systems/quantization-edge` — §7.1 Quantization and edge deployment (10 / 18)
-- `systems/kv-memory` — §7.2 KV cache and memory (14 / 25)
+- `systems/kv-memory` — §7.2 KV cache and memory (15 / 26)
 - `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (9 / 14)
 
 ### Part IV. Understanding and Applications
@@ -59,7 +59,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 - `understanding/why` — §8.1 Why looped models work (4 / 17)
 - `understanding/interpretability` — §8.2 Mechanistic interpretability (24 / 37)
-- `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (13 / 41)
+- `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (13 / 42)
 
 **§9 Applications**
 
@@ -81,9 +81,9 @@ List every section the entry belongs to; the first entry is its primary section.
 
 Where the loop sits in the network (one value, papers only).
 
-- `whole-stack` (157)
+- `whole-stack` (158)
 - `prelude-core-coda` (66)
-- `partial` (39)
+- `partial` (40)
 - `hierarchical` (39)
 - `shifted-parallel` (10)
 - `implicit-fixed-point` (38)
@@ -93,7 +93,7 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (345)
+- `full` (347)
 - `partial-adapter` (27)
 - `expert-routed` (12)
 - `unspecified` (10)
@@ -102,8 +102,8 @@ How parameters are shared across iterations (one value, papers only).
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (186)
-- `sampled-train` (31)
+- `fixed` (187)
+- `sampled-train` (32)
 - `adaptive-halting` (74)
 - `convergence` (48)
 - `unspecified` (55)
@@ -114,19 +114,19 @@ What the paper argues looping buys or costs (list, papers only).
 
 - `param-efficiency` (116)
 - `compute-efficiency` (133)
-- `memory-efficiency` (52)
-- `data-efficiency` (19)
+- `memory-efficiency` (53)
+- `data-efficiency` (20)
 - `expressivity` (29)
 - `length-generalization` (36)
-- `test-time-scaling` (76)
+- `test-time-scaling` (77)
 - `stability` (43)
-- `failure-mode` (58)
+- `failure-mode` (59)
 
 ## Looped-vs-untied comparison (`comparison`)
 
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
-- `iso-param` (54)
-- `iso-flop` (39)
+- `iso-param` (56)
+- `iso-flop` (40)
 - `iso-depth` (33)
 - `unclear` (52)
