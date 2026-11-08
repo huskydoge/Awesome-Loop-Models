@@ -1,0 +1,36 @@
+title: 'LoopVQ: Sub 1-bit KV Cache Quantization for Looped Transformers'
+authors:
+- Minsoo Cheong
+- Sungjoo Yoo
+year: 2026
+published_date: '2026-11-03'
+added_date: '2026-11-04'
+venue: arXiv
+survey_section:
+- systems/kv-memory
+- systems/quantization-edge
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+comparison: []
+survey_core: false
+desc: Introduces LoopVQ, which vector-quantizes the KV cache of looped transformers
+  by coding channels of several loop steps jointly and fine-tuning codebooks against
+  the BF16 model; at 0.5 bits it keeps Ouro-1.4B at 68.29 average versus 43.62 for
+  TaSQ and raises SGLang peak throughput up to 6.1x.
+links:
+  arxiv: https://arxiv.org/abs/2611.05304
+  github: https://github.com/mscheong01/LoopVQ
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+star_source_best: github_api
+github_stars: 3
+star_sources:
+  github_api: 3
+metrics_updated: '2026-11-06'

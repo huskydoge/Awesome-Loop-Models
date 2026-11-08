@@ -1,0 +1,38 @@
+title: 'ElTab: Elastically Looped Tabular Transformers'
+authors:
+- Mieszko Komisarczyk
+- Saurabh Mathur
+- Maurice Kraus
+- Sriraam Natarajan
+- Kristian Kersting
+year: 2026
+published_date: '2026-10-30'
+added_date: '2026-11-02'
+venue: arXiv
+survey_section:
+- applications/graphs-science
+- architecture/depth-control
+- training/supervision-optimization
+- capabilities/efficiency
+loop_topology: whole-stack
+sharing: full
+depth_control: sampled-train
+claims:
+- param-efficiency
+- compute-efficiency
+comparison:
+- iso-flop
+survey_core: false
+desc: Trains a TabPFN-style looped transformer whose shared three-block stack runs
+  up to six times, with early-exit supervision at a randomly sampled depth plus self-distillation;
+  one 6.9M model serves every loop budget, staying within 0.27 AUC-ROC points of a
+  12-layer TabPFN at 25% fewer FLOPs.
+links:
+  arxiv: https://arxiv.org/abs/2610.41819
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-03'

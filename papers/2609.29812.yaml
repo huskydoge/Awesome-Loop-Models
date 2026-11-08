@@ -27,13 +27,13 @@ links:
   github: https://github.com/Superone77/FlashLoop
   project: https://superone77.github.io/FlashLoop/
 citation_source_best: semantic_scholar
-citations: 5
+citations: 8
 citation_sources:
   opencitations: 0
-  semantic_scholar: 5
+  semantic_scholar: 8
   openalex: 0
 star_source_best: github_api
-github_stars: 24
+github_stars: 25
 star_sources:
-  github_api: 24
-metrics_updated: '2026-10-29'
+  github_api: 25
+metrics_updated: '2026-11-05'

@@ -36,7 +36,7 @@ desc: Introduces the Parallel Loop Transformer, which preserves looped-model acc
 links:
   arxiv: https://arxiv.org/abs/2510.24824
 citations: 29
-metrics_updated: '2026-10-28'
+metrics_updated: '2026-11-07'
 citation_sources:
   semantic_scholar: 29
   opencitations: 0
