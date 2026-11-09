@@ -35,8 +35,8 @@ citation_sources:
   openalex: 31
   opencitations: 0
 citation_source_best: openalex
-github_stars: 109
+github_stars: 110
 star_sources:
-  github_api: 109
+  github_api: 110
 star_source_best: github_api
 metrics_updated: '2026-11-09'
