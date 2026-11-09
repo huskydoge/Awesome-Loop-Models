@@ -1,0 +1,27 @@
+title: 'Beyond Quadratic Attention: Separable Gaussian Operators for ODE Vision Transformers'
+authors:
+- Carlos Boned Riera
+- David Romero Sanchez
+- Oriol Ramos Terrades
+year: 2026
+published_date: "2026-11-05"
+added_date: "2026-11-08"
+venue: arXiv
+survey_section:
+- architecture/hybrid
+- applications/vision
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- stability
+- compute-efficiency
+- memory-efficiency
+comparison: []
+survey_core: false
+desc: Replaces self-attention in weight-shared looped and Neural ODE Vision Transformers with
+  a globally Lipschitz separable sum-of-Gaussians mixer, raising CIFAR-100 Top-1 by 5.4-8.1
+  points in the looped setting and giving the ODE model up to 154% higher throughput at
+  1024x1024.
+links:
+  arxiv: https://arxiv.org/abs/2611.08236

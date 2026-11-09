@@ -1,0 +1,32 @@
+title: 'Loopback Transformer: Towards a Unified View of Residual Looped Transformers'
+authors:
+- Xuan Ouyang
+- Zefan Cai
+- Chenlong Zhang
+- Cheng Luo
+- Ke Wan
+- Junjie Hu
+year: 2026
+published_date: "2026-11-04"
+added_date: "2026-11-08"
+venue: arXiv
+survey_section:
+- architecture/residual-init
+- architecture/state-memory
+- capabilities/efficiency
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- iso-depth
+survey_core: false
+desc: Stores each application's update rather than its full output in a looped prelude-core-coda
+  stack, weighting updates by geometric decay plus a learned attention reader, so at 191M-3B
+  it reaches lower ClimbMix validation loss than depth- and token-matched Transformers with
+  40-75% of their parameters.
+links:
+  arxiv: https://arxiv.org/abs/2611.07226
+  github: https://github.com/yancyou/Loopback
+  project: https://yancyou.github.io/Loopback_page/

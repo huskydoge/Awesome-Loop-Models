@@ -1,0 +1,33 @@
+title: Extending Reasoning in Typed Decision Models via Looping
+authors:
+- David Berghaus
+- Arber Zela
+- Behzad Shomali
+- Markus Frey
+- Mehdi Ali
+- Rafet Sifa
+- Volkan Cevher
+year: 2026
+published_date: "2026-11-05"
+added_date: "2026-11-08"
+venue: arXiv
+survey_section:
+- training/retrofitting
+- capabilities/generalization
+- architecture/depth-control
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: adaptive-halting
+claims:
+- length-generalization
+- test-time-scaling
+- param-efficiency
+comparison:
+- iso-depth
+survey_core: false
+desc: Introduces RELOAD, which fine-tunes pretrained 0.4B-4B encoders and decoders with a damped,
+  weight-tied loop over their middle block and a per-input controller choosing one to four
+  passes, lifting encoders by up to 23 points on reasoning chains longer than any seen in
+  training.
+links:
+  arxiv: https://arxiv.org/abs/2611.07736
