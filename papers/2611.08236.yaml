@@ -4,8 +4,8 @@ authors:
 - David Romero Sanchez
 - Oriol Ramos Terrades
 year: 2026
-published_date: "2026-11-05"
-added_date: "2026-11-08"
+published_date: '2026-11-05'
+added_date: '2026-11-08'
 venue: arXiv
 survey_section:
 - architecture/hybrid
@@ -19,9 +19,16 @@ claims:
 - memory-efficiency
 comparison: []
 survey_core: false
-desc: Replaces self-attention in weight-shared looped and Neural ODE Vision Transformers with
-  a globally Lipschitz separable sum-of-Gaussians mixer, raising CIFAR-100 Top-1 by 5.4-8.1
-  points in the looped setting and giving the ODE model up to 154% higher throughput at
-  1024x1024.
+desc: Replaces self-attention in weight-shared looped and Neural ODE Vision Transformers
+  with a globally Lipschitz separable sum-of-Gaussians mixer, raising CIFAR-100 Top-1
+  by 5.4-8.1 points in the looped setting and giving the ODE model up to 154% higher
+  throughput at 1024x1024.
 links:
   arxiv: https://arxiv.org/abs/2611.08236
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-09'

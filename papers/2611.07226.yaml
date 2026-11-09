@@ -7,8 +7,8 @@ authors:
 - Ke Wan
 - Junjie Hu
 year: 2026
-published_date: "2026-11-04"
-added_date: "2026-11-08"
+published_date: '2026-11-04'
+added_date: '2026-11-08'
 venue: arXiv
 survey_section:
 - architecture/residual-init
@@ -23,10 +23,21 @@ comparison:
 - iso-depth
 survey_core: false
 desc: Stores each application's update rather than its full output in a looped prelude-core-coda
-  stack, weighting updates by geometric decay plus a learned attention reader, so at 191M-3B
-  it reaches lower ClimbMix validation loss than depth- and token-matched Transformers with
-  40-75% of their parameters.
+  stack, weighting updates by geometric decay plus a learned attention reader, so
+  at 191M-3B it reaches lower ClimbMix validation loss than depth- and token-matched
+  Transformers with 40-75% of their parameters.
 links:
   arxiv: https://arxiv.org/abs/2611.07226
   github: https://github.com/yancyou/Loopback
   project: https://yancyou.github.io/Loopback_page/
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-11-09'
