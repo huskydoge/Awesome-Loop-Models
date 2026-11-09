@@ -1,0 +1,26 @@
+title: 'Not All Loops Cost the Same: Phase-Dependent Depth for Serving Looped Transformers'
+authors:
+- Zhixu Du
+- Yuhan Cheng
+- Hai "Helen" Li
+- Yiran Chen
+year: 2026
+published_date: "2026-11-04"
+added_date: "2026-11-08"
+venue: arXiv
+survey_section:
+- systems/batching-parallel
+- architecture/depth-control
+- scaling/test-time
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Introduces LoopDuet, a training-free vLLM serving scheme that gives prefill tokens fewer
+  core loops than decode tokens and batches only tokens still recurring, so Huginn gets 19%
+  more HotpotQA throughput than the fastest uniform depth meeting the same accuracy criterion.
+links:
+  arxiv: https://arxiv.org/abs/2611.07211
