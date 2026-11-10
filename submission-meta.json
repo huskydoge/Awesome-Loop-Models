@@ -401,6 +401,8 @@
     "papers/2611.07226.yaml",
     "papers/2611.07736.yaml",
     "papers/2611.08236.yaml",
+    "papers/2611.08977.yaml",
+    "papers/2611.09458.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -734,11 +736,11 @@
     "survey_section": [
       {
         "label": "training/supervision-optimization",
-        "count": 80
+        "count": 81
       },
       {
         "label": "architecture/depth-control",
-        "count": 77
+        "count": 78
       },
       {
         "label": "capabilities/efficiency",
@@ -746,11 +748,11 @@
       },
       {
         "label": "scaling/test-time",
-        "count": 52
+        "count": 53
       },
       {
         "label": "architecture/residual-init",
-        "count": 42
+        "count": 43
       },
       {
         "label": "understanding/failure-modes",
@@ -838,7 +840,7 @@
       },
       {
         "label": "applications/flow-3d",
-        "count": 9
+        "count": 10
       },
       {
         "label": "foundations/algorithmic",
@@ -864,7 +866,7 @@
     "loop_topology": [
       {
         "label": "whole-stack",
-        "count": 159
+        "count": 160
       },
       {
         "label": "prelude-core-coda",
@@ -876,7 +878,7 @@
       },
       {
         "label": "partial",
-        "count": 40
+        "count": 41
       },
       {
         "label": "hierarchical",
@@ -894,7 +896,7 @@
     "sharing": [
       {
         "label": "full",
-        "count": 351
+        "count": 353
       },
       {
         "label": "partial-adapter",
@@ -912,7 +914,7 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 190
+        "count": 191
       },
       {
         "label": "adaptive-halting",
@@ -924,7 +926,7 @@
       },
       {
         "label": "convergence",
-        "count": 48
+        "count": 49
       },
       {
         "label": "sampled-train",
@@ -934,7 +936,7 @@
     "claims": [
       {
         "label": "compute-efficiency",
-        "count": 135
+        "count": 136
       },
       {
         "label": "param-efficiency",
@@ -942,7 +944,7 @@
       },
       {
         "label": "test-time-scaling",
-        "count": 78
+        "count": 79
       },
       {
         "label": "failure-mode",
