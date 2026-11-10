@@ -31,10 +31,10 @@ links:
   arxiv: https://arxiv.org/abs/2610.07730
   alphaxiv: https://www.alphaxiv.org/abs/2610.07730
   project: https://minnesotanlp.github.io/Sansi/
-citation_source_best: semantic_scholar
-citations: 3
+citation_source_best: openalex
+citations: 4
 citation_sources:
   semantic_scholar: 3
   opencitations: 0
-  openalex: 3
-metrics_updated: '2026-11-08'
+  openalex: 4
+metrics_updated: '2026-11-10'

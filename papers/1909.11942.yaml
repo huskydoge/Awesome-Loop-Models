@@ -34,10 +34,10 @@ citation_source_best: semantic_scholar
 citations: 7910
 citation_sources:
   semantic_scholar: 7910
-  openalex: 6485
+  openalex: 6487
   opencitations: 125
 star_source_best: github_api
 github_stars: 3278
 star_sources:
   github_api: 3278
-metrics_updated: '2026-11-09'
+metrics_updated: '2026-11-10'
