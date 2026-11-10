@@ -401,9 +401,7 @@
     "papers/2611.07226.yaml",
     "papers/2611.07736.yaml",
     "papers/2611.08236.yaml",
-    "papers/2611.08741.yaml",
     "papers/2611.08977.yaml",
-    "papers/2611.09436.yaml",
     "papers/2611.09458.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
@@ -742,14 +740,14 @@
       },
       {
         "label": "architecture/depth-control",
-        "count": 79
-      },
-      {
-        "label": "scaling/test-time",
-        "count": 54
+        "count": 78
       },
       {
         "label": "capabilities/efficiency",
+        "count": 53
+      },
+      {
+        "label": "scaling/test-time",
         "count": 53
       },
       {
@@ -774,7 +772,7 @@
       },
       {
         "label": "applications/vision",
-        "count": 33
+        "count": 32
       },
       {
         "label": "applications/graphs-science",
@@ -782,7 +780,7 @@
       },
       {
         "label": "architecture/hybrid",
-        "count": 31
+        "count": 30
       },
       {
         "label": "architecture/sharing",
@@ -868,7 +866,7 @@
     "loop_topology": [
       {
         "label": "whole-stack",
-        "count": 161
+        "count": 160
       },
       {
         "label": "prelude-core-coda",
@@ -880,7 +878,7 @@
       },
       {
         "label": "partial",
-        "count": 42
+        "count": 41
       },
       {
         "label": "hierarchical",
@@ -898,7 +896,7 @@
     "sharing": [
       {
         "label": "full",
-        "count": 354
+        "count": 353
       },
       {
         "label": "partial-adapter",
@@ -906,7 +904,7 @@
       },
       {
         "label": "expert-routed",
-        "count": 13
+        "count": 12
       },
       {
         "label": "unspecified",
@@ -920,11 +918,11 @@
       },
       {
         "label": "adaptive-halting",
-        "count": 76
+        "count": 75
       },
       {
         "label": "unspecified",
-        "count": 56
+        "count": 55
       },
       {
         "label": "convergence",
@@ -938,7 +936,7 @@
     "claims": [
       {
         "label": "compute-efficiency",
-        "count": 137
+        "count": 136
       },
       {
         "label": "param-efficiency",
@@ -958,7 +956,7 @@
       },
       {
         "label": "stability",
-        "count": 45
+        "count": 44
       },
       {
         "label": "length-generalization",
