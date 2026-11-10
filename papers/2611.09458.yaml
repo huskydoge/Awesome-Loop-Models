@@ -1,0 +1,23 @@
+title: Left-Right-Consistent Iterative Stereo Matching via Cross-Injection
+authors:
+- Manuel Knott
+- Diogo Luvizon
+- Daniel Scharstein
+- Elias Vansteenkiste
+year: 2026
+published_date: "2026-11-06"
+added_date: "2026-11-09"
+venue: arXiv
+survey_section:
+- applications/flow-3d
+- architecture/residual-init
+loop_topology: partial
+sharing: full
+depth_control: fixed
+claims: []
+comparison: []
+survey_core: false
+desc: Injects the signed left-right disparity inconsistency into every step of the weight-shared GRU refiner of pretrained iterative stereo matchers, coupling the left and flipped right passes; it more than halves left-right disagreement on Booster for FoundationStereo and also lowers single-view error.
+links:
+  arxiv: https://arxiv.org/abs/2611.09458
+  github: https://github.com/facebookresearch/stereo_crossinjection

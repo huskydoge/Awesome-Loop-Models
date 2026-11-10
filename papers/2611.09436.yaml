@@ -1,0 +1,23 @@
+title: The Role Of Recurrent Refinement In Medical Image Segmentation
+authors:
+- Joao D. S. Marques
+- David Calhas
+- Arlindo L. Oliveira
+year: 2026
+published_date: "2026-11-06"
+added_date: "2026-11-09"
+venue: arXiv
+survey_section:
+- applications/vision
+- scaling/test-time
+loop_topology: partial
+sharing: full
+depth_control: unspecified
+claims:
+- stability
+comparison: []
+survey_core: false
+desc: Appends a shared CRF, modern Hopfield or ConvGRU refinement operator, re-anchored to the backbone logits each step, to a U-Net and iterates it at test time; with under 1.5% extra parameters it adds up to 1.4 Dice points on clean data and up to 17 under noise, stable beyond the training horizon.
+links:
+  arxiv: https://arxiv.org/abs/2611.09436
+  github: https://github.com/joaodsmarques/recurrencehelpsegmentation
