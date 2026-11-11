@@ -1,0 +1,21 @@
+title: 'Learning When to Think: Adaptive Internal Computation for Reinforcement Learning'
+authors:
+- Rohit Kumar Salla
+- Simon Stepputtis
+year: 2026
+published_date: "2026-11-07"
+added_date: "2026-11-10"
+venue: arXiv
+survey_section:
+- architecture/depth-control
+- applications/embodied-other
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: adaptive-halting
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Introduces AIC, an RL policy that refines its latent state with one weight-shared residual MLP and learns from the return when to halt; capped at eight steps, it averages 3.3 steps over twelve tasks and cuts per-decision latency by 31-44% versus a fixed eight-step policy on four control tasks.
+links:
+  arxiv: https://arxiv.org/abs/2611.10822
