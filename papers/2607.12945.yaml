@@ -28,10 +28,10 @@ desc: Applies recursive latent-interest refinement to sequential recommendation,
 links:
   arxiv: https://arxiv.org/abs/2607.12945
   alphaxiv: https://www.alphaxiv.org/abs/2607.12945
-citations: 2
+citations: 3
 citation_sources:
   semantic_scholar: 2
-  openalex: 1
+  openalex: 3
   opencitations: 0
-citation_source_best: semantic_scholar
-metrics_updated: '2026-11-05'
+citation_source_best: openalex
+metrics_updated: '2026-11-11'

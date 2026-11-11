@@ -29,12 +29,12 @@ citation_source_best: semantic_scholar
 citations: 71
 citation_sources:
   semantic_scholar: 71
-  openalex: 45
+  openalex: 48
   opencitations: 0
 star_source_best: github_api
 github_stars: 16
 star_sources:
   github_api: 16
-metrics_updated: '2026-11-08'
+metrics_updated: '2026-11-11'
 peer_reviewed: true
 venue_source: https://aclanthology.org/2021.findings-emnlp.344/

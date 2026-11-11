@@ -29,10 +29,10 @@ citation_source_best: semantic_scholar
 citations: 45
 citation_sources:
   semantic_scholar: 45
-  openalex: 22
+  openalex: 24
   opencitations: 0
 star_source_best: github_api
 github_stars: 67
 star_sources:
   github_api: 67
-metrics_updated: '2026-11-08'
+metrics_updated: '2026-11-11'
