@@ -1,0 +1,23 @@
+title: 'WiFo-R: Wireless Foundation Model with Recurrent Channel Representation'
+authors:
+- Xuanyu Liu
+- Keyi Cao
+- Xiang Cheng
+year: 2026
+published_date: "2026-11-08"
+added_date: "2026-11-10"
+venue: arXiv
+survey_section:
+- applications/embodied-other
+- capabilities/efficiency
+loop_topology: partial
+sharing: full
+depth_control: sampled-train
+claims:
+- param-efficiency
+comparison:
+- iso-depth
+survey_core: false
+desc: Introduces WiFo-R, a wireless channel foundation model whose two shared Transformer blocks loop up to six times over cross-attention channel queries, adding latent tokens each pass; versus untied stacking it cuts parameters from 87.85M to 26.40M and improves OOD prediction NMSE by up to 2.22 dB.
+links:
+  arxiv: https://arxiv.org/abs/2611.11275
