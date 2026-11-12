@@ -401,6 +401,7 @@
     "papers/2611.07226.yaml",
     "papers/2611.07736.yaml",
     "papers/2611.08236.yaml",
+    "papers/2611.13378.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -738,7 +739,7 @@
       },
       {
         "label": "architecture/depth-control",
-        "count": 77
+        "count": 78
       },
       {
         "label": "capabilities/efficiency",
@@ -766,7 +767,7 @@
       },
       {
         "label": "architecture/topology",
-        "count": 34
+        "count": 35
       },
       {
         "label": "applications/vision",
@@ -797,11 +798,11 @@
         "count": 27
       },
       {
-        "label": "capabilities/generalization",
-        "count": 26
+        "label": "systems/kv-memory",
+        "count": 27
       },
       {
-        "label": "systems/kv-memory",
+        "label": "capabilities/generalization",
         "count": 26
       },
       {
@@ -868,7 +869,7 @@
       },
       {
         "label": "prelude-core-coda",
-        "count": 69
+        "count": 70
       },
       {
         "label": "unspecified",
@@ -894,7 +895,7 @@
     "sharing": [
       {
         "label": "full",
-        "count": 351
+        "count": 352
       },
       {
         "label": "partial-adapter",
@@ -928,7 +929,7 @@
       },
       {
         "label": "sampled-train",
-        "count": 32
+        "count": 33
       }
     ],
     "claims": [
@@ -950,7 +951,7 @@
       },
       {
         "label": "memory-efficiency",
-        "count": 54
+        "count": 55
       },
       {
         "label": "stability",
@@ -972,7 +973,7 @@
     "comparison": [
       {
         "label": "iso-param",
-        "count": 56
+        "count": 57
       },
       {
         "label": "unclear",
