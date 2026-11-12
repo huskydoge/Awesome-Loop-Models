@@ -1,0 +1,27 @@
+title: 'Looping Deeper Without Growing the KV Cache: Recurrent Depth for Causal Encoder-Decoders'
+authors:
+- Jiaqi Leng
+- Minshen Zhang
+- Zhaofeng Sun
+- Yu-Yang Qian
+- Peng Zhao
+- Hao Zhang
+year: 2026
+published_date: "2026-11-09"
+added_date: "2026-11-11"
+venue: arXiv
+survey_section:
+- systems/kv-memory
+- architecture/topology
+- architecture/depth-control
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: sampled-train
+claims:
+- memory-efficiency
+comparison:
+- iso-param
+survey_core: false
+desc: Loops the encoder of a causal encoder-decoder under Poisson-sampled depth so the core settles to a fixed point and only last-round KV is cached, matching looped dense Transformers' validation BPB within 0.001 at 90M-340M with one-sixth of their global KV.
+links:
+  arxiv: https://arxiv.org/abs/2611.13378
