@@ -32,14 +32,14 @@ links:
   comment:
   - label: Reza Bayat reading list (#3)
     url: https://x.com/reza_byt/status/2045168844658950392?s=20
-citations: 1205
+citations: 1206
 citation_sources:
-  semantic_scholar: 1205
+  semantic_scholar: 1206
   openalex: 999
   opencitations: 4
 citation_source_best: semantic_scholar
-metrics_updated: '2026-11-12'
+metrics_updated: '2026-11-13'
 star_source_best: github_api
-github_stars: 17473
+github_stars: 17471
 star_sources:
-  github_api: 17473
+  github_api: 17471

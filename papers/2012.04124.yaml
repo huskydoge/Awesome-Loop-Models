@@ -29,9 +29,9 @@ links:
   arxiv: https://arxiv.org/abs/2012.04124
   openreview: https://openreview.net/forum?id=6UdQLhqJyFD
 citation_source_best: semantic_scholar
-citations: 96
+citations: 97
 citation_sources:
-  semantic_scholar: 96
+  semantic_scholar: 97
   openalex: 71
   opencitations: 0
-metrics_updated: '2026-11-11'
+metrics_updated: '2026-11-13'
