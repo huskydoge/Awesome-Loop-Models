@@ -24,8 +24,8 @@ links:
   arxiv: https://arxiv.org/abs/2605.19943
 citations: 26
 citation_sources:
-  semantic_scholar: 25
+  semantic_scholar: 26
   openalex: 26
   opencitations: 0
-citation_source_best: openalex
-metrics_updated: '2026-11-12'
+citation_source_best: semantic_scholar
+metrics_updated: '2026-11-14'

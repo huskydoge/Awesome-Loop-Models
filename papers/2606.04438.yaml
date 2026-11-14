@@ -31,8 +31,8 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2606.04438
 citations: 15
 citation_sources:
-  semantic_scholar: 14
+  semantic_scholar: 15
   openalex: 15
   opencitations: 0
-citation_source_best: openalex
-metrics_updated: '2026-11-12'
+citation_source_best: semantic_scholar
+metrics_updated: '2026-11-14'
