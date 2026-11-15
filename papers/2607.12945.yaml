@@ -30,8 +30,8 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2607.12945
 citations: 3
 citation_sources:
-  semantic_scholar: 2
+  semantic_scholar: 3
   openalex: 3
   opencitations: 0
-citation_source_best: openalex
-metrics_updated: '2026-11-11'
+citation_source_best: semantic_scholar
+metrics_updated: '2026-11-13'

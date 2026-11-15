@@ -31,13 +31,13 @@ links:
   hf: https://huggingface.co/collections/songdj/lev
   project: https://openlair.github.io/lev/
 citation_source_best: semantic_scholar
-citations: 1
+citations: 2
 citation_sources:
-  semantic_scholar: 1
+  semantic_scholar: 2
   openalex: 1
   opencitations: 0
 star_source_best: github_api
 github_stars: 27
 star_sources:
   github_api: 27
-metrics_updated: '2026-11-10'
+metrics_updated: '2026-11-14'
