@@ -1,0 +1,28 @@
+title: 'Energy-Based Reasoners: Your Recurrent Reasoner Should Be an Energy-Based Model'
+authors:
+- William Xingxu Chen
+- Alexi Gladstone
+- Zeyu Michael Li
+- Heng Ji
+- Yilun Du
+year: 2026
+published_date: "2026-11-06"
+added_date: "2026-11-09"
+venue: arXiv
+survey_section:
+- architecture/depth-control
+- scaling/test-time
+- training/supervision-optimization
+loop_topology: whole-stack
+sharing: full
+depth_control: convergence
+claims:
+- test-time-scaling
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Replaces a recurrent reasoner's learned transition with gradient descent on a learned latent energy from a shared two-block Transformer, so the energy also sets stopping and picks samples; it reaches 99.9% on Sudoku-Extreme with 345x less inference compute than the next-best model.
+links:
+  arxiv: https://arxiv.org/abs/2611.08977
+  github: https://github.com/wwillchen/ebr
+  project: https://energy-based-reasoners.github.io
