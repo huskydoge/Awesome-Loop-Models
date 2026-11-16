@@ -2,6 +2,7 @@
   "existing_paths": [
     "blogs/2020-01-07-adaptive-computation-time-act-transformers.yaml",
     "blogs/2026-01-12-looped-gpt.yaml",
+    "blogs/2026-03-10-llm-neuroanatomy.yaml",
     "blogs/2026-04-02-loop-cost.yaml",
     "blogs/2026-04-19-looped-transformers-controversy.yaml",
     "blogs/2026-04-21-claude-mythos-looped-llm-depth-scaling-axis.yaml",
@@ -760,19 +761,19 @@
       },
       {
         "label": "understanding/failure-modes",
-        "count": 42
+        "count": 43
+      },
+      {
+        "label": "understanding/interpretability",
+        "count": 38
       },
       {
         "label": "applications/language-speech-multimodal",
         "count": 37
       },
       {
-        "label": "understanding/interpretability",
-        "count": 37
-      },
-      {
         "label": "architecture/topology",
-        "count": 35
+        "count": 36
       },
       {
         "label": "applications/vision",
@@ -799,15 +800,15 @@
         "count": 28
       },
       {
+        "label": "training/retrofitting",
+        "count": 28
+      },
+      {
         "label": "capabilities/generalization",
         "count": 27
       },
       {
         "label": "systems/kv-memory",
-        "count": 27
-      },
-      {
-        "label": "training/retrofitting",
         "count": 27
       },
       {

@@ -29,7 +29,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§4 Architecture and Design**
 
-- `architecture/topology` — §4.1 Loop topology (14 / 35)
+- `architecture/topology` — §4.1 Loop topology (14 / 36)
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (12 / 43)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (10 / 28)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (7 / 30)
@@ -40,7 +40,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 - `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (28 / 81)
 - `training/post-training` — §5.2 Post-training and reinforcement learning (8 / 19)
-- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (16 / 27)
+- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (17 / 28)
 
 **§6 Scaling Laws**
 
@@ -58,8 +58,8 @@ List every section the entry belongs to; the first entry is its primary section.
 **§8 Understanding Why Looped Models Work**
 
 - `understanding/why` — §8.1 Why looped models work (4 / 17)
-- `understanding/interpretability` — §8.2 Mechanistic interpretability (24 / 37)
-- `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (13 / 42)
+- `understanding/interpretability` — §8.2 Mechanistic interpretability (24 / 38)
+- `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (13 / 43)
 
 **§9 Applications**
 
