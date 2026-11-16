@@ -1,0 +1,34 @@
+title: 'One Block Is Enough: LoopMR for Accelerated MRI Reconstruction'
+authors:
+- Yimeng He
+- Yibin Xie
+- Yi Zheng
+- Yifan Gao
+- Lixia Wang
+- Yin-Chen Hsu
+- Yufeng Wang
+- Meng Lu
+- Debiao Li
+- Xiuzhen Huang
+year: 2026
+published_date: '2026-11-11'
+added_date: "2026-11-15"
+venue: arXiv
+survey_section:
+- applications/vision
+- capabilities/efficiency
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- iso-depth
+survey_core: false
+desc: Unrolls accelerated MRI reconstruction with one shared Restormer block that
+  receives data-consistency inputs and latent images at every iteration, beating
+  PromptMR+ in PSNR and SSIM on brain, knee, heart and carotid data with 10.3M versus
+  92.9M parameters.
+links:
+  arxiv: https://arxiv.org/abs/2611.14947
+  github: https://github.com/hym97/LoopMR
