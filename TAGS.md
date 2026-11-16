@@ -29,11 +29,11 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§4 Architecture and Design**
 
-- `architecture/topology` — §4.1 Loop topology (14 / 34)
+- `architecture/topology` — §4.1 Loop topology (14 / 35)
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (12 / 43)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (10 / 28)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (7 / 30)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (26 / 79)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (26 / 80)
 - `architecture/hybrid` — §4.6 Hybrid looped architectures (20 / 30)
 
 **§5 Learning Algorithms**
@@ -50,7 +50,7 @@ List every section the entry belongs to; the first entry is its primary section.
 **§7 Systems and Infrastructure**
 
 - `systems/quantization-edge` — §7.1 Quantization and edge deployment (10 / 18)
-- `systems/kv-memory` — §7.2 KV cache and memory (15 / 26)
+- `systems/kv-memory` — §7.2 KV cache and memory (16 / 27)
 - `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (10 / 15)
 
 ### Part IV. Understanding and Applications
@@ -82,7 +82,7 @@ List every section the entry belongs to; the first entry is its primary section.
 Where the loop sits in the network (one value, papers only).
 
 - `whole-stack` (161)
-- `prelude-core-coda` (71)
+- `prelude-core-coda` (72)
 - `partial` (41)
 - `hierarchical` (39)
 - `shifted-parallel` (10)
@@ -93,7 +93,7 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (356)
+- `full` (357)
 - `partial-adapter` (27)
 - `expert-routed` (12)
 - `unspecified` (10)
@@ -103,7 +103,7 @@ How parameters are shared across iterations (one value, papers only).
 How the number of iterations is decided (one value, papers only).
 
 - `fixed` (192)
-- `sampled-train` (33)
+- `sampled-train` (34)
 - `adaptive-halting` (76)
 - `convergence` (49)
 - `unspecified` (55)
@@ -114,7 +114,7 @@ What the paper argues looping buys or costs (list, papers only).
 
 - `param-efficiency` (120)
 - `compute-efficiency` (137)
-- `memory-efficiency` (54)
+- `memory-efficiency` (55)
 - `data-efficiency` (20)
 - `expressivity` (30)
 - `length-generalization` (38)
@@ -126,7 +126,7 @@ What the paper argues looping buys or costs (list, papers only).
 
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
-- `iso-param` (56)
+- `iso-param` (57)
 - `iso-flop` (40)
 - `iso-depth` (36)
 - `unclear` (52)
