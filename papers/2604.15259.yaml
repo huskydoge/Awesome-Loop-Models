@@ -24,13 +24,13 @@ desc: Analyzes stability and generalization in looped transformers through a fix
 links:
   arxiv: https://arxiv.org/abs/2604.15259
   github: https://github.com/ashlab11/generalization
-citations: 16
+citations: 18
 citation_sources:
   semantic_scholar: 16
-  openalex: 15
+  openalex: 18
   opencitations: 0
-citation_source_best: semantic_scholar
-metrics_updated: '2026-11-08'
+citation_source_best: openalex
+metrics_updated: '2026-11-16'
 github_stars: 2
 star_sources:
   github_api: 2

@@ -44,8 +44,8 @@ citation_sources:
 citation_source_best: semantic_scholar
 metrics_updated: '2026-11-16'
 star_source_best: github_api
-github_stars: 553
+github_stars: 554
 star_sources:
-  github_api: 553
+  github_api: 554
 peer_reviewed: true
 venue_source: https://proceedings.mlr.press/v198/ibarz22a.html
