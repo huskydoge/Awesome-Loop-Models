@@ -374,7 +374,6 @@
     "papers/2610.35556.yaml",
     "papers/2610.37833.yaml",
     "papers/2610.37903.yaml",
-    "papers/2610.38382.yaml",
     "papers/2610.38422.yaml",
     "papers/2610.38479.yaml",
     "papers/2610.38822.yaml",
@@ -738,7 +737,7 @@
       },
       {
         "label": "architecture/depth-control",
-        "count": 77
+        "count": 76
       },
       {
         "label": "capabilities/efficiency",
@@ -746,7 +745,7 @@
       },
       {
         "label": "scaling/test-time",
-        "count": 52
+        "count": 51
       },
       {
         "label": "architecture/residual-init",
@@ -789,11 +788,11 @@
         "count": 28
       },
       {
-        "label": "training/retrofitting",
-        "count": 28
+        "label": "applications/embodied-other",
+        "count": 27
       },
       {
-        "label": "applications/embodied-other",
+        "label": "training/retrofitting",
         "count": 27
       },
       {
@@ -875,11 +874,11 @@
         "count": 45
       },
       {
-        "label": "partial",
-        "count": 40
+        "label": "hierarchical",
+        "count": 39
       },
       {
-        "label": "hierarchical",
+        "label": "partial",
         "count": 39
       },
       {
@@ -894,7 +893,7 @@
     "sharing": [
       {
         "label": "full",
-        "count": 351
+        "count": 350
       },
       {
         "label": "partial-adapter",
@@ -916,7 +915,7 @@
       },
       {
         "label": "adaptive-halting",
-        "count": 75
+        "count": 74
       },
       {
         "label": "unspecified",
@@ -942,7 +941,7 @@
       },
       {
         "label": "test-time-scaling",
-        "count": 78
+        "count": 77
       },
       {
         "label": "failure-mode",
