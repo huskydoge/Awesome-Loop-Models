@@ -407,6 +407,8 @@
     "papers/2611.11937.yaml",
     "papers/2611.12293.yaml",
     "papers/2611.13378.yaml",
+    "papers/2611.14947.yaml",
+    "papers/2611.16265.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -748,15 +750,15 @@
       },
       {
         "label": "capabilities/efficiency",
-        "count": 54
+        "count": 55
       },
       {
         "label": "scaling/test-time",
-        "count": 53
+        "count": 54
       },
       {
         "label": "architecture/residual-init",
-        "count": 43
+        "count": 44
       },
       {
         "label": "understanding/failure-modes",
@@ -776,7 +778,7 @@
       },
       {
         "label": "applications/vision",
-        "count": 32
+        "count": 33
       },
       {
         "label": "applications/graphs-science",
@@ -870,7 +872,7 @@
     "loop_topology": [
       {
         "label": "whole-stack",
-        "count": 161
+        "count": 163
       },
       {
         "label": "prelude-core-coda",
@@ -900,11 +902,11 @@
     "sharing": [
       {
         "label": "full",
-        "count": 357
+        "count": 358
       },
       {
         "label": "partial-adapter",
-        "count": 27
+        "count": 28
       },
       {
         "label": "expert-routed",
@@ -918,7 +920,7 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 192
+        "count": 194
       },
       {
         "label": "adaptive-halting",
@@ -944,7 +946,7 @@
       },
       {
         "label": "param-efficiency",
-        "count": 120
+        "count": 121
       },
       {
         "label": "test-time-scaling",
@@ -960,7 +962,7 @@
       },
       {
         "label": "stability",
-        "count": 44
+        "count": 45
       },
       {
         "label": "length-generalization",
@@ -990,7 +992,7 @@
       },
       {
         "label": "iso-depth",
-        "count": 36
+        "count": 37
       }
     ]
   }

@@ -21,7 +21,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§3 Capabilities, Benefits and Trade-offs**
 
-- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (8 / 54)
+- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (8 / 55)
 - `capabilities/expressivity` — §3.2 Expressivity and reasoning capacity (20 / 24)
 - `capabilities/generalization` — §3.3 Length, easy-to-hard, and compositional generalization (13 / 27)
 
@@ -30,7 +30,7 @@ List every section the entry belongs to; the first entry is its primary section.
 **§4 Architecture and Design**
 
 - `architecture/topology` — §4.1 Loop topology (14 / 35)
-- `architecture/residual-init` — §4.2 Residual manipulation and initialization (12 / 43)
+- `architecture/residual-init` — §4.2 Residual manipulation and initialization (13 / 44)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (10 / 28)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (7 / 30)
 - `architecture/depth-control` — §4.5 Controlling recurrence depth (26 / 80)
@@ -45,7 +45,7 @@ List every section the entry belongs to; the first entry is its primary section.
 **§6 Scaling Laws**
 
 - `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (11 / 24)
-- `scaling/test-time` — §6.2 Test-time scaling (14 / 53)
+- `scaling/test-time` — §6.2 Test-time scaling (14 / 54)
 
 **§7 Systems and Infrastructure**
 
@@ -64,7 +64,7 @@ List every section the entry belongs to; the first entry is its primary section.
 **§9 Applications**
 
 - `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (29 / 37)
-- `applications/vision` — §9.2 Visual recognition, restoration, and generation (23 / 32)
+- `applications/vision` — §9.2 Visual recognition, restoration, and generation (24 / 33)
 - `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (10 / 10)
 - `applications/graphs-science` — §9.4 Graphs, structured data, and scientific modeling (21 / 31)
 - `applications/embodied-other` — §9.5 Embodied AI and other domains (25 / 29)
@@ -81,7 +81,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 Where the loop sits in the network (one value, papers only).
 
-- `whole-stack` (161)
+- `whole-stack` (163)
 - `prelude-core-coda` (72)
 - `partial` (41)
 - `hierarchical` (39)
@@ -93,8 +93,8 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (357)
-- `partial-adapter` (27)
+- `full` (358)
+- `partial-adapter` (28)
 - `expert-routed` (12)
 - `unspecified` (10)
 
@@ -102,7 +102,7 @@ How parameters are shared across iterations (one value, papers only).
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (192)
+- `fixed` (194)
 - `sampled-train` (34)
 - `adaptive-halting` (76)
 - `convergence` (49)
@@ -112,14 +112,14 @@ How the number of iterations is decided (one value, papers only).
 
 What the paper argues looping buys or costs (list, papers only).
 
-- `param-efficiency` (120)
+- `param-efficiency` (121)
 - `compute-efficiency` (137)
 - `memory-efficiency` (55)
 - `data-efficiency` (20)
 - `expressivity` (30)
 - `length-generalization` (38)
 - `test-time-scaling` (79)
-- `stability` (44)
+- `stability` (45)
 - `failure-mode` (60)
 
 ## Looped-vs-untied comparison (`comparison`)
@@ -128,5 +128,5 @@ Which quantity is held fixed when the paper compares looped and untied models (l
 
 - `iso-param` (57)
 - `iso-flop` (40)
-- `iso-depth` (36)
+- `iso-depth` (37)
 - `unclear` (52)
