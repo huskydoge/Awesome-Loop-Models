@@ -3,8 +3,8 @@ authors:
 - Rohit Kumar Salla
 - Simon Stepputtis
 year: 2026
-published_date: "2026-11-07"
-added_date: "2026-11-10"
+published_date: '2026-11-07'
+added_date: '2026-11-10'
 venue: arXiv
 survey_section:
 - architecture/depth-control
@@ -16,6 +16,16 @@ claims:
 - compute-efficiency
 comparison: []
 survey_core: false
-desc: Introduces AIC, an RL policy that refines its latent state with one weight-shared residual MLP and learns from the return when to halt; capped at eight steps, it averages 3.3 steps over twelve tasks and cuts per-decision latency by 31-44% versus a fixed eight-step policy on four control tasks.
+desc: Introduces AIC, an RL policy that refines its latent state with one weight-shared
+  residual MLP and learns from the return when to halt; capped at eight steps, it
+  averages 3.3 steps over twelve tasks and cuts per-decision latency by 31-44% versus
+  a fixed eight-step policy on four control tasks.
 links:
   arxiv: https://arxiv.org/abs/2611.10822
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-16'

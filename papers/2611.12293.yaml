@@ -1,4 +1,5 @@
-title: 'Depth as a Candidate Source: Portfolio Allocation for Recurrent Test-Time Scaling in Large Language Models'
+title: 'Depth as a Candidate Source: Portfolio Allocation for Recurrent Test-Time
+  Scaling in Large Language Models'
 authors:
 - Chaoyuan Hao
 - Wentao Yue
@@ -10,8 +11,8 @@ authors:
 - Hanwen Du
 - Youhua Li
 year: 2026
-published_date: "2026-11-09"
-added_date: "2026-11-10"
+published_date: '2026-11-09'
+added_date: '2026-11-10'
 venue: arXiv
 survey_section:
 - scaling/test-time
@@ -24,6 +25,16 @@ claims:
 - failure-mode
 comparison: []
 survey_core: false
-desc: Shows that answers decoded from the frozen Huginn recurrent-depth model at different loop counts solve non-nested question sets, and allocates a shared budget across depths, fixed or PPO-guided, raising oracle coverage by up to 9.25 points at matched candidate count and cost.
+desc: Shows that answers decoded from the frozen Huginn recurrent-depth model at different
+  loop counts solve non-nested question sets, and allocates a shared budget across
+  depths, fixed or PPO-guided, raising oracle coverage by up to 9.25 points at matched
+  candidate count and cost.
 links:
   arxiv: https://arxiv.org/abs/2611.12293
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-16'

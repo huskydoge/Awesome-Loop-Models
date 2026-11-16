@@ -1,9 +1,10 @@
-title: 'Attention Is Only as Good as Its Witnesses: When Higher-Order Layers Help, and When They Do Not'
+title: 'Attention Is Only as Good as Its Witnesses: When Higher-Order Layers Help,
+  and When They Do Not'
 authors:
 - Mostafa 'Neo' Mohsenvand
 year: 2026
-published_date: "2026-11-09"
-added_date: "2026-11-10"
+published_date: '2026-11-09'
+added_date: '2026-11-10'
 venue: arXiv
 survey_section:
 - capabilities/expressivity
@@ -17,8 +18,22 @@ claims:
 - param-efficiency
 comparison: []
 survey_core: false
-desc: Casts attention-style layers as sums over witness families read at a temperature, proving that L pair layers, or one layer looped L times, reach exactly 2^L-1 search steps; one looped 186K-parameter block matches or beats the 73M-parameter FloydNet on 9 of 12 CLRS-30 graph tasks.
+desc: Casts attention-style layers as sums over witness families read at a temperature,
+  proving that L pair layers, or one layer looped L times, reach exactly 2^L-1 search
+  steps; one looped 186K-parameter block matches or beats the 73M-parameter FloydNet
+  on 9 of 12 CLRS-30 graph tasks.
 links:
   arxiv: https://arxiv.org/abs/2611.11937
   github: https://github.com/NeoVand/witnesses
   project: https://neovand.github.io/witnesses
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-11-16'

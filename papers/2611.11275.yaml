@@ -4,8 +4,8 @@ authors:
 - Keyi Cao
 - Xiang Cheng
 year: 2026
-published_date: "2026-11-08"
-added_date: "2026-11-10"
+published_date: '2026-11-08'
+added_date: '2026-11-10'
 venue: arXiv
 survey_section:
 - applications/embodied-other
@@ -18,6 +18,16 @@ claims:
 comparison:
 - iso-depth
 survey_core: false
-desc: Introduces WiFo-R, a wireless channel foundation model whose two shared Transformer blocks loop up to six times over cross-attention channel queries, adding latent tokens each pass; versus untied stacking it cuts parameters from 87.85M to 26.40M and improves OOD prediction NMSE by up to 2.22 dB.
+desc: Introduces WiFo-R, a wireless channel foundation model whose two shared Transformer
+  blocks loop up to six times over cross-attention channel queries, adding latent
+  tokens each pass; versus untied stacking it cuts parameters from 87.85M to 26.40M
+  and improves OOD prediction NMSE by up to 2.22 dB.
 links:
   arxiv: https://arxiv.org/abs/2611.11275
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-16'

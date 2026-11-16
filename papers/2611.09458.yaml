@@ -5,8 +5,8 @@ authors:
 - Daniel Scharstein
 - Elias Vansteenkiste
 year: 2026
-published_date: "2026-11-06"
-added_date: "2026-11-09"
+published_date: '2026-11-06'
+added_date: '2026-11-09'
 venue: arXiv
 survey_section:
 - applications/flow-3d
@@ -17,7 +17,17 @@ depth_control: fixed
 claims: []
 comparison: []
 survey_core: false
-desc: Injects the signed left-right disparity inconsistency into every step of the weight-shared GRU refiner of pretrained iterative stereo matchers, coupling the left and flipped right passes; it more than halves left-right disagreement on Booster for FoundationStereo and also lowers single-view error.
+desc: Injects the signed left-right disparity inconsistency into every step of the
+  weight-shared GRU refiner of pretrained iterative stereo matchers, coupling the
+  left and flipped right passes; it more than halves left-right disagreement on Booster
+  for FoundationStereo and also lowers single-view error.
 links:
   arxiv: https://arxiv.org/abs/2611.09458
   github: https://github.com/facebookresearch/stereo_crossinjection
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-16'
