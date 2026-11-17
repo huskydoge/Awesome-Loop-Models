@@ -25,14 +25,14 @@ desc: Recasts recurrent optical-flow estimation as an implicit fixed-point layer
 links:
   arxiv: https://arxiv.org/abs/2204.08442
   github: https://github.com/locuslab/deq-flow
-citation_source_best: semantic_scholar
-citations: 101
+citation_source_best: openalex
+citations: 103
 citation_sources:
   semantic_scholar: 101
-  openalex: 57
+  openalex: 103
   opencitations: 0
 star_source_best: github_api
 github_stars: 180
 star_sources:
   github_api: 180
-metrics_updated: '2026-11-11'
+metrics_updated: '2026-11-17'

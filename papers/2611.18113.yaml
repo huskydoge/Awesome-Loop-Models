@@ -1,28 +1,41 @@
-title: "Folding Language Models into Themselves"
+title: Folding Language Models into Themselves
 authors:
-  - "Ziyang Zhang"
-  - "Yubin Jing"
-  - "Yuyao Li"
-  - "Haofan Wang"
-  - "Yichen Gong"
+- Ziyang Zhang
+- Yubin Jing
+- Yuyao Li
+- Haofan Wang
+- Yichen Gong
 year: 2026
-published_date: "2026-11-13"
-added_date: "2026-11-16"
-venue: "arXiv"
+published_date: '2026-11-13'
+added_date: '2026-11-16'
+venue: arXiv
 survey_section:
-  - "training/retrofitting"
-  - "architecture/sharing"
-  - "capabilities/efficiency"
-loop_topology: "partial"
-sharing: "partial-adapter"
-depth_control: "fixed"
+- training/retrofitting
+- architecture/sharing
+- capabilities/efficiency
+loop_topology: partial
+sharing: partial-adapter
+depth_control: fixed
 claims:
-  - "param-efficiency"
-  - "data-efficiency"
+- param-efficiency
+- data-efficiency
 comparison:
-  - "iso-param"
+- iso-param
 survey_core: false
-desc: "Introduces Concertina, which folds each group of adjacent pretrained decoder layers into one shared block looped N times with SVD-initialized per-step LoRA mixed by a per-token gate; a 2.27B fold of Qwen3-4B distilled on 22B tokens keeps 84% of the teacher and beats Qwen3-1.7B on six of eight benchmarks."
+desc: Introduces Concertina, which folds each group of adjacent pretrained decoder
+  layers into one shared block looped N times with SVD-initialized per-step LoRA mixed
+  by a per-token gate; a 2.27B fold of Qwen3-4B distilled on 22B tokens keeps 84%
+  of the teacher and beats Qwen3-1.7B on six of eight benchmarks.
 links:
-  arxiv: "https://arxiv.org/abs/2611.18113"
-  github: "https://github.com/myboker/concertina"
+  arxiv: https://arxiv.org/abs/2611.18113
+  github: https://github.com/myboker/concertina
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-11-17'

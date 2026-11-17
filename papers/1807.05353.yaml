@@ -23,10 +23,10 @@ desc: Shares one encoder or decoder layer across all stacked depths in neural ma
 links:
   arxiv: https://arxiv.org/abs/1807.05353
   paper: https://ojs.aaai.org/index.php/AAAI/article/view/4590
-citation_source_best: semantic_scholar
-citations: 73
+citation_source_best: openalex
+citations: 86
 citation_sources:
   semantic_scholar: 73
-  openalex: 55
+  openalex: 86
   opencitations: 0
-metrics_updated: '2026-11-11'
+metrics_updated: '2026-11-17'
