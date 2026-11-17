@@ -408,6 +408,7 @@
     "papers/2611.11937.yaml",
     "papers/2611.12293.yaml",
     "papers/2611.13378.yaml",
+    "papers/2611.18113.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -749,7 +750,7 @@
       },
       {
         "label": "capabilities/efficiency",
-        "count": 54
+        "count": 55
       },
       {
         "label": "scaling/test-time",
@@ -784,11 +785,11 @@
         "count": 31
       },
       {
-        "label": "architecture/hybrid",
-        "count": 30
+        "label": "architecture/sharing",
+        "count": 31
       },
       {
-        "label": "architecture/sharing",
+        "label": "architecture/hybrid",
         "count": 30
       },
       {
@@ -796,11 +797,11 @@
         "count": 29
       },
       {
-        "label": "architecture/state-memory",
-        "count": 28
+        "label": "training/retrofitting",
+        "count": 29
       },
       {
-        "label": "training/retrofitting",
+        "label": "architecture/state-memory",
         "count": 28
       },
       {
@@ -883,7 +884,7 @@
       },
       {
         "label": "partial",
-        "count": 41
+        "count": 42
       },
       {
         "label": "hierarchical",
@@ -905,7 +906,7 @@
       },
       {
         "label": "partial-adapter",
-        "count": 27
+        "count": 28
       },
       {
         "label": "expert-routed",
@@ -919,7 +920,7 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 192
+        "count": 193
       },
       {
         "label": "adaptive-halting",
@@ -945,7 +946,7 @@
       },
       {
         "label": "param-efficiency",
-        "count": 120
+        "count": 121
       },
       {
         "label": "test-time-scaling",
@@ -973,13 +974,13 @@
       },
       {
         "label": "data-efficiency",
-        "count": 20
+        "count": 21
       }
     ],
     "comparison": [
       {
         "label": "iso-param",
-        "count": 57
+        "count": 58
       },
       {
         "label": "unclear",
