@@ -21,9 +21,9 @@ desc: Introduces Looped Latent Attention, a cross-loop KV-cache compression meth
 links:
   arxiv: https://arxiv.org/abs/2607.15456
   alphaxiv: https://www.alphaxiv.org/abs/2607.15456
-citations: 14
+citations: 15
 citation_sources:
-  semantic_scholar: 14
+  semantic_scholar: 15
   openalex: 14
   opencitations: 0
 citation_source_best: semantic_scholar
