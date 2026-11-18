@@ -409,6 +409,10 @@
     "papers/2611.12293.yaml",
     "papers/2611.13378.yaml",
     "papers/2611.18113.yaml",
+    "papers/2611.19446.yaml",
+    "papers/2611.19649.yaml",
+    "papers/2611.19827.yaml",
+    "papers/2611.19896.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -757,20 +761,20 @@
         "count": 53
       },
       {
+        "label": "understanding/failure-modes",
+        "count": 44
+      },
+      {
         "label": "architecture/residual-init",
         "count": 43
       },
       {
-        "label": "understanding/failure-modes",
-        "count": 43
+        "label": "applications/language-speech-multimodal",
+        "count": 38
       },
       {
         "label": "understanding/interpretability",
         "count": 38
-      },
-      {
-        "label": "applications/language-speech-multimodal",
-        "count": 37
       },
       {
         "label": "architecture/topology",
@@ -785,11 +789,15 @@
         "count": 31
       },
       {
+        "label": "architecture/hybrid",
+        "count": 31
+      },
+      {
         "label": "architecture/sharing",
         "count": 31
       },
       {
-        "label": "architecture/hybrid",
+        "label": "training/retrofitting",
         "count": 30
       },
       {
@@ -797,19 +805,15 @@
         "count": 29
       },
       {
-        "label": "training/retrofitting",
-        "count": 29
-      },
-      {
         "label": "architecture/state-memory",
         "count": 28
       },
       {
-        "label": "capabilities/generalization",
-        "count": 27
+        "label": "systems/kv-memory",
+        "count": 28
       },
       {
-        "label": "systems/kv-memory",
+        "label": "capabilities/generalization",
         "count": 27
       },
       {
@@ -829,12 +833,12 @@
         "count": 18
       },
       {
-        "label": "understanding/why",
+        "label": "systems/batching-parallel",
         "count": 17
       },
       {
-        "label": "systems/batching-parallel",
-        "count": 15
+        "label": "understanding/why",
+        "count": 17
       },
       {
         "label": "open-problems/diffusion",
@@ -872,11 +876,11 @@
     "loop_topology": [
       {
         "label": "whole-stack",
-        "count": 161
+        "count": 164
       },
       {
         "label": "prelude-core-coda",
-        "count": 72
+        "count": 73
       },
       {
         "label": "unspecified",
@@ -902,11 +906,11 @@
     "sharing": [
       {
         "label": "full",
-        "count": 357
+        "count": 360
       },
       {
         "label": "partial-adapter",
-        "count": 28
+        "count": 29
       },
       {
         "label": "expert-routed",
@@ -920,7 +924,7 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 193
+        "count": 197
       },
       {
         "label": "adaptive-halting",
@@ -942,7 +946,7 @@
     "claims": [
       {
         "label": "compute-efficiency",
-        "count": 137
+        "count": 139
       },
       {
         "label": "param-efficiency",
@@ -954,11 +958,11 @@
       },
       {
         "label": "failure-mode",
-        "count": 60
+        "count": 61
       },
       {
         "label": "memory-efficiency",
-        "count": 55
+        "count": 56
       },
       {
         "label": "stability",
@@ -980,7 +984,7 @@
     "comparison": [
       {
         "label": "iso-param",
-        "count": 58
+        "count": 60
       },
       {
         "label": "unclear",
