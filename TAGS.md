@@ -34,13 +34,13 @@ List every section the entry belongs to; the first entry is its primary section.
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (10 / 28)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (7 / 31)
 - `architecture/depth-control` — §4.5 Controlling recurrence depth (26 / 80)
-- `architecture/hybrid` — §4.6 Hybrid looped architectures (20 / 30)
+- `architecture/hybrid` — §4.6 Hybrid looped architectures (20 / 31)
 
 **§5 Learning Algorithms**
 
 - `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (28 / 81)
 - `training/post-training` — §5.2 Post-training and reinforcement learning (8 / 19)
-- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (18 / 29)
+- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (18 / 30)
 
 **§6 Scaling Laws**
 
@@ -50,8 +50,8 @@ List every section the entry belongs to; the first entry is its primary section.
 **§7 Systems and Infrastructure**
 
 - `systems/quantization-edge` — §7.1 Quantization and edge deployment (10 / 18)
-- `systems/kv-memory` — §7.2 KV cache and memory (16 / 27)
-- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (10 / 15)
+- `systems/kv-memory` — §7.2 KV cache and memory (17 / 28)
+- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (12 / 17)
 
 ### Part IV. Understanding and Applications
 
@@ -59,11 +59,11 @@ List every section the entry belongs to; the first entry is its primary section.
 
 - `understanding/why` — §8.1 Why looped models work (4 / 17)
 - `understanding/interpretability` — §8.2 Mechanistic interpretability (24 / 38)
-- `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (13 / 43)
+- `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (13 / 44)
 
 **§9 Applications**
 
-- `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (29 / 37)
+- `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (30 / 38)
 - `applications/vision` — §9.2 Visual recognition, restoration, and generation (23 / 32)
 - `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (10 / 10)
 - `applications/graphs-science` — §9.4 Graphs, structured data, and scientific modeling (21 / 31)
@@ -81,8 +81,8 @@ List every section the entry belongs to; the first entry is its primary section.
 
 Where the loop sits in the network (one value, papers only).
 
-- `whole-stack` (161)
-- `prelude-core-coda` (72)
+- `whole-stack` (164)
+- `prelude-core-coda` (73)
 - `partial` (42)
 - `hierarchical` (39)
 - `shifted-parallel` (10)
@@ -93,8 +93,8 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (357)
-- `partial-adapter` (28)
+- `full` (360)
+- `partial-adapter` (29)
 - `expert-routed` (12)
 - `unspecified` (10)
 
@@ -102,7 +102,7 @@ How parameters are shared across iterations (one value, papers only).
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (193)
+- `fixed` (197)
 - `sampled-train` (34)
 - `adaptive-halting` (76)
 - `convergence` (49)
@@ -113,20 +113,20 @@ How the number of iterations is decided (one value, papers only).
 What the paper argues looping buys or costs (list, papers only).
 
 - `param-efficiency` (121)
-- `compute-efficiency` (137)
-- `memory-efficiency` (55)
+- `compute-efficiency` (139)
+- `memory-efficiency` (56)
 - `data-efficiency` (21)
 - `expressivity` (30)
 - `length-generalization` (38)
 - `test-time-scaling` (79)
 - `stability` (44)
-- `failure-mode` (60)
+- `failure-mode` (61)
 
 ## Looped-vs-untied comparison (`comparison`)
 
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
-- `iso-param` (58)
+- `iso-param` (60)
 - `iso-flop` (40)
 - `iso-depth` (36)
 - `unclear` (52)

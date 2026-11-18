@@ -1,0 +1,25 @@
+title: Architectures and KV Replay for Depth-Recurrent Language Models
+authors:
+- Lucia Licakova
+- Niklas Schmidinger
+- Lukas Hauzenberger
+- Sebastian Böck
+- Sepp Hochreiter
+year: 2026
+published_date: "2026-11-14"
+added_date: "2026-11-17"
+venue: arXiv
+survey_section:
+- systems/kv-memory
+- architecture/hybrid
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+comparison:
+- iso-param
+survey_core: false
+desc: Studies how to cut the per-iteration KV cache of depth-recurrent language models, comparing looped hybrids with mLSTM or Gated DeltaNet mixers, a Parcae-style workspace, and recurrent KV replay; replaying KV from every third of six loops scores 18.71 CORE against 18.96 with separate caches.
+links:
+  arxiv: https://arxiv.org/abs/2611.19446
