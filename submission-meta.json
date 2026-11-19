@@ -413,6 +413,7 @@
     "papers/2611.19649.yaml",
     "papers/2611.19827.yaml",
     "papers/2611.19896.yaml",
+    "papers/2611.20404.yaml",
     "papers/2611.21921.yaml",
     "papers/2611.22426.yaml",
     "papers/2611.22728.yaml",
@@ -759,7 +760,7 @@
       },
       {
         "label": "capabilities/efficiency",
-        "count": 55
+        "count": 56
       },
       {
         "label": "scaling/test-time",
@@ -822,11 +823,11 @@
         "count": 28
       },
       {
-        "label": "capabilities/expressivity",
-        "count": 24
+        "label": "scaling/compute-optimal",
+        "count": 25
       },
       {
-        "label": "scaling/compute-optimal",
+        "label": "capabilities/expressivity",
         "count": 24
       },
       {
@@ -858,11 +859,11 @@
         "count": 10
       },
       {
-        "label": "foundations/algorithmic",
-        "count": 8
+        "label": "open-problems/depth-into-time",
+        "count": 9
       },
       {
-        "label": "open-problems/depth-into-time",
+        "label": "foundations/algorithmic",
         "count": 8
       },
       {
@@ -905,13 +906,13 @@
       },
       {
         "label": "shifted-parallel",
-        "count": 11
+        "count": 12
       }
     ],
     "sharing": [
       {
         "label": "full",
-        "count": 365
+        "count": 366
       },
       {
         "label": "partial-adapter",
@@ -929,7 +930,7 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 202
+        "count": 203
       },
       {
         "label": "adaptive-halting",
@@ -951,7 +952,7 @@
     "claims": [
       {
         "label": "compute-efficiency",
-        "count": 141
+        "count": 142
       },
       {
         "label": "param-efficiency",
@@ -983,13 +984,13 @@
       },
       {
         "label": "data-efficiency",
-        "count": 21
+        "count": 22
       }
     ],
     "comparison": [
       {
         "label": "iso-param",
-        "count": 62
+        "count": 63
       },
       {
         "label": "unclear",
@@ -997,7 +998,7 @@
       },
       {
         "label": "iso-flop",
-        "count": 40
+        "count": 41
       },
       {
         "label": "iso-depth",

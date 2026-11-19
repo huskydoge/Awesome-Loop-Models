@@ -1,0 +1,29 @@
+title: "Latent Feedback Is a Compute and Data Amplifier"
+authors:
+  - "Benhao Huang"
+  - "Chaitanya Dwivedi"
+  - "Xuezhe Ma"
+  - "Alexander Moreno"
+  - "Hector Liu"
+year: 2026
+published_date: "2026-11-16"
+added_date: "2026-11-18"
+venue: "arXiv"
+survey_section:
+  - "open-problems/depth-into-time"
+  - "scaling/compute-optimal"
+  - "capabilities/efficiency"
+loop_topology: "shifted-parallel"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "compute-efficiency"
+  - "data-efficiency"
+comparison:
+  - "iso-param"
+  - "iso-flop"
+survey_core: false
+desc: "Compares a latent-feedback Transformer, which feeds each token's top-layer state into the next token's input, with a same-size Transformer given equal compute or epochs from 60M to 778M parameters; feedback saves up to 48% of compute and 47% of unique data once data per parameter is ample."
+links:
+  arxiv: "https://arxiv.org/abs/2611.20404"
+  github: "https://github.com/ifm-ai/LoRM"
