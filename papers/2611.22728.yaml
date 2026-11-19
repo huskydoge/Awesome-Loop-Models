@@ -1,0 +1,26 @@
+title: "LoopZip: Visual Token Compression for Efficient Looped Vision-Language Models"
+authors:
+  - "Weizhong Huang"
+  - "Zhicheng Liu"
+  - "Yan Zhang"
+  - "Fei Chao"
+  - "Xiawu Zheng"
+  - "Liujuan Cao"
+year: 2026
+published_date: "2026-11-17"
+added_date: "2026-11-18"
+venue: "arXiv"
+survey_section:
+  - "systems/quantization-edge"
+  - "applications/language-speech-multimodal"
+loop_topology: "unspecified"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "compute-efficiency"
+  - "memory-efficiency"
+comparison: []
+survey_core: false
+desc: "Compresses visual tokens in looped vision-language models without training by selecting tokens from attention over the first two calls of a shared layer and fitting one shared value correction to both calls; LoopVL-1B keeps 97.16% of its accuracy and runs 2.01-2.47x faster."
+links:
+  arxiv: "https://arxiv.org/abs/2611.22728"
