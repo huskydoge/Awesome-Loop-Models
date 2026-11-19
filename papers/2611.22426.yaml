@@ -1,0 +1,31 @@
+title: "InfuseLoop: Cross-Trajectory Latent Injection for Scalable Parallel Looped Transformers"
+authors:
+  - "Zhaofeng Sun"
+  - "Lanxiang Hu"
+  - "Yu-Yang Qian"
+  - "Jiaqi Leng"
+  - "Yuanbo Yang"
+  - "Chi Zhang"
+  - "Youyou Lu"
+  - "Peng Zhao"
+  - "Hao Zhang"
+year: 2026
+published_date: "2026-11-17"
+added_date: "2026-11-18"
+venue: "arXiv"
+survey_section:
+  - "architecture/state-memory"
+  - "open-problems/depth-into-time"
+  - "systems/batching-parallel"
+loop_topology: "shifted-parallel"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "stability"
+  - "param-efficiency"
+comparison:
+  - "iso-param"
+survey_core: false
+desc: "Feeds already-computed hidden states from later token trajectories into each loop of a parallel looped Transformer through lightweight attention residuals; at eight loops this removes training-loss spikes and cuts perplexity 3.4-17.1% over vanilla parallel loops for 0.3% extra decoding time."
+links:
+  arxiv: "https://arxiv.org/abs/2611.22426"
