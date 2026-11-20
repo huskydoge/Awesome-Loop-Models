@@ -28,9 +28,9 @@ desc: Adds a persistent hidden state to a timestep-free denoiser built from a lo
 links:
   arxiv: https://arxiv.org/abs/2609.01449
 citation_source_best: semantic_scholar
-citations: 3
+citations: 4
 citation_sources:
-  semantic_scholar: 3
+  semantic_scholar: 4
   openalex: 1
   opencitations: 0
-metrics_updated: '2026-11-08'
+metrics_updated: '2026-11-20'

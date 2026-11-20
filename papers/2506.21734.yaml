@@ -34,11 +34,11 @@ links:
   github: https://github.com/sapientinc/HRM
 citations: 285
 citation_sources:
-  semantic_scholar: 213
+  semantic_scholar: 214
   openalex: 285
   opencitations: 0
 citation_source_best: openalex
-metrics_updated: '2026-11-19'
+metrics_updated: '2026-11-20'
 star_source_best: github_api
 github_stars: 12669
 star_sources:

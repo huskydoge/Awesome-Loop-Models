@@ -1,11 +1,11 @@
-title: 'Simpler Tiny Recursive Models'
+title: Simpler Tiny Recursive Models
 authors:
 - Torben Glass
 - Zhengxi Zhang
 - Paul Swoboda
 year: 2026
-published_date: "2026-11-18"
-added_date: "2026-11-19"
+published_date: '2026-11-18'
+added_date: '2026-11-19'
 venue: arXiv
 survey_section:
 - architecture/state-memory
@@ -17,6 +17,15 @@ claims:
 - stability
 comparison: []
 survey_core: false
-desc: Replaces TRM's two states and nested loops with one state updated by a bank of per-channel exponential moving averages and read out from slow channels only; at equal parameters and compute it reaches 92.1% on Sudoku-Extreme versus 88.3% for TRM and does not collapse late in training.
+desc: Replaces TRM's two states and nested loops with one state updated by a bank
+  of per-channel exponential moving averages and read out from slow channels only;
+  at equal parameters and compute it reaches 92.1% on Sudoku-Extreme versus 88.3%
+  for TRM and does not collapse late in training.
 links:
   arxiv: https://arxiv.org/abs/2611.23677
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-11-20'
