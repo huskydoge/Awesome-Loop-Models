@@ -30,8 +30,8 @@ List every section the entry belongs to; the first entry is its primary section.
 **§4 Architecture and Design**
 
 - `architecture/topology` — §4.1 Loop topology (14 / 36)
-- `architecture/residual-init` — §4.2 Residual manipulation and initialization (12 / 43)
-- `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (11 / 29)
+- `architecture/residual-init` — §4.2 Residual manipulation and initialization (12 / 44)
+- `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (12 / 30)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (7 / 31)
 - `architecture/depth-control` — §4.5 Controlling recurrence depth (26 / 80)
 - `architecture/hybrid` — §4.6 Hybrid looped architectures (20 / 31)
@@ -40,7 +40,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 - `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (29 / 82)
 - `training/post-training` — §5.2 Post-training and reinforcement learning (8 / 19)
-- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (18 / 30)
+- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (18 / 31)
 
 **§6 Scaling Laws**
 
@@ -50,8 +50,8 @@ List every section the entry belongs to; the first entry is its primary section.
 **§7 Systems and Infrastructure**
 
 - `systems/quantization-edge` — §7.1 Quantization and edge deployment (12 / 20)
-- `systems/kv-memory` — §7.2 KV cache and memory (17 / 28)
-- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (12 / 18)
+- `systems/kv-memory` — §7.2 KV cache and memory (17 / 29)
+- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (13 / 19)
 
 ### Part IV. Understanding and Applications
 
@@ -64,7 +64,7 @@ List every section the entry belongs to; the first entry is its primary section.
 **§9 Applications**
 
 - `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (30 / 39)
-- `applications/vision` — §9.2 Visual recognition, restoration, and generation (23 / 33)
+- `applications/vision` — §9.2 Visual recognition, restoration, and generation (24 / 34)
 - `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (10 / 10)
 - `applications/graphs-science` — §9.4 Graphs, structured data, and scientific modeling (21 / 31)
 - `applications/embodied-other` — §9.5 Embodied AI and other domains (25 / 29)
@@ -81,20 +81,20 @@ List every section the entry belongs to; the first entry is its primary section.
 
 Where the loop sits in the network (one value, papers only).
 
-- `whole-stack` (165)
+- `whole-stack` (166)
 - `prelude-core-coda` (74)
-- `partial` (42)
+- `partial` (43)
 - `hierarchical` (40)
 - `shifted-parallel` (11)
 - `implicit-fixed-point` (38)
-- `unspecified` (46)
+- `unspecified` (47)
 
 ## Sharing (`sharing`)
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (365)
-- `partial-adapter` (29)
+- `full` (367)
+- `partial-adapter` (30)
 - `expert-routed` (12)
 - `unspecified` (10)
 
@@ -102,7 +102,7 @@ How parameters are shared across iterations (one value, papers only).
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (202)
+- `fixed` (205)
 - `sampled-train` (34)
 - `adaptive-halting` (76)
 - `convergence` (49)
@@ -112,14 +112,14 @@ How the number of iterations is decided (one value, papers only).
 
 What the paper argues looping buys or costs (list, papers only).
 
-- `param-efficiency` (122)
-- `compute-efficiency` (141)
+- `param-efficiency` (123)
+- `compute-efficiency` (142)
 - `memory-efficiency` (58)
 - `data-efficiency` (21)
 - `expressivity` (30)
 - `length-generalization` (38)
 - `test-time-scaling` (79)
-- `stability` (46)
+- `stability` (47)
 - `failure-mode` (62)
 
 ## Looped-vs-untied comparison (`comparison`)
@@ -128,5 +128,5 @@ Which quantity is held fixed when the paper compares looped and untied models (l
 
 - `iso-param` (62)
 - `iso-flop` (40)
-- `iso-depth` (38)
+- `iso-depth` (39)
 - `unclear` (52)
