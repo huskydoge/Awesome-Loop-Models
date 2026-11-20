@@ -1,0 +1,21 @@
+title: 'Where Global Context and Weight Sharing Work in Compact Vision Backbones'
+authors:
+- Michael Schroeder
+year: 2026
+published_date: "2026-11-17"
+added_date: "2026-11-19"
+venue: arXiv
+survey_section:
+- applications/vision
+- training/retrofitting
+loop_topology: partial
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- param-efficiency
+comparison:
+- iso-depth
+survey_core: false
+desc: Ties repeated MBConv blocks of a trained EfficientNet-B0 to shared kernels with per-pass BatchNorm; alternating two templates in Stage 6 ([B1, A, B, A]) cuts parameters by 10.9% and reaches 70.92% ImageNet accuracy after one epoch, 1.84 points below the unshared control, while single-template tying trails by 6.66.
+links:
+  arxiv: https://arxiv.org/abs/2611.23446
