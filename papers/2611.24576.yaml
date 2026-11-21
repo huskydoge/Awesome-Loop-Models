@@ -1,0 +1,28 @@
+title: "Late Entry in Looped Language Models"
+authors:
+  - "Ziqi Jin"
+  - "Jiaxi Li"
+  - "Weiwen Xu"
+  - "Aixin Sun"
+year: 2026
+published_date: "2026-11-18"
+added_date: "2026-11-19"
+venue: "arXiv"
+survey_section:
+  - "systems/batching-parallel"
+  - "systems/kv-memory"
+  - "architecture/depth-control"
+loop_topology: "shifted-parallel"
+sharing: "full"
+depth_control: "sampled-train"
+claims:
+  - "compute-efficiency"
+  - "test-time-scaling"
+comparison: []
+survey_core: false
+desc: "Shows that entering a looped LM at its final K of T passes over a T-pass KV cache beats matched early exit after entry fine-tuning, and fuses late-pass blocks, pipelined cache completion, and shared-GEMM Wake verification in one CUDA graph for up to 5.23x (Ouro-2.6B) and 8.42x (Huginn-3.5B) greedy-exact speedups."
+links:
+  arxiv: "https://arxiv.org/abs/2611.24576"
+  github: "https://github.com/Xalp/LateComer"
+  hf: "https://huggingface.co/collections/Xalphinions/late-entry"
+  project: "https://xalp.net/late-entry/"
