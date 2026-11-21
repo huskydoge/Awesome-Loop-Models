@@ -35,9 +35,9 @@ citations: 154
 citation_sources:
   semantic_scholar: 154
   opencitations: 0
-  openalex: 81
+  openalex: 83
 star_source_best: github_api
 github_stars: 61
 star_sources:
   github_api: 61
-metrics_updated: '2026-11-19'
+metrics_updated: '2026-11-21'

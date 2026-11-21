@@ -34,10 +34,10 @@ desc: Splits a Diffusion Transformer into a prelude, a depth-conditioned shared 
 links:
   arxiv: https://arxiv.org/abs/2610.05538
   alphaxiv: https://www.alphaxiv.org/abs/2610.05538
-citation_source_best: openalex
-citations: 2
+citation_source_best: semantic_scholar
+citations: 1
 citation_sources:
   opencitations: 0
   semantic_scholar: 1
-  openalex: 2
-metrics_updated: '2026-11-18'
+  openalex: 1
+metrics_updated: '2026-11-21'
