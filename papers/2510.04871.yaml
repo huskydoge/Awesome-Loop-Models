@@ -24,13 +24,13 @@ desc: Proposes Tiny Recursive Model (TRM), which reuses one two-layer network to
 links:
   arxiv: https://arxiv.org/abs/2510.04871
   github: https://github.com/SamsungSAILMontreal/TinyRecursiveModels
-citations: 269
+citations: 270
 citation_sources:
-  openalex: 269
+  openalex: 270
   opencitations: 0
   semantic_scholar: 196
 citation_source_best: openalex
-metrics_updated: '2026-11-21'
+metrics_updated: '2026-11-23'
 github_stars: 6547
 star_sources:
   github_api: 6547

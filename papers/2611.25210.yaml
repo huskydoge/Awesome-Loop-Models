@@ -1,27 +1,37 @@
-title: "Recurrent Vision Language Models Solve the Shell Game"
+title: Recurrent Vision Language Models Solve the Shell Game
 authors:
-  - "Dingqiang Ye"
-  - "Jiacong Xu"
-  - "Wen Zhang"
-  - "Yiqun Mei"
-  - "Vishal M. Patel"
+- Dingqiang Ye
+- Jiacong Xu
+- Wen Zhang
+- Yiqun Mei
+- Vishal M. Patel
 year: 2026
-published_date: "2026-11-18"
-added_date: "2026-11-22"
-venue: "arXiv"
+published_date: '2026-11-18'
+added_date: '2026-11-22'
+venue: arXiv
 survey_section:
-  - "applications/language-speech-multimodal"
-  - "open-problems/depth-into-time"
-  - "capabilities/generalization"
-loop_topology: "shifted-parallel"
-sharing: "full"
-depth_control: "fixed"
+- applications/language-speech-multimodal
+- open-problems/depth-into-time
+- capabilities/generalization
+loop_topology: shifted-parallel
+sharing: full
+depth_control: fixed
 claims:
-  - "length-generalization"
-  - "expressivity"
+- length-generalization
+- expressivity
 comparison:
-  - "iso-param"
+- iso-param
 survey_core: false
-desc: "Introduces RecurrentVLM, which makes each attention layer of Qwen3.5-4B recompute the keys and values of finished frame groups from its own output so its state updates once per frame group; it reaches 99.6% on MET-Bench and 99% on 50-swap shell games after training on at most 30 swaps."
+desc: Introduces RecurrentVLM, which makes each attention layer of Qwen3.5-4B recompute
+  the keys and values of finished frame groups from its own output so its state updates
+  once per frame group; it reaches 99.6% on MET-Bench and 99% on 50-swap shell games
+  after training on at most 30 swaps.
 links:
-  arxiv: "https://arxiv.org/abs/2611.25210"
+  arxiv: https://arxiv.org/abs/2611.25210
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-23'

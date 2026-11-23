@@ -1,28 +1,42 @@
-title: "Late Entry in Looped Language Models"
+title: Late Entry in Looped Language Models
 authors:
-  - "Ziqi Jin"
-  - "Jiaxi Li"
-  - "Weiwen Xu"
-  - "Aixin Sun"
+- Ziqi Jin
+- Jiaxi Li
+- Weiwen Xu
+- Aixin Sun
 year: 2026
-published_date: "2026-11-18"
-added_date: "2026-11-19"
-venue: "arXiv"
+published_date: '2026-11-18'
+added_date: '2026-11-19'
+venue: arXiv
 survey_section:
-  - "systems/batching-parallel"
-  - "systems/kv-memory"
-  - "architecture/depth-control"
-loop_topology: "shifted-parallel"
-sharing: "full"
-depth_control: "sampled-train"
+- systems/batching-parallel
+- systems/kv-memory
+- architecture/depth-control
+loop_topology: shifted-parallel
+sharing: full
+depth_control: sampled-train
 claims:
-  - "compute-efficiency"
-  - "test-time-scaling"
+- compute-efficiency
+- test-time-scaling
 comparison: []
 survey_core: false
-desc: "Shows that entering a looped LM at its final K of T passes over a T-pass KV cache beats matched early exit after entry fine-tuning, and fuses late-pass blocks, pipelined cache completion, and shared-GEMM Wake verification in one CUDA graph for up to 5.23x (Ouro-2.6B) and 8.42x (Huginn-3.5B) greedy-exact speedups."
+desc: Shows that entering a looped LM at its final K of T passes over a T-pass KV
+  cache beats matched early exit after entry fine-tuning, and fuses late-pass blocks,
+  pipelined cache completion, and shared-GEMM Wake verification in one CUDA graph
+  for up to 5.23x (Ouro-2.6B) and 8.42x (Huginn-3.5B) greedy-exact speedups.
 links:
-  arxiv: "https://arxiv.org/abs/2611.24576"
-  github: "https://github.com/Xalp/LateComer"
-  hf: "https://huggingface.co/collections/Xalphinions/late-entry"
-  project: "https://xalp.net/late-entry/"
+  arxiv: https://arxiv.org/abs/2611.24576
+  github: https://github.com/Xalp/LateComer
+  hf: https://huggingface.co/collections/Xalphinions/late-entry
+  project: https://xalp.net/late-entry/
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 2
+star_sources:
+  github_api: 2
+metrics_updated: '2026-11-23'

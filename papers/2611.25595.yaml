@@ -1,32 +1,46 @@
-title: "LoopedWAM: Looped World Action Models for Elastic Inference"
+title: 'LoopedWAM: Looped World Action Models for Elastic Inference'
 authors:
-  - "Anh Dao"
-  - "Xinxin Liu"
-  - "Hang Yu"
-  - "Jeffrey A Chan Santiago"
-  - "Yuzhang Shang"
+- Anh Dao
+- Xinxin Liu
+- Hang Yu
+- Jeffrey A Chan Santiago
+- Yuzhang Shang
 year: 2026
-published_date: "2026-11-19"
-added_date: "2026-11-22"
-venue: "arXiv"
+published_date: '2026-11-19'
+added_date: '2026-11-22'
+venue: arXiv
 survey_section:
-  - "applications/embodied-other"
-  - "architecture/depth-control"
-  - "capabilities/efficiency"
-loop_topology: "prelude-core-coda"
-sharing: "full"
-depth_control: "sampled-train"
+- applications/embodied-other
+- architecture/depth-control
+- capabilities/efficiency
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: sampled-train
 claims:
-  - "param-efficiency"
-  - "memory-efficiency"
-  - "compute-efficiency"
+- param-efficiency
+- memory-efficiency
+- compute-efficiency
 comparison:
-  - "iso-param"
-  - "iso-depth"
+- iso-param
+- iso-depth
 survey_core: false
-desc: "Introduces LoopedWAM, a world action model whose video and action experts each store 12 blocks and loop a shared 6-block core to 30 executed layers, with decoupled video/action depths and elastic self-distillation; the 0.58B policy reaches 96.1% on LIBERO and 91.9% on RoboTwin 2.0."
+desc: Introduces LoopedWAM, a world action model whose video and action experts each
+  store 12 blocks and loop a shared 6-block core to 30 executed layers, with decoupled
+  video/action depths and elastic self-distillation; the 0.58B policy reaches 96.1%
+  on LIBERO and 91.9% on RoboTwin 2.0.
 links:
-  arxiv: "https://arxiv.org/abs/2611.25595"
-  github: "https://github.com/anhdao69/LoopedWAM"
-  hf: "https://huggingface.co/anhdao69/LoopedWAM"
-  project: "https://anhdao69.github.io/LoopedWAM"
+  arxiv: https://arxiv.org/abs/2611.25595
+  github: https://github.com/anhdao69/LoopedWAM
+  hf: https://huggingface.co/anhdao69/LoopedWAM
+  project: https://anhdao69.github.io/LoopedWAM
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 4
+star_sources:
+  github_api: 4
+metrics_updated: '2026-11-23'

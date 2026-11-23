@@ -12,7 +12,7 @@ authors:
 - Xiuzhen Huang
 year: 2026
 published_date: '2026-11-11'
-added_date: "2026-11-15"
+added_date: '2026-11-15'
 venue: arXiv
 survey_section:
 - applications/vision
@@ -26,9 +26,20 @@ comparison:
 - iso-depth
 survey_core: false
 desc: Unrolls accelerated MRI reconstruction with one shared Restormer block that
-  receives data-consistency inputs and latent images at every iteration, beating
-  PromptMR+ in PSNR and SSIM on brain, knee, heart and carotid data with 10.3M versus
-  92.9M parameters.
+  receives data-consistency inputs and latent images at every iteration, beating PromptMR+
+  in PSNR and SSIM on brain, knee, heart and carotid data with 10.3M versus 92.9M
+  parameters.
 links:
   arxiv: https://arxiv.org/abs/2611.14947
   github: https://github.com/hym97/LoopMR
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-11-23'

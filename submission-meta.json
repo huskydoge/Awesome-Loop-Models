@@ -424,6 +424,7 @@
     "papers/2611.23446.yaml",
     "papers/2611.23677.yaml",
     "papers/2611.24301.yaml",
+    "papers/2611.24576.yaml",
     "papers/2611.25210.yaml",
     "papers/2611.25369.yaml",
     "papers/2611.25595.yaml",
@@ -761,12 +762,12 @@
   "inventories": {
     "survey_section": [
       {
-        "label": "training/supervision-optimization",
+        "label": "architecture/depth-control",
         "count": 82
       },
       {
-        "label": "architecture/depth-control",
-        "count": 81
+        "label": "training/supervision-optimization",
+        "count": 82
       },
       {
         "label": "capabilities/efficiency",
@@ -817,6 +818,10 @@
         "count": 31
       },
       {
+        "label": "systems/kv-memory",
+        "count": 31
+      },
+      {
         "label": "applications/embodied-other",
         "count": 30
       },
@@ -829,10 +834,6 @@
         "count": 30
       },
       {
-        "label": "systems/kv-memory",
-        "count": 30
-      },
-      {
         "label": "scaling/compute-optimal",
         "count": 25
       },
@@ -841,12 +842,12 @@
         "count": 24
       },
       {
-        "label": "systems/quantization-edge",
+        "label": "systems/batching-parallel",
         "count": 20
       },
       {
-        "label": "systems/batching-parallel",
-        "count": 19
+        "label": "systems/quantization-edge",
+        "count": 20
       },
       {
         "label": "training/post-training",
@@ -916,13 +917,13 @@
       },
       {
         "label": "shifted-parallel",
-        "count": 13
+        "count": 14
       }
     ],
     "sharing": [
       {
         "label": "full",
-        "count": 374
+        "count": 375
       },
       {
         "label": "partial-adapter",
@@ -956,13 +957,13 @@
       },
       {
         "label": "sampled-train",
-        "count": 36
+        "count": 37
       }
     ],
     "claims": [
       {
         "label": "compute-efficiency",
-        "count": 145
+        "count": 146
       },
       {
         "label": "param-efficiency",
@@ -970,7 +971,7 @@
       },
       {
         "label": "test-time-scaling",
-        "count": 79
+        "count": 80
       },
       {
         "label": "failure-mode",

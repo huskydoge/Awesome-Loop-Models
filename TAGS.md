@@ -21,7 +21,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§3 Capabilities, Benefits and Trade-offs**
 
-- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (8 / 57)
+- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (8 / 58)
 - `capabilities/expressivity` — §3.2 Expressivity and reasoning capacity (20 / 24)
 - `capabilities/generalization` — §3.3 Length, easy-to-hard, and compositional generalization (13 / 30)
 
@@ -33,7 +33,7 @@ List every section the entry belongs to; the first entry is its primary section.
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (13 / 45)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (12 / 30)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (7 / 31)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (26 / 81)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (26 / 82)
 - `architecture/hybrid` — §4.6 Hybrid looped architectures (20 / 31)
 
 **§5 Learning Algorithms**
@@ -44,14 +44,14 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§6 Scaling Laws**
 
-- `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (11 / 24)
+- `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (11 / 25)
 - `scaling/test-time` — §6.2 Test-time scaling (14 / 54)
 
 **§7 Systems and Infrastructure**
 
 - `systems/quantization-edge` — §7.1 Quantization and edge deployment (12 / 20)
-- `systems/kv-memory` — §7.2 KV cache and memory (18 / 30)
-- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (13 / 19)
+- `systems/kv-memory` — §7.2 KV cache and memory (18 / 31)
+- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (14 / 20)
 
 ### Part IV. Understanding and Applications
 
@@ -74,7 +74,7 @@ List every section the entry belongs to; the first entry is its primary section.
 **§10 Open Problems**
 
 - `open-problems/diffusion` — §10.1 Unification with diffusion models (4 / 14)
-- `open-problems/depth-into-time` — §10.2 Folding depth into time (1 / 9)
+- `open-problems/depth-into-time` — §10.2 Folding depth into time (2 / 10)
 - `open-problems/monitorability-safety` — §10.3 Monitorability and safety (1 / 4)
 
 ## Loop topology (`loop_topology`)
@@ -85,7 +85,7 @@ Where the loop sits in the network (one value, papers only).
 - `prelude-core-coda` (76)
 - `partial` (43)
 - `hierarchical` (41)
-- `shifted-parallel` (12)
+- `shifted-parallel` (14)
 - `implicit-fixed-point` (39)
 - `unspecified` (47)
 
@@ -93,7 +93,7 @@ Where the loop sits in the network (one value, papers only).
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (373)
+- `full` (375)
 - `partial-adapter` (31)
 - `expert-routed` (12)
 - `unspecified` (10)
@@ -102,8 +102,8 @@ How parameters are shared across iterations (one value, papers only).
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (210)
-- `sampled-train` (36)
+- `fixed` (211)
+- `sampled-train` (37)
 - `adaptive-halting` (76)
 - `convergence` (49)
 - `unspecified` (55)
@@ -113,12 +113,12 @@ How the number of iterations is decided (one value, papers only).
 What the paper argues looping buys or costs (list, papers only).
 
 - `param-efficiency` (125)
-- `compute-efficiency` (144)
+- `compute-efficiency` (146)
 - `memory-efficiency` (60)
-- `data-efficiency` (21)
+- `data-efficiency` (22)
 - `expressivity` (31)
 - `length-generalization` (39)
-- `test-time-scaling` (79)
+- `test-time-scaling` (80)
 - `stability` (49)
 - `failure-mode` (62)
 
@@ -126,7 +126,7 @@ What the paper argues looping buys or costs (list, papers only).
 
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
-- `iso-param` (65)
-- `iso-flop` (40)
+- `iso-param` (66)
+- `iso-flop` (41)
 - `iso-depth` (41)
 - `unclear` (52)

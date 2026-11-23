@@ -1,24 +1,34 @@
-title: "Fold the Loop: Decoding-Time KV Memory for Looped Vision-Language Models"
+title: 'Fold the Loop: Decoding-Time KV Memory for Looped Vision-Language Models'
 authors:
-  - "Kun Zhou"
-  - "Wenmian Yang"
-  - "Zhensheng Wang"
-  - "Yanzeng Li"
-  - "Weijia Jia"
+- Kun Zhou
+- Wenmian Yang
+- Zhensheng Wang
+- Yanzeng Li
+- Weijia Jia
 year: 2026
-published_date: "2026-11-19"
-added_date: "2026-11-22"
-venue: "arXiv"
+published_date: '2026-11-19'
+added_date: '2026-11-22'
+venue: arXiv
 survey_section:
-  - "systems/kv-memory"
-  - "applications/language-speech-multimodal"
-loop_topology: "hierarchical"
-sharing: "full"
-depth_control: "fixed"
+- systems/kv-memory
+- applications/language-speech-multimodal
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
 claims:
-  - "memory-efficiency"
+- memory-efficiency
 comparison: []
 survey_core: false
-desc: "Introduces FoldCache, which keeps an exact prefill but lets groups of recurrent invocations of the same weight-tied module share that group's final visual KV during decoding; on LoopVL it stores about half the prefix KV at full-cache accuracy and fits up to 1.7x larger batches (2.6x with FoldCache-Lite)."
+desc: Introduces FoldCache, which keeps an exact prefill but lets groups of recurrent
+  invocations of the same weight-tied module share that group's final visual KV during
+  decoding; on LoopVL it stores about half the prefix KV at full-cache accuracy and
+  fits up to 1.7x larger batches (2.6x with FoldCache-Lite).
 links:
-  arxiv: "https://arxiv.org/abs/2611.25369"
+  arxiv: https://arxiv.org/abs/2611.25369
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-23'

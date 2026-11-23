@@ -6,7 +6,7 @@ authors:
 - Yuantao Gu
 year: 2026
 published_date: '2026-11-12'
-added_date: "2026-11-15"
+added_date: '2026-11-15'
 venue: arXiv
 survey_section:
 - architecture/residual-init
@@ -24,3 +24,9 @@ desc: Replaces direct feedback in a looped Transformer with a rectified-flow-sty
   at 32, reaches 17.72 perplexity versus 57.72.
 links:
   arxiv: https://arxiv.org/abs/2611.16265
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+metrics_updated: '2026-11-23'
