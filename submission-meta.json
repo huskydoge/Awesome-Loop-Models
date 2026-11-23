@@ -408,6 +408,8 @@
     "papers/2611.11937.yaml",
     "papers/2611.12293.yaml",
     "papers/2611.13378.yaml",
+    "papers/2611.14947.yaml",
+    "papers/2611.16265.yaml",
     "papers/2611.18113.yaml",
     "papers/2611.19446.yaml",
     "papers/2611.19649.yaml",
@@ -768,19 +770,19 @@
       },
       {
         "label": "capabilities/efficiency",
-        "count": 57
+        "count": 58
       },
       {
         "label": "scaling/test-time",
-        "count": 53
+        "count": 54
+      },
+      {
+        "label": "architecture/residual-init",
+        "count": 45
       },
       {
         "label": "understanding/failure-modes",
         "count": 45
-      },
-      {
-        "label": "architecture/residual-init",
-        "count": 44
       },
       {
         "label": "applications/language-speech-multimodal",
@@ -796,7 +798,7 @@
       },
       {
         "label": "applications/vision",
-        "count": 34
+        "count": 35
       },
       {
         "label": "applications/graphs-science",
@@ -890,7 +892,7 @@
     "loop_topology": [
       {
         "label": "whole-stack",
-        "count": 166
+        "count": 168
       },
       {
         "label": "prelude-core-coda",
@@ -920,11 +922,11 @@
     "sharing": [
       {
         "label": "full",
-        "count": 373
+        "count": 374
       },
       {
         "label": "partial-adapter",
-        "count": 30
+        "count": 31
       },
       {
         "label": "expert-routed",
@@ -938,7 +940,7 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 209
+        "count": 211
       },
       {
         "label": "adaptive-halting",
@@ -964,7 +966,7 @@
       },
       {
         "label": "param-efficiency",
-        "count": 124
+        "count": 125
       },
       {
         "label": "test-time-scaling",
@@ -980,7 +982,7 @@
       },
       {
         "label": "stability",
-        "count": 48
+        "count": 49
       },
       {
         "label": "length-generalization",
@@ -1005,12 +1007,12 @@
         "count": 52
       },
       {
-        "label": "iso-flop",
+        "label": "iso-depth",
         "count": 41
       },
       {
-        "label": "iso-depth",
-        "count": 40
+        "label": "iso-flop",
+        "count": 41
       }
     ]
   }
