@@ -421,6 +421,11 @@
     "papers/2611.23446.yaml",
     "papers/2611.23677.yaml",
     "papers/2611.24301.yaml",
+    "papers/2611.25210.yaml",
+    "papers/2611.25369.yaml",
+    "papers/2611.25595.yaml",
+    "papers/2611.25607.yaml",
+    "papers/2611.26275.yaml",
     "papers/edge-recvit-efficient-vision-transformer-via-semantic-refined-dynamic-recursion.yaml",
     "papers/implicitly-defined-neural-networks-for-sequence-labeling.yaml",
     "papers/openreview-chaingpt.yaml",
@@ -758,11 +763,11 @@
       },
       {
         "label": "architecture/depth-control",
-        "count": 80
+        "count": 81
       },
       {
         "label": "capabilities/efficiency",
-        "count": 55
+        "count": 56
       },
       {
         "label": "scaling/test-time",
@@ -778,7 +783,7 @@
       },
       {
         "label": "applications/language-speech-multimodal",
-        "count": 39
+        "count": 41
       },
       {
         "label": "understanding/interpretability",
@@ -794,7 +799,11 @@
       },
       {
         "label": "applications/graphs-science",
-        "count": 31
+        "count": 32
+      },
+      {
+        "label": "training/retrofitting",
+        "count": 32
       },
       {
         "label": "architecture/hybrid",
@@ -805,24 +814,20 @@
         "count": 31
       },
       {
-        "label": "training/retrofitting",
-        "count": 31
+        "label": "applications/embodied-other",
+        "count": 30
       },
       {
         "label": "architecture/state-memory",
         "count": 30
       },
       {
-        "label": "applications/embodied-other",
-        "count": 29
-      },
-      {
         "label": "capabilities/generalization",
-        "count": 29
+        "count": 30
       },
       {
         "label": "systems/kv-memory",
-        "count": 29
+        "count": 30
       },
       {
         "label": "capabilities/expressivity",
@@ -850,7 +855,7 @@
       },
       {
         "label": "open-problems/diffusion",
-        "count": 13
+        "count": 14
       },
       {
         "label": "foundations/implicit",
@@ -861,11 +866,11 @@
         "count": 10
       },
       {
-        "label": "foundations/algorithmic",
-        "count": 8
+        "label": "open-problems/depth-into-time",
+        "count": 9
       },
       {
-        "label": "open-problems/depth-into-time",
+        "label": "foundations/algorithmic",
         "count": 8
       },
       {
@@ -888,7 +893,7 @@
       },
       {
         "label": "prelude-core-coda",
-        "count": 74
+        "count": 76
       },
       {
         "label": "unspecified",
@@ -900,21 +905,21 @@
       },
       {
         "label": "hierarchical",
-        "count": 40
+        "count": 41
       },
       {
         "label": "implicit-fixed-point",
-        "count": 38
+        "count": 39
       },
       {
         "label": "shifted-parallel",
-        "count": 11
+        "count": 12
       }
     ],
     "sharing": [
       {
         "label": "full",
-        "count": 367
+        "count": 372
       },
       {
         "label": "partial-adapter",
@@ -932,7 +937,7 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 205
+        "count": 208
       },
       {
         "label": "adaptive-halting",
@@ -948,17 +953,17 @@
       },
       {
         "label": "sampled-train",
-        "count": 34
+        "count": 36
       }
     ],
     "claims": [
       {
         "label": "compute-efficiency",
-        "count": 142
+        "count": 144
       },
       {
         "label": "param-efficiency",
-        "count": 123
+        "count": 124
       },
       {
         "label": "test-time-scaling",
@@ -970,19 +975,19 @@
       },
       {
         "label": "memory-efficiency",
-        "count": 58
+        "count": 60
       },
       {
         "label": "stability",
-        "count": 47
+        "count": 48
       },
       {
         "label": "length-generalization",
-        "count": 38
+        "count": 39
       },
       {
         "label": "expressivity",
-        "count": 30
+        "count": 31
       },
       {
         "label": "data-efficiency",
@@ -992,19 +997,19 @@
     "comparison": [
       {
         "label": "iso-param",
-        "count": 62
+        "count": 65
       },
       {
         "label": "unclear",
         "count": 52
       },
       {
-        "label": "iso-flop",
+        "label": "iso-depth",
         "count": 40
       },
       {
-        "label": "iso-depth",
-        "count": 39
+        "label": "iso-flop",
+        "count": 40
       }
     ]
   }
