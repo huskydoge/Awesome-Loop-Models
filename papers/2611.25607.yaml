@@ -1,0 +1,23 @@
+title: "PSTO: A PDE-structured transport operator with shared implicit updates for multiscale CDR systems"
+authors:
+  - "Kaiwen Li"
+  - "Dezhi Zhou"
+  - "Kun Wu"
+  - "Xingcai Lu"
+year: 2026
+published_date: "2026-11-19"
+added_date: "2026-11-22"
+venue: "arXiv"
+survey_section:
+  - "applications/graphs-science"
+loop_topology: "implicit-fixed-point"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "stability"
+comparison: []
+survey_core: false
+desc: "Introduces PSTO, a convection-diffusion surrogate that applies one learned transport block for a fixed number of relaxed fixed-point iterations to approximate an implicit update; four iterations cut one-step error 5.8x versus one, and 100-step rollout error falls at least 50% below the best neural baseline."
+links:
+  arxiv: "https://arxiv.org/abs/2611.25607"
+  github: "https://github.com/kevin-sjtu/PSTO"

@@ -1,23 +1,33 @@
-title: "Latent Fact Composition under Next-Token Training"
+title: Latent Fact Composition under Next-Token Training
 authors:
-  - "Tianyi Zhang"
-  - "Feiying Chen"
+- Tianyi Zhang
+- Feiying Chen
 year: 2026
-published_date: "2026-11-16"
-added_date: "2026-11-18"
-venue: "arXiv"
+published_date: '2026-11-16'
+added_date: '2026-11-18'
+venue: arXiv
 survey_section:
-  - "understanding/why"
-  - "understanding/failure-modes"
-  - "capabilities/generalization"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "fixed"
+- understanding/why
+- understanding/failure-modes
+- capabilities/generalization
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
 claims:
-  - "failure-mode"
+- failure-mode
 comparison:
-  - "iso-depth"
+- iso-depth
 survey_core: false
-desc: "Introduces Baton looped transformers that pass a decoded bridge-entity embedding into the second loop; two of three variants answer about 99% of two-hop questions with unseen bridges under answer-only training, but next-token training makes that accuracy rise and then decline."
+desc: Introduces Baton looped transformers that pass a decoded bridge-entity embedding
+  into the second loop; two of three variants answer about 99% of two-hop questions
+  with unseen bridges under answer-only training, but next-token training makes that
+  accuracy rise and then decline.
 links:
-  arxiv: "https://arxiv.org/abs/2611.21921"
+  arxiv: https://arxiv.org/abs/2611.21921
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+metrics_updated: '2026-11-20'

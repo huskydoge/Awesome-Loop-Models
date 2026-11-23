@@ -31,13 +31,13 @@ links:
   github: https://github.com/google-research/ALBERT
   openreview: https://openreview.net/forum?id=H1eA7AEtvS
 citation_source_best: openalex
-citations: 7967
+citations: 8391
 citation_sources:
-  semantic_scholar: 7939
-  openalex: 7967
+  semantic_scholar: 7959
+  openalex: 8391
   opencitations: 125
 star_source_best: github_api
-github_stars: 3277
+github_stars: 3276
 star_sources:
-  github_api: 3277
-metrics_updated: '2026-11-18'
+  github_api: 3276
+metrics_updated: '2026-11-22'

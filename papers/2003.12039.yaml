@@ -23,13 +23,13 @@ links:
   github: https://github.com/princeton-vl/RAFT
   paper: https://www.ecva.net/papers/eccv_2020/papers_ECCV/html/3526_ECCV_2020_paper.php
 citation_source_best: openalex
-citations: 4806
+citations: 4873
 citation_sources:
-  semantic_scholar: 4530
-  openalex: 4806
+  semantic_scholar: 4556
+  openalex: 4873
   opencitations: 8
 star_source_best: github_api
-github_stars: 4129
+github_stars: 4131
 star_sources:
-  github_api: 4129
-metrics_updated: '2026-11-18'
+  github_api: 4131
+metrics_updated: '2026-11-22'
