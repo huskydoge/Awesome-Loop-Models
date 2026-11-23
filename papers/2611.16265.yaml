@@ -1,0 +1,26 @@
+title: Rectified Looped Transformer
+authors:
+- Musheng Li
+- Jiawei Zhang
+- Ziyuan Liu
+- Yuantao Gu
+year: 2026
+published_date: '2026-11-12'
+added_date: "2026-11-15"
+venue: arXiv
+survey_section:
+- architecture/residual-init
+- scaling/test-time
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- stability
+comparison: []
+survey_core: false
+desc: Replaces direct feedback in a looped Transformer with a rectified-flow-style
+  interpolation toward each loop's endpoint prediction, keeping state norms bounded;
+  at 278M it lowers Pile perplexity at matched depth and, trained at 8 loops and run
+  at 32, reaches 17.72 perplexity versus 57.72.
+links:
+  arxiv: https://arxiv.org/abs/2611.16265
