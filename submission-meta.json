@@ -415,6 +415,7 @@
     "papers/2611.19649.yaml",
     "papers/2611.19827.yaml",
     "papers/2611.19896.yaml",
+    "papers/2611.20404.yaml",
     "papers/2611.21921.yaml",
     "papers/2611.22426.yaml",
     "papers/2611.22728.yaml",
@@ -769,7 +770,7 @@
       },
       {
         "label": "capabilities/efficiency",
-        "count": 57
+        "count": 58
       },
       {
         "label": "scaling/test-time",
@@ -832,11 +833,11 @@
         "count": 30
       },
       {
-        "label": "capabilities/expressivity",
-        "count": 24
+        "label": "scaling/compute-optimal",
+        "count": 25
       },
       {
-        "label": "scaling/compute-optimal",
+        "label": "capabilities/expressivity",
         "count": 24
       },
       {
@@ -869,7 +870,7 @@
       },
       {
         "label": "open-problems/depth-into-time",
-        "count": 9
+        "count": 10
       },
       {
         "label": "foundations/algorithmic",
@@ -915,13 +916,13 @@
       },
       {
         "label": "shifted-parallel",
-        "count": 12
+        "count": 13
       }
     ],
     "sharing": [
       {
         "label": "full",
-        "count": 373
+        "count": 374
       },
       {
         "label": "partial-adapter",
@@ -939,7 +940,7 @@
     "depth_control": [
       {
         "label": "fixed",
-        "count": 210
+        "count": 211
       },
       {
         "label": "adaptive-halting",
@@ -961,7 +962,7 @@
     "claims": [
       {
         "label": "compute-efficiency",
-        "count": 144
+        "count": 145
       },
       {
         "label": "param-efficiency",
@@ -993,13 +994,13 @@
       },
       {
         "label": "data-efficiency",
-        "count": 21
+        "count": 22
       }
     ],
     "comparison": [
       {
         "label": "iso-param",
-        "count": 65
+        "count": 66
       },
       {
         "label": "unclear",
@@ -1011,7 +1012,7 @@
       },
       {
         "label": "iso-flop",
-        "count": 40
+        "count": 41
       }
     ]
   }
