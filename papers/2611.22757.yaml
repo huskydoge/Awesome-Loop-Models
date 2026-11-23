@@ -1,0 +1,37 @@
+title: 'LoopPrune: Recurrent Pruning for Looped Diffusion Transformers'
+authors:
+- Weizhong Huang
+- Huaijia Kou
+- Yan Zhang
+- Fei Chao
+- Xiawu Zheng
+- Liujuan Cao
+year: 2026
+published_date: '2026-11-17'
+added_date: '2026-11-18'
+venue: arXiv
+survey_section:
+- systems/quantization-edge
+- open-problems/diffusion
+- applications/vision
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
+claims:
+- memory-efficiency
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Prunes looped diffusion Transformers with one mask shared by every loop position,
+  scored by shared-removal effects and position variation, then recovers each loop
+  position against a dense teacher; at 30% structured pruning Looped-DiT B/16 keeps
+  93.14% of dense accuracy.
+links:
+  arxiv: https://arxiv.org/abs/2611.22757
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+metrics_updated: '2026-11-20'

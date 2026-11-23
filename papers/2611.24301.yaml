@@ -1,0 +1,42 @@
+title: 'LoopCache: Accelerating Long-Context Self-Speculative Decoding for Looped
+  Transformers'
+authors:
+- Zizhuo Fu
+- Haochen Huang
+- Shengxuan Qiu
+- Linye Wei
+- Ziyu Tang
+- Runsheng Wang
+- Meng Li
+year: 2026
+published_date: '2026-11-18'
+added_date: '2026-11-19'
+venue: arXiv
+survey_section:
+- systems/batching-parallel
+- systems/kv-memory
+loop_topology: unspecified
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Introduces LoopCache, a lossless self-speculative decoder for looped Transformers
+  that updates drafts from every intermediate loop and cycles through loop-specific
+  KV caches so each step reads one loop's cache, averaging 10.25x and 14.56x speedups
+  over WaveFront Decoding and LoopSpec on 4K-128K contexts.
+links:
+  arxiv: https://arxiv.org/abs/2611.24301
+  github: https://github.com/zZzZ9zZ9/LoopCache
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+star_source_best: github_api
+github_stars: 2
+star_sources:
+  github_api: 2
+metrics_updated: '2026-11-21'

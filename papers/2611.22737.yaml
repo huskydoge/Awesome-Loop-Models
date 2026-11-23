@@ -1,0 +1,32 @@
+title: 'Proximal Targets: Training Looped Refiners on Problems with Many Correct Answers'
+authors:
+- Syed Affan Daimi
+year: 2026
+published_date: '2026-11-17'
+added_date: '2026-11-18'
+venue: arXiv
+survey_section:
+- training/supervision-optimization
+- capabilities/generalization
+loop_topology: hierarchical
+sharing: full
+depth_control: fixed
+claims:
+- stability
+comparison:
+- iso-param
+- iso-depth
+survey_core: false
+desc: Trains each pass of a TRM-style looped refiner toward the correct answer nearest
+  its own input draft instead of one stored answer, making every answer a fixed point;
+  a 1.7M-parameter model solves 98.8% of multi-answer Sudoku puzzles versus 2.5% with
+  the standard target.
+links:
+  arxiv: https://arxiv.org/abs/2611.22737
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+metrics_updated: '2026-11-20'

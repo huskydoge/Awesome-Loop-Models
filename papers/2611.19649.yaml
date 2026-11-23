@@ -1,0 +1,32 @@
+title: 'LoopFill: Pipelined Multi-Token Speculative Decoding for Looped Transformers'
+authors:
+- Siqi Zhu
+- Suozhi Huang
+- Yi Zhao
+- Jiaxuan You
+year: 2026
+published_date: '2026-11-14'
+added_date: '2026-11-17'
+venue: arXiv
+survey_section:
+- systems/batching-parallel
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Introduces LoopFill, a training-free decoder for looped LLMs that merges suffix-lookup
+  drafts and shallow-loop predictions into one draft tree processed by the shared
+  block in one batch, reaching 5.85x greedy speedup on Ouro-2.6B and 5.13x on Huginn-3.5B,
+  40% and 25% above LoopAhead.
+links:
+  arxiv: https://arxiv.org/abs/2611.19649
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+metrics_updated: '2026-11-18'

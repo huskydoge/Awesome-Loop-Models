@@ -1,0 +1,33 @@
+title: When Does Reusing Layers Help Multimodal Embeddings?
+authors:
+- Zhizhang Hu
+- Yue Zhang
+year: 2026
+published_date: '2026-11-15'
+added_date: '2026-11-17'
+venue: arXiv
+survey_section:
+- applications/language-speech-multimodal
+- understanding/failure-modes
+- training/retrofitting
+loop_topology: prelude-core-coda
+sharing: partial-adapter
+depth_control: fixed
+claims:
+- failure-mode
+comparison:
+- iso-param
+survey_core: false
+desc: Tests eleven ways to loop a middle block of vision-language embedding models
+  and proves image-first causal loops keep image states query-independent; on MMEB-V2
+  an added loop on Qwen3.5-2B loses 0.46 points to its single-pass control, while
+  natively looped LoopVL-1B gains 4.23.
+links:
+  arxiv: https://arxiv.org/abs/2611.19827
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+metrics_updated: '2026-11-19'

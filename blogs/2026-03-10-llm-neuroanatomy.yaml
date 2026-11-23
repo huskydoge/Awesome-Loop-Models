@@ -1,0 +1,24 @@
+title: "LLM Neuroanatomy: How I Topped the LLM Leaderboard Without Changing a Single Weight"
+authors:
+  - "David Noel Ng"
+year: 2026
+published_date: "2026-03-10"
+added_date: "2026-11-14"
+venue: "Personal Blog"
+
+survey_section:
+  - "training/retrofitting"
+  - "understanding/interpretability"
+  - "architecture/topology"
+  - "understanding/failure-modes"
+
+desc: >
+  Re-runs a contiguous block of middle layers in a frozen pretrained LLM with
+  no training, locating the block by sweeping every (i, j) configuration into
+  a benchmark heatmap; duplicating seven layers of Qwen2-72B produced the #1
+  Open LLM Leaderboard model, and the heatmaps suggest reasoning is organised
+  into multi-layer circuits rather than interchangeable refinement steps.
+
+links:
+  blog: "https://dnhkng.github.io/posts/rys/"
+  github: "https://github.com/dnhkng/RYS"

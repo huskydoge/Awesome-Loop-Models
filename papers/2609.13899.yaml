@@ -1,11 +1,10 @@
-# Paper metadata for arXiv:2609.13899.
 title: 'URCHIN: A Horizontal Spiking Language Model for Data-Constrained Pretraining'
 authors:
 - Po-Han Chiang
 year: 2026
 published_date: '2026-09-12'
 added_date: '2026-09-15'
-venue: "Second BabyLM Workshop"
+venue: Second BabyLM Workshop
 survey_section:
 - architecture/hybrid
 - systems/quantization-edge
@@ -23,11 +22,12 @@ links:
   arxiv: https://arxiv.org/abs/2609.13899
   alphaxiv: https://www.alphaxiv.org/abs/2609.13899
   hf: https://huggingface.co/URCHINBABY/URCHIN_BabyLM2026_Multilingual
-citation_source_best: semantic_scholar
-citations: 0
+citation_source_best: openalex
+citations: 1
 citation_sources:
   semantic_scholar: 0
   opencitations: 0
-metrics_updated: '2026-09-16'
+  openalex: 1
+metrics_updated: '2026-11-19'
 peer_reviewed: true
-venue_source: "https://aclanthology.org/2026.babylm-main.44/"
+venue_source: https://aclanthology.org/2026.babylm-main.44/

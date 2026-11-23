@@ -23,11 +23,11 @@ links:
   github: https://github.com/clojure-finance/mythjure/tree/paper-v1
 citations: 3
 citation_sources:
-  semantic_scholar: 2
+  semantic_scholar: 3
   openalex: 3
   opencitations: 0
-citation_source_best: openalex
-metrics_updated: '2026-11-08'
+citation_source_best: semantic_scholar
+metrics_updated: '2026-11-20'
 star_source_best: github_api
 github_stars: 1
 star_sources:

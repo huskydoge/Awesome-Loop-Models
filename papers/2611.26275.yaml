@@ -1,0 +1,27 @@
+title: "dLoop: Looped Diffusion Language Models via Recurrent Latent Refinement"
+authors:
+  - "Handa Li"
+  - "Pengxiang Li"
+  - "Mingyu Cao"
+  - "Xilu Wang"
+  - "Li Shen"
+  - "Da Li"
+  - "Lu Yin"
+year: 2026
+published_date: "2026-11-19"
+added_date: "2026-11-22"
+venue: "arXiv"
+survey_section:
+  - "open-problems/diffusion"
+  - "training/retrofitting"
+loop_topology: "prelude-core-coda"
+sharing: "full"
+depth_control: "sampled-train"
+claims:
+  - "compute-efficiency"
+comparison:
+  - "iso-param"
+survey_core: false
+desc: "Restructures LLaDA into a Prelude-Loop-Coda model that reruns shared layers 16-21 with Parcae-style input injection inside each denoising step before tokens are committed; with multi-depth SFT, two extra loops lift GSM8K from 75.0% to 79.2%, and no compared accelerator beats it on both accuracy and loop-adjusted TPF."
+links:
+  arxiv: "https://arxiv.org/abs/2611.26275"

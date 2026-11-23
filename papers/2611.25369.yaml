@@ -1,0 +1,24 @@
+title: "Fold the Loop: Decoding-Time KV Memory for Looped Vision-Language Models"
+authors:
+  - "Kun Zhou"
+  - "Wenmian Yang"
+  - "Zhensheng Wang"
+  - "Yanzeng Li"
+  - "Weijia Jia"
+year: 2026
+published_date: "2026-11-19"
+added_date: "2026-11-22"
+venue: "arXiv"
+survey_section:
+  - "systems/kv-memory"
+  - "applications/language-speech-multimodal"
+loop_topology: "hierarchical"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "memory-efficiency"
+comparison: []
+survey_core: false
+desc: "Introduces FoldCache, which keeps an exact prefill but lets groups of recurrent invocations of the same weight-tied module share that group's final visual KV during decoding; on LoopVL it stores about half the prefix KV at full-cache accuracy and fits up to 1.7x larger batches (2.6x with FoldCache-Lite)."
+links:
+  arxiv: "https://arxiv.org/abs/2611.25369"

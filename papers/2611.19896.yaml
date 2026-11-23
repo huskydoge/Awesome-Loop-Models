@@ -1,0 +1,30 @@
+title: 'LoopSkim: Lossless Multi-Depth Speculative Decoding for Looped Language Models'
+authors:
+- Muhan Xiao
+- Shijian Li
+year: 2026
+published_date: '2026-11-15'
+added_date: '2026-11-17'
+venue: arXiv
+survey_section:
+- systems/batching-parallel
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
+claims:
+- compute-efficiency
+comparison: []
+survey_core: false
+desc: Introduces LoopSkim, which lets every intermediate loop readout of a looped
+  LM check prompt-lookup draft tokens and fixes sampling noise per position to stay
+  lossless; without training it averages 7.66x over autoregressive decoding under
+  greedy decoding and 1.73x the speedup of LoopSpec.
+links:
+  arxiv: https://arxiv.org/abs/2611.19896
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+  openalex: 0
+metrics_updated: '2026-11-18'
