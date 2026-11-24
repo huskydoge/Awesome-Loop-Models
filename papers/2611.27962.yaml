@@ -1,23 +1,32 @@
-title: "Model Carving: Training Transformers That Optimize Their Own Topology"
+title: 'Model Carving: Training Transformers That Optimize Their Own Topology'
 authors:
-  - "Kaden Zheng"
-  - "Pratyusha Sharma"
+- Kaden Zheng
+- Pratyusha Sharma
 year: 2026
-published_date: "2026-11-20"
-added_date: "2026-11-23"
-venue: "arXiv"
+published_date: '2026-11-20'
+added_date: '2026-11-23'
+venue: arXiv
 survey_section:
-  - "architecture/sharing"
-  - "capabilities/efficiency"
-  - "scaling/compute-optimal"
-loop_topology: "whole-stack"
-sharing: "partial-adapter"
-depth_control: "fixed"
+- architecture/sharing
+- capabilities/efficiency
+- scaling/compute-optimal
+loop_topology: whole-stack
+sharing: partial-adapter
+depth_control: fixed
 claims:
-  - "compute-efficiency"
+- compute-efficiency
 comparison: []
 survey_core: false
-desc: "Introduces Model Carving, which gives every sublayer application its own learned scalar gate, one per loop in looped Transformers, and removes closed sublayers during pretraining; a carved 1.3B four-loop model drops 45 of 192 sublayer applications and still beats its full-depth looped baseline (0.683 vs 0.704 bpb)."
+desc: Introduces Model Carving, which gives every sublayer application its own learned
+  scalar gate, one per loop in looped Transformers, and removes closed sublayers during
+  pretraining; a carved 1.3B four-loop model drops 45 of 192 sublayer applications
+  and still beats its full-depth looped baseline (0.683 vs 0.704 bpb).
 links:
-  arxiv: "https://arxiv.org/abs/2611.27962"
-  project: "https://kadenzheng.com/model-carving/"
+  arxiv: https://arxiv.org/abs/2611.27962
+  project: https://kadenzheng.com/model-carving/
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-11-24'

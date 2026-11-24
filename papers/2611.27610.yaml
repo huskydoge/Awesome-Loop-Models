@@ -1,26 +1,39 @@
-title: "Circular Predictive Coding Unlocks Effective Depth"
+title: Circular Predictive Coding Unlocks Effective Depth
 authors:
-  - "Tommaso Salvatori"
-  - "Matteo Forasassi"
+- Tommaso Salvatori
+- Matteo Forasassi
 year: 2026
-published_date: "2026-11-20"
-added_date: "2026-11-23"
-venue: "arXiv"
+published_date: '2026-11-20'
+added_date: '2026-11-23'
+venue: arXiv
 survey_section:
-  - "training/supervision-optimization"
-  - "foundations/implicit"
-  - "scaling/test-time"
-loop_topology: "implicit-fixed-point"
-sharing: "full"
-depth_control: "convergence"
+- training/supervision-optimization
+- foundations/implicit
+- scaling/test-time
+loop_topology: implicit-fixed-point
+sharing: full
+depth_control: convergence
 claims:
-  - "param-efficiency"
-  - "test-time-scaling"
+- param-efficiency
+- test-time-scaling
 comparison:
-  - "iso-param"
+- iso-param
 survey_core: false
-desc: "Closes a predictive-coding network into a loop of shared learned maps whose energy equilibrium is an equivalent DEQ's fixed point, trained by local equilibrium propagation; it reaches 93.54% on CIFAR-10 and, with a 105k-parameter recursive variant, 99.3% on Sudoku-hard over 1,024 relabelled views."
+desc: Closes a predictive-coding network into a loop of shared learned maps whose
+  energy equilibrium is an equivalent DEQ's fixed point, trained by local equilibrium
+  propagation; it reaches 93.54% on CIFAR-10 and, with a 105k-parameter recursive
+  variant, 99.3% on Sudoku-hard over 1,024 relabelled views.
 links:
-  arxiv: "https://arxiv.org/abs/2611.27610"
-  github: "https://github.com/rel-int/CircularEP"
-  project: "https://rel-int.github.io/CircularEP/"
+  arxiv: https://arxiv.org/abs/2611.27610
+  github: https://github.com/rel-int/CircularEP
+  project: https://rel-int.github.io/CircularEP/
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 8
+star_sources:
+  github_api: 8
+metrics_updated: '2026-11-24'

@@ -42,10 +42,10 @@ citation_sources:
   openalex: 86
   opencitations: 0
 citation_source_best: openalex
-metrics_updated: '2026-11-21'
+metrics_updated: '2026-11-24'
 star_source_best: github_api
-github_stars: 555
+github_stars: 556
 star_sources:
-  github_api: 555
+  github_api: 556
 peer_reviewed: true
 venue_source: https://proceedings.mlr.press/v198/ibarz22a.html

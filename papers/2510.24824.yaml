@@ -35,9 +35,9 @@ desc: Introduces the Parallel Loop Transformer, which preserves looped-model acc
   KV representations.
 links:
   arxiv: https://arxiv.org/abs/2510.24824
-citations: 34
-metrics_updated: '2026-11-19'
+citations: 35
+metrics_updated: '2026-11-24'
 citation_sources:
-  semantic_scholar: 34
+  semantic_scholar: 35
   opencitations: 0
 citation_source_best: semantic_scholar
