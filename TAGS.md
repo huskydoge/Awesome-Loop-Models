@@ -14,14 +14,14 @@ List every section the entry belongs to; the first entry is its primary section.
 
 - `foundations/recurrence` — §2.1 Recurrent networks and weight sharing across computation (2 / 4)
 - `foundations/depth-sharing` — §2.2 Weight sharing across network depth (4 / 6)
-- `foundations/implicit` — §2.3 Deep equilibrium and implicit models (7 / 11)
+- `foundations/implicit` — §2.3 Deep equilibrium and implicit models (7 / 12)
 - `foundations/algorithmic` — §2.4 Iterative and algorithmic computation (4 / 8)
 
 ### Part II. What Looping Buys
 
 **§3 Capabilities, Benefits and Trade-offs**
 
-- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (8 / 58)
+- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (8 / 60)
 - `capabilities/expressivity` — §3.2 Expressivity and reasoning capacity (20 / 24)
 - `capabilities/generalization` — §3.3 Length, easy-to-hard, and compositional generalization (13 / 30)
 
@@ -32,20 +32,20 @@ List every section the entry belongs to; the first entry is its primary section.
 - `architecture/topology` — §4.1 Loop topology (14 / 36)
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (13 / 45)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (12 / 30)
-- `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (7 / 31)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (26 / 82)
+- `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (8 / 32)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (27 / 83)
 - `architecture/hybrid` — §4.6 Hybrid looped architectures (20 / 31)
 
 **§5 Learning Algorithms**
 
-- `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (29 / 82)
+- `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (30 / 83)
 - `training/post-training` — §5.2 Post-training and reinforcement learning (8 / 19)
 - `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (18 / 32)
 
 **§6 Scaling Laws**
 
-- `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (11 / 25)
-- `scaling/test-time` — §6.2 Test-time scaling (14 / 54)
+- `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (11 / 26)
+- `scaling/test-time` — §6.2 Test-time scaling (14 / 55)
 
 **§7 Systems and Infrastructure**
 
@@ -81,20 +81,20 @@ List every section the entry belongs to; the first entry is its primary section.
 
 Where the loop sits in the network (one value, papers only).
 
-- `whole-stack` (168)
+- `whole-stack` (169)
 - `prelude-core-coda` (76)
-- `partial` (43)
+- `partial` (44)
 - `hierarchical` (41)
 - `shifted-parallel` (14)
-- `implicit-fixed-point` (39)
+- `implicit-fixed-point` (40)
 - `unspecified` (47)
 
 ## Sharing (`sharing`)
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (375)
-- `partial-adapter` (31)
+- `full` (377)
+- `partial-adapter` (32)
 - `expert-routed` (12)
 - `unspecified` (10)
 
@@ -102,23 +102,23 @@ How parameters are shared across iterations (one value, papers only).
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (211)
+- `fixed` (212)
 - `sampled-train` (37)
-- `adaptive-halting` (76)
-- `convergence` (49)
+- `adaptive-halting` (77)
+- `convergence` (50)
 - `unspecified` (55)
 
 ## Claims (`claims`)
 
 What the paper argues looping buys or costs (list, papers only).
 
-- `param-efficiency` (125)
-- `compute-efficiency` (146)
+- `param-efficiency` (127)
+- `compute-efficiency` (147)
 - `memory-efficiency` (60)
 - `data-efficiency` (22)
 - `expressivity` (31)
 - `length-generalization` (39)
-- `test-time-scaling` (80)
+- `test-time-scaling` (82)
 - `stability` (49)
 - `failure-mode` (62)
 
@@ -126,7 +126,7 @@ What the paper argues looping buys or costs (list, papers only).
 
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
-- `iso-param` (66)
+- `iso-param` (67)
 - `iso-flop` (41)
 - `iso-depth` (41)
 - `unclear` (52)

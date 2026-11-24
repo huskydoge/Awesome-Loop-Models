@@ -1,0 +1,25 @@
+title: "Mixture of Latent Recursions for Low-Rank Adaptation"
+authors:
+  - "Weixun Luo"
+  - "Ye Mao"
+  - "Ranran Huang"
+  - "Junpeng Jing"
+  - "Krystian Mikolajczyk"
+year: 2026
+published_date: "2026-11-20"
+added_date: "2026-11-23"
+venue: "arXiv"
+survey_section:
+  - "architecture/depth-control"
+  - "capabilities/efficiency"
+loop_topology: "partial"
+sharing: "full"
+depth_control: "adaptive-halting"
+claims:
+  - "param-efficiency"
+  - "test-time-scaling"
+comparison: []
+survey_core: false
+desc: "Introduces MoLR, a LoRA variant that reapplies one shared r-by-r latent transformation between the down- and up-projections with a per-token threshold router deciding when to stop; with LoRA's parameter count it averages 86.51 on GLUE with RoBERTa-base versus 84.65 for LoRA and leads on reasoning and vision tasks."
+links:
+  arxiv: "https://arxiv.org/abs/2611.27823"
