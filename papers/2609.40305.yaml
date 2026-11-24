@@ -39,10 +39,10 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2609.40305
   github: https://github.com/OpenSenseNova/Looped-DiT
 citation_source_best: openalex
-citations: 3
+citations: 4
 citation_sources:
   semantic_scholar: 2
-  openalex: 3
+  openalex: 4
   opencitations: 0
 star_source_best: github_api
 github_stars: 112

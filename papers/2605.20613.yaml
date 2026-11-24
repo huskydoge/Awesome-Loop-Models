@@ -34,9 +34,9 @@ links:
   project: https://sapientinc.github.io/HRM-Text/
   github: https://github.com/sapientinc/HRM-Text
   hf: https://huggingface.co/sapientinc/HRM-Text-1B
-github_stars: 2348
+github_stars: 2351
 star_sources:
-  github_api: 2348
+  github_api: 2351
 star_source_best: github_api
 metrics_updated: '2026-11-24'
 citations: 16

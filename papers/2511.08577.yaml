@@ -29,14 +29,14 @@ links:
   arxiv: https://arxiv.org/abs/2511.08577
   openreview: https://openreview.net/forum?id=eQaJSRZiGn
   github: https://github.com/thu-nics/TaH
-citations: 35
+citations: 36
 citation_sources:
   semantic_scholar: 28
-  openalex: 35
+  openalex: 36
   opencitations: 0
 citation_source_best: openalex
-github_stars: 117
+github_stars: 118
 star_sources:
-  github_api: 117
+  github_api: 118
 star_source_best: github_api
 metrics_updated: '2026-11-24'

@@ -22,10 +22,10 @@ desc: Proves that softmax transformers can implement in-context logistic regress
 links:
   arxiv: https://arxiv.org/abs/2605.06609
   paper: https://icml.cc/virtual/2026/poster/62573
-citations: 3
+citations: 4
 citation_sources:
   semantic_scholar: 2
-  openalex: 3
+  openalex: 4
   opencitations: 0
 citation_source_best: openalex
 metrics_updated: '2026-11-24'
