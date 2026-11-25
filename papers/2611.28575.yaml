@@ -1,0 +1,27 @@
+title: "LoopSight: Looped Vision Transformers with Gated Prediction Memory"
+authors:
+  - "Zhaozhi Wang"
+  - "Mingrui Wu"
+  - "Jiaming Zhao"
+  - "An-Syu Li"
+  - "Jun Luo"
+year: 2026
+published_date: "2026-11-21"
+added_date: "2026-11-24"
+venue: "arXiv"
+survey_section:
+  - "architecture/state-memory"
+  - "applications/vision"
+  - "architecture/sharing"
+loop_topology: "whole-stack"
+sharing: "partial-adapter"
+depth_control: "sampled-train"
+claims:
+  - "stability"
+  - "param-efficiency"
+comparison: []
+survey_core: false
+desc: "Introduces LoopSight, a looped ViT whose Gated Prediction Memory keeps a gated readout state separate from the shared core's evolving computation, reaching 67.4% pass@2 on ARC-AGI-1 (+6.6 over LoopViT at comparable size) and staying stable out to 24 loops."
+links:
+  arxiv: "https://arxiv.org/abs/2611.28575"
+  github: "https://github.com/feufhd/LoopSight"

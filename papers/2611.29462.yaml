@@ -1,0 +1,26 @@
+title: "MoR4Rec: Mixture-of-Recursion for Sequential Recommendation"
+authors:
+  - "Tiwari Ankit Satyaprakash"
+  - "Adamya Shyam"
+  - "Vikas Kumar"
+  - "Bharti Rana"
+  - "Venkateswara Rao Kagita"
+year: 2026
+published_date: "2026-11-22"
+added_date: "2026-11-24"
+venue: "arXiv"
+survey_section:
+  - "applications/embodied-other"
+  - "architecture/depth-control"
+loop_topology: "prelude-core-coda"
+sharing: "full"
+depth_control: "adaptive-halting"
+claims:
+  - "compute-efficiency"
+  - "param-efficiency"
+comparison:
+  - "iso-depth"
+survey_core: false
+desc: "Introduces MoR4Rec, a Mixture-of-Recursions sequential recommender whose router assigns each item a recursion depth through a shared Transformer block with recursion-wise KV reuse, averaging +2.28% Recall@5 over the strongest baseline on three datasets."
+links:
+  arxiv: "https://arxiv.org/abs/2611.29462"
