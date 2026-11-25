@@ -25,14 +25,14 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2606.06574
   github: https://github.com/tianyi-lab/PoLar
   openreview: https://openreview.net/forum?id=pl10b6EQAN
-citations: 14
+citations: 15
 citation_sources:
-  semantic_scholar: 14
+  semantic_scholar: 15
   openalex: 8
   opencitations: 0
 citation_source_best: semantic_scholar
-metrics_updated: '2026-11-24'
-github_stars: 49
+metrics_updated: '2026-11-25'
+github_stars: 50
 star_sources:
-  github_api: 49
+  github_api: 50
 star_source_best: github_api

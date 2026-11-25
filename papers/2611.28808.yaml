@@ -1,24 +1,33 @@
-title: "When do stored facts become available in looped transformers?"
+title: When do stored facts become available in looped transformers?
 authors:
-  - "Fabio Valerio Massoli"
-  - "Arnau Padrés Masdemont"
-  - "Jordi Ros Giralt"
-  - "Arash Behboodi"
+- Fabio Valerio Massoli
+- Arnau Padrés Masdemont
+- Jordi Ros Giralt
+- Arash Behboodi
 year: 2026
-published_date: "2026-11-21"
-added_date: "2026-11-24"
-venue: "arXiv"
+published_date: '2026-11-21'
+added_date: '2026-11-24'
+venue: arXiv
 survey_section:
-  - "understanding/interpretability"
-  - "training/supervision-optimization"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "fixed"
+- understanding/interpretability
+- training/supervision-optimization
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
 claims: []
 comparison:
-  - "iso-depth"
-  - "iso-param"
+- iso-depth
+- iso-param
 survey_core: false
-desc: "Shows with tuned lenses and probes that stored facts in looped transformers become readable earlier across loops than in untied models of equal unrolled depth, that heavier memorization delays retrieval, and that patching an entity subspace redirects multi-hop answers in 79.07–98.57% of cases."
+desc: Shows with tuned lenses and probes that stored facts in looped transformers
+  become readable earlier across loops than in untied models of equal unrolled depth,
+  that heavier memorization delays retrieval, and that patching an entity subspace
+  redirects multi-hop answers in 79.07–98.57% of cases.
 links:
-  arxiv: "https://arxiv.org/abs/2611.28808"
+  arxiv: https://arxiv.org/abs/2611.28808
+citation_source_best: semantic_scholar
+citations: 1
+citation_sources:
+  semantic_scholar: 1
+  opencitations: 0
+metrics_updated: '2026-11-25'

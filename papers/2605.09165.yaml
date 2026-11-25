@@ -26,10 +26,10 @@ desc: Shows that MoE-style sparse layers can make looped language models scale b
   recovering expressivity and loop boundaries serving as effective early-exit points.
 links:
   arxiv: https://arxiv.org/abs/2605.09165
-citations: 18
+citations: 20
 citation_sources:
-  semantic_scholar: 17
+  semantic_scholar: 20
   openalex: 18
   opencitations: 0
-citation_source_best: openalex
-metrics_updated: '2026-11-16'
+citation_source_best: semantic_scholar
+metrics_updated: '2026-11-25'

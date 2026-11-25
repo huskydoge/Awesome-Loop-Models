@@ -32,9 +32,9 @@ desc: Introduces RELOAD, which fine-tunes pretrained 0.4B-4B encoders and decode
 links:
   arxiv: https://arxiv.org/abs/2611.07736
 citation_source_best: semantic_scholar
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
   opencitations: 0
-metrics_updated: '2026-11-09'
+metrics_updated: '2026-11-25'

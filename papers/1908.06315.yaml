@@ -27,7 +27,7 @@ links:
 citation_source_best: openalex
 citations: 241
 citation_sources:
-  semantic_scholar: 235
+  semantic_scholar: 236
   openalex: 241
   opencitations: 77
   crossref: 80
@@ -35,4 +35,4 @@ star_source_best: github_api
 github_stars: 3
 star_sources:
   github_api: 3
-metrics_updated: '2026-11-24'
+metrics_updated: '2026-11-25'

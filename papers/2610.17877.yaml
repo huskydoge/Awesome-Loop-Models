@@ -41,10 +41,10 @@ desc: Introduces LoopREG, which re-applies the representation-supervised block o
   one extra visit cuts SiT-B/2 ImageNet FID from 14.71 to 5.34.
 links:
   arxiv: https://arxiv.org/abs/2610.17877
-citations: 0
+citations: 1
 citation_source_best: semantic_scholar
 citation_sources:
   opencitations: 0
-  semantic_scholar: 0
+  semantic_scholar: 1
   openalex: 0
-metrics_updated: '2026-10-16'
+metrics_updated: '2026-11-25'

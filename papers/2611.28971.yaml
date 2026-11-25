@@ -1,23 +1,32 @@
-title: "When Wrong Answers Remain Unsettled: Failure Dynamics in Recurrent Reasoners"
+title: 'When Wrong Answers Remain Unsettled: Failure Dynamics in Recurrent Reasoners'
 authors:
-  - "Jiucheng Zang"
-  - "Congkai Peng"
-  - "Yankai Wei"
+- Jiucheng Zang
+- Congkai Peng
+- Yankai Wei
 year: 2026
-published_date: "2026-11-21"
-added_date: "2026-11-24"
-venue: "arXiv"
+published_date: '2026-11-21'
+added_date: '2026-11-24'
+venue: arXiv
 survey_section:
-  - "understanding/failure-modes"
-  - "scaling/test-time"
-loop_topology: "hierarchical"
-sharing: "full"
-depth_control: "adaptive-halting"
+- understanding/failure-modes
+- scaling/test-time
+loop_topology: hierarchical
+sharing: full
+depth_control: adaptive-halting
 claims:
-  - "failure-mode"
-  - "test-time-scaling"
+- failure-mode
+- test-time-scaling
 comparison: []
 survey_core: false
-desc: "Shows that wrong answers of a Sudoku-Extreme HRM are mostly unsettled computation: given one more inference budget, 0.95 of solved but only 0.18 of wrong endpoints keep their answer, and extending recursion depth (+5.6 points) beats noise-based reselection (+4.8)."
+desc: 'Shows that wrong answers of a Sudoku-Extreme HRM are mostly unsettled computation:
+  given one more inference budget, 0.95 of solved but only 0.18 of wrong endpoints
+  keep their answer, and extending recursion depth (+5.6 points) beats noise-based
+  reselection (+4.8).'
 links:
-  arxiv: "https://arxiv.org/abs/2611.28971"
+  arxiv: https://arxiv.org/abs/2611.28971
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-11-25'

@@ -1,25 +1,34 @@
-title: "What Makes Recurrence Generalize Across Lengths?"
+title: What Makes Recurrence Generalize Across Lengths?
 authors:
-  - "Yoonsung Jung"
-  - "Sunghun Jung"
-  - "Louise Nayeong Koh"
-  - "Yongjun Choi"
+- Yoonsung Jung
+- Sunghun Jung
+- Louise Nayeong Koh
+- Yongjun Choi
 year: 2026
-published_date: "2026-11-22"
-added_date: "2026-11-24"
-venue: "arXiv"
+published_date: '2026-11-22'
+added_date: '2026-11-24'
+venue: arXiv
 survey_section:
-  - "capabilities/generalization"
-  - "scaling/test-time"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "sampled-train"
+- capabilities/generalization
+- scaling/test-time
+loop_topology: whole-stack
+sharing: full
+depth_control: sampled-train
 claims:
-  - "length-generalization"
-  - "test-time-scaling"
+- length-generalization
+- test-time-scaling
 comparison:
-  - "iso-flop"
+- iso-flop
 survey_core: false
-desc: "Shows on a swap-based state-tracking task that weight-tied recurrent Transformers length-generalize only with atomic operation tokens and no absolute positional encoding, reaching 90.6% exact match on 11–19 swaps vs 28.1% for a compute-matched untied model."
+desc: Shows on a swap-based state-tracking task that weight-tied recurrent Transformers
+  length-generalize only with atomic operation tokens and no absolute positional encoding,
+  reaching 90.6% exact match on 11–19 swaps vs 28.1% for a compute-matched untied
+  model.
 links:
-  arxiv: "https://arxiv.org/abs/2611.29171"
+  arxiv: https://arxiv.org/abs/2611.29171
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-11-25'

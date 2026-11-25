@@ -1,34 +1,47 @@
-title: "Unlocking the Power of Loops in Pretrained LLMs with Loop Residuals"
+title: Unlocking the Power of Loops in Pretrained LLMs with Loop Residuals
 authors:
-  - "Xuanlei Zhao"
-  - "Hailun Xu"
-  - "Kai Wang"
-  - "Yang Luo"
-  - "Yingxuan Ren"
-  - "Zirui Zhu"
-  - "Yuxuan Lou"
-  - "Kun Xu"
-  - "Yan Wang"
-  - "Kanchan Sarkar"
-  - "Yang You"
+- Xuanlei Zhao
+- Hailun Xu
+- Kai Wang
+- Yang Luo
+- Yingxuan Ren
+- Zirui Zhu
+- Yuxuan Lou
+- Kun Xu
+- Yan Wang
+- Kanchan Sarkar
+- Yang You
 year: 2026
-published_date: "2026-11-23"
-added_date: "2026-11-24"
-venue: "arXiv"
+published_date: '2026-11-23'
+added_date: '2026-11-24'
+venue: arXiv
 survey_section:
-  - "training/retrofitting"
-  - "architecture/state-memory"
-  - "scaling/test-time"
-loop_topology: "prelude-core-coda"
-sharing: "partial-adapter"
-depth_control: "fixed"
+- training/retrofitting
+- architecture/state-memory
+- scaling/test-time
+loop_topology: prelude-core-coda
+sharing: partial-adapter
+depth_control: fixed
 claims:
-  - "test-time-scaling"
-  - "param-efficiency"
+- test-time-scaling
+- param-efficiency
 comparison:
-  - "iso-param"
+- iso-param
 survey_core: false
-desc: "Introduces LoopRes, which retrofits pretrained LLMs into looped models whose layers attend over earlier loop outputs through trainable loop-aware keys, improving Qwen3-1.7B-Base by 29.1% over SFT at 2× compute vs 13.9% for the best prior looping method."
+desc: Introduces LoopRes, which retrofits pretrained LLMs into looped models whose
+  layers attend over earlier loop outputs through trainable loop-aware keys, improving
+  Qwen3-1.7B-Base by 29.1% over SFT at 2× compute vs 13.9% for the best prior looping
+  method.
 links:
-  arxiv: "https://arxiv.org/abs/2611.31094"
-  github: "https://github.com/NUS-HPC-AI-Lab/LoopRes"
+  arxiv: https://arxiv.org/abs/2611.31094
+  github: https://github.com/NUS-HPC-AI-Lab/LoopRes
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 36
+star_sources:
+  github_api: 36
+metrics_updated: '2026-11-25'

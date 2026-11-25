@@ -1,23 +1,32 @@
-title: "A Pipeline-Parallel System for Depth-Recurrent Models"
+title: A Pipeline-Parallel System for Depth-Recurrent Models
 authors:
-  - "Yunjia Xi"
-  - "Jiarui Qin"
-  - "Di Yin"
-  - "Xing Sun"
+- Yunjia Xi
+- Jiarui Qin
+- Di Yin
+- Xing Sun
 year: 2026
-published_date: "2026-11-23"
-added_date: "2026-11-24"
-venue: "arXiv"
+published_date: '2026-11-23'
+added_date: '2026-11-24'
+venue: arXiv
 survey_section:
-  - "systems/batching-parallel"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "fixed"
+- systems/batching-parallel
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
 claims:
-  - "memory-efficiency"
+- memory-efficiency
 comparison:
-  - "iso-flop"
+- iso-flop
 survey_core: false
-desc: "Introduces Loop-PP, a pipeline-parallel training system that schedules repeated cross-stage visits of a shared layer stack in interleaved 1F1B without duplicating weights, cutting peak memory by up to 32.8% and raising best throughput by up to 12.7% on 8B–60B looped MoE models."
+desc: Introduces Loop-PP, a pipeline-parallel training system that schedules repeated
+  cross-stage visits of a shared layer stack in interleaved 1F1B without duplicating
+  weights, cutting peak memory by up to 32.8% and raising best throughput by up to
+  12.7% on 8B–60B looped MoE models.
 links:
-  arxiv: "https://arxiv.org/abs/2611.30581"
+  arxiv: https://arxiv.org/abs/2611.30581
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-11-25'

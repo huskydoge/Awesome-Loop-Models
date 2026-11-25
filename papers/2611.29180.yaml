@@ -1,26 +1,35 @@
-title: "loopxDINO: Dense Visual Prediction via Iterative Latent Reasoning"
+title: 'loopxDINO: Dense Visual Prediction via Iterative Latent Reasoning'
 authors:
-  - "Xiangjing An"
-  - "Zhibin Jiao"
-  - "Aiting Chen"
+- Xiangjing An
+- Zhibin Jiao
+- Aiting Chen
 year: 2026
-published_date: "2026-11-22"
-added_date: "2026-11-24"
-venue: "arXiv"
+published_date: '2026-11-22'
+added_date: '2026-11-24'
+venue: arXiv
 survey_section:
-  - "applications/vision"
-  - "architecture/depth-control"
-loop_topology: "partial"
-sharing: "partial-adapter"
-depth_control: "adaptive-halting"
+- applications/vision
+- architecture/depth-control
+loop_topology: partial
+sharing: partial-adapter
+depth_control: adaptive-halting
 claims:
-  - "param-efficiency"
-  - "memory-efficiency"
-  - "failure-mode"
+- param-efficiency
+- memory-efficiency
+- failure-mode
 comparison:
-  - "unclear"
+- unclear
 survey_core: false
-desc: "Introduces loopxDINO, a weight-tied cross-attention decoder looped over frozen DINOv2 features with step-conditioned adaLN, reaching 85.66% mIoU on Pascal VOC at two iterations with 72.5% fewer trainable parameters than a 6-layer decoder, though accuracy drops with more iterations."
+desc: Introduces loopxDINO, a weight-tied cross-attention decoder looped over frozen
+  DINOv2 features with step-conditioned adaLN, reaching 85.66% mIoU on Pascal VOC
+  at two iterations with 72.5% fewer trainable parameters than a 6-layer decoder,
+  though accuracy drops with more iterations.
 links:
-  arxiv: "https://arxiv.org/abs/2611.29180"
-  github: "https://github.com/loopxDINO/loopxDINO"
+  arxiv: https://arxiv.org/abs/2611.29180
+  github: https://github.com/loopxDINO/loopxDINO
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-11-25'

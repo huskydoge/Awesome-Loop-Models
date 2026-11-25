@@ -1,21 +1,31 @@
-title: "PackLoop: Row-Packed Self-Speculative Decoding for Looped Language Models under Concurrency"
+title: 'PackLoop: Row-Packed Self-Speculative Decoding for Looped Language Models
+  under Concurrency'
 authors:
-  - "Runguo Li"
-  - "Dezhen Lu"
+- Runguo Li
+- Dezhen Lu
 year: 2026
-published_date: "2026-11-23"
-added_date: "2026-11-24"
-venue: "arXiv"
+published_date: '2026-11-23'
+added_date: '2026-11-24'
+venue: arXiv
 survey_section:
-  - "systems/batching-parallel"
-  - "systems/kv-memory"
-loop_topology: "whole-stack"
-sharing: "full"
-depth_control: "fixed"
+- systems/batching-parallel
+- systems/kv-memory
+loop_topology: whole-stack
+sharing: full
+depth_control: fixed
 claims:
-  - "compute-efficiency"
+- compute-efficiency
 comparison: []
 survey_core: false
-desc: "Introduces PackLoop, an exact self-speculative decoder for looped LMs that places speculative positions only in per-loop KV-read rows already being read, beating the best existing schedule at 161 of 164 concurrent-load points on Ouro (median 1.25×, up to 1.76×)."
+desc: Introduces PackLoop, an exact self-speculative decoder for looped LMs that places
+  speculative positions only in per-loop KV-read rows already being read, beating
+  the best existing schedule at 161 of 164 concurrent-load points on Ouro (median
+  1.25×, up to 1.76×).
 links:
-  arxiv: "https://arxiv.org/abs/2611.30205"
+  arxiv: https://arxiv.org/abs/2611.30205
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-11-25'
