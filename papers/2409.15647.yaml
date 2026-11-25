@@ -25,12 +25,12 @@ links:
   arxiv: https://arxiv.org/abs/2409.15647
   openreview: https://openreview.net/forum?id=2edigk8yoU
   github: https://github.com/UW-Madison-Lee-Lab/looped-tf
-citations: 123
+citations: 132
 citation_sources:
   semantic_scholar: 123
-  openalex: 85
+  openalex: 132
   opencitations: 0
-citation_source_best: semantic_scholar
+citation_source_best: openalex
 github_stars: 15
 star_sources:
   github_api: 15

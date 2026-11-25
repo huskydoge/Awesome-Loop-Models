@@ -29,10 +29,10 @@ links:
   paper: https://aclanthology.org/2023.emnlp-main.12/
   github: https://github.com/shawntan/SUT
 citation_source_best: openalex
-citations: 55
+citations: 54
 citation_sources:
   semantic_scholar: 42
-  openalex: 55
+  openalex: 54
   opencitations: 0
 star_source_best: github_api
 github_stars: 20
