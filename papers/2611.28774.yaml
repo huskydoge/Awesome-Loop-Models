@@ -1,0 +1,23 @@
+title: "R2WM: Recursive Reasoning Wireless Model for Long-Horizon mmWave Beam Prediction"
+authors:
+  - "Yunxiao Tian"
+  - "Li Qiao"
+  - "Ziwei Wan"
+  - "Andrey Ivanov"
+  - "Zhen Gao"
+year: 2026
+published_date: "2026-11-21"
+added_date: "2026-11-24"
+venue: "arXiv"
+survey_section:
+  - "applications/embodied-other"
+loop_topology: "hierarchical"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "param-efficiency"
+comparison: []
+survey_core: false
+desc: "Introduces R2WM, a TRM-style recursive model that reuses a two-block causal-attention backbone across nested latent and prediction updates for mmWave beam prediction, reaching 0.9597 average normalized beamforming gain vs 0.8629 for an LLM baseline with 99.1% fewer parameters."
+links:
+  arxiv: "https://arxiv.org/abs/2611.28774"

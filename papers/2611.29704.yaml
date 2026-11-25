@@ -1,0 +1,27 @@
+title: "Loop-Count Schedules in Looped Transformers: An Empirical Study"
+authors:
+  - "Konstantin Kolokolov"
+year: 2026
+published_date: "2026-11-22"
+added_date: "2026-11-24"
+venue: "arXiv"
+survey_section:
+  - "architecture/depth-control"
+  - "architecture/residual-init"
+  - "understanding/why"
+loop_topology: "partial"
+sharing: "full"
+depth_control: "sampled-train"
+claims:
+  - "param-efficiency"
+  - "memory-efficiency"
+  - "stability"
+comparison:
+  - "iso-param"
+  - "iso-flop"
+survey_core: false
+desc: "Shows that the lower bound of the training loop-count schedule decides whether gated loop passes act as full layers (gates 0.6–0.9) or small corrections (0.1–0.5) in 46M–110M looped LMs; R∼{2,3,4} reaches 2.909 nats vs 2.951 for the parameter-matched plain model."
+links:
+  arxiv: "https://arxiv.org/abs/2611.29704"
+  github: "https://github.com/kvoyager/gatedloop-transformer"
+  hf: "https://huggingface.co/konstank/gatedloop-transformer"

@@ -1,0 +1,30 @@
+title: "DyLoMo-DiT: Dynamic Looped Mixture-of-Experts Diffusion Transformers"
+authors:
+  - "Lernie Li"
+  - "Yuanliu Liu"
+  - "Pengfei Xiong"
+  - "Wei Zhang"
+year: 2026
+published_date: "2026-11-23"
+added_date: "2026-11-24"
+venue: "arXiv"
+survey_section:
+  - "architecture/hybrid"
+  - "open-problems/diffusion"
+  - "architecture/depth-control"
+  - "applications/vision"
+loop_topology: "prelude-core-coda"
+sharing: "full"
+depth_control: "sampled-train"
+claims:
+  - "param-efficiency"
+  - "compute-efficiency"
+comparison:
+  - "iso-param"
+  - "iso-flop"
+survey_core: false
+desc: "Introduces DyLoMo-DiT, a diffusion Transformer that loops weight-shared middle layers with sparse experts and gives low-noise steps more passes, cutting ImageNet-256 FID by 11–24% vs DiT and 36–56% vs DiT-MoE at matched parameters and compute."
+links:
+  arxiv: "https://arxiv.org/abs/2611.30844"
+  github: "https://github.com/OneBoxCream/DyLoMo-DiT"
+  project: "https://oneboxcream.github.io/DyLoMo-DiT/"
