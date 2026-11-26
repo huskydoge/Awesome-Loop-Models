@@ -21,7 +21,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§3 Capabilities, Benefits and Trade-offs**
 
-- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (8 / 61)
+- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (8 / 62)
 - `capabilities/expressivity` — §3.2 Expressivity and reasoning capacity (20 / 24)
 - `capabilities/generalization` — §3.3 Length, easy-to-hard, and compositional generalization (14 / 31)
 
@@ -29,18 +29,18 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§4 Architecture and Design**
 
-- `architecture/topology` — §4.1 Loop topology (14 / 36)
+- `architecture/topology` — §4.1 Loop topology (15 / 38)
 - `architecture/residual-init` — §4.2 Residual manipulation and initialization (13 / 47)
 - `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (13 / 32)
 - `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (8 / 35)
 - `architecture/depth-control` — §4.5 Controlling recurrence depth (29 / 89)
-- `architecture/hybrid` — §4.6 Hybrid looped architectures (21 / 32)
+- `architecture/hybrid` — §4.6 Hybrid looped architectures (21 / 33)
 
 **§5 Learning Algorithms**
 
 - `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (31 / 85)
 - `training/post-training` — §5.2 Post-training and reinforcement learning (11 / 22)
-- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (21 / 37)
+- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (22 / 38)
 
 **§6 Scaling Laws**
 
@@ -50,7 +50,7 @@ List every section the entry belongs to; the first entry is its primary section.
 **§7 Systems and Infrastructure**
 
 - `systems/quantization-edge` — §7.1 Quantization and edge deployment (12 / 20)
-- `systems/kv-memory` — §7.2 KV cache and memory (18 / 33)
+- `systems/kv-memory` — §7.2 KV cache and memory (18 / 34)
 - `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (16 / 22)
 
 ### Part IV. Understanding and Applications

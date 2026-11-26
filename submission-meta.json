@@ -9,6 +9,8 @@
     "blogs/2026-04-29-exact-input-writes-parcae.yaml",
     "blogs/2026-05-23-rethinking-hierarchy-iterative-reasoning-models.yaml",
     "blogs/2026-07-31-towards-looped-models-done-right.yaml",
+    "blogs/2026-11-20-inkling-2-mini.yaml",
+    "blogs/2026-11-23-glm-5-4-loop-transformer.yaml",
     "papers/1511.04491.yaml",
     "papers/1511.08228.yaml",
     "papers/1603.08983.yaml",
@@ -794,7 +796,7 @@
       },
       {
         "label": "capabilities/efficiency",
-        "count": 61
+        "count": 62
       },
       {
         "label": "scaling/test-time",
@@ -821,12 +823,12 @@
         "count": 39
       },
       {
-        "label": "training/retrofitting",
-        "count": 37
+        "label": "architecture/topology",
+        "count": 38
       },
       {
-        "label": "architecture/topology",
-        "count": 36
+        "label": "training/retrofitting",
+        "count": 38
       },
       {
         "label": "architecture/sharing",
@@ -834,6 +836,10 @@
       },
       {
         "label": "systems/kv-memory",
+        "count": 34
+      },
+      {
+        "label": "architecture/hybrid",
         "count": 33
       },
       {
@@ -842,10 +848,6 @@
       },
       {
         "label": "applications/graphs-science",
-        "count": 32
-      },
-      {
-        "label": "architecture/hybrid",
         "count": 32
       },
       {

@@ -1,0 +1,21 @@
+title: "Introducing Inkling 2 Mini"
+authors:
+  - "Thinking Machines Lab"
+year: 2026
+published_date: "2026-11-20"
+added_date: "2026-11-26"
+venue: "Lab Blog"
+survey_section:
+  - "architecture/topology"
+  - "capabilities/efficiency"
+  - "architecture/hybrid"
+
+desc: >
+  Release post for Inkling 2 Mini, an open-weight 26.4B-total MoE that stores 24
+  layers but runs its two middle six-layer blocks three times per token (48 layer
+  applications), and reports that looping was over 50% more compute-efficient
+  than a non-looped model on its scaling ladder.
+
+links:
+  blog: "https://thinkingmachines.ai/news/inkling-2-mini/"
+  hf: "https://huggingface.co/thinkingmachines/Inkling-2-Mini"
