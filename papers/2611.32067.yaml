@@ -1,0 +1,29 @@
+title: "LoopDVR: Looped Transformer for Efficient Dense Visual Recognition"
+authors:
+  - "Sirui Liang"
+  - "Xuanlong Yu"
+  - "Longfei Liu"
+  - "Xiaodong Cun"
+  - "Xi Shen"
+year: 2026
+published_date: "2026-11-24"
+added_date: "2026-11-25"
+venue: arXiv
+survey_section:
+  - "applications/vision"
+  - "training/retrofitting"
+  - "architecture/sharing"
+  - "capabilities/efficiency"
+loop_topology: "partial"
+sharing: "partial-adapter"
+depth_control: "fixed"
+claims:
+  - "param-efficiency"
+comparison:
+  - "iso-depth"
+survey_core: false
+desc: "Converts pretrained ViT detectors, segmenters and pose models into looped networks that reuse grouped backbone and decoder blocks with per-layer Loop Adapters, cutting parameters by about 28%; LoopDet-S reaches 50.9 COCO box AP with 7.0M parameters."
+links:
+  arxiv: "https://arxiv.org/abs/2611.32067"
+  github: "https://github.com/Intellindust-AI-Lab/LoopDVR"
+  project: "https://siruuui.github.io/LoopDVR/"
