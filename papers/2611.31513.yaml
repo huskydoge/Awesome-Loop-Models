@@ -1,21 +1,34 @@
-title: "How to build and train your recurrent-depth model: A fixed-point perspective"
+title: 'How to build and train your recurrent-depth model: A fixed-point perspective'
 authors:
-  - "Thomas Pethick"
+- Thomas Pethick
 year: 2026
-published_date: "2026-11-23"
-added_date: "2026-11-25"
+published_date: '2026-11-23'
+added_date: '2026-11-25'
 venue: arXiv
 survey_section:
-  - "training/supervision-optimization"
-  - "architecture/residual-init"
-loop_topology: "prelude-core-coda"
-sharing: "full"
-depth_control: "fixed"
+- training/supervision-optimization
+- architecture/residual-init
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
 claims:
-  - "stability"
+- stability
 comparison: []
 survey_core: false
-desc: "Shows that input injection in recurrent-depth models is Halpern iteration, which makes truncated backpropagation provably convergent for Lipschitz blocks, and derives the Sparrow optimizer from the required norm constraints, lowering validation loss over Muon in small looped and non-looped models."
+desc: Shows that input injection in recurrent-depth models is Halpern iteration, which
+  makes truncated backpropagation provably convergent for Lipschitz blocks, and derives
+  the Sparrow optimizer from the required norm constraints, lowering validation loss
+  over Muon in small looped and non-looped models.
 links:
-  arxiv: "https://arxiv.org/abs/2611.31513"
-  github: "https://github.com/tmpethick/sparrow"
+  arxiv: https://arxiv.org/abs/2611.31513
+  github: https://github.com/tmpethick/sparrow
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 0
+star_sources:
+  github_api: 0
+metrics_updated: '2026-11-26'

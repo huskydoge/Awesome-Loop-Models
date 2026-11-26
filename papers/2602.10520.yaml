@@ -21,13 +21,13 @@ desc: Introduces RLTT, a reinforcement-learning objective that assigns reward ac
 links:
   arxiv: https://arxiv.org/abs/2602.10520
   github: https://github.com/jonwill8/RLTT
-citations: 15
+citations: 16
 citation_sources:
-  semantic_scholar: 14
+  semantic_scholar: 16
   openalex: 15
   opencitations: 0
-citation_source_best: openalex
-metrics_updated: '2026-11-25'
+citation_source_best: semantic_scholar
+metrics_updated: '2026-11-26'
 github_stars: 18
 star_sources:
   github_api: 18

@@ -27,12 +27,12 @@ links:
   alphaxiv: https://www.alphaxiv.org/abs/2609.17184
   github: https://github.com/kaist-flexml-lab/loopspec
 citation_source_best: semantic_scholar
-citations: 13
+citations: 14
 citation_sources:
-  semantic_scholar: 13
+  semantic_scholar: 14
   opencitations: 0
   openalex: 11
-metrics_updated: '2026-11-25'
+metrics_updated: '2026-11-26'
 star_source_best: github_api
 github_stars: 25
 star_sources:

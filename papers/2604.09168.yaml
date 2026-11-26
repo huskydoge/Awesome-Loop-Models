@@ -37,10 +37,10 @@ links:
     url: https://x.com/che_shr_cat/status/2050923533199376595?s=20
   - label: Grigory Sapunov's reading notes
     url: https://arxiviq.substack.com/p/elt-elastic-looped-transformers-for
-citations: 19
+citations: 20
 citation_sources:
-  semantic_scholar: 18
+  semantic_scholar: 20
   openalex: 19
   opencitations: 0
-citation_source_best: openalex
-metrics_updated: '2026-11-25'
+citation_source_best: semantic_scholar
+metrics_updated: '2026-11-26'

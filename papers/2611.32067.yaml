@@ -1,29 +1,41 @@
-title: "LoopDVR: Looped Transformer for Efficient Dense Visual Recognition"
+title: 'LoopDVR: Looped Transformer for Efficient Dense Visual Recognition'
 authors:
-  - "Sirui Liang"
-  - "Xuanlong Yu"
-  - "Longfei Liu"
-  - "Xiaodong Cun"
-  - "Xi Shen"
+- Sirui Liang
+- Xuanlong Yu
+- Longfei Liu
+- Xiaodong Cun
+- Xi Shen
 year: 2026
-published_date: "2026-11-24"
-added_date: "2026-11-25"
+published_date: '2026-11-24'
+added_date: '2026-11-25'
 venue: arXiv
 survey_section:
-  - "applications/vision"
-  - "training/retrofitting"
-  - "architecture/sharing"
-  - "capabilities/efficiency"
-loop_topology: "partial"
-sharing: "partial-adapter"
-depth_control: "fixed"
+- applications/vision
+- training/retrofitting
+- architecture/sharing
+- capabilities/efficiency
+loop_topology: partial
+sharing: partial-adapter
+depth_control: fixed
 claims:
-  - "param-efficiency"
+- param-efficiency
 comparison:
-  - "iso-depth"
+- iso-depth
 survey_core: false
-desc: "Converts pretrained ViT detectors, segmenters and pose models into looped networks that reuse grouped backbone and decoder blocks with per-layer Loop Adapters, cutting parameters by about 28%; LoopDet-S reaches 50.9 COCO box AP with 7.0M parameters."
+desc: Converts pretrained ViT detectors, segmenters and pose models into looped networks
+  that reuse grouped backbone and decoder blocks with per-layer Loop Adapters, cutting
+  parameters by about 28%; LoopDet-S reaches 50.9 COCO box AP with 7.0M parameters.
 links:
-  arxiv: "https://arxiv.org/abs/2611.32067"
-  github: "https://github.com/Intellindust-AI-Lab/LoopDVR"
-  project: "https://siruuui.github.io/LoopDVR/"
+  arxiv: https://arxiv.org/abs/2611.32067
+  github: https://github.com/Intellindust-AI-Lab/LoopDVR
+  project: https://siruuui.github.io/LoopDVR/
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+star_source_best: github_api
+github_stars: 11
+star_sources:
+  github_api: 11
+metrics_updated: '2026-11-26'

@@ -1,33 +1,42 @@
-title: "LoopFit: Retrofitting Pretrained Diffusion Transformers with Recurrent Refinement"
+title: 'LoopFit: Retrofitting Pretrained Diffusion Transformers with Recurrent Refinement'
 authors:
-  - "Xiaocheng Lu"
-  - "Haoxi Li"
-  - "Dazhao Du"
-  - "Tao Han"
-  - "Jian Liu"
-  - "Hao Chen"
-  - "Bohai Gu"
-  - "Siyu Yan"
-  - "Jingcai Guo"
-  - "Jie Zhang"
-  - "Song Guo"
+- Xiaocheng Lu
+- Haoxi Li
+- Dazhao Du
+- Tao Han
+- Jian Liu
+- Hao Chen
+- Bohai Gu
+- Siyu Yan
+- Jingcai Guo
+- Jie Zhang
+- Song Guo
 year: 2026
-published_date: "2026-11-24"
-added_date: "2026-11-25"
+published_date: '2026-11-24'
+added_date: '2026-11-25'
 venue: arXiv
 survey_section:
-  - "training/retrofitting"
-  - "open-problems/diffusion"
-  - "scaling/test-time"
-  - "architecture/sharing"
-loop_topology: "prelude-core-coda"
-sharing: "partial-adapter"
-depth_control: "fixed"
+- training/retrofitting
+- open-problems/diffusion
+- scaling/test-time
+- architecture/sharing
+loop_topology: prelude-core-coda
+sharing: partial-adapter
+depth_control: fixed
 claims:
-  - "test-time-scaling"
+- test-time-scaling
 comparison:
-  - "iso-flop"
+- iso-flop
 survey_core: false
-desc: "Retrofits a pretrained diffusion Transformer with a looped core whose attention inputs are modulated per patch by the previous pass's feature change, solving 89.8% of boards across 12 visual-puzzle settings and beating extra sampling steps at matched block calls."
+desc: Retrofits a pretrained diffusion Transformer with a looped core whose attention
+  inputs are modulated per patch by the previous pass's feature change, solving 89.8%
+  of boards across 12 visual-puzzle settings and beating extra sampling steps at matched
+  block calls.
 links:
-  arxiv: "https://arxiv.org/abs/2611.32175"
+  arxiv: https://arxiv.org/abs/2611.32175
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  opencitations: 0
+metrics_updated: '2026-11-26'
