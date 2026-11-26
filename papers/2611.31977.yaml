@@ -1,0 +1,28 @@
+title: "Distill to Loop: Turning Pretrained Diffusion Transformers into Looped Models with Adjustable Depth"
+authors:
+  - "Chenru Wang"
+  - "Shengwei An"
+year: 2026
+published_date: "2026-11-24"
+added_date: "2026-11-25"
+venue: arXiv
+survey_section:
+  - "training/retrofitting"
+  - "open-problems/diffusion"
+  - "architecture/depth-control"
+  - "applications/vision"
+loop_topology: "prelude-core-coda"
+sharing: "partial-adapter"
+depth_control: "sampled-train"
+claims:
+  - "param-efficiency"
+  - "compute-efficiency"
+comparison:
+  - "iso-flop"
+survey_core: false
+desc: "Introduces Dooop, which distills a pretrained diffusion Transformer into a looped student by treating each loop as a fixed-point step toward the teacher, so one model runs any loop count; an SD3-medium student with 37% of the parameters matches the teacher at two loops and 58% of its compute."
+links:
+  arxiv: "https://arxiv.org/abs/2611.31977"
+  github: "https://github.com/WinterCCC/Distill-to-Loop"
+  hf: "https://huggingface.co/ShimaRinC/Distill-to-Loop"
+  project: "https://winterccc.github.io/dooop"

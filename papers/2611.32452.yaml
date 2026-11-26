@@ -1,0 +1,18 @@
+title: "The Teacher Is Already Inside: Self-Distilling Looped Language Models Beyond Their Last Loop"
+authors:
+  - "Linghua Zhang"
+year: 2026
+published_date: "2026-11-24"
+added_date: "2026-11-25"
+venue: arXiv
+survey_section:
+  - "training/post-training"
+loop_topology: "whole-stack"
+sharing: "full"
+depth_control: "fixed"
+claims: []
+comparison: []
+survey_core: false
+desc: "Introduces ELPSD, which distills a looped language model's last loop toward a frozen first-to-last-loop extrapolated distribution without any reward, raising Ouro-1.4B-Thinking's average math avg@8 from 61.15 to 63.69, ahead of GRPO at 62.32."
+links:
+  arxiv: "https://arxiv.org/abs/2611.32452"

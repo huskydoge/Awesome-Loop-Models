@@ -1,0 +1,22 @@
+title: "SwiftLoop: Selective Refinement for Adaptive Implicit Reasoning in Looped Transformers"
+authors:
+  - "Tianyi Zhao"
+  - "Ke Wan"
+  - "Chen Chen"
+year: 2026
+published_date: "2026-11-23"
+added_date: "2026-11-25"
+venue: arXiv
+survey_section:
+  - "architecture/depth-control"
+  - "systems/kv-memory"
+loop_topology: "unspecified"
+sharing: "full"
+depth_control: "adaptive-halting"
+claims:
+  - "compute-efficiency"
+survey_core: false
+comparison: []
+desc: "Introduces SwiftLoop, which learns per-position freezing policies from hindsight labels so looped models stop refining settled positions while keeping their K/V attendable, cutting Huginn-3.5B from 32 to about 12-14 recurrent steps with accuracy within 0.17 points."
+links:
+  arxiv: "https://arxiv.org/abs/2611.31481"

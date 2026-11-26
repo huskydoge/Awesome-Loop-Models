@@ -1,0 +1,18 @@
+title: "Beyond the Last Loop: Reinforcement Learning with a Teacher Extrapolated from the Model Itself"
+authors:
+  - "Linghua Zhang"
+year: 2026
+published_date: "2026-11-24"
+added_date: "2026-11-25"
+venue: arXiv
+survey_section:
+  - "training/post-training"
+loop_topology: "whole-stack"
+sharing: "full"
+depth_control: "fixed"
+claims: []
+comparison: []
+survey_core: false
+desc: "Introduces ELGO, which adds to GRPO a dense per-token distillation term toward a periodically refreshed loop-extrapolated teacher, raising Ouro-1.4B-Thinking's average math avg@8 from 62.32 with GRPO to 64.20."
+links:
+  arxiv: "https://arxiv.org/abs/2611.31939"
