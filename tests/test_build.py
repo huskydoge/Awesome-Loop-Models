@@ -1652,8 +1652,6 @@ setTimeout(function() {
         self.assertIn("paper.links.paper", html)
         self.assertIn('class="desk-paper-select"', card)
         self.assertIn('aria-controls="paper-detail" aria-pressed="false"', card)
-        self.assertIn("renderPaperLinksHtml(paper)", card)
-        self.assertIn('class="paper-links desk-list-links"', card)
         self.assertIn('class="desk-open-paper"', desk)
         self.assertIn("getPrimaryPaperUrl(paper)", desk)
         self.assertIn("escapeHtml(primaryUrl)", desk)
@@ -1769,7 +1767,8 @@ setTimeout(function() {
         renderer_end = html.index("// ── Daily briefing page", renderer_start)
         renderer = html[renderer_start:renderer_end]
 
-        self.assertIn("container.innerHTML = '<div class=\"survey-list\" id=\"papers-grid\"></div>';", list_builder)
+        self.assertIn("+ '<div class=\"survey-list\" id=\"papers-grid\"></div>';", list_builder)
+        self.assertIn('<div class="paper-row-header" aria-hidden="true">', list_builder)
         self.assertNotIn("createCategorySection", html)
         self.assertIn("grid.id = 'blogs-grid';", blog_builder)
         for builder in (list_builder, blog_builder):
@@ -3699,13 +3698,14 @@ process.stdout.write(JSON.stringify({{
         render_end = html.index("// ── State & Taxonomy", render_start)
         render_snippet = html[render_start:render_end]
 
-        self.assertIn('class="desk-card-date"', render_snippet)
         self.assertNotIn("desk-paper-footer", render_snippet)
         self.assertEqual(render_snippet.count("getPaperDisplayDate(paper)"), 1)
-        self.assertIn("<time>' + escapeHtml(getPaperDisplayDate(paper))", render_snippet)
+        self.assertIn("formatRowDate(publishedDate, false)", render_snippet)
+        self.assertIn("formatRowDate(paper.added_date, true)", render_snippet)
+        self.assertIn('class="paper-row-date paper-row-published"', render_snippet)
+        self.assertIn('class="paper-row-date paper-row-added"', render_snippet)
         self.assertIn("<time>' + escapeHtml(getPaperDisplayDate(paper)) + '</time>'", desk)
         self.assertNotIn("paper.year", render_snippet)
-        self.assertNotIn("paper.added_date", render_snippet)
 
     def test_paper_cards_keep_content_when_the_detail_column_changes(self):
         """The same full cards reflow with list width without conditional content hiding."""
@@ -3726,21 +3726,14 @@ process.stdout.write(JSON.stringify({{
         render_start = html.index("function renderCard(paper, query) {")
         render_end = html.index("// ── State & Taxonomy", render_start)
         render_snippet = html[render_start:render_end]
-        self.assertIn('<article class="paper-card"', render_snippet)
+        self.assertIn('<article class="paper-card paper-row"', render_snippet)
         self.assertIn('class="desk-paper-select"', render_snippet)
         self.assertIn('aria-controls="paper-detail" aria-pressed="false"', render_snippet)
-        self.assertIn('class="desk-card-summary"', render_snippet)
-        self.assertIn('class="desk-card-preview"', render_snippet)
-        self.assertIn('class="desk-card-signals"', render_snippet)
+        self.assertIn('class="paper-row-thumb"', render_snippet)
+        self.assertIn("highlightQuery(escapeHtml(formatCompactAuthors(paper)), query)", render_snippet)
         self.assertNotIn("desk-full-card", render_snippet)
         self.assertNotIn("desk-paper-footer", render_snippet)
-        self.assertIn("highlightQuery(escapeHtml(paper.desc), query)", render_snippet)
-        self.assertIn("renderMetricsHtml(paper)", render_snippet)
-        self.assertIn("renderPaperLinksHtml(paper)", render_snippet)
-        self.assertIn('class="paper-links desk-list-links"', render_snippet)
-        self.assertIn("paper-chip-overflow", render_snippet)
-        self.assertIn("renderSectionBadgesHtml(paper)", render_snippet)
-        self.assertIn("axes.map(function(entry) { return renderAxisChipHtml(entry); })", render_snippet)
+        self.assertNotIn("desk-card-summary", render_snippet)
         self.assertIn('id="desk-show-details"', html)
         self.assertIn("const READING_DESK_COLLAPSE_WIDTH = 220;", desk)
         self.assertIn("wideList && readingDeskDetailCollapsed", desk)
