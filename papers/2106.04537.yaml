@@ -31,11 +31,11 @@ links:
   github: https://github.com/aks2203/easy-to-hard
   openreview: https://openreview.net/forum?id=Tsp2PL7-GQ
 citation_source_best: semantic_scholar
-citations: 160
+citations: 161
 citation_sources:
-  semantic_scholar: 160
+  semantic_scholar: 161
   opencitations: 0
-  openalex: 142
+  openalex: 144
 star_source_best: github_api
 github_stars: 61
 star_sources:
