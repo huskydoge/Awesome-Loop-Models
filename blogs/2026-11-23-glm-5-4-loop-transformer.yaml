@@ -1,0 +1,20 @@
+title: "GLM-5.4: Toward Generalized Coding with Our First Loop Transformer"
+authors:
+  - "Z.ai"
+year: 2026
+published_date: "2026-11-23"
+added_date: "2026-11-26"
+venue: "Lab Blog"
+survey_section:
+  - "training/retrofitting"
+  - "architecture/topology"
+  - "systems/kv-memory"
+
+desc: >
+  Announces GLM-5.4, Z.ai's first looped flagship, a roughly 750B-parameter model
+  continued-trained from GLM-5 that runs 28 weight-shared layers twice per forward
+  pass with per-token write-back gates and a hybrid KV cache, which Z.ai calls
+  comparable to 2T-3T-parameter models; benchmarks and open weights are not yet released.
+
+links:
+  blog: "https://z.ai/blog/glm-5.4"
