@@ -2702,8 +2702,10 @@ process.stdout.write(JSON.stringify({ before: before, scrolls: scrollRequests })
         self.assertIn("range === '90d'", helpers)
         self.assertIn("range === 'all'", helpers)
         self.assertIn("windowSize = 14", helpers)
-        self.assertIn("windowSize = 4", helpers)
-        self.assertIn("aggregateWeeklySeries(daily.slice(-364))", helpers)
+        self.assertIn("windowSize = 7", helpers)
+        self.assertIn("source = daily.slice(-365)", helpers)
+        self.assertIn("function extendDailySeriesThrough(", helpers)
+        self.assertIn("function extendMonthlySeriesThrough(", helpers)
         self.assertIn("windowSize = 6", helpers)
 
     def test_stats_helpers_execute_date_series_and_summary_boundaries(self):
@@ -2884,12 +2886,12 @@ process.stdout.write(JSON.stringify({ before: before, scrolls: scrollRequests })
                 },
                 "oneYear": {
                     "range": "1y",
-                    "granularity": "week",
-                    "windowSize": 4,
-                    "length": 52,
-                    "firstKey": "d36",
-                    "lastKey": "d393",
-                    "firstAverages": [2, 1],
+                    "granularity": "day",
+                    "windowSize": 7,
+                    "length": 365,
+                    "firstKey": "d35",
+                    "lastKey": "d399",
+                    "firstAverages": [8, 5],
                 },
                 "allTime": {
                     "range": "all",
@@ -2904,7 +2906,7 @@ process.stdout.write(JSON.stringify({ before: before, scrolls: scrollRequests })
         )
         self.assertEqual(
             result["emptyRange"],
-            {"range": "1y", "granularity": "week", "windowSize": 4, "series": []},
+            {"range": "1y", "granularity": "day", "windowSize": 7, "series": []},
         )
         self.assertEqual(result["summary"]["totalPapers"], 11)
         self.assertEqual(result["summary"]["releasesLast30Days"], 3)
@@ -2947,6 +2949,46 @@ process.stdout.write(JSON.stringify({ before: before, scrolls: scrollRequests })
                 ],
             },
         )
+
+    def test_stats_series_extend_through_today_and_keep_latest_release(self):
+        """Live Stats pad empty days and months through today without moving the latest release."""
+        result = self.run_stats_series_helpers("""(function() {
+  const papers = [
+    { published_date: '2026-11-22', survey_section: ['architecture/topology'] },
+    { published_date: '2026-11-24', survey_section: ['training/post-training'] },
+    { published_date: '2026-08-01', survey_section: ['understanding/why'] }
+  ];
+  const daily = extendDailySeriesThrough(buildDailyPublicationSeries(papers), '2026-11-26');
+  const monthly = extendMonthlySeriesThrough(buildMonthlyPublicationSeries(papers), '2027-01-03');
+  return {
+    today: getStatsTodayKey(new Date(2026, 10, 26, 23, 59)),
+    dailyTail: daily.slice(-3).map(function(bucket) { return [bucket.key, bucket.count, bucket.cumulative]; }),
+    notShortened: extendDailySeriesThrough(buildDailyPublicationSeries(papers), '2026-11-01').slice(-1)[0].key,
+    invalidEnd: extendDailySeriesThrough(buildDailyPublicationSeries(papers), 'soon').length,
+    emptyDaily: extendDailySeriesThrough(null, '2026-11-26'),
+    monthlyTail: monthly.slice(-3).map(function(bucket) { return [bucket.key, bucket.count, bucket.cumulative]; }),
+    latest: buildReleaseStatsSummary(papers, daily).latestReleaseDate,
+    oneYearLast: slicePublicationRange(daily, monthly, '1y').series.slice(-1)[0].key,
+    recent: buildRecentStatsDistribution(papers, 'survey_section', 90, 5, '2026-11-26').totalPapers,
+    recentAnchoredLater: buildRecentStatsDistribution(papers, 'survey_section', 3, 5, '2026-11-26').totalPapers
+  };
+})()""")
+        self.assertEqual(result["today"], "2026-11-26")
+        self.assertEqual(
+            result["dailyTail"],
+            [["2026-11-24", 1, 3], ["2026-11-25", 0, 3], ["2026-11-26", 0, 3]],
+        )
+        self.assertEqual(result["notShortened"], "2026-11-24")
+        self.assertEqual(result["invalidEnd"], 116)
+        self.assertEqual(result["emptyDaily"], [])
+        self.assertEqual(
+            result["monthlyTail"],
+            [["2026-11", 2, 3], ["2026-12", 0, 3], ["2027-01", 0, 3]],
+        )
+        self.assertEqual(result["latest"], "2026-11-24")
+        self.assertEqual(result["oneYearLast"], "2026-11-26")
+        self.assertEqual(result["recent"], 2)
+        self.assertEqual(result["recentAnchoredLater"], 1)
 
     def test_weekly_release_series_facts_and_axis_are_exact(self):
         """1Y uses gap-free weekly sums, headline facts, and clean integer axis steps."""

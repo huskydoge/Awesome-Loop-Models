@@ -4381,7 +4381,7 @@
         <div class="stats-metric">
           <dt class="stats-metric-label">Latest 30 days</dt>
           <dd class="stats-metric-value" id="stats-latest-thirty">—</dd>
-          <dd class="stats-metric-note" id="stats-latest-thirty-note">Anchored to the latest publication</dd>
+          <dd class="stats-metric-note" id="stats-latest-thirty-note">Through today</dd>
           <dd class="stats-metric-spark" id="stats-latest-thirty-spark" aria-hidden="true"></dd>
         </div>
         <div class="stats-metric">
@@ -4735,6 +4735,63 @@ function aggregateWeeklySeries(dailySeries) {
 }
 
 /**
+ * Return the viewer's current calendar day, so Stats windows end today.
+ * @param {Date=} now Optional clock value; defaults to the current time.
+ * @returns {string} Local calendar day as YYYY-MM-DD.
+ */
+function getStatsTodayKey(now) {
+  var date = now instanceof Date && Number.isFinite(now.getTime()) ? now : new Date();
+  return String(date.getFullYear()).padStart(4, '0') + '-'
+    + String(date.getMonth() + 1).padStart(2, '0') + '-'
+    + String(date.getDate()).padStart(2, '0');
+}
+
+/**
+ * Pad a gap-free daily series with empty days through an end day.
+ * @param {Array<Object>} dailySeries Gap-free daily publication buckets, oldest first.
+ * @param {string} endKey Last day to include, as YYYY-MM-DD.
+ * @returns {Array<Object>} A copy that reaches endKey; unchanged when endKey is not later.
+ */
+function extendDailySeriesThrough(dailySeries, endKey) {
+  var daily = Array.isArray(dailySeries) ? dailySeries.slice() : [];
+  var end = parseIsoDate(endKey);
+  var last = daily.length ? daily[daily.length - 1] : null;
+  var cursor = last ? parseIsoDate(last.key) : null;
+  if (!end || !cursor) return daily;
+  var cumulative = normalizeReleaseCount(last.cumulative);
+  cursor.setUTCDate(cursor.getUTCDate() + 1);
+  while (cursor.getTime() <= end.getTime()) {
+    var key = formatIsoDateUtc(cursor);
+    daily.push({ key: key, label: key, count: 0, cumulative: cumulative });
+    cursor.setUTCDate(cursor.getUTCDate() + 1);
+  }
+  return daily;
+}
+
+/**
+ * Pad a gap-free monthly series with empty months through the month of an end day.
+ * @param {Array<Object>} monthlySeries Gap-free monthly publication buckets, oldest first.
+ * @param {string} endKey Last day to include, as YYYY-MM-DD.
+ * @returns {Array<Object>} A copy that reaches endKey's month.
+ */
+function extendMonthlySeriesThrough(monthlySeries, endKey) {
+  var monthly = Array.isArray(monthlySeries) ? monthlySeries.slice() : [];
+  var end = parseIsoDate(endKey);
+  var last = monthly.length ? monthly[monthly.length - 1] : null;
+  var cursor = last ? parseIsoDate(String(last.key) + '-01') : null;
+  if (!end || !cursor) return monthly;
+  end.setUTCDate(1);
+  var cumulative = normalizeReleaseCount(last.cumulative);
+  cursor.setUTCMonth(cursor.getUTCMonth() + 1);
+  while (cursor.getTime() <= end.getTime()) {
+    var key = formatIsoDateUtc(cursor).slice(0, 7);
+    monthly.push({ key: key, label: key, count: 0, cumulative: cumulative });
+    cursor.setUTCMonth(cursor.getUTCMonth() + 1);
+  }
+  return monthly;
+}
+
+/**
  * Select the release series and trailing-average window for a Stats range.
  * @param {Array<Object>} dailySeries Gap-free daily publication buckets.
  * @param {Array<Object>} monthlySeries Gap-free monthly publication buckets.
@@ -4760,9 +4817,9 @@ function slicePublicationRange(dailySeries, monthlySeries, requestedRange) {
     granularity = 'month';
     windowSize = 6;
   } else {
-    source = aggregateWeeklySeries(daily.slice(-364));
-    granularity = 'week';
-    windowSize = 4;
+    source = daily.slice(-365);
+    granularity = 'day';
+    windowSize = 7;
   }
 
   return {
@@ -4796,7 +4853,7 @@ function buildReleasePulseFacts(rangeData) {
 }
 
 /**
- * Build headline release metrics anchored to the latest recorded publication.
+ * Build headline release metrics for the latest days of the series (through today when padded).
  * @param {Array<Object>} papers Paper records from the catalog.
  * @param {Array<Object>} dailySeries Gap-free daily publication buckets.
  * @returns {Object} Total, equal recent windows, their change, and latest date.
@@ -4804,7 +4861,13 @@ function buildReleasePulseFacts(rangeData) {
 function buildReleaseStatsSummary(papers, dailySeries) {
   var catalog = Array.isArray(papers) ? papers : [];
   var daily = Array.isArray(dailySeries) ? dailySeries : [];
-  var latestBucket = daily.length ? daily[daily.length - 1] : null;
+  var latestBucket = null;
+  for (var index = daily.length - 1; index >= 0; index -= 1) {
+    if (normalizeReleaseCount(daily[index] && daily[index].count) > 0) {
+      latestBucket = daily[index];
+      break;
+    }
+  }
   var releasesLast30Days = daily.slice(-30).reduce(function(total, bucket) {
     return total + normalizeReleaseCount(bucket && bucket.count);
   }, 0);
@@ -4873,8 +4936,8 @@ function buildStatsDistribution(papers, field, labels) {
   };
 }
 
-/** Build one taxonomy distribution inside a window anchored to the latest paper date. */
-function buildRecentStatsDistribution(papers, field, windowDays, limit) {
+/** Build one taxonomy distribution inside a window ending at anchorKey (today) or the latest paper date. */
+function buildRecentStatsDistribution(papers, field, windowDays, limit, anchorKey) {
   var catalog = Array.isArray(papers) ? papers : [];
   var dated = catalog.map(function(paper) {
     return { paper: paper, date: parseIsoDate(paper && paper.published_date) };
@@ -4884,6 +4947,8 @@ function buildRecentStatsDistribution(papers, field, windowDays, limit) {
   if (dated.length === 0) return buildStatsDistribution([], field);
 
   var latestTime = Math.max.apply(null, dated.map(function(entry) { return entry.date.getTime(); }));
+  var anchor = parseIsoDate(anchorKey);
+  if (anchor && anchor.getTime() > latestTime) latestTime = anchor.getTime();
   var days = Number.isFinite(windowDays) ? Math.max(1, Math.floor(windowDays)) : 90;
   var earliestTime = latestTime - (days - 1) * 86400000;
   var recentPapers = dated.filter(function(entry) {
@@ -5386,7 +5451,7 @@ function renderStatsActiveDirections() {
   var container = document.getElementById('stats-active-directions');
   if (!container || !CATALOG_DATA_READY) return;
   var group = CURRENT_STATS_DIRECTION_GROUP;
-  var distribution = buildRecentStatsDistribution(ALL_PAPERS, group === 'section' ? 'survey_section' : 'claims', 90, 6);
+  var distribution = buildRecentStatsDistribution(ALL_PAPERS, group === 'section' ? 'survey_section' : 'claims', 90, 6, STATS_TODAY_KEY);
   var labels = getStatsDirectionLabels(group);
   distribution.rows.forEach(function(row) { row.label = labels[row.key] || row.key; });
   renderStatsDistribution(container, distribution, { facetGroup: group });
@@ -5411,8 +5476,8 @@ function initStatsTaxonomyInteractions() {
 function renderReleasePulse() {
   var rangeData = slicePublicationRange(STATS_DAILY_RELEASES, STATS_MONTHLY_RELEASES, CURRENT_STATS_RANGE);
   var unit = getStatsPeriodUnit(rangeData.granularity);
-  var rangeName = rangeData.range === '90d' ? 'latest 90 recorded days'
-    : (rangeData.range === 'all' ? 'complete monthly record' : 'latest 52 recorded weeks');
+  var rangeName = rangeData.range === '90d' ? 'last 90 days through today'
+    : (rangeData.range === 'all' ? 'complete monthly record through this month' : 'last 365 days through today');
   var periodName = rangeData.granularity === 'month' ? 'Monthly releases'
     : (rangeData.granularity === 'week' ? 'Weekly releases' : 'Daily releases');
   var averageName = rangeData.windowSize + '-' + unit + ' average';
@@ -5508,8 +5573,9 @@ function renderStatsPanel() {
   }
   initStatsReleaseChartResizeObserver();
 
-  STATS_DAILY_RELEASES = buildDailyPublicationSeries(ALL_PAPERS);
-  STATS_MONTHLY_RELEASES = buildMonthlyPublicationSeries(ALL_PAPERS);
+  STATS_TODAY_KEY = getStatsTodayKey();
+  STATS_DAILY_RELEASES = extendDailySeriesThrough(buildDailyPublicationSeries(ALL_PAPERS), STATS_TODAY_KEY);
+  STATS_MONTHLY_RELEASES = extendMonthlySeriesThrough(buildMonthlyPublicationSeries(ALL_PAPERS), STATS_TODAY_KEY);
   var summary = buildReleaseStatsSummary(ALL_PAPERS, STATS_DAILY_RELEASES);
   var latestWindow = STATS_DAILY_RELEASES.slice(-30);
   var totalElement = document.getElementById('stats-total-papers');
@@ -5579,6 +5645,20 @@ function renderStatsPanel() {
   renderStatsActiveDirections();
   if (status) status.hidden = true;
   HAS_RENDERED_STATS = true;
+  initStatsDayRollover();
+}
+
+/** Keep Stats live: when the viewer's calendar day changes, re-render (or mark stale if hidden). */
+function initStatsDayRollover() {
+  if (STATS_DAY_ROLLOVER_TIMER || typeof setInterval !== 'function') return;
+  STATS_DAY_ROLLOVER_TIMER = setInterval(function() {
+    if (!HAS_RENDERED_STATS || getStatsTodayKey() === STATS_TODAY_KEY) return;
+    if (ACTIVE_TOP_LEVEL_TAB === 'stats') {
+      renderStatsPanel();
+    } else {
+      HAS_RENDERED_STATS = false;
+    }
+  }, 60000);
 }
 
 function escapeHtml(str) {
@@ -6005,6 +6085,8 @@ let CURRENT_STATS_DIRECTION_GROUP = 'section';
 let STATS_TAXONOMY_LISTENERS_BOUND = false;
 let STATS_DAILY_RELEASES = [];
 let STATS_MONTHLY_RELEASES = [];
+let STATS_TODAY_KEY = '';
+let STATS_DAY_ROLLOVER_TIMER = null;
 let CATALOG_GENERATED_AT = '';
 let CURRENT_VIEW = 'list';
 let FILTER_SIDEBAR_OPEN = false;
