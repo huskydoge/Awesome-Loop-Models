@@ -32,7 +32,7 @@ links:
   hf: https://huggingface.co/collections/Amr-Hegazy/gated-recurrent-transformer-grt
 citations: 8
 citation_sources:
-  semantic_scholar: 6
+  semantic_scholar: 7
   openalex: 8
   opencitations: 0
 citation_source_best: openalex

@@ -34,9 +34,9 @@ desc: Feeds already-computed hidden states from later token trajectories into ea
 links:
   arxiv: https://arxiv.org/abs/2611.22426
 citation_source_best: semantic_scholar
-citations: 0
+citations: 1
 citation_sources:
-  semantic_scholar: 0
+  semantic_scholar: 1
   opencitations: 0
   openalex: 0
-metrics_updated: '2026-11-20'
+metrics_updated: '2026-11-26'

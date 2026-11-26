@@ -28,7 +28,7 @@ links:
 citation_source_best: openalex
 citations: 6
 citation_sources:
-  semantic_scholar: 3
+  semantic_scholar: 4
   opencitations: 0
   openalex: 6
 star_source_best: github_api

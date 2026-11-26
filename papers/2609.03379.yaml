@@ -26,9 +26,9 @@ desc: Adds loop-time attention over prior iteration states and oracle-distilled 
 links:
   arxiv: https://arxiv.org/abs/2609.03379
 citation_source_best: semantic_scholar
-citations: 10
+citations: 11
 citation_sources:
-  semantic_scholar: 10
+  semantic_scholar: 11
   openalex: 9
   opencitations: 0
 metrics_updated: '2026-11-26'

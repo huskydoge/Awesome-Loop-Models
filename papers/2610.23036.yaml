@@ -38,9 +38,9 @@ links:
   - label: Blog version (IFM Research)
     url: https://ifm-research.notion.site/Towards-Looped-Models-Done-Right-3ade511912ec8128987dfeb7a5580043
 citation_source_best: semantic_scholar
-citations: 13
+citations: 14
 citation_sources:
-  semantic_scholar: 13
+  semantic_scholar: 14
   opencitations: 0
   openalex: 11
 star_source_best: github_api

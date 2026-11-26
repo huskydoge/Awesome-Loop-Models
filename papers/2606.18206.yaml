@@ -35,10 +35,10 @@ links:
   hf: https://huggingface.co/fixed-point-reasoners/fprm
 citations: 47
 citation_sources:
-  semantic_scholar: 46
+  semantic_scholar: 47
   openalex: 47
   opencitations: 0
-citation_source_best: openalex
+citation_source_best: semantic_scholar
 github_stars: 36
 star_sources:
   github_api: 36
