@@ -29,10 +29,10 @@ links:
   arxiv: https://arxiv.org/abs/2405.16039
   paper: https://proceedings.neurips.cc/paper_files/paper/2024/hash/321387ba926b8e58d3591c0aeb52ffc2-Abstract-Conference.html
   github: https://github.com/robertcsordas/moeut
-citations: 89
+citations: 90
 citation_sources:
   semantic_scholar: 85
-  openalex: 89
+  openalex: 90
   opencitations: 0
 citation_source_best: openalex
 metrics_updated: '2026-11-27'

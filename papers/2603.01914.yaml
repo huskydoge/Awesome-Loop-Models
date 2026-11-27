@@ -28,10 +28,10 @@ desc: Introduces AdaPonderLM, a self-supervised recurrent language model with to
   compute budget.
 links:
   arxiv: https://arxiv.org/abs/2603.01914
-citations: 15
+citations: 16
 citation_sources:
   semantic_scholar: 15
-  openalex: 15
+  openalex: 16
   opencitations: 0
-citation_source_best: semantic_scholar
-metrics_updated: '2026-11-25'
+citation_source_best: openalex
+metrics_updated: '2026-11-27'
