@@ -33,8 +33,8 @@ links:
     url: https://x.com/huskydogewoof/status/2031585611262386670?s=20
 citations: 16
 citation_sources:
-  semantic_scholar: 15
+  semantic_scholar: 16
   openalex: 16
   opencitations: 0
-citation_source_best: openalex
-metrics_updated: '2026-11-26'
+citation_source_best: semantic_scholar
+metrics_updated: '2026-11-27'

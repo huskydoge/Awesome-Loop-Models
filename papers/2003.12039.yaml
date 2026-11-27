@@ -25,11 +25,11 @@ links:
 citation_source_best: openalex
 citations: 4979
 citation_sources:
-  semantic_scholar: 4600
+  semantic_scholar: 4607
   openalex: 4979
   opencitations: 8
 star_source_best: github_api
 github_stars: 4131
 star_sources:
   github_api: 4131
-metrics_updated: '2026-11-26'
+metrics_updated: '2026-11-27'
