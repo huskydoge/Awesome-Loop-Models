@@ -1,0 +1,25 @@
+title: "Looped Models are Fast Multi-Token Predictors"
+authors:
+  - "Ayhan Suleymanzade"
+  - "Sean McLeish"
+  - "Sehoon Kim"
+  - "Jinwoo Kim"
+  - "Antoine Bosselut"
+year: 2026
+published_date: "2026-11-25"
+added_date: "2026-11-26"
+venue: "arXiv"
+survey_section:
+  - "systems/batching-parallel"
+  - "systems/kv-memory"
+loop_topology: "unspecified"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "compute-efficiency"
+comparison: []
+survey_core: false
+desc: "Introduces Floodgates, lossless self-speculative decoding in which one loop of a looped LM drafts a block of mask tokens in parallel via LoRA while reading the final-loop prefix cache, reaching up to 7.5x speedup across seven Ouro, Huginn and retrofitted looped models."
+links:
+  arxiv: "https://arxiv.org/abs/2611.33896"
+  github: "https://github.com/MisakiTaro0414/floodgates"

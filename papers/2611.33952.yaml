@@ -1,0 +1,27 @@
+title: "DuoMI: Dual Mutual Information Regularization for Expert Reuse in Looped Transformers"
+authors:
+  - "Xinlai Kang"
+  - "Zhenhe Wu"
+  - "Haoyu Wang"
+  - "Weihua He"
+  - "Yaping Jin"
+  - "Jie Hu"
+  - "Hanting Chen"
+year: 2026
+published_date: "2026-11-25"
+added_date: "2026-11-26"
+venue: "arXiv"
+survey_section:
+  - "architecture/sharing"
+  - "architecture/hybrid"
+loop_topology: "partial"
+sharing: "expert-routed"
+depth_control: "fixed"
+claims:
+  - "param-efficiency"
+comparison:
+  - "iso-depth"
+survey_core: false
+desc: "Introduces DuoMI, a training-only pair of mutual-information penalties on routing that make paired layers sharing one expert pool in a looped OLMoE reuse experts consistently across rounds, raising the 15-task average from 50.08% to 51.82%."
+links:
+  arxiv: "https://arxiv.org/abs/2611.33952"

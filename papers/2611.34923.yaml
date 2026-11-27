@@ -1,0 +1,29 @@
+title: "Mixture-of-Loops Transformer"
+authors:
+  - "Lianghui Zhu"
+  - "Shijie Wang"
+  - "Xinggang Wang"
+  - "Jinze Bai"
+  - "Bo Wang"
+  - "Xiang Bai"
+year: 2026
+published_date: "2026-11-25"
+added_date: "2026-11-26"
+venue: "arXiv"
+survey_section:
+  - "architecture/state-memory"
+  - "systems/kv-memory"
+  - "capabilities/efficiency"
+loop_topology: "partial"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "data-efficiency"
+  - "expressivity"
+comparison:
+  - "iso-param"
+survey_core: false
+desc: "Introduces MoLT, whose Mixture-of-Loops Attention reads keys and values across depths and loops, and U-MoLT, a looped encoder with a run-once decoder; after 400B tokens U-MoLT beats OLMo3 at 700M to 3B MoE scale, with 1.7x token efficiency at 700M."
+links:
+  arxiv: "https://arxiv.org/abs/2611.34923"
+  github: "https://github.com/hustvl/MoLT"

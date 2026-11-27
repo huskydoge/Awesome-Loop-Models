@@ -27,6 +27,7 @@ desc: Loops one fully shared, iteration-independent transformer block over a mul
 links:
   arxiv: https://arxiv.org/abs/2611.02857
   project: https://ubc-vision.github.io/solv3r/
+  github: https://github.com/ubc-vision/solv3r
 citation_source_best: semantic_scholar
 citations: 1
 citation_sources:

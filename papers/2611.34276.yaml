@@ -1,0 +1,36 @@
+title: "Scaling Looped MoE Language Models under Matched Budgets: Information Flow and Parameter Allocation"
+authors:
+  - "Shipeng Bai"
+  - "Jiayu Qin"
+  - "Hong Liu"
+  - "Xili Wang"
+  - "Jianchao Tan"
+  - "Jiacheng Li"
+  - "He Zhang"
+  - "Yifan Lu"
+  - "Jiaqi Zhang"
+  - "Kefeng Zhang"
+  - "Yuchen Xie"
+  - "Xunliang Cai"
+year: 2026
+published_date: "2026-11-25"
+added_date: "2026-11-26"
+venue: "arXiv"
+survey_section:
+  - "scaling/compute-optimal"
+  - "architecture/residual-init"
+  - "architecture/hybrid"
+loop_topology: "prelude-core-coda"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "param-efficiency"
+  - "compute-efficiency"
+comparison:
+  - "iso-param"
+  - "iso-flop"
+survey_core: false
+desc: "Adds gated core-state updates and a cross-stage residual to prelude-core-coda looped MoE models and reinvests saved parameters in routed experts; after 1T tokens its 69B MLA and 51B KDA models beat budget-matched non-recurrent baselines by 1.16 and 2.29 points."
+links:
+  arxiv: "https://arxiv.org/abs/2611.34276"
+  github: "https://github.com/lxi01766/Scaling-Looped-MoE-Language-Models-under-Matched-Budgets-Information-Flow-and-Parameter-Allocation"

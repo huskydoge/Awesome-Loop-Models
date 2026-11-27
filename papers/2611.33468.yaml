@@ -1,0 +1,24 @@
+title: "Learning from Recurrence: Internalizing Depth-Induced Preferences in Looped Language Models"
+authors:
+  - "Hui Chen"
+  - "Joshua Elsdon"
+  - "Can Goksen"
+year: 2026
+published_date: "2026-11-24"
+added_date: "2026-11-26"
+venue: "arXiv"
+survey_section:
+  - "training/post-training"
+  - "training/retrofitting"
+  - "scaling/test-time"
+loop_topology: "prelude-core-coda"
+sharing: "full"
+depth_control: "sampled-train"
+claims:
+  - "test-time-scaling"
+comparison:
+  - "iso-param"
+survey_core: false
+desc: "Introduces preference write-back, which trains only the shared core of a retrofitted looped OLMo-2-1B through one pass on its own deeper-loop continuations, without labels or filtering, raising four-pass GSM8K from 56.18 to 62.70 and beating a data-matched non-looped control on six math benchmarks."
+links:
+  arxiv: "https://arxiv.org/abs/2611.33468"
