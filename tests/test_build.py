@@ -1743,6 +1743,12 @@ setTimeout(function() {
         self.assertIn("SURVEY.chapters.map", nav)
         self.assertIn("getChapterDomId(chapter.number)", nav)
         self.assertIn('<span class="survey-nav-count">0</span>', nav)
+        self.assertIn("getSectionDomId(section)", nav)
+        self.assertIn('class="survey-nav-section-link"', nav)
+        self.assertIn('class="survey-nav-part"', nav)
+        self.assertIn(".survey-nav-section-link[data-section]", sync)
+        self.assertIn('id="toc-toggle"', html)
+        self.assertIn('aria-controls="survey-nav" aria-expanded="false"', html)
         self.assertNotIn("nodeKey", html)
 
     def test_blogs_section_support_exists_in_frontend(self):
@@ -3872,7 +3878,10 @@ process.stdout.write(JSON.stringify({{
         init_end = html.index("function observeSurveyChapters() {", init_start)
         init_source = html[init_start:init_end]
 
-        self.assertIn("navigateToSurveyAnchor(getChapterDomId(link.dataset.chapter));", init_source)
+        self.assertIn("getChapterDomId(link.dataset.chapter)", init_source)
+        self.assertIn("navigateToSurveyAnchor(targetId);", init_source)
+        self.assertIn(".survey-nav-section-link", init_source)
+        self.assertIn("initTocFloat();", init_source)
         self.assertIn("event.preventDefault();", init_source)
         self.assertNotIn("scrollToSection(", init_source)
         self.assertNotIn("initTreeInteractions", html)
