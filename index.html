@@ -4244,6 +4244,16 @@
         <span>Filters</span>
         <span class="filter-sidebar-toggle-meta" id="filter-sidebar-summary">Section, axes, date</span>
       </button>
+      <div class="toc-float" id="toc-float">
+        <button type="button" class="toc-toggle" id="toc-toggle" aria-controls="survey-nav" aria-expanded="false" title="Table of contents (T)">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M3 5h14M3 10h10M3 15h12"/></svg>
+          <span>Contents</span>
+        </button>
+        <nav class="survey-nav" id="survey-nav" aria-label="Chapters" hidden>
+          <div class="survey-nav-title"><span>Contents</span><button type="button" class="survey-nav-close" id="toc-close" aria-label="Close contents">×</button></div>
+          <ol class="survey-nav-list" id="survey-nav-list"></ol>
+        </nav>
+      </div>
       <label class="desk-sort">Sort
         <select id="desk-sort" aria-label="Sort resources" onchange="setSort(this.value)">
           <option value="date">Publication date</option><option value="citations">Citations</option>
@@ -4471,16 +4481,6 @@
     <button type="button" class="desk-detail-close" aria-label="Close paper details" title="Close paper details" autofocus onclick="closeReadingDeskDetail()"><span aria-hidden="true">×</span></button>
     <div id="paper-detail-content"><header class="desk-detail-header"><h2 id="paper-detail-title">Your reading desk</h2></header><div class="desk-detail-body" tabindex="0" role="region" aria-label="Resource details"><p>Select a paper to read its summary and explore the sources.</p></div></div>
   </dialog>
-  <div class="toc-float" id="toc-float">
-    <nav class="survey-nav" id="survey-nav" aria-label="Chapters" hidden>
-      <div class="survey-nav-title"><span>Contents</span><button type="button" class="survey-nav-close" id="toc-close" aria-label="Close contents">×</button></div>
-      <ol class="survey-nav-list" id="survey-nav-list"></ol>
-    </nav>
-    <button type="button" class="toc-toggle" id="toc-toggle" aria-controls="survey-nav" aria-expanded="false" title="Table of contents (T)">
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M3 5h14M3 10h10M3 15h12"/></svg>
-      <span>Contents</span>
-    </button>
-  </div>
 </div>
 
 <dialog class="research-prompt-dialog" id="research-prompt-dialog" aria-labelledby="research-prompt-title">
