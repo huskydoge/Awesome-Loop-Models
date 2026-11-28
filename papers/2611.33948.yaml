@@ -1,27 +1,37 @@
-title: "Where to Approximate: Understanding and Accelerating Looped Multi-View Reconstruction"
+title: 'Where to Approximate: Understanding and Accelerating Looped Multi-View Reconstruction'
 authors:
-  - "Siyuan Zhang"
-  - "Yuhan Chen"
-  - "Yangyang Ning"
-  - "Nan Wang"
-  - "Jun Yan"
+- Siyuan Zhang
+- Yuhan Chen
+- Yangyang Ning
+- Nan Wang
+- Jun Yan
 year: 2026
-published_date: "2026-11-25"
-added_date: "2026-11-26"
-venue: "arXiv"
+published_date: '2026-11-25'
+added_date: '2026-11-26'
+venue: arXiv
 survey_section:
-  - "capabilities/efficiency"
-  - "understanding/why"
-  - "applications/flow-3d"
-loop_topology: "prelude-core-coda"
-sharing: "full"
-depth_control: "fixed"
+- capabilities/efficiency
+- understanding/why
+- applications/flow-3d
+loop_topology: prelude-core-coda
+sharing: full
+depth_control: fixed
 claims:
-  - "compute-efficiency"
-  - "stability"
+- compute-efficiency
+- stability
 comparison:
-  - "iso-depth"
+- iso-depth
 survey_core: false
-desc: "Traces how approximations at single steps of the looped reconstructor Deja View propagate, finding later steps absorb errors, and turns this into a per-step schedule of coarse, KV-pooled and reused steps that beats a latency-matched plain baseline by 4.73 AUC@30 points."
+desc: Traces how approximations at single steps of the looped reconstructor Deja View
+  propagate, finding later steps absorb errors, and turns this into a per-step schedule
+  of coarse, KV-pooled and reused steps that beats a latency-matched plain baseline
+  by 4.73 AUC@30 points.
 links:
-  arxiv: "https://arxiv.org/abs/2611.33948"
+  arxiv: https://arxiv.org/abs/2611.33948
+citation_source_best: semantic_scholar
+citations: 0
+citation_sources:
+  semantic_scholar: 0
+  openalex: 0
+  opencitations: 0
+metrics_updated: '2026-11-28'

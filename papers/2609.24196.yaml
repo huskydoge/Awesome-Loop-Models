@@ -33,9 +33,9 @@ citation_sources:
   openalex: 2
   opencitations: 0
 star_source_best: github_api
-github_stars: 7
+github_stars: 8
 star_sources:
-  github_api: 7
-metrics_updated: '2026-11-26'
+  github_api: 8
+metrics_updated: '2026-11-28'
 peer_reviewed: true
 venue_source: https://aclanthology.org/2026.emnlp-main.1367/
