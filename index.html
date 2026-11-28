@@ -4160,7 +4160,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="assets/reading-desk.css?v=7" />
+  <link rel="stylesheet" href="assets/reading-desk.css?v=8" />
 </head>
 <body class="reading-desk">
 
@@ -6007,39 +6007,52 @@ function renderSurveyCoreBadgeHtml(paper) {
     : '';
 }
 
-/** Keep card content identical while CSS reflows it with the available list width. */
+/** Shorten an author list to the first three names plus a count, as in a reference manager. */
+function formatCompactAuthors(paper) {
+  const list = Array.isArray(paper.authors_list) && paper.authors_list.length
+    ? paper.authors_list
+    : (Array.isArray(paper.authors) ? paper.authors : String(paper.authors || '').split(/\s*,\s*/));
+  const names = list.map(function(name) { return String(name || '').trim(); }).filter(Boolean);
+  if (names.length <= 3) return names.join(', ');
+  const rest = names.length - 3;
+  return names.slice(0, 3).join(', ') + ' and ' + rest + (rest === 1 ? ' other' : ' others');
+}
+
+/** Format a YYYY-MM-DD value as "Oct 2026" (month) or "Oct 4, 2026" (day); '' when invalid. */
+function formatRowDate(value, withDay) {
+  const text = typeof value === 'string' ? value.trim() : '';
+  const match = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return '';
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const month = months[Number(match[2]) - 1];
+  if (!month) return '';
+  return withDay ? month + ' ' + Number(match[3]) + ', ' + match[1] : month + ' ' + match[1];
+}
+
+/** Render one compact catalog row: thumbnail, title, short author list, published month and intake date. */
 function renderCard(paper, query) {
   const title = highlightQuery(escapeHtml(paper.title), query);
-  const linksHtml = renderPaperLinksHtml(paper);
   const thumbnailUrl = getReadingDeskThumbnailUrl(paper);
-  const metricsHtml = renderMetricsHtml(paper);
-  const axes = getVisibleAxisEntries(paper);
+  const publishedDate = getPaperDisplayDate(paper);
+  const publishedLabel = formatRowDate(publishedDate, false) || publishedDate;
+  const addedLabel = formatRowDate(paper.added_date, true);
   const badgesHtml = (paper.must_read ? '<span class="desk-must-read">Must read</span>' : '')
-    + renderSurveyCoreBadgeHtml(paper) + renderCatalogFitBadgeHtml(paper);
-  return '<article class="paper-card" data-id="' + escapeHtml(paper.id) + '">'
-    + (thumbnailUrl || metricsHtml ? '<div class="desk-card-visual">' : '')
-    + (thumbnailUrl ? '<a class="desk-card-preview" href="' + escapeHtml(getPrimaryPaperUrl(paper) || thumbnailUrl)
-      + '" target="_blank" rel="noopener noreferrer" aria-label="Open paper: ' + escapeHtml(paper.title) + '">'
-      + '<img src="' + thumbnailUrl + '" alt="" width="144" height="186" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.parentElement.remove()"></a>' : '')
-    + metricsHtml + (thumbnailUrl || metricsHtml ? '</div>' : '')
-    + '<div class="desk-card-content">'
-    + '<div class="desk-card-heading"><h3 class="paper-title"><button type="button" class="desk-paper-select" data-paper-id="' + escapeHtml(paper.id)
+    + renderCatalogFitBadgeHtml(paper);
+  return '<article class="paper-card paper-row" data-id="' + escapeHtml(paper.id) + '">'
+    + '<div class="paper-row-thumb" aria-hidden="true">'
+    + (thumbnailUrl ? '<img src="' + thumbnailUrl + '" alt="" width="48" height="62" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()">' : '')
+    + '</div>'
+    + '<div class="paper-row-main">'
+    + '<h3 class="paper-title"><button type="button" class="desk-paper-select" data-paper-id="' + escapeHtml(paper.id)
     + '" aria-controls="paper-detail" aria-pressed="false" aria-expanded="false">' + title + '</button></h3>'
-    + '<span class="paper-venue ' + escapeHtml(paper.venueClass || 'venue-arxiv') + '">' + escapeHtml(getPaperVenueLabel(paper) || 'Unspecified venue') + '</span></div>'
-    + '<div class="paper-meta">' + highlightQuery(escapeHtml(paper._authorsText), query)
-    + '<span class="desk-card-date"> · <time>' + escapeHtml(getPaperDisplayDate(paper)) + '</time></span></div>'
-    + renderSectionBadgesHtml(paper)
-    + '<div class="desk-card-signals">'
-    + (axes.length ? '<div class="paper-chips" id="desk-card-axes-' + escapeHtml(paper.id) + '">'
-      + axes.map(function(entry) { return renderAxisChipHtml(entry); }).join('')
-      + (axes.length > 4 ? '<button type="button" class="paper-chip-overflow" data-extra-chips="' + (axes.length - 4)
-        + '" aria-expanded="false" aria-controls="desk-card-axes-' + escapeHtml(paper.id) + '">+' + (axes.length - 4) + ' more</button>' : '')
-      + '</div>' : '')
-    + badgesHtml + '</div>'
-    + (paper.desc ? '<p class="desk-card-summary">' + highlightQuery(escapeHtml(paper.desc), query) + '</p>' : '')
-    + '<div class="desk-card-scope">' + renderCatalogFitNoteHtml(paper) + '</div>'
-    + (linksHtml ? '<div class="paper-links desk-list-links">' + linksHtml + '</div>' : '')
-    + '</div></article>';
+    + '<div class="paper-meta" title="' + escapeHtml(paper._authorsText || '') + '">'
+    + highlightQuery(escapeHtml(formatCompactAuthors(paper)), query)
+    + (badgesHtml ? '<span class="paper-row-badges">' + badgesHtml + '</span>' : '') + '</div>'
+    + '</div>'
+    + '<time class="paper-row-date paper-row-published" datetime="' + escapeHtml(publishedDate) + '" title="Published">' + escapeHtml(publishedLabel) + '</time>'
+    + '<time class="paper-row-date paper-row-added"' + (addedLabel ? ' datetime="' + escapeHtml(paper.added_date) + '"' : '') + ' title="Added to the collection">'
+    + escapeHtml(addedLabel || '—') + '</time>'
+    + '</article>';
 }
 
 // ── State & Taxonomy ───────────────────────────────────────────────────────
@@ -7794,7 +7807,8 @@ function buildDOM(data) {
   FACET_FILTER_GROUPS = buildFacetFilterGroups(ALL_PAPERS);
 
   const container = document.getElementById("sections-container");
-  container.innerHTML = '<div class="survey-list" id="papers-grid"></div>';
+  container.innerHTML = '<div class="paper-row-header" aria-hidden="true"><span>Paper</span><span>Published</span><span>Added</span></div>'
+    + '<div class="survey-list" id="papers-grid"></div>';
 
   const blogSection = createBlogSection();
   if (blogSection) container.appendChild(blogSection);
