@@ -4160,7 +4160,7 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="assets/reading-desk.css?v=8" />
+  <link rel="stylesheet" href="assets/reading-desk.css?v=9" />
 </head>
 <body class="reading-desk">
 
@@ -4182,10 +4182,6 @@
         <button type="button" class="top-level-tab" id="blogs-tab" role="tab" aria-controls="papers-panel" aria-selected="false" tabindex="-1">Blogs</button>
       </div>
 
-      <nav class="survey-nav" id="survey-nav" aria-label="Chapters" hidden>
-        <div class="survey-nav-title">Chapters</div>
-        <ol class="survey-nav-list" id="survey-nav-list"></ol>
-      </nav>
 
     <section class="desk-watch" aria-label="Catalog watch">
     <div class="daily-status-row">
@@ -4475,6 +4471,16 @@
     <button type="button" class="desk-detail-close" aria-label="Close paper details" title="Close paper details" autofocus onclick="closeReadingDeskDetail()"><span aria-hidden="true">×</span></button>
     <div id="paper-detail-content"><header class="desk-detail-header"><h2 id="paper-detail-title">Your reading desk</h2></header><div class="desk-detail-body" tabindex="0" role="region" aria-label="Resource details"><p>Select a paper to read its summary and explore the sources.</p></div></div>
   </dialog>
+  <div class="toc-float" id="toc-float">
+    <nav class="survey-nav" id="survey-nav" aria-label="Chapters" hidden>
+      <div class="survey-nav-title"><span>Contents</span><button type="button" class="survey-nav-close" id="toc-close" aria-label="Close contents">×</button></div>
+      <ol class="survey-nav-list" id="survey-nav-list"></ol>
+    </nav>
+    <button type="button" class="toc-toggle" id="toc-toggle" aria-controls="survey-nav" aria-expanded="false" title="Table of contents (T)">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M3 5h14M3 10h10M3 15h12"/></svg>
+      <span>Contents</span>
+    </button>
+  </div>
 </div>
 
 <dialog class="research-prompt-dialog" id="research-prompt-dialog" aria-labelledby="research-prompt-title">
@@ -7391,6 +7397,18 @@ function syncSurveyNavCounts(filteredPapers) {
     if (countEl) countEl.textContent = String(count);
     link.classList.toggle('is-empty', count === 0);
   });
+  const sectionCounts = {};
+  if (ACTIVE_TOP_LEVEL_TAB !== 'blogs') {
+    (filteredPapers || []).forEach(function(paper) {
+      if (paper && paper._primarySection) sectionCounts[paper._primarySection] = (sectionCounts[paper._primarySection] || 0) + 1;
+    });
+  }
+  document.querySelectorAll('.survey-nav-section-link[data-section]').forEach(function(link) {
+    const count = sectionCounts[link.dataset.section] || 0;
+    const countEl = link.querySelector('.survey-nav-section-count');
+    if (countEl) countEl.textContent = String(count);
+    link.classList.toggle('is-empty', count === 0);
+  });
 }
 
 function renderAllGrids(q) {
@@ -7736,13 +7754,28 @@ function renderSurveyNav() {
   if (!nav || !list) return;
   const partsById = {};
   SURVEY.parts.forEach(function(part) { partsById[part.id] = part; });
+  let lastPart = '';
   list.innerHTML = SURVEY.chapters.map(function(chapter) {
     const part = partsById[chapter.part];
-    return '<li><a class="survey-nav-link" href="#' + getChapterDomId(chapter.number) + '" data-chapter="' + escapeHtml(chapter.number) + '"'
+    const partHeading = part && chapter.part !== lastPart
+      ? '<li class="survey-nav-part" aria-hidden="true">' + escapeHtml(part.title) + '</li>'
+      : '';
+    lastPart = chapter.part;
+    const sections = SURVEY.sections.filter(function(section) { return section.chapter === chapter.number; });
+    const sectionsHtml = sections.length
+      ? '<ol class="survey-nav-sections">' + sections.map(function(section) {
+        return '<li><a class="survey-nav-section-link" href="#' + getSectionDomId(section) + '" data-section="' + escapeHtml(section.id)
+          + '" data-chapter="' + escapeHtml(chapter.number) + '">'
+          + '<span class="survey-nav-section-number">§' + escapeHtml(section.number) + '</span>'
+          + '<span class="survey-nav-label">' + escapeHtml(section.title) + '</span>'
+          + '<span class="survey-nav-section-count">0</span></a></li>';
+      }).join('') + '</ol>'
+      : '';
+    return partHeading + '<li><a class="survey-nav-link" href="#' + getChapterDomId(chapter.number) + '" data-chapter="' + escapeHtml(chapter.number) + '"'
       + (part ? ' title="' + escapeHtml(part.title) + '"' : '') + '>'
       + '<span class="survey-nav-number">§' + escapeHtml(chapter.number) + '</span>'
       + '<span class="survey-nav-label">' + escapeHtml(chapter.title) + '</span>'
-      + '<span class="survey-nav-count">0</span></a></li>';
+      + '<span class="survey-nav-count">0</span></a>' + sectionsHtml + '</li>';
   }).join('');
   nav.hidden = !SURVEY.chapters.length;
 }
@@ -7757,17 +7790,66 @@ function activateSurveyNavLink(targetId) {
     if (active) link.setAttribute('aria-current', 'location');
     else link.removeAttribute('aria-current');
   });
+  const sectionHash = /^section-/.test(String(targetId || '')) ? '#' + targetId : '';
+  document.querySelectorAll('.survey-nav-section-link').forEach(function(link) {
+    link.classList.toggle('active', !!sectionHash && link.getAttribute('href') === sectionHash);
+  });
 }
 
 function initSurveyNavInteractions() {
   const list = document.getElementById('survey-nav-list');
   if (!list) return;
   list.addEventListener('click', function(event) {
-    const link = event.target.closest('.survey-nav-link[data-chapter]');
+    const sectionLink = event.target.closest('.survey-nav-section-link');
+    const link = sectionLink || event.target.closest('.survey-nav-link[data-chapter]');
     if (!link) return;
     event.preventDefault();
-    activateSurveyNavLink(getChapterDomId(link.dataset.chapter));
-    navigateToSurveyAnchor(getChapterDomId(link.dataset.chapter));
+    const targetId = sectionLink ? sectionLink.getAttribute('href').slice(1) : getChapterDomId(link.dataset.chapter);
+    activateSurveyNavLink(targetId);
+    navigateToSurveyAnchor(targetId);
+    if (window.matchMedia && window.matchMedia('(max-width: 900px)').matches) setTocOpen(false);
+  });
+  initTocFloat();
+}
+
+/** Open or close the floating table of contents. */
+function setTocOpen(isOpen) {
+  const float = document.getElementById('toc-float');
+  const toggle = document.getElementById('toc-toggle');
+  if (!float || !toggle) return;
+  float.classList.toggle('is-open', isOpen);
+  toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  if (isOpen) {
+    const active = float.querySelector('.survey-nav-section-link.active, .survey-nav-link.active');
+    if (active && typeof active.scrollIntoView === 'function') active.scrollIntoView({ block: 'nearest' });
+  }
+}
+
+/** Wire the floating contents button, its close control, Escape, outside clicks and the T shortcut. */
+function initTocFloat() {
+  const float = document.getElementById('toc-float');
+  const toggle = document.getElementById('toc-toggle');
+  if (!float || !toggle || float.dataset.ready === 'true') return;
+  float.dataset.ready = 'true';
+  toggle.addEventListener('click', function() { setTocOpen(!float.classList.contains('is-open')); });
+  const close = document.getElementById('toc-close');
+  if (close) close.addEventListener('click', function() { setTocOpen(false); toggle.focus(); });
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && float.classList.contains('is-open')) {
+      setTocOpen(false);
+      toggle.focus();
+      return;
+    }
+    const target = event.target;
+    const typing = target && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName || ''));
+    if (!typing && !event.metaKey && !event.ctrlKey && !event.altKey && (event.key === 't' || event.key === 'T')
+        && ACTIVE_TOP_LEVEL_TAB === 'papers') {
+      event.preventDefault();
+      setTocOpen(!float.classList.contains('is-open'));
+    }
+  });
+  document.addEventListener('click', function(event) {
+    if (float.classList.contains('is-open') && !float.contains(event.target)) setTocOpen(false);
   });
 }
 
