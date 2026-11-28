@@ -170,7 +170,7 @@ assert.match(html, /id="desk-divider"[^>]+role="separator"[^>]+aria-orientation=
 assert.match(html, /id="desk-sidebar-divider"[^>]+role="separator"[^>]+aria-orientation="vertical"[^>]+aria-controls="desk-sidebar"/);
 assert.match(css, /\.desk-divider\.desk-sidebar-divider \{[^}]*position: absolute;[^}]*left: calc\(var\(--desk-rail\) - 1px\);/);
 assert.match(css.slice(css.indexOf('@media (max-width: 768px)')), /\.desk-sidebar-divider \{ display: none; \}/);
-assert.match(html, /--font-body: Charter, Georgia/);
+assert.match(html, /--font-body: "Inter", -apple-system/);
 assert.doesNotMatch(html, /@media\s*\(prefers-color-scheme:\s*dark\)/);
 assert.doesNotMatch(html, /category-disclaimer|desk-scope|About the classification/);
 assert.doesNotMatch(html + source, /mechanism_tags|focus_tags|domain_tags|foundation|category/i, 'No trace of the retired taxonomy');
