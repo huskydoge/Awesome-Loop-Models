@@ -1,0 +1,24 @@
+title: "Practice Makes Fluent: Learning to Use Earlier Predictions in Looped Models"
+authors:
+  - "Minseok Seo"
+  - "Hee-Seon Kim"
+  - "Changick Kim"
+year: 2026
+published_date: "2026-11-25"
+added_date: "2026-11-26"
+venue: "arXiv"
+survey_section:
+  - "architecture/depth-control"
+  - "training/post-training"
+  - "applications/embodied-other"
+loop_topology: "whole-stack"
+sharing: "full"
+depth_control: "adaptive-halting"
+claims:
+  - "compute-efficiency"
+comparison: []
+survey_core: false
+desc: "Introduces FLUENT, a label- and reward-free recipe that distills a looped model's final-loop prediction into its early loops, anchors the final loop and trains an exit gate, cutting real-robot episode time from 69 s to 31 s while raising success from 62.3% to 74.6%."
+links:
+  arxiv: "https://arxiv.org/abs/2611.33722"
+  project: "https://msseok96-cpu.github.io/FLUENT/"

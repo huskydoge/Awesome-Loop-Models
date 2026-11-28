@@ -21,7 +21,7 @@ List every section the entry belongs to; the first entry is its primary section.
 
 **§3 Capabilities, Benefits and Trade-offs**
 
-- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (8 / 62)
+- `capabilities/efficiency` — §3.1 Parameter, data, and compute efficiency (9 / 65)
 - `capabilities/expressivity` — §3.2 Expressivity and reasoning capacity (20 / 24)
 - `capabilities/generalization` — §3.3 Length, easy-to-hard, and compositional generalization (14 / 31)
 
@@ -30,50 +30,50 @@ List every section the entry belongs to; the first entry is its primary section.
 **§4 Architecture and Design**
 
 - `architecture/topology` — §4.1 Loop topology (15 / 38)
-- `architecture/residual-init` — §4.2 Residual manipulation and initialization (13 / 47)
-- `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (13 / 32)
-- `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (8 / 35)
-- `architecture/depth-control` — §4.5 Controlling recurrence depth (29 / 89)
-- `architecture/hybrid` — §4.6 Hybrid looped architectures (21 / 33)
+- `architecture/residual-init` — §4.2 Residual manipulation and initialization (14 / 49)
+- `architecture/state-memory` — §4.3 Recurrent state and loop-time memory (14 / 33)
+- `architecture/sharing` — §4.4 Weight-sharing schemes and iteration-dependent computation (9 / 36)
+- `architecture/depth-control` — §4.5 Controlling recurrence depth (30 / 91)
+- `architecture/hybrid` — §4.6 Hybrid looped architectures (21 / 36)
 
 **§5 Learning Algorithms**
 
 - `training/supervision-optimization` — §5.1 Supervision, credit assignment, and loop-specific optimization (31 / 85)
-- `training/post-training` — §5.2 Post-training and reinforcement learning (11 / 22)
-- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (22 / 38)
+- `training/post-training` — §5.2 Post-training and reinforcement learning (12 / 24)
+- `training/retrofitting` — §5.3 Retrofitting pretrained models into looped models (22 / 40)
 
 **§6 Scaling Laws**
 
-- `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (11 / 26)
-- `scaling/test-time` — §6.2 Test-time scaling (14 / 59)
+- `scaling/compute-optimal` — §6.1 Parameter, depth, and compute-optimal scaling (12 / 28)
+- `scaling/test-time` — §6.2 Test-time scaling (14 / 60)
 
 **§7 Systems and Infrastructure**
 
 - `systems/quantization-edge` — §7.1 Quantization and edge deployment (12 / 20)
-- `systems/kv-memory` — §7.2 KV cache and memory (18 / 34)
-- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (16 / 22)
+- `systems/kv-memory` — §7.2 KV cache and memory (18 / 36)
+- `systems/batching-parallel` — §7.3 Loop-level batching, scheduling, and parallel execution (17 / 23)
 
 ### Part IV. Understanding and Applications
 
 **§8 Understanding Why Looped Models Work**
 
-- `understanding/why` — §8.1 Why looped models work (5 / 19)
+- `understanding/why` — §8.1 Why looped models work (5 / 20)
 - `understanding/interpretability` — §8.2 Mechanistic interpretability (25 / 39)
-- `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (14 / 46)
+- `understanding/failure-modes` — §8.3 When looping does not help: limits and failure modes (15 / 47)
 
 **§9 Applications**
 
 - `applications/language-speech-multimodal` — §9.1 Language, code, speech, and multimodal tasks (31 / 41)
 - `applications/vision` — §9.2 Visual recognition, restoration, and generation (27 / 40)
-- `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (10 / 10)
+- `applications/flow-3d` — §9.3 Flow, stereo, and 3D geometry (10 / 11)
 - `applications/graphs-science` — §9.4 Graphs, structured data, and scientific modeling (22 / 32)
-- `applications/embodied-other` — §9.5 Embodied AI and other domains (28 / 32)
+- `applications/embodied-other` — §9.5 Embodied AI and other domains (29 / 34)
 
 ### Part V. Open Problems
 
 **§10 Open Problems**
 
-- `open-problems/diffusion` — §10.1 Unification with diffusion models (4 / 17)
+- `open-problems/diffusion` — §10.1 Unification with diffusion models (4 / 18)
 - `open-problems/depth-into-time` — §10.2 Folding depth into time (2 / 11)
 - `open-problems/monitorability-safety` — §10.3 Monitorability and safety (1 / 4)
 
@@ -81,52 +81,52 @@ List every section the entry belongs to; the first entry is its primary section.
 
 Where the loop sits in the network (one value, papers only).
 
-- `whole-stack` (176)
-- `prelude-core-coda` (82)
-- `partial` (47)
+- `whole-stack` (177)
+- `prelude-core-coda` (88)
+- `partial` (49)
 - `hierarchical` (43)
 - `shifted-parallel` (15)
 - `implicit-fixed-point` (40)
-- `unspecified` (48)
+- `unspecified` (49)
 
 ## Sharing (`sharing`)
 
 How parameters are shared across iterations (one value, papers only).
 
-- `full` (391)
+- `full` (400)
 - `partial-adapter` (38)
-- `expert-routed` (12)
+- `expert-routed` (13)
 - `unspecified` (10)
 
 ## Depth control (`depth_control`)
 
 How the number of iterations is decided (one value, papers only).
 
-- `fixed` (223)
-- `sampled-train` (42)
-- `adaptive-halting` (81)
-- `convergence` (50)
+- `fixed` (230)
+- `sampled-train` (43)
+- `adaptive-halting` (82)
+- `convergence` (51)
 - `unspecified` (55)
 
 ## Claims (`claims`)
 
 What the paper argues looping buys or costs (list, papers only).
 
-- `param-efficiency` (137)
-- `compute-efficiency` (153)
+- `param-efficiency` (140)
+- `compute-efficiency` (158)
 - `memory-efficiency` (63)
-- `data-efficiency` (22)
-- `expressivity` (31)
+- `data-efficiency` (23)
+- `expressivity` (32)
 - `length-generalization` (40)
-- `test-time-scaling` (86)
-- `stability` (52)
-- `failure-mode` (64)
+- `test-time-scaling` (87)
+- `stability` (53)
+- `failure-mode` (65)
 
 ## Looped-vs-untied comparison (`comparison`)
 
 Which quantity is held fixed when the paper compares looped and untied models (list; empty when there is no such comparison).
 
-- `iso-param` (72)
-- `iso-flop` (47)
-- `iso-depth` (44)
+- `iso-param` (77)
+- `iso-flop` (49)
+- `iso-depth` (46)
 - `unclear` (53)

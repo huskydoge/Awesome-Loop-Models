@@ -1,0 +1,27 @@
+title: "Where to Approximate: Understanding and Accelerating Looped Multi-View Reconstruction"
+authors:
+  - "Siyuan Zhang"
+  - "Yuhan Chen"
+  - "Yangyang Ning"
+  - "Nan Wang"
+  - "Jun Yan"
+year: 2026
+published_date: "2026-11-25"
+added_date: "2026-11-26"
+venue: "arXiv"
+survey_section:
+  - "capabilities/efficiency"
+  - "understanding/why"
+  - "applications/flow-3d"
+loop_topology: "prelude-core-coda"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "compute-efficiency"
+  - "stability"
+comparison:
+  - "iso-depth"
+survey_core: false
+desc: "Traces how approximations at single steps of the looped reconstructor Deja View propagate, finding later steps absorb errors, and turns this into a per-step schedule of coarse, KV-pooled and reused steps that beats a latency-matched plain baseline by 4.73 AUC@30 points."
+links:
+  arxiv: "https://arxiv.org/abs/2611.33948"

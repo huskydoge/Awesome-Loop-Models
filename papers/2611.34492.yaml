@@ -1,0 +1,23 @@
+title: "FlyingStart: Learned Cross-Token Warm Starts for Fixed-Point Decoding in Recurrent-Depth Language Models"
+authors:
+  - "Runguo Li"
+  - "Dezhen Lu"
+  - "Zixiang Ni"
+year: 2026
+published_date: "2026-11-25"
+added_date: "2026-11-26"
+venue: "arXiv"
+survey_section:
+  - "architecture/residual-init"
+  - "architecture/depth-control"
+  - "capabilities/efficiency"
+loop_topology: "prelude-core-coda"
+sharing: "full"
+depth_control: "convergence"
+claims:
+  - "compute-efficiency"
+comparison: []
+survey_core: false
+desc: "Introduces FlyingStart, a closed-form linear warm start that initializes each token's recurrent state from the previous token's exit state, so convergence-based exits fire earlier; on Huginn-0125 it matches the strongest training-free baseline with 14-19% fewer decoding layers."
+links:
+  arxiv: "https://arxiv.org/abs/2611.34492"

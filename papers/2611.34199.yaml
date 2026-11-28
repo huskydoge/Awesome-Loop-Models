@@ -1,0 +1,27 @@
+title: "Loop4D: Embodied World Modeling with 4D VAEs and Looped Diffusion Transformers"
+authors:
+  - "Gen Li"
+  - "Fan Luo"
+  - "Mengjun Lin"
+  - "Shu Han"
+  - "Bohan Li"
+  - "Hao Zhao"
+year: 2026
+published_date: "2026-11-25"
+added_date: "2026-11-26"
+venue: "arXiv"
+survey_section:
+  - "applications/embodied-other"
+  - "open-problems/diffusion"
+  - "training/retrofitting"
+loop_topology: "prelude-core-coda"
+sharing: "full"
+depth_control: "fixed"
+claims:
+  - "param-efficiency"
+comparison:
+  - "iso-param"
+survey_core: false
+desc: "Pairs motion-preserving 4D VAEs with a dual-stream diffusion Transformer that loops shared pretrained middle blocks within each denoising call for RGB and pointmap streams, lowering 5B gFVD from 618 to 511 against the non-looped model and doubling simulated grasp success over Robot4DGen."
+links:
+  arxiv: "https://arxiv.org/abs/2611.34199"
